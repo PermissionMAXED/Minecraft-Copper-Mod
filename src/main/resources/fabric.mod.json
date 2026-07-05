@@ -1,0 +1,36 @@
+{
+	"schemaVersion": 1,
+	"id": "copper_inferno",
+	"version": "${version}",
+	"name": "COPPER INFERNO 1",
+	"description": "Oxidizing copper armor & tools, copper player statues, Dr.Pepper brewing with a DOOM kick, Dr.Pepper golems and much more.",
+	"authors": [
+		"Sonic0810"
+	],
+	"contact": {},
+	"license": "MIT",
+	"icon": "assets/copper_inferno/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.sonic0810.copperinferno.CopperInferno"
+		],
+		"client": [
+			"net.sonic0810.copperinferno.CopperInfernoClient"
+		]
+	},
+	"mixins": [
+		"copper_inferno.mixins.json",
+		{
+			"config": "copper_inferno.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.0",
+		"minecraft": "~1.21.9",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {}
+}
