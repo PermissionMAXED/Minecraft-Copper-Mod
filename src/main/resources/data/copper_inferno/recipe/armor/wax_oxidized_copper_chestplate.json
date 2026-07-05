@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "copper_inferno:oxidized_copper_chestplate",
+    "minecraft:honeycomb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:oxidized_copper_chestplate",
+    "components": {
+      "copper_inferno:waxed": true
+    }
+  }
+}

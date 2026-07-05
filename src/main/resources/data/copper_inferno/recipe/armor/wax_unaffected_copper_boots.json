@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:copper_boots",
+    "minecraft:honeycomb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:copper_boots",
+    "components": {
+      "copper_inferno:waxed": true
+    }
+  }
+}
