@@ -1,0 +1,25 @@
+{
+	"music.doom_kick": {
+		"sounds": [
+			{
+				"name": "copper_inferno:music/doom_kick",
+				"stream": true
+			}
+		]
+	},
+	"item.dr_pepper.open": {
+		"sounds": [
+			"copper_inferno:item/dr_pepper_open"
+		]
+	},
+	"item.copper_horn.blow": {
+		"sounds": [
+			"copper_inferno:item/copper_horn_blow"
+		]
+	},
+	"item.fizz_bomb.pop": {
+		"sounds": [
+			"copper_inferno:item/fizz_bomb_pop"
+		]
+	}
+}

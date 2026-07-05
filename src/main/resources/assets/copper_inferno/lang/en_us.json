@@ -1,0 +1,9 @@
+{
+	"itemGroup.copper_inferno.main": "Copper Inferno",
+	"tooltip.copper_inferno.waxed": "Waxed",
+	"tooltip.copper_inferno.oxidation": "Oxidation: %s",
+	"tooltip.copper_inferno.stage.unaffected": "Unaffected",
+	"tooltip.copper_inferno.stage.exposed": "Exposed",
+	"tooltip.copper_inferno.stage.weathered": "Weathered",
+	"tooltip.copper_inferno.stage.oxidized": "Oxidized"
+}
