@@ -1,0 +1,18 @@
+# COPPER INFERNO 1
+
+A Minecraft **Fabric** mod (author: Sonic0810) for **Minecraft 1.21.9** (the "Copper Age", which ships the vanilla Copper Golem). Adds oxidizing copper armor & tools, a copper player statue, Dr.Pepper brewing with a DOOM kick, Dr.Pepper golems, and more.
+
+## Cursor Cloud specific instructions
+
+Environment: Java 21 + Gradle (via the committed `./gradlew` wrapper, Gradle 8.14) + Fabric Loom 1.13.6. **Yarn mappings** (`1.21.9+build.1`) are used, NOT Mojang mappings — vanilla classes/methods use Yarn names (e.g. `net.minecraft.item.Item`, `Item.Settings`, `Identifier.of`).
+
+Standard commands (see `build.gradle` / `gradle.properties`):
+- Build: `./gradlew build --no-daemon` (produces `build/libs/copper-inferno-1.0.0.jar`).
+- Dedicated server smoke test: `echo "eula=true" > run/eula.txt` then `./gradlew runServer --no-daemon`. Great for verifying registrations, recipes, loot tables, `/give`, `/summon`, `/setblock` — do this for any content change.
+
+Non-obvious gotchas:
+- **Only ONE Gradle `run*` task can hold the `run/world` session lock at a time.** A second concurrent `runServer` fails with `SessionLock$AlreadyLockedException`. Stop the running one first, or launch a second instance from a different run dir.
+- **Client (`./gradlew runClient`) works headless only via software OpenGL.** Use: `DISPLAY=:1 LIBGL_ALWAYS_SOFTWARE=1 GALLIUM_DRIVER=llvmpipe MESA_GL_VERSION_OVERRIDE=4.6 ./gradlew runClient --no-daemon`. It reaches the title screen and is playable but SLOW (llvmpipe). Audio init fails harmlessly (`Failed to open OpenAL device` / ALSA errors) because the VM has no sound card — this is expected, not a bug. Client-only visuals (statue renderer, motion-blur post effect, DOOM proximity audio, particle factories) can only be verified with a client.
+- **Inspecting the 1.21.9 + Fabric API in Yarn names** (there are no offline javadocs): `javap` against Loom's remapped jars. Minecraft: `~/.gradle/caches/fabric-loom/minecraftMaven/net/minecraft/minecraft-{common,clientonly}/1.21.9-*/*.jar` (exclude `*backup*` / `*intermediary*`). Fabric API (yarn-named): `/workspace/.gradle/loom-cache/remapped_mods/**/fabric-*.jar`. The APIs changed a lot vs older 1.21.x (e.g. items need a registry key + a `assets/<ns>/items/<id>.json` model-definition file in addition to `models/item/<id>.json`; `BlockEntity` uses ReadView/WriteView NBT; block-entity renderers use the new `createRenderState`/`updateRenderState`/`render(state, MatrixStack, OrderedRenderCommandQueue, CameraRenderState)` contract; `GameRenderer.setPostProcessor` is private). Always verify a signature with `javap` before using it.
+
+Code layout: split source sets — common code in `src/main/java`, **client-only code in `src/client/java`** (client resources in `src/client/resources`). Features live under `net.sonic0810.copperinferno.feature.<name>` and are wired from `CopperInferno` / `CopperInfernoClient`; shared registries + the item-oxidation engine live in `net.sonic0810.copperinferno.core`.
