@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "copper_inferno:block/copper_player_statue"
+    },
+    "facing=south": {
+      "model": "copper_inferno:block/copper_player_statue",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "copper_inferno:block/copper_player_statue",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "copper_inferno:block/copper_player_statue",
+      "y": 90
+    }
+  }
+}

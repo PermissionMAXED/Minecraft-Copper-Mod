@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "copper_inferno:block/copper_statue_pedestal",
+    "pedestal": "copper_inferno:block/copper_statue_pedestal"
+  },
+  "elements": [
+    {
+      "from": [2, 0, 2],
+      "to": [14, 2, 14],
+      "faces": {
+        "down": {"texture": "#pedestal", "cullface": "down"},
+        "up": {"texture": "#pedestal"},
+        "north": {"texture": "#pedestal"},
+        "south": {"texture": "#pedestal"},
+        "west": {"texture": "#pedestal"},
+        "east": {"texture": "#pedestal"}
+      }
+    },
+    {
+      "from": [4, 2, 4],
+      "to": [12, 3, 12],
+      "faces": {
+        "up": {"texture": "#pedestal"},
+        "north": {"texture": "#pedestal"},
+        "south": {"texture": "#pedestal"},
+        "west": {"texture": "#pedestal"},
+        "east": {"texture": "#pedestal"}
+      }
+    }
+  ]
+}
