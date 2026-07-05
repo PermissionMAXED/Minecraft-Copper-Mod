@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "R": "minecraft:lightning_rod",
+    "I": "minecraft:copper_ingot",
+    "C": "copper_inferno:copper_coin"
+  },
+  "pattern": [
+    " R ",
+    "ICI",
+    " I "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:copper_lightning_charm"
+  }
+}

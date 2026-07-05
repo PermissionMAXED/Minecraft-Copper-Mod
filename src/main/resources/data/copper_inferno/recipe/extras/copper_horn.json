@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "I": "minecraft:copper_ingot",
+    "C": "copper_inferno:copper_coin"
+  },
+  "pattern": [
+    "II",
+    "CI"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:copper_horn"
+  }
+}

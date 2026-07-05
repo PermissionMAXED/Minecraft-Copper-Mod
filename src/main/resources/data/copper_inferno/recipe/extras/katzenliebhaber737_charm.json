@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:copper_ingot",
+    "minecraft:string",
+    "minecraft:cod"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:katzenliebhaber737_charm"
+  }
+}
