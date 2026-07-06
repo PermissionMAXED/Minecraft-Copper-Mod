@@ -1,10 +1,14 @@
 {
-	"itemGroup.copper_inferno.main": "Copper Inferno",
+	"itemGroup.copper_inferno.main": "COPPER INFERNO 1",
 	"itemGroup.copper_inferno.blocks": "COPPER INFERNO 1: Blocks",
 	"tooltip.copper_inferno.waxed": "Waxed",
 	"tooltip.copper_inferno.oxidation": "Oxidation: %s",
+	"tooltip.copper_inferno.oxidation_hint": "Hold in offhand — scrape with an axe, wax with honeycomb",
 	"tooltip.copper_inferno.stage.unaffected": "Unaffected",
 	"tooltip.copper_inferno.stage.exposed": "Exposed",
 	"tooltip.copper_inferno.stage.weathered": "Weathered",
-	"tooltip.copper_inferno.stage.oxidized": "Oxidized"
+	"tooltip.copper_inferno.stage.oxidized": "Oxidized",
+	"subtitles.copper_inferno.dr_pepper_open": "Can fizzes open",
+	"subtitles.copper_inferno.copper_horn_blow": "Copper Horn blares",
+	"subtitles.copper_inferno.fizz_bomb_pop": "Fizz bomb pops"
 }

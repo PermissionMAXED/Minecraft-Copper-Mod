@@ -4,7 +4,9 @@ import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.passive.CopperGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -77,6 +79,20 @@ public final class DrPepperGolemFeature {
 			converted.setCustomName(golem.getCustomName());
 			converted.setCustomNameVisible(golem.isCustomNameVisible());
 		}
+		// Carry the old golem's live state over so the conversion is lossless.
+		converted.setHealth(Math.min(golem.getHealth(), converted.getMaxHealth()));
+		for (StatusEffectInstance effect : golem.getStatusEffects()) {
+			converted.addStatusEffect(new StatusEffectInstance(effect));
+		}
+		// Copper golems can carry items (MAINHAND) and wear a poppy etc.; copy every slot.
+		for (EquipmentSlot slot : EquipmentSlot.VALUES) {
+			ItemStack equipped = golem.getEquippedStack(slot);
+			if (!equipped.isEmpty()) {
+				converted.equipStack(slot, equipped.copy());
+			}
+		}
+		converted.setFireTicks(golem.getFireTicks());
+		converted.setVelocity(golem.getVelocity());
 		golem.discard();
 		world.spawnEntity(converted);
 

@@ -143,10 +143,11 @@ public final class SodaBlocksFeature {
 				true);
 
 		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.BLOCKS_KEY).register(entries -> {
+			// Vanilla family shape order: block -> stairs -> slab -> wall.
 			for (BlockFamily family : new BlockFamily[] {DR_PEPPER_CAN_BRICKS, DR_PEPPER_CAN_TILES, SUGAR_BRICKS}) {
 				entries.add(family.block());
-				entries.add(family.slab());
 				entries.add(family.stairs());
+				entries.add(family.slab());
 				entries.add(family.wall());
 			}
 			entries.add(CHERRY_SODA_CAN_BLOCK);

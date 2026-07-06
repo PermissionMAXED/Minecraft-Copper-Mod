@@ -55,10 +55,11 @@ public final class InfernoFeature {
 		INFERNO_CORE = ModBlocks.register("inferno_core", Block::new, settings().luminance(state -> 12), true);
 
 		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.BLOCKS_KEY).register(entries -> {
+			// Vanilla family shape order: block -> stairs -> slab -> wall.
 			for (BlockFamily family : new BlockFamily[] {INFERNO_BRICKS, INFERNO_TILES, CHARRED_COPPER_BRICKS}) {
 				entries.add(family.block());
-				entries.add(family.slab());
 				entries.add(family.stairs());
+				entries.add(family.slab());
 				entries.add(family.wall());
 			}
 			entries.add(CRACKED_INFERNO_BRICKS);

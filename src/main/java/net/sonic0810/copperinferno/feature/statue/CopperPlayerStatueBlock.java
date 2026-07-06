@@ -5,6 +5,7 @@ import java.util.function.Consumer;
 import com.mojang.serialization.MapCodec;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
@@ -47,6 +48,16 @@ public class CopperPlayerStatueBlock extends BlockWithEntity {
 		return CODEC;
 	}
 
+	/**
+	 * Explicitly render the static pedestal model. {@code AbstractBlock.getRenderType(BlockState)}
+	 * controls this in 1.21.9 (verified via javap); pinning it to MODEL guarantees the pedestal
+	 * JSON model renders alongside the block-entity-rendered figure.
+	 */
+	@Override
+	protected BlockRenderType getRenderType(BlockState state) {
+		return BlockRenderType.MODEL;
+	}
+
 	@Override
 	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
 		builder.add(FACING);
@@ -79,7 +90,7 @@ public class CopperPlayerStatueBlock extends BlockWithEntity {
 
 	@Override
 	protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-		if (!player.getMainHandStack().isEmpty()) {
+		if (player.isSpectator() || !player.getMainHandStack().isEmpty()) {
 			return ActionResult.PASS;
 		}
 		if (world.isClient()) {

@@ -62,6 +62,11 @@ public final class ExtrasFeature {
 			entries.add(COPPER_LIGHTNING_CHARM);
 			entries.add(FIZZ_BOMB);
 			entries.add(COPPER_HORN);
+		});
+
+		// The can block belongs with the other soda can blocks in the BLOCKS tab
+		// (its 8 flavored siblings are added there by SodaBlocksFeature).
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.BLOCKS_KEY).register(entries -> {
 			entries.add(DR_PEPPER_CAN_BLOCK);
 		});
 	}

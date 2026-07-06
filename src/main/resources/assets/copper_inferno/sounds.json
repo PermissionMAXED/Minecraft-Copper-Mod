@@ -10,17 +10,20 @@
 	"item.dr_pepper.open": {
 		"sounds": [
 			"copper_inferno:item/dr_pepper_open"
-		]
+		],
+		"subtitle": "subtitles.copper_inferno.dr_pepper_open"
 	},
 	"item.copper_horn.blow": {
 		"sounds": [
 			"copper_inferno:item/copper_horn_blow"
-		]
+		],
+		"subtitle": "subtitles.copper_inferno.copper_horn_blow"
 	},
 	"item.fizz_bomb.pop": {
 		"sounds": [
 			"copper_inferno:item/fizz_bomb_pop"
-		]
+		],
+		"subtitle": "subtitles.copper_inferno.fizz_bomb_pop"
 	},
 	"music_disc.copper_inferno": {
 		"sounds": [

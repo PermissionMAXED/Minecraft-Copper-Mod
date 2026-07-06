@@ -52,7 +52,13 @@ public final class CopperArmorFeature {
 		ItemOxidation.registerChain(Items.COPPER_LEGGINGS, EXPOSED_COPPER_LEGGINGS, WEATHERED_COPPER_LEGGINGS, OXIDIZED_COPPER_LEGGINGS);
 		ItemOxidation.registerChain(Items.COPPER_BOOTS, EXPOSED_COPPER_BOOTS, WEATHERED_COPPER_BOOTS, OXIDIZED_COPPER_BOOTS);
 
+		// Stage-major order (a full set per stage), starting with the vanilla stage-0
+		// pieces so each oxidation chain reads fully: vanilla -> exposed -> weathered -> oxidized.
 		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+			entries.add(Items.COPPER_HELMET);
+			entries.add(Items.COPPER_CHESTPLATE);
+			entries.add(Items.COPPER_LEGGINGS);
+			entries.add(Items.COPPER_BOOTS);
 			entries.add(EXPOSED_COPPER_HELMET);
 			entries.add(EXPOSED_COPPER_CHESTPLATE);
 			entries.add(EXPOSED_COPPER_LEGGINGS);

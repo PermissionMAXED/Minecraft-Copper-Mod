@@ -25,7 +25,7 @@ public class CopperWhistleItem extends Item {
 	public ActionResult use(World world, PlayerEntity user, Hand hand) {
 		if (!world.isClient()) {
 			world.playSound(null, user.getX(), user.getY(), user.getZ(),
-					ModSounds.COPPER_HORN_BLOW, SoundCategory.RECORDS, VOLUME, PITCH);
+					ModSounds.COPPER_HORN_BLOW, SoundCategory.PLAYERS, VOLUME, PITCH);
 		}
 
 		user.getItemCooldownManager().set(user.getStackInHand(hand), COOLDOWN_TICKS);

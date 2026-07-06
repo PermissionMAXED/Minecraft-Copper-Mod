@@ -33,22 +33,31 @@ public class CopperInferno implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		LOGGER.info("[COPPER INFERNO 1] Initializing - by Sonic0810");
+		// This order curates the creative-tab flow: each feature registers its
+		// ItemGroupEvents callback in init(), and Fabric runs the callbacks in
+		// registration order (equipment -> gadgets -> materials -> drinks/foods ->
+		// music/lore -> statue, then the building-block features for the BLOCKS tab).
+		// Hard dependency constraints that MUST be respected when reordering:
+		// - CopperInfernoCore.init() FIRST (shared registries, sounds, creative tabs).
+		// - ExtrasFeature BEFORE GearFeature (GearFeature hooks the copper-horn
+		//   oxidation chain onto ExtrasFeature.COPPER_HORN via a requireNonNull guard).
+		// - DrPepperFeature BEFORE DrPepperGolemFeature (golem consumes Dr.Pepper content).
 		CopperInfernoCore.init();
 		CopperArmorFeature.init();
 		CopperToolsFeature.init();
-		PlayerStatueFeature.init();
+		ExtrasFeature.init();
+		GearFeature.init();
+		MaterialsFeature.init();
 		DrPepperFeature.init();
 		DrPepperGolemFeature.init();
-		ExtrasFeature.init();
+		FoodsFeature.init();
+		MusicFeature.init();
+		PlayerStatueFeature.init();
 		MasonryFeature.init();
 		DecoStoneFeature.init();
 		InfernoFeature.init();
 		SodaBlocksFeature.init();
 		GlassLightFeature.init();
 		UtilityBlocksFeature.init();
-		MaterialsFeature.init();
-		FoodsFeature.init();
-		GearFeature.init();
-		MusicFeature.init();
 	}
 }

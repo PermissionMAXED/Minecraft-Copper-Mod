@@ -66,10 +66,11 @@ public final class DecoStoneFeature {
 		});
 	}
 
+	/** Vanilla family shape order: block -> stairs -> slab -> wall. */
 	private static void addFamily(FabricItemGroupEntries entries, BlockFamily family) {
 		entries.add(family.block());
-		entries.add(family.slab());
 		entries.add(family.stairs());
+		entries.add(family.slab());
 		entries.add(family.wall());
 	}
 }

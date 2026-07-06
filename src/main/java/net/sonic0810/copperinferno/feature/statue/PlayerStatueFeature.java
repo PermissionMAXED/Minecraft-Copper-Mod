@@ -54,7 +54,7 @@ public final class PlayerStatueFeature {
 				CopperPlayerStatueBlockEntity::new,
 				COPPER_PLAYER_STATUE);
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY)
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.BLOCKS_KEY)
 				.register(entries -> entries.add(COPPER_PLAYER_STATUE));
 
 		PayloadTypeRegistry.playC2S().register(SetStatueNamePayload.ID, SetStatueNamePayload.CODEC);
@@ -67,6 +67,14 @@ public final class PlayerStatueFeature {
 		BlockPos pos = payload.pos();
 		String name = payload.name().trim();
 		if (name.isEmpty() || name.length() > MAX_NAME_LENGTH || !StringHelper.isValidPlayerName(name)) {
+			return;
+		}
+		if (player.isSpectator()) {
+			return;
+		}
+		// World.canEntityModifyAt is the 1.21.9 replacement for canPlayerModifyAt (verified via
+		// javap); it covers spawn protection and other per-position modification rules.
+		if (!world.canEntityModifyAt(player, pos)) {
 			return;
 		}
 		if (player.squaredDistanceTo(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5) > MAX_EDIT_DISTANCE_SQ) {

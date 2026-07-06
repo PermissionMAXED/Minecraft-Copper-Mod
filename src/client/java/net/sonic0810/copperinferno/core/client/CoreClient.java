@@ -18,8 +18,11 @@ public final class CoreClient {
 	public static void initClient() {
 		ParticleFactoryRegistry.getInstance().register(ModParticles.COPPER_SPARKLE, CopperSparkleParticle.Factory::new);
 
-		// "Waxed" tooltip line for ANY stack carrying the component (covers vanilla stage-0 items).
-		// OxidizableEquipmentItem already appends its own line via appendTooltip, so skip those.
+		// "Waxed" tooltip line for ANY waxed stack whose item does not render it itself: vanilla
+		// stage-0 items, the OxidizableAxe/Shovel/HoeItem subclasses and CopperHornItem (their
+		// ItemOxidation.appendOxidationTooltip call skips the "Waxed" line for non-
+		// OxidizableEquipmentItem stacks). Only OxidizableEquipmentItem appends its own line,
+		// so skip those here — this keeps exactly ONE "Waxed" line per stack.
 		ItemTooltipCallback.EVENT.register((stack, context, type, lines) -> {
 			if (!(stack.getItem() instanceof OxidizableEquipmentItem)
 					&& stack.getOrDefault(ModComponents.WAXED, Boolean.FALSE)) {
