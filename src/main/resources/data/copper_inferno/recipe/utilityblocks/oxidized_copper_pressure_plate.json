@@ -1,0 +1,15 @@
+{
+  "category": "redstone",
+  "group": "copper_pressure_plate",
+  "key": {
+    "#": "minecraft:oxidized_copper"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:oxidized_copper_pressure_plate"
+  },
+  "type": "minecraft:crafting_shaped"
+}

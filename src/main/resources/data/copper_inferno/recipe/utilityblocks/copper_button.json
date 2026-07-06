@@ -1,0 +1,12 @@
+{
+  "category": "redstone",
+  "group": "copper_button",
+  "ingredients": [
+    "minecraft:cut_copper"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:copper_button"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

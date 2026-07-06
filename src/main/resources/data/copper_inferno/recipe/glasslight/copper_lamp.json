@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "minecraft:redstone_lamp",
+    "minecraft:copper_block"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:copper_lamp"
+  }
+}

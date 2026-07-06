@@ -1,0 +1,13 @@
+{
+  "category": "building",
+  "group": "waxed_exposed_copper_brick_slab",
+  "ingredients": [
+    "copper_inferno:exposed_copper_brick_slab",
+    "minecraft:honeycomb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:waxed_exposed_copper_brick_slab"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

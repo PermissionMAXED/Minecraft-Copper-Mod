@@ -1,0 +1,13 @@
+{
+  "category": "building",
+  "group": "waxed_weathered_copper_bricks",
+  "ingredients": [
+    "copper_inferno:weathered_copper_bricks",
+    "minecraft:honeycomb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:waxed_weathered_copper_bricks"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

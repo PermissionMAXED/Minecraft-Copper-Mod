@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "N": "minecraft:iron_nugget",
+    "D": "minecraft:red_dye"
+  },
+  "pattern": [
+    "NNN",
+    "NDN",
+    "NNN"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:bottle_cap_block"
+  }
+}

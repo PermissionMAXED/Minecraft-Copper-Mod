@@ -1,0 +1,12 @@
+{
+  "category": "building",
+  "ingredients": [
+    "minecraft:copper_block",
+    "minecraft:charcoal"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:charred_copper"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

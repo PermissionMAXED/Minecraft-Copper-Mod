@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "copper_inferno:copper_glass",
+    "minecraft:exposed_copper"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:exposed_copper_glass"
+  }
+}

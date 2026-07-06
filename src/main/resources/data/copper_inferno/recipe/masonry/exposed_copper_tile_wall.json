@@ -1,0 +1,16 @@
+{
+  "category": "misc",
+  "group": "copper_tile_wall",
+  "key": {
+    "#": "copper_inferno:exposed_copper_tiles"
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "copper_inferno:exposed_copper_tile_wall"
+  },
+  "type": "minecraft:crafting_shaped"
+}

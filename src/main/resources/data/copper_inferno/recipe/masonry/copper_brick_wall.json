@@ -1,0 +1,16 @@
+{
+  "category": "misc",
+  "group": "copper_brick_wall",
+  "key": {
+    "#": "copper_inferno:copper_bricks"
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "copper_inferno:copper_brick_wall"
+  },
+  "type": "minecraft:crafting_shaped"
+}

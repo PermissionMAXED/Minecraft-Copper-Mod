@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "copper_inferno:dr_pepper_can_block",
+    "minecraft:blue_dye"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:blueberry_soda_can_block"
+  }
+}

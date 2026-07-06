@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "copper_inferno:sugar_block",
+    "minecraft:gunpowder"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:fizzy_soda_block"
+  }
+}

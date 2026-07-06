@@ -1,0 +1,13 @@
+{
+  "category": "building",
+  "group": "copper_crate",
+  "ingredients": [
+    "copper_inferno:copper_crate",
+    "minecraft:weathered_copper"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:weathered_copper_crate"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

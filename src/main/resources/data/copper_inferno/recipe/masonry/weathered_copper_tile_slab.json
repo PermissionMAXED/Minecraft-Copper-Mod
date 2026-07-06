@@ -1,0 +1,15 @@
+{
+  "category": "building",
+  "group": "copper_tile_slab",
+  "key": {
+    "#": "copper_inferno:weathered_copper_tiles"
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "copper_inferno:weathered_copper_tile_slab"
+  },
+  "type": "minecraft:crafting_shaped"
+}

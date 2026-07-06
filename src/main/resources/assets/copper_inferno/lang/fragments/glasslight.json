@@ -1,0 +1,16 @@
+{
+  "block.copper_inferno.copper_glass": "Copper Glass",
+  "block.copper_inferno.exposed_copper_glass": "Exposed Copper Glass",
+  "block.copper_inferno.weathered_copper_glass": "Weathered Copper Glass",
+  "block.copper_inferno.oxidized_copper_glass": "Oxidized Copper Glass",
+  "block.copper_inferno.copper_glass_pane": "Copper Glass Pane",
+  "block.copper_inferno.oxidized_copper_glass_pane": "Oxidized Copper Glass Pane",
+  "block.copper_inferno.copper_lamp": "Copper Lamp",
+  "block.copper_inferno.exposed_copper_lamp": "Exposed Copper Lamp",
+  "block.copper_inferno.weathered_copper_lamp": "Weathered Copper Lamp",
+  "block.copper_inferno.oxidized_copper_lamp": "Oxidized Copper Lamp",
+  "block.copper_inferno.inferno_lantern": "Inferno Lantern",
+  "block.copper_inferno.soda_lantern": "Soda Lantern",
+  "block.copper_inferno.copper_chandelier": "Copper Chandelier",
+  "block.copper_inferno.glowing_syrup_block": "Glowing Syrup Block"
+}

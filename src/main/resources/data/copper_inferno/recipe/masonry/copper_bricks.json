@@ -1,0 +1,15 @@
+{
+  "category": "building",
+  "key": {
+    "#": "minecraft:copper_ingot"
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:copper_bricks"
+  },
+  "type": "minecraft:crafting_shaped"
+}

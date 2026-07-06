@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "B": "minecraft:blackstone",
+    "M": "minecraft:magma_cream"
+  },
+  "pattern": [
+    "B B",
+    " M ",
+    "B B"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:inferno_bricks"
+  },
+  "type": "minecraft:crafting_shaped"
+}

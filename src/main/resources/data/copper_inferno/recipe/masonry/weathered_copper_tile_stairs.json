@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "group": "copper_tile_stairs",
+  "key": {
+    "#": "copper_inferno:weathered_copper_tiles"
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:weathered_copper_tile_stairs"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "I": "minecraft:copper_ingot",
+    "P": "#minecraft:planks"
+  },
+  "pattern": [
+    "PIP",
+    "I I",
+    "PIP"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:copper_crate"
+  },
+  "type": "minecraft:crafting_shaped"
+}

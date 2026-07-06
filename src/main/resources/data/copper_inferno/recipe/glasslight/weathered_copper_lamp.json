@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "minecraft:redstone_lamp",
+    "minecraft:weathered_copper"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:weathered_copper_lamp"
+  }
+}

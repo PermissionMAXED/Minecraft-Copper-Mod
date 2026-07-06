@@ -1,0 +1,16 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:inferno_bricks"
+  },
+  "pattern": [
+    "#",
+    "#",
+    "#"
+  ],
+  "result": {
+    "count": 3,
+    "id": "copper_inferno:inferno_pillar"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "I": "minecraft:copper_ingot",
+    "D": "copper_inferno:dr_pepper"
+  },
+  "pattern": [
+    "III",
+    "IDI",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:soda_lantern"
+  }
+}

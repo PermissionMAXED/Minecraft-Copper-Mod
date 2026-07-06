@@ -1,0 +1,13 @@
+{
+  "category": "building",
+  "group": "waxed_oxidized_copper_tiles",
+  "ingredients": [
+    "copper_inferno:oxidized_copper_tiles",
+    "minecraft:honeycomb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:waxed_oxidized_copper_tiles"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "group": "copper_brick_stairs",
+  "key": {
+    "#": "copper_inferno:copper_bricks"
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:copper_brick_stairs"
+  },
+  "type": "minecraft:crafting_shaped"
+}

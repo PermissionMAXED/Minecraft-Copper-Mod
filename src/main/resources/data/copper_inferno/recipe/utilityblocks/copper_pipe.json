@@ -1,0 +1,16 @@
+{
+  "category": "building",
+  "key": {
+    "I": "minecraft:copper_ingot"
+  },
+  "pattern": [
+    "I I",
+    "I I",
+    "I I"
+  ],
+  "result": {
+    "count": 6,
+    "id": "copper_inferno:copper_pipe"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,18 @@
+{
+  "block.copper_inferno.copper_button": "Copper Button",
+  "block.copper_inferno.copper_crate": "Copper Crate",
+  "block.copper_inferno.copper_fence": "Copper Fence",
+  "block.copper_inferno.copper_fence_gate": "Copper Fence Gate",
+  "block.copper_inferno.copper_pipe": "Copper Pipe",
+  "block.copper_inferno.copper_plating": "Copper Plating",
+  "block.copper_inferno.copper_pressure_plate": "Copper Pressure Plate",
+  "block.copper_inferno.exposed_copper_button": "Exposed Copper Button",
+  "block.copper_inferno.exposed_copper_crate": "Exposed Copper Crate",
+  "block.copper_inferno.exposed_copper_pressure_plate": "Exposed Copper Pressure Plate",
+  "block.copper_inferno.oxidized_copper_button": "Oxidized Copper Button",
+  "block.copper_inferno.oxidized_copper_crate": "Oxidized Copper Crate",
+  "block.copper_inferno.oxidized_copper_pressure_plate": "Oxidized Copper Pressure Plate",
+  "block.copper_inferno.weathered_copper_button": "Weathered Copper Button",
+  "block.copper_inferno.weathered_copper_crate": "Weathered Copper Crate",
+  "block.copper_inferno.weathered_copper_pressure_plate": "Weathered Copper Pressure Plate"
+}

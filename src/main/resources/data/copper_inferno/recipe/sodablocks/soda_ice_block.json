@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "minecraft:ice",
+    "minecraft:sugar"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:soda_ice_block"
+  }
+}

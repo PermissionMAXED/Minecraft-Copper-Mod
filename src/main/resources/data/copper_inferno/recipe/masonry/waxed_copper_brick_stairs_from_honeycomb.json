@@ -1,0 +1,13 @@
+{
+  "category": "building",
+  "group": "waxed_copper_brick_stairs",
+  "ingredients": [
+    "copper_inferno:copper_brick_stairs",
+    "minecraft:honeycomb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:waxed_copper_brick_stairs"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

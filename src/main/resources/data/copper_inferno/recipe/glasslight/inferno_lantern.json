@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "I": "minecraft:copper_ingot",
+    "B": "minecraft:blaze_powder"
+  },
+  "pattern": [
+    "III",
+    "IBI",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:inferno_lantern"
+  }
+}

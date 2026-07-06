@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:inferno_bricks",
+    "M": "minecraft:magma_block"
+  },
+  "pattern": [
+    "###",
+    "#M#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:inferno_core"
+  },
+  "type": "minecraft:crafting_shaped"
+}

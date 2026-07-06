@@ -1,0 +1,13 @@
+{
+  "category": "building",
+  "group": "waxed_weathered_copper_tile_slab",
+  "ingredients": [
+    "copper_inferno:weathered_copper_tile_slab",
+    "minecraft:honeycomb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:waxed_weathered_copper_tile_slab"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

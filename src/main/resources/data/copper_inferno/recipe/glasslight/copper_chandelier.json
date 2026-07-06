@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "I": "minecraft:copper_ingot",
+    "L": "copper_inferno:inferno_lantern"
+  },
+  "pattern": [
+    " I ",
+    "ILI",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:copper_chandelier"
+  }
+}
