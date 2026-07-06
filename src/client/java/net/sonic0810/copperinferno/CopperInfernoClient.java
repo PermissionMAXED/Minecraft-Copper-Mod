@@ -4,6 +4,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.sonic0810.copperinferno.core.client.CoreClient;
 import net.sonic0810.copperinferno.feature.drpepper.client.DrPepperFeatureClient;
 import net.sonic0810.copperinferno.feature.extras.client.ExtrasFeatureClient;
+import net.sonic0810.copperinferno.feature.glasslight.client.GlassLightFeatureClient;
 import net.sonic0810.copperinferno.feature.golem.client.DrPepperGolemFeatureClient;
 import net.sonic0810.copperinferno.feature.statue.client.PlayerStatueFeatureClient;
 
@@ -16,5 +17,6 @@ public class CopperInfernoClient implements ClientModInitializer {
 		DrPepperFeatureClient.initClient();
 		DrPepperGolemFeatureClient.initClient();
 		ExtrasFeatureClient.initClient();
+		GlassLightFeatureClient.initClient();
 	}
 }

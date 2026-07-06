@@ -29,6 +29,16 @@ public final class ModCreativeTab {
 					.icon(() -> new ItemStack(Items.COPPER_INGOT))
 					.build());
 
+	public static final RegistryKey<ItemGroup> BLOCKS_KEY = RegistryKey.of(RegistryKeys.ITEM_GROUP, CopperInferno.id("blocks"));
+
+	public static final ItemGroup BLOCKS = Registry.register(
+			Registries.ITEM_GROUP,
+			BLOCKS_KEY,
+			FabricItemGroup.builder()
+					.displayName(Text.translatable("itemGroup.copper_inferno.blocks"))
+					.icon(() -> new ItemStack(Items.CUT_COPPER))
+					.build());
+
 	public static void init() {
 		// Forces static initialization; registration happens in the field initializers.
 	}
