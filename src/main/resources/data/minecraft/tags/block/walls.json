@@ -1,0 +1,22 @@
+{
+  "values": [
+    "copper_inferno:copper_brick_wall",
+    "copper_inferno:exposed_copper_brick_wall",
+    "copper_inferno:weathered_copper_brick_wall",
+    "copper_inferno:oxidized_copper_brick_wall",
+    "copper_inferno:copper_tile_wall",
+    "copper_inferno:exposed_copper_tile_wall",
+    "copper_inferno:weathered_copper_tile_wall",
+    "copper_inferno:oxidized_copper_tile_wall",
+    "copper_inferno:cut_copper_brick_wall",
+    "copper_inferno:mossy_copper_brick_wall",
+    "copper_inferno:copper_mosaic_wall",
+    "copper_inferno:copper_shingle_wall",
+    "copper_inferno:inferno_brick_wall",
+    "copper_inferno:inferno_tile_wall",
+    "copper_inferno:charred_copper_brick_wall",
+    "copper_inferno:dr_pepper_can_brick_wall",
+    "copper_inferno:dr_pepper_can_tile_wall",
+    "copper_inferno:sugar_brick_wall"
+  ]
+}

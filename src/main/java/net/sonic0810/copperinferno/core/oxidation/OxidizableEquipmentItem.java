@@ -7,12 +7,16 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 
 /**
- * Base item for oxidizable equipment (armor pieces, tools, ...). Adds gray "Oxidation: &lt;Stage&gt;"
- * and "Waxed" tooltip lines. The vanilla stage-0 items get their "Waxed" line from the client-side
- * ItemTooltipCallback in core.client.CoreClient instead.
+ * Base item for oxidizable equipment without a dedicated vanilla item class (armor pieces,
+ * swords, pickaxes, ...). Adds the shared oxidation tooltip lines via
+ * {@link ItemOxidation#appendOxidationTooltip}. The vanilla stage-0 items get their "Waxed" line
+ * from the client-side ItemTooltipCallback in core.client.CoreClient instead.
+ *
+ * <p>Axes/shovels/hoes use {@link OxidizableAxeItem}/{@link OxidizableShovelItem}/
+ * {@link OxidizableHoeItem} instead so they keep strip/path/till behavior; swords and pickaxes
+ * have no vanilla item class in 1.21.9 (their behavior is component-driven), so they stay here.
  */
 public class OxidizableEquipmentItem extends Item {
 	public OxidizableEquipmentItem(Settings settings) {
@@ -22,13 +26,6 @@ public class OxidizableEquipmentItem extends Item {
 	@Override
 	public void appendTooltip(ItemStack stack, Item.TooltipContext context, TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {
 		super.appendTooltip(stack, context, displayComponent, textConsumer, type);
-		int stage = ItemOxidation.stageIndex(stack.getItem());
-		if (stage >= 0) {
-			textConsumer.accept(Text.translatable("tooltip.copper_inferno.oxidation",
-					Text.translatable(ItemOxidation.STAGE_TRANSLATION_KEYS[stage])).formatted(Formatting.GRAY));
-		}
-		if (ItemOxidation.isWaxed(stack)) {
-			textConsumer.accept(Text.translatable("tooltip.copper_inferno.waxed").formatted(Formatting.GRAY));
-		}
+		ItemOxidation.appendOxidationTooltip(stack, textConsumer);
 	}
 }

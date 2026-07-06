@@ -2,9 +2,12 @@ package net.sonic0810.copperinferno.core.oxidation;
 
 import java.util.IdentityHashMap;
 import java.util.Map;
+import java.util.function.Consumer;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.sonic0810.copperinferno.core.ModComponents;
 import org.jetbrains.annotations.Nullable;
 
@@ -32,8 +35,15 @@ public final class ItemOxidation {
 
 	/**
 	 * Registers a 4-stage oxidation chain (stage 0 is typically the vanilla item).
+	 *
+	 * @throws IllegalStateException if any of the four items is already part of a chain
 	 */
 	public static void registerChain(Item unaffected, Item exposed, Item weathered, Item oxidized) {
+		for (Item item : new Item[] {unaffected, exposed, weathered, oxidized}) {
+			if (STAGE.containsKey(item)) {
+				throw new IllegalStateException("Item already registered in an oxidation chain: " + item);
+			}
+		}
 		NEXT.put(unaffected, exposed);
 		NEXT.put(exposed, weathered);
 		NEXT.put(weathered, oxidized);
@@ -77,6 +87,32 @@ public final class ItemOxidation {
 			stack.set(ModComponents.WAXED, Boolean.TRUE);
 		} else {
 			stack.remove(ModComponents.WAXED);
+		}
+	}
+
+	/**
+	 * Shared tooltip body for all oxidizable equipment items: the gray "Oxidation: &lt;Stage&gt;"
+	 * line, the gray "Waxed" line, and (only while un-waxed and in a chain) a dark-gray hint
+	 * about axe scraping / honeycomb waxing. Called from every oxidizable item class's
+	 * {@code appendTooltip} override.
+	 *
+	 * <p>The "Waxed" line is only appended for {@link OxidizableEquipmentItem} stacks: the
+	 * client-side ItemTooltipCallback in core.client.CoreClient already adds that line for every
+	 * OTHER waxed stack (vanilla stage-0 items and the AxeItem/ShovelItem/HoeItem subclasses),
+	 * so appending it here too would duplicate it.
+	 */
+	public static void appendOxidationTooltip(ItemStack stack, Consumer<Text> textConsumer) {
+		int stage = stageIndex(stack.getItem());
+		if (stage >= 0) {
+			textConsumer.accept(Text.translatable("tooltip.copper_inferno.oxidation",
+					Text.translatable(STAGE_TRANSLATION_KEYS[stage])).formatted(Formatting.GRAY));
+		}
+		if (isWaxed(stack)) {
+			if (stack.getItem() instanceof OxidizableEquipmentItem) {
+				textConsumer.accept(Text.translatable("tooltip.copper_inferno.waxed").formatted(Formatting.GRAY));
+			}
+		} else if (stage >= 0) {
+			textConsumer.accept(Text.translatable("tooltip.copper_inferno.oxidation_hint").formatted(Formatting.DARK_GRAY));
 		}
 	}
 

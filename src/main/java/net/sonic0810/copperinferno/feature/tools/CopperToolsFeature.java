@@ -7,12 +7,19 @@ import net.minecraft.item.ToolMaterial;
 import net.sonic0810.copperinferno.core.ModCreativeTab;
 import net.sonic0810.copperinferno.core.ModItems;
 import net.sonic0810.copperinferno.core.oxidation.ItemOxidation;
+import net.sonic0810.copperinferno.core.oxidation.OxidizableAxeItem;
 import net.sonic0810.copperinferno.core.oxidation.OxidizableEquipmentItem;
+import net.sonic0810.copperinferno.core.oxidation.OxidizableHoeItem;
+import net.sonic0810.copperinferno.core.oxidation.OxidizableShovelItem;
 
 /**
  * Oxidizing copper tools. Stage 0 of each chain is the vanilla 1.21.9 copper tool
  * (COPPER_SWORD/PICKAXE/AXE/SHOVEL/HOE); this feature adds the exposed, weathered and
  * oxidized stages and wires them into the shared {@link ItemOxidation} system.
+ *
+ * <p>Axes/shovels/hoes use the Oxidizable{Axe,Shovel,Hoe}Item subclasses so they keep the
+ * vanilla strip/path/till behavior; SwordItem/PickaxeItem no longer exist in 1.21.9 (sword and
+ * pickaxe behavior is component-driven), so those stay on {@link OxidizableEquipmentItem}.
  */
 public final class CopperToolsFeature {
 	private CopperToolsFeature() {
@@ -51,19 +58,22 @@ public final class CopperToolsFeature {
 				new Item.Settings().pickaxe(ToolMaterial.COPPER, 1.0F, -2.8F));
 	}
 
+	// Vanilla registers axes/shovels/hoes with PLAIN settings: the AxeItem/ShovelItem/HoeItem
+	// constructor applies Settings.axe(...)/shovel(...)/hoe(...) itself (verified via the 1.21.9
+	// Items + AxeItem bytecode), so the tool profile must not be pre-applied here.
 	private static Item registerAxe(String path) {
-		return ModItems.register(path, OxidizableEquipmentItem::new,
-				new Item.Settings().axe(ToolMaterial.COPPER, 6.0F, -3.1F));
+		return ModItems.register(path, s -> new OxidizableAxeItem(ToolMaterial.COPPER, 6.0F, -3.1F, s),
+				new Item.Settings());
 	}
 
 	private static Item registerShovel(String path) {
-		return ModItems.register(path, OxidizableEquipmentItem::new,
-				new Item.Settings().shovel(ToolMaterial.COPPER, 1.5F, -3.0F));
+		return ModItems.register(path, s -> new OxidizableShovelItem(ToolMaterial.COPPER, 1.5F, -3.0F, s),
+				new Item.Settings());
 	}
 
 	private static Item registerHoe(String path) {
-		return ModItems.register(path, OxidizableEquipmentItem::new,
-				new Item.Settings().hoe(ToolMaterial.COPPER, -1.0F, -2.0F));
+		return ModItems.register(path, s -> new OxidizableHoeItem(ToolMaterial.COPPER, -1.0F, -2.0F, s),
+				new Item.Settings());
 	}
 
 	public static void init() {
@@ -73,21 +83,27 @@ public final class CopperToolsFeature {
 		ItemOxidation.registerChain(Items.COPPER_SHOVEL, EXPOSED_COPPER_SHOVEL, WEATHERED_COPPER_SHOVEL, OXIDIZED_COPPER_SHOVEL);
 		ItemOxidation.registerChain(Items.COPPER_HOE, EXPOSED_COPPER_HOE, WEATHERED_COPPER_HOE, OXIDIZED_COPPER_HOE);
 
+		// Stage-major order, with the vanilla stage-0 tools first so each chain reads fully.
 		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+			entries.add(Items.COPPER_SWORD);
+			entries.add(Items.COPPER_PICKAXE);
+			entries.add(Items.COPPER_AXE);
+			entries.add(Items.COPPER_SHOVEL);
+			entries.add(Items.COPPER_HOE);
 			entries.add(EXPOSED_COPPER_SWORD);
-			entries.add(WEATHERED_COPPER_SWORD);
-			entries.add(OXIDIZED_COPPER_SWORD);
 			entries.add(EXPOSED_COPPER_PICKAXE);
-			entries.add(WEATHERED_COPPER_PICKAXE);
-			entries.add(OXIDIZED_COPPER_PICKAXE);
 			entries.add(EXPOSED_COPPER_AXE);
-			entries.add(WEATHERED_COPPER_AXE);
-			entries.add(OXIDIZED_COPPER_AXE);
 			entries.add(EXPOSED_COPPER_SHOVEL);
-			entries.add(WEATHERED_COPPER_SHOVEL);
-			entries.add(OXIDIZED_COPPER_SHOVEL);
 			entries.add(EXPOSED_COPPER_HOE);
+			entries.add(WEATHERED_COPPER_SWORD);
+			entries.add(WEATHERED_COPPER_PICKAXE);
+			entries.add(WEATHERED_COPPER_AXE);
+			entries.add(WEATHERED_COPPER_SHOVEL);
 			entries.add(WEATHERED_COPPER_HOE);
+			entries.add(OXIDIZED_COPPER_SWORD);
+			entries.add(OXIDIZED_COPPER_PICKAXE);
+			entries.add(OXIDIZED_COPPER_AXE);
+			entries.add(OXIDIZED_COPPER_SHOVEL);
 			entries.add(OXIDIZED_COPPER_HOE);
 		});
 	}
