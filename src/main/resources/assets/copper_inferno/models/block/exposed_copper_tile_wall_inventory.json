@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "copper_inferno:block/exposed_copper_tiles"
+  }
+}

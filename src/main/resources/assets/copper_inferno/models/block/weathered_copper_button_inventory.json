@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button_inventory",
+  "textures": {
+    "texture": "copper_inferno:block/weathered_copper_panel"
+  }
+}

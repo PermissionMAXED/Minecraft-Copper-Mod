@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "copper_inferno:block/dr_pepper_can_tiles",
+    "side": "copper_inferno:block/dr_pepper_can_tiles",
+    "top": "copper_inferno:block/dr_pepper_can_tiles"
+  }
+}

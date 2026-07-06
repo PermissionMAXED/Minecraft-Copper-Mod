@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/template_music_disc",
+  "textures": {
+    "layer0": "copper_inferno:item/music_disc_soda_pop"
+  }
+}

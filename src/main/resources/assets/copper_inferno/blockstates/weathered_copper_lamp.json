@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "copper_inferno:block/weathered_copper_lamp"
+    },
+    "lit=true": {
+      "model": "copper_inferno:block/weathered_copper_lamp_on"
+    }
+  }
+}

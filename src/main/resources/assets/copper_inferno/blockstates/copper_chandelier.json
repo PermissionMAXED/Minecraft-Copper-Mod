@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "copper_inferno:block/copper_chandelier"
+    },
+    "hanging=true": {
+      "model": "copper_inferno:block/copper_chandelier_hanging"
+    }
+  }
+}

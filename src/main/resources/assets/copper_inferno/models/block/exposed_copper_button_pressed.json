@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button_pressed",
+  "textures": {
+    "texture": "copper_inferno:block/exposed_copper_panel"
+  }
+}

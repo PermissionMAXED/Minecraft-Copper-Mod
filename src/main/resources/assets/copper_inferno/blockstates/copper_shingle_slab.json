@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/copper_shingle_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/copper_shingles"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/copper_shingle_slab_top"
+    }
+  }
+}

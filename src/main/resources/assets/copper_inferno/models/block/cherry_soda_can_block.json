@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "copper_inferno:block/cherry_soda_can_block_top",
+    "side": "copper_inferno:block/cherry_soda_can_block_side"
+  }
+}
