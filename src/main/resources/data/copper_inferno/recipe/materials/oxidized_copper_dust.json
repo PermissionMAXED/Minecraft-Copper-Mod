@@ -2,7 +2,7 @@
   "category": "misc",
   "ingredients": [
     "copper_inferno:copper_dust",
-    "minecraft:honeycomb"
+    "minecraft:water_bucket"
   ],
   "result": {
     "count": 1,

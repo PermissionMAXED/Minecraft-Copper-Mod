@@ -1,7 +1,8 @@
 {
+  "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "#": "minecraft:copper_ingot"
+    "#": "copper_inferno:copper_dust"
   },
   "pattern": [
     "##",
@@ -10,6 +11,5 @@
   "result": {
     "count": 4,
     "id": "copper_inferno:copper_bricks"
-  },
-  "type": "minecraft:crafting_shaped"
+  }
 }

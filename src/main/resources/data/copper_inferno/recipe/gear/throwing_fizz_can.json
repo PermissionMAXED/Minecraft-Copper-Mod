@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     "copper_inferno:fizz_bomb",
-    "minecraft:copper_ingot"
+    "copper_inferno:copper_mesh"
   ],
   "result": {
     "count": 2,

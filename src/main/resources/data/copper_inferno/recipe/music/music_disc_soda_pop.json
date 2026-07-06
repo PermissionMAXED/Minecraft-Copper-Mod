@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "copper_inferno:inferno_shard",
+    "X": "copper_inferno:soda_essence"
+  },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:music_disc_soda_pop"
+  }
+}

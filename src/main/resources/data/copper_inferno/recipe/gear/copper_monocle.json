@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "S": "minecraft:string",
+    "S": "copper_inferno:copper_spring",
     "I": "minecraft:copper_ingot",
     "G": "minecraft:glass"
   },

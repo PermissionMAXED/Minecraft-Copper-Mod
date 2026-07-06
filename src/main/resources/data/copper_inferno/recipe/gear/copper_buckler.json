@@ -2,13 +2,13 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "C": "minecraft:copper_ingot",
-    "o": "minecraft:iron_ingot"
+    "S": "copper_inferno:copper_sheet",
+    "R": "copper_inferno:copper_rivet"
   },
   "pattern": [
-    "CoC",
-    "CCC",
-    " C "
+    "SRS",
+    "SSS",
+    " S "
   ],
   "result": {
     "count": 1,

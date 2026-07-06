@@ -3,11 +3,11 @@
   "category": "equipment",
   "key": {
     "I": "minecraft:copper_ingot",
-    "N": "minecraft:iron_nugget"
+    "S": "copper_inferno:copper_screw"
   },
   "pattern": [
     "II",
-    " N"
+    " S"
   ],
   "result": {
     "count": 1,

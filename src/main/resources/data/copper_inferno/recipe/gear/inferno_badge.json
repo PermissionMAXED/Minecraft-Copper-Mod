@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "I": "minecraft:copper_ingot",
+    "I": "copper_inferno:charred_copper_ingot",
     "X": "minecraft:blaze_powder"
   },
   "pattern": [

@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     "minecraft:glass_bottle",
-    "minecraft:sugar",
+    "copper_inferno:soda_essence",
     "minecraft:glow_berries"
   ],
   "result": {

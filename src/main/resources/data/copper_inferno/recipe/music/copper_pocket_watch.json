@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:copper_ingot",
+    "G": "copper_inferno:copper_gear",
+    "S": "copper_inferno:copper_spring"
+  },
+  "pattern": [
+    "###",
+    "#G#",
+    "#S#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:copper_pocket_watch"
+  }
+}

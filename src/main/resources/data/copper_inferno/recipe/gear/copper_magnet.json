@@ -2,13 +2,13 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "I": "minecraft:copper_ingot",
-    "R": "minecraft:redstone"
+    "A": "copper_inferno:copper_alloy_ingot",
+    "C": "copper_inferno:copper_coil"
   },
   "pattern": [
-    "I I",
-    "I I",
-    "RIR"
+    "A A",
+    "A A",
+    "CAC"
   ],
   "result": {
     "count": 1,

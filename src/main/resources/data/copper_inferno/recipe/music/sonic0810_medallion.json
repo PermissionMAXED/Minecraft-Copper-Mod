@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "minecraft:copper_ingot",
+    "G": "minecraft:gold_nugget",
+    "C": "copper_inferno:copper_coin"
+  },
+  "pattern": [
+    "G#G",
+    "#C#",
+    "G#G"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:sonic0810_medallion"
+  }
+}

@@ -2,13 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "N": "minecraft:iron_nugget",
-    "D": "minecraft:red_dye"
+    "#": "copper_inferno:bottle_cap"
   },
   "pattern": [
-    "NNN",
-    "NDN",
-    "NNN"
+    "###",
+    "###",
+    "###"
   ],
   "result": {
     "count": 1,
