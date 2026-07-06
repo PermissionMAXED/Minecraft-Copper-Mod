@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "minecraft:copper_ingot",
+  "base": "minecraft:iron_axe",
+  "result": {
+    "id": "minecraft:copper_axe"
+  },
+  "template": "copper_inferno:copper_upgrade_smithing_template"
+}

@@ -1,0 +1,15 @@
+{
+  "category": "misc",
+  "key": {
+    "#": "copper_inferno:copper_wire"
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:copper_mesh"
+  },
+  "type": "minecraft:crafting_shaped"
+}

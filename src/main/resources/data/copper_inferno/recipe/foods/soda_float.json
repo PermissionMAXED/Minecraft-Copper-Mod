@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:cream_soda",
+    "minecraft:snowball",
+    "minecraft:snowball"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:soda_float"
+  }
+}

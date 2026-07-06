@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:copper_rod",
+    "minecraft:iron_nugget"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:copper_rivet"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

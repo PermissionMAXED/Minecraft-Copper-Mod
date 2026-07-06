@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:copper_ingot",
+    "minecraft:charcoal"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:charred_copper_ingot"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

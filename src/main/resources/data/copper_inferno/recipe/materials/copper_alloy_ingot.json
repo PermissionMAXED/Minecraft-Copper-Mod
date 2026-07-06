@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:copper_ingot",
+    "minecraft:iron_ingot",
+    "copper_inferno:copper_dust"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:copper_alloy_ingot"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

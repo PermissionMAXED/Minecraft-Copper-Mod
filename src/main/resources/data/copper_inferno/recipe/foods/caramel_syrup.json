@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:soda_syrup",
+    "minecraft:sugar",
+    "minecraft:sugar"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:caramel_syrup"
+  }
+}

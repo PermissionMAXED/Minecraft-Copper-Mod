@@ -21,5 +21,29 @@
 		"sounds": [
 			"copper_inferno:item/fizz_bomb_pop"
 		]
+	},
+	"music_disc.copper_inferno": {
+		"sounds": [
+			{
+				"name": "copper_inferno:music/copper_inferno",
+				"stream": true
+			}
+		]
+	},
+	"music_disc.soda_pop": {
+		"sounds": [
+			{
+				"name": "copper_inferno:music/soda_pop",
+				"stream": true
+			}
+		]
+	},
+	"music_disc.oxidation": {
+		"sounds": [
+			{
+				"name": "copper_inferno:music/oxidation",
+				"stream": true
+			}
+		]
 	}
 }

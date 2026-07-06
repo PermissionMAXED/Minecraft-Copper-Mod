@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": "minecraft:copper_ingot",
+    "X": "minecraft:raw_copper"
+  },
+  "pattern": [
+    " I ",
+    "IXI",
+    " I "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:copper_badge"
+  }
+}

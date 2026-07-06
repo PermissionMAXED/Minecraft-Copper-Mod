@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": "minecraft:copper_ingot",
+    "o": "minecraft:iron_ingot"
+  },
+  "pattern": [
+    "CoC",
+    "CCC",
+    " C "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:copper_buckler"
+  }
+}

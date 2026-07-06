@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:sugar",
+    "minecraft:cocoa_beans",
+    "minecraft:honey_bottle"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:soda_essence"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

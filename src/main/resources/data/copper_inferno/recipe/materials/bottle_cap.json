@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:iron_nugget",
+    "copper_inferno:copper_dust"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:bottle_cap"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:copper_dust",
+    "minecraft:honeycomb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:oxidized_copper_dust"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

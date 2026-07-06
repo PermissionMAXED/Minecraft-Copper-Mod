@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:copper_apple",
+    "minecraft:honey_bottle",
+    "minecraft:sugar"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:candied_copper_apple"
+  }
+}

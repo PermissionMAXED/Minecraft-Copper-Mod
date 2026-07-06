@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:amethyst_shard",
+    "minecraft:blaze_powder",
+    "copper_inferno:copper_dust"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:inferno_shard"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

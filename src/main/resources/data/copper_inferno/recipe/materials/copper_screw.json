@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:copper_rod",
+    "copper_inferno:copper_dust"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:copper_screw"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "minecraft:copper_ingot",
+    "D": "minecraft:diamond",
+    "B": "minecraft:blackstone"
+  },
+  "pattern": [
+    "#D#",
+    "#B#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:copper_upgrade_smithing_template"
+  }
+}

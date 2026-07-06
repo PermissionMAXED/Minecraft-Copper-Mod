@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:charred_copper_ingot",
+    "copper_inferno:inferno_powder",
+    "minecraft:blaze_rod"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:inferno_alloy_ingot"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

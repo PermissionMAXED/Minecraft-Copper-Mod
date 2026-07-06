@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glass_bottle",
+    "minecraft:sugar",
+    "minecraft:glow_berries"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:orange_soda"
+  }
+}

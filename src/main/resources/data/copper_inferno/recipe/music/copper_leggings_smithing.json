@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "minecraft:copper_ingot",
+  "base": "minecraft:iron_leggings",
+  "result": {
+    "id": "minecraft:copper_leggings"
+  },
+  "template": "copper_inferno:copper_upgrade_smithing_template"
+}

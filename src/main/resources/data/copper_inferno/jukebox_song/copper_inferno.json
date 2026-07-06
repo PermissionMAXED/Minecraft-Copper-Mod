@@ -1,0 +1,8 @@
+{
+  "comparator_output": 6,
+  "description": {
+    "translate": "jukebox_song.copper_inferno.copper_inferno"
+  },
+  "length_in_seconds": 45.0,
+  "sound_event": "copper_inferno:music_disc.copper_inferno"
+}

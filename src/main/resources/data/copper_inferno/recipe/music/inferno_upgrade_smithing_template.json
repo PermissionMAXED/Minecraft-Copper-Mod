@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": "minecraft:blackstone",
+    "D": "minecraft:diamond",
+    "R": "minecraft:blaze_rod"
+  },
+  "pattern": [
+    "BDB",
+    "BRB",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:inferno_upgrade_smithing_template"
+  }
+}

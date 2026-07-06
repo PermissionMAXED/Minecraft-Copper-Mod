@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "minecraft:copper_ingot",
+  "base": "minecraft:iron_helmet",
+  "result": {
+    "id": "minecraft:copper_helmet"
+  },
+  "template": "copper_inferno:copper_upgrade_smithing_template"
+}
