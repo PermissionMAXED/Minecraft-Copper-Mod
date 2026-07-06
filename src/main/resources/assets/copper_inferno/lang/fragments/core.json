@@ -1,5 +1,6 @@
 {
 	"itemGroup.copper_inferno.main": "Copper Inferno",
+	"itemGroup.copper_inferno.blocks": "COPPER INFERNO 1: Blocks",
 	"tooltip.copper_inferno.waxed": "Waxed",
 	"tooltip.copper_inferno.oxidation": "Oxidation: %s",
 	"tooltip.copper_inferno.stage.unaffected": "Unaffected",
