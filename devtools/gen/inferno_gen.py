@@ -12,13 +12,19 @@ src/main/resources:
 Blockstate/model/recipe JSON structures are exact copies of the vanilla 1.21.9 formats
 (extracted from fabric-loom's minecraft-client.jar: stone_bricks family, basalt pillar,
 cracked_stone_bricks smelting, mossy_stone_bricks shapeless).
+
+NOTE: JSON emission is legacy scaffolding (opt-in via --write-json); the JSON in
+src/main/resources is authoritative — by default this script writes ONLY PNGs.
 """
 
 import json
+import sys
 from pathlib import Path
 from random import Random
 
 from PIL import Image
+
+WRITE_JSON = "--write-json" in sys.argv  # default False -> textures/*.png only
 
 ROOT = Path(__file__).resolve().parents[2]
 RES = ROOT / "src" / "main" / "resources"
@@ -142,6 +148,8 @@ WALL_BLOCKSTATE_TEMPLATE = """
 
 
 def write_json(path: Path, obj) -> None:
+    if not WRITE_JSON:
+        return
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(obj, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
@@ -332,12 +340,18 @@ def emit_recipes() -> None:
 # ---------------------------------------------------------------------------
 
 def new_canvas(rng: Random, shades=None) -> Image.Image:
-    """Charcoal noise base."""
+    """Charcoal base with CLUSTERED 2x2 mottling plus sparse single-pixel
+    accents (structured shading rather than raw per-pixel static)."""
     shades = shades or [CHARCOAL_DARK, CHARCOAL, CHARCOAL, CHARCOAL_LIGHT]
     img = Image.new("RGB", (16, 16))
+    cells = {(cx, cy): rng.choice(shades) for cy in range(8) for cx in range(8)}
     for y in range(16):
         for x in range(16):
-            img.putpixel((x, y), rng.choice(shades))
+            img.putpixel((x, y), cells[(x // 2, y // 2)])
+    for y in range(16):
+        for x in range(16):
+            if rng.random() < 0.06:
+                img.putpixel((x, y), rng.choice(shades))
     return img
 
 
@@ -457,7 +471,8 @@ def tex_inferno_core(rng: Random) -> Image.Image:
 
 
 def tex_inferno_pillar_side(rng: Random) -> Image.Image:
-    """Vertical column striping with two ember seams (basalt-side style)."""
+    """Vertical column striping with two ember seams (basalt-side style).
+    Shade runs span 2 rows so the striping reads as streaks, not static."""
     img = Image.new("RGB", (16, 16))
     for x in range(16):
         if x in (0, 15):
@@ -466,8 +481,11 @@ def tex_inferno_pillar_side(rng: Random) -> Image.Image:
             column = [CHARCOAL_DARK, CHARCOAL_DARK, CHARCOAL]
         else:
             column = [CHARCOAL, CHARCOAL, CHARCOAL_LIGHT, CHARCOAL_DARK]
+        shade = rng.choice(column)
         for y in range(16):
-            img.putpixel((x, y), rng.choice(column))
+            if y % 2 == 0:
+                shade = rng.choice(column)
+            img.putpixel((x, y), shade)
     seam_px = [(x, y) for x in (4, 11) for y in range(16)]
     sprinkle(img, rng, seam_px, [EMBER, EMBER_BRIGHT], 0.35)
     return img
@@ -531,7 +549,8 @@ def main() -> None:
     emit_recipes()
     emit_textures()
     write_json(ASSETS / "lang" / "fragments" / "inferno.json", LANG)
-    print("inferno_gen: all inferno assets generated.")
+    mode = "textures + JSON" if WRITE_JSON else "textures only (pass --write-json for legacy JSON)"
+    print(f"inferno_gen: assets generated ({mode}).")
 
 
 if __name__ == "__main__":

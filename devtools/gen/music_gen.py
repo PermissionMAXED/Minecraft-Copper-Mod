@@ -28,7 +28,11 @@ Idempotent: JSON/PNG output is deterministic (no RNG); audio synthesis is
 deterministic too but ffmpeg encoding is not byte-stable, so existing oggs
 are left untouched by default.
 
-Usage: python3 devtools/gen/music_gen.py [--force-audio]
+NOTE: JSON/sounds.json/.ogg emission is legacy scaffolding (opt-in via
+--write-json); the JSON in src/main/resources is authoritative — by default
+this script writes ONLY textures/*.png.
+
+Usage: python3 devtools/gen/music_gen.py [--write-json] [--force-audio]
 """
 
 import json
@@ -49,6 +53,10 @@ ASSETS = RES / "assets" / "copper_inferno"
 DATA = RES / "data" / "copper_inferno"
 
 MOD = "copper_inferno"
+
+# Non-PNG output (items/models/jukebox songs/recipes/lang/sounds.json/.ogg) is
+# legacy scaffolding; the JSON already in src/main/resources is authoritative.
+WRITE_JSON = "--write-json" in sys.argv  # default False -> textures/*.png only
 
 # ---------------------------------------------------------------------------
 # Content tables
@@ -302,6 +310,8 @@ def medallion_texture():
 # ---------------------------------------------------------------------------
 
 def write_json(path: Path, obj):
+    if not WRITE_JSON:
+        return
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(obj, indent=2, sort_keys=False) + "\n")
 
@@ -680,13 +690,16 @@ def main():
     emit_recipes()
     print("music_gen: lang fragment ...")
     emit_lang()
-    print("music_gen: sounds.json merge ...")
-    if merge_sounds_json():
-        print("  appended music_disc.* entries")
+    if WRITE_JSON:
+        print("music_gen: sounds.json merge ...")
+        if merge_sounds_json():
+            print("  appended music_disc.* entries")
+        else:
+            print("  already up to date")
+        print("music_gen: audio ...")
+        emit_audio(force)
     else:
-        print("  already up to date")
-    print("music_gen: audio ...")
-    emit_audio(force)
+        print("music_gen: JSON/sounds.json/audio skipped (pass --write-json)")
     print("music_gen: done")
 
 

@@ -17,13 +17,19 @@ Item definition / model JSON mirror the existing copper_inferno:dr_pepper item (
 Idempotent: pure functions of the tables below, no RNG; re-running produces
 byte-identical output.
 
-Usage: python3 devtools/gen/foods_gen.py
+NOTE: JSON emission is legacy scaffolding (opt-in via --write-json); the JSON in
+src/main/resources is authoritative — by default this script writes ONLY PNGs.
+
+Usage: python3 devtools/gen/foods_gen.py [--write-json]
 """
 
 import json
+import sys
 from pathlib import Path
 
 from PIL import Image
+
+WRITE_JSON = "--write-json" in sys.argv  # default False -> textures/*.png only
 
 ROOT = Path(__file__).resolve().parents[2]
 RES = ROOT / "src" / "main" / "resources"
@@ -518,6 +524,8 @@ RECIPES = {
 
 
 def write_json(path, obj):
+    if not WRITE_JSON:
+        return
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(obj, indent=2) + "\n", encoding="utf-8")
 

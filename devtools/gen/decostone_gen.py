@@ -12,14 +12,20 @@ models, basalt+quartz_pillar axis blockstate, cut_copper slab/stairs sets,
 stone_brick_wall multipart set, wall_inventory, block loot tables (incl. the slab
 double-drop variant) and the shaped/shapeless recipe formats.
 
-Run: python3 devtools/gen/decostone_gen.py
+NOTE: JSON emission is legacy scaffolding (opt-in via --write-json); the JSON in
+src/main/resources is authoritative — by default this script writes ONLY PNGs.
+
+Run: python3 devtools/gen/decostone_gen.py [--write-json]
 """
 
 import json
 import os
 import random
+import sys
 
 from PIL import Image
+
+WRITE_JSON = "--write-json" in sys.argv  # default False -> textures/*.png only
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ASSETS = os.path.join(ROOT, "src", "main", "resources", "assets", "copper_inferno")
@@ -347,6 +353,8 @@ WALL_BLOCKSTATE_TEMPLATE = """
 
 
 def write_json(relpath, obj):
+    if not WRITE_JSON:
+        return
     path = os.path.join(ROOT, "src", "main", "resources", relpath)
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w") as f:
@@ -455,34 +463,35 @@ def save_texture(name, img):
     img.save(path)
 
 
-def paint_bricks(rng):
-    """Fine brick bond: 4px-high courses of 8px bricks, half-brick offset per course."""
+def paint_cut_panels(rng):
+    """Large 8x8 cut panels (2x2 grid) separated by strong 1px chisel grooves,
+    with a bright top/left bevel and a shadowed bottom/right edge — clearly
+    distinct from the masonry family's small running-bond bricks."""
     img = new_canvas()
     px = img.load()
     for y in range(16):
-        row = y // 4
-        off = 4 * (row % 2)
         for x in range(16):
-            if y % 4 == 3 or (x + off) % 8 == 0:
-                px[x, y] = DARK + (255,)
+            lx, ly = x % 8, y % 8
+            if lx == 0 or ly == 0:
+                c = DARK  # chisel groove between panels
+            elif lx == 1 or ly == 1:
+                c = LIGHT  # raised bevel catching the light
+            elif lx == 7 or ly == 7:
+                c = MID  # shadowed lower/right panel edge
             else:
-                brick = ((x + off) // 8 + row) % 2
-                c = BASE if brick == 0 else MID
-                r = rng.random()
-                if r < 0.08:
-                    c = LIGHT
-                elif r < 0.16:
-                    c = MID if c == BASE else DARK
-                px[x, y] = c + (255,)
+                c = BASE
+                if rng.random() < 0.05:  # sparse tarnish flecks only
+                    c = MID
+            px[x, y] = c + (255,)
     return img
 
 
 def texture_cut_copper_bricks():
-    return paint_bricks(random.Random(1001))
+    return paint_cut_panels(random.Random(1001))
 
 
 def texture_mossy_copper_bricks():
-    img = paint_bricks(random.Random(1001))
+    img = paint_cut_panels(random.Random(1001))
     px = img.load()
     rng = random.Random(2002)
     for _ in range(7):
@@ -538,40 +547,55 @@ def texture_copper_shingles():
 
 
 def texture_chiseled_copper_bricks():
-    """Framed inset: dark groove frame around a raised inner panel."""
+    """Inset diamond/lozenge: dark chisel outline around a raised diamond boss
+    (faceted light top-left / mid bottom-right) on a flat framed field."""
     img = new_canvas()
     px = img.load()
-    ring_colors = {0: MID, 1: DARK, 2: BASE, 3: BASE, 4: DARK, 5: MID, 6: LIGHT, 7: LIGHT}
     for y in range(16):
         for x in range(16):
-            r = min(x, y, 15 - x, 15 - y)
-            px[x, y] = ring_colors[r] + (255,)
+            d = abs(2 * x - 15) + abs(2 * y - 15)  # diamond (manhattan) radius
+            edge = min(x, y, 15 - x, 15 - y)
+            if edge == 0:
+                c = DARK  # outer frame
+            elif edge == 1:
+                c = LIGHT if x + y < 16 else MID  # frame bevel
+            elif d <= 3:
+                c = MID  # small recessed centre dot
+            elif d <= 11:
+                c = LIGHT if x + y < 15 else BASE  # raised diamond facets
+            elif d <= 14:
+                c = DARK  # chisel groove outlining the lozenge
+            else:
+                c = BASE  # flat field
+            px[x, y] = c + (255,)
     return img
 
 
 def texture_carved_copper():
-    """Relief spiral: square spiral groove with a light relief highlight."""
+    """Carved meander relief: one continuous square-spiral groove (3px pitch)
+    winding to the centre, with a light relief edge hugging the groove."""
     img = new_canvas()
     px = img.load()
     for y in range(16):
         for x in range(16):
-            px[x, y] = (BASE if (x + y) % 2 == 0 else MID) + (255,)
-    # Square spiral path, inset by 2 each turn.
+            px[x, y] = (BASE if ((x + y) // 4) % 2 == 0 else MID) + (255,)
+    # Single spiral path: side lengths shrink by the 3px pitch, leaving an
+    # open entrance at the top-left so it reads as a spiral, not rings.
     path = []
-    l, t, r, b = 1, 1, 14, 14
-    while l <= r and t <= b:
-        path += [(x, t) for x in range(l, r + 1)]
-        path += [(r, y) for y in range(t + 1, b + 1)]
-        if t != b:
-            path += [(x, b) for x in range(r - 1, l - 1, -1)]
-        if l != r and b - 1 >= t + 2:
-            path += [(l, y) for y in range(b - 1, t + 1, -1)]
-        l, t, r, b = l + 2, t + 2, r - 2, b - 2
-    for x, y in path:
-        px[x, y] = DARK + (255,)
-    for x, y in path:
-        if x + 1 < 16 and y + 1 < 16 and px[x + 1, y + 1][:3] != DARK:
-            px[x + 1, y + 1] = LIGHT + (255,)
+    x, y = 1, 1
+    dx, dy = 1, 0
+    for n in (13, 13, 13, 10, 10, 7, 7, 4, 4, 1):
+        for _ in range(n):
+            path.append((x, y))
+            x += dx
+            y += dy
+        dx, dy = -dy, dx  # turn right (clockwise)
+    path.append((x, y))
+    for sx, sy in path:
+        px[sx, sy] = DARK + (255,)
+    for sx, sy in path:  # relief highlight below-right of the groove
+        if sx + 1 < 16 and sy + 1 < 16 and px[sx + 1, sy + 1][:3] != DARK:
+            px[sx + 1, sy + 1] = LIGHT + (255,)
     return img
 
 
@@ -596,14 +620,37 @@ def texture_copper_pillar_side():
 
 
 def texture_copper_pillar_top():
-    """Ring end: concentric square rings."""
+    """Ringed cap: beveled rim, flat band studded with bolt dots, a recessed
+    ring groove, and a domed centre boss."""
     img = new_canvas()
     px = img.load()
-    ring_colors = {0: DARK, 1: MID, 2: BASE, 3: DARK, 4: MID, 5: BASE, 6: LIGHT, 7: MID}
     for y in range(16):
         for x in range(16):
-            r = min(x, y, 15 - x, 15 - y)
-            px[x, y] = ring_colors[r] + (255,)
+            e = min(x, y, 15 - x, 15 - y)
+            if e == 0:
+                c = DARK  # outer edge
+            elif e == 1:
+                c = LIGHT if x + y < 16 else MID  # rim bevel, lit top-left
+            elif e in (2, 3):
+                c = BASE  # flat bolt band
+            elif e == 4:
+                c = DARK  # recessed ring groove
+            elif e == 5:
+                c = MID  # groove shadow
+            else:
+                c = BASE
+            px[x, y] = c + (255,)
+    # Domed centre boss (4x4) with a top-left facet.
+    for y in range(6, 10):
+        for x in range(6, 10):
+            px[x, y] = (LIGHT if x + y <= 15 else MID) + (255,)
+    # Bolt dots around the band: edge midpoints + corners, each with a shadow
+    # pixel (kept off the rim so the outer ring stays continuous).
+    for bx, by in ((7, 2), (2, 7), (13, 8), (8, 13), (3, 3), (12, 3), (3, 12), (12, 12)):
+        px[bx, by] = LIGHT + (255,)
+        sx, sy = bx + 1, by + 1
+        if min(sx, sy, 15 - sx, 15 - sy) >= 2:
+            px[sx, sy] = DARK + (255,)
     return img
 
 
@@ -766,7 +813,8 @@ def main():
     # --- lang fragment --------------------------------------------------------
     emit_lang()
 
-    print("decostone_gen: all decostone assets/data emitted.")
+    mode = "textures + JSON" if WRITE_JSON else "textures only (pass --write-json for legacy JSON)"
+    print(f"decostone_gen: emitted {mode}.")
 
 
 if __name__ == "__main__":

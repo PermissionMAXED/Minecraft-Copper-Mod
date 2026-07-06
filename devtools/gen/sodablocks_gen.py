@@ -12,13 +12,19 @@ slab/stairs/wall, bricks for cube_all + drop-self loot, brick_slab for slab
 loot, glass.json for smelting, packed_ice.json for shapeless) and from the v1
 dr_pepper_can_block files (cube_column + item model indirection).
 
-Usage: python3 devtools/gen/sodablocks_gen.py
+NOTE: JSON emission is legacy scaffolding (opt-in via --write-json); the JSON in
+src/main/resources is authoritative — by default this script writes ONLY PNGs.
+
+Usage: python3 devtools/gen/sodablocks_gen.py [--write-json]
 """
 
 import json
+import sys
 from pathlib import Path
 
 from PIL import Image
+
+WRITE_JSON = "--write-json" in sys.argv  # default False -> textures/*.png only
 
 ROOT = Path(__file__).resolve().parents[2]
 RES = ROOT / "src" / "main" / "resources"
@@ -109,6 +115,8 @@ for _id, (_name, _dye, _acc, _band) in FLAVOR_CANS.items():
 # ---------------------------------------------------------------------------
 
 def write_json(path: Path, obj) -> None:
+    if not WRITE_JSON:
+        return
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(obj, indent=2, sort_keys=False) + "\n", encoding="utf-8")
 

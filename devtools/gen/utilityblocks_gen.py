@@ -8,6 +8,9 @@ directly into src/main/resources so they ship with the mod.
 Idempotent: writes a fixed set of files it owns (never deletes/globs), and all
 texture noise is seeded per texture name, so re-runs produce identical bytes.
 
+NOTE: JSON emission is legacy scaffolding (opt-in via --write-json); the JSON in
+src/main/resources is authoritative — by default this script writes ONLY PNGs.
+
 JSON formats are copied from EXACT vanilla 1.21.9 templates extracted from
 ~/.gradle/caches/fabric-loom/1.21.9/minecraft-client.jar:
   - blockstates: stone_button.json (24 variants) / stone_pressure_plate.json /
@@ -52,9 +55,14 @@ RECIPE CHOICES (vanilla + own ids only; deviations documented):
 
 import json
 import random
+import sys
 from pathlib import Path
 
 from PIL import Image
+
+# Non-PNG output (blockstates/models/items/loot/recipes/lang) is legacy
+# scaffolding; the JSON already in src/main/resources is authoritative.
+WRITE_JSON = "--write-json" in sys.argv  # default False -> textures/*.png only
 
 ROOT = Path(__file__).resolve().parents[2]
 RES = ROOT / "src" / "main" / "resources"
@@ -73,13 +81,19 @@ VANILLA_CUBES = {
     "oxidized_": "minecraft:oxidized_copper",
 }
 
-# (light, mid, dark) per stage — same copper palette the masonry/decostone gens use.
+# (light, mid, dark) per stage — same copper palette the masonry/decostone gens
+# use. Stage ramp: unaffected bright copper -> exposed pale dull copper ->
+# weathered dulled copper + clustered green patina patches (see
+# apply_patina_patches) -> oxidized fully green, DARKENED to end the ramp.
 PALETTES = {
     "": ((0xE0, 0x73, 0x4D), (0xC1, 0x5A, 0x3B), (0x8F, 0x3D, 0x26)),
     "exposed_": ((0xD1, 0x8C, 0x6F), (0xA9, 0x70, 0x5E), (0x6E, 0x49, 0x3D)),
-    "weathered_": ((0x8F, 0xA8, 0x83), (0x6F, 0xB0, 0x8E), (0x48, 0x73, 0x5C)),
-    "oxidized_": ((0x57, 0xA0, 0x7B), (0x4E, 0x9E, 0x7A), (0x33, 0x67, 0x4F)),
+    "weathered_": ((0xB2, 0x7E, 0x60), (0x93, 0x66, 0x4E), (0x5C, 0x44, 0x37)),
+    "oxidized_": ((0x4C, 0x8B, 0x6B), (0x3F, 0x78, 0x5B), (0x26, 0x4C, 0x39)),
 }
+
+# Clustered patina greens painted over the weathered copper base (mod greens).
+PATINA_GREENS = ((0x6F, 0xB0, 0x8E), (0x57, 0xA0, 0x7B), (0x41, 0x7A, 0x5E))
 
 # Plank colors for the crate wood fill (stage-independent oak-ish browns).
 PLANK_LIGHT = (0xB8, 0x94, 0x5F)
@@ -88,6 +102,8 @@ PLANK_DARK = (0x6B, 0x50, 0x30)
 
 
 def write_json(path: Path, obj) -> None:
+    if not WRITE_JSON:
+        return
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(obj, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
@@ -96,7 +112,9 @@ def clamp(v: int) -> int:
     return max(0, min(255, v))
 
 
-def jitter(rnd: random.Random, rgb, amount=6):
+def jitter(rnd: random.Random, rgb, amount=2):
+    # Kept deliberately subtle: structured bevels/brushing carry the texture,
+    # the jitter only breaks up perfectly flat fills.
     d = rnd.randint(-amount, amount)
     return (clamp(rgb[0] + d), clamp(rgb[1] + d), clamp(rgb[2] + d))
 
@@ -105,58 +123,109 @@ def shade(rgb, amount):
     return (clamp(rgb[0] + amount), clamp(rgb[1] + amount), clamp(rgb[2] + amount))
 
 
+def blend(a, b, t):
+    return tuple(clamp(int(round(a[i] + (b[i] - a[i]) * t))) for i in range(3))
+
+
+def apply_patina_patches(name: str, img: Image.Image) -> None:
+    """Weathered stage: irregular CLUSTERED green patina blobs grown from a few
+    seed points over the copper base (patchwork, not per-pixel noise)."""
+    rnd = random.Random(name + ":patina")
+    px = img.load()
+    p_light, p_mid, p_dark = PATINA_GREENS
+    blobs = []
+    for _ in range(5):
+        cx, cy = rnd.randrange(16), rnd.randrange(16)
+        blob = {(cx, cy)}
+        frontier = [(cx, cy)]
+        target = rnd.randint(7, 13)
+        while frontier and len(blob) < target:
+            x, y = frontier.pop(rnd.randrange(len(frontier)))
+            for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                if rnd.random() < 0.65:
+                    nx, ny = (x + dx) % 16, (y + dy) % 16
+                    if (nx, ny) not in blob:
+                        blob.add((nx, ny))
+                        frontier.append((nx, ny))
+        blobs.append(blob)
+    covered = set().union(*blobs)
+    for blob in blobs:
+        for (x, y) in blob:
+            on_rim = any(((x + dx) % 16, (y + dy) % 16) not in covered
+                         for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+            base = p_dark if on_rim else (p_light if rnd.random() < 0.3 else p_mid)
+            px[x, y] = jitter(rnd, base, 2)
+
+
 # ---------------------------------------------------------------------------
 # Textures (16x16, deterministic per name)
 # ---------------------------------------------------------------------------
 
 def make_panel_texture(name: str, palette) -> Image.Image:
-    """Flat brushed-copper sheet (shared by button/plate/fence/gate of a stage):
-    mid fill with faint horizontal brushing, light top/left bevel, dark
-    bottom/right bevel."""
+    """Beveled copper panel (shared by button/plate/fence/gate of a stage):
+    2px raised border (light top/left, dark bottom/right), a dark chisel
+    groove around the inset face, and faint horizontal brushing inside."""
     light, mid, dark = palette
     rnd = random.Random(name)
     img = Image.new("RGB", (16, 16))
     px = img.load()
     for y in range(16):
-        row_tint = 4 if y % 4 == 1 else (-3 if y % 4 == 3 else 0)  # brushing
         for x in range(16):
-            base = shade(mid, row_tint)
-            if x == 0 or y == 0:
-                base = shade(light, 6)
-            elif x == 15 or y == 15:
-                base = shade(dark, 6)
-            px[x, y] = jitter(rnd, base, 4)
+            e = min(x, y, 15 - x, 15 - y)
+            if e == 0:
+                base = shade(light, 12) if x + y < 16 else dark
+            elif e == 1:
+                base = light if x + y < 16 else shade(dark, 10)
+            elif e == 2:
+                base = shade(dark, -8)  # chisel groove around the inset face
+            else:
+                row_tint = 5 if y % 4 == 1 else (-4 if y % 4 == 3 else 0)
+                base = shade(mid, row_tint)  # brushed inset face
+            px[x, y] = jitter(rnd, base, 2)
     return img
 
 
 def make_crate_texture(name: str, palette) -> Image.Image:
-    """Crate: horizontal wooden planks framed by a 2px stage-copper border with
-    rivet dots at the corners and edge midpoints."""
+    """Crate: stage-tinted wooden planks with deep seams, framed by a 2px
+    copper strap border (bright outer edge, shadowed inner edge) with rivet
+    dots at the corners and edge midpoints."""
     light, mid, dark = palette
     rnd = random.Random(name)
     img = Image.new("RGB", (16, 16))
     px = img.load()
+    # Planks tinted toward the stage color so crates read per-stage while the
+    # wood grain still reads as wood.
+    p_light = blend(PLANK_LIGHT, light, 0.35)
+    p_mid = blend(PLANK_MID, mid, 0.35)
+    p_dark = blend(PLANK_DARK, dark, 0.35)
+    seam = shade(p_dark, -26)
     for y in range(16):
         for x in range(16):
-            if x < 2 or x > 13 or y < 2 or y > 13:  # copper frame
-                base = mid
+            if x < 2 or x > 13 or y < 2 or y > 13:  # copper strap frame
                 if x == 0 or y == 0:
-                    base = light
+                    base = shade(light, 12)  # lit outer edge
                 elif x == 15 or y == 15:
-                    base = dark
-                px[x, y] = jitter(rnd, base, 4)
-            else:  # plank fill: 4px courses with dark seams
-                if (y - 2) % 4 == 3:
-                    base = PLANK_DARK
-                elif (y - 2) % 4 == 0:
-                    base = PLANK_LIGHT
+                    base = shade(dark, -8)  # deep outer shadow
+                elif x == 1 or y == 1:
+                    base = mid
                 else:
-                    base = PLANK_MID
-                px[x, y] = jitter(rnd, base, 5)
+                    base = dark  # inner strap edge in shadow
+                px[x, y] = jitter(rnd, base, 2)
+            else:  # plank fill: 4px courses, deep seams, lit plank tops
+                ly = (y - 2) % 4
+                if ly == 3:
+                    base = seam
+                elif ly == 0:
+                    base = shade(p_light, 10)
+                else:
+                    base = p_mid
+                    if (x + 5 * ((y - 2) // 4)) % 9 == 4:  # vertical joints
+                        base = seam
+                px[x, y] = jitter(rnd, base, 3)
     # rivets: bright dots on the frame (corners + edge midpoints)
     for rx, ry in [(1, 1), (14, 1), (1, 14), (14, 14), (7, 1), (8, 1),
                    (7, 14), (8, 14), (1, 7), (1, 8), (14, 7), (14, 8)]:
-        px[rx, ry] = shade(light, 24)
+        px[rx, ry] = shade(light, 28)
     return img
 
 
@@ -375,6 +444,8 @@ def main() -> None:
         palette = PALETTES[prefix]
         panel_tex = f"{prefix}copper_panel"
         textures[panel_tex] = make_panel_texture(panel_tex, palette)
+        if prefix == "weathered_":  # patchwork of clustered green patina
+            apply_patina_patches(panel_tex, textures[panel_tex])
 
         button = f"{prefix}copper_button"
         plate = f"{prefix}copper_pressure_plate"
@@ -417,6 +488,8 @@ def main() -> None:
 
         # --- crate (plain cube) ---
         textures[crate] = make_crate_texture(crate, palette)
+        if prefix == "weathered_":  # patchwork of clustered green patina
+            apply_patina_patches(crate, textures[crate])
         blockstates[crate] = {"variants": {"": {"model": block_model(crate)}}}
         models[crate] = {"parent": "minecraft:block/cube_all",
                          "textures": {"all": block_tex(crate)}}
@@ -537,7 +610,8 @@ def main() -> None:
     files += 1
 
     assert len(all_ids) == 16, f"expected 16 block ids, got {len(all_ids)}"
-    print(f"utilityblocks_gen: wrote {files} files for {len(all_ids)} block ids")
+    mode = "PNG+JSON" if WRITE_JSON else "PNG only; JSON skipped (pass --write-json)"
+    print(f"utilityblocks_gen: processed {files} files ({mode}) for {len(all_ids)} block ids")
 
 
 if __name__ == "__main__":

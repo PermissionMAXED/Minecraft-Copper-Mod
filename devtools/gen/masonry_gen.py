@@ -8,6 +8,9 @@ into src/main/resources so they ship with the mod.
 Idempotent: writes a fixed set of files it owns (never deletes/globs), and all
 texture noise is seeded per texture name, so re-runs produce identical bytes.
 
+NOTE: JSON emission is legacy scaffolding (opt-in via --write-json); the JSON in
+src/main/resources is authoritative — by default this script writes ONLY PNGs.
+
 JSON formats are copied from EXACT vanilla 1.21.9 templates extracted from
 ~/.gradle/caches/fabric-loom/1.21.9/minecraft-client.jar:
   - blockstates: cut_copper.json / cut_copper_slab.json / cut_copper_stairs.json /
@@ -25,9 +28,14 @@ JSON formats are copied from EXACT vanilla 1.21.9 templates extracted from
 
 import json
 import random
+import sys
 from pathlib import Path
 
 from PIL import Image
+
+# Non-PNG output (blockstates/models/items/loot/recipes/lang) is legacy
+# scaffolding; the JSON already in src/main/resources is authoritative.
+WRITE_JSON = "--write-json" in sys.argv  # default False -> textures/*.png only
 
 ROOT = Path(__file__).resolve().parents[2]
 RES = ROOT / "src" / "main" / "resources"
@@ -46,15 +54,24 @@ STAGE_PREFIXES = ["", "exposed_", "weathered_", "oxidized_"]
 
 # (light, mid, dark) per stage; light/mid straight from the task palette, dark
 # is the mortar/grout shade (given for base, derived by darkening mid otherwise).
+# Stage ramp: unaffected (bright copper) -> exposed (pale dull copper) ->
+# weathered (dulled copper base + clustered green patina patches, see
+# apply_patina_patches) -> oxidized (fully green, DARKENED so it reads as the
+# final stage of the ramp).
 PALETTES = {
     "": ((0xE0, 0x73, 0x4D), (0xC1, 0x5A, 0x3B), (0x8F, 0x3D, 0x26)),
     "exposed_": ((0xD1, 0x8C, 0x6F), (0xA9, 0x70, 0x5E), (0x6E, 0x49, 0x3D)),
-    "weathered_": ((0x8F, 0xA8, 0x83), (0x6F, 0xB0, 0x8E), (0x48, 0x73, 0x5C)),
-    "oxidized_": ((0x57, 0xA0, 0x7B), (0x4E, 0x9E, 0x7A), (0x33, 0x67, 0x4F)),
+    "weathered_": ((0xB2, 0x7E, 0x60), (0x93, 0x66, 0x4E), (0x5C, 0x44, 0x37)),
+    "oxidized_": ((0x4C, 0x8B, 0x6B), (0x3F, 0x78, 0x5B), (0x26, 0x4C, 0x39)),
 }
+
+# Clustered patina greens painted over the weathered copper base (mod greens).
+PATINA_GREENS = ((0x6F, 0xB0, 0x8E), (0x57, 0xA0, 0x7B), (0x41, 0x7A, 0x5E))
 
 
 def write_json(path: Path, obj) -> None:
+    if not WRITE_JSON:
+        return
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(obj, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
@@ -63,7 +80,9 @@ def clamp(v: int) -> int:
     return max(0, min(255, v))
 
 
-def jitter(rnd: random.Random, rgb, amount=7):
+def jitter(rnd: random.Random, rgb, amount=3):
+    # Kept deliberately subtle: structured shading carries the texture, the
+    # jitter only breaks up perfectly flat fills.
     d = rnd.randint(-amount, amount)
     return (clamp(rgb[0] + d), clamp(rgb[1] + d), clamp(rgb[2] + d))
 
@@ -72,9 +91,45 @@ def lighten(rgb, amount=18):
     return (clamp(rgb[0] + amount), clamp(rgb[1] + amount), clamp(rgb[2] + amount))
 
 
+def darken(rgb, amount=14):
+    return lighten(rgb, -amount)
+
+
+def apply_patina_patches(name: str, img: Image.Image) -> None:
+    """Weathered stage: irregular CLUSTERED green patina blobs grown from a few
+    seed points over the copper base (patchwork, not per-pixel noise)."""
+    rnd = random.Random(name + ":patina")
+    px = img.load()
+    p_light, p_mid, p_dark = PATINA_GREENS
+    blobs = []
+    for _ in range(5):
+        cx, cy = rnd.randrange(16), rnd.randrange(16)
+        blob = {(cx, cy)}
+        frontier = [(cx, cy)]
+        target = rnd.randint(7, 13)
+        while frontier and len(blob) < target:
+            x, y = frontier.pop(rnd.randrange(len(frontier)))
+            for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                if rnd.random() < 0.65:
+                    nx, ny = (x + dx) % 16, (y + dy) % 16
+                    if (nx, ny) not in blob:
+                        blob.add((nx, ny))
+                        frontier.append((nx, ny))
+        blobs.append(blob)
+    covered = set().union(*blobs)
+    for blob in blobs:
+        for (x, y) in blob:
+            # Dark rim where the patch meets bare copper, brighter core inside.
+            on_rim = any(((x + dx) % 16, (y + dy) % 16) not in covered
+                         for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+            base = p_dark if on_rim else (p_light if rnd.random() < 0.3 else p_mid)
+            px[x, y] = jitter(rnd, base, 2)
+
+
 def make_brick_texture(name: str, palette) -> Image.Image:
     """16x16 running-bond brick pattern: 4px-tall courses, 8px-wide bricks,
-    1px dark mortar, alternate courses offset by half a brick."""
+    1px dark mortar, alternate courses offset by half a brick. Bricks use
+    structured top-highlight / bottom-shadow shading instead of heavy noise."""
     light, mid, dark = palette
     rnd = random.Random(name)
     img = Image.new("RGB", (16, 16))
@@ -84,22 +139,25 @@ def make_brick_texture(name: str, palette) -> Image.Image:
         offset = 4 if course % 2 else 0
         for x in range(16):
             if y % 4 == 3:  # horizontal mortar line
-                px[x, y] = jitter(rnd, dark, 4)
+                px[x, y] = jitter(rnd, dark, 2)
                 continue
             if (x + offset) % 8 == 7:  # vertical mortar joint
-                px[x, y] = jitter(rnd, dark, 4)
+                px[x, y] = jitter(rnd, dark, 2)
                 continue
             brick = ((x + offset) // 8 + course) % 2
             base = light if brick == 0 else mid
-            if y % 4 == 0:  # top edge of the brick gets a subtle highlight
+            if y % 4 == 0:  # top edge of the brick gets a highlight
                 base = lighten(base, 12)
+            elif y % 4 == 2:  # bottom edge sits in shadow above the mortar
+                base = darken(base, 10)
             px[x, y] = jitter(rnd, base)
     return img
 
 
 def make_tile_texture(name: str, palette) -> Image.Image:
     """16x16 2x2 tile grid: 8x8 tiles with 1px dark grout on right/bottom edges
-    and a light bevel on top/left edges, checkerboard light/mid fill."""
+    and a light bevel on top/left edges, checkerboard light/mid fill with a
+    soft diagonal shading gradient inside each tile."""
     light, mid, dark = palette
     rnd = random.Random(name)
     img = Image.new("RGB", (16, 16))
@@ -107,12 +165,14 @@ def make_tile_texture(name: str, palette) -> Image.Image:
     for y in range(16):
         for x in range(16):
             if x % 8 == 7 or y % 8 == 7:  # grout lines
-                px[x, y] = jitter(rnd, dark, 4)
+                px[x, y] = jitter(rnd, dark, 2)
                 continue
             tile = (x // 8 + y // 8) % 2
             base = light if tile == 0 else mid
             if x % 8 == 0 or y % 8 == 0:  # bevel highlight
                 base = lighten(base, 14)
+            elif (x % 8) + (y % 8) >= 10:  # lower-right corner shadow
+                base = darken(base, 8)
             px[x, y] = jitter(rnd, base)
     return img
 
@@ -322,6 +382,8 @@ def main() -> None:
             # --- texture: one 16x16 per family-stage; waxed reuses it ---
             tex = (make_brick_texture if family == "copper_bricks" else make_tile_texture)(
                 cube, PALETTES[prefix])
+            if prefix == "weathered_":  # patchwork of clustered green patina
+                apply_patina_patches(cube, tex)
             tex_path = ASSETS / "textures" / "block" / f"{cube}.png"
             tex_path.parent.mkdir(parents=True, exist_ok=True)
             tex.save(tex_path)
@@ -420,7 +482,8 @@ def main() -> None:
     files += 1
 
     assert len(all_ids) == 56, f"expected 56 block ids, got {len(all_ids)}"
-    print(f"masonry_gen: wrote {files} files for {len(all_ids)} block ids")
+    mode = "PNG+JSON" if WRITE_JSON else "PNG only; JSON skipped (pass --write-json)"
+    print(f"masonry_gen: processed {files} files ({mode}) for {len(all_ids)} block ids")
 
 
 if __name__ == "__main__":

@@ -12,12 +12,18 @@ src/main/resources:
 
 JSON formats copied from the vanilla 1.21.9 client jar (glass, glass_pane, redstone_lamp,
 lantern blockstates/models/items/loot tables) -- do not "improve" them.
+
+NOTE: JSON emission is legacy scaffolding (opt-in via --write-json); the JSON in
+src/main/resources is authoritative -- by default this script writes ONLY PNGs.
 """
 
 import json
+import sys
 from pathlib import Path
 
 from PIL import Image
+
+WRITE_JSON = "--write-json" in sys.argv  # default False -> textures/*.png only
 
 ROOT = Path(__file__).resolve().parents[2]
 RES = ROOT / "src" / "main" / "resources"
@@ -26,12 +32,18 @@ DATA = RES / "data" / "copper_inferno"
 MODID = "copper_inferno"
 
 # Copper oxidation palette (light, base, dark, darker) per stage.
+# Stage ramp: copper (bright) -> exposed (pale dull copper) -> weathered
+# (dulled copper + clustered green patina patches, see `patina`) -> oxidized
+# (fully green, DARKENED so the ramp ends clearly darker than weathered).
 STAGES = {
     "copper": ((0xF0, 0x9A, 0x70), (0xE0, 0x73, 0x4D), (0xC1, 0x5A, 0x3B), (0x91, 0x43, 0x2C)),
     "exposed": ((0xD8, 0xA5, 0x84), (0xC1, 0x86, 0x62), (0xA5, 0x6B, 0x50), (0x7D, 0x51, 0x3D)),
-    "weathered": ((0x8B, 0xC0, 0xA0), (0x6F, 0xB0, 0x8E), (0x5B, 0x8E, 0x75), (0x44, 0x6B, 0x58)),
-    "oxidized": ((0x79, 0xBD, 0x97), (0x57, 0xA0, 0x7B), (0x4E, 0x9E, 0x7A), (0x39, 0x6B, 0x53)),
+    "weathered": ((0xB2, 0x7E, 0x60), (0x93, 0x66, 0x4E), (0x75, 0x52, 0x40), (0x4F, 0x39, 0x2E)),
+    "oxidized": ((0x5E, 0x9C, 0x7B), (0x4C, 0x8B, 0x6B), (0x3F, 0x78, 0x5B), (0x26, 0x4C, 0x39)),
 }
+
+# Clustered patina greens overlaid on the weathered stage (mod greens).
+PATINA = ((0x6F, 0xB0, 0x8E), (0x57, 0xA0, 0x7B), (0x41, 0x7A, 0x5E))
 
 EMBER = ((0xFF, 0xD9, 0x8C), (0xFF, 0x9A, 0x3C), (0xE0, 0x5C, 0x20), (0x8A, 0x2E, 0x12))
 MAROON = ((0xE8, 0x8A, 0x8A), (0xB3, 0x3A, 0x3F), (0x7A, 0x1E, 0x2B), (0x4A, 0x10, 0x1B))
@@ -39,6 +51,8 @@ AMBER = ((0xFF, 0xC9, 0x6B), (0xE0, 0x8A, 0x2E), (0xB0, 0x5E, 0x1E), (0x6E, 0x2A
 
 
 def write_json(path: Path, obj) -> None:
+    if not WRITE_JSON:
+        return
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(obj, indent=2) + "\n", encoding="utf-8")
 
@@ -54,28 +68,43 @@ def h(x: int, y: int, salt: int = 0) -> int:
     return (x * 31 + y * 17 + salt * 7) % 5
 
 
+def patina(x: int, y: int) -> bool:
+    """Blocky clustered patch mask for the weathered stage: whole 3x3 cells go
+    green together (patchwork of clustered blobs, not per-pixel noise)."""
+    return h(x // 3, y // 3, 8) < 2
+
+
 # ---------------------------------------------------------------------------
 # Textures
 # ---------------------------------------------------------------------------
 
 def tex_glass(stage: str) -> Image.Image:
-    """2px copper frame, semi-transparent tinted center (real RGBA alpha)."""
+    """2px copper frame, semi-transparent tinted center (real RGBA alpha).
+    The weathered stage gets clustered green patina patches on the frame and
+    a patchy green tint in the glass."""
     light, base, dark, darker = STAGES[stage]
+    p_light, p_mid, p_dark = PATINA
+    weathered = stage == "weathered"
     img = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
     px = img.load()
     for y in range(16):
         for x in range(16):
             edge = min(x, y, 15 - x, 15 - y)
+            patch = weathered and patina(x, y)
             if edge == 0:
-                px[x, y] = (*darker, 255)
+                px[x, y] = (*(p_dark if patch else darker), 255)
             elif edge == 1:
-                px[x, y] = (*light, 255) if h(x, y) == 0 else (*base, 255)
+                if patch:
+                    px[x, y] = (*p_light, 255) if h(x, y) == 0 else (*p_mid, 255)
+                else:
+                    px[x, y] = (*light, 255) if h(x, y) == 0 else (*base, 255)
             else:
                 # Transparent tinted center with a faint diagonal streak.
+                tint = p_light if patch else light
                 if (x + y) % 7 == 0:
-                    px[x, y] = (*light, 110)
+                    px[x, y] = (*tint, 110)
                 else:
-                    px[x, y] = (*light, 70)
+                    px[x, y] = (*tint, 70)
     return img
 
 
@@ -94,8 +123,11 @@ def tex_pane_top(stage: str) -> Image.Image:
 
 
 def tex_lamp(stage: str, lit: bool) -> Image.Image:
-    """Warm 3x3-cell grid lamp; copper grid lines, amber cells (bright when lit)."""
+    """Warm 3x3-cell grid lamp; copper grid lines, amber cells (bright when lit).
+    Weathered frames get clustered green patina patches (cells stay amber)."""
     light, base, dark, darker = STAGES[stage]
+    p_light, p_mid, p_dark = PATINA
+    weathered = stage == "weathered"
     on = ((0xFF, 0xE2, 0xA0), (0xFF, 0xC9, 0x6B), (0xF2, 0xA6, 0x4A))
     off = ((0x6E, 0x4A, 0x2E), (0x5A, 0x3A, 0x22), (0x47, 0x2D, 0x1B))
     cell = on if lit else off
@@ -103,10 +135,14 @@ def tex_lamp(stage: str, lit: bool) -> Image.Image:
     px = img.load()
     for y in range(16):
         for x in range(16):
+            patch = weathered and patina(x, y)
             if x in (0, 15) or y in (0, 15):
-                px[x, y] = (*darker, 255)
+                px[x, y] = (*(p_dark if patch else darker), 255)
             elif x in (5, 10) or y in (5, 10):
-                px[x, y] = (*dark, 255) if h(x, y) < 4 else (*base, 255)
+                if patch:
+                    px[x, y] = (*p_mid, 255) if h(x, y) < 4 else (*p_light, 255)
+                else:
+                    px[x, y] = (*dark, 255) if h(x, y) < 4 else (*base, 255)
             else:
                 px[x, y] = (*cell[h(x, y, 3) % 3], 255)
     return img
@@ -187,6 +223,68 @@ def tex_lantern_item(stage: str, flame) -> Image.Image:
     # Base foot.
     for x in range(5, 11):
         px[x, 13] = (*dark, 255)
+    return img
+
+
+# Multi-arm chandelier sprite: hanging ring, central stem (C body / L lit
+# edge), two out-curving arms with drip pans (KLK), candles and flame dots
+# (F tip / W base), and a bottom finial.
+CHANDELIER_ITEM_ROWS = [
+    ".......KK.......",
+    "......K..K......",
+    ".......KK.......",
+    ".......CL.......",
+    "..F....CL....F..",
+    "..W....CL....W..",
+    "..C....CL....C..",
+    "..C....CL....C..",
+    ".KLK...CL...KLK.",
+    "..K....CL....K..",
+    "..KC...CL...CK..",
+    "...CCC.CL.CCC...",
+    ".....CCCLCC.....",
+    ".......CL.......",
+    "......KCLK......",
+    ".......KK.......",
+]
+
+
+def tex_chandelier_item(stage: str, flame) -> Image.Image:
+    """Flat item sprite: multi-arm chandelier silhouette (central stem plus two
+    candle arms with flame dots), replacing the old lantern recolor."""
+    light, base, dark, darker = STAGES[stage]
+    f_light, f_base, _f_dark, _ = flame
+    palette = {"K": darker, "C": base, "L": light, "F": f_light, "W": f_base}
+    img = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
+    px = img.load()
+    for y, row in enumerate(CHANDELIER_ITEM_ROWS):
+        for x, ch in enumerate(row):
+            if ch != ".":
+                px[x, y] = (*palette[ch], 255)
+    return img
+
+
+def tex_chandelier_block() -> Image.Image:
+    """Chandelier block texture (still the vanilla template_lantern UV layout,
+    TEXTURE-only change): the body-side window shows a central stem and two
+    candle arms with flame dots instead of the caged flame window."""
+    light, base, dark, darker = STAGES["copper"]
+    f_light, f_base, _f_dark, _ = AMBER
+    img = tex_lantern("copper", AMBER)
+    px = img.load()
+    # Redraw the body-side region (0,2)-(5,8) as the multi-arm silhouette.
+    for y in range(2, 9):
+        for x in range(0, 6):
+            px[x, y] = (*darker, 255)  # dark backdrop
+    for y in range(2, 9):
+        px[2, y] = (*base, 255)  # central stem
+        px[3, y] = (*light, 255)
+    for x in range(0, 6):
+        px[x, 7] = (*base, 255)  # arm bar
+    for cx in (0, 5):
+        px[cx, 6] = (*light, 255)  # candle on each arm tip
+        px[cx, 5] = (*f_base, 255)  # flame base
+        px[cx, 4] = (*f_light, 255)  # flame tip
     return img
 
 
@@ -368,8 +466,12 @@ def main() -> None:
         "copper_chandelier": ("copper", AMBER),
     }
     for bid, (stage, flame) in lanterns.items():
-        write_png(f"block/{bid}", tex_lantern(stage, flame))
-        write_png(f"item/{bid}", tex_lantern_item(stage, flame))
+        if bid == "copper_chandelier":  # multi-arm silhouette, not a recolor
+            write_png(f"block/{bid}", tex_chandelier_block())
+            write_png(f"item/{bid}", tex_chandelier_item(stage, flame))
+        else:
+            write_png(f"block/{bid}", tex_lantern(stage, flame))
+            write_png(f"item/{bid}", tex_lantern_item(stage, flame))
         write_json(ASSETS / "blockstates" / f"{bid}.json", blockstate_lantern(bid))
         write_json(ASSETS / "models" / "block" / f"{bid}.json",
                    {"parent": "minecraft:block/template_lantern",
@@ -444,7 +546,8 @@ def main() -> None:
         "block.copper_inferno.glowing_syrup_block": "Glowing Syrup Block",
     })
 
-    print("glasslight assets generated OK")
+    mode = "textures + JSON" if WRITE_JSON else "textures only (pass --write-json for legacy JSON)"
+    print(f"glasslight assets generated OK ({mode})")
 
 
 if __name__ == "__main__":

@@ -17,13 +17,19 @@ The three oxidized horn textures reuse the exact silhouette of the v1
 assets/copper_inferno/textures/item/copper_horn.png (hard-coded below) with
 the stage palettes used by the copper tools/armor textures.
 
-Usage: python3 devtools/gen/gear_gen.py
+NOTE: JSON emission is legacy scaffolding (opt-in via --write-json); the JSON in
+src/main/resources is authoritative — by default this script writes ONLY PNGs.
+
+Usage: python3 devtools/gen/gear_gen.py [--write-json]
 """
 
 import json
+import sys
 from pathlib import Path
 
 from PIL import Image
+
+WRITE_JSON = "--write-json" in sys.argv  # default False -> textures/*.png only
 
 ROOT = Path(__file__).resolve().parents[2]
 RES = ROOT / "src" / "main" / "resources"
@@ -395,6 +401,8 @@ RECIPES = {
 
 
 def write_json(path, obj):
+    if not WRITE_JSON:
+        return
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(obj, indent=2) + "\n", encoding="utf-8")
 

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "copper_inferno:block/copper_pipe_end",
+    "side": "copper_inferno:block/copper_pipe_side"
+  }
+}

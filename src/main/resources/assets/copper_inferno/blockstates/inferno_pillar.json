@@ -1,7 +1,7 @@
 {
   "variants": {
     "axis=x": {
-      "model": "copper_inferno:block/inferno_pillar",
+      "model": "copper_inferno:block/inferno_pillar_horizontal",
       "x": 90,
       "y": 90
     },
@@ -9,7 +9,7 @@
       "model": "copper_inferno:block/inferno_pillar"
     },
     "axis=z": {
-      "model": "copper_inferno:block/inferno_pillar",
+      "model": "copper_inferno:block/inferno_pillar_horizontal",
       "x": 90
     }
   }

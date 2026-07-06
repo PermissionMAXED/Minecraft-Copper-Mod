@@ -14,14 +14,20 @@ fabric-loom's minecraft-client.jar data/minecraft/recipe/ (crafting_shaped: buck
 crafting_shapeless: fermented_spider_eye/blaze_powder, smelting:
 copper_ingot_from_smelting_raw_copper). Recipes reference ONLY vanilla ids and this
 feature's own ids.
+
+NOTE: JSON emission is legacy scaffolding (opt-in via --write-json); the JSON in
+src/main/resources is authoritative — by default this script writes ONLY PNGs.
 """
 
 import json
 import math
+import sys
 from pathlib import Path
 from random import Random
 
 from PIL import Image
+
+WRITE_JSON = "--write-json" in sys.argv  # default False -> textures/*.png only
 
 ROOT = Path(__file__).resolve().parents[2]
 RES = ROOT / "src" / "main" / "resources"
@@ -117,6 +123,8 @@ SODA_OUTLINE = (0x45, 0x12, 0x18)
 # ---------------------------------------------------------------------------
 
 def write_json(path: Path, obj) -> None:
+    if not WRITE_JSON:
+        return
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(obj, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
@@ -257,23 +265,32 @@ def tex_copper_sheet(rng: Random) -> Image.Image:
 
 
 def tex_copper_wire(rng: Random) -> Image.Image:
-    """A loose coiled loop of wire with two straight tails."""
+    """A SINGLE loosely curved strand (gentle S-curve, bottom-left to
+    top-right) — deliberately distinct from copper_coil's stacked loops."""
     img = blank()
-    cx = cy = 8.0
-    for deg in range(0, 360, 4):
-        a = math.radians(deg)
-        x = int(round(cx + 4.2 * math.cos(a)))
-        y = int(round(cy + 4.2 * math.sin(a)))
-        color = COPPER_LIGHT if deg in range(180, 300) else COPPER
-        px(img, x, y, color)
-        # Inner second winding, slightly offset.
-        x2 = int(round(cx + 2.8 * math.cos(a + 0.35)))
-        y2 = int(round(cy + 2.8 * math.sin(a + 0.35)))
-        px(img, x2, y2, COPPER_DARK)
-    for i in range(3):
-        px(img, 12 + i, 4 - i, COPPER)
-        px(img, 3 - i if 3 - i >= 0 else 0, 12 + i, COPPER_DARK)
-    px(img, 14, 2, COPPER_HI)
+    pts = []
+    for x in range(2, 14):
+        t = (x - 2) / 11.0
+        y = round(12.0 - 9.0 * t + 2.6 * math.sin(t * math.pi * 2.0))
+        pts.append((x, int(y)))
+    # Connect consecutive points (fill vertical gaps) so the strand is unbroken.
+    strand = []
+    for i, (x, y) in enumerate(pts):
+        strand.append((x, y))
+        if i + 1 < len(pts):
+            ny = pts[i + 1][1]
+            step = 1 if ny > y else -1
+            for yy in range(y + step, ny, step):
+                strand.append((x, yy))
+    for x, y in strand:
+        px(img, x, y, COPPER)
+        px(img, x, y + 1, COPPER_DARK)  # underside shading
+    # Highlights along the upper bend, rounded end caps.
+    for x, y in strand:
+        if 4 <= x <= 7 and y <= 10:
+            px(img, x, y, COPPER_LIGHT)
+    px(img, 1, 12, COPPER_DARKER)
+    px(img, 14, pts[-1][1], COPPER_HI)
     return img
 
 
@@ -352,22 +369,30 @@ def tex_copper_screw(rng: Random) -> Image.Image:
 
 
 def tex_copper_coil(rng: Random) -> Image.Image:
-    """Donut of tightly wound wire; winding stripes alternate light/dark."""
+    """Tight coil: stacked horizontal wire loops on a vertical cylinder, each
+    loop a lit 1px band over a shadowed 1px band, with exit tails top and
+    bottom — deliberately distinct from copper_wire's single strand."""
     img = blank()
-    cx = cy = 7.5
-    for y in range(16):
-        for x in range(16):
-            r = math.hypot(x - cx, y - cy)
-            if 2.6 <= r <= 6.4:
-                ang = (math.degrees(math.atan2(y - cy, x - cx)) + 360.0) % 360.0
-                band = int(ang / 20.0) % 2
-                if x - cx + (y - cy) < -3:
-                    color = COPPER_LIGHT if band else COPPER_HI
-                else:
-                    color = COPPER_DARK if band else COPPER
-                px(img, x, y, color)
-            elif 1.8 <= r < 2.6:
-                px(img, x, y, COPPER_OUTLINE)
+    for y in range(3, 13):
+        loop_top = (y - 3) % 2 == 0  # alternating lit / shadowed winding rows
+        for x in range(4, 12):
+            if x in (4, 11):
+                c = COPPER_DARKER  # cylinder silhouette edges
+            elif x in (5, 10):
+                c = COPPER_DARK
+            elif loop_top:
+                c = COPPER_LIGHT if x in (6, 7) else COPPER  # lit loop crest
+            else:
+                c = COPPER_DARK  # shadow groove between loops
+            px(img, x, y, c)
+    for x in range(4, 12):  # end caps
+        px(img, x, 2, COPPER_OUTLINE)
+        px(img, x, 13, COPPER_OUTLINE)
+    # wire tails exiting the winding
+    px(img, 12, 2, COPPER)
+    px(img, 13, 1, COPPER_HI)
+    px(img, 3, 13, COPPER_DARK)
+    px(img, 2, 14, COPPER_DARKER)
     return img
 
 
@@ -607,7 +632,8 @@ def main() -> None:
     emit_textures()
     emit_recipes()
     write_json(ASSETS / "lang" / "fragments" / "materials.json", LANG)
-    print(f"materials_gen: assets for {len(ITEM_IDS)} items generated.")
+    mode = "textures + JSON" if WRITE_JSON else "textures only (pass --write-json for legacy JSON)"
+    print(f"materials_gen: assets for {len(ITEM_IDS)} items generated ({mode}).")
 
 
 if __name__ == "__main__":
