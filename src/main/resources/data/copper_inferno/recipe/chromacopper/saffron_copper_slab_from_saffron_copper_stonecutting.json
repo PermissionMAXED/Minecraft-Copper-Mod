@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:saffron_copper",
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:saffron_copper_slab"
+  },
+  "type": "minecraft:stonecutting"
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/saffron_copper_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/saffron_copper"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/saffron_copper_slab_top"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:pearl_copper",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:pearl_copper_lantern"
+  },
+  "type": "minecraft:stonecutting"
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/indigo_copper_brick_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/indigo_copper_bricks"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/indigo_copper_brick_slab_top"
+    }
+  }
+}

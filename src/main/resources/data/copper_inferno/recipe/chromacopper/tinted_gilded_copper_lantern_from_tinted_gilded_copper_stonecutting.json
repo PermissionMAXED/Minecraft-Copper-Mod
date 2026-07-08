@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:tinted_gilded_copper",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:tinted_gilded_copper_lantern"
+  },
+  "type": "minecraft:stonecutting"
+}

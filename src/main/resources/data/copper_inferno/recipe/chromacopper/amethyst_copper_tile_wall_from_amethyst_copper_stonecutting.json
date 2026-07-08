@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:amethyst_copper",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:amethyst_copper_tile_wall"
+  },
+  "type": "minecraft:stonecutting"
+}

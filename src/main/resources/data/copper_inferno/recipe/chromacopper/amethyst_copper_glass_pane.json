@@ -1,0 +1,15 @@
+{
+  "category": "building",
+  "key": {
+    "G": "copper_inferno:amethyst_copper_glass"
+  },
+  "pattern": [
+    "GGG",
+    "GGG"
+  ],
+  "result": {
+    "count": 16,
+    "id": "copper_inferno:amethyst_copper_glass_pane"
+  },
+  "type": "minecraft:crafting_shaped"
+}
