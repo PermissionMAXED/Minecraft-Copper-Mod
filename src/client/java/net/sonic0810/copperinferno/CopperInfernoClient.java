@@ -8,6 +8,7 @@ import net.sonic0810.copperinferno.feature.bosslords.client.BossLordsFeatureClie
 import net.sonic0810.copperinferno.feature.bosspantheon.client.BossPantheonFeatureClient;
 import net.sonic0810.copperinferno.feature.chromacopper.client.ChromaCopperFeatureClient;
 import net.sonic0810.copperinferno.feature.cinderstone.client.CinderStoneFeatureClient;
+import net.sonic0810.copperinferno.feature.companions.client.CompanionsFeatureClient;
 import net.sonic0810.copperinferno.feature.constructs.client.ConstructsFeatureClient;
 import net.sonic0810.copperinferno.feature.copperfauna.client.CopperFaunaFeatureClient;
 import net.sonic0810.copperinferno.feature.depthstone.client.DepthStoneFeatureClient;
@@ -23,6 +24,7 @@ import net.sonic0810.copperinferno.feature.infernofauna.client.InfernoFaunaFeatu
 import net.sonic0810.copperinferno.feature.infernoflora.client.InfernoFloraFeatureClient;
 import net.sonic0810.copperinferno.feature.infernofx.client.InfernoFxFeatureClient;
 import net.sonic0810.copperinferno.feature.infernomobs.client.InfernoMobsFeatureClient;
+import net.sonic0810.copperinferno.feature.scorchwood.client.ScorchWoodFeatureClient;
 import net.sonic0810.copperinferno.feature.sodafauna.client.SodaFaunaFeatureClient;
 import net.sonic0810.copperinferno.feature.statue.client.PlayerStatueFeatureClient;
 import net.sonic0810.copperinferno.feature.systems.client.SystemsFeatureClient;
@@ -49,11 +51,14 @@ public class CopperInfernoClient implements ClientModInitializer {
 		// empty skeletons until their work package lands). HandbookFeatureClient LAST.
 		ChromaCopperFeatureClient.initClient();
 		DepthStoneFeatureClient.initClient();
+		// v4.1 wave, pre-wired (WP0); empty skeletons until their work package lands.
+		ScorchWoodFeatureClient.initClient();
 		GemAlloyFeatureClient.initClient();
 		CopperFaunaFeatureClient.initClient();
 		InfernoFaunaFeatureClient.initClient();
 		SodaFaunaFeatureClient.initClient();
 		ConstructsFeatureClient.initClient();
+		CompanionsFeatureClient.initClient();
 		BossLordsFeatureClient.initClient();
 		BossPantheonFeatureClient.initClient();
 		BossDoomFeatureClient.initClient();

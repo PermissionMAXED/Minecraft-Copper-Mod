@@ -3,14 +3,17 @@ package net.sonic0810.copperinferno;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import net.sonic0810.copperinferno.core.CopperInfernoCore;
+import net.sonic0810.copperinferno.feature.advancements.AdvancementsFeature;
 import net.sonic0810.copperinferno.feature.armor.CopperArmorFeature;
 import net.sonic0810.copperinferno.feature.arsenal.ArsenalFeature;
 import net.sonic0810.copperinferno.feature.artifacts.ArtifactsFeature;
 import net.sonic0810.copperinferno.feature.bossdoom.BossDoomFeature;
 import net.sonic0810.copperinferno.feature.bosslords.BossLordsFeature;
 import net.sonic0810.copperinferno.feature.bosspantheon.BossPantheonFeature;
+import net.sonic0810.copperinferno.feature.brews.BrewsFeature;
 import net.sonic0810.copperinferno.feature.chromacopper.ChromaCopperFeature;
 import net.sonic0810.copperinferno.feature.cinderstone.CinderStoneFeature;
+import net.sonic0810.copperinferno.feature.companions.CompanionsFeature;
 import net.sonic0810.copperinferno.feature.constructs.ConstructsFeature;
 import net.sonic0810.copperinferno.feature.copperdeco.CopperDecoFeature;
 import net.sonic0810.copperinferno.feature.copperfauna.CopperFaunaFeature;
@@ -18,7 +21,10 @@ import net.sonic0810.copperinferno.feature.cuisine.CuisineFeature;
 import net.sonic0810.copperinferno.feature.decostone.DecoStoneFeature;
 import net.sonic0810.copperinferno.feature.depthstone.DepthStoneFeature;
 import net.sonic0810.copperinferno.feature.drpepper.DrPepperFeature;
+import net.sonic0810.copperinferno.feature.emberstorm.EmberStormFeature;
+import net.sonic0810.copperinferno.feature.enchants.EnchantsFeature;
 import net.sonic0810.copperinferno.feature.extras.ExtrasFeature;
+import net.sonic0810.copperinferno.feature.fishing.FishingFeature;
 import net.sonic0810.copperinferno.feature.foods.FoodsFeature;
 import net.sonic0810.copperinferno.feature.gear.GearFeature;
 import net.sonic0810.copperinferno.feature.gemalloy.GemAlloyFeature;
@@ -38,12 +44,15 @@ import net.sonic0810.copperinferno.feature.masonry.MasonryFeature;
 import net.sonic0810.copperinferno.feature.materials.MaterialsFeature;
 import net.sonic0810.copperinferno.feature.music.MusicFeature;
 import net.sonic0810.copperinferno.feature.scorchwood.ScorchWoodFeature;
+import net.sonic0810.copperinferno.feature.shrines.ShrinesFeature;
 import net.sonic0810.copperinferno.feature.sodablocks.SodaBlocksFeature;
 import net.sonic0810.copperinferno.feature.sodafauna.SodaFaunaFeature;
 import net.sonic0810.copperinferno.feature.statue.PlayerStatueFeature;
 import net.sonic0810.copperinferno.feature.systems.SystemsFeature;
 import net.sonic0810.copperinferno.feature.tools.CopperToolsFeature;
+import net.sonic0810.copperinferno.feature.trades.TradesFeature;
 import net.sonic0810.copperinferno.feature.utilityblocks.UtilityBlocksFeature;
+import net.sonic0810.copperinferno.feature.warhorns.WarHornsFeature;
 import net.sonic0810.copperinferno.feature.wildworld.WildWorldFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -119,6 +128,18 @@ public class CopperInferno implements ModInitializer {
 		SystemsFeature.init();
 		WildWorldFeature.init();
 		ArtifactsFeature.init();
+		// v4.1 wave, pre-wired (WP0) so parallel work packages never edit this file again:
+		// empty skeletons until their work package lands. HandbookFeature stays LAST so it
+		// can reference every other feature's content.
+		EnchantsFeature.init();
+		TradesFeature.init();
+		AdvancementsFeature.init();
+		ShrinesFeature.init();
+		FishingFeature.init();
+		EmberStormFeature.init();
+		CompanionsFeature.init();
+		WarHornsFeature.init();
+		BrewsFeature.init();
 		HandbookFeature.init();
 	}
 }
