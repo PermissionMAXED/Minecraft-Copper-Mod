@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "copper_inferno:block/sootmaple_planks",
+    "side": "copper_inferno:block/sootmaple_planks",
+    "top": "copper_inferno:block/sootmaple_planks"
+  }
+}

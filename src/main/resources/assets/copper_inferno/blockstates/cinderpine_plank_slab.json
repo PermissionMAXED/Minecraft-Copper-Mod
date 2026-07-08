@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/cinderpine_plank_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/cinderpine_planks"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/cinderpine_plank_slab_top"
+    }
+  }
+}

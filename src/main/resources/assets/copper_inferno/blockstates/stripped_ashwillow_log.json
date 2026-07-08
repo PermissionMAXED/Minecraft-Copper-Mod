@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "copper_inferno:block/stripped_ashwillow_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "copper_inferno:block/stripped_ashwillow_log"
+    },
+    "axis=z": {
+      "model": "copper_inferno:block/stripped_ashwillow_log",
+      "x": 90
+    }
+  }
+}
