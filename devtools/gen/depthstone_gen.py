@@ -496,20 +496,27 @@ def de_names(p: str, spec: dict) -> dict:
 # ---------------------------------------------------------------------------
 # Tag fragment: pickaxe-mineable for every requiresTool id (glass + pane are
 # registered WITHOUT requiresTool, exactly like the cinderstone glass), plus
-# the three walls per palette for block/walls.
+# the three walls/slabs/stairs per palette for block/walls, block/slabs and
+# block/stairs (mirrors chromacopper_gen.tag_fragment).
 # ---------------------------------------------------------------------------
 
 
 def tagfrag() -> dict:
-    pickaxe = []
-    walls = []
+    pickaxe, walls, slabs, stairs = [], [], [], []
     for p in PALETTES:
         for bid in palette_ids(p):
             if bid in (f"{p}_glass", f"{p}_glass_pane"):
                 continue
             pickaxe.append(f"{NS}:{bid}")
         walls += [f"{NS}:{p}_wall", f"{NS}:{p}_brick_wall", f"{NS}:{p}_tile_wall"]
-    return {"block/mineable/pickaxe": sorted(pickaxe), "block/walls": sorted(walls)}
+        slabs += [f"{NS}:{p}_slab", f"{NS}:{p}_brick_slab", f"{NS}:{p}_tile_slab"]
+        stairs += [f"{NS}:{p}_stairs", f"{NS}:{p}_brick_stairs", f"{NS}:{p}_tile_stairs"]
+    return {
+        "block/mineable/pickaxe": sorted(pickaxe),
+        "block/walls": sorted(walls),
+        "block/slabs": sorted(slabs),
+        "block/stairs": sorted(stairs),
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -533,8 +540,13 @@ def main() -> None:
     json_count = write_files(files, RES)
     write_json(ASSETS / "lang" / "fragments" / "depthstone.json", lang_en)
     write_json(ASSETS / "lang" / "fragments_de" / "depthstone.json", lang_de)
-    write_json(ROOT / "devtools" / "tagfrag" / "depthstone.json", tagfrag())
+    frag = tagfrag()
+    write_json(ROOT / "devtools" / "tagfrag" / "depthstone.json", frag)
 
+    assert len(frag["block/slabs"]) == 48, \
+        f"expected 48 slabs, got {len(frag['block/slabs'])}"
+    assert len(frag["block/stairs"]) == 48, \
+        f"expected 48 stairs, got {len(frag['block/stairs'])}"
     assert len(ids) == 320, f"expected 320 block ids, got {len(ids)}"
     assert len(set(ids)) == 320, "duplicate ids across palettes"
     assert sorted(f"block.{NS}.{i}" for i in ids) == sorted(lang_en) == sorted(lang_de)
