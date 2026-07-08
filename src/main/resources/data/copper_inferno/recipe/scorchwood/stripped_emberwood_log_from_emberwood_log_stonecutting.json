@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:emberwood_log",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:stripped_emberwood_log"
+  },
+  "type": "minecraft:stonecutting"
+}

@@ -1,0 +1,12 @@
+{
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    "#copper_inferno:sootmaple_logs"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:sootmaple_planks"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

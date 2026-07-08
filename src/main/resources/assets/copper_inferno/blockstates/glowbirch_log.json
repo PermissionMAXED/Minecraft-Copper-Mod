@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "copper_inferno:block/glowbirch_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "copper_inferno:block/glowbirch_log"
+    },
+    "axis=z": {
+      "model": "copper_inferno:block/glowbirch_log",
+      "x": 90
+    }
+  }
+}

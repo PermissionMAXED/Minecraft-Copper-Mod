@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:duskthorn_log",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:stripped_duskthorn_log"
+  },
+  "type": "minecraft:stonecutting"
+}
