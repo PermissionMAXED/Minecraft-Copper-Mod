@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:raw_voidsteel_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "copper_inferno:raw_voidsteel"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "G": "minecraft:glass",
+    "N": "copper_inferno:kilnite_nugget"
+  },
+  "pattern": [
+    "NGN",
+    "G G",
+    "NGN"
+  ],
+  "result": {
+    "count": 8,
+    "id": "copper_inferno:kilnite_glass"
+  },
+  "type": "minecraft:crafting_shaped"
+}

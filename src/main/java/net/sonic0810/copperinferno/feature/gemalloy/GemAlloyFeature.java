@@ -1,14 +1,163 @@
 package net.sonic0810.copperinferno.feature.gemalloy;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.state.property.Properties;
+import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.feature.PlacedFeature;
+import net.sonic0810.copperinferno.CopperInferno;
+import net.sonic0810.copperinferno.core.ModCreativeTab;
+import net.sonic0810.copperinferno.core.content.AlloySets;
+
 /**
- * v4 "Gems & Alloys" feature — SKELETON (WP1). Content lands in a later work package;
- * {@code init()} is already wired into {@code CopperInferno.onInitialize()} so the v4 wave
- * ordering is fixed up front.
+ * v4 "Gems &amp; Alloys": 12 fantasy metals/gems (pyrium, emberite, cindralite, slagbronze,
+ * ashsteel, voidsteel, doomium, pepperite, fizzium, vitrium, smokequartz, kilnite), each the
+ * full 22-block alloy template from {@link AlloySets#registerAlloySet} plus the raw/ingot/nugget
+ * trio from {@link AlloySets#registerAlloyItems} — 264 blocks + 36 items total.
+ *
+ * <p>AUDIT CONTRACT: every {@code registerAlloySet}/{@code registerAlloyItems} call site below
+ * passes the material name as a string LITERAL (12 literal call sites each, no loops), so
+ * {@code devtools/audit_assets.py} can expand the wrapper-derived ids.
+ *
+ * <p>Blocks land in the GEMS creative tab (inside {@code registerAlloySet}); the 36 items are
+ * appended to the MAIN tab here. Each material's ores generate in the overworld
+ * ({@code <m>_ore} replacing stone, {@code deepslate_<m>_ore} replacing deepslate, one shared
+ * configured/placed feature pair) and in the three Inferno biomes ({@code cinder_<m>_ore}
+ * replacing cinderstone); the JSON lives under {@code data/copper_inferno/worldgen/} (generated
+ * by {@code devtools/gen/gemalloy_gen.py}, format copied from the shipped infernium_ore pair)
+ * and is injected via {@link BiomeModifications#addFeature}.
  */
 public final class GemAlloyFeature {
 	private GemAlloyFeature() {
 	}
 
+	/** The 12 registered alloy sets, in canonical material order (client render layers walk this). */
+	public static final List<AlloySets.AlloySet> SETS = new ArrayList<>();
+
+	/** The 12 registered raw/ingot/nugget trios, in canonical material order. */
+	public static final List<AlloySets.AlloyItems> ITEMS = new ArrayList<>();
+
 	public static void init() {
+		SETS.add(AlloySets.registerAlloySet("pyrium", GemAlloyFeature::alloySettings,
+				GemAlloyFeature::alloyOreSettings, ModCreativeTab.GEMS_KEY));
+		ITEMS.add(AlloySets.registerAlloyItems("pyrium"));
+		injectAlloyOres("pyrium");
+
+		SETS.add(AlloySets.registerAlloySet("emberite", GemAlloyFeature::alloySettings,
+				GemAlloyFeature::alloyOreSettings, ModCreativeTab.GEMS_KEY));
+		ITEMS.add(AlloySets.registerAlloyItems("emberite"));
+		injectAlloyOres("emberite");
+
+		SETS.add(AlloySets.registerAlloySet("cindralite", GemAlloyFeature::alloySettings,
+				GemAlloyFeature::alloyOreSettings, ModCreativeTab.GEMS_KEY));
+		ITEMS.add(AlloySets.registerAlloyItems("cindralite"));
+		injectAlloyOres("cindralite");
+
+		SETS.add(AlloySets.registerAlloySet("slagbronze", GemAlloyFeature::alloySettings,
+				GemAlloyFeature::alloyOreSettings, ModCreativeTab.GEMS_KEY));
+		ITEMS.add(AlloySets.registerAlloyItems("slagbronze"));
+		injectAlloyOres("slagbronze");
+
+		SETS.add(AlloySets.registerAlloySet("ashsteel", GemAlloyFeature::alloySettings,
+				GemAlloyFeature::alloyOreSettings, ModCreativeTab.GEMS_KEY));
+		ITEMS.add(AlloySets.registerAlloyItems("ashsteel"));
+		injectAlloyOres("ashsteel");
+
+		SETS.add(AlloySets.registerAlloySet("voidsteel", GemAlloyFeature::alloySettings,
+				GemAlloyFeature::alloyOreSettings, ModCreativeTab.GEMS_KEY));
+		ITEMS.add(AlloySets.registerAlloyItems("voidsteel"));
+		injectAlloyOres("voidsteel");
+
+		SETS.add(AlloySets.registerAlloySet("doomium", GemAlloyFeature::alloySettings,
+				GemAlloyFeature::alloyOreSettings, ModCreativeTab.GEMS_KEY));
+		ITEMS.add(AlloySets.registerAlloyItems("doomium"));
+		injectAlloyOres("doomium");
+
+		SETS.add(AlloySets.registerAlloySet("pepperite", GemAlloyFeature::alloySettings,
+				GemAlloyFeature::alloyOreSettings, ModCreativeTab.GEMS_KEY));
+		ITEMS.add(AlloySets.registerAlloyItems("pepperite"));
+		injectAlloyOres("pepperite");
+
+		SETS.add(AlloySets.registerAlloySet("fizzium", GemAlloyFeature::alloySettings,
+				GemAlloyFeature::alloyOreSettings, ModCreativeTab.GEMS_KEY));
+		ITEMS.add(AlloySets.registerAlloyItems("fizzium"));
+		injectAlloyOres("fizzium");
+
+		SETS.add(AlloySets.registerAlloySet("vitrium", GemAlloyFeature::alloySettings,
+				GemAlloyFeature::alloyOreSettings, ModCreativeTab.GEMS_KEY));
+		ITEMS.add(AlloySets.registerAlloyItems("vitrium"));
+		injectAlloyOres("vitrium");
+
+		SETS.add(AlloySets.registerAlloySet("smokequartz", GemAlloyFeature::alloySettings,
+				GemAlloyFeature::alloyOreSettings, ModCreativeTab.GEMS_KEY));
+		ITEMS.add(AlloySets.registerAlloyItems("smokequartz"));
+		injectAlloyOres("smokequartz");
+
+		SETS.add(AlloySets.registerAlloySet("kilnite", GemAlloyFeature::alloySettings,
+				GemAlloyFeature::alloyOreSettings, ModCreativeTab.GEMS_KEY));
+		ITEMS.add(AlloySets.registerAlloyItems("kilnite"));
+		injectAlloyOres("kilnite");
+
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+			for (AlloySets.AlloyItems items : ITEMS) {
+				entries.add(items.raw());
+				entries.add(items.ingot());
+				entries.add(items.nugget());
+			}
+		});
+
+		GemAlloyHandbook.register();
+	}
+
+	/**
+	 * Fresh settings per registration for the 19 non-ore blocks: metal/gem-like (copper sound,
+	 * pickaxe-tier strength). The state-aware luminance only lights the bulb (the sole alloy
+	 * block with a {@code lit} property), mirroring vanilla copper-bulb behavior; every other
+	 * block reports 0.
+	 */
+	private static AbstractBlock.Settings alloySettings() {
+		return AbstractBlock.Settings.create()
+				.strength(4.0F, 6.0F)
+				.requiresTool()
+				.sounds(BlockSoundGroup.COPPER)
+				.luminance(state -> state.contains(Properties.LIT) && state.get(Properties.LIT) ? 12 : 0);
+	}
+
+	/** Fresh settings per registration for the 3 ore variants (vanilla iron-ore profile). */
+	private static AbstractBlock.Settings alloyOreSettings() {
+		return AbstractBlock.Settings.create()
+				.strength(3.0F, 3.0F)
+				.requiresTool()
+				.sounds(BlockSoundGroup.STONE);
+	}
+
+	/**
+	 * Injects the material's two placed features: {@code <m>_ore} (stone + deepslate targets)
+	 * into every overworld biome, {@code cinder_<m>_ore} into the three Inferno biomes.
+	 * Registration-order-safe: the keys reference datapack JSON resolved at world load, exactly
+	 * like the biome keys in {@code InfernoMobsFeature} (includeByKey matches nothing until the
+	 * Inferno biomes are loaded).
+	 */
+	private static void injectAlloyOres(String m) {
+		RegistryKey<PlacedFeature> overworldOre =
+				RegistryKey.of(RegistryKeys.PLACED_FEATURE, CopperInferno.id(m + "_ore"));
+		BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
+				GenerationStep.Feature.UNDERGROUND_ORES, overworldOre);
+
+		RegistryKey<PlacedFeature> cinderOre =
+				RegistryKey.of(RegistryKeys.PLACED_FEATURE, CopperInferno.id("cinder_" + m + "_ore"));
+		BiomeModifications.addFeature(BiomeSelectors.includeByKey(
+				RegistryKey.of(RegistryKeys.BIOME, CopperInferno.id("cinder_wastes")),
+				RegistryKey.of(RegistryKeys.BIOME, CopperInferno.id("ember_grove")),
+				RegistryKey.of(RegistryKeys.BIOME, CopperInferno.id("slag_sea"))),
+				GenerationStep.Feature.UNDERGROUND_ORES, cinderOre);
 	}
 }

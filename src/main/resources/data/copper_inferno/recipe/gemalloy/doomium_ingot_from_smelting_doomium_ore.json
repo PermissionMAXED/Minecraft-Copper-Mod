@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "doomium_ingot",
+  "ingredient": "copper_inferno:doomium_ore",
+  "result": {
+    "id": "copper_inferno:doomium_ingot"
+  },
+  "type": "minecraft:smelting"
+}

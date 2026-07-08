@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:voidsteel_ingot"
+  ],
+  "result": {
+    "count": 9,
+    "id": "copper_inferno:voidsteel_nugget"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

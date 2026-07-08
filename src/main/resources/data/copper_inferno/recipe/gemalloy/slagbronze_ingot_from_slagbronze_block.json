@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "group": "slagbronze_ingot",
+  "ingredients": [
+    "copper_inferno:slagbronze_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "copper_inferno:slagbronze_ingot"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

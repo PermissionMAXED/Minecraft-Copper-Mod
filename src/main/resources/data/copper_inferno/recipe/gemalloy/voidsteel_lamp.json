@@ -1,0 +1,17 @@
+{
+  "category": "redstone",
+  "key": {
+    "#": "copper_inferno:voidsteel_ingot",
+    "G": "minecraft:glowstone"
+  },
+  "pattern": [
+    " # ",
+    "#G#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:voidsteel_lamp"
+  },
+  "type": "minecraft:crafting_shaped"
+}

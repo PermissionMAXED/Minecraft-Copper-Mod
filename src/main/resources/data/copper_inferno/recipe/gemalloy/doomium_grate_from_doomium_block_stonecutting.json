@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:doomium_block",
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:doomium_grate"
+  },
+  "type": "minecraft:stonecutting"
+}

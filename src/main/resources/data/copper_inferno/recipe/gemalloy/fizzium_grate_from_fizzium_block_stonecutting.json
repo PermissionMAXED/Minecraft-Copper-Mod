@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:fizzium_block",
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:fizzium_grate"
+  },
+  "type": "minecraft:stonecutting"
+}

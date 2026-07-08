@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:raw_kilnite_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "copper_inferno:raw_kilnite"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

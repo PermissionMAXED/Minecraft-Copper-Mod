@@ -1,0 +1,17 @@
+{
+  "category": "redstone",
+  "key": {
+    "#": "copper_inferno:smokequartz_ingot",
+    "G": "minecraft:glowstone"
+  },
+  "pattern": [
+    " # ",
+    "#G#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:smokequartz_lamp"
+  },
+  "type": "minecraft:crafting_shaped"
+}

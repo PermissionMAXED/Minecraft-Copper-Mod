@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "group": "vitrium_ingot",
+  "ingredient": "copper_inferno:deepslate_vitrium_ore",
+  "result": {
+    "id": "copper_inferno:vitrium_ingot"
+  },
+  "type": "minecraft:blasting"
+}

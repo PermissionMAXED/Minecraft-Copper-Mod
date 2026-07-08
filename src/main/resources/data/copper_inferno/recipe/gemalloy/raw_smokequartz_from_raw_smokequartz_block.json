@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:raw_smokequartz_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "copper_inferno:raw_smokequartz"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

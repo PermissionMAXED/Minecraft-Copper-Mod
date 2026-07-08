@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "pepperite_ingot",
+  "ingredient": "copper_inferno:cinder_pepperite_ore",
+  "result": {
+    "id": "copper_inferno:pepperite_ingot"
+  },
+  "type": "minecraft:smelting"
+}

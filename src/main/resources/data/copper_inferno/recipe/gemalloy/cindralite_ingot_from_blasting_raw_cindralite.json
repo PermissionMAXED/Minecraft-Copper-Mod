@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "group": "cindralite_ingot",
+  "ingredient": "copper_inferno:raw_cindralite",
+  "result": {
+    "id": "copper_inferno:cindralite_ingot"
+  },
+  "type": "minecraft:blasting"
+}
