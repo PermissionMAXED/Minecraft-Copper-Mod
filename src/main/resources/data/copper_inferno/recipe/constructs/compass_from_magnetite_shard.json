@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:magnetite_shard",
+    "minecraft:iron_ingot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:compass"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

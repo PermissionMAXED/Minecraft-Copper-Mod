@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:forge_bellows"
+  ],
+  "result": {
+    "count": 3,
+    "id": "minecraft:charcoal"
+  },
+  "type": "minecraft:crafting_shapeless"
+}
