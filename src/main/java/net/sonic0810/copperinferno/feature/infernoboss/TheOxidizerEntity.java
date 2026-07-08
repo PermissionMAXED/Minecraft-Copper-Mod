@@ -14,18 +14,21 @@ import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import net.sonic0810.copperinferno.CopperInferno;
 import net.sonic0810.copperinferno.core.boss.BossBarHolder;
+import net.sonic0810.copperinferno.feature.infernofx.InfernoFxFeature;
 
 /**
  * Boss 1 "The Oxidizer": a giant corroded iron golem (attributes registered in
  * {@link InfernoBossFeature}: MAX_HEALTH 300, ATTACK_DAMAGE 18, SCALE 2.0). Summoned by
  * clicking an {@link OxidizerCoreItem} on any copper block. Every 100 ticks it vents a
- * corrosive verdigris cloud (Slowness + Weakness to players within 6 blocks); below 50%
- * health it enrages with bonus movement speed. Drops an Oxidizer Heart + Verdigris Scales
- * ({@code loot_table/entities/the_oxidizer.json}).
+ * corrosive verdigris cloud (Slowness + Weakness + Oxidized to survival players it can see
+ * within 6 blocks); below 50% health it enrages with bonus movement speed. Drops an
+ * Oxidizer Heart + Verdigris Scales ({@code loot_table/entities/the_oxidizer.json}).
  */
 public class TheOxidizerEntity extends IronGolemEntity {
 	/** Verdigris green, matching the oxidized copper palette. */
@@ -42,6 +45,10 @@ public class TheOxidizerEntity extends IronGolemEntity {
 
 	public TheOxidizerEntity(EntityType<? extends IronGolemEntity> type, World world) {
 		super(type, world);
+		// A boss must never despawn, whatever summoned it (item, spawn egg, /summon).
+		if (!world.isClient()) {
+			this.setPersistent();
+		}
 	}
 
 	@Override
@@ -49,6 +56,15 @@ public class TheOxidizerEntity extends IronGolemEntity {
 		super.initGoals();
 		// Unlike the vanilla golem (only angered on attack), the boss hunts players on sight.
 		this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
+	}
+
+	/**
+	 * Blocks the inherited iron-golem right-click repair: without this, players could heal
+	 * the boss mid-fight (or cheese achievements) with iron ingots.
+	 */
+	@Override
+	protected ActionResult interactMob(PlayerEntity player, Hand hand) {
+		return ActionResult.PASS;
 	}
 
 	@Override
@@ -75,12 +91,18 @@ public class TheOxidizerEntity extends IronGolemEntity {
 		}
 	}
 
-	/** Slowness + Weakness to every non-spectator player within 6 blocks + a verdigris burst. */
+	/**
+	 * Slowness + Weakness + Oxidized (-30% speed) to every survival/adventure player the boss
+	 * has line of sight to within 6 blocks, plus a verdigris burst. Creative and spectator
+	 * players and players behind walls are unaffected.
+	 */
 	private void ventCorrosiveCloud(ServerWorld world) {
 		for (PlayerEntity player : world.getEntitiesByClass(PlayerEntity.class,
-				this.getBoundingBox().expand(ABILITY_RANGE), player -> !player.isSpectator())) {
+				this.getBoundingBox().expand(ABILITY_RANGE),
+				player -> !player.isSpectator() && !player.isCreative() && this.canSee(player))) {
 			player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, ABILITY_EFFECT_TICKS, 0));
 			player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, ABILITY_EFFECT_TICKS, 0));
+			player.addStatusEffect(new StatusEffectInstance(InfernoFxFeature.OXIDIZED, ABILITY_EFFECT_TICKS, 0));
 		}
 		// Green dust burst (same spawnParticles shape as DrPepperGolemFeature.transform).
 		world.spawnParticles(OXIDE_BURST,
@@ -98,5 +120,12 @@ public class TheOxidizerEntity extends IronGolemEntity {
 			speed.addTemporaryModifier(new EntityAttributeModifier(
 					ENRAGE_MODIFIER_ID, 0.05, EntityAttributeModifier.Operation.ADD_VALUE));
 		}
+	}
+
+	/** mobTick stops during the death animation; keep the boss bar synced (empty) as it dies. */
+	@Override
+	protected void updatePostDeath() {
+		super.updatePostDeath();
+		this.bossBar.update(this);
 	}
 }

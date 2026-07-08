@@ -164,52 +164,52 @@ public final class CopperDecoFeature {
 		// ----- stonecutting chains from vanilla copper_block / cut_copper
 		HandbookEntries.add(new HandbookEntry("blocks", "burnished_copper_from_copper_block_stonecutting",
 				BURN, "copperdeco/burnished_copper_from_copper_block_stonecutting",
-				null, BURN, 4,
+				new String[]{"", "", "", "", "minecraft:copper_block", "", "", "", ""}, BURN, 4,
 				"The stonecutter polishes one Copper Block into four Burnished Copper.",
 				"Die Steins\u00e4ge poliert einen Kupferblock zu vier Poliertem Kupfer."));
 		HandbookEntries.add(new HandbookEntry("blocks", "burnished_copper_from_cut_copper_stonecutting",
 				BURN, "copperdeco/burnished_copper_from_cut_copper_stonecutting",
-				null, BURN, 1,
+				new String[]{"", "", "", "", CUT, "", "", "", ""}, BURN, 1,
 				"The stonecutter also polishes Cut Copper into Burnished Copper one for one.",
 				"Die Steins\u00e4ge poliert auch geschnittenes Kupfer eins zu eins zu Poliertem Kupfer."));
 		HandbookEntries.add(new HandbookEntry("blocks", "copper_panels_from_copper_block_stonecutting",
 				PANEL, "copperdeco/copper_panels_from_copper_block_stonecutting",
-				null, PANEL, 4,
+				new String[]{"", "", "", "", "minecraft:copper_block", "", "", "", ""}, PANEL, 4,
 				"The stonecutter cuts one Copper Block into four riveted Copper Panels.",
 				"Die Steins\u00e4ge schneidet einen Kupferblock zu vier vernieteten Kupferpaneelen."));
 		HandbookEntries.add(new HandbookEntry("blocks", "copper_panels_from_cut_copper_stonecutting",
 				PANEL, "copperdeco/copper_panels_from_cut_copper_stonecutting",
-				null, PANEL, 1,
+				new String[]{"", "", "", "", CUT, "", "", "", ""}, PANEL, 1,
 				"The stonecutter cuts Cut Copper into Copper Panels one for one.",
 				"Die Steins\u00e4ge schneidet geschnittenes Kupfer eins zu eins zu Kupferpaneelen."));
 		HandbookEntries.add(new HandbookEntry("blocks", "burnished_copper_bricks_from_copper_block_stonecutting",
 				BURNB, "copperdeco/burnished_copper_bricks_from_copper_block_stonecutting",
-				null, BURNB, 4,
+				new String[]{"", "", "", "", "minecraft:copper_block", "", "", "", ""}, BURNB, 4,
 				"The stonecutter cuts one Copper Block straight into four Burnished Copper Bricks.",
 				"Die Steins\u00e4ge schneidet einen Kupferblock direkt zu vier Polierten Kupferziegeln."));
 		HandbookEntries.add(new HandbookEntry("blocks", "burnished_copper_bricks_from_burnished_copper_stonecutting",
 				BURNB, "copperdeco/burnished_copper_bricks_from_burnished_copper_stonecutting",
-				null, BURNB, 1,
+				new String[]{"", "", "", "", BURN, "", "", "", ""}, BURNB, 1,
 				"The stonecutter cuts Burnished Copper into Burnished Copper Bricks one for one.",
 				"Die Steins\u00e4ge schneidet Poliertes Kupfer eins zu eins zu Polierten Kupferziegeln."));
 		HandbookEntries.add(new HandbookEntry("blocks", "chiseled_rose_copper_bricks_from_rose_copper_bricks_stonecutting",
 				"copper_inferno:chiseled_rose_copper_bricks", "copperdeco/chiseled_rose_copper_bricks_from_rose_copper_bricks_stonecutting",
-				null, "copper_inferno:chiseled_rose_copper_bricks", 1,
+				new String[]{"", "", "", "", ROSE, "", "", "", ""}, "copper_inferno:chiseled_rose_copper_bricks", 1,
 				"The stonecutter chisels Rose Copper Bricks one for one.",
 				"Die Steins\u00e4ge mei\u00dfelt Ros\u00e9kupferziegel eins zu eins."));
 		HandbookEntries.add(new HandbookEntry("blocks", "rose_copper_pillar_from_rose_copper_bricks_stonecutting",
 				"copper_inferno:rose_copper_pillar", "copperdeco/rose_copper_pillar_from_rose_copper_bricks_stonecutting",
-				null, "copper_inferno:rose_copper_pillar", 1,
+				new String[]{"", "", "", "", ROSE, "", "", "", ""}, "copper_inferno:rose_copper_pillar", 1,
 				"The stonecutter turns Rose Copper Bricks into Rose Copper Pillars one for one.",
 				"Die Steins\u00e4ge macht aus Ros\u00e9kupferziegeln eins zu eins Ros\u00e9kupfers\u00e4ulen."));
 		HandbookEntries.add(new HandbookEntry("blocks", "burnished_copper_pillar_from_burnished_copper_stonecutting",
 				"copper_inferno:burnished_copper_pillar", "copperdeco/burnished_copper_pillar_from_burnished_copper_stonecutting",
-				null, "copper_inferno:burnished_copper_pillar", 1,
+				new String[]{"", "", "", "", BURN, "", "", "", ""}, "copper_inferno:burnished_copper_pillar", 1,
 				"The stonecutter turns Burnished Copper into Burnished Copper Pillars one for one.",
 				"Die Steins\u00e4ge macht aus Poliertem Kupfer eins zu eins Polierte Kupfers\u00e4ulen."));
 		HandbookEntries.add(new HandbookEntry("blocks", "verdigris_pillar_from_verdigris_bricks_stonecutting",
 				"copper_inferno:verdigris_pillar", "copperdeco/verdigris_pillar_from_verdigris_bricks_stonecutting",
-				null, "copper_inferno:verdigris_pillar", 1,
+				new String[]{"", "", "", "", VERD, "", "", "", ""}, "copper_inferno:verdigris_pillar", 1,
 				"The stonecutter turns Verdigris Bricks into Verdigris Pillars one for one.",
 				"Die Steins\u00e4ge macht aus Gr\u00fcnspanziegeln eins zu eins Gr\u00fcnspans\u00e4ulen."));
 

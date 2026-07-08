@@ -1,6 +1,7 @@
 package net.sonic0810.copperinferno.feature.cinderstone;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.LanternBlock;
@@ -170,9 +171,13 @@ public final class CinderStoneFeature {
 		CINDER_GLASS = ModBlocks.register("cinder_glass", CinderGlassBlock::new, glassSettings(), true);
 		CINDER_GLASS_PANE = ModBlocks.register("cinder_glass_pane", CinderGlassPaneBlock::new, glassSettings(), true);
 		SMOLDER_GLASS = ModBlocks.register("smolder_glass", CinderGlassBlock::new, glassSettings().luminance(state -> 9), true);
-		SMOLDER_GLASS_PANE = ModBlocks.register("smolder_glass_pane", CinderGlassPaneBlock::new, glassSettings(), true);
+		SMOLDER_GLASS_PANE = ModBlocks.register("smolder_glass_pane", CinderGlassPaneBlock::new,
+				glassSettings().luminance(state -> 9), true);
 
 		EMBER_COAL_BLOCK = ModBlocks.register("ember_coal_block", Block::new, cinderstoneSettings(), true);
+
+		// Ember coal block burns like a vanilla coal block (16000 ticks = 80 smelts).
+		FuelRegistryEvents.BUILD.register((builder, context) -> builder.add(EMBER_COAL_BLOCK, 16000));
 
 		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.BLOCKS_KEY).register(entries -> {
 			// Vanilla family shape order: block -> stairs -> slab -> wall.

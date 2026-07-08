@@ -1,0 +1,12 @@
+{
+  "category": "equipment",
+  "ingredients": [
+    "copper_inferno:infernium_gear",
+    "minecraft:flint"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:infernium_igniter"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

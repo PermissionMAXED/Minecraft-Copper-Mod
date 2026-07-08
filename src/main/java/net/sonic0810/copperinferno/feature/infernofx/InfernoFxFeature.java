@@ -88,8 +88,8 @@ public final class InfernoFxFeature {
 				"Hitzeschutz ist ein Statuseffekt, der dich vor dem Verbrennen bewahrt: Solange er aktiv ist, wird Feuer an dir in jedem Tick gel\u00f6scht, und warme Glutfunken flimmern um dich herum. Du erh\u00e4ltst ihn vom Hitzeschutz-Amulett (120s) oder durch das Zerbr\u00f6seln eines Asche-Talismans (30s)."));
 		HandbookEntries.add(new HandbookEntry("gear", "infernofx_oxidized_effect",
 				"minecraft:oxidized_copper", null, null, null, 0,
-				"Oxidized is a harmful status effect: a verdigris crust stiffens your joints and slows your movement speed by 30% for as long as it lasts. Nothing in the Inferno applies it yet - consider it a hazard for future perils.",
-				"Oxidiert ist ein sch\u00e4dlicher Statuseffekt: Eine Gr\u00fcnspankruste versteift deine Gelenke und verlangsamt deine Bewegungsgeschwindigkeit um 30%, solange er anh\u00e4lt. Noch verursacht ihn nichts im Inferno - betrachte ihn als Gefahr f\u00fcr kommende Abenteuer."));
+				"Oxidized is a harmful status effect: a verdigris crust stiffens your joints and slows your movement speed by 30% for as long as it lasts. The Oxidizer's corrosive verdigris cloud applies it - keep your distance when the boss vents.",
+				"Oxidiert ist ein sch\u00e4dlicher Statuseffekt: Eine Gr\u00fcnspankruste versteift deine Gelenke und verlangsamt deine Bewegungsgeschwindigkeit um 30%, solange er anh\u00e4lt. Die \u00e4tzende Gr\u00fcnspanwolke des Oxidierers verursacht ihn - halte Abstand, wenn der Boss sie ausst\u00f6\u00dft."));
 
 		// ----- item recipes (one entry per recipe json in data/copper_inferno/recipe/infernofx/)
 		HandbookEntries.add(new HandbookEntry("gear", "infernofx_heat_ward_charm",

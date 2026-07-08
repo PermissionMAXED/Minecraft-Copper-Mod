@@ -4,6 +4,7 @@
 Idempotent: running it any number of times produces byte-identical files. Emits into
 src/main/resources:
   - 16x16 block textures + the infernium_igniter item texture (Pillow, seeded noise) - DEFAULT
+    (inferno_portal.png is a 16x64 four-frame animation strip + inferno_portal.png.mcmeta)
   - behind --write-json (legacy scaffolding; the JSON in src/main/resources is authoritative):
       blockstates, block/item models, item model-definitions (assets/copper_inferno/...)
       loot tables (data/copper_inferno/loot_table/blocks/...)
@@ -15,10 +16,16 @@ src/main/resources:
 The dimension JSON is NOT invented: every file is derived from the real vanilla 1.21.9
 schemas extracted straight out of fabric-loom's minecraft-client.jar with zipfile
 (the_nether dimension_type, nether noise_settings, nether_wastes/crimson_forest/
-basalt_deltas biomes, ore_nether_gold/ore_magma configured+placed features), with only
-the documented substitutions applied (block names, colors, spawners, appended ores).
+basalt_deltas biomes; configured features spring_lava_nether/spring_nether_open/
+spring_nether_closed/patch_fire/patch_crimson_roots/crimson_forest_vegetation/
+basalt_blobs/blackstone_blobs/disk_gravel/ore_nether_gold/ore_magma; placed features
+spring_lava/spring_open/spring_closed/spring_closed_double/spring_delta/patch_fire/
+glowstone/glowstone_extra/basalt_blobs/blackstone_blobs/disk_sand/brown_mushroom_nether/
+crimson_forest_vegetation/ore_magma), with only the documented substitutions applied
+(block names, biome retargets, colors, spawners, counts, appended ores).
 Blockstate/model/recipe JSON structures are exact copies of the vanilla formats
-(nether_portal blockstate + models, stone-family recipes).
+(nether_portal blockstate + models, stone-family recipes); inferno_portal.png.mcmeta
+follows the vanilla animated-texture format (water_still.png.mcmeta).
 """
 
 import json
@@ -30,7 +37,7 @@ from random import Random
 
 from PIL import Image
 
-WRITE_JSON = "--write-json" in sys.argv  # default False -> textures/*.png only
+WRITE_JSON = "--write-json" in sys.argv  # default False -> textures/*.png (+ .mcmeta) only
 
 ROOT = Path(__file__).resolve().parents[2]
 RES = ROOT / "src" / "main" / "resources"
@@ -85,13 +92,13 @@ LANG_EN = {
 }
 
 LANG_DE = {
-    "block.copper_inferno.cinderstone": "Aschenstein",
-    "block.copper_inferno.cobbled_cinderstone": "Gepflasterter Aschenstein",
+    "block.copper_inferno.cinderstone": "Zunderstein",
+    "block.copper_inferno.cobbled_cinderstone": "Bruchzunderstein",
     "block.copper_inferno.slagstone": "Schlackenstein",
     "block.copper_inferno.ash_block": "Ascheblock",
     "block.copper_inferno.ember_soil": "Glutboden",
     "block.copper_inferno.scorched_sand": "Verbrannter Sand",
-    "block.copper_inferno.cinder_gravel": "Aschenkies",
+    "block.copper_inferno.cinder_gravel": "Zinderkies",
     "block.copper_inferno.infernium_ore": "Infernium-Erz",
     "block.copper_inferno.smolder_crystal_ore": "Schwelkristall-Erz",
     "block.copper_inferno.molten_slag": "Geschmolzene Schlacke",
@@ -179,6 +186,11 @@ def emit_igniter() -> None:
 
 
 def emit_drop_self_loot(name: str) -> None:
+    # NOTE (v3.1): the on-disk loot JSON is authoritative. infernium_ore,
+    # smolder_crystal_ore (and infernoflora's cinder_nest) were upgraded on disk to
+    # silk-touch/fortune ore tables dropping raw_infernium / smolder_crystal — this
+    # legacy drop-self emitter intentionally does NOT model that; never run
+    # --write-json expecting it to reproduce the current loot tables.
     write_json(DATA / "loot_table" / "blocks" / f"{name}.json", {
         "type": "minecraft:block",
         "pools": [{
@@ -216,10 +228,13 @@ def emit_recipes() -> None:
         "pattern": ["F", "C", "B"],
         "result": {"count": 1, "id": f"{NS}:infernium_igniter"},
     })
+    # Progression fix (v3.1): the frame is craftable from Overworld/Nether materials
+    # (polished blackstone, NOT cinderstone which only exists inside the Inferno).
+    # Kept in sync with the authoritative on-disk recipe/infernodim/infernium_portal_frame.json.
     write_json(recipe_path("infernium_portal_frame"), {
         "type": "minecraft:crafting_shaped",
         "category": "building",
-        "key": {"C": f"{NS}:cinderstone", "I": "minecraft:copper_ingot", "M": "minecraft:magma_block"},
+        "key": {"C": "minecraft:polished_blackstone", "I": "minecraft:copper_ingot", "M": "minecraft:magma_block"},
         "pattern": ["CIC", "IMI", "CIC"],
         "result": {"count": 4, "id": f"{NS}:infernium_portal_frame"},
     })
@@ -251,36 +266,100 @@ def emit_recipes() -> None:
 # Dimension JSON (derived from extracted vanilla schemas -- NOT invented)
 # ---------------------------------------------------------------------------
 
+# Vanilla surface-rule / noise-settings block substitutions. minecraft:basalt maps to
+# slagstone, a plain Block WITHOUT the axis property (verified against the registration in
+# InfernoDimensionFeature), so its vanilla Properties dict must be dropped on rename.
+SURFACE_BLOCK_RENAMES = {
+    "minecraft:netherrack": f"{NS}:cinderstone",
+    "minecraft:soul_sand": f"{NS}:ash_block",
+    "minecraft:soul_soil": f"{NS}:ember_soil",
+    "minecraft:gravel": f"{NS}:cinder_gravel",
+    "minecraft:basalt": f"{NS}:slagstone",
+    "minecraft:blackstone": f"{NS}:cobbled_cinderstone",
+    "minecraft:crimson_nylium": f"{NS}:ember_moss_block",
+    "minecraft:nether_wart_block": f"{NS}:ember_wart_block",
+}
+# Mod blocks with no blockstate properties: any vanilla Properties dict is dropped on rename.
+STATELESS_RESULTS = {f"{NS}:slagstone"}
+
+# The checkerboard biome source only ever emits the three copper_inferno biomes, so every
+# vanilla biome referenced by the cloned nether surface rules must be retargeted (or the
+# whole branch dropped) or the branch is permanently dead.
+SURFACE_BIOME_RETARGETS = {
+    "minecraft:nether_wastes": f"{NS}:cinder_wastes",
+    "minecraft:soul_sand_valley": f"{NS}:cinder_wastes",
+    "minecraft:crimson_forest": f"{NS}:ember_grove",
+    "minecraft:basalt_deltas": f"{NS}:slag_sea",
+}
+# The vanilla warped_forest branch is structurally identical to the crimson_forest branch
+# (same netherrack-noise threshold); retargeting both to ember_grove would leave the second
+# branch dead, so the warped branch is dropped instead.
+DROPPED_SURFACE_BIOMES = {"minecraft:warped_forest"}
+
+
 def rename_block_states(node, mapping: dict):
-    """Replace block ids inside {"Name": ...} state dicts only (leaves noise ids etc. alone)."""
+    """Replace block ids inside {"Name": ...} state dicts only (leaves noise ids etc. alone).
+    Drops the sibling "Properties" dict when renaming to a STATELESS_RESULTS block."""
     if isinstance(node, dict):
+        name = node.get("Name")
+        if isinstance(name, str) and name in mapping:
+            node["Name"] = mapping[name]
+            if node["Name"] in STATELESS_RESULTS:
+                node.pop("Properties", None)
         for key, value in node.items():
-            if key == "Name" and isinstance(value, str) and value in mapping:
-                node[key] = mapping[value]
-            else:
+            if key != "Name":
                 rename_block_states(value, mapping)
     elif isinstance(node, list):
         for value in node:
             rename_block_states(value, mapping)
 
 
+def references_dropped_biome(node) -> bool:
+    if isinstance(node, dict):
+        if node.get("type") == "minecraft:biome" and any(
+                b in DROPPED_SURFACE_BIOMES for b in node.get("biome_is", [])):
+            return True
+        return any(references_dropped_biome(v) for v in node.values())
+    if isinstance(node, list):
+        return any(references_dropped_biome(v) for v in node)
+    return False
+
+
+def retarget_surface_biomes(node) -> None:
+    """Prune surface-rule branches conditioned on DROPPED_SURFACE_BIOMES, then rename every
+    remaining biome_is entry via SURFACE_BIOME_RETARGETS."""
+    if isinstance(node, dict):
+        seq = node.get("sequence")
+        if isinstance(seq, list):
+            node["sequence"] = [
+                entry for entry in seq
+                if not (isinstance(entry, dict) and references_dropped_biome(entry.get("if_true")))
+            ]
+        if node.get("type") == "minecraft:biome" and isinstance(node.get("biome_is"), list):
+            node["biome_is"] = [SURFACE_BIOME_RETARGETS.get(b, b) for b in node["biome_is"]]
+        for value in node.values():
+            retarget_surface_biomes(value)
+    elif isinstance(node, list):
+        for value in node:
+            retarget_surface_biomes(value)
+
+
 def emit_dimension_type() -> None:
-    # Copy of vanilla the_nether with a slightly brighter ambient light.
+    # Copy of vanilla the_nether with a slightly brighter ambient light and 1:1 coordinate
+    # scale (no 8x nether-style coordinate compression between overworld and Inferno).
     dim_type = jar_json("data/minecraft/dimension_type/the_nether.json")
     dim_type["ambient_light"] = 0.12
+    dim_type["coordinate_scale"] = 1.0
     dim_type["effects"] = "minecraft:the_nether"
     write_json(DATA / "dimension_type" / "inferno.json", dim_type)
 
 
 def emit_noise_settings() -> None:
-    # Copy of vanilla nether noise settings; ONLY block substitutions, nothing else.
+    # Copy of vanilla nether noise settings; block substitutions plus the surface-rule
+    # biome retarget/prune pass (checkerboard only emits copper_inferno biomes).
     noise = jar_json("data/minecraft/worldgen/noise_settings/nether.json")
-    rename_block_states(noise, {
-        "minecraft:netherrack": f"{NS}:cinderstone",
-        "minecraft:soul_sand": f"{NS}:ash_block",
-        "minecraft:soul_soil": f"{NS}:ember_soil",
-        "minecraft:gravel": f"{NS}:cinder_gravel",
-    })
+    retarget_surface_biomes(noise["surface_rule"])
+    rename_block_states(noise, SURFACE_BLOCK_RENAMES)
     write_json(DATA / "worldgen" / "noise_settings" / "inferno.json", noise)
 
 
@@ -300,13 +379,44 @@ BIOMES = [
     }),
 ]
 
-# Appended to every biome's UNDERGROUND_ORES step (index 7); identical order in every
+# Appended to every biome's step-7 (UNDERGROUND_DECORATION) list; identical order in every
 # biome so the placed-feature ordering stays cycle-free across the dimension.
 ORE_PLACED_FEATURES = [
     f"{NS}:infernium_ore",
     f"{NS}:smolder_crystal_ore",
     f"{NS}:molten_slag",
 ]
+
+# Curated feature lists. Every vanilla nether feature either hard-checks
+# netherrack/nylium in code (glowstone_blob, weeping vines, huge fungi,
+# nether_forest_vegetation, deltas, basalt columns, mushroom patches) or targets
+# netherrack/base_stone_nether in data (nether ores, springs, blobs, patch_fire), so all
+# of them are dead on cinderstone terrain: each is pruned or replaced by a
+# copper_inferno clone below. Per step index, every biome's list is a subsequence of one
+# master order, keeping the placed-feature ordering cycle-free (FeatureSorter rule).
+# Step 7 = UNDERGROUND_DECORATION, step 9 = VEGETAL_DECORATION.
+BIOME_FEATURES = {
+    "cinder_wastes": {
+        7: [f"{NS}:spring_open", f"{NS}:patch_fire", f"{NS}:ceiling_glow_spores",
+            f"{NS}:wall_fungal_lights", f"{NS}:disk_scorched_sand", f"{NS}:spring_closed",
+            *ORE_PLACED_FEATURES],
+        9: [f"{NS}:spring_lava", f"{NS}:patch_ashen_vegetation"],
+    },
+    "ember_grove": {
+        7: [f"{NS}:spring_open", f"{NS}:patch_fire", f"{NS}:ceiling_glow_spores",
+            f"{NS}:wall_fungal_lights", f"{NS}:spring_closed",
+            *ORE_PLACED_FEATURES],
+        9: [f"{NS}:spring_lava", f"{NS}:patch_ember_flora", f"{NS}:patch_ember_moss",
+            f"{NS}:patch_cinder_nest"],
+    },
+    "slag_sea": {
+        7: [f"{NS}:slagstone_blobs", f"{NS}:cobbled_cinderstone_blobs", f"{NS}:spring_delta",
+            f"{NS}:patch_fire", f"{NS}:ceiling_glow_spores", f"{NS}:wall_fungal_lights",
+            f"{NS}:spring_closed_double",
+            *ORE_PLACED_FEATURES],
+        9: [f"{NS}:patch_ashen_grass"],
+    },
+}
 
 
 def emit_biomes() -> None:
@@ -315,7 +425,10 @@ def emit_biomes() -> None:
         biome["effects"].update(colors)
         # Mobs are added in code by the mob worker: every spawner list is emptied.
         biome["spawners"] = {key: [] for key in biome["spawners"]}
-        biome["features"][7] = biome["features"][7] + ORE_PLACED_FEATURES
+        features = [[] for _ in range(10)]
+        for step, placed in BIOME_FEATURES[biome_id].items():
+            features[step] = list(placed)
+        biome["features"] = features
         write_json(DATA / "worldgen" / "biome" / f"{biome_id}.json", biome)
 
 
@@ -363,6 +476,293 @@ def emit_ores() -> None:
                 {"type": "minecraft:biome"},
             ],
         })
+
+
+# ---------------------------------------------------------------------------
+# Cinderstone-valid feature clones (schemas extracted from the vanilla jar; only the
+# documented block/count substitutions applied)
+# ---------------------------------------------------------------------------
+
+# Ground blocks vegetation may root on. The plants are plain no-collision Blocks with no
+# floor check of their own, so the random_patch predicate is the only ground filter.
+GROUND_WASTES = [f"{NS}:cinderstone", f"{NS}:ember_soil", f"{NS}:ash_block"]
+# ember_grove floors are ember_moss_block / ember_wart_block after the surface-rule
+# retarget, so grove vegetation also roots on those.
+GROUND_GROVE = GROUND_WASTES + [f"{NS}:ember_moss_block", f"{NS}:ember_wart_block"]
+# slag_sea floors are slagstone / cobbled_cinderstone after the surface-rule retarget.
+GROUND_SLAG = [f"{NS}:cinderstone", f"{NS}:ash_block", f"{NS}:slagstone",
+               f"{NS}:cobbled_cinderstone"]
+# Ceilings per surface rules: cinderstone everywhere, ash/ember in cinder_wastes
+# (soul-sand-valley branch), slagstone in slag_sea (basalt_deltas branch).
+CEILING_BLOCKS = [f"{NS}:cinderstone", f"{NS}:slagstone", f"{NS}:ash_block",
+                  f"{NS}:ember_soil"]
+WALL_BLOCKS = [f"{NS}:cinderstone", f"{NS}:slagstone", f"{NS}:cobbled_cinderstone"]
+
+# Placement-modifier fragments (schemas from the vanilla placed features named below).
+PLACE_IN_SQUARE = {"type": "minecraft:in_square"}
+PLACE_BIOME = {"type": "minecraft:biome"}
+
+
+def height_uniform(min_spec, max_spec):
+    return {"type": "minecraft:height_range",
+            "height": {"type": "minecraft:uniform",
+                       "min_inclusive": min_spec, "max_inclusive": max_spec}}
+
+
+HEIGHT_FULL = height_uniform({"above_bottom": 0}, {"below_top": 0})       # vanilla glowstone
+HEIGHT_4_4 = height_uniform({"above_bottom": 4}, {"below_top": 4})        # vanilla spring_open
+HEIGHT_10_10 = height_uniform({"above_bottom": 10}, {"below_top": 10})    # vanilla spring_closed
+
+
+def simple_state(name: str):
+    return {"type": "minecraft:simple_state_provider", "state": {"Name": name}}
+
+
+def weighted_states(entries):
+    """weighted_state_provider schema from vanilla crimson_forest_vegetation."""
+    return {"type": "minecraft:weighted_state_provider",
+            "entries": [{"data": {"Name": name}, "weight": weight} for name, weight in entries]}
+
+
+def random_patch(to_place, predicate, tries=96, xz_spread=7, y_spread=3):
+    """random_patch schema from vanilla patch_fire / patch_crimson_roots (tries 96,
+    xz_spread 7, y_spread 3; inner simple_block behind a block_predicate_filter)."""
+    return {
+        "type": "minecraft:random_patch",
+        "config": {
+            "feature": {
+                "feature": {"type": "minecraft:simple_block", "config": {"to_place": to_place}},
+                "placement": [{"type": "minecraft:block_predicate_filter",
+                               "predicate": predicate}],
+            },
+            "tries": tries,
+            "xz_spread": xz_spread,
+            "y_spread": y_spread,
+        },
+    }
+
+
+def on_ground(ground_blocks):
+    """air at pos + ground block below; all_of/matching_blocks schema from vanilla
+    patch_fire's predicate."""
+    return {"type": "minecraft:all_of", "predicates": [
+        {"type": "minecraft:matching_blocks", "blocks": "minecraft:air"},
+        {"type": "minecraft:matching_blocks", "blocks": ground_blocks, "offset": [0, -1, 0]},
+    ]}
+
+
+def emit_feature(name: str, configured, placement) -> None:
+    write_json(DATA / "worldgen" / "configured_feature" / f"{name}.json", configured)
+    write_json(DATA / "worldgen" / "placed_feature" / f"{name}.json",
+               {"feature": f"{NS}:{name}", "placement": placement})
+
+
+def emit_springs() -> None:
+    """Lava springs. Configured schemas from vanilla spring_nether_open /
+    spring_nether_closed / spring_lava_nether; valid_blocks substituted netherrack ->
+    cinderstone (and soul_sand/gravel/magma_block/blackstone -> the mod analogs).
+    Placements from vanilla spring_open / spring_closed / spring_closed_double /
+    spring_delta / spring_lava."""
+    open_config = {
+        "type": "minecraft:spring_feature",
+        "config": {
+            "hole_count": 1,
+            "requires_block_below": False,
+            "rock_count": 4,
+            "state": {"Name": "minecraft:lava", "Properties": {"falling": "true"}},
+            "valid_blocks": f"{NS}:cinderstone",
+        },
+    }
+    closed_config = {
+        "type": "minecraft:spring_feature",
+        "config": {
+            "hole_count": 0,
+            "requires_block_below": False,
+            "rock_count": 5,
+            "state": {"Name": "minecraft:lava", "Properties": {"falling": "true"}},
+            "valid_blocks": f"{NS}:cinderstone",
+        },
+    }
+    # vanilla spring_lava_nether: netherrack/soul_sand/gravel/magma_block/blackstone.
+    lava_nether_config = {
+        "type": "minecraft:spring_feature",
+        "config": {
+            "hole_count": 1,
+            "requires_block_below": True,
+            "rock_count": 4,
+            "state": {"Name": "minecraft:lava", "Properties": {"falling": "true"}},
+            "valid_blocks": [f"{NS}:cinderstone", f"{NS}:ash_block", f"{NS}:cinder_gravel",
+                             f"{NS}:molten_slag", f"{NS}:cobbled_cinderstone"],
+        },
+    }
+    emit_feature("spring_open", open_config, [
+        {"type": "minecraft:count", "count": 8}, PLACE_IN_SQUARE, HEIGHT_4_4, PLACE_BIOME])
+    write_json(DATA / "worldgen" / "configured_feature" / "spring_closed.json", closed_config)
+    write_json(DATA / "worldgen" / "placed_feature" / "spring_closed.json", {
+        "feature": f"{NS}:spring_closed",
+        "placement": [{"type": "minecraft:count", "count": 16}, PLACE_IN_SQUARE,
+                      HEIGHT_10_10, PLACE_BIOME],
+    })
+    # spring_closed_double: same configured feature, double count (vanilla pattern).
+    write_json(DATA / "worldgen" / "placed_feature" / "spring_closed_double.json", {
+        "feature": f"{NS}:spring_closed",
+        "placement": [{"type": "minecraft:count", "count": 32}, PLACE_IN_SQUARE,
+                      HEIGHT_10_10, PLACE_BIOME],
+    })
+    write_json(DATA / "worldgen" / "configured_feature" / "spring_lava_nether.json",
+               lava_nether_config)
+    write_json(DATA / "worldgen" / "placed_feature" / "spring_delta.json", {
+        "feature": f"{NS}:spring_lava_nether",
+        "placement": [{"type": "minecraft:count", "count": 16}, PLACE_IN_SQUARE,
+                      HEIGHT_4_4, PLACE_BIOME],
+    })
+    # vanilla spring_lava placement (count 20, very_biased_to_bottom).
+    write_json(DATA / "worldgen" / "placed_feature" / "spring_lava.json", {
+        "feature": f"{NS}:spring_lava_nether",
+        "placement": [
+            {"type": "minecraft:count", "count": 20},
+            PLACE_IN_SQUARE,
+            {"type": "minecraft:height_range",
+             "height": {"type": "minecraft:very_biased_to_bottom", "inner": 8,
+                        "min_inclusive": {"above_bottom": 0},
+                        "max_inclusive": {"below_top": 8}}},
+            PLACE_BIOME,
+        ],
+    })
+
+
+def emit_fire_patch() -> None:
+    """patch_fire clone: fire on cinderstone (cinderstone is added to
+    minecraft:infiniburn_nether via devtools/tagfrag/infernodim_worldgen.json, so the
+    fire burns forever like vanilla netherrack fire). Schema+placement from vanilla
+    patch_fire."""
+    fire_state = {"Name": "minecraft:fire", "Properties": {
+        "age": "0", "east": "false", "north": "false", "south": "false",
+        "up": "false", "west": "false"}}
+    configured = random_patch(
+        {"type": "minecraft:simple_state_provider", "state": fire_state},
+        on_ground(f"{NS}:cinderstone"))
+    emit_feature("patch_fire", configured, [
+        {"type": "minecraft:count",
+         "count": {"type": "minecraft:uniform", "min_inclusive": 0, "max_inclusive": 5}},
+        PLACE_IN_SQUARE, HEIGHT_4_4, PLACE_BIOME])
+
+
+def emit_light_features() -> None:
+    """Glowstone analogs: vanilla glowstone_blob hard-codes netherrack/basalt/blackstone
+    ceilings AND the glowstone block in code, so these are data-driven random_patch
+    clones instead. ceiling_glow_spores hangs glowing_spore_block under ceilings
+    (placement from vanilla placed glowstone: count 10, full height); wall_fungal_lights
+    sticks fungal_light to walls (placement from vanilla placed glowstone_extra:
+    biased_to_bottom 0-9)."""
+    ceiling_predicate = {"type": "minecraft:all_of", "predicates": [
+        {"type": "minecraft:matching_blocks", "blocks": "minecraft:air"},
+        {"type": "minecraft:matching_blocks", "blocks": CEILING_BLOCKS, "offset": [0, 1, 0]},
+    ]}
+    emit_feature("ceiling_glow_spores",
+                 random_patch(simple_state(f"{NS}:glowing_spore_block"), ceiling_predicate),
+                 [{"type": "minecraft:count", "count": 10}, PLACE_IN_SQUARE,
+                  HEIGHT_FULL, PLACE_BIOME])
+    wall_predicate = {"type": "minecraft:all_of", "predicates": [
+        {"type": "minecraft:matching_blocks", "blocks": "minecraft:air"},
+        {"type": "minecraft:any_of", "predicates": [
+            {"type": "minecraft:matching_blocks", "blocks": WALL_BLOCKS, "offset": offset}
+            for offset in ([1, 0, 0], [-1, 0, 0], [0, 0, 1], [0, 0, -1])
+        ]},
+    ]}
+    emit_feature("wall_fungal_lights",
+                 random_patch(simple_state(f"{NS}:fungal_light"), wall_predicate),
+                 [{"type": "minecraft:count",
+                   "count": {"type": "minecraft:biased_to_bottom",
+                             "min_inclusive": 0, "max_inclusive": 9}},
+                  PLACE_IN_SQUARE, HEIGHT_4_4, PLACE_BIOME])
+
+
+def emit_blobs() -> None:
+    """slag_sea stone variety: netherrack_replace_blobs schema from vanilla basalt_blobs /
+    blackstone_blobs (radius uniform 3-7; placements count 75 / count 25), target
+    netherrack -> cinderstone, states basalt -> slagstone (plain block, no axis
+    property) and blackstone -> cobbled_cinderstone."""
+    def blob(state_name):
+        return {
+            "type": "minecraft:netherrack_replace_blobs",
+            "config": {
+                "radius": {"type": "minecraft:uniform", "min_inclusive": 3, "max_inclusive": 7},
+                "state": {"Name": state_name},
+                "target": {"Name": f"{NS}:cinderstone"},
+            },
+        }
+    emit_feature("slagstone_blobs", blob(f"{NS}:slagstone"),
+                 [{"type": "minecraft:count", "count": 75}, PLACE_IN_SQUARE,
+                  HEIGHT_FULL, PLACE_BIOME])
+    emit_feature("cobbled_cinderstone_blobs", blob(f"{NS}:cobbled_cinderstone"),
+                 [{"type": "minecraft:count", "count": 25}, PLACE_IN_SQUARE,
+                  HEIGHT_FULL, PLACE_BIOME])
+
+
+def emit_scorched_sand_disk() -> None:
+    """Scorched sand banks near the lava-sea level in cinder_wastes. Disk schema from
+    vanilla disk_gravel (empty rules list); placement count from vanilla disk_sand with
+    the ore_magma-style absolute height band around sea_level 32 (this dimension has a
+    ceiling, so the overworld heightmap/water-filter modifiers don't apply)."""
+    configured = {
+        "type": "minecraft:disk",
+        "config": {
+            "half_height": 2,
+            "radius": {"type": "minecraft:uniform", "min_inclusive": 2, "max_inclusive": 6},
+            "state_provider": {"fallback": simple_state(f"{NS}:scorched_sand"), "rules": []},
+            "target": {"type": "minecraft:matching_blocks",
+                       "blocks": [f"{NS}:cinderstone", f"{NS}:cinder_gravel",
+                                  f"{NS}:ash_block"]},
+        },
+    }
+    emit_feature("disk_scorched_sand", configured, [
+        {"type": "minecraft:count", "count": 3}, PLACE_IN_SQUARE,
+        height_uniform({"absolute": 30}, {"absolute": 35}), PLACE_BIOME])
+
+
+def emit_vegetation() -> None:
+    """Biome flora. All plants are plain no-collision blocks (no floor check), so every
+    patch carries an explicit on_ground predicate. Weighted-provider schema from vanilla
+    crimson_forest_vegetation; count_on_every_layer placement from vanilla placed
+    crimson_forest_vegetation; sparse placement from vanilla brown_mushroom_nether
+    (rarity_filter 2)."""
+    def every_layer(count):
+        return [{"type": "minecraft:count_on_every_layer", "count": count}, PLACE_BIOME]
+
+    # cinder_wastes: ashen grass + sprouts.
+    emit_feature("patch_ashen_vegetation",
+                 random_patch(weighted_states([(f"{NS}:ashen_grass", 3),
+                                               (f"{NS}:ash_sprouts", 2)]),
+                              on_ground(GROUND_WASTES)),
+                 every_layer(4))
+    # ember_grove: the main flora mix.
+    emit_feature("patch_ember_flora",
+                 random_patch(weighted_states([(f"{NS}:ember_fungus", 5),
+                                               (f"{NS}:cinder_roots", 4),
+                                               (f"{NS}:smolder_bloom", 2),
+                                               (f"{NS}:spore_cluster", 2)]),
+                              on_ground(GROUND_GROVE)),
+                 every_layer(6))
+    # ember_grove: moss carpets the ground (replaces the surface block below air).
+    moss_predicate = {"type": "minecraft:all_of", "predicates": [
+        {"type": "minecraft:matching_blocks",
+         "blocks": [f"{NS}:cinderstone", f"{NS}:ember_soil"]},
+        {"type": "minecraft:matching_blocks", "blocks": "minecraft:air", "offset": [0, 1, 0]},
+    ]}
+    emit_feature("patch_ember_moss",
+                 random_patch(simple_state(f"{NS}:ember_moss_block"), moss_predicate),
+                 every_layer(2))
+    # ember_grove: cinder nests (MANDATORY: the survival source of ember berries).
+    emit_feature("patch_cinder_nest",
+                 random_patch(simple_state(f"{NS}:cinder_nest"), on_ground(GROUND_GROVE),
+                              tries=4, xz_spread=4, y_spread=3),
+                 every_layer(1))
+    # slag_sea: sparse ashen grass.
+    emit_feature("patch_ashen_grass",
+                 random_patch(simple_state(f"{NS}:ashen_grass"), on_ground(GROUND_SLAG)),
+                 [{"type": "minecraft:rarity_filter", "chance": 2}, PLACE_IN_SQUARE,
+                  HEIGHT_FULL, PLACE_BIOME])
 
 
 def emit_dimension() -> None:
@@ -532,25 +932,33 @@ def tex_infernium_portal_frame(rng: Random) -> Image.Image:
     return img
 
 
+PORTAL_FRAMES = 4
+
+
 def tex_inferno_portal(rng: Random) -> Image.Image:
-    """Translucent ember/verdigris swirl (RGBA; rendered on the TRANSLUCENT layer)."""
-    img = Image.new("RGBA", (16, 16))
-    for y in range(16):
-        for x in range(16):
-            band = (x + y * 2 + rng.randrange(0, 2)) % 8
-            if band < 3:
-                color = EMBER
-            elif band < 5:
-                color = EMBER_BRIGHT
-            elif band < 7:
-                color = VERDIGRIS_DARK
-            else:
-                color = (0x8A, 0x2E, 0x12)
-            alpha = 176 + rng.randrange(0, 48)
-            img.putpixel((x, y), (*color, alpha))
-    for _ in range(10):
-        px, py = rng.randrange(0, 16), rng.randrange(0, 16)
-        img.putpixel((px, py), (*EMBER_HOT, 230))
+    """Translucent ember/verdigris swirl (RGBA; rendered on the TRANSLUCENT layer).
+    16x64 vertical animation strip: 4 stacked 16x16 frames, the swirl bands drifting two
+    pixels per frame so the loop cycles seamlessly (band period 8 = 4 frames x 2px).
+    Deterministic: single seeded rng drives all frames. Frame timing lives in
+    inferno_portal.png.mcmeta (vanilla animated-texture format, cf. water_still)."""
+    img = Image.new("RGBA", (16, 16 * PORTAL_FRAMES))
+    for frame in range(PORTAL_FRAMES):
+        for y in range(16):
+            for x in range(16):
+                band = (x + y * 2 + frame * 2 + rng.randrange(0, 2)) % 8
+                if band < 3:
+                    color = EMBER
+                elif band < 5:
+                    color = EMBER_BRIGHT
+                elif band < 7:
+                    color = VERDIGRIS_DARK
+                else:
+                    color = (0x8A, 0x2E, 0x12)
+                alpha = 176 + rng.randrange(0, 48)
+                img.putpixel((x, frame * 16 + y), (*color, alpha))
+        for _ in range(10):
+            px, py = rng.randrange(0, 16), rng.randrange(0, 16)
+            img.putpixel((px, frame * 16 + py), (*EMBER_HOT, 230))
     return img
 
 
@@ -613,6 +1021,13 @@ def emit_textures() -> None:
     for name, fn in BLOCK_TEXTURES.items():
         # Per-texture fixed seed keeps output byte-identical across runs.
         fn(Random(f"{NS}:{name}")).save(block_dir / f"{name}.png")
+    # Animation metadata for the 16x64 portal strip; format matches the vanilla animated
+    # .png.mcmeta files (e.g. assets/minecraft/textures/block/water_still.png.mcmeta:
+    # {"animation": {"frametime": 2}}). Written alongside the PNG (not --write-json
+    # gated: it is texture metadata, not scaffolding JSON).
+    (block_dir / "inferno_portal.png.mcmeta").write_text(
+        json.dumps({"animation": {"frametime": 4}}, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8")
     item_dir = ASSETS / "textures" / "item"
     item_dir.mkdir(parents=True, exist_ok=True)
     tex_infernium_igniter(Random(f"{NS}:infernium_igniter")).save(item_dir / "infernium_igniter.png")
@@ -634,6 +1049,12 @@ def main() -> None:
     emit_noise_settings()
     emit_biomes()
     emit_ores()
+    emit_springs()
+    emit_fire_patch()
+    emit_light_features()
+    emit_blobs()
+    emit_scorched_sand_disk()
+    emit_vegetation()
     emit_dimension()
     write_json(ASSETS / "lang" / "fragments" / "infernodim.json", LANG_EN)
     write_json(ASSETS / "lang" / "fragments_de" / "infernodim.json", LANG_DE)

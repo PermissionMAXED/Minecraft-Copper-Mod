@@ -146,41 +146,41 @@ public final class InfernoDimensionFeature {
 				"Feuerstein an einem Kupferschläger mit Lohenruten-Griff. Auf einem Infernium-Portalrahmen benutzen, um ein Inferno-Portal zu entzünden. 64 Verwendungen."));
 		HandbookEntries.add(new HandbookEntry("blocks", "infernodim_infernium_portal_frame",
 				"copper_inferno:infernium_portal_frame", "infernodim/infernium_portal_frame",
-				new String[] {"copper_inferno:cinderstone", "minecraft:copper_ingot", "copper_inferno:cinderstone",
+				new String[] {"minecraft:polished_blackstone", "minecraft:copper_ingot", "minecraft:polished_blackstone",
 						"minecraft:copper_ingot", "minecraft:magma_block", "minecraft:copper_ingot",
-						"copper_inferno:cinderstone", "minecraft:copper_ingot", "copper_inferno:cinderstone"},
+						"minecraft:polished_blackstone", "minecraft:copper_ingot", "minecraft:polished_blackstone"},
 				"copper_inferno:infernium_portal_frame", 4,
-				"Portal frame blocks: cinderstone and copper around a magma core. Fourteen make one 4x5 portal ring.",
-				"Portalrahmen-Blöcke: Aschenstein und Kupfer um einen Magmakern. Vierzehn ergeben einen 4x5-Portalring."));
+				"Portal frame blocks: polished blackstone and copper around a magma core - all Overworld/Nether materials, so you craft the frame BEFORE ever entering the Inferno. Fourteen make one 4x5 portal ring.",
+				"Portalrahmen-Blöcke: polierter Schwarzstein und Kupfer um einen Magmakern - alles Materialien aus Oberwelt und Nether, du baust den Rahmen also, BEVOR du das Inferno betrittst. Vierzehn ergeben einen 4x5-Portalring."));
 		HandbookEntries.add(new HandbookEntry("blocks", "infernodim_cobbled_cinderstone",
 				"copper_inferno:cobbled_cinderstone", "infernodim/cobbled_cinderstone",
 				new String[] {"copper_inferno:cinderstone", "copper_inferno:cinderstone", "",
 						"copper_inferno:cinderstone", "copper_inferno:cinderstone", "", "", "", ""},
 				"copper_inferno:cobbled_cinderstone", 4,
 				"Knapped cinderstone rubble. Sturdier than raw cinderstone and good for ember-proof foundations.",
-				"Behauener Aschenstein-Schutt. Robuster als roher Aschenstein und gut für glutfeste Fundamente."));
+				"Behauener Zunderstein-Schutt. Robuster als roher Zunderstein und gut für glutfeste Fundamente."));
 		HandbookEntries.add(new HandbookEntry("blocks", "infernodim_cinderstone_from_smelting",
 				"copper_inferno:cinderstone", "infernodim/cinderstone_from_smelting",
 				new String[] {"", "", "", "", "copper_inferno:cobbled_cinderstone", "", "", "", ""},
 				"copper_inferno:cinderstone", 1,
 				"Smelting cobbled cinderstone fuses it back into smooth cinderstone, the Inferno's bedrock-to-ceiling terrain stone.",
-				"Durch Schmelzen verschmilzt gepflasterter Aschenstein wieder zu glattem Aschenstein, dem Terrainstein des Infernos."));
+				"Durch Schmelzen verschmilzt Bruchzunderstein wieder zu glattem Zunderstein, dem Terrainstein des Infernos."));
 		HandbookEntries.add(new HandbookEntry("blocks", "infernodim_cobbled_cinderstone_stonecutting",
 				"copper_inferno:cobbled_cinderstone", "infernodim/cobbled_cinderstone_from_cinderstone_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:cinderstone", "", "", "", ""},
 				"copper_inferno:cobbled_cinderstone", 1,
 				"The stonecutter splits cinderstone into cobbled cinderstone one block at a time, with no waste.",
-				"Der Steinsäger zerteilt Aschenstein verlustfrei Block für Block in gepflasterten Aschenstein."));
+				"Die Steinsäge zerteilt Zunderstein verlustfrei Block für Block in Bruchzunderstein."));
 
 		// Non-recipe dimension lore entries.
 		HandbookEntries.add(new HandbookEntry("dimension", "infernodim_portal_howto",
 				"copper_inferno:infernium_portal_frame", null, null, null, 0,
-				"Build an upright 4x5 Infernium Portal Frame ring (2x3 air interior), then ignite the interior with the Infernium Igniter. Step in to travel to the Inferno; a return frame is built for you at y=70.",
-				"Baue einen aufrechten 4x5-Ring aus Infernium-Portalrahmen (2x3 Luft innen) und entzünde das Innere mit dem Infernium-Anzünder. Tritt hinein, um ins Inferno zu reisen; ein Rückkehr-Rahmen wird bei y=70 für dich errichtet."));
+				"Build an upright 4x5 Infernium Portal Frame ring (2x3 air interior), then ignite the interior with the Infernium Igniter. Step in to travel to the Inferno; you arrive at your existing portal within 16 blocks, or a safe return platform with a pre-lit frame is built near y=70 if none exists.",
+				"Baue einen aufrechten 4x5-Ring aus Infernium-Portalrahmen (2x3 Luft innen) und entzünde das Innere mit dem Infernium-Anzünder. Tritt hinein, um ins Inferno zu reisen; du kommst an deinem bestehenden Portal im Umkreis von 16 Blöcken an, oder eine sichere Rückkehr-Plattform mit entzündetem Rahmen wird nahe y=70 errichtet, falls keines existiert."));
 		HandbookEntries.add(new HandbookEntry("dimension", "infernodim_biome_cinder_wastes",
 				"copper_inferno:cinderstone", null, null, null, 0,
 				"Cinder Wastes: the Inferno's open ember plains. Bare cinderstone, drifting sparks and lava seas under an orange haze.",
-				"Aschenöde: die offenen Glut-Ebenen des Infernos. Nackter Aschenstein, treibende Funken und Lavaseen unter orangefarbenem Dunst."));
+				"Aschenöde: die offenen Glut-Ebenen des Infernos. Nackter Zunderstein, treibende Funken und Lavaseen unter orangefarbenem Dunst."));
 		HandbookEntries.add(new HandbookEntry("dimension", "infernodim_biome_ember_grove",
 				"copper_inferno:ember_soil", null, null, null, 0,
 				"Ember Grove: a smouldering forest biome. Glowing ember soil underfoot and thick verdigris-tinted air.",
@@ -192,11 +192,11 @@ public final class InfernoDimensionFeature {
 		HandbookEntries.add(new HandbookEntry("dimension", "infernodim_infernium_ore",
 				"copper_inferno:infernium_ore", null, null, null, 0,
 				"Infernium Ore: copper-orange veins in cinderstone throughout the Inferno. Mine with a pickaxe.",
-				"Infernium-Erz: kupferorange Adern im Aschenstein überall im Inferno. Mit einer Spitzhacke abbauen."));
+				"Infernium-Erz: kupferorange Adern im Zunderstein überall im Inferno. Mit einer Spitzhacke abbauen."));
 		HandbookEntries.add(new HandbookEntry("dimension", "infernodim_smolder_crystal_ore",
 				"copper_inferno:smolder_crystal_ore", null, null, null, 0,
 				"Smolder Crystal Ore: verdigris-green crystal shards seeded through cinderstone. Rarer than infernium.",
-				"Schwelkristall-Erz: grünspanfarbene Kristallsplitter im Aschenstein. Seltener als Infernium."));
+				"Schwelkristall-Erz: grünspanfarbene Kristallsplitter im Zunderstein. Seltener als Infernium."));
 		HandbookEntries.add(new HandbookEntry("dimension", "infernodim_molten_slag",
 				"copper_inferno:molten_slag", null, null, null, 0,
 				"Molten Slag: glowing blobs near the lava seas (light level 10). Safe to walk on, hot to look at.",

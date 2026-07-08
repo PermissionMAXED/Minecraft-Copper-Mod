@@ -1,0 +1,13 @@
+{
+  "block/infiniburn_nether": [
+    "copper_inferno:cinderstone"
+  ],
+  "block/nether_carver_replaceables": [
+    "copper_inferno:cinderstone",
+    "copper_inferno:ash_block",
+    "copper_inferno:ember_soil",
+    "copper_inferno:cinder_gravel",
+    "copper_inferno:slagstone",
+    "copper_inferno:scorched_sand"
+  ]
+}

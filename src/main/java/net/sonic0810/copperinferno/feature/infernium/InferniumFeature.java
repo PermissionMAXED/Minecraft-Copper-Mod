@@ -320,6 +320,35 @@ public final class InferniumFeature {
 				"A Smolder Crystal set in glass focuses into a Smolder Lens.",
 				"Ein in Glas gefasster Schwelkristall wird zu einer Schwellinse geschliffen."));
 
+		// ----- machining-part & boss-drop sinks (recipes in recipe/infernium/)
+		HandbookEntries.add(new HandbookEntry("blocks", "infernium_forge_heart_from_titan_ember",
+				"copper_inferno:forge_heart", "infernium/forge_heart_from_titan_ember",
+				new String[]{"copper_inferno:infernium_plate", "copper_inferno:infernium_plate", "copper_inferno:infernium_plate",
+						"copper_inferno:infernium_plate", "copper_inferno:titan_ember", "copper_inferno:infernium_plate",
+						"copper_inferno:infernium_plate", "copper_inferno:infernium_plate", "copper_inferno:infernium_plate"},
+				"copper_inferno:forge_heart", 1,
+				"Eight Infernium Plates sealed around a Titan Ember forge a Forge Heart - a trophy use for the Inferno Titan's drop.",
+				"Acht Infernium-Platten um eine Titanglut versiegelt ergeben ein Schmiedeherz - eine Troph\u00e4en-Verwendung f\u00fcr den Drop des Inferno-Titanen."));
+		HandbookEntries.add(new HandbookEntry("blocks", "infernium_smolder_lamp_from_smolder_lens",
+				"copper_inferno:smolder_lamp", "infernium/smolder_lamp_from_smolder_lens",
+				new String[]{"copper_inferno:infernium_plate", "copper_inferno:smolder_lens", "copper_inferno:infernium_plate",
+						"", "", "", "", "", ""},
+				"copper_inferno:smolder_lamp", 4,
+				"A Smolder Lens framed by two Infernium Plates focuses into 4 Smolder Lamps.",
+				"Eine Schwellinse zwischen zwei Infernium-Platten b\u00fcndelt ihr Licht zu 4 Schwellampen."));
+		HandbookEntries.add(new HandbookEntry("gear", "infernium_igniter_from_gear",
+				"copper_inferno:infernium_igniter", "infernium/infernium_igniter_from_gear",
+				new String[]{"copper_inferno:infernium_gear", "minecraft:flint", "", "", "", "", "", "", ""},
+				"copper_inferno:infernium_igniter", 1,
+				"An Infernium Gear spun against flint sparks into a fresh Infernium Igniter - handy when you are already in the Inferno.",
+				"Ein Infernium-Zahnrad an Feuerstein gerieben ergibt einen neuen Infernium-Anz\u00fcnder - praktisch, wenn man schon im Inferno ist."));
+		HandbookEntries.add(new HandbookEntry("items", "infernium_cyan_dye_from_verdigris_scale",
+				"minecraft:cyan_dye", "infernium/cyan_dye_from_verdigris_scale",
+				new String[]{"copper_inferno:verdigris_scale", "", "", "", "", "", "", "", ""},
+				"minecraft:cyan_dye", 2,
+				"Grind a Verdigris Scale from The Oxidizer into 2 Cyan Dye.",
+				"Eine Gr\u00fcnspanschuppe des Oxidierers zermahlen ergibt 2 T\u00fcrkisen Farbstoff."));
+
 		// ----- smithing template + duplication
 		HandbookEntries.add(new HandbookEntry("gear", "infernium_upgrade_smithing_template",
 				TPL, "infernium/infernium_upgrade_smithing_template",

@@ -390,21 +390,27 @@ def make_ember_fungus(name: str) -> Image.Image:
 
 
 def make_ash_sprouts(name: str) -> Image.Image:
-    """Short pale-gray sprouts poking from the ground (nether_sprouts silhouette)."""
+    """Stubby ground-hugging sprout nubs with pale bud caps (nether_sprouts
+    silhouette): SHORT (2-4 px) so they read clearly against the tall arcing
+    blades of ashen_grass."""
     rnd = random.Random(name)
     img = blank()
     px = img.load()
     base = (0x8E, 0x8E, 0x88)
-    tip = (0xC2, 0xC2, 0xBA)
-    dark = (0x66, 0x66, 0x60)
-    for sx in (2, 5, 8, 11, 14):
-        h = rnd.randint(3, 6)
-        for i in range(h):
+    bud = (0xD2, 0xD2, 0xC6)
+    dark = (0x63, 0x63, 0x5C)
+    for sx in (1, 4, 7, 10, 13):
+        h = rnd.randint(2, 4)
+        for i in range(h):  # 2px-wide stem nub
             y = 15 - i
-            c = tip if i == h - 1 else (dark if i == 0 else base)
+            c = dark if i == 0 else base
             put(px, sx, y, jitter(rnd, c, 4))
-        if h >= 5:  # taller sprouts fork a knob
-            put(px, sx + rnd.choice((-1, 1)), 15 - h + 1, jitter(rnd, tip, 4))
+            put(px, sx + 1, y, jitter(rnd, shade(c, -10), 4))
+        top = 15 - h
+        put(px, sx, top, jitter(rnd, bud, 4))  # rounded bud cap on top
+        put(px, sx + 1, top, jitter(rnd, bud, 4))
+        if h >= 3:  # taller nubs get a wider bud
+            put(px, sx - 1, top + 1, jitter(rnd, bud, 6))
     return img
 
 
@@ -450,21 +456,23 @@ def make_smolder_bloom(name: str) -> Image.Image:
 
 
 def make_ashen_grass(name: str) -> Image.Image:
-    """Gray grass tuft: slanted blades with pale tips (short_grass silhouette)."""
+    """Gray grass tuft: TALL (7-12 px) thin blades that arc sideways towards
+    pale drooping tips (short_grass silhouette) — clearly distinct from the
+    stubby budded nubs of ash_sprouts."""
     rnd = random.Random(name)
     img = blank()
     px = img.load()
     base = (0x7E, 0x84, 0x78)
     tip = (0xA8, 0xAC, 0xA0)
     dark = (0x54, 0x59, 0x50)
-    for sx, lean in ((3, 0), (5, -1), (7, 0), (9, 1), (11, 0), (13, -1)):
-        h = rnd.randint(4, 8)
+    for sx, lean in ((3, -1), (5, 1), (7, -1), (9, 1), (11, -1), (13, 1)):
+        h = rnd.randint(7, 12)
         x = sx
         for i in range(h):
             y = 15 - i
-            if i == h // 2:
+            if i in (h // 3, (2 * h) // 3, h - 1):  # arcing blade: bends thrice
                 x = min(15, max(0, x + lean))
-            c = tip if i >= h - 2 else (dark if i == 0 else base)
+            c = tip if i >= h - 3 else (dark if i == 0 else base)
             put(px, x, y, jitter(rnd, c, 4))
     return img
 

@@ -213,10 +213,17 @@ public class HandbookScreen extends Screen {
 					Text.translatable("screen.copper_inferno.handbook.empty"),
 					(this.pageLeft() + this.pageRight()) / 2, (PAGE_TOP + this.pageBottom()) / 2, 0xFFA0A0A0);
 		} else {
+			// Clip to the page backdrop so an oversized entry (tiny GUI sizes) cannot
+			// overflow into the footer / neighbouring widgets.
+			context.enableScissor(this.pageLeft() - 4, PAGE_TOP - 4, this.pageRight() + 4, this.pageBottom() + 4);
 			int y = PAGE_TOP;
 			for (HandbookEntry entry : this.pages.get(this.page)) {
+				if (y >= this.pageBottom()) {
+					break; // never start an entry past the footer
+				}
 				y += this.renderEntry(context, entry, this.pageLeft(), y);
 			}
+			context.disableScissor();
 		}
 		Text pageText = Text.translatable("screen.copper_inferno.handbook.page",
 				this.page + 1, Math.max(1, this.pages.size()));

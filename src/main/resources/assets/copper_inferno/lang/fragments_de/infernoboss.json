@@ -9,5 +9,8 @@
   "item.copper_inferno.titan_ember": "Titanenglut",
   "item.copper_inferno.titan_sigil": "Titanensiegel",
   "item.copper_inferno.verdigris_scale": "Grünspanschuppe",
+  "message.copper_inferno.oxidizer_core.blocked": "Hier ist kein Platz, damit der Oxidierer sich erheben kann.",
+  "message.copper_inferno.titan_sigil.blocked": "Hier ist kein Platz, damit der Inferno-Titan sich erheben kann.",
+  "message.copper_inferno.titan_sigil.peaceful": "Das Titanensiegel bleibt stumm, solange die Welt friedlich ist.",
   "message.copper_inferno.titan_sigil.wrong_dimension": "Das Titanensiegel wirkt nur in der Inferno-Dimension."
 }

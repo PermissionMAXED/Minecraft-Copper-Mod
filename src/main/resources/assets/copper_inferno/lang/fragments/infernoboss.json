@@ -9,5 +9,8 @@
   "item.copper_inferno.titan_ember": "Titan Ember",
   "item.copper_inferno.titan_sigil": "Titan Sigil",
   "item.copper_inferno.verdigris_scale": "Verdigris Scale",
+  "message.copper_inferno.oxidizer_core.blocked": "There is no room for The Oxidizer to rise here.",
+  "message.copper_inferno.titan_sigil.blocked": "There is no room for the Inferno Titan to rise here.",
+  "message.copper_inferno.titan_sigil.peaceful": "The Titan Sigil stays silent while the world is at peace.",
   "message.copper_inferno.titan_sigil.wrong_dimension": "The Titan Sigil only answers within the Inferno dimension."
 }

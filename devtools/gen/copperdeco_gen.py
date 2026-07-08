@@ -525,7 +525,35 @@ def texture_burnished_copper_bricks():
 
 
 def texture_gilded_copper_bricks():
-    return paint_bricks(COPPER, 5003, flecks=(GOLD, GOLD_LIGHT))
+    """Gold-leafed masonry, clearly distinct from the plain burnished bricks:
+    same running-bond layout, but every brick wears a solid GOLD top bevel and
+    gold-flashed right edge, plus dense gold flecks across the faces (deterministic,
+    seeded). Reads as copper bricks trimmed in gold rather than plain copper."""
+    base, light, mid, dark = COPPER
+    img = new_canvas()
+    px = img.load()
+    rng = random.Random(5003)
+    for y in range(16):
+        row = y // 4
+        ly = y % 4
+        off = 4 * (row % 2)
+        for x in range(16):
+            lx = (x + off) % 8
+            if ly == 3 or lx == 7:
+                c = dark  # mortar joint
+            elif ly == 0:
+                c = GOLD_LIGHT if lx % 3 == 0 else GOLD  # gold-leaf top bevel
+            elif lx == 6:
+                c = GOLD if ly == 1 else mid  # gold-flashed right brick edge
+            else:
+                c = base
+                r = rng.random()
+                if r < 0.10:
+                    c = GOLD if r < 0.06 else GOLD_LIGHT  # dense gold flecks
+                elif r < 0.18:
+                    c = mid
+            px[x, y] = c + (255,)
+    return img
 
 
 def texture_verdigris_bricks():

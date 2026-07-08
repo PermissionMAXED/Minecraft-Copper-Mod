@@ -1,7 +1,7 @@
 {
   "category": "building",
   "key": {
-    "C": "copper_inferno:cinderstone",
+    "C": "minecraft:polished_blackstone",
     "I": "minecraft:copper_ingot",
     "M": "minecraft:magma_block"
   },

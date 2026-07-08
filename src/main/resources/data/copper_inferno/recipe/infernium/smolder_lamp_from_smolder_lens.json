@@ -1,0 +1,15 @@
+{
+  "category": "building",
+  "key": {
+    "L": "copper_inferno:smolder_lens",
+    "P": "copper_inferno:infernium_plate"
+  },
+  "pattern": [
+    "PLP"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:smolder_lamp"
+  },
+  "type": "minecraft:crafting_shaped"
+}

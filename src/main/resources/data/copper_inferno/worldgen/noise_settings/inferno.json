@@ -165,7 +165,7 @@
       {
         "if_true": {
           "biome_is": [
-            "minecraft:basalt_deltas"
+            "copper_inferno:slag_sea"
           ],
           "type": "minecraft:biome"
         },
@@ -181,10 +181,7 @@
               },
               "then_run": {
                 "result_state": {
-                  "Name": "minecraft:basalt",
-                  "Properties": {
-                    "axis": "y"
-                  }
+                  "Name": "copper_inferno:slagstone"
                 },
                 "type": "minecraft:block"
               },
@@ -249,10 +246,7 @@
                     },
                     "then_run": {
                       "result_state": {
-                        "Name": "minecraft:basalt",
-                        "Properties": {
-                          "axis": "y"
-                        }
+                        "Name": "copper_inferno:slagstone"
                       },
                       "type": "minecraft:block"
                     },
@@ -260,7 +254,7 @@
                   },
                   {
                     "result_state": {
-                      "Name": "minecraft:blackstone"
+                      "Name": "copper_inferno:cobbled_cinderstone"
                     },
                     "type": "minecraft:block"
                   }
@@ -277,7 +271,7 @@
       {
         "if_true": {
           "biome_is": [
-            "minecraft:soul_sand_valley"
+            "copper_inferno:cinder_wastes"
           ],
           "type": "minecraft:biome"
         },
@@ -442,7 +436,7 @@
             {
               "if_true": {
                 "biome_is": [
-                  "minecraft:warped_forest"
+                  "copper_inferno:ember_grove"
                 ],
                 "type": "minecraft:biome"
               },
@@ -476,7 +470,7 @@
                         },
                         "then_run": {
                           "result_state": {
-                            "Name": "minecraft:warped_wart_block"
+                            "Name": "copper_inferno:ember_wart_block"
                           },
                           "type": "minecraft:block"
                         },
@@ -484,65 +478,7 @@
                       },
                       {
                         "result_state": {
-                          "Name": "minecraft:warped_nylium"
-                        },
-                        "type": "minecraft:block"
-                      }
-                    ],
-                    "type": "minecraft:sequence"
-                  },
-                  "type": "minecraft:condition"
-                },
-                "type": "minecraft:condition"
-              },
-              "type": "minecraft:condition"
-            },
-            {
-              "if_true": {
-                "biome_is": [
-                  "minecraft:crimson_forest"
-                ],
-                "type": "minecraft:biome"
-              },
-              "then_run": {
-                "if_true": {
-                  "invert": {
-                    "max_threshold": 1.7976931348623157e+308,
-                    "min_threshold": 0.54,
-                    "noise": "minecraft:netherrack",
-                    "type": "minecraft:noise_threshold"
-                  },
-                  "type": "minecraft:not"
-                },
-                "then_run": {
-                  "if_true": {
-                    "add_stone_depth": false,
-                    "anchor": {
-                      "absolute": 31
-                    },
-                    "surface_depth_multiplier": 0,
-                    "type": "minecraft:y_above"
-                  },
-                  "then_run": {
-                    "sequence": [
-                      {
-                        "if_true": {
-                          "max_threshold": 1.7976931348623157e+308,
-                          "min_threshold": 1.17,
-                          "noise": "minecraft:nether_wart",
-                          "type": "minecraft:noise_threshold"
-                        },
-                        "then_run": {
-                          "result_state": {
-                            "Name": "minecraft:nether_wart_block"
-                          },
-                          "type": "minecraft:block"
-                        },
-                        "type": "minecraft:condition"
-                      },
-                      {
-                        "result_state": {
-                          "Name": "minecraft:crimson_nylium"
+                          "Name": "copper_inferno:ember_moss_block"
                         },
                         "type": "minecraft:block"
                       }
@@ -563,7 +499,7 @@
       {
         "if_true": {
           "biome_is": [
-            "minecraft:nether_wastes"
+            "copper_inferno:cinder_wastes"
           ],
           "type": "minecraft:biome"
         },

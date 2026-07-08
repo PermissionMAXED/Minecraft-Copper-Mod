@@ -1,5 +1,7 @@
 package net.sonic0810.copperinferno.feature.infernomobs;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoField;
 import java.util.function.Predicate;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -10,11 +12,13 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRe
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.SpawnLocationTypes;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.SpawnRestriction;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.BlazeEntity;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MagmaCubeEntity;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.SilverfishEntity;
 import net.minecraft.entity.passive.BatEntity;
 import net.minecraft.entity.passive.StriderEntity;
@@ -22,10 +26,17 @@ import net.minecraft.item.Item;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.FluidTags;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.Heightmap;
+import net.minecraft.world.ServerWorldAccess;
 import net.sonic0810.copperinferno.CopperInferno;
 import net.sonic0810.copperinferno.core.ModCreativeTab;
+import net.sonic0810.copperinferno.core.ModDimensions;
 import net.sonic0810.copperinferno.core.ModEntities;
 import net.sonic0810.copperinferno.core.ModItems;
 import net.sonic0810.copperinferno.core.handbook.HandbookEntries;
@@ -169,9 +180,9 @@ public final class InfernoMobsFeature {
 		// MOTION_BLOCKING_NO_LEAVES + HostileEntity::canSpawnIgnoreLightLevel (nether hostiles
 		// ignore light), magma_cube's canMagmaCubeSpawn is only a difficulty != PEACEFUL check
 		// (inlined below because the vanilla method is typed to EntityType<MagmaCubeEntity>),
-		// strider uses IN_LAVA. The passives' vanilla predicates are likewise typed to the
-		// vanilla EntityTypes, so they get always-true predicates (their SpawnLocation +
-		// SpawnGroup already constrain them).
+		// strider uses IN_LAVA. The passives' vanilla canSpawn predicates are likewise typed to
+		// the vanilla EntityTypes, so they are reimplemented 1:1 from the 1.21.9 bytecode in
+		// canCinderStriderSpawn / canAshBatSpawn below.
 		SpawnRestriction.register(EMBER_WRAITH, SpawnLocationTypes.ON_GROUND,
 				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HostileEntity::canSpawnIgnoreLightLevel);
 		SpawnRestriction.register(SLAG_CRAWLER, SpawnLocationTypes.ON_GROUND,
@@ -181,10 +192,10 @@ public final class InfernoMobsFeature {
 				(type, world, reason, pos, random) -> world.getDifficulty() != Difficulty.PEACEFUL);
 		SpawnRestriction.register(CINDER_STRIDER, SpawnLocationTypes.IN_LAVA,
 				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
-				(type, world, reason, pos, random) -> true);
+				InfernoMobsFeature::canCinderStriderSpawn);
 		SpawnRestriction.register(ASH_BAT, SpawnLocationTypes.ON_GROUND,
 				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
-				(type, world, reason, pos, random) -> true);
+				InfernoMobsFeature::canAshBatSpawn);
 
 		// Natural spawns in the three Inferno biomes (biome JSONs are owned by the infernodim
 		// feature; includeByKey simply matches nothing until they are loaded). addSpawn signature
@@ -194,36 +205,100 @@ public final class InfernoMobsFeature {
 				RegistryKey.of(RegistryKeys.BIOME, CopperInferno.id("cinder_wastes")),
 				RegistryKey.of(RegistryKeys.BIOME, CopperInferno.id("ember_grove")),
 				RegistryKey.of(RegistryKeys.BIOME, CopperInferno.id("slag_sea")));
-		BiomeModifications.addSpawn(infernoBiomes, SpawnGroup.MONSTER, EMBER_WRAITH, 40, 1, 3);
+		BiomeModifications.addSpawn(infernoBiomes, SpawnGroup.MONSTER, EMBER_WRAITH, 15, 1, 3);
 		BiomeModifications.addSpawn(infernoBiomes, SpawnGroup.MONSTER, SLAG_CRAWLER, 30, 1, 4);
 		BiomeModifications.addSpawn(infernoBiomes, SpawnGroup.MONSTER, MOLTEN_SLAGLING, 25, 2, 4);
 		BiomeModifications.addSpawn(infernoBiomes, SpawnGroup.CREATURE, CINDER_STRIDER, 30, 1, 2);
 		BiomeModifications.addSpawn(infernoBiomes, SpawnGroup.AMBIENT, ASH_BAT, 10, 2, 4);
-		// Ash bats also flit around the Overworld at night, rarely.
+		// Ash bats also flit around the Overworld, rarely; canAshBatSpawn night/cave-gates them
+		// exactly like vanilla bats, so this entry does not flood daylight surfaces.
 		BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), SpawnGroup.AMBIENT, ASH_BAT, 3, 1, 2);
+	}
+
+	/**
+	 * Mirrors vanilla {@code StriderEntity.canSpawn} (verified against the 1.21.9 bytecode; the
+	 * vanilla method is typed to {@code EntityType<StriderEntity>} so it cannot be reused
+	 * directly): walk upward through the lava column above the spawn pos, then require the first
+	 * non-lava block to be air.
+	 */
+	private static boolean canCinderStriderSpawn(EntityType<CinderStriderEntity> type, ServerWorldAccess world,
+			SpawnReason reason, BlockPos pos, Random random) {
+		BlockPos.Mutable mutable = pos.mutableCopy();
+		do {
+			mutable.move(Direction.UP);
+		} while (world.getFluidState(mutable).isIn(FluidTags.LAVA));
+		return world.getBlockState(mutable).isAir();
+	}
+
+	/**
+	 * Mirrors vanilla {@code BatEntity.canSpawn} (verified against the 1.21.9 bytecode; the
+	 * vanilla method is typed to {@code EntityType<BatEntity>} so it cannot be reused directly):
+	 * below the WORLD_SURFACE heightmap (i.e. caves — never in open daylight), a light gate of
+	 * {@code light <= random.nextInt(4)} (relaxed to 7 around Halloween, otherwise a 50% cull),
+	 * a BATS_SPAWNABLE_ON block below, and the base {@code MobEntity.canMobSpawn} checks.
+	 *
+	 * <p>In the Inferno the surface/light gates are satisfied anyway (ceiling, no skylight), but
+	 * the BATS_SPAWNABLE_ON gate would starve spawns entirely — the ground there is
+	 * cinderstone/ash/ember soil/basalt/blackstone, none of which are in the tag (it only
+	 * contains {@code #minecraft:base_stone_overworld}) — so the Inferno branch keeps just the
+	 * base mob checks.
+	 */
+	private static boolean canAshBatSpawn(EntityType<AshBatEntity> type, ServerWorldAccess world,
+			SpawnReason reason, BlockPos pos, Random random) {
+		if (world.toServerWorld().getRegistryKey() == ModDimensions.INFERNO_WORLD) {
+			return MobEntity.canMobSpawn(type, world, reason, pos, random);
+		}
+		if (pos.getY() >= world.getTopPosition(Heightmap.Type.WORLD_SURFACE, pos).getY()) {
+			return false;
+		}
+		int light = world.getLightLevel(pos);
+		int maxLight = 4;
+		if (isTodayAroundHalloween()) {
+			maxLight = 7;
+		} else if (random.nextBoolean()) {
+			return false;
+		}
+		if (light > random.nextInt(maxLight)) {
+			return false;
+		}
+		if (!world.getBlockState(pos.down()).isIn(BlockTags.BATS_SPAWNABLE_ON)) {
+			return false;
+		}
+		return MobEntity.canMobSpawn(type, world, reason, pos, random);
+	}
+
+	/**
+	 * Mirrors the private vanilla {@code BatEntity.isTodayAroundHalloween} (bytecode: Oct 20
+	 * through Nov 3 inclusive).
+	 */
+	private static boolean isTodayAroundHalloween() {
+		LocalDate date = LocalDate.now();
+		int day = date.get(ChronoField.DAY_OF_MONTH);
+		int month = date.get(ChronoField.MONTH_OF_YEAR);
+		return (month == 10 && day >= 20) || (month == 11 && day <= 3);
 	}
 
 	private static void registerHandbookEntries() {
 		HandbookEntries.add(new HandbookEntry("mobs", "ember_wraith",
 				"copper_inferno:ember_wraith_spawn_egg", null, null, null, 0,
 				"Ember Wraith - a towering blaze spirit haunting the Cinder Wastes, Ember Grove and Slag Sea. Tougher and larger than a common blaze. Drops Wraith Embers.",
-				"Glutschleier - ein riesiger Lohengeist, der die Aschenoede, den Gluthain und das Schlackenmeer heimsucht. Zaeher und groesser als eine gewoehnliche Lohe. Laesst Schleierglut fallen."));
+				"Glutschleier - ein riesiger Lohengeist, der die Aschenöde, den Gluthain und das Schlackenmeer heimsucht. Zäher und größer als eine gewöhnliche Lohe. Lässt Schleierglut fallen."));
 		HandbookEntries.add(new HandbookEntry("mobs", "slag_crawler",
 				"copper_inferno:slag_crawler_spawn_egg", null, null, null, 0,
 				"Slag Crawler - an oversized silverfish crusted in slag, skittering across the Inferno biomes. Bites hard. Drops Crawler Fangs.",
-				"Schlackenkriecher - ein uebergrosser, schlackenverkrusteter Silberfisch, der durch die Inferno-Biome huscht. Beisst kraeftig zu. Laesst Kriecherzaehne fallen."));
+				"Schlackenkriecher - ein übergroßer, schlackenverkrusteter Silberfisch, der durch die Inferno-Biome huscht. Beißt kräftig zu. Lässt Kriecherzähne fallen."));
 		HandbookEntries.add(new HandbookEntry("mobs", "molten_slagling",
 				"copper_inferno:molten_slagling_spawn_egg", null, null, null, 0,
 				"Molten Slagling - a bouncing cube of molten slag found throughout the Inferno biomes. Splits like a magma cube when slain. Drops Slagling Cores.",
-				"Schmelzschlackling - ein huepfender Wuerfel aus geschmolzener Schlacke, ueberall in den Inferno-Biomen zu finden. Teilt sich wie ein Magmawuerfel. Laesst Schlackling-Kerne fallen."));
+				"Schmelzschlackling - ein hüpfender Würfel aus geschmolzener Schlacke, überall in den Inferno-Biomen zu finden. Teilt sich wie ein Magmawürfel. Lässt Schlackling-Kerne fallen."));
 		HandbookEntries.add(new HandbookEntry("mobs", "cinder_strider",
 				"copper_inferno:cinder_strider_spawn_egg", null, null, null, 0,
 				"Cinder Strider - a placid, cinder-crusted strider that wades the lava of the Slag Sea and its neighbors. Can be saddled and ridden. Drops Strider Shells.",
-				"Aschenschreiter - ein friedlicher, aschenverkrusteter Schreiter, der durch die Lava des Schlackenmeers watet. Kann gesattelt und geritten werden. Laesst Schreiterpanzer fallen."));
+				"Aschenschreiter - ein friedlicher, aschenverkrusteter Schreiter, der durch die Lava des Schlackenmeers watet. Kann gesattelt und geritten werden. Lässt Schreiterpanzer fallen."));
 		HandbookEntries.add(new HandbookEntry("mobs", "ash_bat",
 				"copper_inferno:ash_bat_spawn_egg", null, null, null, 0,
 				"Ash Bat - an ash-grey bat roosting in the Inferno biomes, with a few straying into the Overworld. Harmless. Drops leather.",
-				"Aschenfledermaus - eine aschgraue Fledermaus, die in den Inferno-Biomen nistet; einige verirren sich in die Oberwelt. Harmlos. Laesst Leder fallen."));
+				"Aschenfledermaus - eine aschgraue Fledermaus, die in den Inferno-Biomen nistet; einige verirren sich in die Oberwelt. Harmlos. Lässt Leder fallen."));
 
 		HandbookEntries.add(new HandbookEntry("items", "inferno_powder_from_wraith_ember",
 				"copper_inferno:wraith_ember", "infernomobs/inferno_powder_from_wraith_ember",

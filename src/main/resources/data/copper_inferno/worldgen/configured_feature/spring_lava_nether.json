@@ -1,0 +1,21 @@
+{
+  "config": {
+    "hole_count": 1,
+    "requires_block_below": true,
+    "rock_count": 4,
+    "state": {
+      "Name": "minecraft:lava",
+      "Properties": {
+        "falling": "true"
+      }
+    },
+    "valid_blocks": [
+      "copper_inferno:cinderstone",
+      "copper_inferno:ash_block",
+      "copper_inferno:cinder_gravel",
+      "copper_inferno:molten_slag",
+      "copper_inferno:cobbled_cinderstone"
+    ]
+  },
+  "type": "minecraft:spring_feature"
+}

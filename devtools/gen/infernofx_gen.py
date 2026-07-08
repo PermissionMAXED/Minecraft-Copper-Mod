@@ -3,8 +3,8 @@
 4 gadget items).
 
 Idempotent: running it any number of times produces the same files. By default this script
-writes ONLY PNGs (4 item textures + the 2 particle textures); pass --write-json to also
-(re)emit the JSON scaffolding:
+writes ONLY PNGs (4 item textures + 2 particle textures + the 2 status-effect HUD icons
+under textures/mob_effect/); pass --write-json to also (re)emit the JSON scaffolding:
   - item model-definitions + item models (assets/copper_inferno/items + models/item)
   - particle definitions (assets/copper_inferno/particles/{ember_spark,ash_fall}.json)
   - recipes (data/copper_inferno/recipe/infernofx/*.json)
@@ -41,6 +41,9 @@ G = (0x9A, 0x8F, 0x8A)        # ash light
 g = (0x6E, 0x65, 0x60)        # ash dark
 Au = (0xF3, 0xC1, 0x4B)       # gold clasp
 S = (0xD8, 0xD2, 0xC8)        # string / bone white
+V = (0x6F, 0xB0, 0x8E)        # verdigris light
+v = (0x57, 0xA0, 0x7B)        # verdigris
+u = (0x4E, 0x9E, 0x7A)        # verdigris deep
 
 ITEMS = ["heat_ward_charm", "slag_bomb", "cinder_compass", "ash_talisman"]
 PARTICLES = ["ember_spark", "ash_fall"]
@@ -300,6 +303,79 @@ PARTICLE_TEXTURES = {
 }
 
 
+# ---------------------------------------------------------------------------
+# Status-effect HUD icons (18x18, same size/format as mob_effect/dr_pepper_kick.png)
+# ---------------------------------------------------------------------------
+
+def tex_effect_heat_ward(rng: Random) -> Image.Image:
+    """Ember-orange shield with a flame burning at its heart."""
+    img = blank(18)
+    rows = {2: (5, 12), 3: (4, 13), 4: (4, 13), 5: (4, 13), 6: (4, 13), 7: (4, 13),
+            8: (4, 13), 9: (5, 12), 10: (5, 12), 11: (6, 11), 12: (7, 10), 13: (7, 10),
+            14: (8, 9)}
+    # dark charcoal shield face with a copper rim
+    for y, (x0, x1) in rows.items():
+        for x in range(x0, x1 + 1):
+            put(img, x, y, D if rng.random() < 0.7 else C)
+    for y, (x0, x1) in rows.items():
+        put(img, x0, y, P)
+        put(img, x1, y, p)
+    for x in range(rows[2][0], rows[2][1] + 1):
+        put(img, x, 2, P)
+    # central flame: ember base rising to a hot white core
+    put(img, 8, 4, e)
+    put(img, 8, 5, e)
+    put(img, 9, 5, E)
+    for x, y, c in [(7, 6, E), (8, 6, e), (9, 6, e),
+                    (7, 7, e), (8, 7, H), (9, 7, e), (10, 7, E),
+                    (6, 8, E), (7, 8, H), (8, 8, W), (9, 8, H),
+                    (7, 9, H), (8, 9, W), (9, 9, H), (10, 9, E),
+                    (7, 10, e), (8, 10, H), (9, 10, e),
+                    (8, 11, E), (9, 11, E), (8, 12, E)]:
+        put(img, x, y, c)
+    # rim glint
+    put(img, 5, 3, H)
+    return outline(img)
+
+
+def tex_effect_oxidized(rng: Random) -> Image.Image:
+    """Copper lump being eaten by a verdigris-green corrosion crust."""
+    img = blank(18)
+    rows = {3: (6, 11), 4: (5, 12), 5: (4, 13), 6: (4, 13), 7: (4, 13), 8: (4, 13),
+            9: (4, 13), 10: (4, 13), 11: (5, 12), 12: (6, 11), 13: (7, 10)}
+    for y, (x0, x1) in rows.items():
+        for x in range(x0, x1 + 1):
+            # crust creeps in from the top-left; a raw-copper wedge survives bottom-right
+            if x + y + (1 if rng.random() < 0.5 else 0) >= 21:
+                put(img, x, y, P if rng.random() < 0.6 else p)
+            elif rng.random() < 0.15:
+                put(img, x, y, u)
+            elif rng.random() < 0.4:
+                put(img, x, y, V)
+            else:
+                put(img, x, y, v)
+    # corrosion pox rings on the crust
+    for cx, cy in [(7, 5), (10, 8), (6, 10)]:
+        put(img, cx, cy, V)
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            put(img, cx + dx, cy + dy, u)
+    # verdigris drips oozing off the underside
+    put(img, 6, 13, v)
+    put(img, 6, 14, u)
+    put(img, 8, 14, v)
+    put(img, 8, 15, u)
+    put(img, 11, 13, v)
+    # pale mineral glint top-left
+    put(img, 6, 4, S)
+    return outline(img)
+
+
+EFFECT_TEXTURES = {
+    "heat_ward": tex_effect_heat_ward,
+    "oxidized": tex_effect_oxidized,
+}
+
+
 def emit_textures() -> None:
     item_dir = ASSETS / "textures" / "item"
     item_dir.mkdir(parents=True, exist_ok=True)
@@ -309,6 +385,10 @@ def emit_textures() -> None:
     particle_dir.mkdir(parents=True, exist_ok=True)
     for name, fn in PARTICLE_TEXTURES.items():
         fn(Random(f"{NS}:{name}")).save(particle_dir / f"{name}.png")
+    effect_dir = ASSETS / "textures" / "mob_effect"
+    effect_dir.mkdir(parents=True, exist_ok=True)
+    for name, fn in EFFECT_TEXTURES.items():
+        fn(Random(f"{NS}:{name}")).save(effect_dir / f"{name}.png")
 
 
 # ---------------------------------------------------------------------------

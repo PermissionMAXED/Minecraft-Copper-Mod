@@ -2,6 +2,7 @@ package net.sonic0810.copperinferno.feature.infernoflora;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.type.WoodTypeBuilder;
+import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSetType;
@@ -33,11 +34,14 @@ import net.sonic0810.copperinferno.core.handbook.HandbookEntry;
  *       ashen_grass, spore_cluster) are plain {@link Block}s with
  *       {@code noCollision().breakInstantly()}: they are placeable on ANY surface — there is no
  *       floor/support-block check like vanilla {@code PlantBlock} performs.</li>
- *   <li>Stripped stem/hyphae are obtained via crafting recipes; there is NO axe-strip
- *       right-click interaction on the unstripped logs.</li>
- *   <li>All 22 blocks (including the small plants) drop themselves unconditionally — no
- *       shears/silk-touch requirement.</li>
+ *   <li>All blocks except cinder_nest drop themselves unconditionally — no shears/silk-touch
+ *       requirement. cinder_nest drops 2-4 Ember Berries (or itself with Silk Touch).</li>
  * </ul>
+ *
+ * <p>Stripped stem/hyphae are obtained the vanilla way: right-click the unstripped log with an
+ * axe ({@code StrippableBlockRegistry}); the old 1-to-1 crafting recipes were removed because
+ * they collided with the shapeless scorched_planks recipe (which now takes the
+ * {@code #copper_inferno:scorched_logs} item tag).
  *
  * <p>The scorched wood set does NOT use {@code requiresTool()}: it is breakable by hand (axe
  * only speeds it up via the mineable/axe tag fragment; the set is deliberately NOT in the
@@ -183,6 +187,11 @@ public final class InfernoFloraFeature {
 						.sounds(BlockSoundGroup.NETHER_WART),
 				true);
 
+		// Vanilla-style axe stripping (right-click with any axe). Both blocks are
+		// PillarBlocks, so the AXIS property carries over.
+		StrippableBlockRegistry.register(SCORCHED_STEM, STRIPPED_SCORCHED_STEM);
+		StrippableBlockRegistry.register(SCORCHED_HYPHAE, STRIPPED_SCORCHED_HYPHAE);
+
 		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.BLOCKS_KEY).register(entries -> {
 			entries.add(SCORCHED_STEM);
 			entries.add(STRIPPED_SCORCHED_STEM);
@@ -241,7 +250,7 @@ public final class InfernoFloraFeature {
 						"", "", ""},
 				"copper_inferno:scorched_fence", 3,
 				"Scorched Planks and sticks craft 3 Scorched Fences.",
-				"Versengte Bretter und Stoecke ergeben 3 versengte Zaeune."));
+				"Versengte Bretter und Stöcke ergeben 3 versengte Zäune."));
 		HandbookEntries.add(new HandbookEntry("blocks", "infernoflora_scorched_fence_gate",
 				"copper_inferno:scorched_fence_gate", "infernoflora/scorched_fence_gate",
 				new String[] {"minecraft:stick", "copper_inferno:scorched_planks", "minecraft:stick",
@@ -249,7 +258,7 @@ public final class InfernoFloraFeature {
 						"", "", ""},
 				"copper_inferno:scorched_fence_gate", 1,
 				"Sticks and Scorched Planks craft a Scorched Fence Gate.",
-				"Stoecke und versengte Bretter ergeben ein versengtes Zauntor."));
+				"Stöcke und versengte Bretter ergeben ein versengtes Zauntor."));
 		HandbookEntries.add(new HandbookEntry("blocks", "infernoflora_scorched_hyphae",
 				"copper_inferno:scorched_hyphae", "infernoflora/scorched_hyphae",
 				new String[] {"copper_inferno:scorched_stem", "copper_inferno:scorched_stem", "",
@@ -259,17 +268,15 @@ public final class InfernoFloraFeature {
 				"Four Scorched Stems craft 3 Scorched Hyphae (bark on all six sides).",
 				"Vier versengte Stiele ergeben 3 versengte Hyphen (Rinde auf allen sechs Seiten)."));
 		HandbookEntries.add(new HandbookEntry("blocks", "infernoflora_stripped_scorched_stem",
-				"copper_inferno:stripped_scorched_stem", "infernoflora/stripped_scorched_stem",
-				new String[] {"copper_inferno:scorched_stem", "", "", "", "", "", "", "", ""},
+				"copper_inferno:stripped_scorched_stem", null, null,
 				"copper_inferno:stripped_scorched_stem", 1,
-				"A Scorched Stem crafts directly into its stripped variant (no axe-stripping interaction).",
-				"Ein versengter Stiel wird direkt zur entrindeten Variante verarbeitet (kein Entrinden per Axt)."));
+				"Right-click a Scorched Stem with any axe to strip it, just like vanilla logs.",
+				"Einen versengten Stiel mit einer beliebigen Axt anklicken, um ihn zu entrinden - genau wie bei Vanilla-Stämmen."));
 		HandbookEntries.add(new HandbookEntry("blocks", "infernoflora_stripped_scorched_hyphae",
-				"copper_inferno:stripped_scorched_hyphae", "infernoflora/stripped_scorched_hyphae",
-				new String[] {"copper_inferno:scorched_hyphae", "", "", "", "", "", "", "", ""},
+				"copper_inferno:stripped_scorched_hyphae", null, null,
 				"copper_inferno:stripped_scorched_hyphae", 1,
-				"Scorched Hyphae craft directly into their stripped variant (no axe-stripping interaction).",
-				"Versengte Hyphen werden direkt zur entrindeten Variante verarbeitet (kein Entrinden per Axt)."));
+				"Right-click Scorched Hyphae with any axe to strip them, just like vanilla wood.",
+				"Versengte Hyphen mit einer beliebigen Axt anklicken, um sie zu entrinden - genau wie bei Vanilla-Holz."));
 		HandbookEntries.add(new HandbookEntry("blocks", "infernoflora_ember_wart_block",
 				"copper_inferno:ember_wart_block", "infernoflora/ember_wart_block",
 				new String[] {"copper_inferno:ember_fungus", "copper_inferno:ember_fungus", "copper_inferno:ember_fungus",
@@ -284,16 +291,16 @@ public final class InfernoFloraFeature {
 						"", "", "", "", "", ""},
 				"copper_inferno:ember_moss_carpet", 3,
 				"Two Ember Moss Blocks craft 3 Ember Moss Carpets.",
-				"Zwei Glutmoosbloecke ergeben 3 Glutmoosteppiche."));
+				"Zwei Glutmoosblöcke ergeben 3 Glutmoosteppiche."));
 		HandbookEntries.add(new HandbookEntry("dimension", "infernoflora_overview",
 				"copper_inferno:ember_fungus", null, null, null, 0,
 				"Flora of the Inferno: scorched fungus trees (stem, hyphae, full plank set), teal ember fungi "
 						+ "and spore growths, glowing smolder blooms (light 7), ember moss, glowing spore blocks "
 						+ "(light 8) and fungal lights (light 13). The small plants are hardy — they can be "
 						+ "placed on any surface.",
-				"Flora des Infernos: versengte Pilzbaeume (Stiel, Hyphen, komplettes Bretter-Set), tuerkise "
-						+ "Glutpilze und Sporengewaechse, leuchtende Schwelblueten (Licht 7), Glutmoos, "
-						+ "Leuchtsporenbloecke (Licht 8) und Pilzlichter (Licht 13). Die kleinen Pflanzen sind "
-						+ "robust — sie koennen auf jeder Oberflaeche platziert werden."));
+				"Flora des Infernos: versengte Pilzbäume (Stiel, Hyphen, komplettes Bretter-Set), türkise "
+						+ "Glutpilze und Sporengewächse, leuchtende Schwelblüten (Licht 7), Glutmoos, "
+						+ "Leuchtsporenblöcke (Licht 8) und Pilzlichter (Licht 13). Die kleinen Pflanzen sind "
+						+ "robust — sie können auf jeder Oberfläche platziert werden."));
 	}
 }

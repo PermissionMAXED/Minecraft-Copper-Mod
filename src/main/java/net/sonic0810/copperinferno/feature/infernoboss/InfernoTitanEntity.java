@@ -2,6 +2,9 @@ package net.sonic0810.copperinferno.feature.infernoboss;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.entity.attribute.EntityAttributeInstance;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.boss.BossBar;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -11,7 +14,9 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.storage.ReadView;
 import net.minecraft.storage.WriteView;
 import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
+import net.sonic0810.copperinferno.CopperInferno;
 import net.sonic0810.copperinferno.core.boss.BossBarHolder;
 import net.sonic0810.copperinferno.feature.infernomobs.EmberWraithEntity;
 import net.sonic0810.copperinferno.feature.infernomobs.InfernoMobsFeature;
@@ -22,11 +27,12 @@ import net.sonic0810.copperinferno.feature.infernomobs.InfernoMobsFeature;
  * {@link TitanSigilItem}, only inside the Inferno dimension. Phase 1 is pure vanilla blaze
  * AI (ranged fireballs); once below 50% health it enters phase 2 exactly once (flag
  * persisted via write/readCustomData): 2 Ember Wraith minions, 100 ticks of Resistance,
- * and a melee charge goal. Drops Titan Embers + the Inferno Crown
+ * a melee charge goal and +4 attack damage. Drops Titan Embers + the Inferno Crown
  * ({@code loot_table/entities/inferno_titan.json}).
  */
 public class InfernoTitanEntity extends BlazeEntity {
 	private static final String PHASE_TWO_KEY = "PhaseTwo";
+	private static final Identifier MELEE_BOOST_MODIFIER_ID = CopperInferno.id("titan_phase_two_melee");
 
 	private final BossBarHolder bossBar = new BossBarHolder(
 			Text.translatable("entity.copper_inferno.inferno_titan"),
@@ -39,6 +45,10 @@ public class InfernoTitanEntity extends BlazeEntity {
 
 	public InfernoTitanEntity(EntityType<? extends BlazeEntity> type, World world) {
 		super(type, world);
+		// A boss must never despawn, whatever summoned it (item, spawn egg, /summon).
+		if (!world.isClient()) {
+			this.setPersistent();
+		}
 	}
 
 	@Override
@@ -64,6 +74,21 @@ public class InfernoTitanEntity extends BlazeEntity {
 		if (this.phaseTwo && !this.meleeGoalAdded) {
 			this.meleeGoalAdded = true;
 			this.goalSelector.add(1, new MeleeAttackGoal(this, 1.2, true));
+			applyMeleeBoost();
+		}
+	}
+
+	/**
+	 * One-shot +4 flat attack damage for the phase-2 melee charge (enrage() pattern from
+	 * {@link TheOxidizerEntity}). Temporary modifiers are not persisted, so after a reload
+	 * this re-applies alongside the melee goal; the {@code hasModifier} guard keeps it from
+	 * stacking.
+	 */
+	private void applyMeleeBoost() {
+		EntityAttributeInstance damage = this.getAttributeInstance(EntityAttributes.ATTACK_DAMAGE);
+		if (damage != null && !damage.hasModifier(MELEE_BOOST_MODIFIER_ID)) {
+			damage.addTemporaryModifier(new EntityAttributeModifier(
+					MELEE_BOOST_MODIFIER_ID, 4.0, EntityAttributeModifier.Operation.ADD_VALUE));
 		}
 	}
 
@@ -91,5 +116,12 @@ public class InfernoTitanEntity extends BlazeEntity {
 	protected void readCustomData(ReadView view) {
 		super.readCustomData(view);
 		this.phaseTwo = view.getBoolean(PHASE_TWO_KEY, false);
+	}
+
+	/** mobTick stops during the death animation; keep the boss bar synced (empty) as it dies. */
+	@Override
+	protected void updatePostDeath() {
+		super.updatePostDeath();
+		this.bossBar.update(this);
 	}
 }

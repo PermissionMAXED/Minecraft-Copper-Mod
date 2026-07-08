@@ -25,7 +25,7 @@ final class CinderStoneHandbook {
 
 		HandbookEntries.add(new HandbookEntry("blocks", "cinderstone/family_polished_cinderstone", "copper_inferno:polished_cinderstone", null,
 				null,
-				null, 0, "The Polished Cinderstone family for Inferno builds: block, stairs, slab and wall.", "Die Polierter Zunderstein-Familie f\u00fcr Inferno-Bauten: Block, Treppe, Stufe und Mauer."));
+				null, 0, "The Polished Cinderstone family for Inferno builds: block, stairs, slab and wall.", "Die Familie Polierter Zunderstein f\u00fcr Inferno-Bauten: Block, Treppe, Stufe und Mauer."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "cinderstone/family_slagstone_bricks", "copper_inferno:slagstone_bricks", null,
 				null,
@@ -45,7 +45,7 @@ final class CinderStoneHandbook {
 
 		HandbookEntries.add(new HandbookEntry("blocks", "cinderstone/family_quenched_slag", "copper_inferno:quenched_slag", null,
 				null,
-				null, 0, "The Quenched Slag family for Inferno builds: block, stairs, slab and wall.", "Die Abgeschreckte Schlacke-Familie f\u00fcr Inferno-Bauten: Block, Treppe, Stufe und Mauer."));
+				null, 0, "The Quenched Slag family for Inferno builds: block, stairs, slab and wall.", "Die Familie Abgeschreckte Schlacke f\u00fcr Inferno-Bauten: Block, Treppe, Stufe und Mauer."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "cinderstone/cinderstone_bricks", "copper_inferno:cinderstone_bricks", "cinderstone/cinderstone_bricks",
 				new String[] {"minecraft:deepslate", "", "minecraft:deepslate", "", "minecraft:charcoal", "", "minecraft:deepslate", "", "minecraft:deepslate"},
@@ -57,7 +57,7 @@ final class CinderStoneHandbook {
 
 		HandbookEntries.add(new HandbookEntry("blocks", "cinderstone/polished_cinderstone", "copper_inferno:polished_cinderstone", "cinderstone/polished_cinderstone",
 				new String[] {"copper_inferno:cinderstone_tiles", "copper_inferno:cinderstone_tiles", "", "copper_inferno:cinderstone_tiles", "copper_inferno:cinderstone_tiles", "", "", "", ""},
-				"copper_inferno:polished_cinderstone", 4, "Craft 4x Polished Cinderstone at a crafting table.", "Stellt 4x Polierter Zunderstein an der Werkbank her."));
+				"copper_inferno:polished_cinderstone", 4, "Craft 4x Polished Cinderstone at a crafting table.", "Stellt 4x Polierten Zunderstein an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "cinderstone/slagstone_bricks", "copper_inferno:slagstone_bricks", "cinderstone/slagstone_bricks",
 				new String[] {"minecraft:blackstone", "", "minecraft:blackstone", "", "minecraft:prismarine_shard", "", "minecraft:blackstone", "", "minecraft:blackstone"},
@@ -205,7 +205,7 @@ final class CinderStoneHandbook {
 
 		HandbookEntries.add(new HandbookEntry("blocks", "cinderstone/carved_cinderstone", "copper_inferno:carved_cinderstone", "cinderstone/carved_cinderstone",
 				new String[] {"copper_inferno:polished_cinderstone_slab", "", "", "copper_inferno:polished_cinderstone_slab", "", "", "", "", ""},
-				"copper_inferno:carved_cinderstone", 1, "Craft 1x Carved Cinderstone at a crafting table.", "Stellt 1x Verzierter Zunderstein an der Werkbank her."));
+				"copper_inferno:carved_cinderstone", 1, "Craft 1x Carved Cinderstone at a crafting table.", "Stellt 1x Verzierten Zunderstein an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "cinderstone/cinderstone_pillar", "copper_inferno:cinderstone_pillar", "cinderstone/cinderstone_pillar",
 				new String[] {"copper_inferno:cinderstone_bricks", "", "", "copper_inferno:cinderstone_bricks", "", "", "", "", ""},
@@ -253,7 +253,7 @@ final class CinderStoneHandbook {
 
 		HandbookEntries.add(new HandbookEntry("blocks", "cinderstone/cinder_glass", "copper_inferno:cinder_glass", "cinderstone/cinder_glass",
 				new String[] {"minecraft:glass", "minecraft:glass", "minecraft:glass", "minecraft:glass", "minecraft:charcoal", "minecraft:glass", "minecraft:glass", "minecraft:glass", "minecraft:glass"},
-				"copper_inferno:cinder_glass", 8, "Craft 8x Cinder Glass at a crafting table.", "Stellt 8x Zunderglas an der Werkbank her."));
+				"copper_inferno:cinder_glass", 8, "Craft 8x Cinder Glass at a crafting table.", "Stellt 8x Zinderglas an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "cinderstone/smolder_glass", "copper_inferno:smolder_glass", "cinderstone/smolder_glass",
 				new String[] {"minecraft:glass", "minecraft:glass", "minecraft:glass", "minecraft:glass", "minecraft:magma_cream", "minecraft:glass", "minecraft:glass", "minecraft:glass", "minecraft:glass"},
@@ -261,7 +261,7 @@ final class CinderStoneHandbook {
 
 		HandbookEntries.add(new HandbookEntry("blocks", "cinderstone/cinder_glass_pane", "copper_inferno:cinder_glass_pane", "cinderstone/cinder_glass_pane",
 				new String[] {"copper_inferno:cinder_glass", "copper_inferno:cinder_glass", "copper_inferno:cinder_glass", "copper_inferno:cinder_glass", "copper_inferno:cinder_glass", "copper_inferno:cinder_glass", "", "", ""},
-				"copper_inferno:cinder_glass_pane", 16, "Craft 16x Cinder Glass Pane at a crafting table.", "Stellt 16x Zunderglasscheibe an der Werkbank her."));
+				"copper_inferno:cinder_glass_pane", 16, "Craft 16x Cinder Glass Pane at a crafting table.", "Stellt 16x Zinderglasscheibe an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "cinderstone/smolder_glass_pane", "copper_inferno:smolder_glass_pane", "cinderstone/smolder_glass_pane",
 				new String[] {"copper_inferno:smolder_glass", "copper_inferno:smolder_glass", "copper_inferno:smolder_glass", "copper_inferno:smolder_glass", "copper_inferno:smolder_glass", "copper_inferno:smolder_glass", "", "", ""},
@@ -301,7 +301,7 @@ final class CinderStoneHandbook {
 
 		HandbookEntries.add(new HandbookEntry("blocks", "cinderstone/polished_cinderstone_from_cinderstone_bricks_stonecutting", "copper_inferno:polished_cinderstone", "cinderstone/polished_cinderstone_from_cinderstone_bricks_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:cinderstone_bricks", "", "", "", ""},
-				"copper_inferno:polished_cinderstone", 1, "Stonecutting: cut 1x Polished Cinderstone from Cinderstone Bricks.", "Steins\u00e4ge: 1x Polierter Zunderstein aus Zundersteinziegel schneiden."));
+				"copper_inferno:polished_cinderstone", 1, "Stonecutting: cut 1x Polished Cinderstone from Cinderstone Bricks.", "Steins\u00e4ge: 1x Polierten Zunderstein aus Zundersteinziegel schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "cinderstone/quenched_slag_from_slagstone_bricks_stonecutting", "copper_inferno:quenched_slag", "cinderstone/quenched_slag_from_slagstone_bricks_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:slagstone_bricks", "", "", "", ""},

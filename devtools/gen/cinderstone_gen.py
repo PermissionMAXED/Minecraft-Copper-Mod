@@ -971,8 +971,60 @@ PILLAR_LOOKS = {
     "slagstone_pillar": ("slag", [SLAG_TEAL, EMBER], 0.3),
     "forge_pillar": ("forge", [EMBER, COPPER_GLINT], 0.35),
     "ashen_pillar": ("ash", [ASH_LIGHT, ASH_MORTAR], 0.25),
-    "quenched_slag_pillar": ("slag", [SLAG_TEAL, SLAG_LIGHT], 0.3),
 }
+
+# Quenched slag pillar: cooler blue-gray than the teal slagstone pillar, HORIZONTAL
+# quench bands (vs the slagstone pillar's vertical fluting) and pale shrink-cracks.
+QUENCH_DARK = (0x2C, 0x37, 0x42)
+QUENCH = (0x40, 0x4F, 0x5E)
+QUENCH_LIGHT = (0x58, 0x6C, 0x7E)
+QUENCH_PALE = (0x87, 0x9E, 0xB0)
+QUENCH_SEAM = (0x1B, 0x23, 0x2C)
+
+
+def quench_crack(img: Image.Image, rng: Random, start_x: int) -> None:
+    """One wandering vertical shrink-crack with pale frost glints along it."""
+    x = start_x
+    for y in range(16):
+        x = max(1, min(14, x + rng.choice([-1, 0, 0, 1])))
+        img.putpixel((x, y), QUENCH_SEAM)
+        if rng.random() < 0.35:
+            img.putpixel((x + rng.choice([-1, 1]), y), QUENCH_PALE)
+
+
+def tex_quenched_slag_pillar_side(rng: Random) -> Image.Image:
+    """Blue-gray column banded HORIZONTALLY (quench layers) with a shrink-crack."""
+    img = Image.new("RGB", (16, 16))
+    for y in range(16):
+        band = [QUENCH, QUENCH, QUENCH_LIGHT] if (y // 4) % 2 else [QUENCH_DARK, QUENCH, QUENCH]
+        for x in range(16):
+            if x in (0, 15):
+                shade = QUENCH_SEAM  # column edge
+            elif y % 4 == 3:
+                shade = QUENCH_DARK  # band seam between quench layers
+            elif y % 4 == 0:
+                shade = QUENCH_LIGHT if rng.random() < 0.7 else QUENCH_PALE  # cooled band top
+            else:
+                shade = rng.choice(band)
+            img.putpixel((x, y), shade)
+    quench_crack(img, rng, 5)
+    return img
+
+
+def tex_quenched_slag_pillar_top(rng: Random) -> Image.Image:
+    """Framed blue-gray top with concentric quench rings and a crack across."""
+    img = new_canvas(rng, [QUENCH_DARK, QUENCH, QUENCH, QUENCH_LIGHT])
+    for i in range(16):
+        for x, y in ((i, 0), (i, 15), (0, i), (15, i)):
+            img.putpixel((x, y), QUENCH_SEAM)
+    for lo, hi, shade in ((3, 12, QUENCH_DARK), (5, 10, QUENCH_LIGHT)):
+        for i in range(lo, hi + 1):
+            for x, y in ((i, lo), (i, hi), (lo, i), (hi, i)):
+                img.putpixel((x, y), shade)
+    for x, y in [(7, 7), (8, 7), (7, 8), (8, 8)]:
+        img.putpixel((x, y), QUENCH_PALE)
+    quench_crack(img, rng, 10)
+    return img
 
 
 def glass_texture(rng: Random, frame_dark, frame_mid, tint, glow=None) -> Image.Image:
@@ -1122,6 +1174,8 @@ BLOCK_TEXTURES = {
     "smoldering_bricks": tex_smoldering_bricks,
     "forge_bricks": tex_forge_bricks,
     "quenched_slag": tex_quenched_slag,
+    "quenched_slag_pillar_side": tex_quenched_slag_pillar_side,
+    "quenched_slag_pillar_top": tex_quenched_slag_pillar_top,
     "cracked_cinderstone_bricks": lambda rng: cracked(tex_cinderstone_bricks, rng),
     "chiseled_cinderstone_bricks": tex_chiseled_cinderstone_bricks,
     "carved_cinderstone": tex_carved_cinderstone,

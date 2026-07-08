@@ -132,8 +132,8 @@ public final class InfernoFoodsFeature {
 		// Overview page for all 9 Inferno foods.
 		HandbookEntries.add(new HandbookEntry("items", "infernofoods_overview",
 				APL, null, null, null, 0,
-				"The Inferno dimension feeds the brave: Ember Berries eaten raw or roasted into Roasted Ember Fungus, Ash Bread, warming Smolder Stew (bowl comes back), Cinder Candy, hearty Strider Escargot, Ember Jam and Bottled Smoke in returnable bottles - and the Infernium Apple, which grants Fire Resistance and Absorption like a golden apple of the deep.",
-				"Die Inferno-Dimension ern\u00e4hrt die Mutigen: Glutbeeren roh oder als Ger\u00f6steter Glutpilz, Aschebrot, w\u00e4rmender Schweleintopf (die Sch\u00fcssel kommt zur\u00fcck), Zinderbonbons, deftiges Schreiter-Escargot, Glutmarmelade und Rauchflaschen in Pfandflaschen - und der Infernium-Apfel, der wie ein goldener Apfel der Tiefe Feuerschutz und Absorption verleiht."));
+				"The Inferno dimension feeds the brave: Ember Berries (break a Cinder Nest in the Inferno to harvest 2-4) eaten raw or roasted into Roasted Ember Fungus, Ash Bread, warming Smolder Stew (bowl comes back), Cinder Candy, hearty Strider Escargot, Ember Jam and Bottled Smoke in returnable bottles - and the Infernium Apple, which grants Fire Resistance and Absorption like a golden apple of the deep.",
+				"Die Inferno-Dimension ern\u00e4hrt die Mutigen: Glutbeeren (ein Schlackennest im Inferno abbauen ergibt 2-4) roh oder als Ger\u00f6steter Glutpilz, Aschebrot, w\u00e4rmender Schweleintopf (die Sch\u00fcssel kommt zur\u00fcck), Zinderbonbons, deftiges Schreiter-Escargot, Glutmarmelade und Rauchflaschen in Pfandflaschen - und der Infernium-Apfel, der wie ein goldener Apfel der Tiefe Feuerschutz und Absorption verleiht."));
 
 		// ----- cooking
 		HandbookEntries.add(new HandbookEntry("items", "infernofoods_roasted_ember_fungus",

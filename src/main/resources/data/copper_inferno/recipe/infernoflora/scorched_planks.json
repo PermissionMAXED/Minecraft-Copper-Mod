@@ -2,12 +2,7 @@
   "category": "building",
   "group": "planks",
   "ingredients": [
-    [
-      "copper_inferno:scorched_stem",
-      "copper_inferno:stripped_scorched_stem",
-      "copper_inferno:scorched_hyphae",
-      "copper_inferno:stripped_scorched_hyphae"
-    ]
+    "#copper_inferno:scorched_logs"
   ],
   "result": {
     "count": 4,

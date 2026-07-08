@@ -1,0 +1,14 @@
+{
+  "block/planks": [
+    "copper_inferno:scorched_planks"
+  ],
+  "item/planks": [
+    "copper_inferno:scorched_planks"
+  ],
+  "block/wooden_fences": [
+    "copper_inferno:scorched_fence"
+  ],
+  "item/wooden_fences": [
+    "copper_inferno:scorched_fence"
+  ]
+}
