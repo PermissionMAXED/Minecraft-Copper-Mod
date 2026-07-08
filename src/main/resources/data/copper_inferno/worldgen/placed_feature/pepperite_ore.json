@@ -2,7 +2,7 @@
   "feature": "copper_inferno:pepperite_ore",
   "placement": [
     {
-      "count": 10,
+      "count": 4,
       "type": "minecraft:count"
     },
     {
@@ -11,10 +11,10 @@
     {
       "height": {
         "max_inclusive": {
-          "below_top": 10
+          "absolute": 80
         },
         "min_inclusive": {
-          "above_bottom": 10
+          "absolute": 16
         },
         "type": "minecraft:uniform"
       },

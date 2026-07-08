@@ -2,7 +2,7 @@
   "feature": "copper_inferno:vitrium_ore",
   "placement": [
     {
-      "count": 8,
+      "count": 2,
       "type": "minecraft:count"
     },
     {
@@ -11,10 +11,10 @@
     {
       "height": {
         "max_inclusive": {
-          "below_top": 10
+          "absolute": -16
         },
         "min_inclusive": {
-          "above_bottom": 10
+          "absolute": -56
         },
         "type": "minecraft:uniform"
       },

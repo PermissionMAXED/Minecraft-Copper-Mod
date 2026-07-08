@@ -2,7 +2,7 @@
   "feature": "copper_inferno:cinder_pepperite_ore",
   "placement": [
     {
-      "count": 10,
+      "count": 6,
       "type": "minecraft:count"
     },
     {
