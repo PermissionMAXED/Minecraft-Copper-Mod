@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:talisman_cord",
+    "minecraft:prismarine_shard"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:tide_talisman"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

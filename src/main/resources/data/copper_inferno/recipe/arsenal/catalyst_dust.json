@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:arsenal_catalyst"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:catalyst_dust"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

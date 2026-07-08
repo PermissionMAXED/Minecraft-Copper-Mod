@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:charm_locket",
+    "minecraft:rabbit_foot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:leaping_charm"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

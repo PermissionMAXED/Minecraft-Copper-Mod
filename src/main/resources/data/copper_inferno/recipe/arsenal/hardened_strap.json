@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:catalyst_dust",
+    "minecraft:leather",
+    "minecraft:iron_nugget"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:hardened_strap"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

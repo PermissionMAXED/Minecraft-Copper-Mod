@@ -1,0 +1,17 @@
+{
+  "category": "equipment",
+  "key": {
+    "C": "copper_inferno:arsenal_catalyst",
+    "X": "copper_inferno:ashsteel_ingot"
+  },
+  "pattern": [
+    "XXX",
+    "XCX",
+    "X X"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ashsteel_leggings"
+  },
+  "type": "minecraft:crafting_shaped"
+}

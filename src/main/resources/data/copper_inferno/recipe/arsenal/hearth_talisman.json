@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:talisman_cord",
+    "minecraft:coal"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:hearth_talisman"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

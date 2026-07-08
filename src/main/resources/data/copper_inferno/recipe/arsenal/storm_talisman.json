@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:talisman_cord",
+    "minecraft:copper_ingot",
+    "minecraft:redstone"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:storm_talisman"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

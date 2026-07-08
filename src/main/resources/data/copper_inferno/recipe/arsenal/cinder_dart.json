@@ -1,0 +1,12 @@
+{
+  "category": "equipment",
+  "ingredients": [
+    "copper_inferno:javelin_shaft",
+    "minecraft:flint"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:cinder_dart"
+  },
+  "type": "minecraft:crafting_shapeless"
+}
