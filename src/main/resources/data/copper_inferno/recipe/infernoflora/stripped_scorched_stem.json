@@ -1,0 +1,11 @@
+{
+  "category": "building",
+  "ingredients": [
+    "copper_inferno:scorched_stem"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:stripped_scorched_stem"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

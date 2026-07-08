@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    [
+      "copper_inferno:scorched_stem",
+      "copper_inferno:stripped_scorched_stem",
+      "copper_inferno:scorched_hyphae",
+      "copper_inferno:stripped_scorched_hyphae"
+    ]
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:scorched_planks"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

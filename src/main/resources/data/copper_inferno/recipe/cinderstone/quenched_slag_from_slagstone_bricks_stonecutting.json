@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:slagstone_bricks",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:quenched_slag"
+  },
+  "type": "minecraft:stonecutting"
+}

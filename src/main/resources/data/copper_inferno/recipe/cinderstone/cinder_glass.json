@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "C": "minecraft:charcoal",
+    "G": "minecraft:glass"
+  },
+  "pattern": [
+    "GGG",
+    "GCG",
+    "GGG"
+  ],
+  "result": {
+    "count": 8,
+    "id": "copper_inferno:cinder_glass"
+  },
+  "type": "minecraft:crafting_shaped"
+}

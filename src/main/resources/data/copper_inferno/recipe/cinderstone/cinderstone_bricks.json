@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "C": "minecraft:charcoal",
+    "D": "minecraft:deepslate"
+  },
+  "pattern": [
+    "D D",
+    " C ",
+    "D D"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:cinderstone_bricks"
+  },
+  "type": "minecraft:crafting_shaped"
+}

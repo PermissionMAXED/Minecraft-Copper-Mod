@@ -1,0 +1,19 @@
+{
+  "category": "building",
+  "ingredients": [
+    "copper_inferno:ember_fungus",
+    "copper_inferno:ember_fungus",
+    "copper_inferno:ember_fungus",
+    "copper_inferno:ember_fungus",
+    "copper_inferno:ember_fungus",
+    "copper_inferno:ember_fungus",
+    "copper_inferno:ember_fungus",
+    "copper_inferno:ember_fungus",
+    "copper_inferno:ember_fungus"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ember_wart_block"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

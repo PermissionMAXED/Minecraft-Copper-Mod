@@ -1,0 +1,34 @@
+{
+  "block/mineable/axe": [
+    "copper_inferno:scorched_stem",
+    "copper_inferno:stripped_scorched_stem",
+    "copper_inferno:scorched_hyphae",
+    "copper_inferno:stripped_scorched_hyphae",
+    "copper_inferno:scorched_planks",
+    "copper_inferno:scorched_slab",
+    "copper_inferno:scorched_stairs",
+    "copper_inferno:scorched_fence",
+    "copper_inferno:scorched_fence_gate"
+  ],
+  "block/mineable/hoe": [
+    "copper_inferno:scorched_wart_block",
+    "copper_inferno:ember_wart_block",
+    "copper_inferno:ember_moss_block",
+    "copper_inferno:ember_moss_carpet",
+    "copper_inferno:glowing_spore_block",
+    "copper_inferno:fungal_light",
+    "copper_inferno:cinder_nest"
+  ],
+  "block/fences": [
+    "copper_inferno:scorched_fence"
+  ],
+  "block/fence_gates": [
+    "copper_inferno:scorched_fence_gate"
+  ],
+  "block/slabs": [
+    "copper_inferno:scorched_slab"
+  ],
+  "block/stairs": [
+    "copper_inferno:scorched_stairs"
+  ]
+}

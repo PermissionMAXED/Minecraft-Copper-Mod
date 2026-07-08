@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "B": "minecraft:bone_meal",
+    "C": "minecraft:cobbled_deepslate"
+  },
+  "pattern": [
+    "C C",
+    " B ",
+    "C C"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:ashen_bricks"
+  },
+  "type": "minecraft:crafting_shaped"
+}

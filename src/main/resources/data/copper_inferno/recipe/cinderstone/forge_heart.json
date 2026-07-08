@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:forge_bricks",
+    "C": "minecraft:copper_block"
+  },
+  "pattern": [
+    "###",
+    "#C#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:forge_heart"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "B": "minecraft:blackstone",
+    "P": "minecraft:prismarine_shard"
+  },
+  "pattern": [
+    "B B",
+    " P ",
+    "B B"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:slagstone_bricks"
+  },
+  "type": "minecraft:crafting_shaped"
+}

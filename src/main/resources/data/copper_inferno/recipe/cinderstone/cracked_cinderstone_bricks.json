@@ -1,0 +1,10 @@
+{
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": "copper_inferno:cinderstone_bricks",
+  "result": {
+    "id": "copper_inferno:cracked_cinderstone_bricks"
+  },
+  "type": "minecraft:smelting"
+}

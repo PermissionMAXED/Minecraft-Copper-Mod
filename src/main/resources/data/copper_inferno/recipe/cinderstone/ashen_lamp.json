@@ -1,0 +1,12 @@
+{
+  "category": "building",
+  "ingredients": [
+    "minecraft:glowstone",
+    "copper_inferno:ashen_bricks"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ashen_lamp"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

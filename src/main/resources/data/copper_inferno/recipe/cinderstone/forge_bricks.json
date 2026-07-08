@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:cinderstone_bricks",
+    "C": "minecraft:copper_ingot"
+  },
+  "pattern": [
+    "# #",
+    " C ",
+    "# #"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:forge_bricks"
+  },
+  "type": "minecraft:crafting_shaped"
+}

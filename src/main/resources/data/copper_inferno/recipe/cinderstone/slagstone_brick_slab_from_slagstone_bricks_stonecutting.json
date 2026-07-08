@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:slagstone_bricks",
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:slagstone_brick_slab"
+  },
+  "type": "minecraft:stonecutting"
+}

@@ -1,0 +1,12 @@
+{
+  "category": "building",
+  "ingredients": [
+    "minecraft:coal_block",
+    "minecraft:blaze_powder"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ember_coal_block"
+  },
+  "type": "minecraft:crafting_shapeless"
+}
