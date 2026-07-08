@@ -53,7 +53,7 @@ public final class HandbookFeature {
 		// ...and carries a "?" hint page explaining how to use it.
 		HandbookEntries.add(new HandbookEntry("items", "copper_inferno_handbook_hint",
 				"copper_inferno:copper_inferno_handbook", null, null, null, 0,
-				"? Hold the handbook and right-click to open it. Pick a category on the left, flip pages with the arrows below, and press the DE/EN button to switch the text between German and English. The Recipes tab collects every entry with a crafting grid.",
-				"? Halte das Handbuch in der Hand und \u00f6ffne es mit Rechtsklick. W\u00e4hle links eine Kategorie, bl\u00e4ttere mit den Pfeilen unten und dr\u00fccke den DE/EN-Knopf, um den Text zwischen Deutsch und Englisch umzuschalten. Der Rezepte-Reiter sammelt jeden Eintrag mit Craftingraster."));
+				"? Hold the handbook and right-click to open it. Pick a category on the left (the number is its entry count), type in the search box to filter entries by name, flip pages with the arrows, keys or mouse wheel, and press the DE/EN button to switch the text between German and English. The Recipes tab collects every entry with a crafting grid.",
+				"? Halte das Handbuch in der Hand und \u00f6ffne es mit Rechtsklick. W\u00e4hle links eine Kategorie (die Zahl ist ihre Eintragsanzahl), tippe ins Suchfeld, um Eintr\u00e4ge nach Namen zu filtern, bl\u00e4ttere mit den Pfeilen, Tasten oder dem Mausrad und dr\u00fccke den DE/EN-Knopf, um den Text zwischen Deutsch und Englisch umzuschalten. Der Rezepte-Reiter sammelt jeden Eintrag mit Craftingraster."));
 	}
 }

@@ -57,6 +57,16 @@ LANG_EN = {
     "screen.copper_inferno.handbook.empty": "No entries in this category yet.",
     "screen.copper_inferno.handbook.lang_de": "DE",
     "screen.copper_inferno.handbook.lang_en": "EN",
+    "screen.copper_inferno.handbook.search": "Search...",
+    "screen.copper_inferno.handbook.no_results": "No entries match your search.",
+    "screen.copper_inferno.handbook.results": "Entries: %s",
+    "screen.copper_inferno.handbook.kind.shapeless": "Shapeless",
+    "screen.copper_inferno.handbook.kind.furnace": "Furnace",
+    "screen.copper_inferno.handbook.kind.blasting": "Blast Furnace",
+    "screen.copper_inferno.handbook.kind.smoking": "Smoker",
+    "screen.copper_inferno.handbook.kind.campfire": "Campfire",
+    "screen.copper_inferno.handbook.kind.stonecutter": "Stonecutter",
+    "screen.copper_inferno.handbook.kind.smithing": "Smithing Table",
 }
 LANG_DE = {
     "item.copper_inferno.copper_inferno_handbook": "COPPER-INFERNO-Handbuch",
@@ -74,6 +84,16 @@ LANG_DE = {
     "screen.copper_inferno.handbook.empty": "Noch keine Eintr\u00e4ge in dieser Kategorie.",
     "screen.copper_inferno.handbook.lang_de": "DE",
     "screen.copper_inferno.handbook.lang_en": "EN",
+    "screen.copper_inferno.handbook.search": "Suchen...",
+    "screen.copper_inferno.handbook.no_results": "Keine Eintr\u00e4ge zu dieser Suche.",
+    "screen.copper_inferno.handbook.results": "Eintr\u00e4ge: %s",
+    "screen.copper_inferno.handbook.kind.shapeless": "Formlos",
+    "screen.copper_inferno.handbook.kind.furnace": "Ofen",
+    "screen.copper_inferno.handbook.kind.blasting": "Schmelzofen",
+    "screen.copper_inferno.handbook.kind.smoking": "R\u00e4ucherofen",
+    "screen.copper_inferno.handbook.kind.campfire": "Lagerfeuer",
+    "screen.copper_inferno.handbook.kind.stonecutter": "Steins\u00e4ge",
+    "screen.copper_inferno.handbook.kind.smithing": "Schmiedetisch",
 }
 
 
