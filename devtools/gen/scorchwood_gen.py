@@ -4,19 +4,31 @@
 Generates ALL assets/data for the 8 scorched wood sets registered by
 feature/scorchwood/ScorchWoodFeature via core.content.WoodSets.registerWoodSet:
 emberwood, ashwillow, cinderpine, charoak, glowbirch, sootmaple, duskthorn, pyrewood
-— 13 ids each = 104 block ids total:
+— 13 set ids each plus <w>_sapling and <w>_leaves (survival progression) = 15 x 8 =
+120 block ids total:
   <w>_planks, <w>_plank_slab, <w>_plank_stairs, <w>_fence, <w>_fence_gate, <w>_button,
   <w>_pressure_plate, <w>_log, stripped_<w>_log, <w>_wood, stripped_<w>_wood,
-  <w>_mosaic, <w>_pillar
+  <w>_mosaic, <w>_pillar, <w>_sapling, <w>_leaves
 
 Emits (per run, idempotent — deterministic seeded textures + sorted-key JSON):
-  - 8 x 8 = 64 16x16 PNGs (planks, log side/top, stripped log side/top, mosaic,
-    pillar side/top; the wood/stripped-wood blocks reuse the log side textures
-    exactly like vanilla oak_wood)
-  - blockstates + models + items/<id>.json + drop-self loot (slab uses the vanilla
-    double-count slab table) for all 104 ids, via devtools/gen/lib_gen.py emitters
-    (fence/gate/button/pressure-plate multipart & multi-variant formats are the exact
-    vanilla formats already used by utilityblocks/infernoflora)
+  - 8 x 10 = 80 16x16 PNGs (planks, log side/top, stripped log side/top, mosaic,
+    pillar side/top, sapling cross sprite, leaves; the wood/stripped-wood blocks
+    reuse the log side textures exactly like vanilla oak_wood)
+  - blockstates + models + items/<id>.json + loot for all 120 ids, via
+    devtools/gen/lib_gen.py emitters (fence/gate/button/pressure-plate multipart &
+    multi-variant formats are the exact vanilla formats already used by
+    utilityblocks/infernoflora). Saplings use the vanilla cross model + flat item
+    sprite and drop-self loot; leaves use the vanilla leaves model (cube_all-shaped,
+    parent minecraft:block/leaves) and the vanilla oak_leaves loot table with the
+    apple pool dropped and <w>_sapling substituted (byte-identical to the 1.21.9
+    birch_leaves.json structure extracted from the client jar)
+  - worldgen JSON under data/copper_inferno/worldgen/: configured_feature/<w>_tree
+    (vanilla oak.json structure: straight_trunk_placer 4-6, blob_foliage_placer
+    radius 2, two_layers_feature_size; trunk/foliage providers are the wood's own
+    log/leaves, dirt_provider minecraft:dirt) + placed_feature/<w>_trees
+    (count_on_every_layer 2-3 + biome filter — the nether-style layered placement
+    the mod's patch_* features already use, REQUIRED because the Inferno dimension
+    has a bedrock roof so heightmap placement would put trees on the ceiling)
   - 12 recipes per wood (96 total) under data/copper_inferno/recipe/scorchwood/:
     logs->4 planks (shapeless via the #copper_inferno:<w>_logs item tag, same pattern
     as infernoflora's scorched_planks), the vanilla plank->slab/stairs/fence/gate/
@@ -28,8 +40,11 @@ Emits (per run, idempotent — deterministic seeded textures + sorted-key JSON):
     the existing scorched_logs.json)
   - devtools/tagfrag/scorchwood.json (merged later by devtools/merge_tags.py):
     planks in block+item planks, fences/gates/buttons/plates/slabs/stairs in their
-    vanilla wooden tags, ALL 104 blocks in block/mineable/axe
-  - lang fragments (EN + real German) for all 104 ids under
+    vanilla wooden tags, the 13-block sets in block/mineable/axe, all 4 log-family
+    ids per wood in block+item logs AND logs_that_burn (charcoal smelting +
+    flammability), leaves in block+item leaves and block/mineable/hoe, saplings in
+    block+item saplings
+  - lang fragments (EN + real German) for all 120 ids under
     assets/copper_inferno/lang/fragments{,_de}/scorchwood.json (merged later by
     devtools/merge_lang.py)
 
@@ -134,6 +149,28 @@ PALETTES = {
     },
 }
 
+# Foliage palettes for the sapling/leaves textures: (dark, base, light) per wood,
+# in the wood's scorched hue; the plank fleck doubles as a glow accent where set.
+LEAF_PALETTES = {
+    "emberwood": ((0x4E, 0x2A, 0x12), (0x6E, 0x3C, 0x18), (0x9A, 0x54, 0x1E)),
+    "ashwillow": ((0x5C, 0x60, 0x52), (0x76, 0x7C, 0x6A), (0x93, 0x99, 0x84)),
+    "cinderpine": ((0x4E, 0x22, 0x14), (0x6C, 0x30, 0x1C), (0x8A, 0x42, 0x24)),
+    "charoak": ((0x26, 0x22, 0x1E), (0x3A, 0x34, 0x2E), (0x51, 0x49, 0x40)),
+    "glowbirch": ((0x3E, 0x77, 0x66), (0x58, 0x9C, 0x88), (0x7F, 0xC4, 0xAE)),
+    "sootmaple": ((0x4A, 0x42, 0x38), (0x60, 0x57, 0x4A), (0x79, 0x6E, 0x5E)),
+    "duskthorn": ((0x3C, 0x2F, 0x4C), (0x52, 0x42, 0x66), (0x6E, 0x5A, 0x86)),
+    "pyrewood": ((0x8A, 0x4A, 0x14), (0xAE, 0x62, 0x1C), (0xD2, 0x84, 0x2C)),
+}
+
+# Home Inferno biome per wood for the <w>_trees placed-feature injection (mirrors
+# ScorchWoodFeature.init(): 4 woods in ember_grove, 4 in verdigris_jungle).
+TREE_BIOMES = {
+    "emberwood": "ember_grove", "cinderpine": "ember_grove",
+    "charoak": "ember_grove", "pyrewood": "ember_grove",
+    "ashwillow": "verdigris_jungle", "glowbirch": "verdigris_jungle",
+    "sootmaple": "verdigris_jungle", "duskthorn": "verdigris_jungle",
+}
+
 # ---------------------------------------------------------------------------
 # EN + real-German lang names, derived vanilla-style. tree = log compound stem
 # (birch_log -> "Birkenstamm"); holz = wood/plank compound stem (birch_planks ->
@@ -164,8 +201,15 @@ def set_ids(w: str) -> list[str]:
             f"{w}_pillar"]
 
 
+def tree_ids(w: str) -> list[str]:
+    """The 2 survival-progression ids of one wood (ScorchWoodFeature.registerTreeContent)."""
+    return [f"{w}_sapling", f"{w}_leaves"]
+
+
 ALL_IDS = [bid for w in WOODS for bid in set_ids(w)]
 assert len(ALL_IDS) == 104
+ALL_TREE_IDS = [bid for w in WOODS for bid in tree_ids(w)]
+assert len(ALL_TREE_IDS) == 16
 
 
 # ---------------------------------------------------------------------------
@@ -187,6 +231,50 @@ def make_stripped_side(name: str, base, dark, light):
             if rng.random() < 0.04:
                 c = lib._shade(c, -10)
             px[x, y] = lib._jitter(rng, c, 3)
+    return img
+
+
+def make_leaves(name: str, dark, base, light, fleck=None):
+    """Leaves: RGBA foliage mottle with fully-transparent holes (CUTOUT_MIPPED, the
+    vanilla leaves texture style) and optional glow flecks."""
+    from PIL import Image
+    rng = lib.seeded(name)
+    img = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
+    px = img.load()
+    for y in range(16):
+        for x in range(16):
+            r = rng.random()
+            if r < 0.14:
+                continue  # transparent hole
+            if r < 0.32:
+                c = dark
+            elif r < 0.84:
+                c = base
+            else:
+                c = light
+            px[x, y] = (*lib._jitter(rng, c, 4), 255)
+    if fleck is not None:
+        for _ in range(3):
+            px[rng.randrange(16), rng.randrange(16)] = (*fleck, 255)
+    return img
+
+
+def make_sapling(name: str, trunk, dark, base, light):
+    """Sapling: transparent-background cross sprite — 2px trunk with a diamond leaf
+    canopy (vanilla oak_sapling silhouette) from the wood's bark + leaf palettes."""
+    from PIL import Image
+    rng = lib.seeded(name)
+    img = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
+    px = img.load()
+    for y in range(9, 16):  # trunk
+        for x in (7, 8):
+            px[x, y] = (*lib._jitter(rng, trunk, 4), 255)
+    for y in range(0, 12):  # canopy
+        for x in range(2, 14):
+            d = abs(x - 7.5) + abs(y - 5.5)
+            if d <= 5.0 and rng.random() > 0.18:
+                c = dark if d > 3.6 else (light if rng.random() < 0.22 else base)
+                px[x, y] = (*lib._jitter(rng, c, 4), 255)
     return img
 
 
@@ -214,7 +302,7 @@ def make_mosaic(name: str, base, light, seam):
 
 
 def paint_wood(w: str) -> dict:
-    """All 8 textures of one wood set ({texture name: Image})."""
+    """All 10 textures of one wood set ({texture name: Image})."""
     p = PALETTES[w]
     plank_base, plank_light, plank_seam = p["plank"]
     bark_base, bark_dark, bark_light = p["bark"]
@@ -223,7 +311,12 @@ def paint_wood(w: str) -> dict:
     crack, crack_bright = p["crack"] if p["crack"] else (None, None)
     fleck = p["fleck"]
     pillar_accents = [fleck] if fleck else [plank_light]
+    leaf_dark, leaf_base, leaf_light = LEAF_PALETTES[w]
     return {
+        f"{w}_sapling": make_sapling(f"{w}_sapling", bark_base,
+                                     leaf_dark, leaf_base, leaf_light),
+        f"{w}_leaves": make_leaves(f"{w}_leaves", leaf_dark, leaf_base, leaf_light,
+                                   fleck=fleck),
         f"{w}_planks": lib.plank_grain(lib.seeded(f"{w}_planks"), plank_base, plank_light,
                                        plank_seam, fleck=fleck, fleck_count=2 if fleck else 0),
         f"{w}_log": lib.bark_side(lib.seeded(f"{w}_log"), bark_base, bark_dark, bark_light,
@@ -266,8 +359,106 @@ def emit_column(name: str, end: str, side: str) -> dict:
     }, lib.loot_drop_self(name))
 
 
+def _shears_or_silk_touch() -> dict:
+    """The oak_leaves.json shears-or-silk-touch any_of condition (vanilla 1.21.9)."""
+    return {
+        "condition": "minecraft:any_of",
+        "terms": [
+            {"condition": "minecraft:match_tool",
+             "predicate": {"items": "minecraft:shears"}},
+            {"condition": "minecraft:match_tool",
+             "predicate": {"predicates": {"minecraft:enchantments": [
+                 {"enchantments": "minecraft:silk_touch", "levels": {"min": 1}}]}}},
+        ],
+    }
+
+
+def loot_leaves(name: str, sapling: str) -> dict:
+    """Vanilla leaves loot table (1.21.9 oak_leaves.json with the apple pool dropped —
+    byte-identical to birch_leaves.json — and the leaves/sapling ids substituted):
+    shears/silk touch drop the leaves, otherwise fortune-scaled sapling + stick drops."""
+    return {lib._lt(name): {
+        "type": "minecraft:block",
+        "pools": [
+            {
+                "bonus_rolls": 0.0,
+                "entries": [{
+                    "type": "minecraft:alternatives",
+                    "children": [
+                        {
+                            "type": "minecraft:item",
+                            "conditions": [_shears_or_silk_touch()],
+                            "name": f"{lib.NS}:{name}",
+                        },
+                        {
+                            "type": "minecraft:item",
+                            "conditions": [
+                                {"condition": "minecraft:survives_explosion"},
+                                {"chances": [0.05, 0.0625, 0.083333336, 0.1],
+                                 "condition": "minecraft:table_bonus",
+                                 "enchantment": "minecraft:fortune"},
+                            ],
+                            "name": f"{lib.NS}:{sapling}",
+                        },
+                    ],
+                }],
+                "rolls": 1.0,
+            },
+            {
+                "bonus_rolls": 0.0,
+                "conditions": [{
+                    "condition": "minecraft:inverted",
+                    "term": _shears_or_silk_touch(),
+                }],
+                "entries": [{
+                    "type": "minecraft:item",
+                    "conditions": [
+                        {"chances": [0.02, 0.022222223, 0.025, 0.033333335, 0.1],
+                         "condition": "minecraft:table_bonus",
+                         "enchantment": "minecraft:fortune"},
+                    ],
+                    "functions": [
+                        {"add": False,
+                         "count": {"type": "minecraft:uniform", "max": 2.0, "min": 1.0},
+                         "function": "minecraft:set_count"},
+                        {"function": "minecraft:explosion_decay"},
+                    ],
+                    "name": "minecraft:stick",
+                }],
+                "rolls": 1.0,
+            },
+        ],
+        "random_sequence": f"{lib.NS}:blocks/{name}",
+    }}
+
+
+def emit_sapling(name: str) -> dict:
+    """Sapling: cross blockstate/model (vanilla oak_sapling format) + flat item sprite
+    over the block texture + drop-self loot."""
+    return lib.merge({
+        lib._bs(name): {"variants": {"": {"model": lib.block_ref(name)}}},
+        lib._bm(name): {"parent": "minecraft:block/cross",
+                        "textures": {"cross": lib.block_ref(name)}},
+        lib._im(name): {"parent": "minecraft:item/generated",
+                        "textures": {"layer0": lib.block_ref(name)}},
+        lib._it(name): lib.item_def(f"{lib.NS}:item/{name}"),
+    }, lib.loot_drop_self(name))
+
+
+def emit_leaves(name: str, sapling: str) -> dict:
+    """Leaves: single-variant blockstate + vanilla leaves model (parent
+    minecraft:block/leaves over an "all" texture, oak_leaves format; untinted so the
+    item def references the block model directly) + the vanilla leaves loot table."""
+    return lib.merge({
+        lib._bs(name): {"variants": {"": {"model": lib.block_ref(name)}}},
+        lib._bm(name): {"parent": "minecraft:block/leaves",
+                        "textures": {"all": lib.block_ref(name)}},
+        lib._it(name): lib.item_def(lib.block_ref(name)),
+    }, loot_leaves(name, sapling))
+
+
 def emit_wood_assets(w: str) -> dict:
-    """Blockstates/models/items/loot for all 13 ids of one wood set."""
+    """Blockstates/models/items/loot for all 15 ids of one wood set."""
     planks = f"{w}_planks"
     return lib.merge(
         lib.emit_cube(planks),
@@ -284,7 +475,71 @@ def emit_wood_assets(w: str) -> dict:
         emit_column(f"stripped_{w}_wood", f"stripped_{w}_log", f"stripped_{w}_log"),
         lib.emit_cube(f"{w}_mosaic"),
         lib.emit_pillar(f"{w}_pillar"),
+        emit_sapling(f"{w}_sapling"),
+        emit_leaves(f"{w}_leaves", f"{w}_sapling"),
     )
+
+
+def tree_worldgen(w: str) -> tuple[dict, dict]:
+    """(configured_feature <w>_tree, placed_feature <w>_trees) for one wood.
+
+    The configured feature copies the vanilla 1.21.9 oak.json structure (extracted from
+    the client jar): straight_trunk_placer base 4 + rand 0-2 (4-6 tall),
+    blob_foliage_placer radius 2, two_layers_feature_size, with the wood's own
+    log/leaves as trunk/foliage providers and minecraft:dirt as dirt_provider.
+
+    The placed feature uses count_on_every_layer (uniform 2-3) + biome — the layered
+    nether-style placement the mod's patch_* placed features already use, because the
+    Inferno dimension has a bedrock roof, so heightmap placement would target the
+    ceiling instead of the cavern floors."""
+    configured = {
+        "type": "minecraft:tree",
+        "config": {
+            "decorators": [],
+            "dirt_provider": {
+                "type": "minecraft:simple_state_provider",
+                "state": {"Name": "minecraft:dirt"},
+            },
+            "foliage_placer": {
+                "type": "minecraft:blob_foliage_placer",
+                "height": 3, "offset": 0, "radius": 2,
+            },
+            "foliage_provider": {
+                "type": "minecraft:simple_state_provider",
+                "state": {
+                    "Name": f"{lib.NS}:{w}_leaves",
+                    "Properties": {"distance": "7", "persistent": "false",
+                                   "waterlogged": "false"},
+                },
+            },
+            "force_dirt": False,
+            "ignore_vines": True,
+            "minimum_size": {
+                "type": "minecraft:two_layers_feature_size",
+                "limit": 1, "lower_size": 0, "upper_size": 1,
+            },
+            "trunk_placer": {
+                "type": "minecraft:straight_trunk_placer",
+                "base_height": 4, "height_rand_a": 2, "height_rand_b": 0,
+            },
+            "trunk_provider": {
+                "type": "minecraft:simple_state_provider",
+                "state": {"Name": f"{lib.NS}:{w}_log", "Properties": {"axis": "y"}},
+            },
+        },
+    }
+    placed = {
+        "feature": f"{lib.NS}:{w}_tree",
+        "placement": [
+            {
+                "count": {"type": "minecraft:uniform",
+                          "max_inclusive": 3, "min_inclusive": 2},
+                "type": "minecraft:count_on_every_layer",
+            },
+            {"type": "minecraft:biome"},
+        ],
+    }
+    return configured, placed
 
 
 def wood_recipes(w: str) -> dict:
@@ -381,6 +636,13 @@ def tagfrag() -> dict:
     plates = ids("_pressure_plate")
     slabs = ids("_plank_slab")
     stairs = ids("_plank_stairs")
+    # All 4 log-family ids per wood: joining logs_that_burn gives charcoal smelting +
+    # vanilla fire behavior; logs itself keeps leaf decay + tree logic consistent.
+    logs = [f"{lib.NS}:{prefix}{w}{suffix}" for w in WOODS
+            for prefix, suffix in (("", "_log"), ("stripped_", "_log"),
+                                   ("", "_wood"), ("stripped_", "_wood"))]
+    leaves = ids("_leaves")
+    saplings = ids("_sapling")
     return {
         "block/planks": planks,
         "item/planks": planks,
@@ -395,7 +657,16 @@ def tagfrag() -> dict:
         "block/slabs": slabs,
         "block/wooden_stairs": stairs,
         "block/stairs": stairs,
+        "block/logs": logs,
+        "block/logs_that_burn": logs,
+        "item/logs": logs,
+        "item/logs_that_burn": logs,
+        "block/leaves": leaves,
+        "item/leaves": leaves,
+        "block/saplings": saplings,
+        "item/saplings": saplings,
         "block/mineable/axe": [f"{lib.NS}:{bid}" for bid in ALL_IDS],
+        "block/mineable/hoe": leaves,
     }
 
 
@@ -417,6 +688,8 @@ def lang_names(w: str) -> tuple[dict, dict]:
         f"stripped_{w}_wood": f"Stripped {en_w} Wood",
         f"{w}_mosaic": f"{en_w} Mosaic",
         f"{w}_pillar": f"{en_w} Pillar",
+        f"{w}_sapling": f"{en_w} Sapling",
+        f"{w}_leaves": f"{en_w} Leaves",
     }
     de = {
         f"{w}_planks": f"{holz}bretter",
@@ -432,6 +705,10 @@ def lang_names(w: str) -> tuple[dict, dict]:
         f"stripped_{w}_wood": f"Entrindetes {holz}",
         f"{w}_mosaic": f"{holz}mosaik",
         f"{w}_pillar": f"{holz}s\u00e4ule",
+        # Vanilla-style tree-stem compounds: birch_sapling -> "Birkensetzling",
+        # birch_leaves -> "Birkenlaub" (emberwood -> Glutholzsetzling / Glutholzlaub).
+        f"{w}_sapling": f"{tree}setzling",
+        f"{w}_leaves": f"{tree}laub",
     }
     return en, de
 
@@ -456,8 +733,8 @@ def main() -> None:
     blockstates = [p for p in files if "/blockstates/" in p]
     items = [p for p in files if f"assets/{lib.NS}/items/" in p]
     loot = [p for p in files if "/loot_table/" in p]
-    assert len(blockstates) == len(items) == len(loot) == 104, \
-        f"expected 104 ids, got {len(blockstates)}/{len(items)}/{len(loot)}"
+    assert len(blockstates) == len(items) == len(loot) == 120, \
+        f"expected 120 ids, got {len(blockstates)}/{len(items)}/{len(loot)}"
     json_count = lib.write_files(files, RES)
 
     # recipes
@@ -467,6 +744,17 @@ def main() -> None:
             lib.write_json(DATA / "recipe" / "scorchwood" / f"{name}.json", obj)
             recipe_count += 1
     assert recipe_count == 96
+
+    # tree worldgen (configured + placed feature per wood; injected into the wood's
+    # home biome by ScorchWoodFeature.registerTreeContent)
+    worldgen_count = 0
+    for w in WOODS:
+        assert w in TREE_BIOMES
+        configured, placed = tree_worldgen(w)
+        lib.write_json(DATA / "worldgen" / "configured_feature" / f"{w}_tree.json", configured)
+        lib.write_json(DATA / "worldgen" / "placed_feature" / f"{w}_trees.json", placed)
+        worldgen_count += 2
+    assert worldgen_count == 16
 
     # mod item tags: <w>_logs (format of the existing scorched_logs.json)
     for w in WOODS:
@@ -485,13 +773,14 @@ def main() -> None:
         en, de = lang_names(w)
         lang_en.update({f"block.{lib.NS}.{k}": v for k, v in en.items()})
         lang_de.update({f"block.{lib.NS}.{k}": v for k, v in de.items()})
-    assert len(lang_en) == len(lang_de) == 104
+    assert len(lang_en) == len(lang_de) == 120
     lib.write_json(ASSETS / "lang" / "fragments" / "scorchwood.json", lang_en)
     lib.write_json(ASSETS / "lang" / "fragments_de" / "scorchwood.json", lang_de)
 
     print(f"scorchwood_gen: {texture_count} textures, {json_count} asset/loot JSONs, "
-          f"{recipe_count} recipes, {len(WOODS)} log item tags, 1 tagfrag, 2 lang fragments "
-          f"for {len(ALL_IDS)} block ids across {len(WOODS)} woods")
+          f"{recipe_count} recipes, {worldgen_count} tree worldgen JSONs, "
+          f"{len(WOODS)} log item tags, 1 tagfrag, 2 lang fragments "
+          f"for {len(ALL_IDS) + len(ALL_TREE_IDS)} block ids across {len(WOODS)} woods")
 
 
 if __name__ == "__main__":

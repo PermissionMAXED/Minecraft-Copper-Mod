@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "copper_inferno:block/charoak_leaves"
+  }
+}
