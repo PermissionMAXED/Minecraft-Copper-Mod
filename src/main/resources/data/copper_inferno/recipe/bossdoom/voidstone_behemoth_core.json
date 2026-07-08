@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "E": "minecraft:ender_pearl",
+    "O": "minecraft:obsidian",
+    "V": "copper_inferno:voidstone"
+  },
+  "pattern": [
+    "VOV",
+    "OEO",
+    "VOV"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:voidstone_behemoth_core"
+  },
+  "type": "minecraft:crafting_shaped"
+}
