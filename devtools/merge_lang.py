@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Merge lang fragments into en_us.json and verify lang-key coverage.
+"""Merge lang fragments into a locale file and verify lang-key coverage.
 
+Default locale (en_us) — behavior unchanged:
 - Merges assets/copper_inferno/lang/fragments/*.json into assets/copper_inferno/lang/en_us.json.
 - Existing en_us.json keys WIN on conflict (protects branding / curated names).
 - New keys are added; output is alphabetically sorted.
@@ -11,7 +12,18 @@
     itemGroup.copper_inferno.main + .blocks
     jukebox_song.copper_inferno.<id> for every data/copper_inferno/jukebox_song/*.json
   Missing keys are added with a readable name derived from the id.
+
+Non-en locale (e.g. --locale de_de):
+- Merges assets/copper_inferno/lang/fragments_<prefix>/*.json (de_de -> fragments_de; the
+  prefix is the locale's language part before the underscore) into
+  assets/copper_inferno/lang/<code>.json (created if absent). Same conflict rules
+  (existing locale keys win).
+- Coverage: every key present in en_us.json but missing in the locale is filled from the EN
+  value and reported as "WARNING untranslated: <key>".
+- Branding: itemGroup.copper_inferno.main must equal "COPPER INFERNO 1" in EVERY locale;
+  the effect.copper_inferno.dr_pepper_kick == "Dr.Pepper kick" assert applies to en_us only.
 """
+import argparse
 import json
 import os
 import sys
@@ -35,29 +47,25 @@ def readable(ident: str) -> str:
     return name.replace("Dr. Pepper", "Dr.Pepper")
 
 
-def main() -> int:
-    with open(LANG, encoding="utf-8") as f:
-        base = json.load(f)
-    print(f"[merge_lang] base en_us.json: {len(base)} keys")
-
-    merged = dict(base)
+def merge_fragments(merged: dict, fragments_dir: str) -> bool:
+    """Merge fragment files into `merged` in place (existing keys win). False on fatal error."""
     added_from_fragments = 0
     conflicts_kept = 0
-    for fname in sorted(os.listdir(FRAGMENTS)):
+    for fname in sorted(os.listdir(fragments_dir)):
         if not fname.endswith(".json"):
             continue
-        path = os.path.join(FRAGMENTS, fname)
+        path = os.path.join(fragments_dir, fname)
         try:
             with open(path, encoding="utf-8") as f:
                 frag = json.load(f)
         except (json.JSONDecodeError, UnicodeDecodeError) as e:
             print(f"[merge_lang] FATAL: malformed fragment {fname}: {e}", file=sys.stderr)
-            return 1
+            return False
         if not isinstance(frag, dict) or not all(
             isinstance(k, str) and isinstance(v, str) for k, v in frag.items()
         ):
             print(f"[merge_lang] FATAL: fragment {fname} is not a flat str->str object", file=sys.stderr)
-            return 1
+            return False
         for k, v in frag.items():
             if k in merged:
                 if merged[k] != v:
@@ -67,6 +75,17 @@ def main() -> int:
                 merged[k] = v
                 added_from_fragments += 1
     print(f"[merge_lang] added {added_from_fragments} keys from fragments; {conflicts_kept} conflicts kept existing value")
+    return True
+
+
+def merge_en() -> int:
+    with open(LANG, encoding="utf-8") as f:
+        base = json.load(f)
+    print(f"[merge_lang] base en_us.json: {len(base)} keys")
+
+    merged = dict(base)
+    if not merge_fragments(merged, FRAGMENTS):
+        return 1
 
     # --- coverage verification ---
     blockstates = sorted(
@@ -118,6 +137,63 @@ def main() -> int:
         f.write("\n")
     print(f"[merge_lang] wrote {LANG}: {len(merged)} keys (sorted)")
     return 0
+
+
+def locale_fragments_dir(code: str) -> str:
+    """de_de -> lang/fragments_de (generally the locale's short language prefix)."""
+    return os.path.join(ASSETS, "lang", "fragments_" + code.split("_")[0])
+
+
+def merge_locale(code: str) -> int:
+    lang_path = os.path.join(ASSETS, "lang", code + ".json")
+    if os.path.isfile(lang_path):
+        with open(lang_path, encoding="utf-8") as f:
+            base = json.load(f)
+        print(f"[merge_lang] base {code}.json: {len(base)} keys")
+    else:
+        base = {}
+        print(f"[merge_lang] {code}.json does not exist yet; starting from 0 keys")
+
+    merged = dict(base)
+    fragments_dir = locale_fragments_dir(code)
+    if os.path.isdir(fragments_dir):
+        if not merge_fragments(merged, fragments_dir):
+            return 1
+    else:
+        print(f"[merge_lang] no fragment dir {os.path.relpath(fragments_dir, ROOT)}; nothing to merge")
+
+    # --- coverage: every en_us key must exist; fill gaps from EN ---
+    with open(LANG, encoding="utf-8") as f:
+        en = json.load(f)
+    untranslated = 0
+    for key in sorted(en):
+        if key not in merged:
+            merged[key] = en[key]
+            print(f"WARNING untranslated: {key}")
+            untranslated += 1
+    if untranslated:
+        print(f"[merge_lang] filled {untranslated} untranslated keys from en_us")
+    else:
+        print("[merge_lang] coverage check: every en_us key is translated")
+
+    # sanity: branding must not regress (brand name is identical in every locale)
+    assert merged["itemGroup.copper_inferno.main"] == "COPPER INFERNO 1", "branding regressed!"
+
+    with open(lang_path, "w", encoding="utf-8") as f:
+        json.dump(dict(sorted(merged.items())), f, indent=2, ensure_ascii=False)
+        f.write("\n")
+    print(f"[merge_lang] wrote {lang_path}: {len(merged)} keys (sorted)")
+    return 0
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Merge lang fragments and verify lang-key coverage.")
+    parser.add_argument("--locale", default="en_us",
+                        help="locale code, e.g. en_us (default) or de_de")
+    args = parser.parse_args()
+    if args.locale == "en_us":
+        return merge_en()
+    return merge_locale(args.locale)
 
 
 if __name__ == "__main__":

@@ -48,6 +48,7 @@ processResources {
 
 	// Lang fragments are merge inputs for devtools/merge_lang.py, not runtime assets.
 	exclude 'assets/copper_inferno/lang/fragments/**'
+	exclude 'assets/copper_inferno/lang/fragments_de/**'
 }
 
 tasks.withType(JavaCompile).configureEach {

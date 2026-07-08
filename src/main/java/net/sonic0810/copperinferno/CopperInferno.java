@@ -4,6 +4,8 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import net.sonic0810.copperinferno.core.CopperInfernoCore;
 import net.sonic0810.copperinferno.feature.armor.CopperArmorFeature;
+import net.sonic0810.copperinferno.feature.cinderstone.CinderStoneFeature;
+import net.sonic0810.copperinferno.feature.copperdeco.CopperDecoFeature;
 import net.sonic0810.copperinferno.feature.decostone.DecoStoneFeature;
 import net.sonic0810.copperinferno.feature.drpepper.DrPepperFeature;
 import net.sonic0810.copperinferno.feature.extras.ExtrasFeature;
@@ -11,7 +13,15 @@ import net.sonic0810.copperinferno.feature.foods.FoodsFeature;
 import net.sonic0810.copperinferno.feature.gear.GearFeature;
 import net.sonic0810.copperinferno.feature.glasslight.GlassLightFeature;
 import net.sonic0810.copperinferno.feature.golem.DrPepperGolemFeature;
+import net.sonic0810.copperinferno.feature.handbook.HandbookFeature;
 import net.sonic0810.copperinferno.feature.inferno.InfernoFeature;
+import net.sonic0810.copperinferno.feature.infernoboss.InfernoBossFeature;
+import net.sonic0810.copperinferno.feature.infernodim.InfernoDimensionFeature;
+import net.sonic0810.copperinferno.feature.infernoflora.InfernoFloraFeature;
+import net.sonic0810.copperinferno.feature.infernofoods.InfernoFoodsFeature;
+import net.sonic0810.copperinferno.feature.infernofx.InfernoFxFeature;
+import net.sonic0810.copperinferno.feature.infernium.InferniumFeature;
+import net.sonic0810.copperinferno.feature.infernomobs.InfernoMobsFeature;
 import net.sonic0810.copperinferno.feature.masonry.MasonryFeature;
 import net.sonic0810.copperinferno.feature.materials.MaterialsFeature;
 import net.sonic0810.copperinferno.feature.music.MusicFeature;
@@ -59,5 +69,17 @@ public class CopperInferno implements ModInitializer {
 		SodaBlocksFeature.init();
 		GlassLightFeature.init();
 		UtilityBlocksFeature.init();
+		// v3 "The Inferno Dimension" features (fixed order; HandbookFeature LAST so it can
+		// reference every other feature's content).
+		InfernoDimensionFeature.init();
+		CinderStoneFeature.init();
+		InfernoFloraFeature.init();
+		CopperDecoFeature.init();
+		InferniumFeature.init();
+		InfernoMobsFeature.init();
+		InfernoBossFeature.init();
+		InfernoFoodsFeature.init();
+		InfernoFxFeature.init();
+		HandbookFeature.init();
 	}
 }
