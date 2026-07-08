@@ -1,0 +1,14 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:polished_glowspar"
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "copper_inferno:polished_glowspar_slab"
+  },
+  "type": "minecraft:crafting_shaped"
+}

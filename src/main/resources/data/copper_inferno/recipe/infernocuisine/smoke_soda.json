@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glass_bottle",
+    "minecraft:sugar",
+    "minecraft:charcoal"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:smoke_soda"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

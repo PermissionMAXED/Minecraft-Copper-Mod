@@ -1,0 +1,15 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:slag_bronze"
+  },
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:slag_bronze_pillar"
+  },
+  "type": "minecraft:crafting_shaped"
+}

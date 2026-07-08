@@ -1,0 +1,14 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:polished_umbral_deepslate"
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "copper_inferno:polished_umbral_deepslate_slab"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/voidbasalt_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/voidbasalt"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/voidbasalt_slab_top"
+    }
+  }
+}

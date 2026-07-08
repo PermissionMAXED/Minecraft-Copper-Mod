@@ -1,0 +1,15 @@
+{
+  "category": "misc",
+  "key": {
+    "#": "copper_inferno:polished_sootware"
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "copper_inferno:polished_sootware_wall"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:cinder_crystal",
+    "S": "minecraft:fire_charge"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:flame_opal"
+  },
+  "type": "minecraft:crafting_shaped"
+}

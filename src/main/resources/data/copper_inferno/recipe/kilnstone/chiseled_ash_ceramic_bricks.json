@@ -1,0 +1,15 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:ash_ceramic_brick_slab"
+  },
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:chiseled_ash_ceramic_bricks"
+  },
+  "type": "minecraft:crafting_shaped"
+}

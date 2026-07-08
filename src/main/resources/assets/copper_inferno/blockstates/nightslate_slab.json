@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/nightslate_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/nightslate"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/nightslate_slab_top"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "copper_inferno:block/obsid_glassblock_bricks",
+    "side": "copper_inferno:block/obsid_glassblock_bricks",
+    "top": "copper_inferno:block/obsid_glassblock_bricks"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:pyrewood",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:chiseled_pyrewood_bricks"
+  },
+  "type": "minecraft:stonecutting"
+}

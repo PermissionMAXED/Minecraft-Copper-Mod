@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:bowl",
+    "minecraft:charcoal",
+    "minecraft:potato",
+    "minecraft:carrot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:coal_curry"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

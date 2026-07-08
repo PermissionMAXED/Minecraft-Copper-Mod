@@ -1,0 +1,16 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:blazewrought_stone"
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:blazewrought_stone_stairs"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:scorched_grapes"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:flame_raisins"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

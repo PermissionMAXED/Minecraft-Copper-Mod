@@ -1,8 +1,14 @@
 {
   "values": [
+    "copper_inferno:cinderforge_axe",
+    "copper_inferno:ember_steel_axe",
     "copper_inferno:exposed_copper_axe",
+    "copper_inferno:infernal_alloy_axe",
     "copper_inferno:infernium_axe",
+    "copper_inferno:molten_titan_axe",
     "copper_inferno:oxidized_copper_axe",
+    "copper_inferno:pyrite_axe",
+    "copper_inferno:slagsteel_axe",
     "copper_inferno:weathered_copper_axe"
   ]
 }

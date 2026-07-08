@@ -1,0 +1,116 @@
+# kilnstone feature hooks (format: devtools/hooks/README.md)
+
+[init]
+import net.sonic0810.copperinferno.feature.kilnstone.KilnstoneFeature;
+		KilnstoneFeature.init();
+
+[families]
+kilnstone, kilnstone
+polished_kilnstone, polished_kilnstone
+kilnstone_bricks, kilnstone_brick
+firebrick_stone, firebrick_stone
+polished_firebrick_stone, polished_firebrick_stone
+firebrick_stone_bricks, firebrick_stone_brick
+glazed_cinder, glazed_cinder
+polished_glazed_cinder, polished_glazed_cinder
+glazed_cinder_bricks, glazed_cinder_brick
+terracotta_slag, terracotta_slag
+polished_terracotta_slag, polished_terracotta_slag
+terracotta_slag_bricks, terracotta_slag_brick
+kiln_ceramic, kiln_ceramic
+polished_kiln_ceramic, polished_kiln_ceramic
+kiln_ceramic_bricks, kiln_ceramic_brick
+emberware, emberware
+polished_emberware, polished_emberware
+emberware_bricks, emberware_brick
+sootware, sootware
+polished_sootware, polished_sootware
+sootware_bricks, sootware_brick
+glazed_ember, glazed_ember
+polished_glazed_ember, polished_glazed_ember
+glazed_ember_bricks, glazed_ember_brick
+baked_ash_block, baked_ash_block
+polished_baked_ash_block, polished_baked_ash_block
+baked_ash_block_bricks, baked_ash_block_brick
+foundry_brick, foundry_brick
+polished_foundry_brick, polished_foundry_brick
+foundry_brick_bricks, foundry_brick_brick
+crucible_stone, crucible_stone
+polished_crucible_stone, polished_crucible_stone
+crucible_stone_bricks, crucible_stone_brick
+slagware, slagware
+polished_slagware, polished_slagware
+slagware_bricks, slagware_brick
+ash_ceramic, ash_ceramic
+polished_ash_ceramic, polished_ash_ceramic
+ash_ceramic_bricks, ash_ceramic_brick
+pyroceramic, pyroceramic
+polished_pyroceramic, polished_pyroceramic
+pyroceramic_bricks, pyroceramic_brick
+
+[requires-tool]
+kilnstone_tiles
+cracked_kilnstone_bricks
+chiseled_kilnstone_bricks
+kilnstone_pillar
+firebrick_stone_tiles
+cracked_firebrick_stone_bricks
+chiseled_firebrick_stone_bricks
+firebrick_stone_pillar
+glazed_cinder_tiles
+cracked_glazed_cinder_bricks
+chiseled_glazed_cinder_bricks
+glazed_cinder_pillar
+terracotta_slag_tiles
+cracked_terracotta_slag_bricks
+chiseled_terracotta_slag_bricks
+terracotta_slag_pillar
+kiln_ceramic_tiles
+cracked_kiln_ceramic_bricks
+chiseled_kiln_ceramic_bricks
+kiln_ceramic_pillar
+emberware_tiles
+cracked_emberware_bricks
+chiseled_emberware_bricks
+emberware_pillar
+sootware_tiles
+cracked_sootware_bricks
+chiseled_sootware_bricks
+sootware_pillar
+glazed_ember_tiles
+cracked_glazed_ember_bricks
+chiseled_glazed_ember_bricks
+glazed_ember_pillar
+baked_ash_block_tiles
+cracked_baked_ash_block_bricks
+chiseled_baked_ash_block_bricks
+baked_ash_block_pillar
+foundry_brick_tiles
+cracked_foundry_brick_bricks
+chiseled_foundry_brick_bricks
+foundry_brick_pillar
+crucible_stone_tiles
+cracked_crucible_stone_bricks
+chiseled_crucible_stone_bricks
+crucible_stone_pillar
+slagware_tiles
+cracked_slagware_bricks
+chiseled_slagware_bricks
+slagware_pillar
+ash_ceramic_tiles
+cracked_ash_ceramic_bricks
+chiseled_ash_ceramic_bricks
+ash_ceramic_pillar
+pyroceramic_tiles
+cracked_pyroceramic_bricks
+chiseled_pyroceramic_bricks
+pyroceramic_pillar
+
+[recipe-dir]
+kilnstone
+
+[counts]
+blocks: 224
+items: 0
+recipes: 420
+handbook-entries: 462

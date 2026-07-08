@@ -1,0 +1,15 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:ember_prism"
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:ember_prism_bricks"
+  },
+  "type": "minecraft:crafting_shaped"
+}

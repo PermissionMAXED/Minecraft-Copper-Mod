@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "copper_inferno:block/glazed_ember_bricks",
+    "side": "copper_inferno:block/glazed_ember_bricks",
+    "top": "copper_inferno:block/glazed_ember_bricks"
+  }
+}

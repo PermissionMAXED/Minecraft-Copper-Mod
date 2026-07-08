@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:pyrestone",
+    "S": "minecraft:netherrack"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:emberstone"
+  },
+  "type": "minecraft:crafting_shaped"
+}

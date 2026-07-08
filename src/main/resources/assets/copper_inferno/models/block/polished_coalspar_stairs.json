@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "copper_inferno:block/polished_coalspar",
+    "side": "copper_inferno:block/polished_coalspar",
+    "top": "copper_inferno:block/polished_coalspar"
+  }
+}

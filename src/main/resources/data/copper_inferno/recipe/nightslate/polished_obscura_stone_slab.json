@@ -1,0 +1,14 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:polished_obscura_stone"
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "copper_inferno:polished_obscura_stone_slab"
+  },
+  "type": "minecraft:crafting_shaped"
+}

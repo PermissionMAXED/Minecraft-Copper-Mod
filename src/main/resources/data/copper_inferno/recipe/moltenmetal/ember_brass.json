@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:ashiron",
+    "S": "minecraft:copper_ingot"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:ember_brass"
+  },
+  "type": "minecraft:crafting_shaped"
+}

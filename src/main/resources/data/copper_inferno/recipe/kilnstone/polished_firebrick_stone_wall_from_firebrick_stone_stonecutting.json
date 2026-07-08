@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:firebrick_stone",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:polished_firebrick_stone_wall"
+  },
+  "type": "minecraft:stonecutting"
+}

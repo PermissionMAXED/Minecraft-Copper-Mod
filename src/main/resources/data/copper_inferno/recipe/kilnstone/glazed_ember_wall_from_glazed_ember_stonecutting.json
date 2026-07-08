@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:glazed_ember",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:glazed_ember_wall"
+  },
+  "type": "minecraft:stonecutting"
+}

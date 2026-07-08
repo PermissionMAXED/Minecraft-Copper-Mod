@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:slag_bronze",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:polished_slag_bronze"
+  },
+  "type": "minecraft:stonecutting"
+}

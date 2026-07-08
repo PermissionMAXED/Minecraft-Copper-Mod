@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:ignitium_powder",
+    "copper_inferno:ignitium_shard",
+    "minecraft:redstone"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:ignitium_catalyst"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

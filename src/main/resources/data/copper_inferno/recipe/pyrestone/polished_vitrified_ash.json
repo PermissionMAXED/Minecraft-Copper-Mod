@@ -1,0 +1,15 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:vitrified_ash_tiles"
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:polished_vitrified_ash"
+  },
+  "type": "minecraft:crafting_shaped"
+}

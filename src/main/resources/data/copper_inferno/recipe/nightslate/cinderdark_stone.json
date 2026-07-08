@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:murkrock",
+    "S": "minecraft:polished_blackstone"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:cinderdark_stone"
+  },
+  "type": "minecraft:crafting_shaped"
+}

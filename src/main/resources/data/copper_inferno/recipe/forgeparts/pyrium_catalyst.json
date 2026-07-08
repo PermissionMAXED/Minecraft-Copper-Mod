@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:pyrium_powder",
+    "copper_inferno:pyrium_shard",
+    "minecraft:redstone"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:pyrium_catalyst"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

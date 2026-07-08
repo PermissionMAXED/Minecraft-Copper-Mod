@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "P": "copper_inferno:ignitium_dust",
+    "V": "minecraft:quartz"
+  },
+  "pattern": [
+    "V V",
+    " P ",
+    "V V"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:calderium_dust"
+  },
+  "type": "minecraft:crafting_shaped"
+}

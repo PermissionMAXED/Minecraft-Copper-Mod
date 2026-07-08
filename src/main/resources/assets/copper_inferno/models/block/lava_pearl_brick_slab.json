@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "copper_inferno:block/lava_pearl_bricks",
+    "side": "copper_inferno:block/lava_pearl_bricks",
+    "top": "copper_inferno:block/lava_pearl_bricks"
+  }
+}

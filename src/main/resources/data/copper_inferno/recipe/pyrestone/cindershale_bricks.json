@@ -1,0 +1,15 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:cindershale"
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:cindershale_bricks"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:smolderwood",
+    "S": "minecraft:glowstone_dust"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:glowbark"
+  },
+  "type": "minecraft:crafting_shaped"
+}

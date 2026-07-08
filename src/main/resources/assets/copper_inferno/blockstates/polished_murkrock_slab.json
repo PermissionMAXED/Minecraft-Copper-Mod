@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/polished_murkrock_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/polished_murkrock"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/polished_murkrock_slab_top"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:slagware_tiles"
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:polished_slagware"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,15 @@
+{
+  "category": "misc",
+  "key": {
+    "#": "copper_inferno:glowbark"
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "copper_inferno:glowbark_wall"
+  },
+  "type": "minecraft:crafting_shaped"
+}

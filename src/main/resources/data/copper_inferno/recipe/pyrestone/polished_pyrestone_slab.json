@@ -1,0 +1,14 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:polished_pyrestone"
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "copper_inferno:polished_pyrestone_slab"
+  },
+  "type": "minecraft:crafting_shaped"
+}

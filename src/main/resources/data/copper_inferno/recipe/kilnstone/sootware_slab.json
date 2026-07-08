@@ -1,0 +1,14 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:sootware"
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "copper_inferno:sootware_slab"
+  },
+  "type": "minecraft:crafting_shaped"
+}

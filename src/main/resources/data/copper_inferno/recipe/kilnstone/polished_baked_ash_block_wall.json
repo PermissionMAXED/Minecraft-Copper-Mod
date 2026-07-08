@@ -1,0 +1,15 @@
+{
+  "category": "misc",
+  "key": {
+    "#": "copper_inferno:polished_baked_ash_block"
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "copper_inferno:polished_baked_ash_block_wall"
+  },
+  "type": "minecraft:crafting_shaped"
+}

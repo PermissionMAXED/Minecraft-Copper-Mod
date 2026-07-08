@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:shadow_tuff",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:shadow_tuff_tiles"
+  },
+  "type": "minecraft:stonecutting"
+}

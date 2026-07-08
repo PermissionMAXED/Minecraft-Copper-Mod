@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:forgeworn_metal",
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:forgeworn_metal_slab"
+  },
+  "type": "minecraft:stonecutting"
+}

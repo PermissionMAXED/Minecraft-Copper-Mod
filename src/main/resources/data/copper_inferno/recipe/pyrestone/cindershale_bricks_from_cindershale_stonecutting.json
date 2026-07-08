@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:cindershale",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:cindershale_bricks"
+  },
+  "type": "minecraft:stonecutting"
+}

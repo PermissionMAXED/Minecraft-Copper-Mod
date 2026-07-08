@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:heatlens_stone",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:heatlens_stone_tiles"
+  },
+  "type": "minecraft:stonecutting"
+}

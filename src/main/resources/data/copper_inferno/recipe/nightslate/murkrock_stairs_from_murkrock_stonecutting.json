@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:murkrock",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:murkrock_stairs"
+  },
+  "type": "minecraft:stonecutting"
+}

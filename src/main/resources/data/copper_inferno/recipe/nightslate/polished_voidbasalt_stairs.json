@@ -1,0 +1,16 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:polished_voidbasalt"
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:polished_voidbasalt_stairs"
+  },
+  "type": "minecraft:crafting_shaped"
+}

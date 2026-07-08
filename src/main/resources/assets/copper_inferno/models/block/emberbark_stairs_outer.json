@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "copper_inferno:block/emberbark",
+    "side": "copper_inferno:block/emberbark",
+    "top": "copper_inferno:block/emberbark"
+  }
+}

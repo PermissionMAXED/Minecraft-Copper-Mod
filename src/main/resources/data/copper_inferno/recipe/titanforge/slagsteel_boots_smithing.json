@@ -1,0 +1,9 @@
+{
+  "addition": "copper_inferno:slagsteel_ingot",
+  "base": "copper_inferno:pyrite_boots",
+  "result": {
+    "id": "copper_inferno:slagsteel_boots"
+  },
+  "template": "copper_inferno:infernium_upgrade_smithing_template",
+  "type": "minecraft:smithing_transform"
+}

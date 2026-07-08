@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "copper_inferno:pyrite"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "copper_inferno:pyrite"
+      }
+    ]
+  }
+}

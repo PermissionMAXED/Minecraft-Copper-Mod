@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glass_bottle",
+    "minecraft:wheat",
+    "copper_inferno:ash_pile"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ashen_ale"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

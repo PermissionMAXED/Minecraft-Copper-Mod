@@ -1,0 +1,10 @@
+{
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "ingredient": "copper_inferno:molten_marshmallow",
+  "result": {
+    "id": "copper_inferno:toasted_marshmallow"
+  },
+  "type": "minecraft:smelting"
+}

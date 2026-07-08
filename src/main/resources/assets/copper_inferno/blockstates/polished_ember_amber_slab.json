@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/polished_ember_amber_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/polished_ember_amber"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/polished_ember_amber_slab_top"
+    }
+  }
+}

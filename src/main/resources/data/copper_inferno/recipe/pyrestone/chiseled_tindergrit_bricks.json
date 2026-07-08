@@ -1,0 +1,15 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:tindergrit_brick_slab"
+  },
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:chiseled_tindergrit_bricks"
+  },
+  "type": "minecraft:crafting_shaped"
+}

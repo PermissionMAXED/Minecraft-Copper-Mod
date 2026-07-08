@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:ember_brass",
+    "S": "minecraft:raw_copper"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:slag_bronze"
+  },
+  "type": "minecraft:crafting_shaped"
+}

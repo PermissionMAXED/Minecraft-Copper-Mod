@@ -1,0 +1,15 @@
+{
+  "category": "misc",
+  "key": {
+    "#": "copper_inferno:scorium_ingot"
+  },
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:scorium_rod"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,15 @@
+{
+  "category": "misc",
+  "key": {
+    "#": "copper_inferno:polished_molten_brass"
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "copper_inferno:polished_molten_brass_wall"
+  },
+  "type": "minecraft:crafting_shaped"
+}

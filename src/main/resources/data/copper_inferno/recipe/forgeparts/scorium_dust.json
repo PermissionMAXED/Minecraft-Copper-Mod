@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "P": "copper_inferno:pyrium_dust",
+    "V": "minecraft:gunpowder"
+  },
+  "pattern": [
+    "V V",
+    " P ",
+    "V V"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:scorium_dust"
+  },
+  "type": "minecraft:crafting_shaped"
+}

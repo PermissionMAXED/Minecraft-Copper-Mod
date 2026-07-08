@@ -1,8 +1,14 @@
 {
   "values": [
+    "copper_inferno:cinderforge_chestplate",
+    "copper_inferno:ember_steel_chestplate",
     "copper_inferno:exposed_copper_chestplate",
+    "copper_inferno:infernal_alloy_chestplate",
     "copper_inferno:infernium_chestplate",
+    "copper_inferno:molten_titan_chestplate",
     "copper_inferno:oxidized_copper_chestplate",
+    "copper_inferno:pyrite_chestplate",
+    "copper_inferno:slagsteel_chestplate",
     "copper_inferno:weathered_copper_chestplate"
   ]
 }

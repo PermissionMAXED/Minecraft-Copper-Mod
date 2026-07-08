@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:pyrite_crystal",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:polished_pyrite_crystal_stairs"
+  },
+  "type": "minecraft:stonecutting"
+}

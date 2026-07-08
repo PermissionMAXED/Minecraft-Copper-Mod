@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:pyrewood",
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:pyrewood_slab"
+  },
+  "type": "minecraft:stonecutting"
+}

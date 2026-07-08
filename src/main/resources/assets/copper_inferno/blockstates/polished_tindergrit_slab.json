@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/polished_tindergrit_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/polished_tindergrit"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/polished_tindergrit_slab_top"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:scalding_steel",
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:polished_scalding_steel_slab"
+  },
+  "type": "minecraft:stonecutting"
+}

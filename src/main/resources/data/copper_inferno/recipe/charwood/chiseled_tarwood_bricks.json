@@ -1,0 +1,15 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:tarwood_brick_slab"
+  },
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:chiseled_tarwood_bricks"
+  },
+  "type": "minecraft:crafting_shaped"
+}

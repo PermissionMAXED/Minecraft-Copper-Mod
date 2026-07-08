@@ -1,0 +1,15 @@
+# titanforge feature hooks (format: devtools/hooks/README.md)
+
+[init]
+# No Java init-order constraint: the smithing recipes reference
+# copper_inferno:infernium_upgrade_smithing_template by id only (data-side).
+import net.sonic0810.copperinferno.feature.titanforge.TitanForgeFeature;
+		TitanForgeFeature.init();
+
+[recipe-dir]
+titanforge
+
+[counts]
+items: 96
+recipes: 141
+handbook-entries: 142

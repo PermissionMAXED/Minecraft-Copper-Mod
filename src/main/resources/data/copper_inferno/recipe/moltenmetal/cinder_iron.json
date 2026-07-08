@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:patina_steel",
+    "S": "minecraft:iron_nugget"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:cinder_iron"
+  },
+  "type": "minecraft:crafting_shaped"
+}

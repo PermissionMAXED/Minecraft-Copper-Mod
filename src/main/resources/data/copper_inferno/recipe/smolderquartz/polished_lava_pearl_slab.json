@@ -1,0 +1,14 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:polished_lava_pearl"
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "copper_inferno:polished_lava_pearl_slab"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:bowl",
+    "minecraft:milk_bucket",
+    "copper_inferno:ember_dust"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:furnace_fondue"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

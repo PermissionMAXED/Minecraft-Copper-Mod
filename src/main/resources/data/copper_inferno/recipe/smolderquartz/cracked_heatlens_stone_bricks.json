@@ -1,0 +1,10 @@
+{
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": "copper_inferno:heatlens_stone_bricks",
+  "result": {
+    "id": "copper_inferno:cracked_heatlens_stone_bricks"
+  },
+  "type": "minecraft:smelting"
+}

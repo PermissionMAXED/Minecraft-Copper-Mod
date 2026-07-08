@@ -1,0 +1,15 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:blacksoot_stone"
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:blacksoot_stone_bricks"
+  },
+  "type": "minecraft:crafting_shaped"
+}

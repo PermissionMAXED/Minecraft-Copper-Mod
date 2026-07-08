@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:coalwood",
+    "S": "minecraft:dark_oak_log"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:tarwood"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,16 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:polished_tarwood"
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:polished_tarwood_stairs"
+  },
+  "type": "minecraft:crafting_shaped"
+}

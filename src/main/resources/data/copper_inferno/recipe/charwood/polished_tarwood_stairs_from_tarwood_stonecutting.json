@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:tarwood",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:polished_tarwood_stairs"
+  },
+  "type": "minecraft:stonecutting"
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/fumarole_rock_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/fumarole_rock"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/fumarole_rock_slab_top"
+    }
+  }
+}

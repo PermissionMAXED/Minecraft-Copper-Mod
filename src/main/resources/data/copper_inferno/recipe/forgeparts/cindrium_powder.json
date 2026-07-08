@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:cindrium_dust",
+    "minecraft:blaze_powder"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:cindrium_powder"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

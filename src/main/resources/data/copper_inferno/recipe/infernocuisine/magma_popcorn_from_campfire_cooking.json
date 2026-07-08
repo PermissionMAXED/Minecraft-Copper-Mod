@@ -1,0 +1,10 @@
+{
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 0.35,
+  "ingredient": "copper_inferno:magma_kernels",
+  "result": {
+    "id": "copper_inferno:magma_popcorn"
+  },
+  "type": "minecraft:campfire_cooking"
+}

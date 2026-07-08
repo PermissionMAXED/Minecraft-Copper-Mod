@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/charwood_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/charwood"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/charwood_slab_top"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "#": "copper_inferno:volkanite_rod",
+    "N": "copper_inferno:volkanite_ingot"
+  },
+  "pattern": [
+    " # ",
+    "#N#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:volkanite_gear"
+  },
+  "type": "minecraft:crafting_shaped"
+}

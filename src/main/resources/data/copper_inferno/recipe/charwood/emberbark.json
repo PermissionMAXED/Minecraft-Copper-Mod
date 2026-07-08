@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:charwood",
+    "S": "minecraft:blaze_powder"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:emberbark"
+  },
+  "type": "minecraft:crafting_shaped"
+}

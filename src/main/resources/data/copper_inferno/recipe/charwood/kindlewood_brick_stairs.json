@@ -1,0 +1,16 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:kindlewood_bricks"
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:kindlewood_brick_stairs"
+  },
+  "type": "minecraft:crafting_shaped"
+}

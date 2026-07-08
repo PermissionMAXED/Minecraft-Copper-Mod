@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "copper_inferno:block/polished_slag_bronze",
+    "side": "copper_inferno:block/polished_slag_bronze",
+    "top": "copper_inferno:block/polished_slag_bronze"
+  }
+}

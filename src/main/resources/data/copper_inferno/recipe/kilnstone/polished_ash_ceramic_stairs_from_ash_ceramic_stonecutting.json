@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:ash_ceramic",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:polished_ash_ceramic_stairs"
+  },
+  "type": "minecraft:stonecutting"
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "copper_inferno:block/cracked_smelters_alloy_bricks"
+  }
+}

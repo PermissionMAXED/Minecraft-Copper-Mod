@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:cinderdark_stone",
+    "S": "minecraft:netherrack"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:netherveil_stone"
+  },
+  "type": "minecraft:crafting_shaped"
+}

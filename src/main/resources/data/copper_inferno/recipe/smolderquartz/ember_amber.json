@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:obsid_glassblock",
+    "S": "minecraft:resin_clump"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:ember_amber"
+  },
+  "type": "minecraft:crafting_shaped"
+}

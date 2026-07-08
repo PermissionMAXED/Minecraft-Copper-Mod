@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "G": "copper_inferno:scorium_gem",
+    "P": "copper_inferno:scorium_plate"
+  },
+  "pattern": [
+    " P ",
+    "PGP",
+    " P "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:scorium_core"
+  },
+  "type": "minecraft:crafting_shaped"
+}

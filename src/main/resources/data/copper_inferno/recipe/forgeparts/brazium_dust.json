@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "P": "copper_inferno:scorium_dust",
+    "V": "minecraft:gold_nugget"
+  },
+  "pattern": [
+    "V V",
+    " P ",
+    "V V"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:brazium_dust"
+  },
+  "type": "minecraft:crafting_shaped"
+}

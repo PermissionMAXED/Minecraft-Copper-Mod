@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glass_bottle",
+    "minecraft:beetroot",
+    "copper_inferno:ash_pile",
+    "minecraft:sugar"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:cinder_kimchi"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

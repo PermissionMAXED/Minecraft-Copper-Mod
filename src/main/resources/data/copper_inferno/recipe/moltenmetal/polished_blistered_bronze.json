@@ -1,0 +1,15 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:blistered_bronze_tiles"
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:polished_blistered_bronze"
+  },
+  "type": "minecraft:crafting_shaped"
+}

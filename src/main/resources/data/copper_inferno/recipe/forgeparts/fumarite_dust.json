@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "P": "copper_inferno:volkanite_dust",
+    "V": "minecraft:glowstone_dust"
+  },
+  "pattern": [
+    "V V",
+    " P ",
+    "V V"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:fumarite_dust"
+  },
+  "type": "minecraft:crafting_shaped"
+}

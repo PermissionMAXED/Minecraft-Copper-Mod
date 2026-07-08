@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:bowl",
+    "minecraft:beef",
+    "minecraft:beetroot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:scorched_goulash"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

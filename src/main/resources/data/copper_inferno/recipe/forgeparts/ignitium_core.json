@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "G": "copper_inferno:ignitium_gem",
+    "P": "copper_inferno:ignitium_plate"
+  },
+  "pattern": [
+    " P ",
+    "PGP",
+    " P "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ignitium_core"
+  },
+  "type": "minecraft:crafting_shaped"
+}

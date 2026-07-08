@@ -1,0 +1,17 @@
+{
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:stick",
+    "X": "copper_inferno:pyrite_ingot"
+  },
+  "pattern": [
+    "XX",
+    "X#",
+    " #"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:pyrite_axe"
+  },
+  "type": "minecraft:crafting_shaped"
+}

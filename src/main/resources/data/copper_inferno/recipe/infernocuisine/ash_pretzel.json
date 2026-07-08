@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:ember_dough",
+    "copper_inferno:ash_pile"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:ash_pretzel"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

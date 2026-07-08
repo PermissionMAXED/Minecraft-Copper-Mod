@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:ember_dough",
+    "minecraft:sugar",
+    "minecraft:egg",
+    "copper_inferno:ember_berries"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:cinder_pie"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

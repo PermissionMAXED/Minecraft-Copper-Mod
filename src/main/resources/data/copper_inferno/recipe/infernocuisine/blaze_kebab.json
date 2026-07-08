@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "M": "copper_inferno:blaze_chop",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "M",
+    "M",
+    "S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:blaze_kebab"
+  },
+  "type": "minecraft:crafting_shaped"
+}

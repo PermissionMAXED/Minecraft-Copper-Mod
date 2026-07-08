@@ -1,0 +1,15 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:char_obsidian_tiles"
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:polished_char_obsidian"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -21,7 +21,10 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FEATURE_PKGS = ["infernodim", "cinderstone", "infernoflora", "copperdeco", "infernium",
-                "infernomobs", "infernoboss", "infernofoods", "infernofx", "handbook"]
+                "infernomobs", "infernoboss", "infernofoods", "infernofx", "handbook",
+                # v4 content wave
+                "pyrestone", "moltenmetal", "smolderquartz", "nightslate", "charwood",
+                "kilnstone", "forgeparts", "infernocuisine", "titanforge"]
 JAVA_ROOTS = [
     os.path.join(ROOT, "src/main/java/net/sonic0810/copperinferno/feature"),
     os.path.join(ROOT, "src/client/java/net/sonic0810/copperinferno/feature"),

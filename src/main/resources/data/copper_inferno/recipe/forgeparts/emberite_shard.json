@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:emberite_gem"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:emberite_shard"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

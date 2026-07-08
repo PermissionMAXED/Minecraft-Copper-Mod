@@ -1,0 +1,16 @@
+{
+  "category": "misc",
+  "key": {
+    "M": "copper_inferno:ember_sausage",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "M",
+    "S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ember_skewer"
+  },
+  "type": "minecraft:crafting_shaped"
+}

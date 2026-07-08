@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:fumarole_rock",
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:fumarole_rock_slab"
+  },
+  "type": "minecraft:stonecutting"
+}

@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:sugar",
+    "minecraft:sugar",
+    "minecraft:slime_ball",
+    "minecraft:blaze_powder"
+  ],
+  "result": {
+    "count": 3,
+    "id": "copper_inferno:molten_marshmallow"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

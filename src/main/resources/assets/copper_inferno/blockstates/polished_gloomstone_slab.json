@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/polished_gloomstone_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/polished_gloomstone"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/polished_gloomstone_slab_top"
+    }
+  }
+}

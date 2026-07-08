@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:slagsteel_ingot",
+    "minecraft:diamond",
+    "minecraft:blaze_rod"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:cinderforge_ingot"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

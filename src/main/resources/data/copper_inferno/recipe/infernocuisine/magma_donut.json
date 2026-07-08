@@ -1,0 +1,16 @@
+{
+  "category": "misc",
+  "key": {
+    "#": "copper_inferno:ember_dough"
+  },
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "copper_inferno:magma_donut"
+  },
+  "type": "minecraft:crafting_shaped"
+}

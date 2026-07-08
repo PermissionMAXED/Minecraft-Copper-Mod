@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:ashglass_stone",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:polished_ashglass_stone"
+  },
+  "type": "minecraft:stonecutting"
+}

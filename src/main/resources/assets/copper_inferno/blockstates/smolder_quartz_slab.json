@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/smolder_quartz_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/smolder_quartz"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/smolder_quartz_slab_top"
+    }
+  }
+}

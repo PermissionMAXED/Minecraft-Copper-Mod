@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:glowspar",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:glowspar_pillar"
+  },
+  "type": "minecraft:stonecutting"
+}

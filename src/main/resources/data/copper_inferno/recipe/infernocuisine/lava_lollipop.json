@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:sugar",
+    "minecraft:magma_cream",
+    "minecraft:stick"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:lava_lollipop"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

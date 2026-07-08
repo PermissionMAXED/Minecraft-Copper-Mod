@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "copper_inferno:block/ashglass_stone",
+    "side": "copper_inferno:block/ashglass_stone",
+    "top": "copper_inferno:block/ashglass_stone"
+  }
+}

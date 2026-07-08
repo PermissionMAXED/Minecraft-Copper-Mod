@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:furnace_steel",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:furnace_steel_brick_wall"
+  },
+  "type": "minecraft:stonecutting"
+}

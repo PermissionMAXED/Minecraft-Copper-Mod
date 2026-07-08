@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:sulfur_crystal",
+    "S": "minecraft:obsidian"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:obsid_glassblock"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "copper_inferno:block/glowspar",
+    "side": "copper_inferno:block/glowspar",
+    "top": "copper_inferno:block/glowspar"
+  }
+}

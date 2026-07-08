@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:cinder_iron",
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:cinder_iron_slab"
+  },
+  "type": "minecraft:stonecutting"
+}

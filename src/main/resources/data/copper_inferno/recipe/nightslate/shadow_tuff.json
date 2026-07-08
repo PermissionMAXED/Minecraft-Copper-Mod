@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:gloomstone",
+    "S": "minecraft:tuff"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:shadow_tuff"
+  },
+  "type": "minecraft:crafting_shaped"
+}

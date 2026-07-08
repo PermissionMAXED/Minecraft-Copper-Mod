@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "copper_inferno:block/umbral_deepslate",
+    "side": "copper_inferno:block/umbral_deepslate",
+    "top": "copper_inferno:block/umbral_deepslate"
+  }
+}

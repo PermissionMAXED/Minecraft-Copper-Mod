@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:kindlerock",
+    "S": "minecraft:deepslate"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:cindershale"
+  },
+  "type": "minecraft:crafting_shaped"
+}

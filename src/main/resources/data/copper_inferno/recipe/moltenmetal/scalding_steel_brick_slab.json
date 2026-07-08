@@ -1,0 +1,14 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:scalding_steel_bricks"
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "copper_inferno:scalding_steel_brick_slab"
+  },
+  "type": "minecraft:crafting_shaped"
+}

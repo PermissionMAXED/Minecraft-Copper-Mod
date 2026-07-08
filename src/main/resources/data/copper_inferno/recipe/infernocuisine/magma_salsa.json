@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glass_bottle",
+    "minecraft:beetroot",
+    "minecraft:magma_cream",
+    "minecraft:blaze_powder"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:magma_salsa"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

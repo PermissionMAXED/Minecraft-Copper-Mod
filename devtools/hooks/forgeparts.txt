@@ -1,0 +1,15 @@
+# forgeparts feature hooks (format: devtools/hooks/README.md)
+
+[init]
+# Insert BEFORE HandbookFeature.init(); no other ordering constraint
+# (recipes consume only vanilla ids and forgeparts' own ids).
+import net.sonic0810.copperinferno.feature.forgeparts.ForgePartsFeature;
+		ForgePartsFeature.init();
+
+[recipe-dir]
+forgeparts
+
+[counts]
+items: 120
+recipes: 120
+handbook-entries: 130

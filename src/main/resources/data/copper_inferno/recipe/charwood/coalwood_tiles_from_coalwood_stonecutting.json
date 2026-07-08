@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:coalwood",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:coalwood_tiles"
+  },
+  "type": "minecraft:stonecutting"
+}

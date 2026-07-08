@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:sugar",
+    "minecraft:blaze_powder",
+    "minecraft:honey_bottle"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:blaze_bonbon"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

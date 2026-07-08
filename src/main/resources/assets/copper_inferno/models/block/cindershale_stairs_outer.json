@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "copper_inferno:block/cindershale",
+    "side": "copper_inferno:block/cindershale",
+    "top": "copper_inferno:block/cindershale"
+  }
+}

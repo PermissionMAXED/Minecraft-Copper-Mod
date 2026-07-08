@@ -1,0 +1,10 @@
+{
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 0.35,
+  "ingredient": "copper_inferno:raw_lava_eel",
+  "result": {
+    "id": "copper_inferno:grilled_lava_eel"
+  },
+  "type": "minecraft:campfire_cooking"
+}

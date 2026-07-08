@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:kiln_ceramic",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:kiln_ceramic_tiles"
+  },
+  "type": "minecraft:stonecutting"
+}

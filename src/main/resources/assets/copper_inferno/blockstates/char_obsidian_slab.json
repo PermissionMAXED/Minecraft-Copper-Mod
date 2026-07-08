@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/char_obsidian_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/char_obsidian"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/char_obsidian_slab_top"
+    }
+  }
+}

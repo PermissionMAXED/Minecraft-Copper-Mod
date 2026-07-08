@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:wheat",
+    "minecraft:charcoal"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:soot_cracker"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

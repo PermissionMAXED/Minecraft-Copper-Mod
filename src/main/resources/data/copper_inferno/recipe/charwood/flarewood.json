@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:brimwood",
+    "S": "minecraft:fire_charge"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:flarewood"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/polished_sootbark_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/polished_sootbark"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/polished_sootbark_slab_top"
+    }
+  }
+}

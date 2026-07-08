@@ -1,0 +1,14 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:forgeworn_metal_bricks"
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "copper_inferno:forgeworn_metal_brick_slab"
+  },
+  "type": "minecraft:crafting_shaped"
+}

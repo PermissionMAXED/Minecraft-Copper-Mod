@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/quench_iron_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/quench_iron"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/quench_iron_slab_top"
+    }
+  }
+}

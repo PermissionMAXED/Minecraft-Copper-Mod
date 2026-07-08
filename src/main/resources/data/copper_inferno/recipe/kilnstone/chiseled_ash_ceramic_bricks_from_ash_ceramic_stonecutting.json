@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:ash_ceramic",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:chiseled_ash_ceramic_bricks"
+  },
+  "type": "minecraft:stonecutting"
+}

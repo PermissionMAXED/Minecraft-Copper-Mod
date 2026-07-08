@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "copper_inferno:molten_titan"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "copper_inferno:molten_titan"
+      }
+    ]
+  }
+}

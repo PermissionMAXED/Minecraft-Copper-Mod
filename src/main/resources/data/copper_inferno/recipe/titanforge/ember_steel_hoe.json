@@ -1,0 +1,17 @@
+{
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:stick",
+    "X": "copper_inferno:ember_steel_ingot"
+  },
+  "pattern": [
+    "XX",
+    " #",
+    " #"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ember_steel_hoe"
+  },
+  "type": "minecraft:crafting_shaped"
+}

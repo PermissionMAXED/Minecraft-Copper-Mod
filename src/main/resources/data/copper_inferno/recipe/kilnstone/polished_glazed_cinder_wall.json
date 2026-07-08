@@ -1,0 +1,15 @@
+{
+  "category": "misc",
+  "key": {
+    "#": "copper_inferno:polished_glazed_cinder"
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "copper_inferno:polished_glazed_cinder_wall"
+  },
+  "type": "minecraft:crafting_shaped"
+}

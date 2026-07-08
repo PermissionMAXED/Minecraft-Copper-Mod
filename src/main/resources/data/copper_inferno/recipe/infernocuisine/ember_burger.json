@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "B": "minecraft:bread",
+    "X": "copper_inferno:magma_steak"
+  },
+  "pattern": [
+    "B",
+    "X",
+    "B"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ember_burger"
+  },
+  "type": "minecraft:crafting_shaped"
+}

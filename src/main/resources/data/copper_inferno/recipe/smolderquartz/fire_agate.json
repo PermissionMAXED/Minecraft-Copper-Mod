@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:ember_amber",
+    "S": "minecraft:blaze_powder"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:fire_agate"
+  },
+  "type": "minecraft:crafting_shaped"
+}

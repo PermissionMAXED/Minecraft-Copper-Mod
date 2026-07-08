@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:sweet_berries",
+    "minecraft:sweet_berries",
+    "minecraft:blaze_powder"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:scorched_grapes"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

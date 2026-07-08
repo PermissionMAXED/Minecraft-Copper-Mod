@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:pyrite_crystal",
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:pyrite_crystal_brick_slab"
+  },
+  "type": "minecraft:stonecutting"
+}

@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:tarwood",
+    "S": "minecraft:gunpowder"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:brimwood"
+  },
+  "type": "minecraft:crafting_shaped"
+}

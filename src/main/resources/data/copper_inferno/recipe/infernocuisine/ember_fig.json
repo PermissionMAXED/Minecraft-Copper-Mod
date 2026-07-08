@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:sweet_berries",
+    "copper_inferno:ember_dust"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:ember_fig"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

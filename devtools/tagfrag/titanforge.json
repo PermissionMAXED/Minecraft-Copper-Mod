@@ -1,0 +1,74 @@
+{
+  "item/axes": [
+    "copper_inferno:ember_steel_axe",
+    "copper_inferno:pyrite_axe",
+    "copper_inferno:slagsteel_axe",
+    "copper_inferno:cinderforge_axe",
+    "copper_inferno:molten_titan_axe",
+    "copper_inferno:infernal_alloy_axe"
+  ],
+  "item/chest_armor": [
+    "copper_inferno:ember_steel_chestplate",
+    "copper_inferno:pyrite_chestplate",
+    "copper_inferno:slagsteel_chestplate",
+    "copper_inferno:cinderforge_chestplate",
+    "copper_inferno:molten_titan_chestplate",
+    "copper_inferno:infernal_alloy_chestplate"
+  ],
+  "item/foot_armor": [
+    "copper_inferno:ember_steel_boots",
+    "copper_inferno:pyrite_boots",
+    "copper_inferno:slagsteel_boots",
+    "copper_inferno:cinderforge_boots",
+    "copper_inferno:molten_titan_boots",
+    "copper_inferno:infernal_alloy_boots"
+  ],
+  "item/head_armor": [
+    "copper_inferno:ember_steel_helmet",
+    "copper_inferno:pyrite_helmet",
+    "copper_inferno:slagsteel_helmet",
+    "copper_inferno:cinderforge_helmet",
+    "copper_inferno:molten_titan_helmet",
+    "copper_inferno:infernal_alloy_helmet"
+  ],
+  "item/hoes": [
+    "copper_inferno:ember_steel_hoe",
+    "copper_inferno:pyrite_hoe",
+    "copper_inferno:slagsteel_hoe",
+    "copper_inferno:cinderforge_hoe",
+    "copper_inferno:molten_titan_hoe",
+    "copper_inferno:infernal_alloy_hoe"
+  ],
+  "item/leg_armor": [
+    "copper_inferno:ember_steel_leggings",
+    "copper_inferno:pyrite_leggings",
+    "copper_inferno:slagsteel_leggings",
+    "copper_inferno:cinderforge_leggings",
+    "copper_inferno:molten_titan_leggings",
+    "copper_inferno:infernal_alloy_leggings"
+  ],
+  "item/pickaxes": [
+    "copper_inferno:ember_steel_pickaxe",
+    "copper_inferno:pyrite_pickaxe",
+    "copper_inferno:slagsteel_pickaxe",
+    "copper_inferno:cinderforge_pickaxe",
+    "copper_inferno:molten_titan_pickaxe",
+    "copper_inferno:infernal_alloy_pickaxe"
+  ],
+  "item/shovels": [
+    "copper_inferno:ember_steel_shovel",
+    "copper_inferno:pyrite_shovel",
+    "copper_inferno:slagsteel_shovel",
+    "copper_inferno:cinderforge_shovel",
+    "copper_inferno:molten_titan_shovel",
+    "copper_inferno:infernal_alloy_shovel"
+  ],
+  "item/swords": [
+    "copper_inferno:ember_steel_sword",
+    "copper_inferno:pyrite_sword",
+    "copper_inferno:slagsteel_sword",
+    "copper_inferno:cinderforge_sword",
+    "copper_inferno:molten_titan_sword",
+    "copper_inferno:infernal_alloy_sword"
+  ]
+}

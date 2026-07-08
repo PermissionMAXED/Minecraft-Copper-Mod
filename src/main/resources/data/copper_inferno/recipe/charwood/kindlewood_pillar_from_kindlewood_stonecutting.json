@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:kindlewood",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:kindlewood_pillar"
+  },
+  "type": "minecraft:stonecutting"
+}

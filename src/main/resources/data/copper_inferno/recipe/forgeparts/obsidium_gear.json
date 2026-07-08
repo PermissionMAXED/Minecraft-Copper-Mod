@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "#": "copper_inferno:obsidium_rod",
+    "N": "copper_inferno:obsidium_ingot"
+  },
+  "pattern": [
+    " # ",
+    "#N#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:obsidium_gear"
+  },
+  "type": "minecraft:crafting_shaped"
+}

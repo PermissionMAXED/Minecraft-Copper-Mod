@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/sulfur_crystal_brick_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/sulfur_crystal_bricks"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/sulfur_crystal_brick_slab_top"
+    }
+  }
+}

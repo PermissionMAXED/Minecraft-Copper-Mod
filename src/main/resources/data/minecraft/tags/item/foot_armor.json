@@ -1,8 +1,14 @@
 {
   "values": [
+    "copper_inferno:cinderforge_boots",
+    "copper_inferno:ember_steel_boots",
     "copper_inferno:exposed_copper_boots",
+    "copper_inferno:infernal_alloy_boots",
     "copper_inferno:infernium_boots",
+    "copper_inferno:molten_titan_boots",
     "copper_inferno:oxidized_copper_boots",
+    "copper_inferno:pyrite_boots",
+    "copper_inferno:slagsteel_boots",
     "copper_inferno:weathered_copper_boots"
   ]
 }

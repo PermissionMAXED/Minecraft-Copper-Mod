@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:glowspar",
+    "S": "minecraft:gold_nugget"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:heatlens_stone"
+  },
+  "type": "minecraft:crafting_shaped"
+}

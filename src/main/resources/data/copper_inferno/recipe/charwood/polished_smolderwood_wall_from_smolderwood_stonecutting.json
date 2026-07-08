@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:smolderwood",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:polished_smolderwood_wall"
+  },
+  "type": "minecraft:stonecutting"
+}

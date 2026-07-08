@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "I": "copper_inferno:infernal_alloy_ingot",
+    "X": "minecraft:string"
+  },
+  "pattern": [
+    " I ",
+    "IXI",
+    " I "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:infernal_alloy_charm"
+  },
+  "type": "minecraft:crafting_shaped"
+}

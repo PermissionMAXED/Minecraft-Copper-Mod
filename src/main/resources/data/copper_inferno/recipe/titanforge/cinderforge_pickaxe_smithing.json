@@ -1,0 +1,9 @@
+{
+  "addition": "copper_inferno:cinderforge_ingot",
+  "base": "copper_inferno:slagsteel_pickaxe",
+  "result": {
+    "id": "copper_inferno:cinderforge_pickaxe"
+  },
+  "template": "copper_inferno:infernium_upgrade_smithing_template",
+  "type": "minecraft:smithing_transform"
+}

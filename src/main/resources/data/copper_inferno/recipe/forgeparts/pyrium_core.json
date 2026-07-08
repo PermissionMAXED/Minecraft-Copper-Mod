@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "G": "copper_inferno:pyrium_gem",
+    "P": "copper_inferno:pyrium_plate"
+  },
+  "pattern": [
+    " P ",
+    "PGP",
+    " P "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:pyrium_core"
+  },
+  "type": "minecraft:crafting_shaped"
+}

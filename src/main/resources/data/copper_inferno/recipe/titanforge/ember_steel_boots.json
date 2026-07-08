@@ -1,0 +1,15 @@
+{
+  "category": "equipment",
+  "key": {
+    "X": "copper_inferno:ember_steel_ingot"
+  },
+  "pattern": [
+    "X X",
+    "X X"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ember_steel_boots"
+  },
+  "type": "minecraft:crafting_shaped"
+}

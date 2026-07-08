@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "copper_inferno:item/infernal_alloy_sword"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:heatlens_stone",
+    "S": "minecraft:magma_cream"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:magma_geode"
+  },
+  "type": "minecraft:crafting_shaped"
+}

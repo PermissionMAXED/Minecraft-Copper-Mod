@@ -1,0 +1,16 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:charwood"
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:charwood_stairs"
+  },
+  "type": "minecraft:crafting_shaped"
+}

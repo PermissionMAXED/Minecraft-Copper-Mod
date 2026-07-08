@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:terracotta_slag",
+    "S": "minecraft:brick"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:kiln_ceramic"
+  },
+  "type": "minecraft:crafting_shaped"
+}

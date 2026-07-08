@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:magmawood",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:magmawood_brick_wall"
+  },
+  "type": "minecraft:stonecutting"
+}

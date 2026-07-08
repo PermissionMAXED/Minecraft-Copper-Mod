@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/polished_forgeworn_metal_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/polished_forgeworn_metal"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/polished_forgeworn_metal_slab_top"
+    }
+  }
+}

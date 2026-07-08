@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "I": "copper_inferno:ember_steel_ingot",
+    "X": "minecraft:gold_nugget"
+  },
+  "pattern": [
+    " I ",
+    "IXI",
+    " I "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ember_steel_ring"
+  },
+  "type": "minecraft:crafting_shaped"
+}

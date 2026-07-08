@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:kindlewood",
+    "S": "minecraft:spruce_log"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:pyrewood"
+  },
+  "type": "minecraft:crafting_shaped"
+}

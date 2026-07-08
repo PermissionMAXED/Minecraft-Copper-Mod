@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/glowbark_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/glowbark"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/glowbark_slab_top"
+    }
+  }
+}

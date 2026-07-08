@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:char_obsidian",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:char_obsidian_wall"
+  },
+  "type": "minecraft:stonecutting"
+}

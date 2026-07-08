@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:blazewrought_stone",
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:blazewrought_stone_brick_slab"
+  },
+  "type": "minecraft:stonecutting"
+}

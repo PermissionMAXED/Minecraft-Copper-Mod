@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "copper_inferno:block/quench_iron_bricks"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "copper_inferno:block/sootbark",
+    "side": "copper_inferno:block/sootbark",
+    "top": "copper_inferno:block/sootbark"
+  }
+}

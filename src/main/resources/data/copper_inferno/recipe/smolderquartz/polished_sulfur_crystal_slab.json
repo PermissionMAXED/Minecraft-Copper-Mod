@@ -1,0 +1,14 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:polished_sulfur_crystal"
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "copper_inferno:polished_sulfur_crystal_slab"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:cinderlog_block",
+    "S": "minecraft:blaze_rod"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:blazewood"
+  },
+  "type": "minecraft:crafting_shaped"
+}

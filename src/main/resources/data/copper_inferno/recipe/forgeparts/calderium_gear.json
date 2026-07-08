@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "#": "copper_inferno:calderium_rod",
+    "N": "copper_inferno:calderium_ingot"
+  },
+  "pattern": [
+    " # ",
+    "#N#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:calderium_gear"
+  },
+  "type": "minecraft:crafting_shaped"
+}
