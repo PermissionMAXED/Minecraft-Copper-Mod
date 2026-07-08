@@ -3,15 +3,19 @@ package net.sonic0810.copperinferno.feature.constructs;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.ActiveTargetGoal;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.RabbitEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 
 /**
  * A rabbit rebuilt around a piston chassis - and it does NOT like being watched. Behavior is
  * vanilla rabbit plus ONE tweak: it rams players (melee attack + player targeting, in the
  * spirit of the killer bunny) - see {@link #initGoals()}. The ATTACK_DAMAGE attribute the melee
- * AI needs is added in {@code ConstructsFeature.registerAttributes}. Drops Piston Springs
+ * AI needs is added in {@code ConstructsFeature.registerAttributes}. {@code createChild} is
+ * overridden only for type consistency (vanilla hard-codes {@code EntityType.RABBIT}; same fix
+ * as the infernomobs Cinder Strider). Drops Piston Springs
  * ({@code loot_table/entities/piston_hopper.json}).
  */
 public class PistonHopperEntity extends RabbitEntity {
@@ -28,5 +32,10 @@ public class PistonHopperEntity extends RabbitEntity {
 		// damage from the ATTACK_DAMAGE attribute.
 		this.goalSelector.add(2, new MeleeAttackGoal(this, 1.4, true));
 		this.targetSelector.add(1, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
+	}
+
+	@Override
+	public PistonHopperEntity createChild(ServerWorld world, PassiveEntity entity) {
+		return new PistonHopperEntity(ConstructsFeature.PISTON_HOPPER, world);
 	}
 }

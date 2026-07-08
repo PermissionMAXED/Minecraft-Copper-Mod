@@ -2,13 +2,17 @@ package net.sonic0810.copperinferno.feature.sodafauna;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.HoglinEntity;
+import net.minecraft.entity.passive.PassiveEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 
 /**
  * A root-beer-brown hoglin that wandered out of the Nether and stayed for the taste. Behavioral
  * tweak: {@link #canConvert()} returns false, so unlike a vanilla hoglin it never zombifies in
  * the Overworld (mandatory for an Overworld-native hoglin — the vanilla one converts to a zoglin
- * after 300 ticks outside the Nether). Drops Cola Chunks
+ * after 300 ticks outside the Nether). {@code createChild} is overridden only for type
+ * consistency (vanilla hard-codes {@code EntityType.HOGLIN}; same fix as the infernomobs Cinder
+ * Strider). Drops Cola Chunks
  * ({@code loot_table/entities/root_beer_boar.json}).
  */
 public class RootBeerBoarEntity extends HoglinEntity {
@@ -19,5 +23,10 @@ public class RootBeerBoarEntity extends HoglinEntity {
 	@Override
 	public boolean canConvert() {
 		return false;
+	}
+
+	@Override
+	public RootBeerBoarEntity createChild(ServerWorld world, PassiveEntity entity) {
+		return new RootBeerBoarEntity(SodaFaunaFeature.ROOT_BEER_BOAR, world);
 	}
 }
