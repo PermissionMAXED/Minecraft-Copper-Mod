@@ -481,7 +481,7 @@ def emit_java() -> None:
         families=families,
         blocks=blocks,
         settings_methods=settings_methods_src(),
-        tabs=[("BLOCKS_KEY", tab_entries)],
+        tabs=[("SETS_KEY", tab_entries)],
         extra_imports=("net.minecraft.block.MapColor",
                        "net.minecraft.block.PillarBlock",
                        "net.minecraft.sound.BlockSoundGroup"),

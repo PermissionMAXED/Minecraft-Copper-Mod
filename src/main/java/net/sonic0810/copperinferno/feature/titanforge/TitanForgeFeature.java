@@ -406,7 +406,7 @@ public final class TitanForgeFeature {
 		INFERNAL_ALLOY_TALISMAN = ModItems.register("infernal_alloy_talisman", Item::new, new Item.Settings().maxCount(16).fireproof());
 		INFERNAL_ALLOY_MEDALLION = ModItems.register("infernal_alloy_medallion", Item::new, new Item.Settings().maxCount(16).fireproof());
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.EQUIPMENT_KEY).register(entries -> {
 			entries.add(EMBER_STEEL_INGOT);
 			entries.add(EMBER_STEEL_SWORD);
 			entries.add(EMBER_STEEL_PICKAXE);

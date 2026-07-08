@@ -313,7 +313,7 @@ public final class ArchfiendsFeature {
 		BLIGHT_WITHER_EMPEROR_SPAWN_EGG = ModItems.register("blight_wither_emperor_spawn_egg", SpawnEggItem::new,
 				new Item.Settings().spawnEgg(BLIGHT_WITHER_EMPEROR));
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MOBS_KEY).register(entries -> {
 			// Summon sigils, then per-boss drops/trophies, then the spawn eggs.
 			entries.add(DREAD_SOVEREIGN_SIGIL);
 			entries.add(CINDER_MATRIARCH_SIGIL);

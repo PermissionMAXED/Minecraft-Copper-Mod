@@ -181,8 +181,8 @@ public final class InferniumFeature {
 						.luminance(state -> 9),
 				true);
 
-		// ----- creative tab: materials, then tools, then armor (MAIN); storage blocks (BLOCKS)
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+		// ----- creative tab: materials, then tools, then armor (EQUIPMENT); storage blocks (BLOCKS)
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.EQUIPMENT_KEY).register(entries -> {
 			entries.add(RAW_INFERNIUM);
 			entries.add(INFERNIUM_INGOT);
 			entries.add(INFERNIUM_NUGGET);

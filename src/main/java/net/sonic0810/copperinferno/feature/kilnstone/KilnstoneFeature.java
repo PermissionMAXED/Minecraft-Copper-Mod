@@ -342,7 +342,7 @@ public final class KilnstoneFeature {
 		CHISELED_PYROCERAMIC_BRICKS = ModBlocks.register("chiseled_pyroceramic_bricks", Block::new, pyroceramicSettings(), true);
 		PYROCERAMIC_PILLAR = ModBlocks.register("pyroceramic_pillar", PillarBlock::new, pyroceramicSettings(), true);
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.BLOCKS_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.SETS_KEY).register(entries -> {
 			entries.add(KILNSTONE.block());
 			entries.add(KILNSTONE.stairs());
 			entries.add(KILNSTONE.slab());

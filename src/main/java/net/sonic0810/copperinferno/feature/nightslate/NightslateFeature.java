@@ -342,7 +342,7 @@ public final class NightslateFeature {
 		CHISELED_OBSCURA_STONE_BRICKS = ModBlocks.register("chiseled_obscura_stone_bricks", Block::new, obscuraStoneSettings(), true);
 		OBSCURA_STONE_PILLAR = ModBlocks.register("obscura_stone_pillar", PillarBlock::new, obscuraStoneSettings(), true);
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.BLOCKS_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.SETS_KEY).register(entries -> {
 			entries.add(NIGHTSLATE.block());
 			entries.add(NIGHTSLATE.stairs());
 			entries.add(NIGHTSLATE.slab());

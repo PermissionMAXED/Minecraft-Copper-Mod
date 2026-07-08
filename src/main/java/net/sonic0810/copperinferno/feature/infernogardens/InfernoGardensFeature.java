@@ -200,7 +200,7 @@ public final class InfernoGardensFeature {
 		BiomeModifications.addFeature(crystalHollows, GenerationStep.Feature.UNDERGROUND_DECORATION,
 				RegistryKey.of(RegistryKeys.PLACED_FEATURE, CopperInferno.id("buried_verdigris_crystal")));
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.BLOCKS_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.NATURE_KEY).register(entries -> {
 			entries.add(EMBER_LILY);
 			entries.add(CINDER_FERN);
 			entries.add(SEAR_SPRIGS);

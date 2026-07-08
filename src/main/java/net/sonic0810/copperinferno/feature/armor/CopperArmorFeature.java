@@ -54,7 +54,7 @@ public final class CopperArmorFeature {
 
 		// Stage-major order (a full set per stage), starting with the vanilla stage-0
 		// pieces so each oxidation chain reads fully: vanilla -> exposed -> weathered -> oxidized.
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.EQUIPMENT_KEY).register(entries -> {
 			entries.add(Items.COPPER_HELMET);
 			entries.add(Items.COPPER_CHESTPLATE);
 			entries.add(Items.COPPER_LEGGINGS);

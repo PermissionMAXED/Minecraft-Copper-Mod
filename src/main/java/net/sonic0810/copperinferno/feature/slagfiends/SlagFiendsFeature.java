@@ -502,7 +502,7 @@ public final class SlagFiendsFeature {
 		CINDERBOUND_SHACKLE = ModItems.register("cinderbound_shackle", Item::new, new Item.Settings());
 		SOOTROT_HIDE = ModItems.register("sootrot_hide", Item::new, new Item.Settings());
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MOBS_KEY).register(entries -> {
 			// Spawn eggs together, then the mob drops.
 			entries.add(SLAG_WRAITH_SPAWN_EGG);
 			entries.add(CINDER_REAPER_SPAWN_EGG);

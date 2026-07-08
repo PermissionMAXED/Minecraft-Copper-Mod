@@ -264,7 +264,7 @@ public final class ForgePartsFeature {
 		OBSIDIUM_CORE = ModItems.register("obsidium_core", Item::new, new Item.Settings());
 		OBSIDIUM_CATALYST = ModItems.register("obsidium_catalyst", Item::new, new Item.Settings());
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.SETS_KEY).register(entries -> {
 			entries.add(EMBERITE_DUST);
 			entries.add(EMBERITE_POWDER);
 			entries.add(EMBERITE_INGOT);

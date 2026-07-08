@@ -342,7 +342,7 @@ public final class MoltenMetalFeature {
 		CHISELED_ASHIRON_BRICKS = ModBlocks.register("chiseled_ashiron_bricks", Block::new, ashironSettings(), true);
 		ASHIRON_PILLAR = ModBlocks.register("ashiron_pillar", PillarBlock::new, ashironSettings(), true);
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.BLOCKS_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.SETS_KEY).register(entries -> {
 			entries.add(EMBER_BRASS.block());
 			entries.add(EMBER_BRASS.stairs());
 			entries.add(EMBER_BRASS.slab());

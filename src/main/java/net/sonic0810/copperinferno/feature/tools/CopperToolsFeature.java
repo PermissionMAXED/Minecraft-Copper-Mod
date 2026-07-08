@@ -84,7 +84,7 @@ public final class CopperToolsFeature {
 		ItemOxidation.registerChain(Items.COPPER_HOE, EXPOSED_COPPER_HOE, WEATHERED_COPPER_HOE, OXIDIZED_COPPER_HOE);
 
 		// Stage-major order, with the vanilla stage-0 tools first so each chain reads fully.
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.EQUIPMENT_KEY).register(entries -> {
 			entries.add(Items.COPPER_SWORD);
 			entries.add(Items.COPPER_PICKAXE);
 			entries.add(Items.COPPER_AXE);

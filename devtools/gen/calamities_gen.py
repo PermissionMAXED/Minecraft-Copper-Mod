@@ -775,7 +775,7 @@ def feature_source() -> str:
         L.append(f"\t\t{field_of(egg_id)} = ModItems.register(\"{egg_id}\", SpawnEggItem::new,")
         L.append(f"\t\t\t\tnew Item.Settings().spawnEgg({field_of(b['bid'])}));")
     L.append("")
-    L.append("\t\tItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY)"
+    L.append("\t\tItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MOBS_KEY)"
              ".register(entries -> {")
     L.append("\t\t\t// Summon items, then per-boss drops + trophy, then the spawn eggs.")
     for b in BOSSES:

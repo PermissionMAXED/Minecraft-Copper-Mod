@@ -1199,7 +1199,7 @@ def emit_java(features: dict) -> None:
         "infernogardens", "InfernoGardensFeature", feature_doc,
         blocks=BLOCK_DEFS,
         settings_methods=SETTINGS_METHODS,
-        tabs=[("BLOCKS_KEY", [field for field, *_ in BLOCK_DEFS])],
+        tabs=[("NATURE_KEY", [field for field, *_ in BLOCK_DEFS])],
         extra_imports=(
             "java.util.function.Predicate",
             "net.fabricmc.fabric.api.biome.v1.BiomeModifications",

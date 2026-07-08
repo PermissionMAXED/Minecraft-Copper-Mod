@@ -54,7 +54,7 @@ public final class PlayerStatueFeature {
 				CopperPlayerStatueBlockEntity::new,
 				COPPER_PLAYER_STATUE);
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.BLOCKS_KEY)
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY)
 				.register(entries -> entries.add(COPPER_PLAYER_STATUE));
 
 		PayloadTypeRegistry.playC2S().register(SetStatueNamePayload.ID, SetStatueNamePayload.CODEC);

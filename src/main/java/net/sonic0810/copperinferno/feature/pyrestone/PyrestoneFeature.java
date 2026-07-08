@@ -342,7 +342,7 @@ public final class PyrestoneFeature {
 		CHISELED_BLAZEWROUGHT_STONE_BRICKS = ModBlocks.register("chiseled_blazewrought_stone_bricks", Block::new, blazewroughtStoneSettings(), true);
 		BLAZEWROUGHT_STONE_PILLAR = ModBlocks.register("blazewrought_stone_pillar", PillarBlock::new, blazewroughtStoneSettings(), true);
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.BLOCKS_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.SETS_KEY).register(entries -> {
 			entries.add(PYRESTONE.block());
 			entries.add(PYRESTONE.stairs());
 			entries.add(PYRESTONE.slab());

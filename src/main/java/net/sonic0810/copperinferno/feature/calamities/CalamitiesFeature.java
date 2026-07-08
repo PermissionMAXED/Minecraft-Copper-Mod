@@ -322,7 +322,7 @@ public final class CalamitiesFeature {
 		CALAMITY_HERALD_SPAWN_EGG = ModItems.register("calamity_herald_spawn_egg", SpawnEggItem::new,
 				new Item.Settings().spawnEgg(CALAMITY_HERALD));
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MOBS_KEY).register(entries -> {
 			// Summon items, then per-boss drops + trophy, then the spawn eggs.
 			entries.add(EMBERLORD_WARHORN);
 			entries.add(SLAG_WAR_BANNER);

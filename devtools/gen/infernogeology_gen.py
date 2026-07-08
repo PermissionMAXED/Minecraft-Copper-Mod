@@ -950,7 +950,7 @@ def emit_java(features, recipe_entries) -> None:
         blocks=blocks,
         items=items,
         settings_methods=SETTINGS_METHODS,
-        tabs=[("BLOCKS_KEY", tab_entries), ("MAIN_KEY", main_tab_entries)],
+        tabs=[("NATURE_KEY", tab_entries), ("MAIN_KEY", main_tab_entries)],
         extra_imports=(
             "java.util.function.Predicate",
             "net.fabricmc.fabric.api.biome.v1.BiomeModifications",

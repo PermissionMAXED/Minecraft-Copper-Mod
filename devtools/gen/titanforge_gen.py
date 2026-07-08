@@ -850,7 +850,7 @@ def emit_java() -> None:
         "titanforge", "TitanForgeFeature", feature_doc,
         items=items,
         settings_methods=materials_src(),
-        tabs=[("MAIN_KEY", [f for f, *_ in items])],
+        tabs=[("EQUIPMENT_KEY", [f for f, *_ in items])],
         extra_imports=(
             "java.util.EnumMap",
             "java.util.Map",

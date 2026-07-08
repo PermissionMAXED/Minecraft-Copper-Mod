@@ -1526,7 +1526,7 @@ def feature_source() -> str:
         out.append(f"\t\t\t\tnew Item.Settings().spawnEgg({field_of(b['bid'])}));")
 
     out += ["",
-            "\t\tItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY)"
+            "\t\tItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MOBS_KEY)"
             ".register(entries -> {",
             "\t\t\t// Summon sigils, then per-boss drops/trophies, then the spawn eggs."]
     for b in BOSSES:

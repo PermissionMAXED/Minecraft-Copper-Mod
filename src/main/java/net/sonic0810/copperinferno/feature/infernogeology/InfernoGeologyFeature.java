@@ -184,7 +184,7 @@ public final class InfernoGeologyFeature {
 		BiomeModifications.addFeature(lavaShoreBiomes, GenerationStep.Feature.SURFACE_STRUCTURES,
 				RegistryKey.of(RegistryKeys.PLACED_FEATURE, CopperInferno.id("slag_basin")));
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.BLOCKS_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.NATURE_KEY).register(entries -> {
 			entries.add(EMBER_IRON_ORE);
 			entries.add(ASH_GOLD_ORE);
 			entries.add(SLAG_COPPER_ORE);

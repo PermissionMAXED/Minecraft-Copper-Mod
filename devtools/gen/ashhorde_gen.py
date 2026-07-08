@@ -1013,7 +1013,7 @@ def feature_src() -> str:
     for mob in MOBS:
         out.append(f"\t\t{field_of(mob.drop)} = ModItems.register(\"{mob.drop}\", Item::new, new Item.Settings());")
     out.append("")
-    out.append("\t\tItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {")
+    out.append("\t\tItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MOBS_KEY).register(entries -> {")
     out.append("\t\t\t// Spawn eggs together, then the mob drops.")
     for mob in MOBS:
         out.append(f"\t\t\tentries.add({field_of(mob.mid)}_SPAWN_EGG);")

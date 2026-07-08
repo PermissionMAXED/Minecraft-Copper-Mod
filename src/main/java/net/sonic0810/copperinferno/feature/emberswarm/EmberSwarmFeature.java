@@ -491,7 +491,7 @@ public final class EmberSwarmFeature {
 		SOOT_MITE_HUSK = ModItems.register("soot_mite_husk", Item::new, new Item.Settings());
 		SLAG_MITE_HUSK = ModItems.register("slag_mite_husk", Item::new, new Item.Settings());
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MOBS_KEY).register(entries -> {
 			// Spawn eggs together, then the mob drops.
 			entries.add(EMBER_BLAZE_SPAWN_EGG);
 			entries.add(SOOT_BLAZE_SPAWN_EGG);

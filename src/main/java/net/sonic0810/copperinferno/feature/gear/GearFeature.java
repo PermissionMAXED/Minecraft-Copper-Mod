@@ -99,7 +99,7 @@ public final class GearFeature {
 		SODA_BADGE = ModItems.register("soda_badge", Item::new,
 				new Item.Settings().rarity(Rarity.UNCOMMON).maxCount(1));
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.EQUIPMENT_KEY).register(entries -> {
 			entries.add(THROWING_FIZZ_CAN);
 			entries.add(EXPOSED_COPPER_HORN);
 			entries.add(WEATHERED_COPPER_HORN);

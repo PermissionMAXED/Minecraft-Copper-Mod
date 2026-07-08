@@ -2,10 +2,8 @@ package net.sonic0810.copperinferno.feature.handbook;
 
 import java.util.function.Consumer;
 
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.sonic0810.copperinferno.core.ModCreativeTab;
 import net.sonic0810.copperinferno.core.ModItems;
 import net.sonic0810.copperinferno.core.handbook.HandbookEntries;
 import net.sonic0810.copperinferno.core.handbook.HandbookEntry;
@@ -35,8 +33,8 @@ public final class HandbookFeature {
 		HANDBOOK = ModItems.register("copper_inferno_handbook", HandbookItem::new,
 				new Item.Settings().maxCount(1));
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY)
-				.register(entries -> entries.add(HANDBOOK));
+		// The MAIN creative-tab entry is added by ModCreativeTab.init() (registered before
+		// every feature callback) so the handbook is always the tab's FIRST entry.
 
 		registerHandbookEntries();
 	}

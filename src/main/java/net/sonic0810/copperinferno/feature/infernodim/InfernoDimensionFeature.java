@@ -115,7 +115,7 @@ public final class InfernoDimensionFeature {
 		INFERNIUM_IGNITER = ModItems.register("infernium_igniter", InferniumIgniterItem::new,
 				new Item.Settings().maxDamage(64));
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.BLOCKS_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.NATURE_KEY).register(entries -> {
 			entries.add(CINDERSTONE);
 			entries.add(COBBLED_CINDERSTONE);
 			entries.add(SLAGSTONE);

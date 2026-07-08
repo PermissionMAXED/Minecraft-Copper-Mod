@@ -158,7 +158,7 @@ public final class InfernoMobsFeature {
 		SLAGLING_CORE = ModItems.register("slagling_core", Item::new, new Item.Settings());
 		STRIDER_SHELL = ModItems.register("strider_shell", Item::new, new Item.Settings());
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MOBS_KEY).register(entries -> {
 			// Spawn eggs together, then the mob drops.
 			entries.add(EMBER_WRAITH_SPAWN_EGG);
 			entries.add(SLAG_CRAWLER_SPAWN_EGG);

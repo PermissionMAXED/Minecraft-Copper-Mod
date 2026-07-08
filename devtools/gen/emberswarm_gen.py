@@ -957,7 +957,7 @@ def feature_java() -> str:
     for mob in MOBS:
         out.append(f"\t\t{field(mob.drop)} = ModItems.register(\"{mob.drop}\", Item::new, new Item.Settings());")
     out += ["",
-            "\t\tItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {",
+            "\t\tItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MOBS_KEY).register(entries -> {",
             "\t\t\t// Spawn eggs together, then the mob drops."]
     for mob in MOBS:
         out.append(f"\t\t\tentries.add({field(mob.mid)}_SPAWN_EGG);")

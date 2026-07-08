@@ -830,7 +830,7 @@ def gen_feature_java():
     for drop_id in DROP_IDS:
         out.append(f"\t\t{drop_id.upper()} = ModItems.register(\"{drop_id}\", Item::new, new Item.Settings());")
     out.append("")
-    out.append("\t\tItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {")
+    out.append("\t\tItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MOBS_KEY).register(entries -> {")
     out.append("\t\t\t// Spawn eggs together, then the mob drops.")
     for mob_id in MOB_IDS:
         out.append(f"\t\t\tentries.add({mob_id.upper()}_SPAWN_EGG);")

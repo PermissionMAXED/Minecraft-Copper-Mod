@@ -345,7 +345,7 @@ public final class CharwoodFeature {
 		CHISELED_FLAREWOOD_BRICKS = ModBlocks.register("chiseled_flarewood_bricks", Block::new, flarewoodSettings(), true);
 		FLAREWOOD_PILLAR = ModBlocks.register("flarewood_pillar", PillarBlock::new, flarewoodSettings(), true);
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.BLOCKS_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.SETS_KEY).register(entries -> {
 			entries.add(CHARWOOD.block());
 			entries.add(CHARWOOD.stairs());
 			entries.add(CHARWOOD.slab());

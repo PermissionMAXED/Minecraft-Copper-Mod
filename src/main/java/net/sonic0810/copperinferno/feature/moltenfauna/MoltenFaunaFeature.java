@@ -466,7 +466,7 @@ public final class MoltenFaunaFeature {
 		WETHER_RIBS = ModItems.register("wether_ribs", Item::new, new Item.Settings());
 		SMOLDER_FLEECE = ModItems.register("smolder_fleece", Item::new, new Item.Settings());
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MOBS_KEY).register(entries -> {
 			// Spawn eggs together, then the mob drops.
 			entries.add(MAGMA_STRIDER_SPAWN_EGG);
 			entries.add(SOOT_STRIDER_SPAWN_EGG);

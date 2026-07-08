@@ -84,7 +84,7 @@ public final class InfernoFoodsFeature {
 				.useRemainder(Items.GLASS_BOTTLE)
 				.food(alwaysEdibleFood(1, 0.1f), ConsumableComponents.drink().build()));
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.FOODS_KEY).register(entries -> {
 			entries.add(EMBER_BERRIES);
 			entries.add(ROASTED_EMBER_FUNGUS);
 			entries.add(ASH_BREAD);

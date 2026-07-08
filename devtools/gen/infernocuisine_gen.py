@@ -1153,7 +1153,7 @@ def emit_java():
     feature_src = genlib.java_feature_class(
         "infernocuisine", "InfernoCuisineFeature", feature_doc,
         items=items,
-        tabs=[("MAIN_KEY", [i.upper() for i in IDS])],
+        tabs=[("FOODS_KEY", [i.upper() for i in IDS])],
         extra_imports=("net.minecraft.component.type.ConsumableComponents",
                        "net.minecraft.component.type.FoodComponent",
                        "net.minecraft.item.Items"),

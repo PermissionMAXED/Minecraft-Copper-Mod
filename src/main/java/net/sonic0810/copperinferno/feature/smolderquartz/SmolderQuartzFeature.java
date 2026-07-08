@@ -344,7 +344,7 @@ public final class SmolderQuartzFeature {
 		CHISELED_LAVA_PEARL_BRICKS = ModBlocks.register("chiseled_lava_pearl_bricks", Block::new, lavaPearlSettings(), true);
 		LAVA_PEARL_PILLAR = ModBlocks.register("lava_pearl_pillar", PillarBlock::new, lavaPearlSettings(), true);
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.BLOCKS_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.SETS_KEY).register(entries -> {
 			entries.add(SMOLDER_QUARTZ.block());
 			entries.add(SMOLDER_QUARTZ.stairs());
 			entries.add(SMOLDER_QUARTZ.slab());

@@ -234,7 +234,7 @@ public final class InfernoCuisineFeature {
 		SOOT_OLIVES = ModItems.register("soot_olives", Item::new, new Item.Settings().food(new FoodComponent.Builder().nutrition(2).saturationModifier(0.2f).alwaysEdible().build()));
 		EMBER_PICKLE = ModItems.register("ember_pickle", Item::new, new Item.Settings().food(new FoodComponent.Builder().nutrition(2).saturationModifier(0.3f).build()));
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.FOODS_KEY).register(entries -> {
 			entries.add(MAGMA_COLA);
 			entries.add(EMBER_TEA);
 			entries.add(LAVA_LATTE);

@@ -51,7 +51,7 @@ public final class DrPepperGolemFeature {
 		DR_PEPPER_GOLEM_SPAWN_ITEM = ModItems.register("dr_pepper_golem", SpawnEggItem::new,
 				new Item.Settings().spawnEgg(DR_PEPPER_GOLEM));
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY)
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MOBS_KEY)
 				.register(entries -> entries.add(DR_PEPPER_GOLEM_SPAWN_ITEM));
 
 		UseEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {

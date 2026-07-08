@@ -447,7 +447,7 @@ public final class AshHordeFeature {
 		SCORCHLING_CHAR = ModItems.register("scorchling_char", Item::new, new Item.Settings());
 		WANDERER_SHROUD = ModItems.register("wanderer_shroud", Item::new, new Item.Settings());
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MOBS_KEY).register(entries -> {
 			// Spawn eggs together, then the mob drops.
 			entries.add(CINDER_SHAMBLER_SPAWN_EGG);
 			entries.add(ASH_GHOUL_SPAWN_EGG);

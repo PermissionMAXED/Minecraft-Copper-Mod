@@ -38,7 +38,7 @@ public final class InfernoDim2Feature {
 						.luminance(state -> 7),
 				true);
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.BLOCKS_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.NATURE_KEY).register(entries -> {
 			entries.add(INFERNIUM_PORTAL_CORNER);
 		});
 

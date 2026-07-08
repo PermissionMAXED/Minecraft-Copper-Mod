@@ -584,7 +584,7 @@ def emit_java() -> None:
     feature_src = genlib.java_feature_class(
         "forgeparts", "ForgePartsFeature", feature_doc,
         items=items,
-        tabs=[("MAIN_KEY", tab_entries)],
+        tabs=[("SETS_KEY", tab_entries)],
         handbook_class="ForgePartsHandbook",
     )
     (FEATURE_DIR / "ForgePartsFeature.java").write_text(feature_src, encoding="utf-8")
