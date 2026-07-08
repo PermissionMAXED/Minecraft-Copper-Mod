@@ -16,5 +16,6 @@
   "block.copper_inferno.slag_copper_ore": "Slag Copper Ore",
   "block.copper_inferno.smolder_redstone_ore": "Smolder Redstone Ore",
   "block.copper_inferno.sulfur_block": "Sulfur Block",
-  "block.copper_inferno.sulfur_sand": "Sulfur Sand"
+  "block.copper_inferno.sulfur_sand": "Sulfur Sand",
+  "item.copper_inferno.brimstone": "Brimstone"
 }

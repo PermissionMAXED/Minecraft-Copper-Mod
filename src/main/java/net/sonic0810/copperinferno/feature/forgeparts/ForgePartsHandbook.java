@@ -57,7 +57,7 @@ final class ForgePartsHandbook {
 				null, 0, "The Obsidium forge-part chain: grind Obsidium Dust, refine it into powder and smelt ingots, then work them into alloys, gems, shards, rods, plates, gears, coils, cores and catalysts.", "Die Obsidium-Schmiedeteilkette: Obsidiumstaub mahlen, zu Pulver verfeinern und zu Barren schmelzen, dann zu Legierungen, Juwelen, Splittern, St\u00e4ben, Platten, Zahnr\u00e4dern, Spulen, Kernen und Katalysatoren verarbeiten."));
 
 		HandbookEntries.add(new HandbookEntry("items", "forgeparts/emberite_dust", "copper_inferno:emberite_dust", "forgeparts/emberite_dust",
-				new String[] {"minecraft:magma_cream", "", "minecraft:magma_cream", "", "copper_inferno:obsidium_dust", "", "minecraft:magma_cream", "", "minecraft:magma_cream"},
+				new String[] {"minecraft:magma_cream", "", "minecraft:magma_cream", "", "copper_inferno:ember_dust", "", "minecraft:magma_cream", "", "minecraft:magma_cream"},
 				"copper_inferno:emberite_dust", 4, "Craft 4x Emberite Dust at a crafting table.", "Stellt 4x Emberitstaub an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("items", "forgeparts/emberite_powder", "copper_inferno:emberite_powder", "forgeparts/emberite_powder",

@@ -14,7 +14,7 @@ noise is seeded per texture name via genlib.rng_for). Emits by DEFAULT (no flags
     material)
   - loot tables (drop-self; slabs use the vanilla double-drops-2 format)
   - recipes (data/copper_inferno/recipe/nightslate/*.json, 30 per material = 420; every
-    crafting recipe's INPUTS include at least one own copper_inferno id)
+    crafting recipe's INPUTS include at least one copper_inferno id)
   - lang fragments: assets/copper_inferno/lang/fragments/nightslate.json (EN)
     and assets/copper_inferno/lang/fragments_de/nightslate.json (real German)
   - devtools/tagfrag/nightslate.json (mineable/pickaxe for all 224, walls for the 42 walls)
@@ -41,72 +41,92 @@ FEATURE_DIR = ROOT / "src" / "main" / "java" / "net" / "sonic0810" / "copperinfe
 # ---------------------------------------------------------------------------
 # Materials. Each gets a DISTINCT deterministic DARK palette:
 #   shades = [dark, mid, mid, light] (genlib stone-look 4-tuple), mortar, two accents.
+# The stones stay dark, but each ramp carries a clear hue bias (blue-black vs
+# brown-black vs purple-black ...) and the two accents are bright and saturated so the
+# per-material tint survives at 16x16 (accent rates comparable to pyrestone_gen.py).
 # de/de_stem drive the German lang conventions (Stufe/Treppe/Mauer/Ziegel/Fliesen/Saeule
 # compounds; every base noun here is masculine, so "Polierter" throughout).
-# vanilla = the flavor vanilla ingredient of the base recipe; the recipe's centre slot is
-# the PREVIOUS material's base block (ring chain), so every crafting recipe contains at
-# least one own id and can never collide with vanilla or other features' recipes.
+# vanilla = the flavor vanilla ingredient of the base recipe (materials i >= 1); the
+# recipe's centre slot is the PREVIOUS material's base block, forming an open 14-link
+# CHAIN (no cycle): material[0] (nightslate) is the ENTRY, crafted from obtainable
+# materials (deepslate corners + ash_block centre) instead of material[13].
+# Every crafting recipe still contains at least one copper_inferno id, so it can never
+# collide with vanilla or other features' recipes.
 # ---------------------------------------------------------------------------
 Mat = namedtuple("Mat", "mid en de de_stem vanilla map_color sounds "
                         "shades mortar accents base_prob brick_prob")
 
 MATERIALS = [
+    # blue-black slate, bright steel-blue glints
     Mat("nightslate", "Nightslate", "Nachtschiefer", "Nachtschiefer",
         "minecraft:deepslate", "DEEPSLATE_GRAY", "DEEPSLATE",
-        [(0x1E, 0x22, 0x2C), (0x2A, 0x30, 0x3E), (0x2A, 0x30, 0x3E), (0x3A, 0x42, 0x54)],
-        (0x12, 0x15, 0x1C), [(0x55, 0x62, 0x80), (0x74, 0x86, 0xAC)], 0.03, 0.08),
+        [(0x1A, 0x22, 0x34), (0x26, 0x30, 0x48), (0x26, 0x30, 0x48), (0x36, 0x44, 0x62)],
+        (0x10, 0x15, 0x20), [(0x6A, 0x86, 0xC0), (0x92, 0xB4, 0xE8)], 0.05, 0.10),
+    # violet-black basalt, saturated purple sparks
     Mat("voidbasalt", "Voidbasalt", "Leerenbasalt", "Leerenbasalt",
         "minecraft:basalt", "BLACK", "BASALT",
-        [(0x14, 0x10, 0x1A), (0x1F, 0x19, 0x28), (0x1F, 0x19, 0x28), (0x2D, 0x25, 0x3A)],
-        (0x0B, 0x08, 0x10), [(0x5A, 0x3E, 0x8A), (0x7E, 0x5C, 0xB4)], 0.03, 0.10),
+        [(0x18, 0x0E, 0x22), (0x24, 0x16, 0x34), (0x24, 0x16, 0x34), (0x34, 0x22, 0x4A)],
+        (0x0D, 0x07, 0x14), [(0x7A, 0x3E, 0xC4), (0xA4, 0x6A, 0xE8)], 0.05, 0.12),
+    # mauve twilight stone (lightest ramp of the set), pink-lavender accents
     Mat("duskstone", "Duskstone", "D\u00e4mmerstein", "D\u00e4mmerstein",
         "minecraft:smooth_basalt", "TERRACOTTA_BLUE", "STONE",
-        [(0x2E, 0x2A, 0x3A), (0x3C, 0x38, 0x4C), (0x3C, 0x38, 0x4C), (0x4E, 0x49, 0x62)],
-        (0x1C, 0x19, 0x26), [(0x8A, 0x6E, 0x9E), (0xB0, 0x8E, 0xC4)], 0.03, 0.06),
+        [(0x32, 0x28, 0x40), (0x42, 0x36, 0x54), (0x42, 0x36, 0x54), (0x56, 0x48, 0x6C)],
+        (0x1E, 0x17, 0x2A), [(0xA8, 0x78, 0xC0), (0xD0, 0xA2, 0xE4)], 0.05, 0.08),
+    # green-black stone, mossy green glints
     Mat("gloomstone", "Gloomstone", "D\u00fcsterstein", "D\u00fcsterstein",
         "minecraft:blackstone", "GRAY", "STONE",
-        [(0x23, 0x28, 0x24), (0x30, 0x37, 0x32), (0x30, 0x37, 0x32), (0x40, 0x49, 0x42)],
-        (0x14, 0x18, 0x15), [(0x5E, 0x74, 0x62), (0x7C, 0x96, 0x80)], 0.02, 0.06),
+        [(0x1E, 0x2A, 0x20), (0x2A, 0x3A, 0x2C), (0x2A, 0x3A, 0x2C), (0x38, 0x4E, 0x3A)],
+        (0x11, 0x1A, 0x12), [(0x64, 0x96, 0x5E), (0x8C, 0xC4, 0x7E)], 0.04, 0.08),
+    # olive-black tuff, khaki-gold flecks
     Mat("shadow_tuff", "Shadow Tuff", "Schattentuff", "Schattentuff",
         "minecraft:tuff", "TERRACOTTA_GRAY", "TUFF",
-        [(0x2C, 0x2C, 0x24), (0x3A, 0x3B, 0x30), (0x3A, 0x3B, 0x30), (0x4B, 0x4D, 0x3E)],
-        (0x1B, 0x1B, 0x15), [(0x64, 0x66, 0x50), (0x80, 0x83, 0x68)], 0.02, 0.05),
+        [(0x2C, 0x2C, 0x1E), (0x3B, 0x3C, 0x28), (0x3B, 0x3C, 0x28), (0x4E, 0x50, 0x34)],
+        (0x1A, 0x1A, 0x10), [(0x8C, 0x8A, 0x46), (0xB4, 0xB0, 0x5E)], 0.04, 0.07),
+    # neutral gray-blue deepslate, cold steel accents
     Mat("umbral_deepslate", "Umbral Deepslate", "Umbra-Tiefenschiefer", "Umbra-Tiefenschiefer",
         "minecraft:cobbled_deepslate", "DEEPSLATE_GRAY", "DEEPSLATE",
         [(0x22, 0x22, 0x26), (0x2E, 0x2E, 0x33), (0x2E, 0x2E, 0x33), (0x3D, 0x3D, 0x44)],
-        (0x14, 0x14, 0x17), [(0x52, 0x52, 0x5E), (0x6C, 0x6C, 0x7C)], 0.02, 0.05),
+        (0x14, 0x14, 0x17), [(0x74, 0x78, 0x8E), (0x9A, 0xA2, 0xBC)], 0.04, 0.07),
+    # brown-black sooty stone, rusty ember-brown accents
     Mat("blacksoot_stone", "Blacksoot Stone", "Schwarzru\u00dfstein", "Schwarzru\u00dfstein",
         "minecraft:charcoal", "BLACK", "STONE",
-        [(0x1C, 0x18, 0x16), (0x28, 0x22, 0x1F), (0x28, 0x22, 0x1F), (0x36, 0x2E, 0x2A)],
-        (0x10, 0x0D, 0x0C), [(0x4E, 0x42, 0x3C), (0x66, 0x57, 0x4E)], 0.04, 0.07),
+        [(0x20, 0x16, 0x10), (0x2E, 0x20, 0x16), (0x2E, 0x20, 0x16), (0x3E, 0x2C, 0x1E)],
+        (0x12, 0x0C, 0x08), [(0x8A, 0x54, 0x30), (0xB4, 0x76, 0x42)], 0.05, 0.09),
+    # deep purple obsidian, vivid lilac facets
     Mat("char_obsidian", "Char Obsidian", "Brandobsidian", "Brandobsidian",
         "minecraft:obsidian", "BLACK", "DEEPSLATE",
         [(0x15, 0x10, 0x20), (0x20, 0x18, 0x30), (0x20, 0x18, 0x30), (0x2E, 0x23, 0x44)],
-        (0x0C, 0x09, 0x14), [(0x6E, 0x4A, 0xA0), (0x92, 0x6C, 0xC8)], 0.04, 0.12),
+        (0x0C, 0x09, 0x14), [(0x86, 0x4E, 0xD0), (0xB2, 0x84, 0xF0)], 0.05, 0.14),
+    # warm taupe pumice, sandy tan speckles
     Mat("dark_pumice", "Dark Pumice", "Dunkelbims", "Dunkelbims",
         "minecraft:gravel", "TERRACOTTA_BLACK", "BASALT",
-        [(0x2E, 0x29, 0x26), (0x3C, 0x36, 0x32), (0x3C, 0x36, 0x32), (0x4D, 0x46, 0x40)],
-        (0x1D, 0x1A, 0x18), [(0x60, 0x57, 0x50), (0x7A, 0x6F, 0x66)], 0.05, 0.05),
+        [(0x30, 0x29, 0x22), (0x3E, 0x36, 0x2C), (0x3E, 0x36, 0x2C), (0x50, 0x46, 0x38)],
+        (0x1E, 0x19, 0x14), [(0x8E, 0x7C, 0x62), (0xB6, 0xA2, 0x82)], 0.06, 0.07),
+    # pure pitch-black coal stone, silvery anthracite glints
     Mat("ebonstone", "Ebonstone", "Pechstein", "Pechstein",
         "minecraft:coal", "BLACK", "DEEPSLATE",
         [(0x12, 0x12, 0x14), (0x1C, 0x1C, 0x1F), (0x1C, 0x1C, 0x1F), (0x2A, 0x2A, 0x2E)],
-        (0x09, 0x09, 0x0B), [(0x44, 0x44, 0x4C), (0x5E, 0x5E, 0x68)], 0.03, 0.06),
+        (0x09, 0x09, 0x0B), [(0x72, 0x74, 0x78), (0x9E, 0xA2, 0xA8)], 0.05, 0.08),
+    # teal-black swamp rock, bright cyan-teal accents
     Mat("murkrock", "Murkrock", "Tr\u00fcbfels", "Tr\u00fcbfels",
         "minecraft:cobblestone", "TERRACOTTA_CYAN", "STONE",
-        [(0x1E, 0x2A, 0x28), (0x29, 0x38, 0x35), (0x29, 0x38, 0x35), (0x37, 0x4A, 0x46)],
-        (0x11, 0x19, 0x17), [(0x4C, 0x6C, 0x64), (0x64, 0x8C, 0x82)], 0.03, 0.08),
+        [(0x18, 0x2C, 0x2A), (0x21, 0x3C, 0x38), (0x21, 0x3C, 0x38), (0x2D, 0x50, 0x4A)],
+        (0x0E, 0x1B, 0x19), [(0x4E, 0x9E, 0x92), (0x6E, 0xD2, 0xC0)], 0.05, 0.10),
+    # charred red-brown stone, signature ember-orange cinders
     Mat("cinderdark_stone", "Cinderdark Stone", "Dunkelzunderstein", "Dunkelzunderstein",
         "minecraft:polished_blackstone", "TERRACOTTA_BLACK", "NETHER_BRICKS",
         [(0x24, 0x1D, 0x1C), (0x31, 0x28, 0x26), (0x31, 0x28, 0x26), (0x41, 0x35, 0x32)],
-        (0x15, 0x10, 0x0F), [(0xB4, 0x4A, 0x20), (0xE2, 0x58, 0x22)], 0.03, 0.14),
+        (0x15, 0x10, 0x0F), [(0xB4, 0x4A, 0x20), (0xE2, 0x58, 0x22)], 0.05, 0.14),
+    # crimson-black nether stone, bright blood-red veins
     Mat("netherveil_stone", "Netherveil Stone", "Netherschleierstein", "Netherschleierstein",
         "minecraft:netherrack", "DARK_CRIMSON", "NETHER_BRICKS",
-        [(0x2A, 0x16, 0x1A), (0x3A, 0x1F, 0x24), (0x3A, 0x1F, 0x24), (0x4C, 0x2A, 0x30)],
-        (0x18, 0x0C, 0x0F), [(0x8A, 0x30, 0x3E), (0xB4, 0x44, 0x52)], 0.04, 0.12),
+        [(0x2E, 0x14, 0x18), (0x40, 0x1C, 0x22), (0x40, 0x1C, 0x22), (0x54, 0x26, 0x2E)],
+        (0x1A, 0x0A, 0x0D), [(0xC0, 0x34, 0x48), (0xE8, 0x54, 0x66)], 0.05, 0.13),
+    # purple-black sculk stone, glowing cyan-azure sculk dots
     Mat("obscura_stone", "Obscura Stone", "Obskurastein", "Obskurastein",
         "minecraft:sculk", "TERRACOTTA_PURPLE", "DEEPSLATE",
         [(0x1A, 0x14, 0x22), (0x26, 0x1E, 0x32), (0x26, 0x1E, 0x32), (0x34, 0x2A, 0x44)],
-        (0x0F, 0x0B, 0x15), [(0x56, 0x3C, 0x74), (0x76, 0x58, 0x9C)], 0.03, 0.09),
+        (0x0F, 0x0B, 0x15), [(0x2C, 0x8C, 0xB4), (0x46, 0xC2, 0xE0)], 0.05, 0.10),
 ]
 
 assert len(MATERIALS) == 14
@@ -230,10 +250,11 @@ def hb_stonecutting(name: str, ingredient: str, result: str, count: int) -> None
 
 
 # ---------------------------------------------------------------------------
-# Recipes (30 per material; every crafting recipe's INPUTS include at least one own id).
-# Mirrors pyrestone_gen.py emit_recipes: base shaped 4x (ring chain), 2x2 conversions 4x,
-# slab 6x / stairs 4x / wall 6x (misc), cracked via smelting, chiseled from two slabs,
-# pillar 2x vertical, plus stonecutting from the base for every family member.
+# Recipes (30 per material; every crafting recipe's INPUTS include at least one
+# copper_inferno id). Mirrors pyrestone_gen.py emit_recipes: base shaped 4x (open chain
+# with an entry recipe, no cycle), 2x2 conversions 4x, slab 6x / stairs 4x / wall 6x
+# (misc), cracked via smelting, chiseled from two slabs, pillar 2x vertical, plus
+# stonecutting from the base for every family member.
 # ---------------------------------------------------------------------------
 
 def emit_recipes() -> int:
@@ -241,13 +262,20 @@ def emit_recipes() -> int:
     count = 0
     for i, mat in enumerate(MATERIALS):
         m = mat.mid
-        prev = MATERIALS[i - 1].mid  # ring chain (nightslate uses obscura_stone)
 
-        # Base cube: 4x vanilla flavor ingredient around the previous material's base block.
-        genlib.emit_shaped(RECIPES, m, {"S": mat.vanilla, "P": f"{ci}{prev}"},
+        # Base cube, always ["S S", " P ", "S S"] -> 4 under the same file name.
+        # material[0] (nightslate) is the chain ENTRY: crafted from already-obtainable
+        # materials (vanilla deepslate corners + Inferno-terrain ash_block centre) so
+        # the 14-link chain has an entry point and no crafting cycle. Materials i >= 1
+        # use 4x vanilla flavor ingredient around the PREVIOUS material's base block.
+        if i == 0:
+            corner, centre = "minecraft:deepslate", f"{ci}ash_block"
+        else:
+            corner, centre = mat.vanilla, f"{ci}{MATERIALS[i - 1].mid}"
+        genlib.emit_shaped(RECIPES, m, {"S": corner, "P": centre},
                            ["S S", " P ", "S S"], f"{ci}{m}", 4)
-        hb_shaped(m, [mat.vanilla, "", mat.vanilla, "", f"{ci}{prev}", "",
-                      mat.vanilla, "", mat.vanilla], m, 4)
+        hb_shaped(m, [corner, "", corner, "", centre, "",
+                      corner, "", corner], m, 4)
         count += 1
 
         # 2x2 conversions: base -> bricks -> tiles -> polished.

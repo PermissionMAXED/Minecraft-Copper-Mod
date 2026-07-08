@@ -2,7 +2,8 @@
 
 [init]
 # Insert BEFORE HandbookFeature.init(); no other ordering constraint
-# (recipes consume only vanilla ids and forgeparts' own ids).
+# (recipes consume only vanilla ids, forgeparts' own ids and infernium's
+# ember_dust — recipes are data, so no init-order dependency).
 import net.sonic0810.copperinferno.feature.forgeparts.ForgePartsFeature;
 		ForgePartsFeature.init();
 

@@ -1,0 +1,29 @@
+package net.sonic0810.copperinferno.feature.archfiends.client;
+
+import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.client.render.entity.WitherSkeletonEntityRenderer;
+import net.minecraft.client.render.entity.state.SkeletonEntityRenderState;
+import net.minecraft.util.Identifier;
+
+/**
+ * Renderer for the "Slag Wither Monarch" archfiend boss: the vanilla WitherSkeletonEntityRenderer
+ * (public non-final, verified via javap) with only the getTexture(SkeletonEntityRenderState)
+ * overload swapped to the boss's recolored texture (emitted by
+ * devtools/gen/archfiends_gen.py into
+ * src/client/resources/assets/copper_inferno/textures/entity/slag_wither_monarch.png).
+ * Model and animations stay vanilla; the texture is a pure luminance->palette
+ * remap of the base mob's texture, so all UV mapping is preserved.
+ */
+public class SlagWitherMonarchRenderer extends WitherSkeletonEntityRenderer {
+	private static final Identifier TEXTURE =
+			Identifier.of("copper_inferno", "textures/entity/slag_wither_monarch.png");
+
+	public SlagWitherMonarchRenderer(EntityRendererFactory.Context context) {
+		super(context);
+	}
+
+	@Override
+	public Identifier getTexture(SkeletonEntityRenderState state) {
+		return TEXTURE;
+	}
+}

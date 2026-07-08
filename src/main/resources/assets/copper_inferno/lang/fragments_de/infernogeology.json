@@ -16,5 +16,6 @@
   "block.copper_inferno.slag_copper_ore": "Schlackenkupfererz",
   "block.copper_inferno.smolder_redstone_ore": "Schwel-Redstone-Erz",
   "block.copper_inferno.sulfur_block": "Schwefelblock",
-  "block.copper_inferno.sulfur_sand": "Schwefelsand"
+  "block.copper_inferno.sulfur_sand": "Schwefelsand",
+  "item.copper_inferno.brimstone": "Schwefelbrocken"
 }

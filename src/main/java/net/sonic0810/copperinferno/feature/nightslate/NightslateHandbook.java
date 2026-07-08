@@ -73,7 +73,7 @@ final class NightslateHandbook {
 				null, 0, "The Obscura Stone set for dark volcanic builds: base, polished and brick families (block, stairs, slab, wall) plus tiles, cracked and chiseled bricks and a pillar.", "Das Obskurastein-Set f\u00fcr dunkle Vulkanbauten: Grund-, Polier- und Ziegelfamilie (Block, Treppe, Stufe, Mauer) dazu Fliesen, rissige und gemei\u00dfelte Ziegel sowie eine S\u00e4ule."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "nightslate/nightslate", "copper_inferno:nightslate", "nightslate/nightslate",
-				new String[] {"minecraft:deepslate", "", "minecraft:deepslate", "", "copper_inferno:obscura_stone", "", "minecraft:deepslate", "", "minecraft:deepslate"},
+				new String[] {"minecraft:deepslate", "", "minecraft:deepslate", "", "copper_inferno:ash_block", "", "minecraft:deepslate", "", "minecraft:deepslate"},
 				"copper_inferno:nightslate", 4, "Craft 4x Nightslate at a crafting table.", "Stellt 4x Nachtschiefer an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "nightslate/nightslate_bricks", "copper_inferno:nightslate_bricks", "nightslate/nightslate_bricks",

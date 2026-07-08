@@ -23,9 +23,12 @@ geyserite
 hardened_slag
 sulfur_block
 
+[recipe-dir]
+infernogeology
+
 [counts]
 worldgen-features: 25
 blocks: 18
-items: 0
-recipes: 0
-handbook-entries: 25
+items: 1
+recipes: 4
+handbook-entries: 29

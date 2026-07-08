@@ -73,7 +73,7 @@ final class MoltenMetalHandbook {
 				null, 0, "The Ashiron set for Inferno builds: base, polished and bricks families (each with slab, stairs and wall) plus tiles, cracked and chiseled bricks and a pillar.", "Das Ascheneisen-Set f\u00fcr Inferno-Bauten: Grund-, Polier- und Ziegelfamilie (je mit Stufe, Treppe und Mauer) sowie Fliesen, rissige und gemei\u00dfelte Ziegel und eine S\u00e4ule."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "moltenmetal/ember_brass", "copper_inferno:ember_brass", "moltenmetal/ember_brass",
-				new String[] {"minecraft:copper_ingot", "", "minecraft:copper_ingot", "", "copper_inferno:ashiron", "", "minecraft:copper_ingot", "", "minecraft:copper_ingot"},
+				new String[] {"minecraft:copper_ingot", "", "minecraft:copper_ingot", "", "copper_inferno:slag_chunk", "", "minecraft:copper_ingot", "", "minecraft:copper_ingot"},
 				"copper_inferno:ember_brass", 4, "Craft 4x Ember Brass at a crafting table.", "Stellt 4x Glutmessing an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "moltenmetal/ember_brass_bricks", "copper_inferno:ember_brass_bricks", "moltenmetal/ember_brass_bricks",

@@ -3,14 +3,20 @@
 
 10 ultra-powerful summon-only bosses mirroring the proven infernoboss template
 (SpawnGroup.MISC + setPersistent + core.boss.BossBarHolder server boss bar + high
-MAX_HEALTH + SCALE bulk + extended FOLLOW_RANGE; vanilla renderers scaled up). Bases:
+MAX_HEALTH + SCALE bulk + extended FOLLOW_RANGE; vanilla models scaled up, but each boss
+gets its OWN recolored entity texture via a per-boss renderer subclass). Bases:
 RavagerEntity x2, IronGolemEntity x2, WitherSkeletonEntity x2, BlazeEntity x2,
 VindicatorEntity x2. Each boss ships a summon item (ring craft), 2 drops (entity loot
 table), an EPIC trophy (shapeless craft from the drops) and a spawn egg.
 
 Idempotent: running it any number of times produces byte-identical output (all texture
-noise is seeded per texture name via genlib.rng_for). Emits by DEFAULT (no flags):
+noise is seeded per texture name via genlib.rng_for; the entity recolor is a pure
+function of the vanilla texture bytes + the boss palette). Emits by DEFAULT (no flags):
   - 16x16 RGBA item textures     assets/copper_inferno/textures/item/<id>.png
+  - recolored entity textures    src/client/resources/assets/copper_inferno/textures/
+                                 entity/<boss_id>.png (vanilla base texture from the loom
+                                 minecraft-client.jar, luminance-mapped onto the boss
+                                 palette; skipped with a warning if the jar is absent)
   - item model-definitions       assets/copper_inferno/items/<id>.json
   - item models                  assets/copper_inferno/models/item/<id>.json
   - entity loot tables           data/copper_inferno/loot_table/entities/<boss>.json
@@ -23,7 +29,9 @@ noise is seeded per texture name via genlib.rng_for). Emits by DEFAULT (no flags
                                  the 10 boss entity classes (hand-written logic below),
                                  CalamitiesHandbook.java (genlib.java_handbook_class),
                                  src/client/java/.../feature/calamities/client/
-                                 CalamitiesFeatureClient.java (vanilla renderers)
+                                 CalamitiesFeatureClient.java + one <Boss>Renderer per
+                                 boss (vanilla renderer subclass overriding the
+                                 render-state getTexture overload)
   - hook file                    devtools/hooks/calamities.txt
 
 Every vanilla API used by the emitted Java was verified with javap against the loom
@@ -38,10 +46,21 @@ SmallFireballEntity(World, LivingEntity, Vec3d), Entity.setOnFireFor(float),
 LivingEntity.equipStack + AbstractSkeletonEntity.updateAttackType(),
 MobEntity.tryAttack(ServerWorld, Entity), ServerWorld.spawnParticles,
 BossBar.Color/Style constants and the StatusEffects registry entries.
+
+Renderer subclasses (all javap-verified against the loom clientonly jar): every base
+renderer is a NON-final public class with a Context-only public ctor and a NON-final
+public getTexture overload taking its own render state (RavagerEntityRenderer ->
+RavagerEntityRenderState, IronGolemEntityRenderer -> IronGolemEntityRenderState,
+WitherSkeletonEntityRenderer -> SkeletonEntityRenderState, BlazeEntityRenderer ->
+LivingEntityRenderState, VindicatorEntityRenderer -> IllagerEntityRenderState), so a
+tiny subclass overriding that overload swaps the texture while keeping the vanilla
+model + animations.
 """
 
+import io
 import math
 import sys
+import zipfile
 from collections import namedtuple
 from pathlib import Path
 from random import Random
@@ -58,6 +77,8 @@ FEATURE_DIR = (ROOT / "src" / "main" / "java" / "net" / "sonic0810" / "copperinf
                / "feature" / "calamities")
 CLIENT_DIR = (ROOT / "src" / "client" / "java" / "net" / "sonic0810" / "copperinferno"
               / "feature" / "calamities" / "client")
+CLIENT_ASSETS = ROOT / "src" / "client" / "resources" / "assets" / NS
+CLIENT_JAR = Path.home() / ".gradle/caches/fabric-loom/1.21.9/minecraft-client.jar"
 
 Pal = namedtuple("Pal", "base dark light accent outline")
 
@@ -288,9 +309,35 @@ RENDERERS = {
     "vindicator": "VindicatorEntityRenderer",
 }
 
+# base -> render-state type of the vanilla renderer's own getTexture overload (javap;
+# see module docstring). The generated subclasses override exactly this overload.
+RENDER_STATES = {
+    "ravager": "RavagerEntityRenderState",
+    "iron_golem": "IronGolemEntityRenderState",
+    "wither_skeleton": "SkeletonEntityRenderState",
+    "blaze": "LivingEntityRenderState",
+    "vindicator": "IllagerEntityRenderState",
+}
+
+# base -> vanilla entity texture inside the loom minecraft-client.jar (paths verified
+# by listing the jar; the ravager/vindicator live under illager/, blaze at top level).
+VANILLA_ENTITY_TEXTURES = {
+    "ravager": "assets/minecraft/textures/entity/illager/ravager.png",
+    "iron_golem": "assets/minecraft/textures/entity/iron_golem/iron_golem.png",
+    "wither_skeleton": "assets/minecraft/textures/entity/skeleton/wither_skeleton.png",
+    "blaze": "assets/minecraft/textures/entity/blaze.png",
+    "vindicator": "assets/minecraft/textures/entity/illager/vindicator.png",
+}
+
 
 def field_of(item_id: str) -> str:
     return item_id.upper()
+
+
+def renderer_class_of(b: dict) -> str:
+    """EmberlordRavagerEntity -> EmberlordRavagerRenderer."""
+    assert b["cls"].endswith("Entity")
+    return b["cls"][:-len("Entity")] + "Renderer"
 
 
 def boss_items(b: dict) -> list:
@@ -478,6 +525,52 @@ def emit_textures() -> int:
 
 
 # ---------------------------------------------------------------------------
+# Recolored ENTITY textures: the base mob's vanilla texture (extracted from the loom
+# minecraft-client.jar) luminance-mapped onto the boss palette. Pure function of the
+# vanilla bytes + the palette (no rng), so output is byte-identical across runs.
+# titanforge_gen.recolor_iron_layer generalized: full 0..1 luminance band mapped across
+# a dark -> base -> light ramp; alpha is copied through UNCHANGED and pixels never move
+# (entity textures are UV-mapped).
+# ---------------------------------------------------------------------------
+
+def lerp(a, b, t):
+    return tuple(int(round(a[i] + (b[i] - a[i]) * t)) for i in range(3))
+
+
+def recolor_entity_texture(png_bytes: bytes, pal: Pal) -> Image.Image:
+    src = Image.open(io.BytesIO(png_bytes)).convert("RGBA")
+    out = Image.new("RGBA", src.size, (0, 0, 0, 0))
+    for y in range(src.size[1]):
+        for x in range(src.size[0]):
+            r, g, b, a = src.getpixel((x, y))
+            if a == 0:
+                continue
+            lum = (r + g + b) / (3 * 255)
+            if lum < 0.5:
+                color = lerp(pal.dark, pal.base, lum / 0.5)
+            else:
+                color = lerp(pal.base, pal.light, (lum - 0.5) / 0.5)
+            out.putpixel((x, y), (*color, a))
+    return out
+
+
+def emit_entity_textures() -> int:
+    if not CLIENT_JAR.is_file():
+        print(f"calamities_gen: WARNING client jar not found at {CLIENT_JAR}; "
+              "skipping boss entity textures", file=sys.stderr)
+        return 0
+    tex_dir = CLIENT_ASSETS / "textures" / "entity"
+    tex_dir.mkdir(parents=True, exist_ok=True)
+    count = 0
+    with zipfile.ZipFile(CLIENT_JAR) as jar:
+        for b in BOSSES:
+            data = jar.read(VANILLA_ENTITY_TEXTURES[b["base"]])
+            recolor_entity_texture(data, b["pal"]).save(tex_dir / f"{b['bid']}.png")
+            count += 1
+    return count
+
+
+# ---------------------------------------------------------------------------
 # Item model-definitions + models (1.21.9 two-file contract, via genlib).
 # ---------------------------------------------------------------------------
 
@@ -610,7 +703,8 @@ def feature_source() -> str:
           " * The Calamities: 10 ultra-powerful summon-only bosses (boss bars via",
           " * core.boss.BossBarHolder), mirroring the proven infernoboss template. Each boss",
           " * subclasses a vanilla mob (ravager / iron golem / wither skeleton / blaze /",
-          " * vindicator), reuses its vanilla renderer (see {@code CalamitiesFeatureClient})",
+          " * vindicator), keeps its vanilla model but wears its own recolored texture via a",
+          " * renderer subclass (see {@code CalamitiesFeatureClient})",
           " * and gets its bulk from the SCALE attribute. EntityType dimensions are copied",
           " * from the vanilla registrations (verified via EntityType bytecode). There is NO",
           " * natural spawn: every boss is summoned with its {@link CalamitySigilItem}, a",
@@ -1917,32 +2011,70 @@ assert set(ENTITY_SOURCES) == {b["cls"] for b in BOSSES}
 
 
 # ---------------------------------------------------------------------------
-# Java codegen: CalamitiesFeatureClient.java (vanilla renderers; both ctors are
-# Context-only, verified via javap — the infernoboss access-widener pattern).
+# Java codegen: per-boss renderer subclasses + CalamitiesFeatureClient.java. Every
+# boss keeps its vanilla MODEL/animations but swaps in its own recolored entity
+# texture: the subclass overrides the render-state getTexture overload (class,
+# Context-only ctor and overload all javap-verified non-final; see module docstring).
 # ---------------------------------------------------------------------------
 
-def client_source() -> str:
-    renderers = sorted({RENDERERS[b["base"]] for b in BOSSES})
+def renderer_source(b: dict) -> str:
+    base = b["base"]
+    vanilla = RENDERERS[base]
+    state = RENDER_STATES[base]
+    cls = renderer_class_of(b)
+    imports = sorted([
+        "net.minecraft.client.render.entity.EntityRendererFactory",
+        f"net.minecraft.client.render.entity.{vanilla}",
+        f"net.minecraft.client.render.entity.state.{state}",
+        "net.minecraft.util.Identifier",
+    ])
     L = [f"package {genlib.PKG_ROOT}.feature.calamities.client;", ""]
-    imports = sorted([f"net.minecraft.client.render.entity.{r}" for r in renderers]
-                     + ["net.minecraft.client.render.entity.EntityRendererFactories"])
     L += [f"import {imp};" for imp in imports]
-    L += [f"import {genlib.PKG_ROOT}.feature.calamities.CalamitiesFeature;", "",
-          "/**",
-          " * Client-side setup for the calamity bosses: all 10 reuse their vanilla renderers",
-          " * (every ctor is Context-only, verified via javap) - the SCALE attribute makes",
-          " * them loom. The bosses extend the matching vanilla entities, so the factories fit",
-          " * the register(EntityType&lt;? extends T&gt;, EntityRendererFactory&lt;T&gt;)",
-          " * bound; the vanilla register method is access-widened by Fabric's transitive",
-          " * access wideners (same proven pattern as the infernoboss feature).",
+    L += ["", "/**",
+          f" * Renderer for the \"{b['en']}\" calamity boss: the vanilla {vanilla}",
+          f" * (public non-final, Context-only ctor, verified via javap) with only the",
+          f" * getTexture({state}) overload swapped to the boss's recolored",
+          f" * texture (emitted by devtools/gen/calamities_gen.py into",
+          f" * src/client/resources/assets/copper_inferno/textures/entity/{b['bid']}.png).",
+          " * Model and animations stay vanilla; the texture is a pure luminance->palette",
+          " * remap of the base mob's texture, so all UV mapping is preserved.",
           " */",
-          "public final class CalamitiesFeatureClient {",
-          "\tprivate CalamitiesFeatureClient() {",
-          "\t}", "",
-          "\tpublic static void initClient() {"]
+          f"public class {cls} extends {vanilla} {{",
+          "\tprivate static final Identifier TEXTURE =",
+          f"\t\t\tIdentifier.of(\"copper_inferno\", \"textures/entity/{b['bid']}.png\");",
+          "",
+          f"\tpublic {cls}(EntityRendererFactory.Context context) {{",
+          "\t\tsuper(context);",
+          "\t}",
+          "",
+          "\t@Override",
+          f"\tpublic Identifier getTexture({state} state) {{",
+          "\t\treturn TEXTURE;",
+          "\t}",
+          "}"]
+    return "\n".join(L) + "\n"
+
+
+def client_source() -> str:
+    L = [f"package {genlib.PKG_ROOT}.feature.calamities.client;", "",
+         "import net.minecraft.client.render.entity.EntityRendererFactories;",
+         f"import {genlib.PKG_ROOT}.feature.calamities.CalamitiesFeature;", "",
+         "/**",
+         " * Client-side setup for the calamity bosses: each registers its own tiny renderer",
+         " * subclass (vanilla renderer + the boss's recolored entity texture; every ctor is",
+         " * Context-only, verified via javap) - the SCALE attribute makes them loom. The",
+         " * bosses extend the matching vanilla entities, so the factories fit the",
+         " * register(EntityType&lt;? extends T&gt;, EntityRendererFactory&lt;T&gt;)",
+         " * bound; the vanilla register method is access-widened by Fabric's transitive",
+         " * access wideners (same proven pattern as the infernoboss feature).",
+         " */",
+         "public final class CalamitiesFeatureClient {",
+         "\tprivate CalamitiesFeatureClient() {",
+         "\t}", "",
+         "\tpublic static void initClient() {"]
     for b in BOSSES:
         L.append(f"\t\tEntityRendererFactories.register(CalamitiesFeature.{field_of(b['bid'])}, "
-                 f"{RENDERERS[b['base']]}::new);")
+                 f"{renderer_class_of(b)}::new);")
     L += ["\t}", "}"]
     return "\n".join(L) + "\n"
 
@@ -2007,6 +2139,9 @@ def emit_java() -> None:
     (FEATURE_DIR / "CalamitiesHandbook.java").write_text(handbook_src, encoding="utf-8")
 
     (CLIENT_DIR / "CalamitiesFeatureClient.java").write_text(client_source(), encoding="utf-8")
+    for b in BOSSES:
+        (CLIENT_DIR / f"{renderer_class_of(b)}.java").write_text(renderer_source(b),
+                                                                 encoding="utf-8")
 
 
 # ---------------------------------------------------------------------------
@@ -2042,6 +2177,7 @@ def emit_hooks(item_count: int, recipe_count: int, handbook_count: int) -> None:
 def main() -> None:
     ids = emit_item_assets()
     tex_count = emit_textures()
+    entity_tex_count = emit_entity_textures()
     emit_loot_tables()
     recipe_count = emit_recipes()
 
@@ -2058,9 +2194,11 @@ def main() -> None:
     assert len(BOSSES) == 10 and len(summons) == 10 and len(trophies) == 10
     assert len(ids) == 50 and len(set(ids)) == 50
     assert tex_count == 50
+    assert entity_tex_count in (0, 10)  # 0 only when the client jar is absent
     assert recipe_count == 20
     assert hb_count == 30
-    print(f"calamities_gen: {len(BOSSES)} bosses / {len(ids)} items / {recipe_count} recipes / "
+    print(f"calamities_gen: {len(BOSSES)} bosses / {len(ids)} items / "
+          f"{entity_tex_count} entity textures / {recipe_count} recipes / "
           f"{hb_count} handbook entries / {len(lang_en)} lang keys (EN==DE) generated.")
 
 

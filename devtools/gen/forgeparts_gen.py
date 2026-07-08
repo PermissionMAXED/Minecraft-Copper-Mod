@@ -17,9 +17,11 @@ noise is seeded per texture name via genlib.rng_for). Emits by DEFAULT (no flags
     (genlib.java_feature_class / genlib.java_handbook_class; literal ids only)
   - devtools/hooks/forgeparts.txt (integration hook file)
 
-Every recipe includes at least one forgeparts id among its INPUTS and/or is keyed on the
-chain (the dust entry recipe rings through the previous metal's dust, exactly like the
-pyrestone ring chain), so no recipe can collide with vanilla or other features' recipes.
+Every recipe includes at least one copper_inferno id among its INPUTS, so no recipe can
+collide with vanilla or other features' recipes. The dust recipes form an open 10-link
+CHAIN (no cycle): metal[0] (emberite) is the ENTRY, its dust crafted from obtainable
+materials (magma_cream corners + infernium ember_dust centre); each later metal's dust
+uses the previous metal's dust in the centre.
 All JSON structures come from genlib and are byte-identical to the vanilla 1.21.9 formats.
 Do NOT "improve" them.
 """
@@ -44,7 +46,7 @@ FEATURE_DIR = (ROOT / "src" / "main" / "java" / "net" / "sonic0810" / "copperinf
 # ---------------------------------------------------------------------------
 # Metals. Each gets a DISTINCT deterministic base color (the 6-shade ramp and the two
 # accents are derived arithmetically, so palettes stay deterministic) plus a vanilla
-# flavor reagent for the dust entry recipe. de is the Germanized metal stem used for the
+# flavor reagent for the dust recipe. de is the Germanized metal stem used for the
 # closed German compounds (Emberitstaub, Cindriumbarren, ...).
 # ---------------------------------------------------------------------------
 Metal = namedtuple("Metal", "mid en de vanilla base")
@@ -445,9 +447,9 @@ def hb_smelting(name: str, ingredient: str, result: str) -> None:
 
 
 # ---------------------------------------------------------------------------
-# Recipes (12 per metal = 120; every recipe has at least one forgeparts id among its
-# ingredients and/or result — the dust entry recipe rings through the previous metal's
-# dust like the pyrestone ring chain, so inputs never collide with other recipes).
+# Recipes (12 per metal = 120; every recipe has at least one copper_inferno id among
+# its ingredients — the dust recipes form an open chain with an entry recipe (no
+# cycle), so inputs never collide with other recipes).
 # ---------------------------------------------------------------------------
 
 def shapeless_grid(ingredients: list) -> list:
@@ -459,15 +461,19 @@ def emit_recipes() -> int:
     count = 0
     for i, metal in enumerate(METALS):
         m = metal.mid
-        prev_dust = f"{ci}{METALS[i - 1].mid}_dust"  # ring chain
         dust, powder, ingot = f"{ci}{m}_dust", f"{ci}{m}_powder", f"{ci}{m}_ingot"
         gem, shard, rod = f"{ci}{m}_gem", f"{ci}{m}_shard", f"{ci}{m}_rod"
         plate = f"{ci}{m}_plate"
 
-        # dust: 4 vanilla flavor reagents around the previous metal's dust -> 4.
-        genlib.emit_shaped(RECIPES, f"{m}_dust", {"V": metal.vanilla, "P": prev_dust},
+        # dust: always ["V V", " P ", "V V"] -> 4 under the same file name.
+        # metal[0] (emberite) is the chain ENTRY: its dust is crafted from already-
+        # obtainable materials (magma_cream corners + infernium ember_dust centre) so
+        # the 10-link dust chain has an entry point and no crafting cycle. Metals
+        # i >= 1 use 4 vanilla flavor reagents around the PREVIOUS metal's dust.
+        centre = f"{ci}ember_dust" if i == 0 else f"{ci}{METALS[i - 1].mid}_dust"
+        genlib.emit_shaped(RECIPES, f"{m}_dust", {"V": metal.vanilla, "P": centre},
                            ["V V", " P ", "V V"], dust, 4, category="misc")
-        hb_crafting(f"{m}_dust", [metal.vanilla, "", metal.vanilla, "", prev_dust, "",
+        hb_crafting(f"{m}_dust", [metal.vanilla, "", metal.vanilla, "", centre, "",
                                   metal.vanilla, "", metal.vanilla], f"{m}_dust", 4)
         count += 1
 
@@ -604,7 +610,8 @@ def emit_hooks(recipe_count: int) -> None:
     lines = ["# forgeparts feature hooks (format: devtools/hooks/README.md)", "",
              "[init]",
              "# Insert BEFORE HandbookFeature.init(); no other ordering constraint",
-             "# (recipes consume only vanilla ids and forgeparts' own ids).",
+             "# (recipes consume only vanilla ids, forgeparts' own ids and infernium's",
+             "# ember_dust — recipes are data, so no init-order dependency).",
              "import net.sonic0810.copperinferno.feature.forgeparts.ForgePartsFeature;",
              "\t\tForgePartsFeature.init();", "",
              "[recipe-dir]",

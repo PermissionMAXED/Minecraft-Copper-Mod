@@ -14,7 +14,7 @@ noise is seeded per texture name via genlib.rng_for). Emits by DEFAULT (no flags
     distinct palette per material)
   - loot tables (drop-self; slabs use the vanilla double-drops-2 format)
   - recipes (data/copper_inferno/recipe/kilnstone/*.json, 30 per material = 420; every
-    recipe's inputs include at least one own id)
+    recipe's inputs include at least one copper_inferno id)
   - lang fragments: assets/copper_inferno/lang/fragments/kilnstone.json (EN)
     and assets/copper_inferno/lang/fragments_de/kilnstone.json (real German)
   - devtools/tagfrag/kilnstone.json (mineable/pickaxe for all 224, walls for the 42 walls)
@@ -44,9 +44,12 @@ FEATURE_DIR = ROOT / "src" / "main" / "java" / "net" / "sonic0810" / "copperinfe
 #   plus a bright "gloss" specular color for the glaze sheen.
 # de/de_stem/de_pol drive the German lang conventions (Stufe/Treppe/Mauer/Ziegel/
 # Fliesen/Saeule compounds; "Polierter"/"Polierte" by grammatical gender).
-# vanilla = the flavor vanilla ingredient of the base recipe; the recipe's centre slot is
-# the PREVIOUS material's base block (ring chain), so every crafting recipe contains at
-# least one own id and can never collide with vanilla or other features' recipes.
+# vanilla = the flavor vanilla ingredient of the base recipe (materials i >= 1); the
+# recipe's centre slot is the PREVIOUS material's base block, forming an open 14-link
+# CHAIN (no cycle): material[0] (kilnstone) is the ENTRY, crafted from obtainable
+# materials (brick corners + Inferno-terrain cinderstone centre) instead of
+# material[13]. Every crafting recipe still contains at least one copper_inferno id,
+# so it can never collide with vanilla or other features' recipes.
 # ---------------------------------------------------------------------------
 Mat = namedtuple("Mat", "mid en de de_stem de_pol vanilla map_color sounds "
                         "shades mortar accents gloss base_prob brick_prob")
@@ -242,10 +245,11 @@ def hb_stonecutting(name: str, ingredient: str, result: str, count: int) -> None
 
 
 # ---------------------------------------------------------------------------
-# Recipes (30 per material; every crafting recipe's INPUTS include at least one own id).
-# Mirrors cinderstone_gen.py emit_recipes: base shaped 4x, 2x2 conversions 4x,
-# slab 6x / stairs 4x / wall 6x (misc), cracked via smelting, chiseled from two slabs,
-# pillar 2x vertical, plus stonecutting from the base for every family member.
+# Recipes (30 per material; every crafting recipe's INPUTS include at least one
+# copper_inferno id). Mirrors cinderstone_gen.py emit_recipes: base shaped 4x (open
+# chain with an entry recipe, no cycle), 2x2 conversions 4x, slab 6x / stairs 4x /
+# wall 6x (misc), cracked via smelting, chiseled from two slabs, pillar 2x vertical,
+# plus stonecutting from the base for every family member.
 # ---------------------------------------------------------------------------
 
 def emit_recipes() -> int:
@@ -253,13 +257,20 @@ def emit_recipes() -> int:
     count = 0
     for i, mat in enumerate(MATERIALS):
         m = mat.mid
-        prev = MATERIALS[i - 1].mid  # ring chain (kilnstone uses pyroceramic)
 
-        # Base cube: 4x vanilla flavor ingredient around the previous material's base block.
-        genlib.emit_shaped(RECIPES, m, {"S": mat.vanilla, "P": f"{ci}{prev}"},
+        # Base cube, always ["S S", " P ", "S S"] -> 4 under the same file name.
+        # material[0] (kilnstone) is the chain ENTRY: crafted from already-obtainable
+        # materials (vanilla brick corners + Inferno-terrain cinderstone centre) so
+        # the 14-link chain has an entry point and no crafting cycle. Materials i >= 1
+        # use 4x vanilla flavor ingredient around the PREVIOUS material's base block.
+        if i == 0:
+            corner, centre = "minecraft:brick", f"{ci}cinderstone"
+        else:
+            corner, centre = mat.vanilla, f"{ci}{MATERIALS[i - 1].mid}"
+        genlib.emit_shaped(RECIPES, m, {"S": corner, "P": centre},
                            ["S S", " P ", "S S"], f"{ci}{m}", 4)
-        hb_shaped(m, [mat.vanilla, "", mat.vanilla, "", f"{ci}{prev}", "",
-                      mat.vanilla, "", mat.vanilla], m, 4)
+        hb_shaped(m, [corner, "", corner, "", centre, "",
+                      corner, "", corner], m, 4)
         count += 1
 
         # 2x2 conversions: base -> bricks -> tiles -> polished.

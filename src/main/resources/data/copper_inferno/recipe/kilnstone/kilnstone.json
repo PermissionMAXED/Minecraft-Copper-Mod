@@ -1,8 +1,8 @@
 {
   "category": "building",
   "key": {
-    "P": "copper_inferno:pyroceramic",
-    "S": "minecraft:terracotta"
+    "P": "copper_inferno:cinderstone",
+    "S": "minecraft:brick"
   },
   "pattern": [
     "S S",

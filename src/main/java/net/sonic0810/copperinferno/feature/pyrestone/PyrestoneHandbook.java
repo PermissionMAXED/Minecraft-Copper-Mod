@@ -73,7 +73,7 @@ final class PyrestoneHandbook {
 				null, 0, "The Blazewrought Stone set for Inferno builds: rough, polished and brick families (block, stairs, slab, wall) plus tiles, cracked and chiseled bricks and a pillar.", "Das Flammschmiedestein-Set f\u00fcr Inferno-Bauten: raue, polierte und Ziegel-Familien (Block, Treppe, Stufe, Mauer) sowie Fliesen, rissige und gemei\u00dfelte Ziegel und eine S\u00e4ule."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/pyrestone", "copper_inferno:pyrestone", "pyrestone/pyrestone",
-				new String[] {"minecraft:granite", "", "minecraft:granite", "", "copper_inferno:blazewrought_stone", "", "minecraft:granite", "", "minecraft:granite"},
+				new String[] {"copper_inferno:cinderstone", "", "copper_inferno:cinderstone", "", "copper_inferno:ember_dust", "", "copper_inferno:cinderstone", "", "copper_inferno:cinderstone"},
 				"copper_inferno:pyrestone", 4, "Craft 4x Pyrestone at a crafting table.", "Stellt 4x Pyrostein an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/pyrestone_bricks", "copper_inferno:pyrestone_bricks", "pyrestone/pyrestone_bricks",

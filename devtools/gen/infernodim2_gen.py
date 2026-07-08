@@ -16,7 +16,8 @@ src/main/resources:
       dimension/inferno.json rewritten with a minecraft:multi_noise biome source
       (7 biomes, non-overlapping climate points)
       a biome_is patch of worldgen/noise_settings/inferno.json (new biomes appended to
-      the existing surface-rule branches; crystal_hollows keeps the default cinderstone)
+      the existing surface-rule branches; crystal_hollows gets a dedicated floor branch
+      placing the existing infernogeology geyserite block)
       devtools/tagfrag/infernodim2.json (mineable/pickaxe for the corner block)
 
 Like infernodim_gen.py, NO dimension/biome JSON is invented:
@@ -309,19 +310,53 @@ def emit_dimension() -> None:
 
 
 # New biomes joining the EXISTING noise_settings surface-rule branches (they share the
-# vanilla-derived surfaces of their sibling biome; crystal_hollows intentionally keeps
-# the default cinderstone terrain). Keyed by the anchor biome already present in the
-# branch's biome_is list.
+# vanilla-derived surfaces of their sibling biome). Keyed by the anchor biome already
+# present in the branch's biome_is list. crystal_hollows gets its OWN dedicated branch
+# instead (crystal_hollows_surface_branch below).
 SURFACE_BIOME_ADDITIONS = {
     f"{NS}:cinder_wastes": [f"{NS}:soot_dunes"],       # ash/ember_soil + gravel branches
     f"{NS}:ember_grove": [f"{NS}:verdigris_jungle"],   # ember moss/wart floor branch
     f"{NS}:slag_sea": [f"{NS}:molten_delta"],          # slagstone/cobbled delta branch
 }
 
+# crystal_hollows floor block: geyserite is an EXISTING block registered by the
+# infernogeology feature (blockstate presence on disk is asserted before patching;
+# no new block is registered here). Pale geyserite floors fit the crystal-cavern theme.
+CRYSTAL_HOLLOWS_FLOOR = f"{NS}:geyserite"
+
+
+def crystal_hollows_surface_branch() -> dict:
+    """The dedicated crystal_hollows surface branch: JSON shape copied from the existing
+    per-biome branches in noise_settings/inferno.json (biome_is condition -> stone_depth
+    floor condition -> block), placing CRYSTAL_HOLLOWS_FLOOR as the biome's floor."""
+    return {
+        "if_true": {
+            "biome_is": [f"{NS}:crystal_hollows"],
+            "type": "minecraft:biome",
+        },
+        "then_run": {
+            "if_true": {
+                "add_surface_depth": True,
+                "offset": 0,
+                "secondary_depth_range": 0,
+                "surface_type": "floor",
+                "type": "minecraft:stone_depth",
+            },
+            "then_run": {
+                "result_state": {"Name": CRYSTAL_HOLLOWS_FLOOR},
+                "type": "minecraft:block",
+            },
+            "type": "minecraft:condition",
+        },
+        "type": "minecraft:condition",
+    }
+
 
 def patch_noise_settings() -> None:
     """Append the new biome ids to every existing biome_is list that contains the anchor
-    biome (idempotent; the branch structures themselves are untouched)."""
+    biome, and insert the dedicated crystal_hollows floor branch once (both idempotent;
+    running twice produces byte-identical output — the branch is only inserted if no
+    top-level branch already matches crystal_hollows)."""
     path = DATA / "worldgen" / "noise_settings" / "inferno.json"
     noise = json.loads(path.read_text(encoding="utf-8"))
 
@@ -341,6 +376,26 @@ def patch_noise_settings() -> None:
                 walk(value)
 
     walk(noise["surface_rule"])
+
+    def top_level_biome_is(entry) -> list:
+        if isinstance(entry, dict) and isinstance(entry.get("if_true"), dict):
+            biome_is = entry["if_true"].get("biome_is")
+            if isinstance(biome_is, list):
+                return biome_is
+        return []
+
+    # Insert the crystal_hollows branch right after the first cinder_wastes biome branch
+    # (the ceiling/floor one), alongside its sibling per-biome branches and BEFORE the
+    # un-gated lava-hole/moss floor rules — exactly where the other biome branches sit.
+    sequence = noise["surface_rule"]["sequence"]
+    if not any(f"{NS}:crystal_hollows" in top_level_biome_is(entry) for entry in sequence):
+        floor_block = CRYSTAL_HOLLOWS_FLOOR.split(":", 1)[1]
+        assert (ASSETS / "blockstates" / f"{floor_block}.json").exists(), \
+            f"crystal_hollows floor block {CRYSTAL_HOLLOWS_FLOOR} has no blockstate on disk"
+        anchor = next(i for i, entry in enumerate(sequence)
+                      if f"{NS}:cinder_wastes" in top_level_biome_is(entry))
+        sequence.insert(anchor + 1, crystal_hollows_surface_branch())
+
     write_json(path, noise)
 
 

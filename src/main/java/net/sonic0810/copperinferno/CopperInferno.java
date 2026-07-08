@@ -33,6 +33,7 @@ import net.sonic0810.copperinferno.feature.infernogeology.InfernoGeologyFeature;
 import net.sonic0810.copperinferno.feature.infernium.InferniumFeature;
 import net.sonic0810.copperinferno.feature.infernomobs.InfernoMobsFeature;
 import net.sonic0810.copperinferno.feature.kilnstone.KilnstoneFeature;
+import net.sonic0810.copperinferno.feature.legacyhandbook.LegacyHandbookFeature;
 import net.sonic0810.copperinferno.feature.masonry.MasonryFeature;
 import net.sonic0810.copperinferno.feature.materials.MaterialsFeature;
 import net.sonic0810.copperinferno.feature.moltenfauna.MoltenFaunaFeature;
@@ -125,6 +126,9 @@ public class CopperInferno implements ModInitializer {
 		// stay after InfernoDimensionFeature/InfernoFloraFeature (its worldgen JSON targets
 		// their terrain/flora blocks) and before HandbookFeature.
 		InfernoDim2Feature.init();
+		// Handbook coverage for the 12 legacy (pre-v3) recipe dirs + lore pages
+		// (generated feature; see devtools/gen/legacyhandbook_gen.py). Entries only.
+		LegacyHandbookFeature.init();
 		HandbookFeature.init();
 	}
 }

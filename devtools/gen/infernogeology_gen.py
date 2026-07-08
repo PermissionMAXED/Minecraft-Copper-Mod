@@ -3,10 +3,14 @@
 
 25 NEW worldgen features for the Inferno dimension (12 ore/scattered-ore veins, 4
 replace-blobs, 3 disks, 3 lava springs, 3 geyser/delta basins) plus the 18 NEW ore/deco
-blocks they place. Wired in code (InfernoGeologyFeature) via Fabric
-BiomeModifications.addFeature into the three copper_inferno biomes; the biome JSONs under
-data/copper_inferno/worldgen/biome/ are owned by the infernodim feature and are NOT
-touched.
+blocks they place, the brimstone item, silk-touch/fortune ore loot and 4 consuming
+recipes. Wired in code (InfernoGeologyFeature) via Fabric BiomeModifications.addFeature
+using two literal biome predicates: veins + replace-blobs into ALL SEVEN copper_inferno
+biomes (cinder_wastes, ember_grove, slag_sea, verdigris_jungle, molten_delta, soot_dunes,
+crystal_hollows); disks, springs and basins only into the five lava-shore biomes (the
+old three + molten_delta + soot_dunes; crystal_hollows stays clean, verdigris_jungle
+keeps its jungle floor). The biome JSONs under data/copper_inferno/worldgen/biome/ are
+owned by infernodim/infernodim2 and are NOT touched.
 
 Idempotent: running it any number of times produces byte-identical output (all texture
 noise is seeded per texture name via genlib.rng_for; JSON via genlib.write_json). Emits by
@@ -32,9 +36,25 @@ DEFAULT (no flags):
       * blob state: vanilla basalt_blobs carries Properties {axis: y}; the mod blob
         blocks are plain axis-less cubes, so the Properties dict is dropped.
   - blockstates, cube_all block models, items/<id>.json model-definitions, 16x16
-    textures, drop-self loot tables for the 18 new blocks (genlib emitters)
+    textures for the 18 new blocks (genlib emitters)
+  - loot tables: the 8 real ores get silk-touch/fortune tables that are the REAL vanilla
+    1.21.9 loot JSON (data/minecraft/loot_table/blocks/<name>.json out of the client jar)
+    with only the block/drop names, counts and random_sequence substituted —
+    ember_iron_ore<-iron_ore (raw_iron), slag_copper_ore<-copper_ore (2-5 raw_copper),
+    ash_gold_ore<-nether_gold_ore (2-6 gold_nugget), cinder_quartz_ore<-nether_quartz_ore
+    (quartz), cinder_lapis_ore<-lapis_ore (4-9 lapis_lazuli),
+    smolder_redstone_ore<-redstone_ore (4-5 redstone), brimstone_ore<-nether_quartz_ore
+    (the new copper_inferno:brimstone). deep_infernium_ore retargets the mod's on-disk
+    data/copper_inferno/loot_table/blocks/infernium_ore.json template (uniform 2-3
+    copper_inferno:raw_infernium; set_count schema from vanilla copper_ore).
+    scorched_debris and the 9 non-ore deco/sediment blocks keep drop-self.
+  - the brimstone ITEM (item def + item/generated model + deterministic 16x16 sprite),
+    registered via ModItems and added to the MAIN creative tab
+  - 4 consuming recipes under data/copper_inferno/recipe/infernogeology/ (sulfur block
+    <-> brimstone compression pair, fire charges, gunpowder; every input set contains a
+    copper_inferno id so devtools/check_recipe_collisions.py stays green)
   - lang fragments: assets/copper_inferno/lang/fragments/infernogeology.json (EN) and
-    fragments_de/infernogeology.json (real German)
+    fragments_de/infernogeology.json (real German); 18 block keys + 1 item key
   - devtools/tagfrag/infernogeology.json (mineable/pickaxe for the 15 requiresTool
     blocks, mineable/shovel for the 3 soft blocks; same shape as infernodim's fragment)
   - src/main/java/.../feature/infernogeology/InfernoGeologyFeature.java +
@@ -42,7 +62,8 @@ DEFAULT (no flags):
     literal ids only). The feature class carries the 25 literal
     BiomeModifications.addFeature calls (signature verified via javap on
     fabric-biome-api-v1: (Predicate<BiomeSelectionContext>, GenerationStep.Feature,
-    RegistryKey<PlacedFeature>)).
+    RegistryKey<PlacedFeature>)); the handbook class carries 25 "dimension" entries
+    (the ore entries name their drops) + 4 recipe entries = 29.
   - devtools/hooks/infernogeology.txt (integration hook file)
 
 All block/loot/lang JSON structures come from genlib and are byte-identical to the
@@ -70,6 +91,10 @@ PF_DIR = DATA / "worldgen" / "placed_feature"
 # Existing blocks (owned by infernodim) that these features may reference as targets /
 # valid_blocks. Their blockstates are asserted to exist on disk in main().
 EXISTING_BLOCKS = ["cinderstone", "ash_block", "cinder_gravel"]
+
+# Existing items (owned by the infernium feature) that the loot tables / recipes
+# reference. Their items/<id>.json defs are asserted to exist on disk in main().
+EXISTING_ITEMS = ["raw_infernium", "ash_pile"]
 
 
 def jar_json(entry: str):
@@ -148,6 +173,72 @@ BLOCKS = [
 ]
 
 BLOCK_IDS = [b.bid for b in BLOCKS]
+
+# The one NEW item: what brimstone_ore drops and what the 4 recipes consume.
+# (iid, EN, DE)
+Itm = namedtuple("Itm", "iid en de")
+
+ITEMS = [
+    Itm("brimstone", "Brimstone", "Schwefelbrocken"),
+]
+
+ITEM_IDS = [i.iid for i in ITEMS]
+
+# Silk-touch/fortune ore loot: block id -> (vanilla loot source | None for the mod's
+# own infernium_ore template, drop item id, (min,max) set_count substitution | None to
+# keep the source's count function untouched/absent). Ore blocks NOT listed here
+# (scorched_debris) and all deco/sediment blocks keep drop-self.
+ORE_LOOT = {
+    "ember_iron_ore":       ("iron_ore",          "minecraft:raw_iron",       None),
+    "slag_copper_ore":      ("copper_ore",        "minecraft:raw_copper",     (2, 5)),
+    "ash_gold_ore":         ("nether_gold_ore",   "minecraft:gold_nugget",    (2, 6)),
+    "cinder_quartz_ore":    ("nether_quartz_ore", "minecraft:quartz",         None),
+    "cinder_lapis_ore":     ("lapis_ore",         "minecraft:lapis_lazuli",   (4, 9)),
+    "smolder_redstone_ore": ("redstone_ore",      "minecraft:redstone",       (4, 5)),
+    "deep_infernium_ore":   (None,                f"{NS}:raw_infernium",      (2, 3)),
+    "brimstone_ore":        ("nether_quartz_ore", f"{NS}:brimstone",          None),
+}
+
+# Drop sentences appended to the ore "dimension" handbook entries (EN, DE).
+ORE_DROPS_TEXT = {
+    "ember_iron_ore": (
+        "Drops 1 Raw Iron; Fortune raises the yield, Silk Touch drops the ore block.",
+        "L\u00e4sst 1 Roheisen fallen; Gl\u00fcck erh\u00f6ht die Ausbeute, "
+        "Behutsamkeit l\u00e4sst den Erzblock fallen."),
+    "slag_copper_ore": (
+        "Drops 2-5 Raw Copper; Fortune raises the yield, Silk Touch drops the ore block.",
+        "L\u00e4sst 2-5 Rohkupfer fallen; Gl\u00fcck erh\u00f6ht die Ausbeute, "
+        "Behutsamkeit l\u00e4sst den Erzblock fallen."),
+    "ash_gold_ore": (
+        "Drops 2-6 Gold Nuggets; Fortune raises the yield, Silk Touch drops the ore "
+        "block.",
+        "L\u00e4sst 2-6 Goldklumpen fallen; Gl\u00fcck erh\u00f6ht die Ausbeute, "
+        "Behutsamkeit l\u00e4sst den Erzblock fallen."),
+    "cinder_quartz_ore": (
+        "Drops 1 Nether Quartz; Fortune raises the yield, Silk Touch drops the ore "
+        "block.",
+        "L\u00e4sst 1 Netherquarz fallen; Gl\u00fcck erh\u00f6ht die Ausbeute, "
+        "Behutsamkeit l\u00e4sst den Erzblock fallen."),
+    "cinder_lapis_ore": (
+        "Drops 4-9 Lapis Lazuli; Fortune raises the yield, Silk Touch drops the ore "
+        "block.",
+        "L\u00e4sst 4-9 Lapislazuli fallen; Gl\u00fcck erh\u00f6ht die Ausbeute, "
+        "Behutsamkeit l\u00e4sst den Erzblock fallen."),
+    "smolder_redstone_ore": (
+        "Drops 4-5 Redstone Dust; Fortune raises the yield, Silk Touch drops the ore "
+        "block.",
+        "L\u00e4sst 4-5 Redstone-Staub fallen; Gl\u00fcck erh\u00f6ht die Ausbeute, "
+        "Behutsamkeit l\u00e4sst den Erzblock fallen."),
+    "deep_infernium_ore": (
+        "Drops 2-3 Raw Infernium; Fortune raises the yield, Silk Touch drops the ore "
+        "block.",
+        "L\u00e4sst 2-3 Roh-Infernium fallen; Gl\u00fcck erh\u00f6ht die Ausbeute, "
+        "Behutsamkeit l\u00e4sst den Erzblock fallen."),
+    "brimstone_ore": (
+        "Drops 1 Brimstone; Fortune raises the yield, Silk Touch drops the ore block.",
+        "L\u00e4sst 1 Schwefelbrocken fallen; Gl\u00fcck erh\u00f6ht die Ausbeute, "
+        "Behutsamkeit l\u00e4sst den Erzblock fallen."),
+}
 
 
 def field_of(block_id: str) -> str:
@@ -251,10 +342,58 @@ def pf_from(source: str, feature: str, count=None, height=None):
 
 
 # ---------------------------------------------------------------------------
-# The 25 features: (name, GenerationStep.Feature constant, configured, placed,
-# icon block, handbook EN, handbook DE)
+# Ore loot derivation (vanilla loot schema + documented substitutions only)
 # ---------------------------------------------------------------------------
-Feat = namedtuple("Feat", "name step cf pf icon en de")
+
+def vanilla_set_count(min_count: int, max_count: int) -> dict:
+    """The minecraft:set_count function schema from the real vanilla copper_ore loot
+    table (add/count/uniform structure kept verbatim), values substituted."""
+    tbl = jar_json("data/minecraft/loot_table/blocks/copper_ore.json")
+    fn = next(f for f in tbl["pools"][0]["entries"][0]["children"][1]["functions"]
+              if f["function"] == "minecraft:set_count")
+    fn["count"]["min"] = float(min_count)
+    fn["count"]["max"] = float(max_count)
+    return fn
+
+
+def ore_loot(block_id: str, source: str | None, drop_id: str, count) -> dict:
+    """Silk-touch/fortune ore loot table for one mod ore block.
+
+    source given: the REAL vanilla 1.21.9 loot table
+    data/minecraft/loot_table/blocks/<source>.json out of the client jar, with only the
+    silk-touch drop (-> the mod ore block), the fortune drop (-> drop_id), the
+    set_count (min,max) values (when count is given; the source table must already
+    carry a set_count function) and the random_sequence substituted.
+
+    source None: the mod's own on-disk infernium_ore template (same shape as the
+    vanilla tables; see data/copper_inferno/loot_table/blocks/infernium_ore.json)
+    retargeted the same way, with a vanilla-schema set_count inserted before
+    apply_bonus exactly where vanilla copper_ore carries it.
+    """
+    if source is None:
+        template = DATA / "loot_table" / "blocks" / "infernium_ore.json"
+        tbl = json.loads(template.read_text(encoding="utf-8"))
+    else:
+        tbl = jar_json(f"data/minecraft/loot_table/blocks/{source}.json")
+    silk, drop = tbl["pools"][0]["entries"][0]["children"]
+    silk["name"] = f"{NS}:{block_id}"
+    drop["name"] = drop_id
+    if count is not None:
+        existing = [f for f in drop["functions"] if f["function"] == "minecraft:set_count"]
+        if existing:
+            existing[0]["count"]["min"] = float(count[0])
+            existing[0]["count"]["max"] = float(count[1])
+        else:
+            drop["functions"].insert(0, vanilla_set_count(*count))
+    tbl["random_sequence"] = f"{NS}:blocks/{block_id}"
+    return tbl
+
+
+# ---------------------------------------------------------------------------
+# The 25 features: (name, GenerationStep.Feature constant, configured, placed,
+# icon block, handbook EN, handbook DE, biome selector "all" | "shore")
+# ---------------------------------------------------------------------------
+Feat = namedtuple("Feat", "name step cf pf icon en de sel")
 
 C = f"{NS}:"
 
@@ -267,8 +406,8 @@ def build_features():
         # (name, block, size, pf_source, count, height, EN where, DE where)
         ("ore_ember_iron", "ember_iron_ore", 10, "ore_quartz_nether", 12,
          uniform({"above_bottom": 10}, {"below_top": 10}),
-         "common veins throughout all three Inferno biomes",
-         "h\u00e4ufige Adern in allen drei Inferno-Biomen"),
+         "common veins throughout all seven Inferno biomes",
+         "h\u00e4ufige Adern in allen sieben Inferno-Biomen"),
         ("ore_ash_gold", "ash_gold_ore", 10, "ore_quartz_nether", 10,
          uniform({"above_bottom": 10}, {"below_top": 10}),
          "gold-bearing veins throughout the Inferno, like Nether gold",
@@ -307,14 +446,20 @@ def build_features():
          "por\u00f6se Bims-Taschen weiter unten (die Vanilla-Schwarzstein-Werte)"),
     ]
     for name, block, size, pf_src, count, height, en_w, de_w in ores:
+        # Real ores carry a drops sentence (their loot is silk-touch/fortune, see
+        # ORE_LOOT); the tuff/pumice pockets drop themselves and get none.
+        drop_en, drop_de = ORE_DROPS_TEXT.get(block, ("", ""))
         feats.append(Feat(name, "UNDERGROUND_ORES",
                           ore_cf(f"{C}{block}", size),
                           pf_from(pf_src, name, count=count, height=height),
                           block,
                           f"{dict((b.bid, b.en) for b in BLOCKS)[block]} generates in "
-                          f"cinderstone: {en_w}. Mine with a pickaxe.",
+                          f"cinderstone: {en_w}. Mine with a pickaxe."
+                          + (f" {drop_en}" if drop_en else ""),
                           f"{dict((b.bid, b.de) for b in BLOCKS)[block]} generiert im "
-                          f"Zunderstein: {de_w}. Mit der Spitzhacke abbauen."))
+                          f"Zunderstein: {de_w}. Mit der Spitzhacke abbauen."
+                          + (f" {drop_de}" if drop_de else ""),
+                          "all"))
 
     # --- Scattered debris (UNDERGROUND_ORES; CF/PF from the ancient-debris pair) ---
     feats.append(Feat(
@@ -326,7 +471,7 @@ def build_features():
         "cinderstone, up to 3 per vein, centred around y=16 like ancient debris.",
         "Versengte Tr\u00fcmmer (gro\u00df): explosionsfeste Tr\u00fcmmer, v\u00f6llig "
         "im Zunderstein eingeschlossen, bis zu 3 pro Ader, um y=16 wie Uralte "
-        "Tr\u00fcmmer."))
+        "Tr\u00fcmmer.", "all"))
     feats.append(Feat(
         "ore_scorched_debris_small", "UNDERGROUND_ORES",
         scattered_cf(f"{C}scorched_debris", 2),
@@ -336,7 +481,7 @@ def build_features():
         "blast-proof debris blocks per chunk, always buried in cinderstone.",
         "Versengte Tr\u00fcmmer (klein): eine zweite, h\u00f6henunabh\u00e4ngige Streuung "
         "von 1-2 explosionsfesten Tr\u00fcmmerbl\u00f6cken pro Chunk, stets im "
-        "Zunderstein vergraben."))
+        "Zunderstein vergraben.", "all"))
 
     # --- Replace blobs (UNDERGROUND_DECORATION; CF/PF from basalt_blobs) ---
     blobs = [
@@ -365,7 +510,7 @@ def build_features():
         feats.append(Feat(name, "UNDERGROUND_DECORATION",
                           blob_cf(f"{C}{block}", r_min, r_max),
                           pf_from("basalt_blobs", name, count=count),
-                          block, en, de))
+                          block, en, de, "all"))
 
     # --- Disks (UNDERGROUND_DECORATION; CF from disk_gravel, PF from ore_magma:
     #     absolute band around the lava-sea level, see module docstring) ---
@@ -394,7 +539,7 @@ def build_features():
                           disk_cf(f"{C}{block}", targets, r_min, r_max),
                           pf_from("ore_magma", name, count=count,
                                   height=uniform({"absolute": y0}, {"absolute": y1})),
-                          block, en, de))
+                          block, en, de, "shore"))
 
     # --- Springs (FLUID_SPRINGS; CFs from the vanilla nether springs, PFs as named) ---
     feats.append(Feat(
@@ -406,7 +551,7 @@ def build_features():
         "Sulfur springs: open lava spouts (8 per chunk, mid heights) leaking from "
         "cinderstone, sulfur and geyserite walls.",
         "Schwefelquellen: offene Lava-Ausl\u00e4sse (8 pro Chunk, mittlere H\u00f6hen) "
-        "aus W\u00e4nden von Zunderstein, Schwefel und Geysirit."))
+        "aus W\u00e4nden von Zunderstein, Schwefel und Geysirit.", "shore"))
     feats.append(Feat(
         "spring_geyserite", "FLUID_SPRINGS",
         spring_cf("spring_nether_closed", [f"{C}cinderstone", f"{C}geyserite"]),
@@ -415,7 +560,7 @@ def build_features():
         "Geyserite springs: enclosed lava pockets (12 per chunk) sealed inside "
         "cinderstone and geyserite, away from the terrain surface.",
         "Geysirit-Quellen: eingeschlossene Lavataschen (12 pro Chunk), versiegelt in "
-        "Zunderstein und Geysirit, abseits der Oberfl\u00e4che."))
+        "Zunderstein und Geysirit, abseits der Oberfl\u00e4che.", "shore"))
     feats.append(Feat(
         "spring_scoria", "FLUID_SPRINGS",
         spring_cf("spring_lava_nether",
@@ -425,7 +570,8 @@ def build_features():
         "Scoria springs: floor-fed lava falls (16 per chunk, strongly biased to the "
         "bottom) rising through scoria, hardened slag and geyserite.",
         "Skoria-Quellen: bodengespeiste Lavaf\u00e4lle (16 pro Chunk, stark nach unten "
-        "gewichtet), aufsteigend durch Skoria, geh\u00e4rtete Schlacke und Geysirit."))
+        "gewichtet), aufsteigend durch Skoria, geh\u00e4rtete Schlacke und Geysirit.",
+        "shore"))
 
     # --- Geyser basins (SURFACE_STRUCTURES, the vanilla delta step; CF/PF from delta) ---
     basins = [
@@ -449,7 +595,7 @@ def build_features():
         feats.append(Feat(name, "SURFACE_STRUCTURES",
                           delta_cf(f"{C}{block}", s0, s1, r0, r1),
                           pf_from("delta", name, count=count),
-                          block, en, de))
+                          block, en, de, "shore"))
 
     return feats
 
@@ -579,11 +725,119 @@ def build_texture(bid: str):
     raise ValueError(f"no texture for {bid}")
 
 
+def tex_item_brimstone():
+    """16x16 RGBA sprite: a jagged sulfur lump on a transparent background, in the
+    brimstone_ore nugget palette (outline, dark/base facets, bright specks).
+    Deterministic via rng_for, like every other texture."""
+    from PIL import Image
+    rng = rng_for("brimstone")
+    outline = (0x6E, 0x5A, 0x14, 255)
+    dark = (0xA8, 0x92, 0x28, 255)
+    base = (0xC6, 0xB0, 0x33, 255)
+    light = (0xE8, 0xD4, 0x4C, 255)
+    hi = (0xFF, 0xF2, 0x8A, 255)
+    img = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
+    rows = {3: (6, 9), 4: (5, 11), 5: (4, 12), 6: (3, 12), 7: (3, 13), 8: (2, 13),
+            9: (2, 13), 10: (3, 12), 11: (3, 12), 12: (4, 11), 13: (6, 10)}
+    for y, (x0, x1) in rows.items():
+        for x in range(x0, x1 + 1):
+            if x in (x0, x1) or y in (3, 13):
+                color = outline
+            elif x - x0 <= 2 and y <= 8:
+                color = rng.choice([light, light, base])
+            else:
+                color = rng.choice([base, base, dark])
+            img.putpixel((x, y), color)
+    for x, y in [(6, 5), (7, 7), (5, 8), (9, 6), (8, 10), (11, 9)]:
+        if rng.random() < 0.85:
+            img.putpixel((x, y), hi)
+    return img
+
+
 def emit_textures() -> None:
     block_dir = ASSETS / "textures" / "block"
     block_dir.mkdir(parents=True, exist_ok=True)
     for bid in BLOCK_IDS:
         build_texture(bid).save(block_dir / f"{bid}.png")
+    item_dir = ASSETS / "textures" / "item"
+    item_dir.mkdir(parents=True, exist_ok=True)
+    tex_item_brimstone().save(item_dir / "brimstone.png")
+
+
+# ---------------------------------------------------------------------------
+# Recipes (data/copper_inferno/recipe/infernogeology/) and their handbook entries.
+# Every recipe's input set contains at least one copper_inferno id (brimstone is new,
+# sulfur_block is ours), so the canonical input sets cannot collide with vanilla or
+# other mod recipes (devtools/check_recipe_collisions.py enforces this).
+# ---------------------------------------------------------------------------
+RECIPES = DATA / "recipe" / "infernogeology"
+
+
+def shapeless_grid(ingredients: list) -> list:
+    return ingredients + [""] * (9 - len(ingredients))
+
+
+def emit_recipes() -> list:
+    """Emits the 4 brimstone-consuming recipes; returns their handbook entry tuples
+    (the 9-tuple shape java_handbook_class renders)."""
+    bs = f"{NS}:brimstone"
+    sb = f"{NS}:sulfur_block"
+    entries = []
+
+    # 3x3 brimstone -> 1 sulfur block (the storage-block pattern, like vanilla
+    # lapis_block; category "building" like the vanilla storage blocks).
+    genlib.emit_shaped(RECIPES, "sulfur_block_from_brimstone", {"B": bs},
+                       ["BBB", "BBB", "BBB"], sb, 1)
+    entries.append((
+        "items", "infernogeology/sulfur_block_from_brimstone", sb,
+        "infernogeology/sulfur_block_from_brimstone", [bs] * 9, sb, 1,
+        "Craft 1x Sulfur Block from nine Brimstone at a crafting table - the storage "
+        "block for a brimstone mining haul.",
+        "Stellt 1x Schwefelblock aus neun Schwefelbrocken an der Werkbank her - der "
+        "Lagerblock f\u00fcr die Schwefel-Ausbeute."))
+
+    # 1 sulfur block -> 9 brimstone (the decompression pair, like vanilla
+    # lapis_lazuli-from-block; category "misc" like the vanilla unpack recipes).
+    genlib.emit_shapeless(RECIPES, "brimstone_from_sulfur_block", [sb], bs, 9,
+                          category="misc")
+    entries.append((
+        "items", "infernogeology/brimstone_from_sulfur_block", bs,
+        "infernogeology/brimstone_from_sulfur_block", shapeless_grid([sb]), bs, 9,
+        "Break 1x Sulfur Block back into 9x Brimstone at a crafting table.",
+        "Zerlegt 1x Schwefelblock an der Werkbank wieder in 9x Schwefelbrocken."))
+
+    # brimstone + charcoal + gunpowder -> 3 fire charges (brimstone stands in for
+    # blaze powder; the specific-charcoal ingredient keeps the input set distinct
+    # from vanilla fire_charge, which uses blaze powder + the coals tag).
+    genlib.emit_shapeless(RECIPES, "fire_charge_from_brimstone",
+                          [bs, "minecraft:charcoal", "minecraft:gunpowder"],
+                          "minecraft:fire_charge", 3, category="misc")
+    entries.append((
+        "items", "infernogeology/fire_charge_from_brimstone", "minecraft:fire_charge",
+        "infernogeology/fire_charge_from_brimstone",
+        shapeless_grid([bs, "minecraft:charcoal", "minecraft:gunpowder"]),
+        "minecraft:fire_charge", 3,
+        "Craft 3x Fire Charge from Brimstone, Charcoal and Gunpowder - the Inferno's "
+        "blaze-powder substitute.",
+        "Stellt 3x Feuerkugel aus Schwefelbrocken, Holzkohle und Schwarzpulver her - "
+        "der Lohenstaub-Ersatz des Infernos."))
+
+    # 2 brimstone + charcoal + ash pile -> 4 gunpowder (the classic black-powder mix:
+    # sulfur + charcoal + saltpeter-ash).
+    genlib.emit_shapeless(RECIPES, "gunpowder_from_brimstone",
+                          [bs, bs, "minecraft:charcoal", f"{NS}:ash_pile"],
+                          "minecraft:gunpowder", 4, category="misc")
+    entries.append((
+        "items", "infernogeology/gunpowder_from_brimstone", "minecraft:gunpowder",
+        "infernogeology/gunpowder_from_brimstone",
+        shapeless_grid([bs, bs, "minecraft:charcoal", f"{NS}:ash_pile"]),
+        "minecraft:gunpowder", 4,
+        "Craft 4x Gunpowder from two Brimstone, Charcoal and an Ash Pile - the classic "
+        "black-powder mix.",
+        "Stellt 4x Schwarzpulver aus zwei Schwefelbrocken, Holzkohle und einem "
+        "Aschehaufen her - die klassische Schwarzpulver-Mischung."))
+
+    return entries
 
 
 # ---------------------------------------------------------------------------
@@ -618,52 +872,85 @@ SETTINGS_METHODS = """\
 def wiring_lines(features) -> list:
     """The literal BiomeModifications.addFeature wiring (one call per placed feature).
     addFeature signature verified via javap on fabric-biome-api-v1 16.1.0:
-    (Predicate<BiomeSelectionContext>, GenerationStep.Feature, RegistryKey<PlacedFeature>)."""
+    (Predicate<BiomeSelectionContext>, GenerationStep.Feature, RegistryKey<PlacedFeature>).
+
+    Two literal biome predicates: the 12 ore/debris veins and 4 replace-blobs run in
+    ALL SEVEN Inferno biomes; the disks, springs and geyser basins only in the five
+    lava-shore biomes (crystal_hollows stays clean, verdigris_jungle keeps its jungle
+    floor). Every feature keeps its position in the single master order below (veins ->
+    blobs -> disks -> springs -> basins), and lavaShoreBiomes selects a strict SUBSET of
+    allInfernoBiomes, so every biome sees its features in the same relative order and
+    the placed-feature ordering stays cycle-free (FeatureSorter single-master-order
+    rule)."""
     lines = [
         "",
-        "\t\t// Worldgen wiring: every placed feature is added to the three Inferno biomes",
-        "\t\t// (biome JSONs owned by infernodim; includeByKey matches nothing until they",
-        "\t\t// load). Identical feature order in every biome keeps the placed-feature",
-        "\t\t// ordering cycle-free (FeatureSorter rule).",
-        "\t\tPredicate<BiomeSelectionContext> infernoBiomes = BiomeSelectors.includeByKey(",
+        "\t\t// Worldgen wiring (biome JSONs owned by infernodim/infernodim2; includeByKey",
+        "\t\t// matches nothing until they load). Veins and replace-blobs run in all seven",
+        "\t\t// Inferno biomes; disks, springs and geyser basins only in the five lava-shore",
+        "\t\t// biomes (crystal_hollows stays clean, verdigris_jungle keeps its jungle floor).",
+        "\t\t// Every feature keeps its position in the single master order below and",
+        "\t\t// lavaShoreBiomes is a strict subset of allInfernoBiomes, so every biome sees",
+        "\t\t// its features in the same relative order and the placed-feature ordering",
+        "\t\t// stays cycle-free (FeatureSorter single-master-order rule).",
+        "\t\tPredicate<BiomeSelectionContext> allInfernoBiomes = BiomeSelectors.includeByKey(",
         "\t\t\t\tRegistryKey.of(RegistryKeys.BIOME, CopperInferno.id(\"cinder_wastes\")),",
         "\t\t\t\tRegistryKey.of(RegistryKeys.BIOME, CopperInferno.id(\"ember_grove\")),",
-        "\t\t\t\tRegistryKey.of(RegistryKeys.BIOME, CopperInferno.id(\"slag_sea\")));",
+        "\t\t\t\tRegistryKey.of(RegistryKeys.BIOME, CopperInferno.id(\"slag_sea\")),",
+        "\t\t\t\tRegistryKey.of(RegistryKeys.BIOME, CopperInferno.id(\"verdigris_jungle\")),",
+        "\t\t\t\tRegistryKey.of(RegistryKeys.BIOME, CopperInferno.id(\"molten_delta\")),",
+        "\t\t\t\tRegistryKey.of(RegistryKeys.BIOME, CopperInferno.id(\"soot_dunes\")),",
+        "\t\t\t\tRegistryKey.of(RegistryKeys.BIOME, CopperInferno.id(\"crystal_hollows\")));",
+        "\t\tPredicate<BiomeSelectionContext> lavaShoreBiomes = BiomeSelectors.includeByKey(",
+        "\t\t\t\tRegistryKey.of(RegistryKeys.BIOME, CopperInferno.id(\"cinder_wastes\")),",
+        "\t\t\t\tRegistryKey.of(RegistryKeys.BIOME, CopperInferno.id(\"ember_grove\")),",
+        "\t\t\t\tRegistryKey.of(RegistryKeys.BIOME, CopperInferno.id(\"slag_sea\")),",
+        "\t\t\t\tRegistryKey.of(RegistryKeys.BIOME, CopperInferno.id(\"molten_delta\")),",
+        "\t\t\t\tRegistryKey.of(RegistryKeys.BIOME, CopperInferno.id(\"soot_dunes\")));",
     ]
+    selectors = {"all": "allInfernoBiomes", "shore": "lavaShoreBiomes"}
     for f in features:
-        lines.append(f"\t\tBiomeModifications.addFeature(infernoBiomes, "
+        lines.append(f"\t\tBiomeModifications.addFeature({selectors[f.sel]}, "
                      f"GenerationStep.Feature.{f.step},")
         lines.append(f"\t\t\t\tRegistryKey.of(RegistryKeys.PLACED_FEATURE, "
                      f"CopperInferno.id(\"{f.name}\")));")
     return lines
 
 
-def emit_java(features) -> None:
+def emit_java(features, recipe_entries) -> None:
     FEATURE_DIR.mkdir(parents=True, exist_ok=True)
 
     blocks = [(field_of(b.bid), b.bid, "Block::new", b.settings) for b in BLOCKS]
+    items = [(field_of(i.iid), i.iid, "Item::new", "new Item.Settings()") for i in ITEMS]
     tab_entries = [field_of(b.bid) for b in BLOCKS]
+    main_tab_entries = [field_of(i.iid) for i in ITEMS]
 
     feature_doc = [
         "Inferno geology: 25 data-driven worldgen features (10 ore veins, 2 scattered",
         "scorched-debris veins, 4 replace-blobs, 3 sediment disks, 3 lava springs, 3",
         "geyser basins) for the Inferno dimension, plus the 18 ore/deco blocks they",
-        "place. The configured/placed feature JSON under",
+        "place and the brimstone item (dropped by brimstone_ore; consumed by the",
+        "recipes under {@code data/copper_inferno/recipe/infernogeology/}). The",
+        "configured/placed feature JSON under",
         "{@code data/copper_inferno/worldgen/} is derived from the real vanilla 1.21.9",
-        "schemas; generation is wired here via Fabric BiomeModifications into the three",
-        "copper_inferno biomes (whose JSONs are owned by the infernodim feature).",
+        "schemas; generation is wired here via Fabric BiomeModifications with two",
+        "literal predicates: veins + blobs into all seven copper_inferno biomes,",
+        "disks/springs/basins into the five lava-shore biomes (biome JSONs owned by",
+        "the infernodim/infernodim2 features).",
         "",
         "<p>Assets (blockstates, models, textures, item definitions, loot tables, EN+DE",
-        "lang fragments) and the worldgen JSON are generated by",
-        "{@code devtools/gen/infernogeology_gen.py}; the tag fragment lives at",
+        "lang fragments), the recipes and the worldgen JSON are generated by",
+        "{@code devtools/gen/infernogeology_gen.py}; the 8 real ores drop their",
+        "refined product under Fortune and the ore block under Silk Touch (loot derived",
+        "from the real vanilla tables); the tag fragment lives at",
         "{@code devtools/tagfrag/infernogeology.json}; handbook pages are registered by",
         "{@link InfernoGeologyHandbook}.",
     ]
     feature_src = genlib.java_feature_class(
         "infernogeology", "InfernoGeologyFeature", feature_doc,
         blocks=blocks,
+        items=items,
         settings_methods=SETTINGS_METHODS,
-        tabs=[("BLOCKS_KEY", tab_entries)],
+        tabs=[("BLOCKS_KEY", tab_entries), ("MAIN_KEY", main_tab_entries)],
         extra_imports=(
             "java.util.function.Predicate",
             "net.fabricmc.fabric.api.biome.v1.BiomeModifications",
@@ -683,13 +970,16 @@ def emit_java(features) -> None:
 
     handbook_doc = [
         "Handbook pages for the Inferno geology worldgen set: one \"dimension\" entry per",
-        "worldgen feature explaining what generates where. No recipe pages (the feature",
-        "emits no recipes). Texts mirror devtools/gen/infernogeology_gen.py;",
-        "{@code devtools/check_handbook.py} parses the inline",
-        "{@code new HandbookEntry(...)} literals positionally, so keep them inline.",
+        "worldgen feature explaining what generates where (the ore entries name their",
+        "drops), plus one \"items\" recipe page per JSON under",
+        "{@code data/copper_inferno/recipe/infernogeology/}. Texts mirror",
+        "devtools/gen/infernogeology_gen.py; {@code devtools/check_handbook.py} parses",
+        "the inline {@code new HandbookEntry(...)} literals positionally, so keep them",
+        "inline.",
     ]
     entries = [("dimension", f"infernogeology_{f.name}", f"{NS}:{f.icon}", None, None,
                 None, 0, f.en, f.de) for f in features]
+    entries += recipe_entries
     handbook_src = genlib.java_handbook_class("infernogeology", "InfernoGeologyHandbook",
                                               handbook_doc, entries)
     (FEATURE_DIR / "InfernoGeologyHandbook.java").write_text(handbook_src, encoding="utf-8")
@@ -699,7 +989,7 @@ def emit_java(features) -> None:
 # Hook file (devtools/hooks/infernogeology.txt; format per devtools/hooks/README.md)
 # ---------------------------------------------------------------------------
 
-def emit_hooks(feature_count: int) -> None:
+def emit_hooks(feature_count: int, recipe_count: int, handbook_count: int) -> None:
     lines = ["# infernogeology feature hooks (format: devtools/hooks/README.md)", "",
              "[init]",
              "# After InfernoDimensionFeature.init() (the worldgen JSON targets cinderstone",
@@ -708,12 +998,14 @@ def emit_hooks(feature_count: int) -> None:
              "\t\tInfernoGeologyFeature.init();", "",
              "[requires-tool]"]
     lines += [b.bid for b in BLOCKS if b.tool == "pickaxe"]
+    lines += ["", "[recipe-dir]",
+              "infernogeology"]
     lines += ["", "[counts]",
               f"worldgen-features: {feature_count}",
               f"blocks: {len(BLOCKS)}",
-              "items: 0",
-              "recipes: 0",
-              f"handbook-entries: {feature_count}", ""]
+              f"items: {len(ITEMS)}",
+              f"recipes: {recipe_count}",
+              f"handbook-entries: {handbook_count}", ""]
     path = ROOT / "devtools" / "hooks" / "infernogeology.txt"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("\n".join(lines), encoding="utf-8")
@@ -754,15 +1046,32 @@ def main() -> None:
         write_json(CF_DIR / f"{f.name}.json", f.cf)
         write_json(PF_DIR / f"{f.name}.json", f.pf)
 
-    # Block assets + loot + textures.
+    # Block assets + loot + textures. The 8 real ores get silk-touch/fortune loot
+    # derived from the real vanilla tables (ORE_LOOT); scorched_debris and the 9
+    # deco/sediment blocks keep drop-self.
     for b in BLOCKS:
         genlib.emit_cube(ASSETS, b.bid)
-        genlib.emit_drop_self_loot(DATA, b.bid)
+        if b.bid in ORE_LOOT:
+            source, drop_id, count = ORE_LOOT[b.bid]
+            write_json(DATA / "loot_table" / "blocks" / f"{b.bid}.json",
+                       ore_loot(b.bid, source, drop_id, count))
+        else:
+            genlib.emit_drop_self_loot(DATA, b.bid)
+
+    # Item assets (the 1.21.9 two-file contract) + all textures.
+    for i in ITEMS:
+        genlib.emit_item_def(ASSETS, i.iid)
+        genlib.emit_item_model(ASSETS, i.iid)
     emit_textures()
 
-    # Lang fragments (EN + DE).
+    # Recipes + the handbook entry tuples they document.
+    recipe_entries = emit_recipes()
+
+    # Lang fragments (EN + DE): 18 block keys + 1 item key.
     lang_en = {f"block.{NS}.{b.bid}": b.en for b in BLOCKS}
     lang_de = {f"block.{NS}.{b.bid}": b.de for b in BLOCKS}
+    lang_en.update({f"item.{NS}.{i.iid}": i.en for i in ITEMS})
+    lang_de.update({f"item.{NS}.{i.iid}": i.de for i in ITEMS})
     genlib.lang_fragments(ASSETS, "infernogeology", lang_en, lang_de)
 
     # Tag fragment (same shape as devtools/tagfrag/infernodim.json).
@@ -773,8 +1082,9 @@ def main() -> None:
                                         if b.tool == "shovel"),
     })
 
-    emit_java(features)
-    emit_hooks(len(features))
+    emit_java(features, recipe_entries)
+    handbook_count = len(features) + len(recipe_entries)
+    emit_hooks(len(features), len(recipe_entries), handbook_count)
 
     # ------------------------------------------------------------------
     # Asserts (acceptance contract)
@@ -782,6 +1092,43 @@ def main() -> None:
     assert len(features) == 25, f"expected 25 features, got {len(features)}"
     assert len({f.name for f in features}) == 25, "duplicate feature names"
     assert len(BLOCKS) == 18 and len(set(BLOCK_IDS)) == 18, "expected 18 unique blocks"
+    assert len(ITEMS) == 1 and ITEM_IDS == ["brimstone"], "expected exactly brimstone"
+    assert len(recipe_entries) == 4, f"expected 4 recipes, got {len(recipe_entries)}"
+    assert handbook_count == 29, f"expected 29 handbook entries, got {handbook_count}"
+
+    # Biome wiring: 16 veins/blobs in all 7 biomes, 9 disks/springs/basins in the 5
+    # lava-shore biomes.
+    assert sum(1 for f in features if f.sel == "all") == 16
+    assert sum(1 for f in features if f.sel == "shore") == 9
+    assert {f.sel for f in features} == {"all", "shore"}
+
+    # The 8 ore loot tables parse back and drop the mapped item (silk child = the ore
+    # block itself, fortune child = the refined drop).
+    assert len(ORE_LOOT) == 8 and set(ORE_LOOT) <= set(BLOCK_IDS)
+    for bid, (_source, drop_id, _count) in ORE_LOOT.items():
+        tbl = json.loads((DATA / "loot_table" / "blocks" / f"{bid}.json")
+                         .read_text(encoding="utf-8"))
+        silk, drop = tbl["pools"][0]["entries"][0]["children"]
+        assert silk["name"] == f"{NS}:{bid}", f"{bid}: silk-touch drop"
+        assert drop["name"] == drop_id, f"{bid}: fortune drop"
+
+    # The 4 recipe JSONs exist, parse back and each consumes >= 1 copper_inferno id.
+    recipe_files = sorted(p.name for p in RECIPES.glob("*.json"))
+    assert recipe_files == ["brimstone_from_sulfur_block.json",
+                            "fire_charge_from_brimstone.json",
+                            "gunpowder_from_brimstone.json",
+                            "sulfur_block_from_brimstone.json"], recipe_files
+    for p in RECIPES.glob("*.json"):
+        recipe = json.loads(p.read_text(encoding="utf-8"))
+        inputs = (list(recipe.get("key", {}).values())
+                  + list(recipe.get("ingredients", [])))
+        assert any(isinstance(i, str) and i.startswith(f"{NS}:") for i in inputs), \
+            f"{p.name}: no copper_inferno id among inputs"
+
+    # Referenced items owned by other features have their item defs on disk.
+    for iid in EXISTING_ITEMS:
+        assert (ASSETS / "items" / f"{iid}.json").is_file(), \
+            f"referenced item {iid} has no items/{iid}.json on disk"
 
     # Every emitted worldgen JSON parses back from disk, 25 + 25 files.
     for f in features:
@@ -805,7 +1152,9 @@ def main() -> None:
         assert state.is_file(), f"referenced block {bid} has no blockstate on disk"
 
     print(f"infernogeology_gen: {len(features)} worldgen features (25 configured + 25 "
-          f"placed), {len(BLOCKS)} blocks, {len(features)} handbook entries generated.")
+          f"placed), {len(BLOCKS)} blocks, {len(ITEMS)} item, {len(ORE_LOOT)} "
+          f"silk/fortune ore loot tables, {len(recipe_entries)} recipes, "
+          f"{handbook_count} handbook entries generated.")
 
 
 if __name__ == "__main__":

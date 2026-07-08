@@ -45,9 +45,12 @@ FEATURE_DIR = ROOT / "src" / "main" / "java" / "net" / "sonic0810" / "copperinfe
 #   shades = [dark, mid, mid, light] (genlib stone-look 4-tuple), mortar, two accents.
 # de/de_stem/de_pol drive the German lang conventions (Stufe/Treppe/Mauer/Ziegel/
 # Fliesen/Saeule compounds; "Polierter"/"Polierte"/"Poliertes" by grammatical gender).
-# vanilla = the flavor vanilla ingredient of the base recipe; the recipe's centre slot is
-# the PREVIOUS material's base block (ring chain), so every crafting recipe contains at
-# least one own id and can never collide with vanilla or other features' recipes.
+# vanilla = the flavor vanilla ingredient of the base recipe (materials i >= 1); the
+# recipe's centre slot is the PREVIOUS material's base block, forming an open 14-link
+# CHAIN (no cycle): material[0] (smolder_quartz) is the ENTRY, crafted from obtainable
+# ingredients (quartz corners + smolder_crystal centre, which drops from
+# smolder_crystal_ore) instead of material[13]. Every crafting recipe still contains at
+# least one own id, so it can never collide with vanilla or other features' recipes.
 # ---------------------------------------------------------------------------
 Mat = namedtuple("Mat", "mid en de de_stem de_pol vanilla map_color sounds "
                         "shades mortar accents base_prob brick_prob")
@@ -241,13 +244,21 @@ def emit_recipes() -> int:
     count = 0
     for i, mat in enumerate(MATERIALS):
         m = mat.mid
-        prev = MATERIALS[i - 1].mid  # ring chain (smolder_quartz uses lava_pearl)
 
-        # Base cube: 4x vanilla flavor ingredient around the previous material's base block.
-        genlib.emit_shaped(RECIPES, m, {"S": mat.vanilla, "P": f"{ci}{prev}"},
+        # Base cube, always ["S S", " P ", "S S"] -> 4 under the same file name.
+        # material[0] (smolder_quartz) is the chain ENTRY: crafted from already-obtainable
+        # ingredients (quartz corners + smolder_crystal centre, dropped by
+        # smolder_crystal_ore) so the 14-link chain has an entry point and no crafting
+        # cycle. Materials i >= 1 use 4x vanilla flavor ingredient around the PREVIOUS
+        # material's base block.
+        if i == 0:
+            corner, centre = "minecraft:quartz", f"{ci}smolder_crystal"
+        else:
+            corner, centre = mat.vanilla, f"{ci}{MATERIALS[i - 1].mid}"
+        genlib.emit_shaped(RECIPES, m, {"S": corner, "P": centre},
                            ["S S", " P ", "S S"], f"{ci}{m}", 4)
-        hb_shaped(m, [mat.vanilla, "", mat.vanilla, "", f"{ci}{prev}", "",
-                      mat.vanilla, "", mat.vanilla], m, 4)
+        hb_shaped(m, [corner, "", corner, "", centre, "",
+                      corner, "", corner], m, 4)
         count += 1
 
         # 2x2 conversions: base -> bricks -> tiles -> polished.

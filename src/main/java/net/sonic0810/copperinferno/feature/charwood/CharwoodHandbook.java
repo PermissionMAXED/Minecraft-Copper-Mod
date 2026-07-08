@@ -185,7 +185,7 @@ final class CharwoodHandbook {
 				null, 0, "The Flarewood Bricks family for Inferno builds: block, stairs, slab and wall.", "Die Flackerholzziegel-Familie f\u00fcr Inferno-Bauten: Block, Treppe, Stufe und Mauer."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/charwood", "copper_inferno:charwood", "charwood/charwood",
-				new String[] {"minecraft:charcoal", "", "minecraft:charcoal", "", "copper_inferno:flarewood", "", "minecraft:charcoal", "", "minecraft:charcoal"},
+				new String[] {"minecraft:charcoal", "", "minecraft:charcoal", "", "copper_inferno:scorched_planks", "", "minecraft:charcoal", "", "minecraft:charcoal"},
 				"copper_inferno:charwood", 4, "Craft 4x Charwood at a crafting table.", "Stellt 4x Kohlholz an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/charwood_bricks", "copper_inferno:charwood_bricks", "charwood/charwood_bricks",

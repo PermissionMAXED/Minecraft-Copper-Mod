@@ -21,7 +21,8 @@ import net.sonic0810.copperinferno.core.ModItems;
  * The Calamities: 10 ultra-powerful summon-only bosses (boss bars via
  * core.boss.BossBarHolder), mirroring the proven infernoboss template. Each boss
  * subclasses a vanilla mob (ravager / iron golem / wither skeleton / blaze /
- * vindicator), reuses its vanilla renderer (see {@code CalamitiesFeatureClient})
+ * vindicator), keeps its vanilla model but wears its own recolored texture via a
+ * renderer subclass (see {@code CalamitiesFeatureClient})
  * and gets its bulk from the SCALE attribute. EntityType dimensions are copied
  * from the vanilla registrations (verified via EntityType bytecode). There is NO
  * natural spawn: every boss is summoned with its {@link CalamitySigilItem}, a

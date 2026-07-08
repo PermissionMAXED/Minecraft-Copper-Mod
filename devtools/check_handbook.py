@@ -31,7 +31,14 @@ FEATURE_PKGS = ["infernodim", "cinderstone", "infernoflora", "copperdeco", "infe
                 "ashhorde", "emberswarm", "moltenfauna", "slagfiends",
                 "calamities", "archfiends", "infernogeology", "infernogardens",
                 # v6: Inferno dimension expansion
-                "infernodim2"]
+                "infernodim2",
+                # legacy coverage: the 12 pre-v3 recipe dirs, whose handbook entries are
+                # generated into feature/legacyhandbook by
+                # devtools/gen/legacyhandbook_gen.py (legacyhandbook itself has no recipe
+                # dir; it is listed so its entry sources get scanned)
+                "masonry", "sodablocks", "materials", "decostone", "foods", "inferno",
+                "music", "utilityblocks", "glasslight", "gear", "extras", "statue",
+                "legacyhandbook"]
 JAVA_ROOTS = [
     os.path.join(ROOT, "src/main/java/net/sonic0810/copperinferno/feature"),
     os.path.join(ROOT, "src/client/java/net/sonic0810/copperinferno/feature"),

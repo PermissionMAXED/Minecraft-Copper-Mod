@@ -4,6 +4,13 @@
 Idempotent: running it any number of times produces byte-identical files. Emits, directly
 into src/main/resources:
   - 16x16 RGBA item textures assets/copper_inferno/textures/item/<id>.png   (Pillow, seeded)
+plus, into src/client/resources (also by default):
+  - recolored ENTITY textures textures/entity/{the_oxidizer,inferno_titan}.png — the base
+    mob's vanilla texture (iron_golem / blaze, extracted from the loom
+    minecraft-client.jar) luminance-mapped onto the boss palette; pure function of the
+    vanilla bytes + palette, so byte-identical across runs; skipped with a warning when
+    the jar is absent. Rendered by the hand-written TheOxidizerRenderer /
+    InfernoTitanRenderer subclasses in src/client/java/.../feature/infernoboss/client/.
 and, with --write-json (legacy scaffolding; the JSON in src/main/resources is authoritative):
   - item model-definitions   assets/copper_inferno/items/<id>.json          (dr_pepper_golem format)
   - item models              assets/copper_inferno/models/item/<id>.json    (item/generated, layer0)
@@ -19,9 +26,11 @@ inferno_titan_spawn_egg). Recipes reference ONLY vanilla ids, this feature's own
 existing v2 ids (materials' oxidized_copper_dust / inferno_powder, inferno's inferno_core).
 """
 
+import io
 import json
 import math
 import sys
+import zipfile
 from pathlib import Path
 from random import Random
 
@@ -34,6 +43,8 @@ RES = ROOT / "src" / "main" / "resources"
 NS = "copper_inferno"
 ASSETS = RES / "assets" / NS
 DATA = RES / "data" / NS
+CLIENT_ASSETS = ROOT / "src" / "client" / "resources" / "assets" / NS
+CLIENT_JAR = Path.home() / ".gradle/caches/fabric-loom/1.21.9/minecraft-client.jar"
 
 # boss id -> list of (drop item id, min count, max count); one loot pool per drop.
 BOSSES = {
@@ -360,6 +371,65 @@ def emit_textures() -> None:
 
 
 # ---------------------------------------------------------------------------
+# Recolored ENTITY textures: the base mob's vanilla texture (extracted from the loom
+# minecraft-client.jar) luminance-mapped onto the boss palette. Pure function of the
+# vanilla bytes + the palette (no rng), so output is byte-identical across runs.
+# titanforge_gen.recolor_iron_layer generalized: full 0..1 luminance band mapped across
+# a dark -> base -> light ramp; alpha is copied through UNCHANGED and pixels never move
+# (entity textures are UV-mapped). Rendered by the hand-written renderer subclasses in
+# src/client/java/.../feature/infernoboss/client/ (TheOxidizerRenderer /
+# InfernoTitanRenderer override the render-state getTexture overload).
+# ---------------------------------------------------------------------------
+
+# boss id -> (vanilla texture path inside the client jar, (dark, base, light) ramp).
+# Paths verified by listing the jar; ramps reuse the boss item palettes above.
+ENTITY_TEXTURES = {
+    "the_oxidizer": ("assets/minecraft/textures/entity/iron_golem/iron_golem.png",
+                     (OXIDE_SHADOW, OXIDE, OXIDE_LIGHT)),
+    "inferno_titan": ("assets/minecraft/textures/entity/blaze.png",
+                      (CHARCOAL_DARK, EMBER, EMBER_YELLOW)),
+}
+
+
+def lerp(a, b, t):
+    return tuple(int(round(a[i] + (b[i] - a[i]) * t)) for i in range(3))
+
+
+def recolor_entity_texture(png_bytes: bytes, ramp) -> Image.Image:
+    dark, base, light = ramp
+    src = Image.open(io.BytesIO(png_bytes)).convert("RGBA")
+    out = Image.new("RGBA", src.size, (0, 0, 0, 0))
+    for y in range(src.size[1]):
+        for x in range(src.size[0]):
+            r, g, b, a = src.getpixel((x, y))
+            if a == 0:
+                continue
+            lum = (r + g + b) / (3 * 255)
+            if lum < 0.5:
+                color = lerp(dark, base, lum / 0.5)
+            else:
+                color = lerp(base, light, (lum - 0.5) / 0.5)
+            out.putpixel((x, y), (*color, a))
+    return out
+
+
+def emit_entity_textures() -> int:
+    if not CLIENT_JAR.is_file():
+        print(f"infernoboss_gen: WARNING client jar not found at {CLIENT_JAR}; "
+              "skipping boss entity textures", file=sys.stderr)
+        return 0
+    tex_dir = CLIENT_ASSETS / "textures" / "entity"
+    tex_dir.mkdir(parents=True, exist_ok=True)
+    count = 0
+    with zipfile.ZipFile(CLIENT_JAR) as jar:
+        for boss_id, (vanilla_path, ramp) in ENTITY_TEXTURES.items():
+            data = jar.read(vanilla_path)
+            recolor_entity_texture(data, ramp).save(tex_dir / f"{boss_id}.png")
+            count += 1
+    return count
+
+
+# ---------------------------------------------------------------------------
 # Entity loot tables (dr_pepper_golem schema incl. "random_sequence")
 # ---------------------------------------------------------------------------
 
@@ -439,12 +509,15 @@ def emit_recipes() -> None:
 def main() -> None:
     emit_item_assets()
     emit_textures()
+    entity_tex_count = emit_entity_textures()
+    assert entity_tex_count in (0, 2)  # 0 only when the client jar is absent
     emit_loot_tables()
     emit_recipes()
     write_json(ASSETS / "lang" / "fragments" / "infernoboss.json", LANG_EN)
     write_json(ASSETS / "lang" / "fragments_de" / "infernoboss.json", LANG_DE)
     mode = "textures + JSON" if WRITE_JSON else "textures only (pass --write-json for legacy JSON)"
-    print(f"infernoboss_gen: assets for {len(BOSSES)} bosses / {len(ITEM_IDS)} items generated ({mode}).")
+    print(f"infernoboss_gen: assets for {len(BOSSES)} bosses / {len(ITEM_IDS)} items / "
+          f"{entity_tex_count} entity textures generated ({mode}).")
 
 
 if __name__ == "__main__":

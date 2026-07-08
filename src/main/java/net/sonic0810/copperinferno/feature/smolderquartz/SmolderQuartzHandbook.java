@@ -185,7 +185,7 @@ final class SmolderQuartzHandbook {
 				null, 0, "The Lava Pearl Bricks family for Inferno builds: block, stairs, slab and wall.", "Die Lavaperlenziegel-Familie f\u00fcr Inferno-Bauten: Block, Treppe, Stufe und Mauer."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "smolderquartz/smolder_quartz", "copper_inferno:smolder_quartz", "smolderquartz/smolder_quartz",
-				new String[] {"minecraft:quartz", "", "minecraft:quartz", "", "copper_inferno:lava_pearl", "", "minecraft:quartz", "", "minecraft:quartz"},
+				new String[] {"minecraft:quartz", "", "minecraft:quartz", "", "copper_inferno:smolder_crystal", "", "minecraft:quartz", "", "minecraft:quartz"},
 				"copper_inferno:smolder_quartz", 4, "Craft 4x Smolder Quartz at a crafting table.", "Stellt 4x Schwelquarz an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "smolderquartz/smolder_quartz_bricks", "copper_inferno:smolder_quartz_bricks", "smolderquartz/smolder_quartz_bricks",

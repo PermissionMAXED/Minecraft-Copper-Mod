@@ -2,9 +2,10 @@
 """Asset generator for the COPPER INFERNO "infernogardens" feature (Inferno gardens).
 
 25 NEW worldgen features (flora patches, giant fungi, crystal clusters, ceiling/wall
-growth, vegetation mixes) for the three Inferno biomes plus the 20 NEW plant/deco blocks
-they place. Idempotent: re-runs produce byte-identical files (all texture noise is seeded
-per texture name via genlib.rng_for).
+growth, vegetation mixes) for the six garden Inferno biomes (GARDEN_BIOMES; the quiet
+crystal_hollows only receives the CRYSTAL_FEATURES trio) plus the 20 NEW plant/deco
+blocks they place. Idempotent: re-runs produce byte-identical files (all texture noise
+is seeded per texture name via genlib.rng_for).
 
 Emits (JSON gated behind --write-json, following the repo convention that the JSON in
 src/main/resources is authoritative once committed; PNGs, Java sources and the hook file
@@ -318,6 +319,21 @@ def place_lichen(count_min: int, count_max: int):
 
 VEGETAL = "VEGETAL_DECORATION"
 UNDERGROUND = "UNDERGROUND_DECORATION"
+
+# Biomes receiving ALL 25 garden features with one shared selector: the three original
+# Inferno biomes plus the vegetated/open infernodim2 biomes. The canonical 7-biome list
+# of the Inferno dimension lives in devtools/gen/infernodim2_gen.py
+# (BIOMES/CLIMATE_POINTS); crystal_hollows is curated separately (CRYSTAL_FEATURES).
+GARDEN_BIOMES = ["cinder_wastes", "ember_grove", "slag_sea",
+                 "verdigris_jungle", "molten_delta", "soot_dunes"]
+
+# crystal_hollows only receives the three crystal features (its sparse curated theme).
+# CRITICAL: this list MUST stay in the master feature order (build_features() insertion
+# order) so every biome's appended placed features form a subsequence of ONE identical
+# master order and the FeatureSorter ordering stays cycle-free (verified in verify()).
+CRYSTAL_HOLLOWS_BIOMES = ["crystal_hollows"]
+CRYSTAL_FEATURES = ["cinder_crystal_cluster", "verdigris_crystal_cluster",
+                    "buried_verdigris_crystal"]
 
 
 def build_features() -> dict:
@@ -1038,20 +1054,36 @@ SETTINGS_METHODS = "\n".join([
 def wiring_lines(features: dict) -> list:
     lines = [
         "",
-        "\t\t// Worldgen wiring: the 25 garden placed features are appended to the three",
-        "\t\t// Inferno biomes in ONE fixed order with ONE shared selector, so every biome",
-        "\t\t// sees the identical appended subsequence and the FeatureSorter ordering stays",
-        "\t\t// cycle-free (per-biome flavor comes from the ground-block predicates inside",
-        "\t\t// the features, which are cheap no-ops on foreign terrain). Signatures verified",
-        "\t\t// via javap: addFeature(Predicate<BiomeSelectionContext>,",
+        "\t\t// Worldgen wiring: the 25 garden placed features are appended to the six",
+        "\t\t// garden Inferno biomes (GARDEN_BIOMES in the generator) in ONE fixed order",
+        "\t\t// with ONE shared selector, so every biome sees the identical appended",
+        "\t\t// subsequence and the FeatureSorter ordering stays cycle-free (per-biome",
+        "\t\t// flavor comes from the ground-block predicates inside the features, which",
+        "\t\t// are cheap no-ops on foreign terrain). Signatures verified via javap:",
+        "\t\t// addFeature(Predicate<BiomeSelectionContext>,",
         "\t\t// GenerationStep.Feature, RegistryKey<PlacedFeature>).",
         "\t\tPredicate<BiomeSelectionContext> infernoBiomes = BiomeSelectors.includeByKey(",
-        "\t\t\t\tRegistryKey.of(RegistryKeys.BIOME, CopperInferno.id(\"cinder_wastes\")),",
-        "\t\t\t\tRegistryKey.of(RegistryKeys.BIOME, CopperInferno.id(\"ember_grove\")),",
-        "\t\t\t\tRegistryKey.of(RegistryKeys.BIOME, CopperInferno.id(\"slag_sea\")));",
     ]
+    for i, biome in enumerate(GARDEN_BIOMES):
+        suffix = ");" if i == len(GARDEN_BIOMES) - 1 else ","
+        lines.append(f"\t\t\t\tRegistryKey.of(RegistryKeys.BIOME, CopperInferno.id(\"{biome}\")){suffix}")
     for name, (_configured, _placement, step) in features.items():
         lines.append(f"\t\tBiomeModifications.addFeature(infernoBiomes, GenerationStep.Feature.{step},")
+        lines.append(f"\t\t\t\tRegistryKey.of(RegistryKeys.PLACED_FEATURE, CopperInferno.id(\"{name}\")));")
+    lines += [
+        "",
+        "\t\t// crystal_hollows only gets the crystal trio (curated sparse theme). The",
+        "\t\t// three features are appended in the SAME master order as above, so the",
+        "\t\t// hollows' appended list is a subsequence of the shared master order and the",
+        "\t\t// FeatureSorter stays cycle-free.",
+        "\t\tPredicate<BiomeSelectionContext> crystalHollows = BiomeSelectors.includeByKey(",
+    ]
+    for i, biome in enumerate(CRYSTAL_HOLLOWS_BIOMES):
+        suffix = ");" if i == len(CRYSTAL_HOLLOWS_BIOMES) - 1 else ","
+        lines.append(f"\t\t\t\tRegistryKey.of(RegistryKeys.BIOME, CopperInferno.id(\"{biome}\")){suffix}")
+    for name in CRYSTAL_FEATURES:
+        step = features[name][2]
+        lines.append(f"\t\tBiomeModifications.addFeature(crystalHollows, GenerationStep.Feature.{step},")
         lines.append(f"\t\t\t\tRegistryKey.of(RegistryKeys.PLACED_FEATURE, CopperInferno.id(\"{name}\")));")
     return lines
 
@@ -1142,7 +1174,8 @@ def emit_java(features: dict) -> None:
     feature_doc = [
         "Inferno gardens: 25 data-driven worldgen features (flora patches, weighted garden",
         "mixes, ceiling/wall growth, crystal clusters, giant fungi, moss shelves) for the",
-        "three Inferno biomes, plus the 20 new plant/deco blocks they place. The",
+        "six garden Inferno biomes (crystal_hollows only receives the crystal trio), plus",
+        "the 20 new plant/deco blocks they place. The",
         "configured/placed feature JSONs live under",
         "{@code data/copper_inferno/worldgen/} and are generated by",
         "{@code devtools/gen/infernogardens_gen.py} from extracted vanilla 1.21.9 schemas;",
@@ -1311,6 +1344,11 @@ def verify(features: dict) -> None:
     # feature ids in the handbook must match the feature dict exactly, in order
     assert [name for name, *_ in HANDBOOK_TEXTS] == list(features), \
         "handbook entries out of sync with the feature list"
+
+    # crystal_hollows curation must be a subsequence of the master feature order
+    # (FeatureSorter cycle-free rule: every biome's appended list follows ONE order)
+    assert [name for name in features if name in set(CRYSTAL_FEATURES)] == CRYSTAL_FEATURES, \
+        "CRYSTAL_FEATURES out of master feature order (FeatureSorter subsequence rule)"
 
 
 # ---------------------------------------------------------------------------

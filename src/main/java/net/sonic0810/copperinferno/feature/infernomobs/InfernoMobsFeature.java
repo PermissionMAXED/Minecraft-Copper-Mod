@@ -197,14 +197,18 @@ public final class InfernoMobsFeature {
 				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
 				InfernoMobsFeature::canAshBatSpawn);
 
-		// Natural spawns in the three Inferno biomes (biome JSONs are owned by the infernodim
-		// feature; includeByKey simply matches nothing until they are loaded). addSpawn signature
-		// verified via javap: (Predicate<BiomeSelectionContext>, SpawnGroup, EntityType, weight,
-		// minGroup, maxGroup).
+		// Natural spawns in the Inferno biomes (biome JSONs are owned by the infernodim and
+		// infernodim2 features; includeByKey simply matches nothing until they are loaded).
+		// verdigris_jungle and soot_dunes joined with the infernodim2 expansion; molten_delta
+		// and crystal_hollows keep their own curated rosters. addSpawn signature verified via
+		// javap: (Predicate<BiomeSelectionContext>, SpawnGroup, EntityType, weight, minGroup,
+		// maxGroup).
 		Predicate<BiomeSelectionContext> infernoBiomes = BiomeSelectors.includeByKey(
 				RegistryKey.of(RegistryKeys.BIOME, CopperInferno.id("cinder_wastes")),
 				RegistryKey.of(RegistryKeys.BIOME, CopperInferno.id("ember_grove")),
-				RegistryKey.of(RegistryKeys.BIOME, CopperInferno.id("slag_sea")));
+				RegistryKey.of(RegistryKeys.BIOME, CopperInferno.id("slag_sea")),
+				RegistryKey.of(RegistryKeys.BIOME, CopperInferno.id("verdigris_jungle")),
+				RegistryKey.of(RegistryKeys.BIOME, CopperInferno.id("soot_dunes")));
 		BiomeModifications.addSpawn(infernoBiomes, SpawnGroup.MONSTER, EMBER_WRAITH, 15, 1, 3);
 		BiomeModifications.addSpawn(infernoBiomes, SpawnGroup.MONSTER, SLAG_CRAWLER, 30, 1, 4);
 		BiomeModifications.addSpawn(infernoBiomes, SpawnGroup.MONSTER, MOLTEN_SLAGLING, 25, 2, 4);

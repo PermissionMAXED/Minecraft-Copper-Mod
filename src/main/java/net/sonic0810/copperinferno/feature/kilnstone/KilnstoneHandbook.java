@@ -185,7 +185,7 @@ final class KilnstoneHandbook {
 				null, 0, "The Pyroceramic Bricks family for Inferno builds: block, stairs, slab and wall.", "Die Pyrokeramikziegel-Familie f\u00fcr Inferno-Bauten: Block, Treppe, Stufe und Mauer."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "kilnstone/kilnstone", "copper_inferno:kilnstone", "kilnstone/kilnstone",
-				new String[] {"minecraft:terracotta", "", "minecraft:terracotta", "", "copper_inferno:pyroceramic", "", "minecraft:terracotta", "", "minecraft:terracotta"},
+				new String[] {"minecraft:brick", "", "minecraft:brick", "", "copper_inferno:cinderstone", "", "minecraft:brick", "", "minecraft:brick"},
 				"copper_inferno:kilnstone", 4, "Craft 4x Kilnstone at a crafting table.", "Stellt 4x Brennofenstein an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "kilnstone/kilnstone_bricks", "copper_inferno:kilnstone_bricks", "kilnstone/kilnstone_bricks",

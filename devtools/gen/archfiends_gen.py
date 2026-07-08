@@ -12,10 +12,14 @@ TheOxidizerEntity / InfernoTitanEntity tick/phase/boss-bar patterns.
 Per boss: 1 summon sigil (ArchfiendSummonItem, ring recipe), 2 drops, 1 EPIC trophy and
 1 spawn egg = 5 items x 10 bosses = 50 items.
 
-Idempotent: running it any number of times produces byte-identical output. Emits by
+Idempotent: running it any number of times produces byte-identical output (the entity
+recolor is a pure function of the vanilla texture bytes + the boss palette). Emits by
 DEFAULT (no flags), mirroring devtools/gen/titanforge_gen.py:
   - items/<id>.json model-definitions + models/item/<id>.json (genlib emitters)
   - 16x16 item textures (Pillow, deterministic pixel art, distinct palette per boss)
+  - recolored entity textures src/client/resources/assets/copper_inferno/textures/
+    entity/<boss_id>.png (vanilla base texture from the loom minecraft-client.jar,
+    luminance-mapped onto the boss palette; skipped with a warning if the jar is absent)
   - entity loot tables data/copper_inferno/loot_table/entities/<boss>.json
     (infernoboss_gen schema incl. "random_sequence"; 3 pools: drop1 2-4, drop2 1-2,
     trophy 1)
@@ -25,7 +29,8 @@ DEFAULT (no flags), mirroring devtools/gen/titanforge_gen.py:
   - generated Java (src/main + src/client, feature package "archfiends"):
     ArchfiendsFeature.java (literal registrations, MAIN_KEY creative callback,
     ArchfiendsHandbook.register()), ArchfiendSummonItem.java, the 10 boss entity
-    subclasses, ArchfiendsFeatureClient.java (vanilla renderers) and
+    subclasses, ArchfiendsFeatureClient.java plus one <Boss>Renderer subclass per boss
+    (vanilla renderer + the boss's recolored texture) and
     ArchfiendsHandbook.java (genlib.java_handbook_class; "bosses" category EN+DE)
   - devtools/hooks/archfiends.txt (integration hook file)
 
@@ -44,7 +49,13 @@ common/clientonly jars, per AGENTS.md):
   WitherSkeletonEntityRenderer are Context-only; the piglin brute reuses
   PiglinEntityRenderer(Context, EntityModelLayer, EntityModelLayer, EquipmentModelData,
   EquipmentModelData) with the EntityModelLayers.PIGLIN_BRUTE(_EQUIPMENT) layers exactly
-  as the vanilla EntityRendererFactories bytecode does.
+  as the vanilla EntityRendererFactories bytecode does. All five base renderers are
+  public NON-final classes with a public NON-final getTexture overload taking their own
+  render state (GhastEntityRenderer -> GhastEntityRenderState, HoglinEntityRenderer ->
+  HoglinEntityRenderState, EvokerEntityRenderer<T> -> EvokerEntityRenderState,
+  PiglinEntityRenderer -> PiglinEntityRenderState, WitherSkeletonEntityRenderer ->
+  SkeletonEntityRenderState), so the generated per-boss subclasses override exactly
+  that overload to swap the texture while keeping the vanilla model + animations.
   HoglinEntity.setImmuneToZombification(boolean) and
   AbstractPiglinEntity.setImmuneToZombification(boolean) are public;
   HoglinEntity.interactMob is PUBLIC (unlike IronGolemEntity's protected).
@@ -53,7 +64,9 @@ common/clientonly jars, per AGENTS.md):
   DustParticleEffect(int, float) and ServerWorld.spawnParticles(...) drive the auras.
 """
 
+import io
 import sys
+import zipfile
 from pathlib import Path
 from random import Random
 
@@ -70,6 +83,8 @@ FEATURE_DIR = (ROOT / "src" / "main" / "java" / "net" / "sonic0810" / "copperinf
                / "feature" / "archfiends")
 CLIENT_DIR = (ROOT / "src" / "client" / "java" / "net" / "sonic0810" / "copperinferno"
               / "feature" / "archfiends" / "client")
+CLIENT_ASSETS = ROOT / "src" / "client" / "resources" / "assets" / NS
+CLIENT_JAR = Path.home() / ".gradle/caches/fabric-loom/1.21.9/minecraft-client.jar"
 PKG = "net.sonic0810.copperinferno.feature.archfiends"
 
 # ---------------------------------------------------------------------------
@@ -851,6 +866,64 @@ def emit_textures() -> None:
 
 
 # ---------------------------------------------------------------------------
+# Recolored ENTITY textures: the base mob's vanilla texture (extracted from the loom
+# minecraft-client.jar) luminance-mapped onto the boss palette. Pure function of the
+# vanilla bytes + the palette (no rng), so output is byte-identical across runs.
+# titanforge_gen.recolor_iron_layer generalized: full 0..1 luminance band mapped across
+# the dark -> base -> bright ramp; alpha is copied through UNCHANGED and pixels never
+# move (entity textures are UV-mapped — the ghast/wither-skeleton textures have large
+# fully-transparent regions that must stay transparent).
+# ---------------------------------------------------------------------------
+
+# base entity class -> vanilla entity texture inside the client jar (paths verified by
+# listing the jar; evoker lives under illager/, piglin brute under piglin/).
+VANILLA_ENTITY_TEXTURES = {
+    "GhastEntity": "assets/minecraft/textures/entity/ghast/ghast.png",
+    "HoglinEntity": "assets/minecraft/textures/entity/hoglin/hoglin.png",
+    "EvokerEntity": "assets/minecraft/textures/entity/illager/evoker.png",
+    "PiglinBruteEntity": "assets/minecraft/textures/entity/piglin/piglin_brute.png",
+    "WitherSkeletonEntity": "assets/minecraft/textures/entity/skeleton/wither_skeleton.png",
+}
+
+
+def lerp(a, b, t):
+    return tuple(int(round(a[i] + (b[i] - a[i]) * t)) for i in range(3))
+
+
+def recolor_entity_texture(png_bytes: bytes, pal) -> Image.Image:
+    src = Image.open(io.BytesIO(png_bytes)).convert("RGBA")
+    out = Image.new("RGBA", src.size, (0, 0, 0, 0))
+    for y in range(src.size[1]):
+        for x in range(src.size[0]):
+            r, g, b, a = src.getpixel((x, y))
+            if a == 0:
+                continue
+            lum = (r + g + b) / (3 * 255)
+            if lum < 0.5:
+                color = lerp(pal["dark"], pal["base"], lum / 0.5)
+            else:
+                color = lerp(pal["base"], pal["bright"], (lum - 0.5) / 0.5)
+            out.putpixel((x, y), (*color, a))
+    return out
+
+
+def emit_entity_textures() -> int:
+    if not CLIENT_JAR.is_file():
+        print(f"archfiends_gen: WARNING client jar not found at {CLIENT_JAR}; "
+              "skipping boss entity textures", file=sys.stderr)
+        return 0
+    tex_dir = CLIENT_ASSETS / "textures" / "entity"
+    tex_dir.mkdir(parents=True, exist_ok=True)
+    count = 0
+    with zipfile.ZipFile(CLIENT_JAR) as jar:
+        for b in BOSSES:
+            data = jar.read(VANILLA_ENTITY_TEXTURES[b["base"]])
+            recolor_entity_texture(data, b["pal"]).save(tex_dir / f"{b['bid']}.png")
+            count += 1
+    return count
+
+
+# ---------------------------------------------------------------------------
 # Java codegen: the 10 boss entity subclasses. Each mirrors the hand-written
 # TheOxidizerEntity / InfernoTitanEntity structure (BossBarHolder forwarding,
 # mobTick mechanics, persisted phase flag, updatePostDeath sync).
@@ -1365,8 +1438,9 @@ def feature_source() -> str:
                 "summoned-only: each is called with its own sigil (shared",
                 "{@link ArchfiendSummonItem}, ring recipes in",
                 "{@code data/copper_inferno/recipe/archfiends/}) and never spawns naturally",
-                "(SpawnGroup.MISC, no spawn restrictions registered). All ten reuse vanilla",
-                "renderers (see {@code ArchfiendsFeatureClient}); EntityType dimensions are",
+                "(SpawnGroup.MISC, no spawn restrictions registered). All ten keep their",
+                "vanilla models but wear their own recolored textures via renderer",
+                "subclasses (see {@code ArchfiendsFeatureClient}); EntityType dimensions are",
                 "copied from the vanilla registrations (verified via bytecode) and inflated",
                 "via the SCALE attribute. Summon sigils, boss drops, EPIC trophies, spawn",
                 "eggs and handbook entries are all registered here. Generated by",
@@ -1468,37 +1542,96 @@ def feature_source() -> str:
 
 
 # ---------------------------------------------------------------------------
-# Java codegen: ArchfiendsFeatureClient (vanilla renderers; the register method is
-# access-widened by Fabric's transitive access wideners, same proven pattern as
-# InfernoBossFeatureClient).
+# Java codegen: per-boss renderer subclasses + ArchfiendsFeatureClient (the register
+# method is access-widened by Fabric's transitive access wideners, same proven pattern
+# as InfernoBossFeatureClient). Every boss keeps its vanilla MODEL/animations but swaps
+# in its own recolored entity texture: the subclass overrides the render-state
+# getTexture overload (class, ctor and overload all javap-verified non-final; see the
+# module docstring). The piglin brutes subclass PiglinEntityRenderer, forwarding the
+# PIGLIN_BRUTE model/equipment layers exactly as the vanilla EntityRendererFactories
+# bytecode does; the evoker renderer is generic, so its subclasses bind
+# EvokerEntityRenderer<EvokerEntity>.
 # ---------------------------------------------------------------------------
 
+# base entity class -> (vanilla renderer, its getTexture render-state type).
 RENDERERS = {
-    "GhastEntity": "GhastEntityRenderer::new",
-    "HoglinEntity": "HoglinEntityRenderer::new",
-    "EvokerEntity": "EvokerEntityRenderer::new",
-    "WitherSkeletonEntity": "WitherSkeletonEntityRenderer::new",
+    "GhastEntity": ("GhastEntityRenderer", "GhastEntityRenderState"),
+    "HoglinEntity": ("HoglinEntityRenderer", "HoglinEntityRenderState"),
+    "EvokerEntity": ("EvokerEntityRenderer", "EvokerEntityRenderState"),
+    "PiglinBruteEntity": ("PiglinEntityRenderer", "PiglinEntityRenderState"),
+    "WitherSkeletonEntity": ("WitherSkeletonEntityRenderer", "SkeletonEntityRenderState"),
 }
+
+
+def renderer_class_of(b) -> str:
+    """DreadGhastSovereignEntity -> DreadGhastSovereignRenderer."""
+    assert b["cls"].endswith("Entity")
+    return b["cls"][:-len("Entity")] + "Renderer"
+
+
+def renderer_source(b) -> str:
+    vanilla, state = RENDERERS[b["base"]]
+    cls = renderer_class_of(b)
+    extends = vanilla
+    imports = {
+        "net.minecraft.client.render.entity.EntityRendererFactory",
+        f"net.minecraft.client.render.entity.{vanilla}",
+        f"net.minecraft.client.render.entity.state.{state}",
+        "net.minecraft.util.Identifier",
+    }
+    if b["base"] == "EvokerEntity":
+        # EvokerEntityRenderer<T extends SpellcastingIllagerEntity> is generic.
+        imports.add("net.minecraft.entity.mob.EvokerEntity")
+        extends = f"{vanilla}<EvokerEntity>"
+    if b["base"] == "PiglinBruteEntity":
+        imports.add("net.minecraft.client.render.entity.model.EntityModelLayers")
+    out = [f"package {PKG}.client;", ""]
+    out += [f"import {imp};" for imp in sorted(imports)]
+    out += ["", _javadoc([
+        f"Renderer for the \"{b['en']}\" archfiend boss: the vanilla {vanilla}",
+        f"(public non-final, verified via javap) with only the getTexture({state})",
+        "overload swapped to the boss's recolored texture (emitted by",
+        "devtools/gen/archfiends_gen.py into",
+        f"src/client/resources/assets/copper_inferno/textures/entity/{b['bid']}.png).",
+        "Model and animations stay vanilla; the texture is a pure luminance->palette",
+        "remap of the base mob's texture, so all UV mapping is preserved."]),
+        f"public class {cls} extends {extends} {{",
+        "\tprivate static final Identifier TEXTURE =",
+        f"\t\t\tIdentifier.of(\"copper_inferno\", \"textures/entity/{b['bid']}.png\");",
+        ""]
+    if b["base"] == "PiglinBruteEntity":
+        out += [f"\tpublic {cls}(EntityRendererFactory.Context context) {{",
+                "\t\t// PIGLIN_BRUTE model + equipment layers, exactly as the vanilla",
+                "\t\t// EntityRendererFactories bytecode wires the piglin_brute renderer.",
+                "\t\tsuper(context, EntityModelLayers.PIGLIN_BRUTE, "
+                "EntityModelLayers.PIGLIN_BRUTE,",
+                "\t\t\t\tEntityModelLayers.PIGLIN_BRUTE_EQUIPMENT,",
+                "\t\t\t\tEntityModelLayers.PIGLIN_BRUTE_EQUIPMENT);",
+                "\t}"]
+    else:
+        out += [f"\tpublic {cls}(EntityRendererFactory.Context context) {{",
+                "\t\tsuper(context);",
+                "\t}"]
+    out += ["",
+            "\t@Override",
+            f"\tpublic Identifier getTexture({state} state) {{",
+            "\t\treturn TEXTURE;",
+            "\t}",
+            "}"]
+    return "\n".join(out) + "\n"
 
 
 def client_source() -> str:
     out = [f"package {PKG}.client;", "",
            "import net.minecraft.client.render.entity.EntityRendererFactories;",
-           "import net.minecraft.client.render.entity.EvokerEntityRenderer;",
-           "import net.minecraft.client.render.entity.GhastEntityRenderer;",
-           "import net.minecraft.client.render.entity.HoglinEntityRenderer;",
-           "import net.minecraft.client.render.entity.PiglinEntityRenderer;",
-           "import net.minecraft.client.render.entity.WitherSkeletonEntityRenderer;",
-           "import net.minecraft.client.render.entity.model.EntityModelLayers;",
            f"import {PKG}.ArchfiendsFeature;",
            "", _javadoc([
-               "Client-side setup for the archfiend bosses: all ten reuse their vanilla",
-               "renderers - the SCALE attribute makes them loom. The ghast/hoglin/evoker/",
-               "wither-skeleton renderer ctors are Context-only (verified via javap); the",
-               "piglin brutes reuse PiglinEntityRenderer with the PIGLIN_BRUTE model and",
-               "equipment layers, exactly matching the vanilla EntityRendererFactories",
-               "bytecode. The bosses extend the matching vanilla entities, so the factories",
-               "fit the register(EntityType&lt;? extends T&gt;, EntityRendererFactory&lt;T&gt;)",
+               "Client-side setup for the archfiend bosses: each registers its own tiny",
+               "renderer subclass (vanilla renderer + the boss's recolored entity texture;",
+               "see the per-boss <Boss>Renderer classes in this package) - the SCALE",
+               "attribute makes them loom. The bosses extend the matching vanilla entities,",
+               "so the factories fit the",
+               "register(EntityType&lt;? extends T&gt;, EntityRendererFactory&lt;T&gt;)",
                "bound; the vanilla register method is access-widened by Fabric's transitive",
                "access wideners (same proven pattern as InfernoBossFeatureClient)."]),
            "public final class ArchfiendsFeatureClient {",
@@ -1507,16 +1640,8 @@ def client_source() -> str:
            "\tpublic static void initClient() {"]
     for b in BOSSES:
         field = f"ArchfiendsFeature.{field_of(b['bid'])}"
-        if b["base"] == "PiglinBruteEntity":
-            out += [f"\t\tEntityRendererFactories.register({field},",
-                    "\t\t\t\tcontext -> new PiglinEntityRenderer(context, "
-                    "EntityModelLayers.PIGLIN_BRUTE,",
-                    "\t\t\t\t\t\tEntityModelLayers.PIGLIN_BRUTE, "
-                    "EntityModelLayers.PIGLIN_BRUTE_EQUIPMENT,",
-                    "\t\t\t\t\t\tEntityModelLayers.PIGLIN_BRUTE_EQUIPMENT));"]
-        else:
-            out.append(f"\t\tEntityRendererFactories.register({field}, "
-                       f"{RENDERERS[b['base']]});")
+        out.append(f"\t\tEntityRendererFactories.register({field}, "
+                   f"{renderer_class_of(b)}::new);")
     out += ["\t}", "}"]
     return "\n".join(out) + "\n"
 
@@ -1559,6 +1684,9 @@ def emit_java() -> None:
                                                       encoding="utf-8")
     (CLIENT_DIR / "ArchfiendsFeatureClient.java").write_text(client_source(),
                                                              encoding="utf-8")
+    for b in BOSSES:
+        (CLIENT_DIR / f"{renderer_class_of(b)}.java").write_text(renderer_source(b),
+                                                                 encoding="utf-8")
 
     handbook_doc = [
         "Handbook pages for the ten archfiend bosses: one \"bosses\" entry per boss",
@@ -1612,6 +1740,7 @@ def output_files() -> list:
     for b in BOSSES:
         out.append(DATA / "loot_table" / "entities" / f"{b['bid']}.json")
         out.append(RECIPES / f"{b['summon']}.json")
+        out.append(CLIENT_ASSETS / "textures" / "entity" / f"{b['bid']}.png")
     out += [ASSETS / "lang" / "fragments" / "archfiends.json",
             ASSETS / "lang" / "fragments_de" / "archfiends.json",
             FEATURE_DIR / "ArchfiendsFeature.java",
@@ -1620,6 +1749,7 @@ def output_files() -> list:
             CLIENT_DIR / "ArchfiendsFeatureClient.java",
             ROOT / "devtools" / "hooks" / "archfiends.txt"]
     out += [FEATURE_DIR / f"{b['cls']}.java" for b in BOSSES]
+    out += [CLIENT_DIR / f"{renderer_class_of(b)}.java" for b in BOSSES]
     return [str(p) for p in out]
 
 
@@ -1639,6 +1769,8 @@ def main() -> None:
 
     emit_item_assets()
     emit_textures()
+    entity_tex_count = emit_entity_textures()
+    assert entity_tex_count in (0, 10)  # 0 only when the client jar is absent
     emit_loot_tables()
     recipe_count = emit_recipes()
 
@@ -1657,8 +1789,8 @@ def main() -> None:
     assert recipe_count == 10, f"expected 10 recipes, got {recipe_count}"
     assert hb_count == 20, f"expected 20 handbook entries, got {hb_count}"
     print(f"archfiends_gen: assets generated for {len(BOSSES)} bosses / "
-          f"{len(ALL_ITEM_IDS)} items ({recipe_count} recipes, {hb_count} handbook "
-          "entries).")
+          f"{len(ALL_ITEM_IDS)} items ({entity_tex_count} entity textures, "
+          f"{recipe_count} recipes, {hb_count} handbook entries).")
 
 
 if __name__ == "__main__":

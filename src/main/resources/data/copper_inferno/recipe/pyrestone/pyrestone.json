@@ -1,8 +1,8 @@
 {
   "category": "building",
   "key": {
-    "P": "copper_inferno:blazewrought_stone",
-    "S": "minecraft:granite"
+    "P": "copper_inferno:ember_dust",
+    "S": "copper_inferno:cinderstone"
   },
   "pattern": [
     "S S",
