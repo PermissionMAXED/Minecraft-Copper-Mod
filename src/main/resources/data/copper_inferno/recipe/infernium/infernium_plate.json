@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "key": {
+    "#": "copper_inferno:infernium_ingot"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:infernium_plate"
+  },
+  "type": "minecraft:crafting_shaped"
+}

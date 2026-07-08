@@ -1,0 +1,33 @@
+{
+  "block/mineable/pickaxe": [
+    "copper_inferno:infernium_block",
+    "copper_inferno:smolder_crystal_block"
+  ],
+  "item/axes": [
+    "copper_inferno:infernium_axe"
+  ],
+  "item/chest_armor": [
+    "copper_inferno:infernium_chestplate"
+  ],
+  "item/foot_armor": [
+    "copper_inferno:infernium_boots"
+  ],
+  "item/head_armor": [
+    "copper_inferno:infernium_helmet"
+  ],
+  "item/hoes": [
+    "copper_inferno:infernium_hoe"
+  ],
+  "item/leg_armor": [
+    "copper_inferno:infernium_leggings"
+  ],
+  "item/pickaxes": [
+    "copper_inferno:infernium_pickaxe"
+  ],
+  "item/shovels": [
+    "copper_inferno:infernium_shovel"
+  ],
+  "item/swords": [
+    "copper_inferno:infernium_sword"
+  ]
+}

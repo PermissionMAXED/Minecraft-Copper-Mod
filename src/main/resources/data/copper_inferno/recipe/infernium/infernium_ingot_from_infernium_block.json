@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "group": "infernium_ingot",
+  "ingredients": [
+    "copper_inferno:infernium_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "copper_inferno:infernium_ingot"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

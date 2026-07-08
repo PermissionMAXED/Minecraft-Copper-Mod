@@ -1,0 +1,17 @@
+{
+  "category": "equipment",
+  "key": {
+    "#": "copper_inferno:cinder_rod",
+    "X": "copper_inferno:infernium_ingot"
+  },
+  "pattern": [
+    "XX",
+    " #",
+    " #"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:infernium_hoe"
+  },
+  "type": "minecraft:crafting_shaped"
+}

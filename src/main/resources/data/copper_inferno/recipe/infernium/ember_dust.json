@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:smolder_crystal"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:ember_dust"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

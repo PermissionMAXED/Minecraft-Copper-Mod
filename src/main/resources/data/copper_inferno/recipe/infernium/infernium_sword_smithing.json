@@ -1,0 +1,9 @@
+{
+  "addition": "copper_inferno:infernium_ingot",
+  "base": "minecraft:copper_sword",
+  "result": {
+    "id": "copper_inferno:infernium_sword"
+  },
+  "template": "copper_inferno:infernium_upgrade_smithing_template",
+  "type": "minecraft:smithing_transform"
+}

@@ -1,0 +1,9 @@
+{
+  "addition": "copper_inferno:infernium_ingot",
+  "base": "minecraft:copper_shovel",
+  "result": {
+    "id": "copper_inferno:infernium_shovel"
+  },
+  "template": "copper_inferno:infernium_upgrade_smithing_template",
+  "type": "minecraft:smithing_transform"
+}

@@ -1,0 +1,15 @@
+{
+  "category": "misc",
+  "key": {
+    "#": "copper_inferno:ash_pile"
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:slag_chunk"
+  },
+  "type": "minecraft:crafting_shaped"
+}

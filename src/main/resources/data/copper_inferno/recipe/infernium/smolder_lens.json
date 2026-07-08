@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "#": "minecraft:glass",
+    "C": "copper_inferno:smolder_crystal"
+  },
+  "pattern": [
+    " # ",
+    "#C#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:smolder_lens"
+  },
+  "type": "minecraft:crafting_shaped"
+}
