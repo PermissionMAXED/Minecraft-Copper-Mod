@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "copper_inferno:block/inferno_portal_ns"
+    },
+    "axis=z": {
+      "model": "copper_inferno:block/inferno_portal_ew"
+    }
+  }
+}

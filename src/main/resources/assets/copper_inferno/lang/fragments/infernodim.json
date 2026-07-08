@@ -1,0 +1,18 @@
+{
+  "biome.copper_inferno.cinder_wastes": "Cinder Wastes",
+  "biome.copper_inferno.ember_grove": "Ember Grove",
+  "biome.copper_inferno.slag_sea": "Slag Sea",
+  "block.copper_inferno.ash_block": "Ash Block",
+  "block.copper_inferno.cinder_gravel": "Cinder Gravel",
+  "block.copper_inferno.cinderstone": "Cinderstone",
+  "block.copper_inferno.cobbled_cinderstone": "Cobbled Cinderstone",
+  "block.copper_inferno.ember_soil": "Ember Soil",
+  "block.copper_inferno.infernium_ore": "Infernium Ore",
+  "block.copper_inferno.infernium_portal_frame": "Infernium Portal Frame",
+  "block.copper_inferno.inferno_portal": "Inferno Portal",
+  "block.copper_inferno.molten_slag": "Molten Slag",
+  "block.copper_inferno.scorched_sand": "Scorched Sand",
+  "block.copper_inferno.slagstone": "Slagstone",
+  "block.copper_inferno.smolder_crystal_ore": "Smolder Crystal Ore",
+  "item.copper_inferno.infernium_igniter": "Infernium Igniter"
+}

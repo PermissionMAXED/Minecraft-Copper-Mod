@@ -1,0 +1,40 @@
+{
+  "elements": [
+    {
+      "faces": {
+        "north": {
+          "texture": "#portal",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "south": {
+          "texture": "#portal",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        }
+      },
+      "from": [
+        0,
+        0,
+        6
+      ],
+      "to": [
+        16,
+        16,
+        10
+      ]
+    }
+  ],
+  "textures": {
+    "particle": "copper_inferno:block/inferno_portal",
+    "portal": "copper_inferno:block/inferno_portal"
+  }
+}

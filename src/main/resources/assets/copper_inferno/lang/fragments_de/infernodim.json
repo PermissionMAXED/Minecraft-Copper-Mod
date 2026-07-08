@@ -1,0 +1,18 @@
+{
+  "biome.copper_inferno.cinder_wastes": "Aschenöde",
+  "biome.copper_inferno.ember_grove": "Gluthain",
+  "biome.copper_inferno.slag_sea": "Schlackenmeer",
+  "block.copper_inferno.ash_block": "Ascheblock",
+  "block.copper_inferno.cinder_gravel": "Aschenkies",
+  "block.copper_inferno.cinderstone": "Aschenstein",
+  "block.copper_inferno.cobbled_cinderstone": "Gepflasterter Aschenstein",
+  "block.copper_inferno.ember_soil": "Glutboden",
+  "block.copper_inferno.infernium_ore": "Infernium-Erz",
+  "block.copper_inferno.infernium_portal_frame": "Infernium-Portalrahmen",
+  "block.copper_inferno.inferno_portal": "Inferno-Portal",
+  "block.copper_inferno.molten_slag": "Geschmolzene Schlacke",
+  "block.copper_inferno.scorched_sand": "Verbrannter Sand",
+  "block.copper_inferno.slagstone": "Schlackenstein",
+  "block.copper_inferno.smolder_crystal_ore": "Schwelkristall-Erz",
+  "item.copper_inferno.infernium_igniter": "Infernium-Anzünder"
+}

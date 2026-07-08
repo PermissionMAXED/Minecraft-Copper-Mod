@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "copper_inferno:block/ember_lantern"
+    },
+    "hanging=true": {
+      "model": "copper_inferno:block/ember_lantern_hanging"
+    }
+  }
+}

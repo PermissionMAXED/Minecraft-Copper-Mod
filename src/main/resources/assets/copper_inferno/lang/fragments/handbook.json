@@ -1,0 +1,17 @@
+{
+  "item.copper_inferno.copper_inferno_handbook": "COPPER INFERNO Handbook",
+  "screen.copper_inferno.handbook.category.blocks": "Blocks",
+  "screen.copper_inferno.handbook.category.bosses": "Bosses",
+  "screen.copper_inferno.handbook.category.dimension": "Dimension",
+  "screen.copper_inferno.handbook.category.gear": "Tools & Armor",
+  "screen.copper_inferno.handbook.category.items": "Items",
+  "screen.copper_inferno.handbook.category.mobs": "Mobs",
+  "screen.copper_inferno.handbook.category.recipes": "Recipes",
+  "screen.copper_inferno.handbook.empty": "No entries in this category yet.",
+  "screen.copper_inferno.handbook.lang_de": "DE",
+  "screen.copper_inferno.handbook.lang_en": "EN",
+  "screen.copper_inferno.handbook.next": ">",
+  "screen.copper_inferno.handbook.page": "Page %s/%s",
+  "screen.copper_inferno.handbook.prev": "<",
+  "screen.copper_inferno.handbook.title": "COPPER INFERNO Handbook"
+}

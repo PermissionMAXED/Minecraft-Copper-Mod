@@ -1,0 +1,17 @@
+{
+  "item.copper_inferno.copper_inferno_handbook": "COPPER-INFERNO-Handbuch",
+  "screen.copper_inferno.handbook.category.blocks": "Bl\u00f6cke",
+  "screen.copper_inferno.handbook.category.bosses": "Bosse",
+  "screen.copper_inferno.handbook.category.dimension": "Dimension",
+  "screen.copper_inferno.handbook.category.gear": "Werkzeuge & R\u00fcstung",
+  "screen.copper_inferno.handbook.category.items": "Gegenst\u00e4nde",
+  "screen.copper_inferno.handbook.category.mobs": "Kreaturen",
+  "screen.copper_inferno.handbook.category.recipes": "Rezepte",
+  "screen.copper_inferno.handbook.empty": "Noch keine Eintr\u00e4ge in dieser Kategorie.",
+  "screen.copper_inferno.handbook.lang_de": "DE",
+  "screen.copper_inferno.handbook.lang_en": "EN",
+  "screen.copper_inferno.handbook.next": ">",
+  "screen.copper_inferno.handbook.page": "Seite %s/%s",
+  "screen.copper_inferno.handbook.prev": "<",
+  "screen.copper_inferno.handbook.title": "COPPER-INFERNO-Handbuch"
+}

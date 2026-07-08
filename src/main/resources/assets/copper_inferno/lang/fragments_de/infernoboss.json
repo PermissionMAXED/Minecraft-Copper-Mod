@@ -1,0 +1,13 @@
+{
+  "entity.copper_inferno.inferno_titan": "Inferno-Titan",
+  "entity.copper_inferno.the_oxidizer": "Der Oxidierer",
+  "item.copper_inferno.inferno_crown": "Infernokrone",
+  "item.copper_inferno.inferno_titan_spawn_egg": "Inferno-Titan-Spawn-Ei",
+  "item.copper_inferno.oxidizer_core": "Oxidierer-Kern",
+  "item.copper_inferno.oxidizer_heart": "Oxidierer-Herz",
+  "item.copper_inferno.the_oxidizer_spawn_egg": "Oxidierer-Spawn-Ei",
+  "item.copper_inferno.titan_ember": "Titanenglut",
+  "item.copper_inferno.titan_sigil": "Titanensiegel",
+  "item.copper_inferno.verdigris_scale": "Grünspanschuppe",
+  "message.copper_inferno.titan_sigil.wrong_dimension": "Das Titanensiegel wirkt nur in der Inferno-Dimension."
+}

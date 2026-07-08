@@ -1,7 +1,8 @@
 {
   "values": [
     "copper_inferno:exposed_copper_axe",
-    "copper_inferno:weathered_copper_axe",
-    "copper_inferno:oxidized_copper_axe"
+    "copper_inferno:infernium_axe",
+    "copper_inferno:oxidized_copper_axe",
+    "copper_inferno:weathered_copper_axe"
   ]
 }

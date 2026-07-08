@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/scorched_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/scorched_planks"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/scorched_slab_top"
+    }
+  }
+}

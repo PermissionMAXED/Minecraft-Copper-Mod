@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/forge_brick_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/forge_bricks"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/forge_brick_slab_top"
+    }
+  }
+}

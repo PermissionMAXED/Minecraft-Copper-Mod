@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/carpet",
+  "textures": {
+    "wool": "copper_inferno:block/ember_moss_block"
+  }
+}

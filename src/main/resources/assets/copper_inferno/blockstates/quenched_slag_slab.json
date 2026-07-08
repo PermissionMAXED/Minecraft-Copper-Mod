@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/quenched_slag_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/quenched_slag"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/quenched_slag_slab_top"
+    }
+  }
+}

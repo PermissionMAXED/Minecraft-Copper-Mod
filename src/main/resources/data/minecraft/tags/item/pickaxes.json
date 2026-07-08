@@ -1,7 +1,8 @@
 {
   "values": [
     "copper_inferno:exposed_copper_pickaxe",
-    "copper_inferno:weathered_copper_pickaxe",
-    "copper_inferno:oxidized_copper_pickaxe"
+    "copper_inferno:infernium_pickaxe",
+    "copper_inferno:oxidized_copper_pickaxe",
+    "copper_inferno:weathered_copper_pickaxe"
   ]
 }

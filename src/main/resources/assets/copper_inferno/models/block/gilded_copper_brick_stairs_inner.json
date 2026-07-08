@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "copper_inferno:block/gilded_copper_bricks",
+    "side": "copper_inferno:block/gilded_copper_bricks",
+    "top": "copper_inferno:block/gilded_copper_bricks"
+  }
+}

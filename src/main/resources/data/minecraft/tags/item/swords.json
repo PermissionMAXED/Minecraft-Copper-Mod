@@ -1,7 +1,8 @@
 {
   "values": [
     "copper_inferno:exposed_copper_sword",
-    "copper_inferno:weathered_copper_sword",
-    "copper_inferno:oxidized_copper_sword"
+    "copper_inferno:infernium_sword",
+    "copper_inferno:oxidized_copper_sword",
+    "copper_inferno:weathered_copper_sword"
   ]
 }
