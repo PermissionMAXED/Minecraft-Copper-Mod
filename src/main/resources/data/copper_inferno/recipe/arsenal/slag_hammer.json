@@ -1,0 +1,17 @@
+{
+  "category": "equipment",
+  "key": {
+    "G": "copper_inferno:weapon_grip",
+    "T": "copper_inferno:tempered_plate"
+  },
+  "pattern": [
+    "TTT",
+    "TGT",
+    " G "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:slag_hammer"
+  },
+  "type": "minecraft:crafting_shaped"
+}

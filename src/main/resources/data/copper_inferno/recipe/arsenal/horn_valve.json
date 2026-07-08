@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:catalyst_dust",
+    "minecraft:copper_ingot",
+    "minecraft:gold_nugget"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:horn_valve"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

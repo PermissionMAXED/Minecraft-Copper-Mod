@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:catalyst_dust",
+    "minecraft:gold_ingot"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:gilded_rivet"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

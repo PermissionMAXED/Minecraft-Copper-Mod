@@ -1,0 +1,13 @@
+{
+  "category": "equipment",
+  "ingredients": [
+    "copper_inferno:molten_solder",
+    "minecraft:flint",
+    "minecraft:iron_ingot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ember_lighter"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

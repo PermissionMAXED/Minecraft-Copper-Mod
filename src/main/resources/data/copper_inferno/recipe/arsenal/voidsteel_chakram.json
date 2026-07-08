@@ -1,0 +1,17 @@
+{
+  "category": "equipment",
+  "key": {
+    "T": "copper_inferno:tempered_plate",
+    "V": "copper_inferno:voidsteel_ingot"
+  },
+  "pattern": [
+    " V ",
+    "VTV",
+    " V "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:voidsteel_chakram"
+  },
+  "type": "minecraft:crafting_shaped"
+}

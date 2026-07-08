@@ -1,0 +1,18 @@
+{
+  "category": "equipment",
+  "key": {
+    "C": "minecraft:copper_ingot",
+    "H": "copper_inferno:grapnel_hook",
+    "S": "minecraft:string"
+  },
+  "pattern": [
+    "H",
+    "S",
+    "C"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:copper_grapnel"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "D": "copper_inferno:catalyst_dust",
+    "X": "copper_inferno:pyrium_ingot"
+  },
+  "pattern": [
+    " X ",
+    "XDX",
+    " X "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:pyrium_core"
+  },
+  "type": "minecraft:crafting_shaped"
+}

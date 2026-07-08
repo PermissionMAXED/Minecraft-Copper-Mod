@@ -1,0 +1,16 @@
+{
+  "category": "equipment",
+  "key": {
+    "C": "minecraft:copper_ingot",
+    "G": "copper_inferno:weapon_grip"
+  },
+  "pattern": [
+    "C",
+    "G"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:copper_trowel"
+  },
+  "type": "minecraft:crafting_shaped"
+}
