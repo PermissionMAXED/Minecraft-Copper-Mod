@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:azure_copper",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:azure_copper_tile_stairs"
+  },
+  "type": "minecraft:stonecutting"
+}

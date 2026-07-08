@@ -1,0 +1,10 @@
+{
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": "copper_inferno:azure_copper",
+  "result": {
+    "id": "copper_inferno:azure_copper_glass"
+  },
+  "type": "minecraft:smelting"
+}

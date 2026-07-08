@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "C": "minecraft:copper_block",
+    "D": "minecraft:blue_dye"
+  },
+  "pattern": [
+    "CCC",
+    "CDC",
+    "CCC"
+  ],
+  "result": {
+    "count": 8,
+    "id": "copper_inferno:cobalt_copper"
+  },
+  "type": "minecraft:crafting_shaped"
+}

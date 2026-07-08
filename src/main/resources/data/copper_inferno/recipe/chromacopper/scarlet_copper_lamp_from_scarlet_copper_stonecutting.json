@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:scarlet_copper",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:scarlet_copper_lamp"
+  },
+  "type": "minecraft:stonecutting"
+}

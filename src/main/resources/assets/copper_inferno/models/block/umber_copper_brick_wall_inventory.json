@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "copper_inferno:block/umber_copper_bricks"
+  }
+}
