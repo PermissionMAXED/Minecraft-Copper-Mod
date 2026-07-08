@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:bowl",
+    "minecraft:cooked_cod",
+    "copper_inferno:ember_oil",
+    "copper_inferno:cinder_salt"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ember_chowder"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

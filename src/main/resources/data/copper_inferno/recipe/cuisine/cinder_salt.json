@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:bone_meal",
+    "minecraft:bone_meal",
+    "copper_inferno:cuisine_spice"
+  ],
+  "result": {
+    "count": 3,
+    "id": "copper_inferno:cinder_salt"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

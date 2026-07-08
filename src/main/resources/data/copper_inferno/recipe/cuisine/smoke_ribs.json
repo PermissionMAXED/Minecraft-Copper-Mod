@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:cooked_porkchop",
+    "copper_inferno:smoke_extract",
+    "copper_inferno:ember_oil"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:smoke_ribs"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

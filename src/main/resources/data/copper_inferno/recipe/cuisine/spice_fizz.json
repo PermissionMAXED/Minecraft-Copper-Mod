@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glass_bottle",
+    "copper_inferno:fizz_crystal",
+    "copper_inferno:cuisine_spice"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:spice_fizz"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

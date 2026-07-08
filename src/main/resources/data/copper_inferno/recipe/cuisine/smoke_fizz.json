@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glass_bottle",
+    "copper_inferno:fizz_crystal",
+    "copper_inferno:smoke_extract"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:smoke_fizz"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

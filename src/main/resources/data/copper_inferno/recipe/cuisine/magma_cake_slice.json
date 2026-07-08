@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:ember_flour",
+    "copper_inferno:magma_butter",
+    "minecraft:egg",
+    "copper_inferno:soda_sugar"
+  ],
+  "result": {
+    "count": 3,
+    "id": "copper_inferno:magma_cake_slice"
+  },
+  "type": "minecraft:crafting_shapeless"
+}
