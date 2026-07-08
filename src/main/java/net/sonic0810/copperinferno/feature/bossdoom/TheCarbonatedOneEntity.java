@@ -90,6 +90,20 @@ public class TheCarbonatedOneEntity extends SlimeEntity {
 		}
 	}
 
+	/**
+	 * BUG FIX: restores contact melee at the pinned size 1. Vanilla
+	 * {@code SlimeEntity.canAttack()} is {@code !this.isSmall() && this.canActVoluntarily()}
+	 * (bytecode-verified) and {@code isSmall()} is {@code getSize() <= 1}; it gates
+	 * {@code onPlayerCollision}, {@code pushAwayFrom} and the FaceTowardTargetGoal ram
+	 * flag, so with the size pinned to 1 (no-split + smallest-size loot) the boss's
+	 * ATTACK_DAMAGE of 10 was dead code. Dropping the size half of the gate keeps the
+	 * AI-active check while letting the pinned-size god actually bite.
+	 */
+	@Override
+	protected boolean canAttack() {
+		return this.canActVoluntarily();
+	}
+
 	@Override
 	public void onStartedTrackingBy(ServerPlayerEntity player) {
 		super.onStartedTrackingBy(player);
@@ -117,7 +131,9 @@ public class TheCarbonatedOneEntity extends SlimeEntity {
 			applyShakenSpeed();
 		}
 		int fizzInterval = this.phaseTwo ? FIZZ_INTERVAL_TICKS / 2 : FIZZ_INTERVAL_TICKS;
-		if (this.age % fizzInterval == 0) {
+		// Idle gate: no combat target means no detonation - an unprovoked boss must not
+		// blast terrain-side knockback or spam ModSounds.FIZZ_BOMB_POP on a timer.
+		if (this.getTarget() != null && this.age % fizzInterval == 0) {
 			fizzDetonation(world);
 		}
 		if (this.age % SHIELD_INTERVAL_TICKS == 0) {
@@ -126,7 +142,8 @@ public class TheCarbonatedOneEntity extends SlimeEntity {
 	}
 
 	/**
-	 * The knockback storm: every survival/adventure player within 8 blocks is damaged and
+	 * The knockback storm: every survival/adventure player within 8 blocks is damaged,
+	 * left reeling with 3 seconds of Nausea (the carbonation goes to the head) and
 	 * blasted away from the boss, under a bubble/firework/explosion spray popping to the
 	 * existing {@code ModSounds.FIZZ_BOMB_POP}.
 	 */
@@ -135,6 +152,7 @@ public class TheCarbonatedOneEntity extends SlimeEntity {
 				this.getBoundingBox().expand(FIZZ_RANGE),
 				player -> !player.isSpectator() && !player.isCreative())) {
 			player.damage(world, this.getDamageSources().mobAttack(this), 6.0f);
+			player.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 60, 0));
 			player.takeKnockback(1.8,
 					this.getX() - player.getX(), this.getZ() - player.getZ());
 			player.addVelocity(0.0, 0.4, 0.0);

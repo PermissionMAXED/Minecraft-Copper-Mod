@@ -109,11 +109,14 @@ public class CinderReaperEntity extends SkeletonEntity {
 		if (phaseTwo) {
 			applyPhaseTwoSpeed();
 		}
+		// Idle gates: no combat target means no blink and no aura - an unprovoked boss
+		// must not wither bystanders or pop teleport sounds/particles on a timer (the
+		// strike also re-checks its target internally before blinking).
 		int interval = phaseTwo ? STRIKE_INTERVAL_PHASE_TWO_TICKS : STRIKE_INTERVAL_TICKS;
-		if (this.age % interval == 0) {
+		if (this.getTarget() != null && this.age % interval == 0) {
 			teleportScytheStrike(world, phaseTwo);
 		}
-		if (this.age % AURA_INTERVAL_TICKS == 0) {
+		if (this.getTarget() != null && this.age % AURA_INTERVAL_TICKS == 0) {
 			witherAura(world);
 		}
 		if (this.getHealth() < this.getMaxHealth() * 0.25f) {

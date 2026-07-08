@@ -84,7 +84,9 @@ public class EmberMatriarchEntity extends BlazeEntity {
 			enterPhaseTwo(world);
 		}
 		int interval = this.phaseTwo ? VOLLEY_INTERVAL_PHASE_TWO_TICKS : VOLLEY_INTERVAL_TICKS;
-		if (this.age % interval == 0) {
+		// Idle gate: no combat target means no tornado - an unprovoked boss must not
+		// hose fireballs into the terrain (block fires!) or spam the blaze-shoot scream.
+		if (this.getTarget() != null && this.age % interval == 0) {
 			fireTornadoVolley(world);
 		}
 		if (this.age % 20 == 0) {

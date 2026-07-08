@@ -91,7 +91,9 @@ public class ThunderConductorEntity extends BlazeEntity {
 		if (target != null && this.canSee(target) && this.age % interval == 0) {
 			callLightningOnTarget(world, target);
 		}
-		if (this.age % AURA_INTERVAL_TICKS == 0) {
+		// Idle gate: no combat target means no aura - an unprovoked boss must not shock
+		// bystanders or drop (even cosmetic) lightning bolts on creepers on a timer.
+		if (target != null && this.age % AURA_INTERVAL_TICKS == 0) {
 			pulseChargedAura(world);
 		}
 	}

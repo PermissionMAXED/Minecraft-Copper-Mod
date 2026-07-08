@@ -107,7 +107,10 @@ public class VoidstoneBehemothEntity extends IronGolemEntity {
 			applyHorizonModifiers();
 		}
 		int wellInterval = this.phaseTwo ? WELL_INTERVAL_TICKS / 2 : WELL_INTERVAL_TICKS;
-		if (this.age % wellInterval == 0) {
+		// Idle gate: no combat target means no collapse - an unprovoked boss must not
+		// yank bystanders or boom the warden sonic dread on a timer. The follow-up slam
+		// only ever arms here, so gating the well gates the whole combo.
+		if (this.getTarget() != null && this.age % wellInterval == 0) {
 			gravityWell(world);
 			this.pendingSlamTicks = SLAM_DELAY_TICKS;
 		}

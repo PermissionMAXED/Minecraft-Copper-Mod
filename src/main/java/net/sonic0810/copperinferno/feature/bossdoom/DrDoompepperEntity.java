@@ -90,10 +90,12 @@ public class DrDoompepperEntity extends RavagerEntity {
 			applyEnrageModifiers();
 		}
 		int kickInterval = this.phaseTwo ? KICK_INTERVAL_TICKS / 2 : KICK_INTERVAL_TICKS;
-		if (this.age % kickInterval == 0) {
+		// Idle gate: no combat target means no kick - an unprovoked boss must not blast
+		// the streamed ModSounds.DOOM_KICK beat across the landscape every 7 seconds.
+		if (this.getTarget() != null && this.age % kickInterval == 0) {
 			doomKickShockwave(world);
 		}
-		if (this.age % GEYSER_INTERVAL_TICKS == 0) {
+		if (this.getTarget() != null && this.age % GEYSER_INTERVAL_TICKS == 0) {
 			sodaGeyser(world);
 		}
 	}

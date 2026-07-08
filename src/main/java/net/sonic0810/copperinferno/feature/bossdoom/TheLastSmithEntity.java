@@ -91,7 +91,9 @@ public class TheLastSmithEntity extends EvokerEntity {
 		if (this.phase > 0) {
 			applyTemperModifiers();
 		}
-		if (this.age % FORGE_INTERVAL_TICKS == 0) {
+		// Idle gate: no combat target means no forging - an unprovoked boss must not
+		// clang the anvil on a timer (the copy also requires a player target internally).
+		if (this.getTarget() != null && this.age % FORGE_INTERVAL_TICKS == 0) {
 			forgeWeaponCopy(world);
 		}
 	}

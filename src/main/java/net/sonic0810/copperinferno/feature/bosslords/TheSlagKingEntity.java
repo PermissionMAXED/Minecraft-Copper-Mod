@@ -97,7 +97,9 @@ public class TheSlagKingEntity extends IronGolemEntity {
 			enterPhaseTwo(world);
 		}
 		int interval = this.phaseTwo ? SLAM_INTERVAL_PHASE_TWO_TICKS : SLAM_INTERVAL_TICKS;
-		if (this.age % interval == 0) {
+		// Idle gate: no combat target means no slam - an unprovoked boss must not spray
+		// lava particles or clang golem-attack/anvil sounds across the land on a timer.
+		if (this.getTarget() != null && this.age % interval == 0) {
 			fissureSlam(world);
 		}
 		if (this.getHealth() < this.getMaxHealth() * 0.25f) {

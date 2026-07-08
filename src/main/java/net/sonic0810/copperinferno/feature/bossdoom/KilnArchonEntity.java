@@ -93,7 +93,9 @@ public class KilnArchonEntity extends BlazeEntity {
 			applyWhiteHotSpeed();
 		}
 		int beamInterval = this.phaseTwo ? BEAM_INTERVAL_TICKS / 2 : BEAM_INTERVAL_TICKS;
-		if (this.age % beamInterval == 0) {
+		// Idle gate: no combat target means no beam (the beam also re-checks
+		// target/line-of-sight/range internally before burning anything).
+		if (this.getTarget() != null && this.age % beamInterval == 0) {
 			furnaceBeam(world);
 		}
 		if (this.age % SHIELD_INTERVAL_TICKS == 0) {

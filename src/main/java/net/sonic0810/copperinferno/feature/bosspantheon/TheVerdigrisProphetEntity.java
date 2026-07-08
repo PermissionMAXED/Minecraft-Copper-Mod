@@ -84,10 +84,12 @@ public class TheVerdigrisProphetEntity extends EvokerEntity {
 		}
 		// Phase 2 halves both ability intervals ("the sermon quickens").
 		int cadence = this.phaseTwo ? 2 : 1;
-		if (this.age % (CURSE_INTERVAL_TICKS / cadence) == 0) {
+		LivingEntity target = this.getTarget();
+		// Idle gate: no combat target means no curse - an unprovoked boss must not shriek
+		// the prepare-summon peal (or debuff bystanders) on a timer.
+		if (target != null && this.age % (CURSE_INTERVAL_TICKS / cadence) == 0) {
 			castOxidationCurse(world);
 		}
-		LivingEntity target = this.getTarget();
 		if (target != null && this.age % (FANG_RING_INTERVAL_TICKS / cadence) == 0) {
 			conjureFangRing(world, target);
 		}

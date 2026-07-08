@@ -1,6 +1,7 @@
 package net.sonic0810.copperinferno.feature.bosslords;
 
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.ActiveTargetGoal;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -10,6 +11,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.SmallFireballEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -19,6 +21,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.sonic0810.copperinferno.CopperInferno;
 import net.sonic0810.copperinferno.core.boss.BossBarHolder;
@@ -31,6 +34,8 @@ import net.sonic0810.copperinferno.core.boss.BossBarHolder;
  * <li>Timed blinding ash storm - every 160 ticks (110 in phase 2) every player it can see
  * within 10 blocks is blinded and slowed (white-ash + smoke shroud, elder-guardian-curse
  * sound).</li>
+ * <li>Cinder-shard volley (same cadence): 4-6 still-glowing cinders (small fireballs) are
+ * flung out of the storm straight at its target.</li>
  * <li>Phase 2 below 50% health: the storm additionally saps strength (Weakness) and the
  * colossus takes a defensive stance, re-hardening itself with Resistance on every
  * storm.</li>
@@ -91,8 +96,12 @@ public class AshColossusEntity extends IronGolemEntity {
 		// no persisted flag is needed - the colossus's phase survives reloads for free).
 		boolean phaseTwo = this.getHealth() < this.getMaxHealth() * 0.5f;
 		int interval = phaseTwo ? STORM_INTERVAL_PHASE_TWO_TICKS : STORM_INTERVAL_TICKS;
-		if (this.age % interval == 0) {
+		// Idle gate: no combat target means no storm and no cinders - an unprovoked boss
+		// must not spam the elder-guardian curse peal or fling fireballs on a timer.
+		LivingEntity target = this.getTarget();
+		if (target != null && this.age % interval == 0) {
 			ashStorm(world, phaseTwo);
+			cinderShardVolley(world, target);
 		}
 		if (this.getHealth() < this.getMaxHealth() * 0.25f) {
 			enrage();
@@ -125,6 +134,40 @@ public class AshColossusEntity extends IronGolemEntity {
 				this.getX(), this.getBodyY(0.3), this.getZ(), 20, 3.0, 1.0, 3.0, 0.02);
 		world.playSound(null, this.getBlockPos(), SoundEvents.ENTITY_ELDER_GUARDIAN_CURSE,
 				SoundCategory.HOSTILE, 1.5f, 1.2f);
+	}
+
+	/**
+	 * Cinder-shard volley, the colossus's offensive special (same cadence as the storm,
+	 * target-gated): 4-6 still-glowing cinders are flung out of the ash cloud straight at
+	 * the target, each with a slight scatter. Projectile construction copied from
+	 * EmberMatriarchEntity.fireTornadoVolley: SmallFireballEntity(World, LivingEntity,
+	 * Vec3d) takes a normalized direction, like the vanilla blaze/ghast shots.
+	 */
+	private void cinderShardVolley(ServerWorld world, LivingEntity target) {
+		Vec3d origin = new Vec3d(this.getX(), this.getBodyY(0.6), this.getZ());
+		int count = 4 + this.random.nextInt(3);
+		for (int i = 0; i < count; i++) {
+			Vec3d scatter = new Vec3d(
+					(this.random.nextDouble() - 0.5) * 0.25,
+					(this.random.nextDouble() - 0.5) * 0.12,
+					(this.random.nextDouble() - 0.5) * 0.25);
+			Vec3d direction = new Vec3d(
+					target.getX() - origin.getX(),
+					target.getBodyY(0.5) - origin.getY(),
+					target.getZ() - origin.getZ())
+					.normalize()
+					.add(scatter)
+					.normalize();
+			SmallFireballEntity shard = new SmallFireballEntity(world, this, direction);
+			shard.setPosition(origin.getX() + direction.getX() * 1.5, origin.getY(),
+					origin.getZ() + direction.getZ() * 1.5);
+			world.spawnEntity(shard);
+		}
+		// Embers glint inside the colossus's own white-ash shroud as the shards leave.
+		world.spawnParticles(ParticleTypes.WHITE_ASH,
+				origin.getX(), origin.getY(), origin.getZ(), 30, 1.2, 1.0, 1.2, 0.05);
+		world.playSound(null, this.getBlockPos(), SoundEvents.ENTITY_BLAZE_SHOOT,
+				SoundCategory.HOSTILE, 1.5f, 0.6f);
 	}
 
 	/**
