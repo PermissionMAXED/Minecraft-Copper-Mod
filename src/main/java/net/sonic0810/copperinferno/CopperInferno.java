@@ -24,6 +24,7 @@ import net.sonic0810.copperinferno.feature.inferno.InfernoFeature;
 import net.sonic0810.copperinferno.feature.infernoboss.InfernoBossFeature;
 import net.sonic0810.copperinferno.feature.infernocuisine.InfernoCuisineFeature;
 import net.sonic0810.copperinferno.feature.infernodim.InfernoDimensionFeature;
+import net.sonic0810.copperinferno.feature.infernodim2.InfernoDim2Feature;
 import net.sonic0810.copperinferno.feature.infernoflora.InfernoFloraFeature;
 import net.sonic0810.copperinferno.feature.infernofoods.InfernoFoodsFeature;
 import net.sonic0810.copperinferno.feature.infernofx.InfernoFxFeature;
@@ -120,6 +121,10 @@ public class CopperInferno implements ModInitializer {
 		ArchfiendsFeature.init();
 		InfernoGeologyFeature.init();
 		InfernoGardensFeature.init();
+		// v6: Inferno dimension expansion (4 new biomes + portal-frame corner block); must
+		// stay after InfernoDimensionFeature/InfernoFloraFeature (its worldgen JSON targets
+		// their terrain/flora blocks) and before HandbookFeature.
+		InfernoDim2Feature.init();
 		HandbookFeature.init();
 	}
 }

@@ -1,0 +1,120 @@
+{
+  "carvers": "minecraft:nether_cave",
+  "downfall": 0.0,
+  "effects": {
+    "additions_sound": {
+      "sound": "minecraft:ambient.soul_sand_valley.additions",
+      "tick_chance": 0.0111
+    },
+    "ambient_sound": "minecraft:ambient.soul_sand_valley.loop",
+    "fog_color": 2367261,
+    "foliage_color": 9867144,
+    "grass_color": 11643812,
+    "mood_sound": {
+      "block_search_extent": 8,
+      "offset": 2.0,
+      "sound": "minecraft:ambient.soul_sand_valley.mood",
+      "tick_delay": 6000
+    },
+    "music": [
+      {
+        "data": {
+          "max_delay": 24000,
+          "min_delay": 12000,
+          "replace_current_music": false,
+          "sound": "minecraft:music.nether.soul_sand_valley"
+        },
+        "weight": 1
+      }
+    ],
+    "music_volume": 1.0,
+    "particle": {
+      "options": {
+        "type": "minecraft:ash"
+      },
+      "probability": 0.00625
+    },
+    "sky_color": 9076856,
+    "water_color": 6117973,
+    "water_fog_color": 1380879
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "copper_inferno:spring_open",
+      "copper_inferno:ceiling_glow_spores",
+      "copper_inferno:wall_fungal_lights",
+      "copper_inferno:disk_scorched_sand",
+      "copper_inferno:spring_closed",
+      "copper_inferno:infernium_ore",
+      "copper_inferno:smolder_crystal_ore",
+      "copper_inferno:molten_slag"
+    ],
+    [],
+    [
+      "copper_inferno:patch_ashen_vegetation"
+    ]
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {
+    "minecraft:enderman": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:ghast": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:skeleton": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    },
+    "minecraft:strider": {
+      "charge": 0.7,
+      "energy_budget": 0.15
+    }
+  },
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [
+      {
+        "maxCount": 2,
+        "minCount": 1,
+        "type": "minecraft:strider",
+        "weight": 60
+      }
+    ],
+    "misc": [],
+    "monster": [
+      {
+        "maxCount": 5,
+        "minCount": 5,
+        "type": "minecraft:skeleton",
+        "weight": 20
+      },
+      {
+        "maxCount": 4,
+        "minCount": 4,
+        "type": "minecraft:ghast",
+        "weight": 50
+      },
+      {
+        "maxCount": 4,
+        "minCount": 4,
+        "type": "minecraft:enderman",
+        "weight": 1
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 2.0
+}

@@ -165,7 +165,8 @@
       {
         "if_true": {
           "biome_is": [
-            "copper_inferno:slag_sea"
+            "copper_inferno:slag_sea",
+            "copper_inferno:molten_delta"
           ],
           "type": "minecraft:biome"
         },
@@ -271,7 +272,8 @@
       {
         "if_true": {
           "biome_is": [
-            "copper_inferno:cinder_wastes"
+            "copper_inferno:cinder_wastes",
+            "copper_inferno:soot_dunes"
           ],
           "type": "minecraft:biome"
         },
@@ -436,7 +438,8 @@
             {
               "if_true": {
                 "biome_is": [
-                  "copper_inferno:ember_grove"
+                  "copper_inferno:ember_grove",
+                  "copper_inferno:verdigris_jungle"
                 ],
                 "type": "minecraft:biome"
               },
@@ -499,7 +502,8 @@
       {
         "if_true": {
           "biome_is": [
-            "copper_inferno:cinder_wastes"
+            "copper_inferno:cinder_wastes",
+            "copper_inferno:soot_dunes"
           ],
           "type": "minecraft:biome"
         },

@@ -1,0 +1,99 @@
+{
+  "carvers": "minecraft:nether_cave",
+  "downfall": 0.0,
+  "effects": {
+    "additions_sound": {
+      "sound": "minecraft:ambient.basalt_deltas.additions",
+      "tick_chance": 0.0111
+    },
+    "ambient_sound": "minecraft:ambient.basalt_deltas.loop",
+    "fog_color": 5379589,
+    "foliage_color": 14833698,
+    "grass_color": 12671547,
+    "mood_sound": {
+      "block_search_extent": 8,
+      "offset": 2.0,
+      "sound": "minecraft:ambient.basalt_deltas.mood",
+      "tick_delay": 6000
+    },
+    "music": [
+      {
+        "data": {
+          "max_delay": 24000,
+          "min_delay": 12000,
+          "replace_current_music": false,
+          "sound": "minecraft:music.nether.basalt_deltas"
+        },
+        "weight": 1
+      }
+    ],
+    "music_volume": 1.0,
+    "particle": {
+      "options": {
+        "type": "minecraft:lava"
+      },
+      "probability": 0.0075
+    },
+    "sky_color": 16747068,
+    "water_color": 13200435,
+    "water_fog_color": 3019271
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "copper_inferno:slagstone_blobs",
+      "copper_inferno:cobbled_cinderstone_blobs",
+      "copper_inferno:spring_delta",
+      "copper_inferno:patch_fire",
+      "copper_inferno:ceiling_glow_spores",
+      "copper_inferno:wall_fungal_lights",
+      "copper_inferno:spring_closed_double",
+      "copper_inferno:infernium_ore",
+      "copper_inferno:smolder_crystal_ore",
+      "copper_inferno:molten_slag"
+    ],
+    [],
+    [
+      "copper_inferno:spring_lava"
+    ]
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [
+      {
+        "maxCount": 2,
+        "minCount": 1,
+        "type": "minecraft:strider",
+        "weight": 60
+      }
+    ],
+    "misc": [],
+    "monster": [
+      {
+        "maxCount": 1,
+        "minCount": 1,
+        "type": "minecraft:ghast",
+        "weight": 40
+      },
+      {
+        "maxCount": 5,
+        "minCount": 2,
+        "type": "minecraft:magma_cube",
+        "weight": 100
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 2.0
+}

@@ -1,0 +1,27 @@
+{
+  "feature": "copper_inferno:smolder_crystal_ore",
+  "placement": [
+    {
+      "count": 12,
+      "type": "minecraft:count"
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "height": {
+        "max_inclusive": {
+          "absolute": 90
+        },
+        "min_inclusive": {
+          "absolute": 10
+        },
+        "type": "minecraft:uniform"
+      },
+      "type": "minecraft:height_range"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "carvers": "minecraft:nether_cave",
+  "downfall": 0.0,
+  "effects": {
+    "additions_sound": {
+      "sound": "minecraft:ambient.nether_wastes.additions",
+      "tick_chance": 0.0111
+    },
+    "ambient_sound": "minecraft:ambient.nether_wastes.loop",
+    "fog_color": 1981754,
+    "foliage_color": 10148808,
+    "grass_color": 8374192,
+    "mood_sound": {
+      "block_search_extent": 8,
+      "offset": 2.0,
+      "sound": "minecraft:ambient.nether_wastes.mood",
+      "tick_delay": 6000
+    },
+    "music": [
+      {
+        "data": {
+          "max_delay": 24000,
+          "min_delay": 12000,
+          "replace_current_music": false,
+          "sound": "minecraft:music.nether.nether_wastes"
+        },
+        "weight": 1
+      }
+    ],
+    "music_volume": 1.0,
+    "particle": {
+      "options": {
+        "type": "minecraft:end_rod"
+      },
+      "probability": 0.008
+    },
+    "sky_color": 10868928,
+    "water_color": 6539188,
+    "water_fog_color": 994345
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "copper_inferno:ceiling_glow_spores",
+      "copper_inferno:wall_fungal_lights",
+      "copper_inferno:spring_closed",
+      "copper_inferno:infernium_ore",
+      "copper_inferno:smolder_crystal_ore",
+      "copper_inferno:smolder_crystal_extra",
+      "copper_inferno:molten_slag"
+    ],
+    [],
+    [
+      "copper_inferno:patch_ashen_grass"
+    ]
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [
+      {
+        "maxCount": 2,
+        "minCount": 1,
+        "type": "minecraft:strider",
+        "weight": 60
+      }
+    ],
+    "misc": [],
+    "monster": [
+      {
+        "maxCount": 2,
+        "minCount": 1,
+        "type": "minecraft:enderman",
+        "weight": 6
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 2.0
+}

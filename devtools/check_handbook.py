@@ -29,7 +29,9 @@ FEATURE_PKGS = ["infernodim", "cinderstone", "infernoflora", "copperdeco", "infe
                 # infernogeology/infernogardens have no recipe dirs — the recipe scan
                 # skips missing dirs, but their handbook entries still get item-checked)
                 "ashhorde", "emberswarm", "moltenfauna", "slagfiends",
-                "calamities", "archfiends", "infernogeology", "infernogardens"]
+                "calamities", "archfiends", "infernogeology", "infernogardens",
+                # v6: Inferno dimension expansion
+                "infernodim2"]
 JAVA_ROOTS = [
     os.path.join(ROOT, "src/main/java/net/sonic0810/copperinferno/feature"),
     os.path.join(ROOT, "src/client/java/net/sonic0810/copperinferno/feature"),
