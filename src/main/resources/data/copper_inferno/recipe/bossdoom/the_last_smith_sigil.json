@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "A": "minecraft:anvil",
+    "H": "minecraft:iron_ingot",
+    "I": "copper_inferno:infernium_ingot"
+  },
+  "pattern": [
+    "IHI",
+    "HAH",
+    "IHI"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:the_last_smith_sigil"
+  },
+  "type": "minecraft:crafting_shaped"
+}

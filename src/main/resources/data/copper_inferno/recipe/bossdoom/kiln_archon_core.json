@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "B": "minecraft:blaze_rod",
+    "C": "minecraft:copper_ingot",
+    "P": "copper_inferno:inferno_powder"
+  },
+  "pattern": [
+    "BCB",
+    "CPC",
+    "BCB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:kiln_archon_core"
+  },
+  "type": "minecraft:crafting_shaped"
+}

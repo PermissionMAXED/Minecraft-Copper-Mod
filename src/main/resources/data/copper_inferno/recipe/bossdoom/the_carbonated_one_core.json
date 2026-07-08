@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "D": "copper_inferno:dr_pepper",
+    "G": "minecraft:slime_ball",
+    "S": "minecraft:sugar"
+  },
+  "pattern": [
+    "SGS",
+    "GDG",
+    "SGS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:the_carbonated_one_core"
+  },
+  "type": "minecraft:crafting_shaped"
+}
