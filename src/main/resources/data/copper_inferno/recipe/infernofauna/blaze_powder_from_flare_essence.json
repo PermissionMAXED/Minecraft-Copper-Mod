@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:flare_essence"
+  ],
+  "result": {
+    "count": 2,
+    "id": "minecraft:blaze_powder"
+  },
+  "type": "minecraft:crafting_shapeless"
+}
