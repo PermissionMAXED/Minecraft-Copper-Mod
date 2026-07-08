@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:patina_membrane",
+    "copper_inferno:patina_membrane"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:phantom_membrane"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

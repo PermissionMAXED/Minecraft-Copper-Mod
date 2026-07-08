@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:lode_hide",
+    "copper_inferno:lode_hide"
+  ],
+  "result": {
+    "count": 3,
+    "id": "minecraft:leather"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

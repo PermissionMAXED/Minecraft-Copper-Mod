@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:spark_tuft",
+    "copper_inferno:spark_tuft"
+  ],
+  "result": {
+    "count": 3,
+    "id": "minecraft:string"
+  },
+  "type": "minecraft:crafting_shapeless"
+}
