@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "copper_inferno:block/fumarolite",
+    "side": "copper_inferno:block/fumarolite",
+    "top": "copper_inferno:block/fumarolite"
+  }
+}

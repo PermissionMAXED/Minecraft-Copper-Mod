@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/ashflint_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/ashflint"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/ashflint_slab_top"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "copper_inferno:block/voidstone_tiles",
+    "side": "copper_inferno:block/voidstone_tiles",
+    "top": "copper_inferno:block/voidstone_tiles"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:vitricite",
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:vitricite_slab"
+  },
+  "type": "minecraft:stonecutting"
+}

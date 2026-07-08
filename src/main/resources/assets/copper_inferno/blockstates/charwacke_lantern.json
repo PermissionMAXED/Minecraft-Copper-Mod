@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "copper_inferno:block/charwacke_lantern"
+    },
+    "hanging=true": {
+      "model": "copper_inferno:block/charwacke_lantern_hanging"
+    }
+  }
+}

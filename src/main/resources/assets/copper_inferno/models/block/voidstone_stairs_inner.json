@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "copper_inferno:block/voidstone",
+    "side": "copper_inferno:block/voidstone",
+    "top": "copper_inferno:block/voidstone"
+  }
+}

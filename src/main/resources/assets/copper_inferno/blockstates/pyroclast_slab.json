@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/pyroclast_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/pyroclast"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/pyroclast_slab_top"
+    }
+  }
+}

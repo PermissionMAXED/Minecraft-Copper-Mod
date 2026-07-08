@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:ashflint",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ashflint_tile_wall"
+  },
+  "type": "minecraft:stonecutting"
+}

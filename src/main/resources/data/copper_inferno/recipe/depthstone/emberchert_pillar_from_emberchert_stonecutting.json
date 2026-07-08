@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:emberchert",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:emberchert_pillar"
+  },
+  "type": "minecraft:stonecutting"
+}
