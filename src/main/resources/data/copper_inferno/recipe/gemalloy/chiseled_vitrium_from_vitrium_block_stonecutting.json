@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:vitrium_block",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:chiseled_vitrium"
+  },
+  "type": "minecraft:stonecutting"
+}

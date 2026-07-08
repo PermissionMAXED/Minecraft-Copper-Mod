@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "group": "kilnite_ingot",
+  "ingredient": "copper_inferno:raw_kilnite",
+  "result": {
+    "id": "copper_inferno:kilnite_ingot"
+  },
+  "type": "minecraft:blasting"
+}

@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "group": "doomium_ingot",
+  "key": {
+    "#": "copper_inferno:doomium_nugget"
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:doomium_ingot"
+  },
+  "type": "minecraft:crafting_shaped"
+}

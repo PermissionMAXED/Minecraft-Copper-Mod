@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:smokequartz_block",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:smokequartz_brick_wall"
+  },
+  "type": "minecraft:stonecutting"
+}

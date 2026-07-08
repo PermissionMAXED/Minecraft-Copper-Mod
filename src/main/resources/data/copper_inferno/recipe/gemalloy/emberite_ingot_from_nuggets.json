@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "group": "emberite_ingot",
+  "key": {
+    "#": "copper_inferno:emberite_nugget"
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:emberite_ingot"
+  },
+  "type": "minecraft:crafting_shaped"
+}

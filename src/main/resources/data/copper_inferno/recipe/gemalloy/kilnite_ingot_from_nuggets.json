@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "group": "kilnite_ingot",
+  "key": {
+    "#": "copper_inferno:kilnite_nugget"
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:kilnite_ingot"
+  },
+  "type": "minecraft:crafting_shaped"
+}

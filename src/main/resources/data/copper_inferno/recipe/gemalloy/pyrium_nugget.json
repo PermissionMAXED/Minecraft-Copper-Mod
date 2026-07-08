@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:pyrium_ingot"
+  ],
+  "result": {
+    "count": 9,
+    "id": "copper_inferno:pyrium_nugget"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:pyrium_block",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:pyrium_brick_wall"
+  },
+  "type": "minecraft:stonecutting"
+}

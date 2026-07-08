@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "group": "vitrium_ingot",
+  "key": {
+    "#": "copper_inferno:vitrium_nugget"
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:vitrium_ingot"
+  },
+  "type": "minecraft:crafting_shaped"
+}

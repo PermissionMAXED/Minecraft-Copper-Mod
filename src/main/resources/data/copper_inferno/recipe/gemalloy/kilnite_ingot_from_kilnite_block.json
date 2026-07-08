@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "group": "kilnite_ingot",
+  "ingredients": [
+    "copper_inferno:kilnite_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "copper_inferno:kilnite_ingot"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

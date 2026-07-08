@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/vitrium_tile_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/vitrium_tiles"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/vitrium_tile_slab_top"
+    }
+  }
+}
