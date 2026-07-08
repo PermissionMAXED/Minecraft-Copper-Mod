@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "M": "minecraft:magma_block",
+    "R": "copper_inferno:royal_slag"
+  },
+  "pattern": [
+    "MIM",
+    "IRI",
+    "MIM"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:slag_king_core"
+  },
+  "type": "minecraft:crafting_shaped"
+}

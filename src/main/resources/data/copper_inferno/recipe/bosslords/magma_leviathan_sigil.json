@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "C": "minecraft:magma_cream",
+    "O": "minecraft:obsidian",
+    "S": "copper_inferno:leviathan_scale"
+  },
+  "pattern": [
+    "OCO",
+    "CSC",
+    "OCO"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:magma_leviathan_sigil"
+  },
+  "type": "minecraft:crafting_shaped"
+}

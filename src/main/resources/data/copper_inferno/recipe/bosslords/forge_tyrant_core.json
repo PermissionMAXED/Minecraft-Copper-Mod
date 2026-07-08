@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "C": "minecraft:coal",
+    "F": "copper_inferno:forge_scrap",
+    "I": "minecraft:iron_block"
+  },
+  "pattern": [
+    "ICI",
+    "CFC",
+    "ICI"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:forge_tyrant_core"
+  },
+  "type": "minecraft:crafting_shaped"
+}
