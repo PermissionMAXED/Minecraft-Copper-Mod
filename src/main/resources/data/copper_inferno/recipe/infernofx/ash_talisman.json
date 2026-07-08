@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "A": "copper_inferno:ash_pile",
+    "G": "minecraft:gold_nugget",
+    "T": "minecraft:string"
+  },
+  "pattern": [
+    " T ",
+    "AGA",
+    " A "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ash_talisman"
+  },
+  "type": "minecraft:crafting_shaped"
+}

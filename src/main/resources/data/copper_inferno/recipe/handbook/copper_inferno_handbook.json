@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:book",
+    "minecraft:copper_ingot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:copper_inferno_handbook"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

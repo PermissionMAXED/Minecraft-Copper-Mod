@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:string",
+    "minecraft:string",
+    "copper_inferno:roasted_ember_fungus"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:strider_escargot"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "block/mineable/pickaxe": [
+    "copper_inferno:rose_copper_bricks",
+    "copper_inferno:rose_copper_brick_slab",
+    "copper_inferno:rose_copper_brick_stairs",
+    "copper_inferno:rose_copper_brick_wall",
+    "copper_inferno:burnished_copper",
+    "copper_inferno:burnished_copper_slab",
+    "copper_inferno:burnished_copper_stairs",
+    "copper_inferno:burnished_copper_wall",
+    "copper_inferno:burnished_copper_bricks",
+    "copper_inferno:burnished_copper_brick_slab",
+    "copper_inferno:burnished_copper_brick_stairs",
+    "copper_inferno:burnished_copper_brick_wall",
+    "copper_inferno:copper_panels",
+    "copper_inferno:copper_panel_slab",
+    "copper_inferno:copper_panel_stairs",
+    "copper_inferno:copper_panel_wall",
+    "copper_inferno:gilded_copper_bricks",
+    "copper_inferno:gilded_copper_brick_slab",
+    "copper_inferno:gilded_copper_brick_stairs",
+    "copper_inferno:gilded_copper_brick_wall",
+    "copper_inferno:verdigris_bricks",
+    "copper_inferno:verdigris_brick_slab",
+    "copper_inferno:verdigris_brick_stairs",
+    "copper_inferno:verdigris_brick_wall",
+    "copper_inferno:chiseled_rose_copper_bricks",
+    "copper_inferno:rose_copper_pillar",
+    "copper_inferno:burnished_copper_pillar",
+    "copper_inferno:verdigris_pillar"
+  ],
+  "block/walls": [
+    "copper_inferno:rose_copper_brick_wall",
+    "copper_inferno:burnished_copper_wall",
+    "copper_inferno:burnished_copper_brick_wall",
+    "copper_inferno:copper_panel_wall",
+    "copper_inferno:gilded_copper_brick_wall",
+    "copper_inferno:verdigris_brick_wall"
+  ]
+}

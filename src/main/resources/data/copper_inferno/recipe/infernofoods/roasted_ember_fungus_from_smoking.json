@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 0.35,
+  "ingredient": [
+    "copper_inferno:ember_berries",
+    "copper_inferno:ember_fungus"
+  ],
+  "result": {
+    "id": "copper_inferno:roasted_ember_fungus"
+  }
+}

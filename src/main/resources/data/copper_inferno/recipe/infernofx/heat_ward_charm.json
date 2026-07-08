@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "C": "minecraft:copper_ingot",
+    "M": "minecraft:magma_cream"
+  },
+  "pattern": [
+    " C ",
+    "CMC",
+    " C "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:heat_ward_charm"
+  },
+  "type": "minecraft:crafting_shaped"
+}

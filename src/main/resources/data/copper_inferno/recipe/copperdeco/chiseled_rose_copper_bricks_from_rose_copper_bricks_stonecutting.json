@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:rose_copper_bricks",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:chiseled_rose_copper_bricks"
+  },
+  "type": "minecraft:stonecutting"
+}

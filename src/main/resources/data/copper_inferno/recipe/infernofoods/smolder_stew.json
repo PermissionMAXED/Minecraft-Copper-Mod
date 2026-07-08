@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:roasted_ember_fungus",
+    "copper_inferno:ember_berries",
+    "minecraft:bowl"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:smolder_stew"
+  }
+}

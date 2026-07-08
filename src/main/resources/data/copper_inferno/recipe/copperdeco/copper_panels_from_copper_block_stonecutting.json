@@ -1,0 +1,8 @@
+{
+  "ingredient": "minecraft:copper_block",
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:copper_panels"
+  },
+  "type": "minecraft:stonecutting"
+}

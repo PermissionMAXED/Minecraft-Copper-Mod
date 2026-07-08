@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "C": "minecraft:copper_ingot",
+    "E": "copper_inferno:ember_dust"
+  },
+  "pattern": [
+    " C ",
+    "CEC",
+    " C "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:cinder_compass"
+  },
+  "type": "minecraft:crafting_shaped"
+}
