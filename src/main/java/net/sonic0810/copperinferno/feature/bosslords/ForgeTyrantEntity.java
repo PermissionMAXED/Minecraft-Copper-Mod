@@ -88,7 +88,9 @@ public class ForgeTyrantEntity extends RavagerEntity {
 			summonForgeHands(world);
 		}
 		int interval = this.phaseTwo ? QUAKE_INTERVAL_PHASE_TWO_TICKS : QUAKE_INTERVAL_TICKS;
-		if (this.age % interval == 0) {
+		// Idle gate: no combat target means no quake - an unprovoked boss must not clang
+		// the anvil-land peal (or crush bystanders) on a timer.
+		if (this.getTarget() != null && this.age % interval == 0) {
 			anvilQuake(world);
 		}
 		if (this.getHealth() < this.getMaxHealth() * 0.25f) {

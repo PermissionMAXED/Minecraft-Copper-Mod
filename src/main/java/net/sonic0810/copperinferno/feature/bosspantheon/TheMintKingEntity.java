@@ -1,6 +1,8 @@
 package net.sonic0810.copperinferno.feature.bosspantheon;
 
+import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.boss.BossBar;
@@ -16,6 +18,8 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.storage.ReadView;
 import net.minecraft.storage.WriteView;
 import net.minecraft.text.Text;
+import net.minecraft.world.LocalDifficulty;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import net.sonic0810.copperinferno.core.boss.BossBarHolder;
 
@@ -33,6 +37,15 @@ import net.sonic0810.copperinferno.core.boss.BossBarHolder;
  * vanilla split is suppressed by shrinking to size 1 right before removal. Drops Royal
  * Jellies, Mint Crystals and the Mint Crown
  * ({@code loot_table/entities/the_mint_king.json}).
+ *
+ * <p>Loot at the royal size: in 1.21.9 the vanilla "only the smallest slime drops loot"
+ * gate is DATA-driven, not code-driven - it is a {@code type_specific} slime
+ * {@code size: 1} condition inside minecraft's own {@code loot_table/entities/slime.json}
+ * (jar-verified), and {@code MobEntity.getLootTableKey()} is {@code public final}
+ * (javap-verified), falling back to the EntityType default
+ * {@code copper_inferno:entities/the_mint_king}. The king's own table carries no size
+ * condition, so it fires at size 6 too - PROVIDED the king actually dies at the royal
+ * size, which the {@link #initialize} override below guarantees for every spawn path.
  */
 public class TheMintKingEntity extends SlimeEntity {
 	public static final int BOSS_SIZE = 6;
@@ -85,6 +98,23 @@ public class TheMintKingEntity extends SlimeEntity {
 		}
 	}
 
+	/**
+	 * BUG FIX: {@code SlimeEntity.initialize} re-rolls the size to a random vanilla
+	 * 1/2/4 with heal=true (bytecode-verified: {@code setSize(1 << random.nextInt(3),
+	 * true)}), and /summon and the spawn egg DO run initialize(). That left a freshly
+	 * summoned king at slime stats (e.g. 16 HP at size 4) - it promptly died to chip
+	 * damage and, dying below the royal size, never behaved (or dropped) like the boss.
+	 * Re-asserting the royal size AFTER the vanilla roll keeps every spawn path at size 6
+	 * / 500 HP, which is also the size his unconditioned loot table is balanced for.
+	 */
+	@Override
+	public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty,
+			SpawnReason spawnReason, EntityData entityData) {
+		EntityData data = super.initialize(world, difficulty, spawnReason, entityData);
+		this.setSize(BOSS_SIZE, true);
+		return data;
+	}
+
 	/** Phase 2: the king hops noticeably faster (vanilla waits 10-30 ticks + jump delay). */
 	@Override
 	protected int getTicksUntilNextJump() {
@@ -112,7 +142,9 @@ public class TheMintKingEntity extends SlimeEntity {
 			this.phaseTwo = true;
 			summonHonorGuard(world);
 		}
-		if (this.age % BURST_INTERVAL_TICKS == 0) {
+		// Idle gate: no combat target means no burst - an unprovoked boss must not spam
+		// the royal squish (or freeze bystanders' brains) on a timer.
+		if (this.getTarget() != null && this.age % BURST_INTERVAL_TICKS == 0) {
 			mintBurst(world);
 		}
 	}

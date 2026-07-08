@@ -78,7 +78,9 @@ public class MagmaLeviathanEntity extends GhastEntity {
 			maintainArmor(world);
 		}
 		int interval = this.armorPhase ? MORTAR_INTERVAL_PHASE_TWO_TICKS : MORTAR_INTERVAL_TICKS;
-		if (this.age % interval == 0) {
+		// Idle gate: no combat target means no mortar (the volley also re-checks target
+		// liveness internally before hurling explosive fireballs into the landscape).
+		if (this.getTarget() != null && this.age % interval == 0) {
 			lavaBombMortar(world);
 		}
 	}

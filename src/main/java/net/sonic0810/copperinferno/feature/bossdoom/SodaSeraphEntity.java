@@ -11,6 +11,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.PhantomEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.WindChargeEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -20,6 +21,7 @@ import net.minecraft.storage.ReadView;
 import net.minecraft.storage.WriteView;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.sonic0810.copperinferno.CopperInferno;
 import net.sonic0810.copperinferno.core.boss.BossBarHolder;
@@ -33,6 +35,8 @@ import net.sonic0810.copperinferno.core.boss.BossBarHolder;
  * phantom circling/swoop AI supplies the dives.</li>
  * <li>Sugar storm (timed special): every 120 ticks (60 when crashing) every player within
  * 10 blocks it can see is sprayed with Hunger + Slowness under end-rod glitter.</li>
+ * <li>Fizz pop (timed special, same cadence): one carbonated wind charge is spat straight
+ * at its target while nearby players are damaged and burped upward in a firework spray.</li>
  * <li>Phase 2 "sugar crash" at 50% health (persisted): permanent bonus speed, a one-shot
  * Regeneration gulp and the sugar storm tempo doubles.</li>
  * </ul>
@@ -46,6 +50,8 @@ public class SodaSeraphEntity extends PhantomEntity {
 	private static final int STORM_INTERVAL_TICKS = 120;
 	private static final double STORM_RANGE = 10.0;
 	private static final int DEBUFF_TICKS = 100;
+	private static final double FIZZ_KNOCKUP_RANGE = 4.0;
+	private static final float FIZZ_DAMAGE = 6.0f;
 
 	private final BossBarHolder bossBar = new BossBarHolder(
 			Text.translatable("entity.copper_inferno.soda_seraph"),
@@ -99,8 +105,12 @@ public class SodaSeraphEntity extends PhantomEntity {
 			applyCrashSpeed();
 		}
 		int stormInterval = this.phaseTwo ? STORM_INTERVAL_TICKS / 2 : STORM_INTERVAL_TICKS;
-		if (this.age % stormInterval == 0) {
+		// Idle gate: no combat target means no storm - an unprovoked boss must not spam
+		// the elder-guardian curse peal (or debuff bystanders) on a timer.
+		LivingEntity target = this.getTarget();
+		if (target != null && this.age % stormInterval == 0) {
 			sugarStorm(world);
+			fizzPop(world, target);
 		}
 	}
 
@@ -120,6 +130,38 @@ public class SodaSeraphEntity extends PhantomEntity {
 				this.getX(), this.getBodyY(0.5), this.getZ(), 40, 2.0, 1.0, 2.0, 0.05);
 		world.playSound(null, this.getBlockPos(), SoundEvents.ENTITY_ELDER_GUARDIAN_CURSE,
 				SoundCategory.HOSTILE, 0.8f, 1.6f);
+	}
+
+	/**
+	 * Fizz pop, the seraph's offensive special (same cadence as the storm, target-gated):
+	 * one carbonated wind charge is spat straight at the target
+	 * (WindChargeEntity(World, double, double, double, Vec3d) positions the charge and
+	 * feeds the direction to setVelocityWithAcceleration; setOwner(Entity) is public -
+	 * both javap-verified), while every survival/adventure player within 4 blocks takes 6
+	 * damage and is burped upward, under the class's firework spray and a swoop shriek.
+	 */
+	private void fizzPop(ServerWorld world, LivingEntity target) {
+		Vec3d origin = new Vec3d(this.getX(), this.getBodyY(0.5), this.getZ());
+		Vec3d direction = new Vec3d(
+				target.getX() - origin.getX(),
+				target.getBodyY(0.5) - origin.getY(),
+				target.getZ() - origin.getZ()).normalize();
+		WindChargeEntity fizz = new WindChargeEntity(world,
+				origin.getX(), origin.getY(), origin.getZ(), direction);
+		fizz.setOwner(this);
+		world.spawnEntity(fizz);
+		for (PlayerEntity player : world.getEntitiesByClass(PlayerEntity.class,
+				this.getBoundingBox().expand(FIZZ_KNOCKUP_RANGE),
+				player -> !player.isSpectator() && !player.isCreative())) {
+			player.damage(world, this.getDamageSources().mobAttack(this), FIZZ_DAMAGE);
+			player.addVelocity(0.0, 0.45, 0.0);
+			// addVelocity only mutates the server-side velocity; flag it for sync.
+			player.velocityModified = true;
+		}
+		world.spawnParticles(ParticleTypes.FIREWORK,
+				origin.getX(), origin.getY(), origin.getZ(), 12, 0.4, 0.4, 0.4, 0.08);
+		world.playSound(null, this.getBlockPos(), SoundEvents.ENTITY_PHANTOM_SWOOP,
+				SoundCategory.HOSTILE, 1.2f, 0.7f);
 	}
 
 	/**

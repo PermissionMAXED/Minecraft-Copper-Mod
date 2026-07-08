@@ -107,7 +107,9 @@ public class PatinaWardenEntity extends IronGolemEntity {
 			enrage();
 		}
 		int interval = this.phaseTwo ? SHIELD_INTERVAL_PHASE_TWO_TICKS : SHIELD_INTERVAL_TICKS;
-		if (this.shieldTicks <= 0 && this.age % interval == 0) {
+		// Idle gate: no combat target means no stance - an unprovoked boss must not clang
+		// the golem-repair peal on a timer (the reflection only matters mid-fight anyway).
+		if (this.getTarget() != null && this.shieldTicks <= 0 && this.age % interval == 0) {
 			raiseShield(world);
 		}
 		if (this.shieldTicks > 0) {
