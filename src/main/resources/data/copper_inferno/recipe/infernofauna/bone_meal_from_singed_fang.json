@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:singed_fang"
+  ],
+  "result": {
+    "count": 3,
+    "id": "minecraft:bone_meal"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

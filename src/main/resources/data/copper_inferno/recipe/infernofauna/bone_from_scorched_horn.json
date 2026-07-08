@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:scorched_horn"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:bone"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

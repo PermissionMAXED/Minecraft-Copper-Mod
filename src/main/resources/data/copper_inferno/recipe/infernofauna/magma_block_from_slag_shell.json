@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:slag_shell",
+    "copper_inferno:slag_shell"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:magma_block"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

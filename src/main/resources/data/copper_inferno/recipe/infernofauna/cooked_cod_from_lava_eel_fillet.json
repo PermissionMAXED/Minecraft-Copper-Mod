@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:lava_eel_fillet"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:cooked_cod"
+  },
+  "type": "minecraft:crafting_shapeless"
+}
