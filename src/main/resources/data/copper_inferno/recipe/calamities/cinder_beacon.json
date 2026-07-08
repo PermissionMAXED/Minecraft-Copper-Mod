@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "A": "minecraft:blaze_powder",
+    "B": "copper_inferno:inferno_powder",
+    "C": "minecraft:lantern"
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:cinder_beacon"
+  },
+  "type": "minecraft:crafting_shaped"
+}

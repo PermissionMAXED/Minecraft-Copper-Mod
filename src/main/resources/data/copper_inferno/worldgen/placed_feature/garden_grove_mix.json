@@ -1,0 +1,12 @@
+{
+  "feature": "copper_inferno:garden_grove_mix",
+  "placement": [
+    {
+      "count": 5,
+      "type": "minecraft:count_on_every_layer"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

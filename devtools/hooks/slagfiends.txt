@@ -1,0 +1,18 @@
+# slagfiends feature hooks (format: devtools/hooks/README.md)
+
+[init]
+import net.sonic0810.copperinferno.feature.slagfiends.SlagFiendsFeature;
+		SlagFiendsFeature.init();
+
+[client-init]
+import net.sonic0810.copperinferno.feature.slagfiends.client.SlagFiendsFeatureClient;
+		SlagFiendsFeatureClient.initClient();
+
+[recipe-dir]
+slagfiends
+
+[counts]
+mobs: 25
+items: 50
+recipes: 25
+handbook-entries: 50

@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:herald_emberglass",
+    "copper_inferno:omen_fragment",
+    "copper_inferno:omen_fragment",
+    "minecraft:gold_block"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:herald_war_banner"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

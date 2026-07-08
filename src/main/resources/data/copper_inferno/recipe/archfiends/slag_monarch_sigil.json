@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "A": "minecraft:bone",
+    "B": "minecraft:coal",
+    "C": "minecraft:wither_skeleton_skull"
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:slag_monarch_sigil"
+  },
+  "type": "minecraft:crafting_shaped"
+}

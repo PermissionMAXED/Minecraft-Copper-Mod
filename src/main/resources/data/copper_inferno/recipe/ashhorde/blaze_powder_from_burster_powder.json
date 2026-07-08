@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:burster_powder"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:blaze_powder"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

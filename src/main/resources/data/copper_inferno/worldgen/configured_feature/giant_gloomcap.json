@@ -1,0 +1,47 @@
+{
+  "config": {
+    "decor_state": {
+      "Name": "copper_inferno:fungal_light"
+    },
+    "hat_state": {
+      "Name": "copper_inferno:gloomcap_block"
+    },
+    "planted": false,
+    "replaceable_blocks": {
+      "blocks": [
+        "copper_inferno:ember_fungus",
+        "copper_inferno:ash_sprouts",
+        "copper_inferno:cinder_roots",
+        "copper_inferno:smolder_bloom",
+        "copper_inferno:ashen_grass",
+        "copper_inferno:spore_cluster",
+        "copper_inferno:ember_lily",
+        "copper_inferno:cinder_fern",
+        "copper_inferno:sear_sprigs",
+        "copper_inferno:molten_bud",
+        "copper_inferno:ash_bramble",
+        "copper_inferno:glow_tendrils",
+        "copper_inferno:soot_puff",
+        "copper_inferno:slag_thistle",
+        "copper_inferno:pyre_reed",
+        "copper_inferno:copper_rose",
+        "copper_inferno:inferno_orchid",
+        "copper_inferno:charred_shrub",
+        "copper_inferno:gilded_clover",
+        "copper_inferno:hanging_ember_roots",
+        "copper_inferno:ash_veil"
+      ],
+      "type": "minecraft:matching_blocks"
+    },
+    "stem_state": {
+      "Name": "copper_inferno:scorched_stem",
+      "Properties": {
+        "axis": "y"
+      }
+    },
+    "valid_base_block": {
+      "Name": "copper_inferno:ember_wart_block"
+    }
+  },
+  "type": "minecraft:huge_fungus"
+}

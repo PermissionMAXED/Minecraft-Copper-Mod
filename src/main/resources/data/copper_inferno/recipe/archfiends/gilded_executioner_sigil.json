@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "A": "minecraft:gold_block",
+    "B": "minecraft:gold_ingot",
+    "C": "minecraft:golden_axe"
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:gilded_executioner_sigil"
+  },
+  "type": "minecraft:crafting_shaped"
+}

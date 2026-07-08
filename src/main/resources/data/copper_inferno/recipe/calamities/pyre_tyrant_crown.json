@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:pyre_fang",
+    "copper_inferno:tyrant_ash",
+    "copper_inferno:tyrant_ash",
+    "minecraft:gold_block"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:pyre_tyrant_crown"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

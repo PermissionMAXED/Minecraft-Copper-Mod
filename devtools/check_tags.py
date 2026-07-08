@@ -23,6 +23,11 @@ Checks (exit non-zero and print findings if any fail):
        42 walls MUST be in tags/block/walls.json
   (t9) titanforge gear: every tier's 9 pieces are in the matching item tag
        (swords/axes/pickaxes/shovels/hoes/head_armor/chest_armor/leg_armor/foot_armor)
+  (t10) generative rules for the v5 worldgen block features: every infernogeology
+        requiresTool ore/stone block (15) MUST be in tags/block/mineable/pickaxe.json,
+        its 3 soft sediments in mineable/shovel.json; the infernogardens giant-fungus
+        caps (2) in mineable/hoe.json and crystal blocks (2) in mineable/pickaxe.json
+        (gardens blocks have no requiresTool — tags only speed up mining)
 """
 import json
 import os
@@ -242,6 +247,24 @@ V4_WALLS = [stem + "_wall"
             for _name, stem in v4_families(m)]
 assert len(V4_WALLS) == 252  # 6 features x 42
 
+# ---------- v5 generative rules mirroring the worldgen block registrations ----------
+# InfernoGeologyFeature stoneSettings() (requiresTool) registrations, mirroring
+# devtools/hooks/infernogeology.txt [requires-tool]. NOT included: the softSettings()
+# sediments (GEOLOGY_SHOVEL below, shovel-fastest but hand-breakable).
+GEOLOGY_PICKAXE = [
+    "ember_iron_ore", "ash_gold_ore", "slag_copper_ore", "cinder_quartz_ore",
+    "brimstone_ore", "cinder_lapis_ore", "smolder_redstone_ore", "deep_infernium_ore",
+    "scorched_debris", "ashfall_tuff", "ember_pumice", "scoria", "geyserite",
+    "hardened_slag", "sulfur_block"]
+GEOLOGY_SHOVEL = ["sulfur_sand", "ember_grit", "cinder_silt"]
+assert len(GEOLOGY_PICKAXE) == 15 and len(GEOLOGY_SHOVEL) == 3
+
+# InfernoGardensFeature plant/deco blocks: none use requiresTool (all drop themselves
+# by hand); the tags only make the preferred tool faster (vanilla wart-block/amethyst
+# parity — see devtools/tagfrag/infernogardens.json).
+GARDENS_HOE = ["embercap_block", "gloomcap_block"]
+GARDENS_PICKAXE = ["cinder_crystal_block", "verdigris_crystal_block"]
+
 # titanforge gear: 6 tiers x 9 pieces, each in the matching vanilla item tag
 # (see devtools/tagfrag/titanforge.json).
 TITANFORGE_TIERS = ["ember_steel", "pyrite", "slagsteel", "cinderforge",
@@ -391,6 +414,28 @@ for tag_rel, piece in TITANFORGE_ITEM_TAGS.items():
             finding("t9", f"titanforge gear {iid} missing from tags/{tag_rel}")
             missing_tf += 1
 print(f"[check_tags] (t9) {len(TITANFORGE_TIERS) * len(TITANFORGE_ITEM_TAGS)} titanforge gear tag entries checked, {missing_tf} missing")
+
+# ---------- (t10) v5 worldgen blocks in the correct mineable tags ----------
+hoe = set(tag_values.get("block/mineable/hoe.json", []))
+missing_v5 = 0
+for bid in GEOLOGY_PICKAXE:
+    if "copper_inferno:" + bid not in pickaxe:
+        finding("t10", f"infernogeology requiresTool block copper_inferno:{bid} missing from mineable/pickaxe.json (would drop NOTHING in survival)")
+        missing_v5 += 1
+for bid in GEOLOGY_SHOVEL:
+    if "copper_inferno:" + bid not in shovel:
+        finding("t10", f"infernogeology sediment copper_inferno:{bid} missing from mineable/shovel.json")
+        missing_v5 += 1
+for bid in GARDENS_HOE:
+    if "copper_inferno:" + bid not in hoe:
+        finding("t10", f"infernogardens fungus cap copper_inferno:{bid} missing from mineable/hoe.json")
+        missing_v5 += 1
+for bid in GARDENS_PICKAXE:
+    if "copper_inferno:" + bid not in pickaxe:
+        finding("t10", f"infernogardens crystal block copper_inferno:{bid} missing from mineable/pickaxe.json")
+        missing_v5 += 1
+print(f"[check_tags] (t10) {len(GEOLOGY_PICKAXE) + len(GEOLOGY_SHOVEL) + len(GARDENS_HOE) + len(GARDENS_PICKAXE)} "
+      f"v5 worldgen block tag entries checked, {missing_v5} missing")
 
 # ---------- report ----------
 print()

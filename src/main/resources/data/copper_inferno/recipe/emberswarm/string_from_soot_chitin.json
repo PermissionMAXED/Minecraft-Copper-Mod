@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:soot_chitin",
+    "copper_inferno:soot_chitin"
+  ],
+  "result": {
+    "count": 2,
+    "id": "minecraft:string"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

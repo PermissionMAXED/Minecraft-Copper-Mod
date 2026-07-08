@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "A": "minecraft:copper_ingot",
+    "B": "copper_inferno:oxidized_copper_dust",
+    "C": "minecraft:ominous_bottle"
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:herald_omen_sigil"
+  },
+  "type": "minecraft:crafting_shaped"
+}

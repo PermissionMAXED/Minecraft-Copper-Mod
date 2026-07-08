@@ -1,0 +1,18 @@
+{
+  "config": {
+    "discard_chance_on_air_exposure": 1.0,
+    "size": 3,
+    "targets": [
+      {
+        "state": {
+          "Name": "copper_inferno:scorched_debris"
+        },
+        "target": {
+          "block": "copper_inferno:cinderstone",
+          "predicate_type": "minecraft:block_match"
+        }
+      }
+    ]
+  },
+  "type": "minecraft:scattered_ore"
+}

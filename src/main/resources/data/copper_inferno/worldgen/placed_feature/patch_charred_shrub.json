@@ -1,0 +1,12 @@
+{
+  "feature": "copper_inferno:patch_charred_shrub",
+  "placement": [
+    {
+      "count": 2,
+      "type": "minecraft:count_on_every_layer"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

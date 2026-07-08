@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:rattler_rib",
+    "copper_inferno:rattler_rib"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:bone"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

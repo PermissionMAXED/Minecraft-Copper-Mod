@@ -2,7 +2,10 @@
   "values": [
     "copper_inferno:ash_block",
     "copper_inferno:cinder_gravel",
+    "copper_inferno:cinder_silt",
+    "copper_inferno:ember_grit",
     "copper_inferno:ember_soil",
-    "copper_inferno:scorched_sand"
+    "copper_inferno:scorched_sand",
+    "copper_inferno:sulfur_sand"
   ]
 }

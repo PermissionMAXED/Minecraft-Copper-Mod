@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "A": "copper_inferno:archer_arrowhead",
+    "F": "minecraft:feather",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "A",
+    "S",
+    "F"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:arrow"
+  },
+  "type": "minecraft:crafting_shaped"
+}

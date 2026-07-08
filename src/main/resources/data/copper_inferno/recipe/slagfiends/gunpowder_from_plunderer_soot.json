@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:plunderer_soot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:gunpowder"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

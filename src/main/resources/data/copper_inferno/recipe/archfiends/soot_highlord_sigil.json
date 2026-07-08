@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "A": "minecraft:coal_block",
+    "B": "minecraft:emerald",
+    "C": "minecraft:lapis_block"
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:soot_highlord_sigil"
+  },
+  "type": "minecraft:crafting_shaped"
+}

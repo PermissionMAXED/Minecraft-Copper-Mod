@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "A": "minecraft:bone",
+    "B": "minecraft:crimson_fungus",
+    "C": "minecraft:bone_block"
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ashen_gorefiend_sigil"
+  },
+  "type": "minecraft:crafting_shaped"
+}

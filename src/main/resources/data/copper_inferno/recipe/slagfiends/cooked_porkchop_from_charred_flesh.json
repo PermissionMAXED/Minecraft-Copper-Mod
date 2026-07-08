@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:charred_flesh"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:cooked_porkchop"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

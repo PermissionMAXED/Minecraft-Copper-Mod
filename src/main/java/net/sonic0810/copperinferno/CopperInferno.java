@@ -3,12 +3,16 @@ package net.sonic0810.copperinferno;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import net.sonic0810.copperinferno.core.CopperInfernoCore;
+import net.sonic0810.copperinferno.feature.archfiends.ArchfiendsFeature;
 import net.sonic0810.copperinferno.feature.armor.CopperArmorFeature;
+import net.sonic0810.copperinferno.feature.ashhorde.AshHordeFeature;
+import net.sonic0810.copperinferno.feature.calamities.CalamitiesFeature;
 import net.sonic0810.copperinferno.feature.charwood.CharwoodFeature;
 import net.sonic0810.copperinferno.feature.cinderstone.CinderStoneFeature;
 import net.sonic0810.copperinferno.feature.copperdeco.CopperDecoFeature;
 import net.sonic0810.copperinferno.feature.decostone.DecoStoneFeature;
 import net.sonic0810.copperinferno.feature.drpepper.DrPepperFeature;
+import net.sonic0810.copperinferno.feature.emberswarm.EmberSwarmFeature;
 import net.sonic0810.copperinferno.feature.extras.ExtrasFeature;
 import net.sonic0810.copperinferno.feature.foods.FoodsFeature;
 import net.sonic0810.copperinferno.feature.forgeparts.ForgePartsFeature;
@@ -23,15 +27,19 @@ import net.sonic0810.copperinferno.feature.infernodim.InfernoDimensionFeature;
 import net.sonic0810.copperinferno.feature.infernoflora.InfernoFloraFeature;
 import net.sonic0810.copperinferno.feature.infernofoods.InfernoFoodsFeature;
 import net.sonic0810.copperinferno.feature.infernofx.InfernoFxFeature;
+import net.sonic0810.copperinferno.feature.infernogardens.InfernoGardensFeature;
+import net.sonic0810.copperinferno.feature.infernogeology.InfernoGeologyFeature;
 import net.sonic0810.copperinferno.feature.infernium.InferniumFeature;
 import net.sonic0810.copperinferno.feature.infernomobs.InfernoMobsFeature;
 import net.sonic0810.copperinferno.feature.kilnstone.KilnstoneFeature;
 import net.sonic0810.copperinferno.feature.masonry.MasonryFeature;
 import net.sonic0810.copperinferno.feature.materials.MaterialsFeature;
+import net.sonic0810.copperinferno.feature.moltenfauna.MoltenFaunaFeature;
 import net.sonic0810.copperinferno.feature.moltenmetal.MoltenMetalFeature;
 import net.sonic0810.copperinferno.feature.music.MusicFeature;
 import net.sonic0810.copperinferno.feature.nightslate.NightslateFeature;
 import net.sonic0810.copperinferno.feature.pyrestone.PyrestoneFeature;
+import net.sonic0810.copperinferno.feature.slagfiends.SlagFiendsFeature;
 import net.sonic0810.copperinferno.feature.smolderquartz.SmolderQuartzFeature;
 import net.sonic0810.copperinferno.feature.sodablocks.SodaBlocksFeature;
 import net.sonic0810.copperinferno.feature.statue.PlayerStatueFeature;
@@ -100,6 +108,18 @@ public class CopperInferno implements ModInitializer {
 		ForgePartsFeature.init();
 		InfernoCuisineFeature.init();
 		TitanForgeFeature.init();
+		// v5 content wave: mobs (ashhorde/emberswarm/moltenfauna/slagfiends), bosses
+		// (calamities/archfiends) and worldgen (infernogeology/infernogardens, which
+		// must stay after InfernoDimensionFeature + InfernoFloraFeature above because
+		// their worldgen JSON targets those features' terrain/flora blocks).
+		AshHordeFeature.init();
+		EmberSwarmFeature.init();
+		MoltenFaunaFeature.init();
+		SlagFiendsFeature.init();
+		CalamitiesFeature.init();
+		ArchfiendsFeature.init();
+		InfernoGeologyFeature.init();
+		InfernoGardensFeature.init();
 		HandbookFeature.init();
 	}
 }

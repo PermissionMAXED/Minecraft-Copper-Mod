@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:colossus_plating",
+    "copper_inferno:molten_core_shard",
+    "copper_inferno:molten_core_shard",
+    "minecraft:gold_block"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:colossus_medallion"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

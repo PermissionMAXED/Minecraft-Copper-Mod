@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:cinder_plume",
+    "copper_inferno:sovereign_ember_shard",
+    "copper_inferno:sovereign_ember_shard",
+    "minecraft:gold_block"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:sovereign_scepter"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

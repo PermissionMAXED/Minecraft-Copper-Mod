@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:cinder_spark"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:fire_charge"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

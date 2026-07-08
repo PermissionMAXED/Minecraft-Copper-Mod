@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "A": "minecraft:iron_ingot",
+    "B": "copper_inferno:oxidized_copper_dust",
+    "C": "minecraft:iron_block"
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:slag_war_banner"
+  },
+  "type": "minecraft:crafting_shaped"
+}

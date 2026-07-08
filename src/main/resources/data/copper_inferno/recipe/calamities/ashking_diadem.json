@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:cursed_ash_clump",
+    "copper_inferno:ashking_rib",
+    "copper_inferno:ashking_rib",
+    "minecraft:gold_block"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ashking_diadem"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

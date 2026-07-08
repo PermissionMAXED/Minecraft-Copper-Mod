@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:bowman_string",
+    "minecraft:stick",
+    "minecraft:stick"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:bow"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

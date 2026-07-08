@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:grazer_brisket"
+  ],
+  "result": {
+    "count": 2,
+    "id": "minecraft:beef"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

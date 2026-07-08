@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "A": "minecraft:ghast_tear",
+    "B": "minecraft:soul_sand",
+    "C": "minecraft:crying_obsidian"
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:dread_sovereign_sigil"
+  },
+  "type": "minecraft:crafting_shaped"
+}

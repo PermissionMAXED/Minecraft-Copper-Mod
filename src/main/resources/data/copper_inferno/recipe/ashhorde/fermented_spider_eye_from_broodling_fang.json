@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:broodling_fang",
+    "copper_inferno:lurker_eye"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:fermented_spider_eye"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

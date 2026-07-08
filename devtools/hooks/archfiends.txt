@@ -1,0 +1,20 @@
+# archfiends feature hooks (format: devtools/hooks/README.md)
+
+[init]
+# No init-order constraint: the ring recipes use only vanilla ingredients
+# and this feature's own item ids.
+import net.sonic0810.copperinferno.feature.archfiends.ArchfiendsFeature;
+		ArchfiendsFeature.init();
+
+[client-init]
+import net.sonic0810.copperinferno.feature.archfiends.client.ArchfiendsFeatureClient;
+		ArchfiendsFeatureClient.initClient();
+
+[recipe-dir]
+archfiends
+
+[counts]
+bosses: 10
+items: 50
+recipes: 10
+handbook-entries: 20

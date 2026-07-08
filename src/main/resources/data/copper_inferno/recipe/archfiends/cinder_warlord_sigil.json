@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "A": "minecraft:gold_ingot",
+    "B": "minecraft:blaze_powder",
+    "C": "minecraft:gilded_blackstone"
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:cinder_warlord_sigil"
+  },
+  "type": "minecraft:crafting_shaped"
+}

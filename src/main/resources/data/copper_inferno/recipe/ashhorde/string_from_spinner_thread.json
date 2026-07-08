@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:spinner_thread"
+  ],
+  "result": {
+    "count": 3,
+    "id": "minecraft:string"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,18 @@
+# emberswarm feature hooks (format: devtools/hooks/README.md)
+
+[init]
+import net.sonic0810.copperinferno.feature.emberswarm.EmberSwarmFeature;
+		EmberSwarmFeature.init();
+
+[client-init]
+import net.sonic0810.copperinferno.feature.emberswarm.client.EmberSwarmFeatureClient;
+		EmberSwarmFeatureClient.initClient();
+
+[recipe-dir]
+emberswarm
+
+[counts]
+mobs: 25
+items: 50
+recipes: 25
+handbook-entries: 50

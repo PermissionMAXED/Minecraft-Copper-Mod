@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "copper_inferno:item/ashen_hoglin_gorefiend_spawn_egg"
+  }
+}

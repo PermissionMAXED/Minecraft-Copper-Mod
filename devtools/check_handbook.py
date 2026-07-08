@@ -24,7 +24,12 @@ FEATURE_PKGS = ["infernodim", "cinderstone", "infernoflora", "copperdeco", "infe
                 "infernomobs", "infernoboss", "infernofoods", "infernofx", "handbook",
                 # v4 content wave
                 "pyrestone", "moltenmetal", "smolderquartz", "nightslate", "charwood",
-                "kilnstone", "forgeparts", "infernocuisine", "titanforge"]
+                "kilnstone", "forgeparts", "infernocuisine", "titanforge",
+                # v5 content wave (mobs, bosses, worldgen; the worldgen features
+                # infernogeology/infernogardens have no recipe dirs — the recipe scan
+                # skips missing dirs, but their handbook entries still get item-checked)
+                "ashhorde", "emberswarm", "moltenfauna", "slagfiends",
+                "calamities", "archfiends", "infernogeology", "infernogardens"]
 JAVA_ROOTS = [
     os.path.join(ROOT, "src/main/java/net/sonic0810/copperinferno/feature"),
     os.path.join(ROOT, "src/client/java/net/sonic0810/copperinferno/feature"),

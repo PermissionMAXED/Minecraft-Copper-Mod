@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:scoria_chunk",
+    "copper_inferno:scoria_chunk",
+    "copper_inferno:scoria_chunk",
+    "copper_inferno:scoria_chunk"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:magma_block"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

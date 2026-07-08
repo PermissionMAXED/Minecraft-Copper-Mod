@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "A": "minecraft:copper_ingot",
+    "B": "copper_inferno:inferno_powder",
+    "C": "minecraft:goat_horn"
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:emberlord_warhorn"
+  },
+  "type": "minecraft:crafting_shaped"
+}

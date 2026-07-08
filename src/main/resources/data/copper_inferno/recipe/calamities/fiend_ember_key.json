@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "A": "minecraft:gold_nugget",
+    "B": "copper_inferno:copper_dust",
+    "C": "minecraft:coal_block"
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:fiend_ember_key"
+  },
+  "type": "minecraft:crafting_shaped"
+}

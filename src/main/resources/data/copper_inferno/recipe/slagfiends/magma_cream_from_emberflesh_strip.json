@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:emberflesh_strip"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:magma_cream"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

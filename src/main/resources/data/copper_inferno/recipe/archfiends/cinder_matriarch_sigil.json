@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "A": "minecraft:ghast_tear",
+    "B": "minecraft:magma_cream",
+    "C": "minecraft:magma_block"
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:cinder_matriarch_sigil"
+  },
+  "type": "minecraft:crafting_shaped"
+}
