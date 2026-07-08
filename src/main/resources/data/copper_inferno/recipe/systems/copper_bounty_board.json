@@ -1,0 +1,18 @@
+{
+  "category": "building",
+  "key": {
+    "I": "minecraft:copper_ingot",
+    "K": "copper_inferno:copper_coin",
+    "P": "minecraft:paper"
+  },
+  "pattern": [
+    "PPP",
+    "PKP",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:copper_bounty_board"
+  },
+  "type": "minecraft:crafting_shaped"
+}

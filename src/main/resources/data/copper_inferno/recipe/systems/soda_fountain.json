@@ -1,0 +1,18 @@
+{
+  "category": "building",
+  "key": {
+    "G": "minecraft:glass",
+    "I": "minecraft:copper_ingot",
+    "S": "copper_inferno:soda_syrup"
+  },
+  "pattern": [
+    "G G",
+    "ISI",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:soda_fountain"
+  },
+  "type": "minecraft:crafting_shaped"
+}

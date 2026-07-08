@@ -1,0 +1,18 @@
+{
+  "category": "building",
+  "key": {
+    "C": "minecraft:copper_block",
+    "H": "minecraft:honeycomb",
+    "I": "minecraft:copper_ingot"
+  },
+  "pattern": [
+    "HHH",
+    "ICI",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:waxing_station"
+  },
+  "type": "minecraft:crafting_shaped"
+}
