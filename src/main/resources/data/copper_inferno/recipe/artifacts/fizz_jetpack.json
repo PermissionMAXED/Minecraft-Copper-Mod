@@ -1,0 +1,18 @@
+{
+  "category": "equipment",
+  "key": {
+    "D": "copper_inferno:dr_pepper",
+    "F": "minecraft:feather",
+    "T": "copper_inferno:tempered_plate"
+  },
+  "pattern": [
+    "TDT",
+    "TDT",
+    " F "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:fizz_jetpack"
+  },
+  "type": "minecraft:crafting_shaped"
+}

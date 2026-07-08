@@ -1,0 +1,18 @@
+{
+  "category": "equipment",
+  "key": {
+    "C": "minecraft:copper_ingot",
+    "M": "minecraft:magma_cream",
+    "P": "copper_inferno:tempered_plate"
+  },
+  "pattern": [
+    " P ",
+    "PMP",
+    " C "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ember_shield"
+  },
+  "type": "minecraft:crafting_shaped"
+}

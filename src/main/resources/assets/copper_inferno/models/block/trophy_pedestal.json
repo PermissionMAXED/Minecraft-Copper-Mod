@@ -1,0 +1,106 @@
+{
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "cullface": "down",
+          "texture": "#pedestal"
+        },
+        "east": {
+          "texture": "#pedestal"
+        },
+        "north": {
+          "texture": "#pedestal"
+        },
+        "south": {
+          "texture": "#pedestal"
+        },
+        "up": {
+          "texture": "#pedestal"
+        },
+        "west": {
+          "texture": "#pedestal"
+        }
+      },
+      "from": [
+        2,
+        0,
+        2
+      ],
+      "to": [
+        14,
+        2,
+        14
+      ]
+    },
+    {
+      "faces": {
+        "down": {
+          "texture": "#pedestal"
+        },
+        "east": {
+          "texture": "#pedestal"
+        },
+        "north": {
+          "texture": "#pedestal"
+        },
+        "south": {
+          "texture": "#pedestal"
+        },
+        "up": {
+          "texture": "#pedestal"
+        },
+        "west": {
+          "texture": "#pedestal"
+        }
+      },
+      "from": [
+        5,
+        2,
+        5
+      ],
+      "to": [
+        11,
+        10,
+        11
+      ]
+    },
+    {
+      "faces": {
+        "down": {
+          "texture": "#pedestal"
+        },
+        "east": {
+          "texture": "#pedestal"
+        },
+        "north": {
+          "texture": "#pedestal"
+        },
+        "south": {
+          "texture": "#pedestal"
+        },
+        "up": {
+          "texture": "#pedestal"
+        },
+        "west": {
+          "texture": "#pedestal"
+        }
+      },
+      "from": [
+        3,
+        10,
+        3
+      ],
+      "to": [
+        13,
+        12,
+        13
+      ]
+    }
+  ],
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "copper_inferno:block/trophy_pedestal",
+    "pedestal": "copper_inferno:block/trophy_pedestal"
+  }
+}

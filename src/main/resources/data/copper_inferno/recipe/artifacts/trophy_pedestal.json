@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "R": "copper_inferno:gilded_rivet",
+    "S": "minecraft:smooth_stone_slab"
+  },
+  "pattern": [
+    "SSS",
+    " R ",
+    "SSS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:trophy_pedestal"
+  },
+  "type": "minecraft:crafting_shaped"
+}

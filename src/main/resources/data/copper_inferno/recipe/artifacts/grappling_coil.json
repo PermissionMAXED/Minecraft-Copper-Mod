@@ -1,0 +1,18 @@
+{
+  "category": "equipment",
+  "key": {
+    "C": "minecraft:copper_ingot",
+    "H": "copper_inferno:grapnel_hook",
+    "T": "copper_inferno:talisman_cord"
+  },
+  "pattern": [
+    "H",
+    "T",
+    "C"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:grappling_coil"
+  },
+  "type": "minecraft:crafting_shaped"
+}
