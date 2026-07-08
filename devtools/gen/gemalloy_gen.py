@@ -18,7 +18,10 @@ Emits (all deterministic, idempotent — run any number of times, same bytes):
   - models/item/<id>.json + items/<id>.json for the 36 standalone items
   - worldgen: configured_feature/<m>_ore.json (stone + deepslate targets, vanilla
     minecraft:ore config copied from the shipped infernium_ore pair) + placed_feature,
-    and cinder_<m>_ore.json targeting copper_inferno:cinderstone for the inferno biomes
+    and cinder_<m>_ore.json targeting copper_inferno:cinderstone for the inferno biomes;
+    counts + absolute height bands come from the per-material ORE_SPECS table (the four
+    inferno-only materials still get their <m>_ore JSONs emitted — GemAlloyFeature simply
+    never injects them into overworld biomes; unreferenced placed features are harmless)
   - recipes under data/copper_inferno/recipe/gemalloy/ (vanilla 1.21.9 formats copied
     from devtools/gen/infernium_gen.py): ore/raw smelting+blasting, nugget/ingot/block
     and raw/raw-block storage cycles, and every deco shape from <m>_block via crafting
@@ -79,6 +82,27 @@ BASE_RGB = {
 }
 
 EN_NAME = {m: m.capitalize() for m in MATERIALS}
+
+# Per-material overworld ore spec: (overworld, count, min_y, max_y). The four inferno-only
+# materials (overworld=False) keep their <m>_ore configured/placed JSONs (idempotency;
+# unreferenced placed features are harmless) but GemAlloyFeature.injectAlloyOres skips the
+# overworld BiomeModifications injection for them. Counts are 2-4 veins per chunk and every
+# overworld material gets a DISTINCT absolute height band (vanilla-ore-like rarity, instead
+# of the launch-time 7-10 veins at full height for all 12).
+ORE_SPECS = {
+    "pyrium": (True, 3, -16, 48),
+    "emberite": (True, 3, -48, 8),
+    "cindralite": (True, 2, -64, -8),
+    "slagbronze": (True, 4, 0, 64),
+    "ashsteel": (True, 3, -32, 32),
+    "voidsteel": (False, 2, -64, -32),
+    "doomium": (False, 2, -64, -40),
+    "pepperite": (True, 4, 16, 80),
+    "fizzium": (True, 4, 32, 96),
+    "vitrium": (True, 2, -56, -16),
+    "smokequartz": (False, 2, -40, 0),
+    "kilnite": (False, 2, -24, 24),
+}
 
 REDSTONE = (0xB0, 0x24, 0x14)
 
@@ -419,9 +443,10 @@ def emit_material_assets(m: str) -> dict:
 # ---------------------------------------------------------------------------
 
 
-def emit_worldgen(m: str, count_overworld: int, count_cinder: int) -> None:
+def emit_worldgen(m: str, count_cinder: int) -> None:
     cf = DATA / "worldgen" / "configured_feature"
     pf = DATA / "worldgen" / "placed_feature"
+    _overworld, count_overworld, min_y, max_y = ORE_SPECS[m]
 
     write_json(cf / f"{m}_ore.json", {
         "config": {
@@ -449,8 +474,8 @@ def emit_worldgen(m: str, count_overworld: int, count_cinder: int) -> None:
             {"type": "minecraft:in_square"},
             {
                 "height": {
-                    "max_inclusive": {"below_top": 10},
-                    "min_inclusive": {"above_bottom": 10},
+                    "max_inclusive": {"absolute": max_y},
+                    "min_inclusive": {"absolute": min_y},
                     "type": "minecraft:uniform",
                 },
                 "type": "minecraft:height_range",
@@ -701,7 +726,7 @@ def emit_tagfrag() -> None:
     for m in MATERIALS:
         for bid in block_ids(m):
             if bid in (f"{m}_glass", f"{m}_glass_pane"):
-                continue  # glass settings drop nothing by design (vanilla glass semantics)
+                continue  # glass + pane are hand-mineable (no requiresTool), vanilla glass semantics
             pickaxe.append(f"{NS}:{bid}")
         needs_stone += [f"{NS}:{m}_ore", f"{NS}:deepslate_{m}_ore", f"{NS}:cinder_{m}_ore"]
         walls += [f"{NS}:{m}_brick_wall", f"{NS}:{m}_tile_wall"]
@@ -727,9 +752,9 @@ def main() -> None:
     lang_de_all = {}
     png_count = 0
     recipe_count = 0
-    for idx, m in enumerate(MATERIALS):
+    for m in MATERIALS:
         all_files = merge(all_files, emit_material_assets(m))
-        emit_worldgen(m, count_overworld=7 + idx % 4, count_cinder=9 + idx % 3)
+        emit_worldgen(m, count_cinder=6)
         recipe_count += emit_recipes(m)
         png_count += paint_material_textures(m)
         lang_en_all.update(lang_en(m))

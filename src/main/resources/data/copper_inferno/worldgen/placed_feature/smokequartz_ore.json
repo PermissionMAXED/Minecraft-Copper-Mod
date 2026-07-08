@@ -2,7 +2,7 @@
   "feature": "copper_inferno:smokequartz_ore",
   "placement": [
     {
-      "count": 9,
+      "count": 2,
       "type": "minecraft:count"
     },
     {
@@ -11,10 +11,10 @@
     {
       "height": {
         "max_inclusive": {
-          "below_top": 10
+          "absolute": 0
         },
         "min_inclusive": {
-          "above_bottom": 10
+          "absolute": -40
         },
         "type": "minecraft:uniform"
       },

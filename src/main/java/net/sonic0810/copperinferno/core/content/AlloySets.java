@@ -46,8 +46,12 @@ public final class AlloySets {
 	 * Registers the 22 alloy blocks (each with a BlockItem) and appends them to {@code tab} in
 	 * canonical order. Settings suppliers are invoked FRESH per registration
 	 * ({@link ModBlocks#register} writes a registry key into each instance): {@code ore} for the
-	 * three ore variants, {@code stone} for everything else (grate, glass, pane and lantern
-	 * additionally get {@code nonOpaque()} here, matching their vanilla render profiles).
+	 * three ore variants, {@code glass} for glass + pane (nonOpaque is applied here; the glass
+	 * profile is hand-mineable, matching vanilla glass semantics — glass and pane are NOT in the
+	 * pickaxe tag), {@code lamp} for the lamp and lantern (the lantern additionally gets
+	 * nonOpaque; the lamp profile carries the constant luminance), {@code stone} for everything
+	 * else (the grate additionally gets {@code nonOpaque()}, matching its vanilla render
+	 * profile).
 	 *
 	 * <p>Ids: {@code <m>_ore}, {@code deepslate_<m>_ore}, {@code cinder_<m>_ore},
 	 * {@code raw_<m>_block}, {@code <m>_block}, {@code <m>_bricks}, {@code <m>_brick_slab},
@@ -57,7 +61,8 @@ public final class AlloySets {
 	 * {@code <m>_glass}, {@code <m>_glass_pane}, {@code <m>_lantern}.
 	 */
 	public static AlloySet registerAlloySet(String m, Supplier<AbstractBlock.Settings> stone,
-			Supplier<AbstractBlock.Settings> ore, RegistryKey<ItemGroup> tab) {
+			Supplier<AbstractBlock.Settings> ore, Supplier<AbstractBlock.Settings> glass,
+			Supplier<AbstractBlock.Settings> lamp, RegistryKey<ItemGroup> tab) {
 		Block oreBlock = ModBlocks.register(m + "_ore", Block::new, ore.get(), true);
 		Block deepslateOre = ModBlocks.register("deepslate_" + m + "_ore", Block::new, ore.get(), true);
 		Block cinderOre = ModBlocks.register("cinder_" + m + "_ore", Block::new, ore.get(), true);
@@ -79,20 +84,20 @@ public final class AlloySets {
 		Block cut = ModBlocks.register("cut_" + m, Block::new, stone.get(), true);
 		Block chiseled = ModBlocks.register("chiseled_" + m, Block::new, stone.get(), true);
 		Block pillar = ModBlocks.register(m + "_pillar", PillarBlock::new, stone.get(), true);
-		Block lamp = ModBlocks.register(m + "_lamp", Block::new, stone.get(), true);
+		Block lampBlock = ModBlocks.register(m + "_lamp", Block::new, lamp.get(), true);
 		Block bulb = ModBlocks.register(m + "_bulb", BulbBlock::new, stone.get(), true);
 
 		Block grate = ModBlocks.register(m + "_grate", ContentGrateBlock::new, stone.get().nonOpaque(), true);
-		Block glass = ModBlocks.register(m + "_glass", ContentGlassBlock::new, stone.get().nonOpaque(), true);
+		Block glassBlock = ModBlocks.register(m + "_glass", ContentGlassBlock::new, glass.get().nonOpaque(), true);
 		Block glassPane = ModBlocks.register(m + "_glass_pane", ContentGlassPaneBlock::new,
-				stone.get().nonOpaque(), true);
-		Block lantern = ModBlocks.register(m + "_lantern", LanternBlock::new, stone.get().nonOpaque(), true);
+				glass.get().nonOpaque(), true);
+		Block lantern = ModBlocks.register(m + "_lantern", LanternBlock::new, lamp.get().nonOpaque(), true);
 
 		AlloySet set = new AlloySet(oreBlock, deepslateOre, cinderOre,
 				rawBlock, block, bricks, brickSlab, brickStairs, brickWall,
 				tiles, tileSlab, tileStairs, tileWall,
-				cut, chiseled, pillar, lamp, bulb,
-				grate, glass, glassPane, lantern);
+				cut, chiseled, pillar, lampBlock, bulb,
+				grate, glassBlock, glassPane, lantern);
 
 		ItemGroupEvents.modifyEntriesEvent(tab).register(entries -> {
 			entries.add(set.ore());

@@ -2,7 +2,7 @@
   "feature": "copper_inferno:doomium_ore",
   "placement": [
     {
-      "count": 9,
+      "count": 2,
       "type": "minecraft:count"
     },
     {
@@ -11,10 +11,10 @@
     {
       "height": {
         "max_inclusive": {
-          "below_top": 10
+          "absolute": -40
         },
         "min_inclusive": {
-          "above_bottom": 10
+          "absolute": -64
         },
         "type": "minecraft:uniform"
       },
