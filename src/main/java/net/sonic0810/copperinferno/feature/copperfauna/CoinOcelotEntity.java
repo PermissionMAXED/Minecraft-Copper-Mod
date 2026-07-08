@@ -2,12 +2,16 @@ package net.sonic0810.copperinferno.feature.copperfauna;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.OcelotEntity;
+import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.particle.DustParticleEffect;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 
 /**
  * An ocelot with a gleaming, coin-gold pelt. Behavioral tweak: it glitters — a client-side
  * golden dust sparkle follows it around (same particle pattern as {@code DrPepperGolemEntity}).
+ * {@code createChild} is overridden only for type consistency (vanilla hard-codes
+ * {@code EntityType.OCELOT}; same fix as the infernomobs Cinder Strider).
  * Drops Burnished Coins ({@code loot_table/entities/coin_ocelot.json}).
  */
 public class CoinOcelotEntity extends OcelotEntity {
@@ -31,5 +35,10 @@ public class CoinOcelotEntity extends OcelotEntity {
 					0.01,
 					0.0);
 		}
+	}
+
+	@Override
+	public CoinOcelotEntity createChild(ServerWorld world, PassiveEntity entity) {
+		return new CoinOcelotEntity(CopperFaunaFeature.COIN_OCELOT, world);
 	}
 }

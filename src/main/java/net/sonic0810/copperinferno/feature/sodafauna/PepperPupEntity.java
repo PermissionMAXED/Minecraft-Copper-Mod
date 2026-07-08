@@ -3,6 +3,7 @@ package net.sonic0810.copperinferno.feature.sodafauna;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
@@ -10,7 +11,9 @@ import net.minecraft.world.World;
 /**
  * A maroon wolf pup that has clearly been in the Dr.Pepper again. Behavioral tweak: its
  * pepper-hot bite ignites the target for three seconds ({@link #tryAttack} +
- * {@code setOnFireForTicks(60)}). Tameable like any wolf. Drops Pepper Spice
+ * {@code setOnFireForTicks(60)}). Tameable like any wolf. {@code createChild} is overridden
+ * only for type consistency (vanilla hard-codes {@code EntityType.WOLF}; same fix as the
+ * infernomobs Cinder Strider). Drops Pepper Spice
  * ({@code loot_table/entities/pepper_pup.json}).
  */
 public class PepperPupEntity extends WolfEntity {
@@ -25,5 +28,10 @@ public class PepperPupEntity extends WolfEntity {
 			living.setOnFireForTicks(60);
 		}
 		return hit;
+	}
+
+	@Override
+	public PepperPupEntity createChild(ServerWorld world, PassiveEntity entity) {
+		return new PepperPupEntity(SodaFaunaFeature.PEPPER_PUP, world);
 	}
 }

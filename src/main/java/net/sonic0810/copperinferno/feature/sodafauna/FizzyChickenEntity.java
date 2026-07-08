@@ -2,12 +2,16 @@ package net.sonic0810.copperinferno.feature.sodafauna;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.ChickenEntity;
+import net.minecraft.entity.passive.PassiveEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 
 /**
  * A soda-yellow chicken with a carbonated metabolism. Behavioral tweak: it lays eggs at least
  * twice as fast — the public vanilla {@code eggLayTime} countdown (rolled as 6000..12000 ticks)
- * is capped at 3000 every tick ({@link #tickMovement()}). Drops Fizz Globules
+ * is capped at 3000 every tick ({@link #tickMovement()}). {@code createChild} is overridden
+ * only for type consistency (vanilla hard-codes {@code EntityType.CHICKEN}; same fix as the
+ * infernomobs Cinder Strider). Drops Fizz Globules
  * ({@code loot_table/entities/fizzy_chicken.json}).
  */
 public class FizzyChickenEntity extends ChickenEntity {
@@ -21,5 +25,10 @@ public class FizzyChickenEntity extends ChickenEntity {
 		if (!this.getEntityWorld().isClient() && this.isAlive() && this.eggLayTime > 3000) {
 			this.eggLayTime = 3000;
 		}
+	}
+
+	@Override
+	public FizzyChickenEntity createChild(ServerWorld world, PassiveEntity entity) {
+		return new FizzyChickenEntity(SodaFaunaFeature.FIZZY_CHICKEN, world);
 	}
 }
