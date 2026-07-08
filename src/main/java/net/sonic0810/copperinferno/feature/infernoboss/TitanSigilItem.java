@@ -1,0 +1,64 @@
+package net.sonic0810.copperinferno.feature.infernoboss;
+
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemUsageContext;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
+import net.sonic0810.copperinferno.core.ModDimensions;
+
+/**
+ * Summons {@link InfernoTitanEntity}, but only inside the Inferno dimension
+ * ({@code copper_inferno:inferno}); anywhere else it just shows a translatable failure
+ * message. Works both on a block (boss rises on the clicked face) and in the air (boss
+ * appears a few blocks ahead of the player).
+ */
+public class TitanSigilItem extends Item {
+	public TitanSigilItem(Settings settings) {
+		super(settings);
+	}
+
+	@Override
+	public ActionResult useOnBlock(ItemUsageContext context) {
+		Vec3d spawnPos = Vec3d.ofBottomCenter(context.getBlockPos().offset(context.getSide()));
+		return trySummon(context.getWorld(), context.getPlayer(), spawnPos, context.getStack());
+	}
+
+	@Override
+	public ActionResult use(World world, PlayerEntity user, Hand hand) {
+		Vec3d look = user.getRotationVector();
+		Vec3d spawnPos = user.getEntityPos().add(look.x * 3.0, 0.0, look.z * 3.0);
+		return trySummon(world, user, spawnPos, user.getStackInHand(hand));
+	}
+
+	private static ActionResult trySummon(World world, PlayerEntity player, Vec3d spawnPos, ItemStack stack) {
+		if (world.getRegistryKey() != ModDimensions.INFERNO_WORLD) {
+			if (!world.isClient() && player != null) {
+				player.sendMessage(Text.translatable("message.copper_inferno.titan_sigil.wrong_dimension"), true);
+			}
+			return ActionResult.FAIL;
+		}
+		if (world instanceof ServerWorld serverWorld) {
+			InfernoTitanEntity boss = new InfernoTitanEntity(InfernoBossFeature.INFERNO_TITAN, serverWorld);
+			float yaw = player != null ? player.getYaw() + 180.0f : 0.0f;
+			boss.refreshPositionAndAngles(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), yaw, 0.0f);
+			boss.setPersistent();
+			serverWorld.spawnEntity(boss);
+			serverWorld.playSound(null, spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(),
+					SoundEvents.ENTITY_LIGHTNING_BOLT_THUNDER, SoundCategory.HOSTILE, 1.0f, 1.0f);
+			if (player != null) {
+				stack.decrementUnlessCreative(1, player);
+			} else {
+				stack.decrement(1);
+			}
+		}
+		return ActionResult.SUCCESS;
+	}
+}

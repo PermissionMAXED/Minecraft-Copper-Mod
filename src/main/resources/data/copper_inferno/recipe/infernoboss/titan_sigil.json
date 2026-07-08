@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "B": "minecraft:blaze_rod",
+    "M": "minecraft:magma_block",
+    "P": "copper_inferno:inferno_powder"
+  },
+  "pattern": [
+    "BPB",
+    "PMP",
+    "BPB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:titan_sigil"
+  },
+  "type": "minecraft:crafting_shaped"
+}

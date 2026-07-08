@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:strider_shell",
+    "copper_inferno:strider_shell"
+  ],
+  "result": {
+    "count": 2,
+    "id": "minecraft:leather"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

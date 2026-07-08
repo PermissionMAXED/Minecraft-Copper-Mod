@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "E": "minecraft:feather",
+    "F": "copper_inferno:crawler_fang",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "F",
+    "S",
+    "E"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:arrow"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "C": "copper_inferno:inferno_core",
+    "D": "copper_inferno:oxidized_copper_dust",
+    "I": "minecraft:copper_ingot"
+  },
+  "pattern": [
+    "IDI",
+    "DCD",
+    "IDI"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:oxidizer_core"
+  },
+  "type": "minecraft:crafting_shaped"
+}
