@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "L": "copper_inferno:kilnrock_lamp",
+    "N": "minecraft:iron_nugget"
+  },
+  "pattern": [
+    "NNN",
+    "NLN",
+    "NNN"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:kilnrock_lantern"
+  },
+  "type": "minecraft:crafting_shaped"
+}

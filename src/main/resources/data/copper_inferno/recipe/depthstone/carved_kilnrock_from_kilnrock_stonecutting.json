@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:kilnrock",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:carved_kilnrock"
+  },
+  "type": "minecraft:stonecutting"
+}

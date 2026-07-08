@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "copper_inferno:block/duskshale",
+    "side": "copper_inferno:block/duskshale",
+    "top": "copper_inferno:block/duskshale"
+  }
+}

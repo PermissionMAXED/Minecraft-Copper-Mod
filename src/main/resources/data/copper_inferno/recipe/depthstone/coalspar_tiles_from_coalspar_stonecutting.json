@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:coalspar",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:coalspar_tiles"
+  },
+  "type": "minecraft:stonecutting"
+}

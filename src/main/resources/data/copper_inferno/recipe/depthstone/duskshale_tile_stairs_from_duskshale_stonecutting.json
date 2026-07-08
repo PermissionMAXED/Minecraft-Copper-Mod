@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:duskshale",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:duskshale_tile_stairs"
+  },
+  "type": "minecraft:stonecutting"
+}

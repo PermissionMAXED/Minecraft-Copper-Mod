@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/charwacke_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/charwacke"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/charwacke_slab_top"
+    }
+  }
+}
