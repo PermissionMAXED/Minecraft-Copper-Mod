@@ -1,0 +1,16 @@
+{
+  "feature": "copper_inferno:pyrewood_tree",
+  "placement": [
+    {
+      "count": {
+        "max_inclusive": 3,
+        "min_inclusive": 2,
+        "type": "minecraft:uniform"
+      },
+      "type": "minecraft:count_on_every_layer"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}
