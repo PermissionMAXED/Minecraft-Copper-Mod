@@ -1,0 +1,18 @@
+{
+  "category": "building",
+  "key": {
+    "I": "minecraft:copper_ingot",
+    "M": "copper_inferno:copper_magnet",
+    "R": "minecraft:redstone_block"
+  },
+  "pattern": [
+    " M ",
+    "III",
+    "IRI"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:magnet_bench"
+  },
+  "type": "minecraft:crafting_shaped"
+}

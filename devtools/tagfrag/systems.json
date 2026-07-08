@@ -1,0 +1,12 @@
+{
+  "block/mineable/axe": [
+    "copper_inferno:copper_bounty_board"
+  ],
+  "block/mineable/pickaxe": [
+    "copper_inferno:emote_copper_statue",
+    "copper_inferno:magnet_bench",
+    "copper_inferno:soda_fountain",
+    "copper_inferno:tempering_forge",
+    "copper_inferno:waxing_station"
+  ]
+}

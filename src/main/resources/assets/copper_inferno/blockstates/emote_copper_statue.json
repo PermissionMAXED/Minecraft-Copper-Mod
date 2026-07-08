@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "emote=cheer": {
+      "model": "copper_inferno:block/emote_copper_statue_cheer"
+    },
+    "emote=facepalm": {
+      "model": "copper_inferno:block/emote_copper_statue_facepalm"
+    },
+    "emote=salute": {
+      "model": "copper_inferno:block/emote_copper_statue_salute"
+    },
+    "emote=wave": {
+      "model": "copper_inferno:block/emote_copper_statue_wave"
+    }
+  }
+}
