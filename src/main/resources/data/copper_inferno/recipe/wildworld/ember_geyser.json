@@ -1,0 +1,18 @@
+{
+  "category": "building",
+  "key": {
+    "C": "copper_inferno:cobbled_cinderstone",
+    "L": "minecraft:magma_block",
+    "M": "copper_inferno:meteoric_iron_chunk"
+  },
+  "pattern": [
+    "CMC",
+    "MLM",
+    "CMC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ember_geyser"
+  },
+  "type": "minecraft:crafting_shaped"
+}

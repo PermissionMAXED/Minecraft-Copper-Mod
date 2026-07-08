@@ -1,0 +1,10 @@
+{
+  "block/mineable/pickaxe": [
+    "copper_inferno:ember_geyser",
+    "copper_inferno:fumarole_vent",
+    "copper_inferno:meteoric_iron"
+  ],
+  "block/needs_stone_tool": [
+    "copper_inferno:meteoric_iron"
+  ]
+}
