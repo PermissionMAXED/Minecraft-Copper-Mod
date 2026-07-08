@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:piston_spring"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:slime_ball"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

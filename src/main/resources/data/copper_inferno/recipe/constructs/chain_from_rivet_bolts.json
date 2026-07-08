@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:rivet_bolt",
+    "copper_inferno:rivet_bolt",
+    "copper_inferno:rivet_bolt",
+    "copper_inferno:rivet_bolt"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:iron_chain"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

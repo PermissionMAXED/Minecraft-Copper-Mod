@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:anvil_shard",
+    "copper_inferno:anvil_shard",
+    "copper_inferno:anvil_shard"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:iron_ingot"
+  },
+  "type": "minecraft:crafting_shapeless"
+}
