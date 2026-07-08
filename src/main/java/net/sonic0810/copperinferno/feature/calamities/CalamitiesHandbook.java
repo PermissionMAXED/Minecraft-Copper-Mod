@@ -55,7 +55,7 @@ final class CalamitiesHandbook {
 
 		HandbookEntries.add(new HandbookEntry("bosses", "calamity_herald", "copper_inferno:calamity_herald_spawn_egg", null,
 				null,
-				null, 0, "Calamity Herald - the doom-crier of the calamities. Summon: use a Herald Omen Sigil. Every 6 seconds it marks everyone it can see within 8 blocks with Glowing and Slowness; below half health it calls 2 vindicator adds exactly once. Drops 1-2 Herald Emberglass and 2-4 Omen Fragments.", "Herold des Unheils - der Unheilsrufer der Katastrophen. Beschw\u00f6rung: ein Herold-Omensiegel benutzen. Alle 6 Sekunden zeichnet er jeden, den er im Umkreis von 8 Bl\u00f6cken sehen kann, mit Leuchten und Langsamkeit; unter halber Gesundheit ruft er genau einmal 2 Diener herbei. L\u00e4sst 1-2 Herold-Glutglas und 2-4 Omenfragmente fallen."));
+				null, 0, "Calamity Herald - the doom-crier of the calamities. Summon: use a Herald Omen Sigil. Every 6 seconds it marks everyone it can see within 8 blocks with Glowing and Slowness; below half health it calls 2 vindicator adds exactly once. Drops 1-2 Herald Emberglass and 2-4 Omen Fragments.", "Unheilsherold - der Unheilsrufer der Katastrophen. Beschw\u00f6rung: ein Herold-Omensiegel benutzen. Alle 6 Sekunden zeichnet er jeden, den er im Umkreis von 8 Bl\u00f6cken sehen kann, mit Leuchten und Langsamkeit; unter halber Gesundheit ruft er genau einmal 2 Diener herbei. L\u00e4sst 1-2 Herold-Glutglas und 2-4 Omenfragmente fallen."));
 
 		HandbookEntries.add(new HandbookEntry("bosses", "emberlord_warhorn_recipe", "copper_inferno:emberlord_warhorn", "calamities/emberlord_warhorn",
 				new String[] {"minecraft:copper_ingot", "copper_inferno:inferno_powder", "minecraft:copper_ingot", "copper_inferno:inferno_powder", "minecraft:goat_horn", "copper_inferno:inferno_powder", "minecraft:copper_ingot", "copper_inferno:inferno_powder", "minecraft:copper_ingot"},
@@ -131,10 +131,10 @@ final class CalamitiesHandbook {
 
 		HandbookEntries.add(new HandbookEntry("bosses", "herald_omen_sigil_recipe", "copper_inferno:herald_omen_sigil", "calamities/herald_omen_sigil",
 				new String[] {"minecraft:copper_ingot", "copper_inferno:oxidized_copper_dust", "minecraft:copper_ingot", "copper_inferno:oxidized_copper_dust", "minecraft:ominous_bottle", "copper_inferno:oxidized_copper_dust", "minecraft:copper_ingot", "copper_inferno:oxidized_copper_dust", "minecraft:copper_ingot"},
-				"copper_inferno:herald_omen_sigil", 1, "Herald Omen Sigil - ring Ominous Bottle with 4x Copper Ingot and 4x Oxidized Copper Dust. Use it to summon the Calamity Herald; consumed on success, refused on peaceful.", "Herold-Omensiegel - Unheilvolle Flasche mit 4x Kupferbarren und 4x Oxidierter Kupferstaub umringen. Benutzen, um den Herold des Unheils zu beschw\u00f6ren; wird bei Erfolg verbraucht, auf Friedlich verweigert."));
+				"copper_inferno:herald_omen_sigil", 1, "Herald Omen Sigil - ring Ominous Bottle with 4x Copper Ingot and 4x Oxidized Copper Dust. Use it to summon the Calamity Herald; consumed on success, refused on peaceful.", "Herold-Omensiegel - Unheilvolle Flasche mit 4x Kupferbarren und 4x Oxidierter Kupferstaub umringen. Benutzen, um den Unheilsherold zu beschw\u00f6ren; wird bei Erfolg verbraucht, auf Friedlich verweigert."));
 
 		HandbookEntries.add(new HandbookEntry("bosses", "herald_war_banner_recipe", "copper_inferno:herald_war_banner", "calamities/herald_war_banner",
 				new String[] {"copper_inferno:herald_emberglass", "copper_inferno:omen_fragment", "copper_inferno:omen_fragment", "minecraft:gold_block", "", "", "", "", ""},
-				"copper_inferno:herald_war_banner", 1, "Herald War Banner - shapeless: 1x Herald Emberglass + 2x Omen Fragment + 1x Gold Block. The epic trophy of the Calamity Herald.", "Herold-Kriegsbanner - formlos: 1x Herold-Glutglas + 2x Omenfragment + 1x Goldblock. Die epische Troph\u00e4e zum Boss Herold des Unheils."));
+				"copper_inferno:herald_war_banner", 1, "Herald War Banner - shapeless: 1x Herald Emberglass + 2x Omen Fragment + 1x Gold Block. The epic trophy of the Calamity Herald.", "Herold-Kriegsbanner - formlos: 1x Herold-Glutglas + 2x Omenfragment + 1x Goldblock. Die epische Troph\u00e4e zum Boss Unheilsherold."));
 	}
 }

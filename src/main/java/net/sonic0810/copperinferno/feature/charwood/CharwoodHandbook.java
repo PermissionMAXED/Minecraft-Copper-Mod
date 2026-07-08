@@ -18,15 +18,15 @@ final class CharwoodHandbook {
 	static void register() {
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/family_charwood", "copper_inferno:charwood", null,
 				null,
-				null, 0, "The Charwood family for Inferno builds: block, stairs, slab and wall.", "Die Kohlholz-Familie f\u00fcr Inferno-Bauten: Block, Treppe, Stufe und Mauer."));
+				null, 0, "The Charwood family for Inferno builds: block, stairs, slab and wall.", "Die Kohleholz-Familie f\u00fcr Inferno-Bauten: Block, Treppe, Stufe und Mauer."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/family_polished_charwood", "copper_inferno:polished_charwood", null,
 				null,
-				null, 0, "The Polished Charwood family for Inferno builds: block, stairs, slab and wall.", "Die Familie Poliertes Kohlholz f\u00fcr Inferno-Bauten: Block, Treppe, Stufe und Mauer."));
+				null, 0, "The Polished Charwood family for Inferno builds: block, stairs, slab and wall.", "Die Familie Poliertes Kohleholz f\u00fcr Inferno-Bauten: Block, Treppe, Stufe und Mauer."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/family_charwood_bricks", "copper_inferno:charwood_bricks", null,
 				null,
-				null, 0, "The Charwood Bricks family for Inferno builds: block, stairs, slab and wall.", "Die Kohlholzziegel-Familie f\u00fcr Inferno-Bauten: Block, Treppe, Stufe und Mauer."));
+				null, 0, "The Charwood Bricks family for Inferno builds: block, stairs, slab and wall.", "Die Kohleholzziegel-Familie f\u00fcr Inferno-Bauten: Block, Treppe, Stufe und Mauer."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/family_emberbark", "copper_inferno:emberbark", null,
 				null,
@@ -186,123 +186,123 @@ final class CharwoodHandbook {
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/charwood", "copper_inferno:charwood", "charwood/charwood",
 				new String[] {"minecraft:charcoal", "", "minecraft:charcoal", "", "copper_inferno:scorched_planks", "", "minecraft:charcoal", "", "minecraft:charcoal"},
-				"copper_inferno:charwood", 4, "Craft 4x Charwood at a crafting table.", "Stellt 4x Kohlholz an der Werkbank her."));
+				"copper_inferno:charwood", 4, "Craft 4x Charwood at a crafting table.", "Stellt 4x Kohleholz an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/charwood_bricks", "copper_inferno:charwood_bricks", "charwood/charwood_bricks",
 				new String[] {"copper_inferno:charwood", "copper_inferno:charwood", "", "copper_inferno:charwood", "copper_inferno:charwood", "", "", "", ""},
-				"copper_inferno:charwood_bricks", 4, "Craft 4x Charwood Bricks at a crafting table.", "Stellt 4x Kohlholzziegel an der Werkbank her."));
+				"copper_inferno:charwood_bricks", 4, "Craft 4x Charwood Bricks at a crafting table.", "Stellt 4x Kohleholzziegel an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/charwood_tiles", "copper_inferno:charwood_tiles", "charwood/charwood_tiles",
 				new String[] {"copper_inferno:charwood_bricks", "copper_inferno:charwood_bricks", "", "copper_inferno:charwood_bricks", "copper_inferno:charwood_bricks", "", "", "", ""},
-				"copper_inferno:charwood_tiles", 4, "Craft 4x Charwood Tiles at a crafting table.", "Stellt 4x Kohlholzfliesen an der Werkbank her."));
+				"copper_inferno:charwood_tiles", 4, "Craft 4x Charwood Tiles at a crafting table.", "Stellt 4x Kohleholzfliesen an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/polished_charwood", "copper_inferno:polished_charwood", "charwood/polished_charwood",
 				new String[] {"copper_inferno:charwood_tiles", "copper_inferno:charwood_tiles", "", "copper_inferno:charwood_tiles", "copper_inferno:charwood_tiles", "", "", "", ""},
-				"copper_inferno:polished_charwood", 4, "Craft 4x Polished Charwood at a crafting table.", "Stellt 4x Poliertes Kohlholz an der Werkbank her."));
+				"copper_inferno:polished_charwood", 4, "Craft 4x Polished Charwood at a crafting table.", "Stellt 4x Poliertes Kohleholz an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/charwood_slab", "copper_inferno:charwood_slab", "charwood/charwood_slab",
 				new String[] {"copper_inferno:charwood", "copper_inferno:charwood", "copper_inferno:charwood", "", "", "", "", "", ""},
-				"copper_inferno:charwood_slab", 6, "Craft 6x Charwood Slab at a crafting table.", "Stellt 6x Kohlholzstufe an der Werkbank her."));
+				"copper_inferno:charwood_slab", 6, "Craft 6x Charwood Slab at a crafting table.", "Stellt 6x Kohleholzstufe an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/charwood_stairs", "copper_inferno:charwood_stairs", "charwood/charwood_stairs",
 				new String[] {"copper_inferno:charwood", "", "", "copper_inferno:charwood", "copper_inferno:charwood", "", "copper_inferno:charwood", "copper_inferno:charwood", "copper_inferno:charwood"},
-				"copper_inferno:charwood_stairs", 4, "Craft 4x Charwood Stairs at a crafting table.", "Stellt 4x Kohlholztreppe an der Werkbank her."));
+				"copper_inferno:charwood_stairs", 4, "Craft 4x Charwood Stairs at a crafting table.", "Stellt 4x Kohleholztreppe an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/charwood_wall", "copper_inferno:charwood_wall", "charwood/charwood_wall",
 				new String[] {"copper_inferno:charwood", "copper_inferno:charwood", "copper_inferno:charwood", "copper_inferno:charwood", "copper_inferno:charwood", "copper_inferno:charwood", "", "", ""},
-				"copper_inferno:charwood_wall", 6, "Craft 6x Charwood Wall at a crafting table.", "Stellt 6x Kohlholzmauer an der Werkbank her."));
+				"copper_inferno:charwood_wall", 6, "Craft 6x Charwood Wall at a crafting table.", "Stellt 6x Kohleholzmauer an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/polished_charwood_slab", "copper_inferno:polished_charwood_slab", "charwood/polished_charwood_slab",
 				new String[] {"copper_inferno:polished_charwood", "copper_inferno:polished_charwood", "copper_inferno:polished_charwood", "", "", "", "", "", ""},
-				"copper_inferno:polished_charwood_slab", 6, "Craft 6x Polished Charwood Slab at a crafting table.", "Stellt 6x Polierte Kohlholzstufe an der Werkbank her."));
+				"copper_inferno:polished_charwood_slab", 6, "Craft 6x Polished Charwood Slab at a crafting table.", "Stellt 6x Polierte Kohleholzstufe an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/polished_charwood_stairs", "copper_inferno:polished_charwood_stairs", "charwood/polished_charwood_stairs",
 				new String[] {"copper_inferno:polished_charwood", "", "", "copper_inferno:polished_charwood", "copper_inferno:polished_charwood", "", "copper_inferno:polished_charwood", "copper_inferno:polished_charwood", "copper_inferno:polished_charwood"},
-				"copper_inferno:polished_charwood_stairs", 4, "Craft 4x Polished Charwood Stairs at a crafting table.", "Stellt 4x Polierte Kohlholztreppe an der Werkbank her."));
+				"copper_inferno:polished_charwood_stairs", 4, "Craft 4x Polished Charwood Stairs at a crafting table.", "Stellt 4x Polierte Kohleholztreppe an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/polished_charwood_wall", "copper_inferno:polished_charwood_wall", "charwood/polished_charwood_wall",
 				new String[] {"copper_inferno:polished_charwood", "copper_inferno:polished_charwood", "copper_inferno:polished_charwood", "copper_inferno:polished_charwood", "copper_inferno:polished_charwood", "copper_inferno:polished_charwood", "", "", ""},
-				"copper_inferno:polished_charwood_wall", 6, "Craft 6x Polished Charwood Wall at a crafting table.", "Stellt 6x Polierte Kohlholzmauer an der Werkbank her."));
+				"copper_inferno:polished_charwood_wall", 6, "Craft 6x Polished Charwood Wall at a crafting table.", "Stellt 6x Polierte Kohleholzmauer an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/charwood_brick_slab", "copper_inferno:charwood_brick_slab", "charwood/charwood_brick_slab",
 				new String[] {"copper_inferno:charwood_bricks", "copper_inferno:charwood_bricks", "copper_inferno:charwood_bricks", "", "", "", "", "", ""},
-				"copper_inferno:charwood_brick_slab", 6, "Craft 6x Charwood Brick Slab at a crafting table.", "Stellt 6x Kohlholzziegelstufe an der Werkbank her."));
+				"copper_inferno:charwood_brick_slab", 6, "Craft 6x Charwood Brick Slab at a crafting table.", "Stellt 6x Kohleholzziegelstufe an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/charwood_brick_stairs", "copper_inferno:charwood_brick_stairs", "charwood/charwood_brick_stairs",
 				new String[] {"copper_inferno:charwood_bricks", "", "", "copper_inferno:charwood_bricks", "copper_inferno:charwood_bricks", "", "copper_inferno:charwood_bricks", "copper_inferno:charwood_bricks", "copper_inferno:charwood_bricks"},
-				"copper_inferno:charwood_brick_stairs", 4, "Craft 4x Charwood Brick Stairs at a crafting table.", "Stellt 4x Kohlholzziegeltreppe an der Werkbank her."));
+				"copper_inferno:charwood_brick_stairs", 4, "Craft 4x Charwood Brick Stairs at a crafting table.", "Stellt 4x Kohleholzziegeltreppe an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/charwood_brick_wall", "copper_inferno:charwood_brick_wall", "charwood/charwood_brick_wall",
 				new String[] {"copper_inferno:charwood_bricks", "copper_inferno:charwood_bricks", "copper_inferno:charwood_bricks", "copper_inferno:charwood_bricks", "copper_inferno:charwood_bricks", "copper_inferno:charwood_bricks", "", "", ""},
-				"copper_inferno:charwood_brick_wall", 6, "Craft 6x Charwood Brick Wall at a crafting table.", "Stellt 6x Kohlholzziegelmauer an der Werkbank her."));
+				"copper_inferno:charwood_brick_wall", 6, "Craft 6x Charwood Brick Wall at a crafting table.", "Stellt 6x Kohleholzziegelmauer an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/cracked_charwood_bricks", "copper_inferno:cracked_charwood_bricks", "charwood/cracked_charwood_bricks",
 				new String[] {"", "", "", "", "copper_inferno:charwood_bricks", "", "", "", ""},
-				"copper_inferno:cracked_charwood_bricks", 1, "Smelting Charwood Bricks in a furnace yields Cracked Charwood Bricks.", "Kohlholzziegel im Ofen gebrannt ergibt Rissige Kohlholzziegel."));
+				"copper_inferno:cracked_charwood_bricks", 1, "Smelting Charwood Bricks in a furnace yields Cracked Charwood Bricks.", "Kohleholzziegel im Ofen gebrannt ergibt Rissige Kohleholzziegel."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/chiseled_charwood_bricks", "copper_inferno:chiseled_charwood_bricks", "charwood/chiseled_charwood_bricks",
 				new String[] {"copper_inferno:charwood_brick_slab", "", "", "copper_inferno:charwood_brick_slab", "", "", "", "", ""},
-				"copper_inferno:chiseled_charwood_bricks", 1, "Craft 1x Chiseled Charwood Bricks at a crafting table.", "Stellt 1x Gemei\u00dfelte Kohlholzziegel an der Werkbank her."));
+				"copper_inferno:chiseled_charwood_bricks", 1, "Craft 1x Chiseled Charwood Bricks at a crafting table.", "Stellt 1x Gemei\u00dfelte Kohleholzziegel an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/charwood_pillar", "copper_inferno:charwood_pillar", "charwood/charwood_pillar",
 				new String[] {"copper_inferno:charwood_bricks", "", "", "copper_inferno:charwood_bricks", "", "", "", "", ""},
-				"copper_inferno:charwood_pillar", 2, "Craft 2x Charwood Pillar at a crafting table.", "Stellt 2x Kohlholzs\u00e4ule an der Werkbank her."));
+				"copper_inferno:charwood_pillar", 2, "Craft 2x Charwood Pillar at a crafting table.", "Stellt 2x Kohleholzs\u00e4ule an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/charwood_slab_from_charwood_stonecutting", "copper_inferno:charwood_slab", "charwood/charwood_slab_from_charwood_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:charwood", "", "", "", ""},
-				"copper_inferno:charwood_slab", 2, "Stonecutting: cut 2x Charwood Slab from Charwood.", "Steins\u00e4ge: 2x Kohlholzstufe aus Kohlholz schneiden."));
+				"copper_inferno:charwood_slab", 2, "Stonecutting: cut 2x Charwood Slab from Charwood.", "Steins\u00e4ge: 2x Kohleholzstufe aus Kohleholz schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/charwood_stairs_from_charwood_stonecutting", "copper_inferno:charwood_stairs", "charwood/charwood_stairs_from_charwood_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:charwood", "", "", "", ""},
-				"copper_inferno:charwood_stairs", 1, "Stonecutting: cut 1x Charwood Stairs from Charwood.", "Steins\u00e4ge: 1x Kohlholztreppe aus Kohlholz schneiden."));
+				"copper_inferno:charwood_stairs", 1, "Stonecutting: cut 1x Charwood Stairs from Charwood.", "Steins\u00e4ge: 1x Kohleholztreppe aus Kohleholz schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/charwood_wall_from_charwood_stonecutting", "copper_inferno:charwood_wall", "charwood/charwood_wall_from_charwood_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:charwood", "", "", "", ""},
-				"copper_inferno:charwood_wall", 1, "Stonecutting: cut 1x Charwood Wall from Charwood.", "Steins\u00e4ge: 1x Kohlholzmauer aus Kohlholz schneiden."));
+				"copper_inferno:charwood_wall", 1, "Stonecutting: cut 1x Charwood Wall from Charwood.", "Steins\u00e4ge: 1x Kohleholzmauer aus Kohleholz schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/polished_charwood_from_charwood_stonecutting", "copper_inferno:polished_charwood", "charwood/polished_charwood_from_charwood_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:charwood", "", "", "", ""},
-				"copper_inferno:polished_charwood", 1, "Stonecutting: cut 1x Polished Charwood from Charwood.", "Steins\u00e4ge: 1x Poliertes Kohlholz aus Kohlholz schneiden."));
+				"copper_inferno:polished_charwood", 1, "Stonecutting: cut 1x Polished Charwood from Charwood.", "Steins\u00e4ge: 1x Poliertes Kohleholz aus Kohleholz schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/polished_charwood_slab_from_charwood_stonecutting", "copper_inferno:polished_charwood_slab", "charwood/polished_charwood_slab_from_charwood_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:charwood", "", "", "", ""},
-				"copper_inferno:polished_charwood_slab", 2, "Stonecutting: cut 2x Polished Charwood Slab from Charwood.", "Steins\u00e4ge: 2x Polierte Kohlholzstufe aus Kohlholz schneiden."));
+				"copper_inferno:polished_charwood_slab", 2, "Stonecutting: cut 2x Polished Charwood Slab from Charwood.", "Steins\u00e4ge: 2x Polierte Kohleholzstufe aus Kohleholz schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/polished_charwood_stairs_from_charwood_stonecutting", "copper_inferno:polished_charwood_stairs", "charwood/polished_charwood_stairs_from_charwood_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:charwood", "", "", "", ""},
-				"copper_inferno:polished_charwood_stairs", 1, "Stonecutting: cut 1x Polished Charwood Stairs from Charwood.", "Steins\u00e4ge: 1x Polierte Kohlholztreppe aus Kohlholz schneiden."));
+				"copper_inferno:polished_charwood_stairs", 1, "Stonecutting: cut 1x Polished Charwood Stairs from Charwood.", "Steins\u00e4ge: 1x Polierte Kohleholztreppe aus Kohleholz schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/polished_charwood_wall_from_charwood_stonecutting", "copper_inferno:polished_charwood_wall", "charwood/polished_charwood_wall_from_charwood_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:charwood", "", "", "", ""},
-				"copper_inferno:polished_charwood_wall", 1, "Stonecutting: cut 1x Polished Charwood Wall from Charwood.", "Steins\u00e4ge: 1x Polierte Kohlholzmauer aus Kohlholz schneiden."));
+				"copper_inferno:polished_charwood_wall", 1, "Stonecutting: cut 1x Polished Charwood Wall from Charwood.", "Steins\u00e4ge: 1x Polierte Kohleholzmauer aus Kohleholz schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/charwood_bricks_from_charwood_stonecutting", "copper_inferno:charwood_bricks", "charwood/charwood_bricks_from_charwood_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:charwood", "", "", "", ""},
-				"copper_inferno:charwood_bricks", 1, "Stonecutting: cut 1x Charwood Bricks from Charwood.", "Steins\u00e4ge: 1x Kohlholzziegel aus Kohlholz schneiden."));
+				"copper_inferno:charwood_bricks", 1, "Stonecutting: cut 1x Charwood Bricks from Charwood.", "Steins\u00e4ge: 1x Kohleholzziegel aus Kohleholz schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/charwood_brick_slab_from_charwood_stonecutting", "copper_inferno:charwood_brick_slab", "charwood/charwood_brick_slab_from_charwood_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:charwood", "", "", "", ""},
-				"copper_inferno:charwood_brick_slab", 2, "Stonecutting: cut 2x Charwood Brick Slab from Charwood.", "Steins\u00e4ge: 2x Kohlholzziegelstufe aus Kohlholz schneiden."));
+				"copper_inferno:charwood_brick_slab", 2, "Stonecutting: cut 2x Charwood Brick Slab from Charwood.", "Steins\u00e4ge: 2x Kohleholzziegelstufe aus Kohleholz schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/charwood_brick_stairs_from_charwood_stonecutting", "copper_inferno:charwood_brick_stairs", "charwood/charwood_brick_stairs_from_charwood_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:charwood", "", "", "", ""},
-				"copper_inferno:charwood_brick_stairs", 1, "Stonecutting: cut 1x Charwood Brick Stairs from Charwood.", "Steins\u00e4ge: 1x Kohlholzziegeltreppe aus Kohlholz schneiden."));
+				"copper_inferno:charwood_brick_stairs", 1, "Stonecutting: cut 1x Charwood Brick Stairs from Charwood.", "Steins\u00e4ge: 1x Kohleholzziegeltreppe aus Kohleholz schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/charwood_brick_wall_from_charwood_stonecutting", "copper_inferno:charwood_brick_wall", "charwood/charwood_brick_wall_from_charwood_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:charwood", "", "", "", ""},
-				"copper_inferno:charwood_brick_wall", 1, "Stonecutting: cut 1x Charwood Brick Wall from Charwood.", "Steins\u00e4ge: 1x Kohlholzziegelmauer aus Kohlholz schneiden."));
+				"copper_inferno:charwood_brick_wall", 1, "Stonecutting: cut 1x Charwood Brick Wall from Charwood.", "Steins\u00e4ge: 1x Kohleholzziegelmauer aus Kohleholz schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/charwood_tiles_from_charwood_stonecutting", "copper_inferno:charwood_tiles", "charwood/charwood_tiles_from_charwood_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:charwood", "", "", "", ""},
-				"copper_inferno:charwood_tiles", 1, "Stonecutting: cut 1x Charwood Tiles from Charwood.", "Steins\u00e4ge: 1x Kohlholzfliesen aus Kohlholz schneiden."));
+				"copper_inferno:charwood_tiles", 1, "Stonecutting: cut 1x Charwood Tiles from Charwood.", "Steins\u00e4ge: 1x Kohleholzfliesen aus Kohleholz schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/chiseled_charwood_bricks_from_charwood_stonecutting", "copper_inferno:chiseled_charwood_bricks", "charwood/chiseled_charwood_bricks_from_charwood_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:charwood", "", "", "", ""},
-				"copper_inferno:chiseled_charwood_bricks", 1, "Stonecutting: cut 1x Chiseled Charwood Bricks from Charwood.", "Steins\u00e4ge: 1x Gemei\u00dfelte Kohlholzziegel aus Kohlholz schneiden."));
+				"copper_inferno:chiseled_charwood_bricks", 1, "Stonecutting: cut 1x Chiseled Charwood Bricks from Charwood.", "Steins\u00e4ge: 1x Gemei\u00dfelte Kohleholzziegel aus Kohleholz schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/charwood_pillar_from_charwood_stonecutting", "copper_inferno:charwood_pillar", "charwood/charwood_pillar_from_charwood_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:charwood", "", "", "", ""},
-				"copper_inferno:charwood_pillar", 1, "Stonecutting: cut 1x Charwood Pillar from Charwood.", "Steins\u00e4ge: 1x Kohlholzs\u00e4ule aus Kohlholz schneiden."));
+				"copper_inferno:charwood_pillar", 1, "Stonecutting: cut 1x Charwood Pillar from Charwood.", "Steins\u00e4ge: 1x Kohleholzs\u00e4ule aus Kohleholz schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "charwood/emberbark", "copper_inferno:emberbark", "charwood/emberbark",
 				new String[] {"minecraft:blaze_powder", "", "minecraft:blaze_powder", "", "copper_inferno:charwood", "", "minecraft:blaze_powder", "", "minecraft:blaze_powder"},

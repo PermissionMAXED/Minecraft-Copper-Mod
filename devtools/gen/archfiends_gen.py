@@ -139,8 +139,8 @@ BOSSES = [
         summon="cinder_matriarch_sigil", drop1="cinder_tearstone",
         drop2="matriarch_ember_sac", trophy="matriarch_cinder_diadem",
         ring=("minecraft:ghast_tear", "minecraft:magma_cream", "minecraft:magma_block"),
-        en="Cinder Ghast Matriarch", de="Zinder-Ghast-Matriarchin",
-        de_acc="die Zinder-Ghast-Matriarchin",
+        en="Cinder Ghast Matriarch", de="Zunder-Ghast-Matriarchin",
+        de_acc="die Zunder-Ghast-Matriarchin",
         pal={"dark": (0x4A, 0x20, 0x18), "base": (0xC8, 0x54, 0x3A),
              "bright": (0xE8, 0x87, 0x5A), "hot": (0xFF, 0xD8, 0xA0)},
         doc=["Archfiend 2 \"Cinder Ghast Matriarch\": a burning ghast (MAX_HEALTH 300, SCALE 1.8).",
@@ -258,8 +258,8 @@ BOSSES = [
         drop2="warlord_gilded_tusk", trophy="warlord_war_crown",
         ring=("minecraft:gold_ingot", "minecraft:blaze_powder",
               "minecraft:gilded_blackstone"),
-        en="Cinder Brute Warlord", de="Zinder-Barbar-Kriegsherr",
-        de_acc="den Zinder-Barbar-Kriegsherrn",
+        en="Cinder Brute Warlord", de="Zunder-Barbar-Kriegsherr",
+        de_acc="den Zunder-Barbar-Kriegsherrn",
         pal={"dark": (0x5C, 0x3A, 0x10), "base": (0xC6, 0x8A, 0x2C),
              "bright": (0xE8, 0xB8, 0x4A), "hot": (0xFF, 0xE8, 0x96)},
         doc=["Archfiend 7 \"Cinder Brute Warlord\": a piglin brute archfiend (MAX_HEALTH 300,",
@@ -408,10 +408,10 @@ ITEM_DE = {
     "dread_ghast_tear": "Schreckens-Ghast-Tr\u00e4ne",
     "sovereign_veil_shard": "Schleierscherbe des F\u00fcrsten",
     "dread_sovereign_crown": "Krone des Schreckensf\u00fcrsten",
-    "cinder_matriarch_sigil": "Zinder-Matriarchin-Siegel",
-    "cinder_tearstone": "Zinder-Tr\u00e4nenstein",
+    "cinder_matriarch_sigil": "Zunder-Matriarchin-Siegel",
+    "cinder_tearstone": "Zunder-Tr\u00e4nenstein",
     "matriarch_ember_sac": "Glutbeutel der Matriarchin",
-    "matriarch_cinder_diadem": "Zinderdiadem der Matriarchin",
+    "matriarch_cinder_diadem": "Zunderdiadem der Matriarchin",
     "molten_tyrant_sigil": "Schmelztyrannen-Siegel",
     "molten_tusk": "Schmelzhauer",
     "tyrant_seared_hide": "Versengte Tyrannenhaut",
@@ -423,16 +423,16 @@ ITEM_DE = {
     "ash_archon_sigil": "Aschenarchon-Siegel",
     "archon_ash_tome": "Aschenfoliant des Archons",
     "ash_rune_shard": "Aschenrunenscherbe",
-    "archon_cinder_mitre": "Zindermitra des Archons",
+    "archon_cinder_mitre": "Zundermitra des Archons",
     "soot_highlord_sigil": "Ru\u00dfhochf\u00fcrsten-Siegel",
     "highlord_soot_pearl": "Ru\u00dfperle des Hochf\u00fcrsten",
     "soot_grimoire_page": "Ru\u00dfgrimoire-Seite",
     "highlord_soot_sceptre": "Ru\u00dfzepter des Hochf\u00fcrsten",
-    "cinder_warlord_sigil": "Zinderkriegsherren-Siegel",
-    "warlord_cinder_axehead": "Zinderaxtklinge des Kriegsherrn",
+    "cinder_warlord_sigil": "Zunderkriegsherren-Siegel",
+    "warlord_cinder_axehead": "Zunderaxtklinge des Kriegsherrn",
     "warlord_gilded_tusk": "Vergoldeter Kriegsherrenhauer",
     "warlord_war_crown": "Kriegskrone des Kriegsherrn",
-    "gilded_executioner_sigil": "Scharfrichter-Siegel",
+    "gilded_executioner_sigil": "Vergoldetes Scharfrichter-Siegel",
     "executioner_gilded_plate": "Vergoldete Scharfrichterplatte",
     "executioner_chain_link": "Scharfrichter-Kettenglied",
     "executioner_gold_visage": "Goldantlitz des Scharfrichters",
@@ -500,12 +500,12 @@ HB_TEXT = {
         "can see within 8 blocks; below half health she calls 2 blaze minions and hardens "
         "with Resistance. Drops 2-4 Cinder Tearstones, 1-2 Matriarch Ember Sacs and the "
         "Matriarch Cinder Diadem.",
-        "Zinder-Ghast-Matriarchin - ein brennender Ghast-Erzd\u00e4mon. Beschw\u00f6rung: "
-        "ein Zinder-Matriarchin-Siegel benutzen. Alle paar Sekunden regnet sie Zinder und "
+        "Zunder-Ghast-Matriarchin - ein brennender Ghast-Erzd\u00e4mon. Beschw\u00f6rung: "
+        "ein Zunder-Matriarchin-Siegel benutzen. Alle paar Sekunden regnet sie Zunder und "
         "entz\u00fcndet jeden sichtbaren Spieler im Umkreis von 8 Bl\u00f6cken; unter "
         "halber Gesundheit ruft sie 2 Lohen-Diener und h\u00e4rtet sich mit Resistenz. "
-        "L\u00e4sst 2-4 Zinder-Tr\u00e4nensteine, 1-2 Glutbeutel der Matriarchin und das "
-        "Zinderdiadem der Matriarchin fallen."),
+        "L\u00e4sst 2-4 Zunder-Tr\u00e4nensteine, 1-2 Glutbeutel der Matriarchin und das "
+        "Zunderdiadem der Matriarchin fallen."),
     "molten_hoglin_tyrant": (
         "Molten Hoglin Tyrant - a magma-clad hoglin archfiend that never zombifies. "
         "Summon: use a Molten Tyrant Sigil. Its molten stomp ignites and slows every "
@@ -540,7 +540,7 @@ HB_TEXT = {
         "sichtbaren Spieler im Umkreis von 10 Bl\u00f6cken mit Abbaul\u00e4hmung und "
         "Schw\u00e4che aus; unter halber Gesundheit wird er rasend und schneller. "
         "L\u00e4sst 2-4 Aschenfolianten des Archons, 1-2 Aschenrunenscherben und die "
-        "Zindermitra des Archons fallen."),
+        "Zundermitra des Archons fallen."),
     "soot_evoker_highlord": (
         "Soot Evoker Highlord - a soot-wreathed illager archfiend. Summon: use a Soot "
         "Highlord Sigil. Its soot veil blinds and slows every player it can see within 8 "
@@ -559,11 +559,11 @@ HB_TEXT = {
         "it can see within 6 blocks; below half health its axe arm gains +4 attack "
         "damage. Drops 2-4 Warlord Cinder Axeheads, 1-2 Gilded Warlord Tusks and the "
         "Warlord War Crown.",
-        "Zinder-Barbar-Kriegsherr - ein Piglin-Barbar-Erzd\u00e4mon, der nie "
-        "zombifiziert. Beschw\u00f6rung: ein Zinderkriegsherren-Siegel benutzen. Sein "
+        "Zunder-Barbar-Kriegsherr - ein Piglin-Barbar-Erzd\u00e4mon, der nie "
+        "zombifiziert. Beschw\u00f6rung: ein Zunderkriegsherren-Siegel benutzen. Sein "
         "Kriegsschrei beschleunigt ihn selbst und schw\u00e4cht jeden sichtbaren Spieler "
         "im Umkreis von 6 Bl\u00f6cken; unter halber Gesundheit erh\u00e4lt sein Axtarm "
-        "+4 Angriffsschaden. L\u00e4sst 2-4 Zinderaxtklingen des Kriegsherrn, 1-2 "
+        "+4 Angriffsschaden. L\u00e4sst 2-4 Zunderaxtklingen des Kriegsherrn, 1-2 "
         "Vergoldete Kriegsherrenhauer und die Kriegskrone des Kriegsherrn fallen."),
     "gilded_brute_executioner": (
         "Gilded Brute Executioner - a gold-plated piglin brute archfiend that never "
@@ -572,8 +572,8 @@ HB_TEXT = {
         "permanently. Drops 2-4 Gilded Executioner Plates, 1-2 Executioner Chain Links "
         "and the Executioner Gold Visage.",
         "Vergoldeter Barbar-Scharfrichter - ein goldgepanzerter Piglin-Barbar-"
-        "Erzd\u00e4mon, der nie zombifiziert. Beschw\u00f6rung: ein Scharfrichter-Siegel "
-        "benutzen. Unter halber Gesundheit ruft er 2 axtschwingende Piglin-Barbar-Diener, "
+        "Erzd\u00e4mon, der nie zombifiziert. Beschw\u00f6rung: ein Vergoldetes "
+        "Scharfrichter-Siegel benutzen. Unter halber Gesundheit ruft er 2 axtschwingende Piglin-Barbar-Diener, "
         "h\u00e4rtet sich mit Resistenz und wird dauerhaft schneller. L\u00e4sst 2-4 "
         "Vergoldete Scharfrichterplatten, 1-2 Scharfrichter-Kettenglieder und das "
         "Goldantlitz des Scharfrichters fallen."),

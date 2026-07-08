@@ -63,7 +63,7 @@ LANG_DE = {
     "effect.copper_inferno.oxidized": "Oxidiert",
     "item.copper_inferno.heat_ward_charm": "Hitzeschutz-Amulett",
     "item.copper_inferno.slag_bomb": "Schlackenbombe",
-    "item.copper_inferno.cinder_compass": "Zinderkompass",
+    "item.copper_inferno.cinder_compass": "Zunderkompass",
     "item.copper_inferno.cinder_compass.tooltip.flavor": "Die Nadel strebt zur n\u00e4chsten W\u00e4rmequelle.",
     "item.copper_inferno.cinder_compass.tooltip.note": "Reine Zierde - er verfolgt in Wirklichkeit nichts.",
     "item.copper_inferno.ash_talisman": "Asche-Talisman",

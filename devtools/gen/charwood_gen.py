@@ -60,7 +60,7 @@ Mat = namedtuple("Mat", "mid en de de_stem de_pol vanilla map_color sounds "
                         "shades mortar accents base_prob brick_prob")
 
 MATERIALS = [
-    Mat("charwood", "Charwood", "Kohlholz", "Kohlholz", "Poliertes",
+    Mat("charwood", "Charwood", "Kohleholz", "Kohleholz", "Poliertes",
         "minecraft:charcoal", "TERRACOTTA_BLACK", "WOOD",
         [(0x2E, 0x22, 0x1A), (0x3E, 0x2E, 0x22), (0x3E, 0x2E, 0x22), (0x52, 0x3C, 0x2C)],
         (0x1A, 0x12, 0x0C), [(0xE2, 0x58, 0x22), (0xFF, 0x7A, 0x2F)], 0.03, 0.10),

@@ -253,7 +253,7 @@ final class CinderStoneHandbook {
 
 		HandbookEntries.add(new HandbookEntry("blocks", "cinderstone/cinder_glass", "copper_inferno:cinder_glass", "cinderstone/cinder_glass",
 				new String[] {"minecraft:glass", "minecraft:glass", "minecraft:glass", "minecraft:glass", "minecraft:charcoal", "minecraft:glass", "minecraft:glass", "minecraft:glass", "minecraft:glass"},
-				"copper_inferno:cinder_glass", 8, "Craft 8x Cinder Glass at a crafting table.", "Stellt 8x Zinderglas an der Werkbank her."));
+				"copper_inferno:cinder_glass", 8, "Craft 8x Cinder Glass at a crafting table.", "Stellt 8x Zunderglas an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "cinderstone/smolder_glass", "copper_inferno:smolder_glass", "cinderstone/smolder_glass",
 				new String[] {"minecraft:glass", "minecraft:glass", "minecraft:glass", "minecraft:glass", "minecraft:magma_cream", "minecraft:glass", "minecraft:glass", "minecraft:glass", "minecraft:glass"},
@@ -261,7 +261,7 @@ final class CinderStoneHandbook {
 
 		HandbookEntries.add(new HandbookEntry("blocks", "cinderstone/cinder_glass_pane", "copper_inferno:cinder_glass_pane", "cinderstone/cinder_glass_pane",
 				new String[] {"copper_inferno:cinder_glass", "copper_inferno:cinder_glass", "copper_inferno:cinder_glass", "copper_inferno:cinder_glass", "copper_inferno:cinder_glass", "copper_inferno:cinder_glass", "", "", ""},
-				"copper_inferno:cinder_glass_pane", 16, "Craft 16x Cinder Glass Pane at a crafting table.", "Stellt 16x Zinderglasscheibe an der Werkbank her."));
+				"copper_inferno:cinder_glass_pane", 16, "Craft 16x Cinder Glass Pane at a crafting table.", "Stellt 16x Zunderglasscheibe an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "cinderstone/smolder_glass_pane", "copper_inferno:smolder_glass_pane", "cinderstone/smolder_glass_pane",
 				new String[] {"copper_inferno:smolder_glass", "copper_inferno:smolder_glass", "copper_inferno:smolder_glass", "copper_inferno:smolder_glass", "copper_inferno:smolder_glass", "copper_inferno:smolder_glass", "", "", ""},

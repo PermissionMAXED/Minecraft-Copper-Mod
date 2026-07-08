@@ -38,7 +38,7 @@ final class MoltenFaunaHandbook {
 
 		HandbookEntries.add(new HandbookEntry("mobs", "ember_grazer", "copper_inferno:ember_grazer_spawn_egg", null,
 				null,
-				null, 0, "Ember Grazer - a placid bovine that crops smoldering tufts across the Cinder Wastes, Ember Grove and Slag Sea. Drops Grazer Brisket.", "Glutgraser - ein friedliches Rind, das schwelende B\u00fcschel in der Aschen\u00f6de, im Gluthain und am Schlackenmeer abweidet. L\u00e4sst Graser-Brustkern fallen."));
+				null, 0, "Ember Grazer - a placid bovine that crops smoldering tufts across the Cinder Wastes, Ember Grove and Slag Sea. Drops Grazer Brisket.", "Glutgraser - ein friedliches Rind, das schwelende B\u00fcschel in der Zunder\u00f6de, im Gluthain und am Schlackenmeer abweidet. L\u00e4sst Graser-Brustkern fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "ash_yak", "copper_inferno:ash_yak_spawn_egg", null,
 				null,
@@ -54,7 +54,7 @@ final class MoltenFaunaHandbook {
 
 		HandbookEntries.add(new HandbookEntry("mobs", "cinder_aurochs", "copper_inferno:cinder_aurochs_spawn_egg", null,
 				null,
-				null, 0, "Cinder Aurochs - a primeval wild ox with cinder-crusted horns, the largest grazer of the Inferno. Drops Aurochs Shank.", "Zinder-Auerochse - ein urt\u00fcmlicher Wildochse mit zinderverkrusteten H\u00f6rnern, der gr\u00f6\u00dfte Graser des Infernos. L\u00e4sst Auerochsenhachse fallen."));
+				null, 0, "Cinder Aurochs - a primeval wild ox with cinder-crusted horns, the largest grazer of the Inferno. Drops Aurochs Shank.", "Zunder-Auerochse - ein urt\u00fcmlicher Wildochse mit zunderverkrusteten H\u00f6rnern, der gr\u00f6\u00dfte Graser des Infernos. L\u00e4sst Auerochsenhachse fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "soot_hen", "copper_inferno:soot_hen_spawn_egg", null,
 				null,
@@ -62,7 +62,7 @@ final class MoltenFaunaHandbook {
 
 		HandbookEntries.add(new HandbookEntry("mobs", "cinder_rooster", "copper_inferno:cinder_rooster_spawn_egg", null,
 				null,
-				null, 0, "Cinder Rooster - a strutting rooster with cinder-red plumage, quick to dart across the wastes. Drops Rooster Wing.", "Zinderhahn - ein stolzierender Hahn mit zinderrotem Gefieder, der flink \u00fcber die \u00d6de huscht. L\u00e4sst Hahnenfl\u00fcgel fallen."));
+				null, 0, "Cinder Rooster - a strutting rooster with cinder-red plumage, quick to dart across the wastes. Drops Rooster Wing.", "Zunderhahn - ein stolzierender Hahn mit zunderrotem Gefieder, der flink \u00fcber die \u00d6de huscht. L\u00e4sst Hahnenfl\u00fcgel fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "ember_pullet", "copper_inferno:ember_pullet_spawn_egg", null,
 				null,
@@ -70,7 +70,7 @@ final class MoltenFaunaHandbook {
 
 		HandbookEntries.add(new HandbookEntry("mobs", "ash_fowl", "copper_inferno:ash_fowl_spawn_egg", null,
 				null,
-				null, 0, "Ash Fowl - a pale, dusty fowl blending into the ash drifts of the Cinder Wastes. Drops Fowl Giblets.", "Aschenhuhn - ein blasses, staubiges Huhn, das in den Aschenwehen der Aschen\u00f6de kaum auff\u00e4llt. L\u00e4sst Gefl\u00fcgelklein fallen."));
+				null, 0, "Ash Fowl - a pale, dusty fowl blending into the ash drifts of the Cinder Wastes. Drops Fowl Giblets.", "Aschenhuhn - ein blasses, staubiges Huhn, das in den Aschenwehen der Zunder\u00f6de kaum auff\u00e4llt. L\u00e4sst Gefl\u00fcgelklein fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "magma_bantam", "copper_inferno:magma_bantam_spawn_egg", null,
 				null,
@@ -78,7 +78,7 @@ final class MoltenFaunaHandbook {
 
 		HandbookEntries.add(new HandbookEntry("mobs", "magma_hog", "copper_inferno:magma_hog_spawn_egg", null,
 				null,
-				null, 0, "Magma Hog - a stout hog rooting through warm cinder beds for buried embers. Drops Hog Belly.", "Magmakeiler - ein st\u00e4mmiger Keiler, der in warmen Zinderbetten nach vergrabener Glut w\u00fchlt. L\u00e4sst Keilerbauch fallen."));
+				null, 0, "Magma Hog - a stout hog rooting through warm cinder beds for buried embers. Drops Hog Belly.", "Magmakeiler - ein st\u00e4mmiger Keiler, der in warmen Zunderbetten nach vergrabener Glut w\u00fchlt. L\u00e4sst Keilerbauch fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "soot_swine", "copper_inferno:soot_swine_spawn_egg", null,
 				null,
@@ -86,7 +86,7 @@ final class MoltenFaunaHandbook {
 
 		HandbookEntries.add(new HandbookEntry("mobs", "cinder_boar", "copper_inferno:cinder_boar_spawn_egg", null,
 				null,
-				null, 0, "Cinder Boar - a bristly boar trotting briskly between the Ember Grove's charred trunks. Drops Boar Shoulder.", "Zindereber - ein borstiger Eber, der z\u00fcgig zwischen den verkohlten St\u00e4mmen des Gluthains trabt. L\u00e4sst Eberschulter fallen."));
+				null, 0, "Cinder Boar - a bristly boar trotting briskly between the Ember Grove's charred trunks. Drops Boar Shoulder.", "Zundereber - ein borstiger Eber, der z\u00fcgig zwischen den verkohlten St\u00e4mmen des Gluthains trabt. L\u00e4sst Eberschulter fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "slag_sow", "copper_inferno:slag_sow_spawn_egg", null,
 				null,
@@ -102,7 +102,7 @@ final class MoltenFaunaHandbook {
 
 		HandbookEntries.add(new HandbookEntry("mobs", "cinder_ram", "copper_inferno:cinder_ram_spawn_egg", null,
 				null,
-				null, 0, "Cinder Ram - a headstrong ram patrolling the flock's edge with cinder-dark curls. Drops Ram Rack.", "Zinderwidder - ein dickk\u00f6pfiger Widder mit zinderdunklen Locken, der den Rand der Herde bewacht. L\u00e4sst Widderkarree fallen."));
+				null, 0, "Cinder Ram - a headstrong ram patrolling the flock's edge with cinder-dark curls. Drops Ram Rack.", "Zunderwidder - ein dickk\u00f6pfiger Widder mit zunderdunklen Locken, der den Rand der Herde bewacht. L\u00e4sst Widderkarree fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "ember_lamb", "copper_inferno:ember_lamb_spawn_egg", null,
 				null,

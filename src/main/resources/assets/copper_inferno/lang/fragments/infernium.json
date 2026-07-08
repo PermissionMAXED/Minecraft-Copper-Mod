@@ -21,5 +21,6 @@
   "item.copper_inferno.raw_infernium": "Raw Infernium",
   "item.copper_inferno.slag_chunk": "Slag Chunk",
   "item.copper_inferno.smolder_crystal": "Smolder Crystal",
-  "item.copper_inferno.smolder_lens": "Smolder Lens"
+  "item.copper_inferno.smolder_lens": "Smolder Lens",
+  "tag.item.copper_inferno.infernium_repair": "Infernium Repair Items"
 }

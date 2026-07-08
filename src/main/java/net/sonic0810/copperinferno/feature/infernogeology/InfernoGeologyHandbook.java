@@ -31,7 +31,7 @@ final class InfernoGeologyHandbook {
 
 		HandbookEntries.add(new HandbookEntry("dimension", "infernogeology_ore_cinder_quartz", "copper_inferno:cinder_quartz_ore", null,
 				null,
-				null, 0, "Cinder Quartz Ore generates in cinderstone: large, frequent quartz veins (the vanilla Nether quartz numbers). Mine with a pickaxe. Drops 1 Nether Quartz; Fortune raises the yield, Silk Touch drops the ore block.", "Zinderquarzerz generiert im Zunderstein: gro\u00dfe, h\u00e4ufige Quarzadern (die Vanilla-Netherquarz-Werte). Mit der Spitzhacke abbauen. L\u00e4sst 1 Netherquarz fallen; Gl\u00fcck erh\u00f6ht die Ausbeute, Behutsamkeit l\u00e4sst den Erzblock fallen."));
+				null, 0, "Cinder Quartz Ore generates in cinderstone: large, frequent quartz veins (the vanilla Nether quartz numbers). Mine with a pickaxe. Drops 1 Nether Quartz; Fortune raises the yield, Silk Touch drops the ore block.", "Zunderquarzerz generiert im Zunderstein: gro\u00dfe, h\u00e4ufige Quarzadern (die Vanilla-Netherquarz-Werte). Mit der Spitzhacke abbauen. L\u00e4sst 1 Netherquarz fallen; Gl\u00fcck erh\u00f6ht die Ausbeute, Behutsamkeit l\u00e4sst den Erzblock fallen."));
 
 		HandbookEntries.add(new HandbookEntry("dimension", "infernogeology_ore_brimstone", "copper_inferno:brimstone_ore", null,
 				null,
@@ -39,7 +39,7 @@ final class InfernoGeologyHandbook {
 
 		HandbookEntries.add(new HandbookEntry("dimension", "infernogeology_ore_cinder_lapis", "copper_inferno:cinder_lapis_ore", null,
 				null,
-				null, 0, "Cinder Lapis Ore generates in cinderstone: scarce lapis pockets between y=10 and y=40. Mine with a pickaxe. Drops 4-9 Lapis Lazuli; Fortune raises the yield, Silk Touch drops the ore block.", "Zinderlapiserz generiert im Zunderstein: seltene Lapis-Nester zwischen y=10 und y=40. Mit der Spitzhacke abbauen. L\u00e4sst 4-9 Lapislazuli fallen; Gl\u00fcck erh\u00f6ht die Ausbeute, Behutsamkeit l\u00e4sst den Erzblock fallen."));
+				null, 0, "Cinder Lapis Ore generates in cinderstone: scarce lapis pockets between y=10 and y=40. Mine with a pickaxe. Drops 4-9 Lapis Lazuli; Fortune raises the yield, Silk Touch drops the ore block.", "Zunderlapiserz generiert im Zunderstein: seltene Lapis-Nester zwischen y=10 und y=40. Mit der Spitzhacke abbauen. L\u00e4sst 4-9 Lapislazuli fallen; Gl\u00fcck erh\u00f6ht die Ausbeute, Behutsamkeit l\u00e4sst den Erzblock fallen."));
 
 		HandbookEntries.add(new HandbookEntry("dimension", "infernogeology_ore_smolder_redstone", "copper_inferno:smolder_redstone_ore", null,
 				null,
@@ -91,7 +91,7 @@ final class InfernoGeologyHandbook {
 
 		HandbookEntries.add(new HandbookEntry("dimension", "infernogeology_disk_cinder_silt", "copper_inferno:cinder_silt", null,
 				null,
-				null, 0, "Cinder silt disks: soft dark mud flats (radius 2-5) slightly above the lava line, y=30 to y=38.", "Zinderschlick-Scheiben: weiche dunkle Schlammfl\u00e4chen (Radius 2-5) knapp \u00fcber der Lavalinie, y=30 bis y=38."));
+				null, 0, "Cinder silt disks: soft dark mud flats (radius 2-5) slightly above the lava line, y=30 to y=38.", "Zunderschlick-Scheiben: weiche dunkle Schlammfl\u00e4chen (Radius 2-5) knapp \u00fcber der Lavalinie, y=30 bis y=38."));
 
 		HandbookEntries.add(new HandbookEntry("dimension", "infernogeology_spring_sulfur", "copper_inferno:sulfur_block", null,
 				null,

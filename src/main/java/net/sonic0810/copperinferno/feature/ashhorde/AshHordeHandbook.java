@@ -18,103 +18,103 @@ final class AshHordeHandbook {
 	static void register() {
 		HandbookEntries.add(new HandbookEntry("mobs", "cinder_shambler", "copper_inferno:cinder_shambler_spawn_egg", null,
 				null,
-				null, 0, "Cinder Shambler - A cinder-crusted zombie that shambles through drifting embers, hitting harder than its overworld kin. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Shambler Rags.", "Zinderschlurfer - Ein zinderverkrusteter Zombie, der durch treibende Glut schlurft und h\u00e4rter zuschl\u00e4gt als seine Oberwelt-Verwandten. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Schlurferlumpen fallen."));
+				null, 0, "Cinder Shambler - A cinder-crusted zombie that shambles through drifting embers, hitting harder than its overworld kin. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Shambler Rags.", "Zunderschlurfer - Ein zunderverkrusteter Zombie, der durch treibende Glut schlurft und h\u00e4rter zuschl\u00e4gt als seine Oberwelt-Verwandten. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Schlurferlumpen fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "ash_ghoul", "copper_inferno:ash_ghoul_spawn_egg", null,
 				null,
-				null, 0, "Ash Ghoul - A gaunt, grey ghoul caked in ash, quick to claw at anything warm. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Ghoul Tatters.", "Aschenghul - Ein hagerer, grauer Ghul voller Asche, der nach allem Warmen krallt. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Ghul-Fetzen fallen."));
+				null, 0, "Ash Ghoul - A gaunt, grey ghoul caked in ash, quick to claw at anything warm. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Ghoul Tatters.", "Aschenghul - Ein hagerer, grauer Ghul voller Asche, der nach allem Warmen krallt. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Ghul-Fetzen fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "slag_rotter", "copper_inferno:slag_rotter_spawn_egg", null,
 				null,
-				null, 0, "Slag Rotter - A bloated rotter oozing molten slag, slow but brutally strong. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Rotter Sludge.", "Schlackenmoderer - Ein aufgedunsener Moderer, aus dem geschmolzene Schlacke sickert - langsam, aber brutal stark. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Moderschlamm fallen."));
+				null, 0, "Slag Rotter - A bloated rotter oozing molten slag, slow but brutally strong. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Rotter Sludge.", "Schlackenmoderer - Ein aufgedunsener Moderer, aus dem geschmolzene Schlacke sickert - langsam, aber brutal stark. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Moderschlamm fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "ember_thrall", "copper_inferno:ember_thrall_spawn_egg", null,
 				null,
-				null, 0, "Ember Thrall - A shackled thrall bound to the Inferno's forges, still dragging its chains. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Thrall Shackles.", "Glutknecht - Ein gefesselter Knecht der Inferno-Essen, der noch immer seine Ketten schleift. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Knechtsfesseln fallen."));
+				null, 0, "Ember Thrall - A shackled thrall bound to the Inferno's forges, still dragging its chains. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Thrall Shackles.", "Glutknecht - Ein gefesselter Knecht der Inferno-Essen, der noch immer seine Ketten schleift. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Knechtsfesseln fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "soot_walker", "copper_inferno:soot_walker_spawn_egg", null,
 				null,
-				null, 0, "Soot Walker - A soot-black walker that leaves smudged footprints wherever it prowls. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Walker Grime.", "Ru\u00dfwandler - Ein ru\u00dfschwarzer Wandler, der \u00fcberall verschmierte Fu\u00dfspuren hinterl\u00e4sst. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Wandlerru\u00df fallen."));
+				null, 0, "Soot Walker - A soot-black walker that leaves smudged footprints wherever it prowls. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Walker Grime.", "Ru\u00dfwandler - Ein ru\u00dfschwarzer Wandler, der \u00fcberall verschmierte Fu\u00dfspuren hinterl\u00e4sst. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Wandlerru\u00df fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "ash_archer", "copper_inferno:ash_archer_spawn_egg", null,
 				null,
-				null, 0, "Ash Archer - An ash-bleached skeleton archer whose arrows whistle through the cinder haze. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Archer Arrowheads.", "Aschensch\u00fctze - Ein aschgebleichter Skelettsch\u00fctze, dessen Pfeile durch den Zinderdunst pfeifen. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Sch\u00fctzen-Pfeilspitzen fallen."));
+				null, 0, "Ash Archer - An ash-bleached skeleton archer whose arrows whistle through the cinder haze. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Archer Arrowheads.", "Aschensch\u00fctze - Ein aschgebleichter Skelettsch\u00fctze, dessen Pfeile durch den Zunderdunst pfeifen. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Sch\u00fctzen-Pfeilspitzen fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "cinder_bowman", "copper_inferno:cinder_bowman_spawn_egg", null,
 				null,
-				null, 0, "Cinder Bowman - A bowman of scorched bone that looses smouldering shots from the ridgelines. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Bowman Strings.", "Zinderbogner - Ein Bogner aus versengtem Knochen, der glimmende Sch\u00fcsse von den Graten abfeuert. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Bognersehnen fallen."));
+				null, 0, "Cinder Bowman - A bowman of scorched bone that looses smouldering shots from the ridgelines. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Bowman Strings.", "Zunderbogner - Ein Bogner aus versengtem Knochen, der glimmende Sch\u00fcsse von den Graten abfeuert. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Bognersehnen fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "slag_marksman", "copper_inferno:slag_marksman_spawn_egg", null,
 				null,
-				null, 0, "Slag Marksman - A slag-plated marksman, taller and steadier than a common skeleton. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Marksman Bones.", "Schlackenscharfsch\u00fctze - Ein schlackengepanzerter Scharfsch\u00fctze, gr\u00f6\u00dfer und ruhiger als ein gew\u00f6hnliches Skelett. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Scharfsch\u00fctzenknochen fallen."));
+				null, 0, "Slag Marksman - A slag-plated marksman, taller and steadier than a common skeleton. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Marksman Bones.", "Schlackenscharfsch\u00fctze - Ein schlackengepanzerter Scharfsch\u00fctze, gr\u00f6\u00dfer und ruhiger als ein gew\u00f6hnliches Skelett. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Scharfsch\u00fctzenknochen fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "ember_rattler", "copper_inferno:ember_rattler_spawn_egg", null,
 				null,
-				null, 0, "Ember Rattler - A rattling skeleton with embers glowing between its ribs. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Rattler Ribs.", "Glutklapperer - Ein klapperndes Skelett, zwischen dessen Rippen Glut gl\u00fcht. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Klapperrippen fallen."));
+				null, 0, "Ember Rattler - A rattling skeleton with embers glowing between its ribs. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Rattler Ribs.", "Glutklapperer - Ein klapperndes Skelett, zwischen dessen Rippen Glut gl\u00fcht. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Klapperrippen fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "soot_skirmisher", "copper_inferno:soot_skirmisher_spawn_egg", null,
 				null,
-				null, 0, "Soot Skirmisher - A small, fast skirmisher that harries travellers in sooty packs. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Skirmisher Quivers.", "Ru\u00dfpl\u00e4nkler - Ein kleiner, schneller Pl\u00e4nkler, der Reisende in ru\u00dfigen Trupps bedr\u00e4ngt. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Pl\u00e4nklerk\u00f6cher fallen."));
+				null, 0, "Soot Skirmisher - A small, fast skirmisher that harries travellers in sooty packs. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Skirmisher Quivers.", "Ru\u00dfpl\u00e4nkler - Ein kleiner, schneller Pl\u00e4nkler, der Reisende in ru\u00dfigen Trupps bedr\u00e4ngt. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Pl\u00e4nklerk\u00f6cher fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "ember_lurker", "copper_inferno:ember_lurker_spawn_egg", null,
 				null,
-				null, 0, "Ember Lurker - A big spider with ember-lit eyes, lurking in the glow of lava pools. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Lurker Eyes.", "Glutlauerer - Eine gro\u00dfe Spinne mit glut-erhellten Augen, die im Schein der Lavabecken lauert. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Laueraugen fallen."));
+				null, 0, "Ember Lurker - A big spider with ember-lit eyes, lurking in the glow of lava pools. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Lurker Eyes.", "Glutlauerer - Eine gro\u00dfe Spinne mit glut-erhellten Augen, die im Schein der Lavabecken lauert. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Laueraugen fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "ash_weaver", "copper_inferno:ash_weaver_spawn_egg", null,
 				null,
-				null, 0, "Ash Weaver - A weaver spinning grey, ash-dusted webs across the Ember Grove canopy. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Weaver Silk.", "Aschenweber - Ein Weber, der graue, aschbest\u00e4ubte Netze durch das Kronendach des Gluthains spannt. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Weberseide fallen."));
+				null, 0, "Ash Weaver - A weaver spinning grey, ash-dusted webs across the Ember Grove canopy. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Weaver Silk.", "Aschenweber - Ein Weber, der graue, aschbest\u00e4ubte Netze durch das Kronendach des Gluthains spannt. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Weberseide fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "slag_spinner", "copper_inferno:slag_spinner_spawn_egg", null,
 				null,
-				null, 0, "Slag Spinner - A spinner whose threads set hard as slag the moment they cool. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Spinner Threads.", "Schlackenspinner - Ein Spinner, dessen F\u00e4den beim Abk\u00fchlen schlackenhart werden. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Spinnerf\u00e4den fallen."));
+				null, 0, "Slag Spinner - A spinner whose threads set hard as slag the moment they cool. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Spinner Threads.", "Schlackenspinner - Ein Spinner, dessen F\u00e4den beim Abk\u00fchlen schlackenhart werden. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Spinnerf\u00e4den fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "soot_stalker", "copper_inferno:soot_stalker_spawn_egg", null,
 				null,
-				null, 0, "Soot Stalker - A lean stalker, near-invisible against the black soot fields. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Stalker Claws.", "Ru\u00dfpirscher - Ein hagerer Pirscher, vor den schwarzen Ru\u00dffeldern kaum zu erkennen. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Pirscherklauen fallen."));
+				null, 0, "Soot Stalker - A lean stalker, near-invisible against the black soot fields. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Stalker Claws.", "Ru\u00dfpirscher - Ein hagerer Pirscher, vor den schwarzen Ru\u00dffeldern kaum zu erkennen. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Pirscherklauen fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "cinder_broodling", "copper_inferno:cinder_broodling_spawn_egg", null,
 				null,
-				null, 0, "Cinder Broodling - A tiny broodling that swarms from cracked cinder nests. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Broodling Fangs.", "Zinderbr\u00fctling - Ein winziger Br\u00fctling, der aus geborstenen Zindernestern schw\u00e4rmt. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Br\u00fctlingsz\u00e4hne fallen."));
+				null, 0, "Cinder Broodling - A tiny broodling that swarms from cracked cinder nests. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Broodling Fangs.", "Zunderbr\u00fctling - Ein winziger Br\u00fctling, der aus geborstenen Zundernestern schw\u00e4rmt. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Br\u00fctlingsz\u00e4hne fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "slag_creeper", "copper_inferno:slag_creeper_spawn_egg", null,
 				null,
-				null, 0, "Slag Creeper - A creeper crusted in cooled slag; its blast flings molten spatter. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Creeper Slag.", "Schlackencreeper - Ein mit erkalteter Schlacke verkrusteter Creeper; seine Explosion schleudert Schmelzspritzer. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Creeper-Schlacke fallen."));
+				null, 0, "Slag Creeper - A creeper crusted in cooled slag; its blast flings molten spatter. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Creeper Slag.", "Schlackencreeper - Ein mit erkalteter Schlacke verkrusteter Creeper; seine Explosion schleudert Schmelzspritzer. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Creeper-Schlacke fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "ash_bomber", "copper_inferno:ash_bomber_spawn_egg", null,
 				null,
-				null, 0, "Ash Bomber - A pale bomber that detonates into a blinding cloud of ash. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Bomber Fuses.", "Aschenbomber - Ein fahler Bomber, der in einer blendenden Aschewolke detoniert. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Bomberlunten fallen."));
+				null, 0, "Ash Bomber - A pale bomber that detonates into a blinding cloud of ash. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Bomber Fuses.", "Aschenbomber - Ein fahler Bomber, der in einer blendenden Aschewolke detoniert. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Bomberlunten fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "ember_burster", "copper_inferno:ember_burster_spawn_egg", null,
 				null,
-				null, 0, "Ember Burster - A burster wound tight with embers, quicker to pop than most creepers. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Burster Powder.", "Glutberster - Ein mit Glut vollgestopfter Berster, der schneller hochgeht als die meisten Creeper. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Bersterpulver fallen."));
+				null, 0, "Ember Burster - A burster wound tight with embers, quicker to pop than most creepers. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Burster Powder.", "Glutberster - Ein mit Glut vollgestopfter Berster, der schneller hochgeht als die meisten Creeper. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Bersterpulver fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "soot_detonator", "copper_inferno:soot_detonator_spawn_egg", null,
 				null,
-				null, 0, "Soot Detonator - A heavy detonator that stalks silently under cover of soot. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Detonator Charges.", "Ru\u00dfsprenger - Ein schwerer Sprenger, der lautlos im Schutz des Ru\u00dfes pirscht. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Sprengerladungen fallen."));
+				null, 0, "Soot Detonator - A heavy detonator that stalks silently under cover of soot. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Detonator Charges.", "Ru\u00dfsprenger - Ein schwerer Sprenger, der lautlos im Schutz des Ru\u00dfes pirscht. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Sprengerladungen fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "cinder_cracker", "copper_inferno:cinder_cracker_spawn_egg", null,
 				null,
-				null, 0, "Cinder Cracker - A small cracker that goes off with a sharp, glowing snap. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Cracker Shards.", "Zinderknaller - Ein kleiner Knaller, der mit einem scharfen, gl\u00fchenden Knall losgeht. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Knallerscherben fallen."));
+				null, 0, "Cinder Cracker - A small cracker that goes off with a sharp, glowing snap. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Cracker Shards.", "Zunderknaller - Ein kleiner Knaller, der mit einem scharfen, gl\u00fchenden Knall losgeht. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Knallerscherben fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "char_husk", "copper_inferno:char_husk_spawn_egg", null,
 				null,
-				null, 0, "Char Husk - A charred husk baked black by the Inferno's heat. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Char Hides.", "Kohlezombie - Ein verkohlter W\u00fcstenzombie, von der Hitze des Infernos schwarz gebacken. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Kohleh\u00e4ute fallen."));
+				null, 0, "Char Husk - A charred husk baked black by the Inferno's heat. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Char Hides.", "Kohlezombie - Ein verkohlter W\u00fcstenzombie, von der Hitze des Infernos schwarz gebacken. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Kohleh\u00e4ute fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "ash_mummy", "copper_inferno:ash_mummy_spawn_egg", null,
 				null,
-				null, 0, "Ash Mummy - A towering mummy wound in ash-grey wrappings, dry as old bone. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Mummy Wraps.", "Aschenmumie - Eine riesige Mumie in aschgrauen Binden, trocken wie alter Knochen. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Mumienbinden fallen."));
+				null, 0, "Ash Mummy - A towering mummy wound in ash-grey wrappings, dry as old bone. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Mummy Wraps.", "Aschenmumie - Eine riesige Mumie in aschgrauen Binden, trocken wie alter Knochen. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Mumienbinden fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "slag_husk", "copper_inferno:slag_husk_spawn_egg", null,
 				null,
-				null, 0, "Slag Husk - A husk armoured in a cracked crust of cooled slag. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Husk Crusts.", "Schlackenzombie - Ein W\u00fcstenzombie mit einer rissigen Kruste aus erkalteter Schlacke. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Schlackenkrusten fallen."));
+				null, 0, "Slag Husk - A husk armoured in a cracked crust of cooled slag. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Husk Crusts.", "Schlackenzombie - Ein W\u00fcstenzombie mit einer rissigen Kruste aus erkalteter Schlacke. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Panzerkrusten fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "ember_scorchling", "copper_inferno:ember_scorchling_spawn_egg", null,
 				null,
-				null, 0, "Ember Scorchling - A shrivelled scorchling that sizzles as it lunges. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Scorchling Char.", "Glutsengling - Ein verschrumpelter Sengling, der beim Ausfallschritt zischt. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Senglingskohle fallen."));
+				null, 0, "Ember Scorchling - A shrivelled scorchling that sizzles as it lunges. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Scorchling Char.", "Glutsengling - Ein verschrumpelter Sengling, der beim Ausfallschritt zischt. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Senglingskohle fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "soot_wanderer", "copper_inferno:soot_wanderer_spawn_egg", null,
 				null,
-				null, 0, "Soot Wanderer - A shrouded wanderer trudging the soot dunes in endless circles. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Wanderer Shrouds.", "Ru\u00dfwanderer - Ein verh\u00fcllter Wanderer, der in endlosen Kreisen durch die Ru\u00dfd\u00fcnen stapft. Zieht mit der Aschenhorde durch Aschen\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Wandererschleier fallen."));
+				null, 0, "Soot Wanderer - A shrouded wanderer trudging the soot dunes in endless circles. Marches with the Ash Horde through the Cinder Wastes, Ember Grove and Slag Sea. Drops Wanderer Shrouds.", "Ru\u00dfwanderer - Ein verh\u00fcllter Wanderer, der in endlosen Kreisen durch die Ru\u00dfd\u00fcnen stapft. Zieht mit der Aschenhorde durch Zunder\u00f6de, Gluthain und Schlackenmeer. L\u00e4sst Wandererschleier fallen."));
 
 		HandbookEntries.add(new HandbookEntry("items", "string_from_shambler_rag", "copper_inferno:shambler_rag", "ashhorde/string_from_shambler_rag",
 				new String[] {"copper_inferno:shambler_rag", "", "", "", "", "", "", "", ""},
@@ -206,7 +206,7 @@ final class AshHordeHandbook {
 
 		HandbookEntries.add(new HandbookEntry("items", "sand_from_husk_crust", "copper_inferno:husk_crust", "ashhorde/sand_from_husk_crust",
 				new String[] {"copper_inferno:husk_crust", "", "", "", "", "", "", "", ""},
-				"minecraft:sand", 2, "Crush a Husk Crust into two sand.", "Eine Schlackenkruste zu zwei Sand zermahlen."));
+				"minecraft:sand", 2, "Crush a Husk Crust into two sand.", "Eine Panzerkruste zu zwei Sand zermahlen."));
 
 		HandbookEntries.add(new HandbookEntry("items", "charcoal_from_scorchling_char", "copper_inferno:scorchling_char", "ashhorde/charcoal_from_scorchling_char",
 				new String[] {"copper_inferno:scorchling_char", "", "", "", "", "", "", "", ""},

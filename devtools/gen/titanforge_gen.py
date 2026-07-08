@@ -94,7 +94,7 @@ TIERS = [
          {"dark": (0x2A, 0x2A, 0x30), "base": (0x6C, 0x70, 0x7A),
           "bright": (0x96, 0x9C, 0xA8), "hot": (0xD0, 0xD6, 0xE0)},
          [f"{NS}:pyrite_ingot", "minecraft:iron_ingot", "minecraft:charcoal"], 2),
-    Tier("cinderforge", "Cinderforge", "Zinderschmiede",
+    Tier("cinderforge", "Cinderforge", "Zunderschmiede",
          "INCORRECT_FOR_DIAMOND_TOOL", 1400, "8.0F", "3.0F", 12,
          33, (3, 6, 8, 3, 7), 12, "ITEM_ARMOR_EQUIP_DIAMOND", "2.0F", "0.0F", False,
          {"dark": (0x46, 0x12, 0x0E), "base": (0xA8, 0x28, 0x1C),
@@ -955,7 +955,7 @@ def main() -> None:
         "or by smithing-table upgrades with the Infernium Upgrade Smithing Template; Molten "
         "Titan and Infernal Alloy gear never burns.",
         "TitanForge-Ausr\u00fcstung umfasst sechs geschmiedete Stufen \u2014 Glutstahl, "
-        "Pyrit, Schlackenstahl, Zinderschmiede, Schmelztitan und H\u00f6llenlegierung \u2014 "
+        "Pyrit, Schlackenstahl, Zunderschmiede, Schmelztitan und H\u00f6llenlegierung \u2014 "
         "jede mit komplettem Werkzeugsatz (Schwert/Spitzhacke/Axt/Schaufel/Hacke), "
         "R\u00fcstung (Helm/Brustpanzer/Beinschutz/Stiefel) und sechs Anh\u00e4ngern. "
         "H\u00f6here Stufen entstehen durch Legieren des vorherigen Barrens oder per "
@@ -965,6 +965,11 @@ def main() -> None:
 
     lang_en = {f"item.{NS}.{i}": EN[i] for i in ALL_IDS}
     lang_de = {f"item.{NS}.{i}": DE[i] for i in ALL_IDS}
+    # Tag translations (tag.item.<ns>.<path>, the fabric-tag-conventions-v2 format) for
+    # the six repair tags emitted by emit_repair_tags().
+    for t in TIERS:
+        lang_en[f"tag.item.{NS}.{t.tid}_repair"] = f"{t.en} Repair Items"
+        lang_de[f"tag.item.{NS}.{t.tid}_repair"] = f"{t.de}-Reparaturgegenst\u00e4nde"
     genlib.lang_fragments(ASSETS, "titanforge", lang_en, lang_de)
 
     emit_item_textures()
@@ -974,7 +979,8 @@ def main() -> None:
 
     assert len(ALL_IDS) == 96, f"expected 96 item ids, got {len(ALL_IDS)}"
     assert len(set(ALL_IDS)) == 96, "duplicate item ids emitted"
-    expected_keys = {f"item.{NS}.{i}" for i in ALL_IDS}
+    expected_keys = ({f"item.{NS}.{i}" for i in ALL_IDS}
+                     | {f"tag.item.{NS}.{t.tid}_repair" for t in TIERS})
     assert set(lang_en) == set(lang_de) == expected_keys, "EN/DE/id lang key sets differ"
     assert recipe_count == 141, f"expected 141 recipes, got {recipe_count}"
     assert len(HANDBOOK) == 142, f"expected 142 handbook entries, got {len(HANDBOOK)}"

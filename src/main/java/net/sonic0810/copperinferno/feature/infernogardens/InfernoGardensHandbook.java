@@ -22,7 +22,7 @@ final class InfernoGardensHandbook {
 
 		HandbookEntries.add(new HandbookEntry("dimension", "infernogardens_patch_cinder_fern", "copper_inferno:cinder_fern", null,
 				null,
-				null, 0, "Cinder Ferns unfurl across cinderstone, ember soil and ash all over the Inferno.", "Schlackenfarne entrollen sich auf Zunderstein, Glutboden und Asche im ganzen Inferno."));
+				null, 0, "Cinder Ferns unfurl across cinderstone, ember soil and ash all over the Inferno.", "Zunderfarne entrollen sich auf Zunderstein, Glutboden und Asche im ganzen Inferno."));
 
 		HandbookEntries.add(new HandbookEntry("dimension", "infernogardens_patch_sear_sprigs", "copper_inferno:sear_sprigs", null,
 				null,
@@ -34,7 +34,7 @@ final class InfernoGardensHandbook {
 
 		HandbookEntries.add(new HandbookEntry("dimension", "infernogardens_patch_ash_bramble", "copper_inferno:ash_bramble", null,
 				null,
-				null, 0, "Ash Brambles tangle over ash drifts and cinder gravel in the wastes.", "Aschendornb\u00fcsche wuchern \u00fcber Aschenverwehungen und Zinderkies der \u00d6de."));
+				null, 0, "Ash Brambles tangle over ash drifts and cinder gravel in the wastes.", "Aschendornb\u00fcsche wuchern \u00fcber Aschenverwehungen und Zunderkies der \u00d6de."));
 
 		HandbookEntries.add(new HandbookEntry("dimension", "infernogardens_patch_glow_tendrils", "copper_inferno:glow_tendrils", null,
 				null,
@@ -62,7 +62,7 @@ final class InfernoGardensHandbook {
 
 		HandbookEntries.add(new HandbookEntry("dimension", "infernogardens_patch_charred_shrub", "copper_inferno:charred_shrub", null,
 				null,
-				null, 0, "Charred Shrubs: dead, ember-flecked brushwood clawing out of the cinder wastes.", "Verkohlte Str\u00e4ucher: totes, glutgesprenkeltes Buschwerk, das sich aus der Aschen\u00f6de krallt."));
+				null, 0, "Charred Shrubs: dead, ember-flecked brushwood clawing out of the cinder wastes.", "Verkohlte Str\u00e4ucher: totes, glutgesprenkeltes Buschwerk, das sich aus der Zunder\u00f6de krallt."));
 
 		HandbookEntries.add(new HandbookEntry("dimension", "infernogardens_patch_gilded_clover", "copper_inferno:gilded_clover", null,
 				null,
@@ -70,7 +70,7 @@ final class InfernoGardensHandbook {
 
 		HandbookEntries.add(new HandbookEntry("dimension", "infernogardens_garden_wastes_mix", "copper_inferno:sear_sprigs", null,
 				null,
-				null, 0, "Wastes gardens: mixed stands of sear sprigs, ash brambles, cinder ferns and charred shrubs.", "W\u00fcsteng\u00e4rten: gemischte Best\u00e4nde aus Sengzweiglein, Aschendornb\u00fcschen, Schlackenfarnen und verkohlten Str\u00e4uchern."));
+				null, 0, "Wastes gardens: mixed stands of sear sprigs, ash brambles, cinder ferns and charred shrubs.", "W\u00fcsteng\u00e4rten: gemischte Best\u00e4nde aus Sengzweiglein, Aschendornb\u00fcschen, Zunderfarnen und verkohlten Str\u00e4uchern."));
 
 		HandbookEntries.add(new HandbookEntry("dimension", "infernogardens_garden_grove_mix", "copper_inferno:ember_lily", null,
 				null,
@@ -78,7 +78,7 @@ final class InfernoGardensHandbook {
 
 		HandbookEntries.add(new HandbookEntry("dimension", "infernogardens_garden_slag_mix", "copper_inferno:slag_thistle", null,
 				null,
-				null, 0, "Slag gardens: sparse beds of slag thistles, soot puffs and cinder ferns on the delta flats.", "Schlackeng\u00e4rten: karge Beete aus Schlackendisteln, Ru\u00dfbovisten und Schlackenfarnen auf den Delta-Ebenen."));
+				null, 0, "Slag gardens: sparse beds of slag thistles, soot puffs and cinder ferns on the delta flats.", "Schlackeng\u00e4rten: karge Beete aus Schlackendisteln, Ru\u00dfbovisten und Zunderfarnen auf den Delta-Ebenen."));
 
 		HandbookEntries.add(new HandbookEntry("dimension", "infernogardens_ceiling_hanging_ember_roots", "copper_inferno:hanging_ember_roots", null,
 				null,
@@ -94,7 +94,7 @@ final class InfernoGardensHandbook {
 
 		HandbookEntries.add(new HandbookEntry("dimension", "infernogardens_cinder_crystal_cluster", "copper_inferno:cinder_crystal_block", null,
 				null,
-				null, 0, "Cinder Crystal clusters (light 9) crop out of the wastes floor in tight sparkling clumps.", "Schlackenkristall-Ansammlungen (Licht 9) ragen in dichten, funkelnden Klumpen aus dem Boden der \u00d6de."));
+				null, 0, "Cinder Crystal clusters (light 9) crop out of the wastes floor in tight sparkling clumps.", "Zunderkristall-Ansammlungen (Licht 9) ragen in dichten, funkelnden Klumpen aus dem Boden der \u00d6de."));
 
 		HandbookEntries.add(new HandbookEntry("dimension", "infernogardens_verdigris_crystal_cluster", "copper_inferno:verdigris_crystal_block", null,
 				null,

@@ -302,7 +302,7 @@ public final class InferniumFeature {
 				ROD, "infernium/cinder_rod",
 				new String[]{"", SLG, "", "", SLG, "", "", "", ""}, ROD, 1,
 				"Two Slag Chunks stacked vertically form a Cinder Rod — the handle of every Infernium tool.",
-				"Zwei \u00fcbereinander gestapelte Schlackebrocken ergeben einen Zinderstab — den Griff jedes Infernium-Werkzeugs."));
+				"Zwei \u00fcbereinander gestapelte Schlackebrocken ergeben einen Zunderstab — den Griff jedes Infernium-Werkzeugs."));
 		HandbookEntries.add(new HandbookEntry("items", "infernium_plate",
 				"copper_inferno:infernium_plate", "infernium/infernium_plate",
 				new String[]{ING, ING, "", "", "", "", "", "", ""}, "copper_inferno:infernium_plate", 1,
@@ -366,7 +366,7 @@ public final class InferniumFeature {
 				"copper_inferno:infernium_sword", "infernium/infernium_sword",
 				new String[]{"", ING, "", "", ING, "", "", ROD, ""}, "copper_inferno:infernium_sword", 1,
 				"Two ingots on a Cinder Rod: the Infernium Sword (9.5 attack damage).",
-				"Zwei Barren auf einem Zinderstab: das Infernium-Schwert (9,5 Angriffsschaden)."));
+				"Zwei Barren auf einem Zunderstab: das Infernium-Schwert (9,5 Angriffsschaden)."));
 		HandbookEntries.add(new HandbookEntry("gear", "infernium_pickaxe",
 				"copper_inferno:infernium_pickaxe", "infernium/infernium_pickaxe",
 				new String[]{ING, ING, ING, "", ROD, "", "", ROD, ""}, "copper_inferno:infernium_pickaxe", 1,

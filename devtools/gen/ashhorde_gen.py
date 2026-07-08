@@ -123,9 +123,9 @@ Mob = namedtuple("Mob", "mid base en de desc_en desc_de drop den dde dpl_en dpl_
 
 MOBS = [
     # --- ZombieEntity base -------------------------------------------------
-    Mob("cinder_shambler", "zombie", "Cinder Shambler", "Zinderschlurfer",
+    Mob("cinder_shambler", "zombie", "Cinder Shambler", "Zunderschlurfer",
         "A cinder-crusted zombie that shambles through drifting embers, hitting harder than its overworld kin.",
-        "Ein zinderverkrusteter Zombie, der durch treibende Glut schlurft und härter zuschlägt als seine Oberwelt-Verwandten.",
+        "Ein zunderverkrusteter Zombie, der durch treibende Glut schlurft und härter zuschlägt als seine Oberwelt-Verwandten.",
         "shambler_rag", "Shambler Rag", "Schlurferlumpen", "Shambler Rags", "Schlurferlumpen",
         "cloth", "drab", 26.0, 4.0, 1.05, 12, 2, 4, 0.0, 2.0),
     Mob("ash_ghoul", "zombie", "Ash Ghoul", "Aschenghul",
@@ -151,10 +151,10 @@ MOBS = [
     # --- SkeletonEntity base -----------------------------------------------
     Mob("ash_archer", "skeleton", "Ash Archer", "Aschensch\u00fctze",
         "An ash-bleached skeleton archer whose arrows whistle through the cinder haze.",
-        "Ein aschgebleichter Skelettsch\u00fctze, dessen Pfeile durch den Zinderdunst pfeifen.",
+        "Ein aschgebleichter Skelettsch\u00fctze, dessen Pfeile durch den Zunderdunst pfeifen.",
         "archer_arrowhead", "Archer Arrowhead", "Sch\u00fctzen-Pfeilspitze", "Archer Arrowheads", "Sch\u00fctzen-Pfeilspitzen",
         "arrowhead", "flint", 22.0, 2.5, 1.0, 12, 1, 3, 0.0, 2.0),
-    Mob("cinder_bowman", "skeleton", "Cinder Bowman", "Zinderbogner",
+    Mob("cinder_bowman", "skeleton", "Cinder Bowman", "Zunderbogner",
         "A bowman of scorched bone that looses smouldering shots from the ridgelines.",
         "Ein Bogner aus versengtem Knochen, der glimmende Sch\u00fcsse von den Graten abfeuert.",
         "bowman_string", "Bowman String", "Bognersehne", "Bowman Strings", "Bognersehnen",
@@ -195,9 +195,9 @@ MOBS = [
         "Ein hagerer Pirscher, vor den schwarzen Ru\u00dffeldern kaum zu erkennen.",
         "stalker_claw", "Stalker Claw", "Pirscherklaue", "Stalker Claws", "Pirscherklauen",
         "fang", "horn", 14.0, 2.5, 0.9, 9, 1, 3, 0.0, 1.0),
-    Mob("cinder_broodling", "spider", "Cinder Broodling", "Zinderbr\u00fctling",
+    Mob("cinder_broodling", "spider", "Cinder Broodling", "Zunderbr\u00fctling",
         "A tiny broodling that swarms from cracked cinder nests.",
-        "Ein winziger Br\u00fctling, der aus geborstenen Zindernestern schw\u00e4rmt.",
+        "Ein winziger Br\u00fctling, der aus geborstenen Zundernestern schw\u00e4rmt.",
         "broodling_fang", "Broodling Fang", "Br\u00fctlingszahn", "Broodling Fangs", "Br\u00fctlingsz\u00e4hne",
         "fang", "fang", 12.0, 2.0, 0.7, 7, 2, 4, 0.0, 1.0),
     # --- CreeperEntity base ------------------------------------------------
@@ -221,7 +221,7 @@ MOBS = [
         "Ein schwerer Sprenger, der lautlos im Schutz des Ru\u00dfes pirscht.",
         "detonator_charge", "Detonator Charge", "Sprengerladung", "Detonator Charges", "Sprengerladungen",
         "charge", "charge", 22.0, 3.0, 1.0, 6, 1, 1, 0.0, 1.0),
-    Mob("cinder_cracker", "creeper", "Cinder Cracker", "Zinderknaller",
+    Mob("cinder_cracker", "creeper", "Cinder Cracker", "Zunderknaller",
         "A small cracker that goes off with a sharp, glowing snap.",
         "Ein kleiner Knaller, der mit einem scharfen, gl\u00fchenden Knall losgeht.",
         "cracker_shard", "Cracker Shard", "Knallerscherbe", "Cracker Shards", "Knallerscherben",
@@ -240,7 +240,7 @@ MOBS = [
     Mob("slag_husk", "husk", "Slag Husk", "Schlackenzombie",
         "A husk armoured in a cracked crust of cooled slag.",
         "Ein W\u00fcstenzombie mit einer rissigen Kruste aus erkalteter Schlacke.",
-        "husk_crust", "Husk Crust", "Schlackenkruste", "Husk Crusts", "Schlackenkrusten",
+        "husk_crust", "Husk Crust", "Panzerkruste", "Husk Crusts", "Panzerkrusten",
         "crust", "sandy", 24.0, 4.0, 1.0, 9, 1, 3, 0.0, 2.0),
     Mob("ember_scorchling", "husk", "Ember Scorchling", "Glutsengling",
         "A shrivelled scorchling that sizzles as it lunges.",
@@ -371,7 +371,7 @@ RECIPE_DEFS = [
     ("sand_from_husk_crust", "shapeless", [m("husk_crust")], "minecraft:sand", 2,
      [m("husk_crust"), "", "", "", "", "", "", "", ""],
      "Crush a Husk Crust into two sand.",
-     "Eine Schlackenkruste zu zwei Sand zermahlen."),
+     "Eine Panzerkruste zu zwei Sand zermahlen."),
     ("charcoal_from_scorchling_char", "shapeless", [m("scorchling_char")], "minecraft:charcoal", 2,
      [m("scorchling_char"), "", "", "", "", "", "", "", ""],
      "Break Scorchling Char into two charcoal.",
@@ -1103,7 +1103,7 @@ def client_src() -> str:
 
 
 BIOMES_EN = "the Cinder Wastes, Ember Grove and Slag Sea"
-BIOMES_DE = "Aschen\u00f6de, Gluthain und Schlackenmeer"
+BIOMES_DE = "Zunder\u00f6de, Gluthain und Schlackenmeer"
 
 
 def handbook_entries() -> list:

@@ -17,23 +17,23 @@ final class EmberSwarmHandbook {
 	static void register() {
 		HandbookEntries.add(new HandbookEntry("mobs", "ember_blaze", "copper_inferno:ember_blaze_spawn_egg", null,
 				null,
-				null, 0, "Ember Blaze - a blaze spirit of the ember swarm, whirling through the Cinder Wastes, Ember Grove and Slag Sea. Drops Ember Blaze Rod.", "Glutlohe - ein Lohengeist des Glutschwarms, der durch Aschen\u00f6de, Gluthain und Schlackenmeer wirbelt. L\u00e4sst Glutlohenrute fallen."));
+				null, 0, "Ember Blaze - a blaze spirit of the ember swarm, whirling through the Cinder Wastes, Ember Grove and Slag Sea. Drops Ember Blaze Rod.", "Glutlohe - ein Lohengeist des Glutschwarms, der durch Zunder\u00f6de, Gluthain und Schlackenmeer wirbelt. L\u00e4sst Glutlohenrute fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "soot_blaze", "copper_inferno:soot_blaze_spawn_egg", null,
 				null,
-				null, 0, "Soot Blaze - a blaze spirit of the ember swarm, whirling through the Cinder Wastes, Ember Grove and Slag Sea. Drops Soot Plume.", "Ru\u00dflohe - ein Lohengeist des Glutschwarms, der durch Aschen\u00f6de, Gluthain und Schlackenmeer wirbelt. L\u00e4sst Ru\u00dffahne fallen."));
+				null, 0, "Soot Blaze - a blaze spirit of the ember swarm, whirling through the Cinder Wastes, Ember Grove and Slag Sea. Drops Soot Plume.", "Ru\u00dflohe - ein Lohengeist des Glutschwarms, der durch Zunder\u00f6de, Gluthain und Schlackenmeer wirbelt. L\u00e4sst Ru\u00dffahne fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "pyre_blaze", "copper_inferno:pyre_blaze_spawn_egg", null,
 				null,
-				null, 0, "Pyre Blaze - a blaze spirit of the ember swarm, whirling through the Cinder Wastes, Ember Grove and Slag Sea. Drops Pyre Ash.", "Brandlohe - ein Lohengeist des Glutschwarms, der durch Aschen\u00f6de, Gluthain und Schlackenmeer wirbelt. L\u00e4sst Brandasche fallen."));
+				null, 0, "Pyre Blaze - a blaze spirit of the ember swarm, whirling through the Cinder Wastes, Ember Grove and Slag Sea. Drops Pyre Ash.", "Brandlohe - ein Lohengeist des Glutschwarms, der durch Zunder\u00f6de, Gluthain und Schlackenmeer wirbelt. L\u00e4sst Brandasche fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "cinder_blaze", "copper_inferno:cinder_blaze_spawn_egg", null,
 				null,
-				null, 0, "Cinder Blaze - a blaze spirit of the ember swarm, whirling through the Cinder Wastes, Ember Grove and Slag Sea. Drops Cinder Spark.", "Zunderlohe - ein Lohengeist des Glutschwarms, der durch Aschen\u00f6de, Gluthain und Schlackenmeer wirbelt. L\u00e4sst Zunderfunke fallen."));
+				null, 0, "Cinder Blaze - a blaze spirit of the ember swarm, whirling through the Cinder Wastes, Ember Grove and Slag Sea. Drops Cinder Spark.", "Zunderlohe - ein Lohengeist des Glutschwarms, der durch Zunder\u00f6de, Gluthain und Schlackenmeer wirbelt. L\u00e4sst Zunderfunke fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "slagfire_blaze", "copper_inferno:slagfire_blaze_spawn_egg", null,
 				null,
-				null, 0, "Slagfire Blaze - a blaze spirit of the ember swarm, whirling through the Cinder Wastes, Ember Grove and Slag Sea. Drops Slagfire Droplet.", "Schlackenfeuerlohe - ein Lohengeist des Glutschwarms, der durch Aschen\u00f6de, Gluthain und Schlackenmeer wirbelt. L\u00e4sst Schlackenfeuertropfen fallen."));
+				null, 0, "Slagfire Blaze - a blaze spirit of the ember swarm, whirling through the Cinder Wastes, Ember Grove and Slag Sea. Drops Slagfire Droplet.", "Schlackenfeuerlohe - ein Lohengeist des Glutschwarms, der durch Zunder\u00f6de, Gluthain und Schlackenmeer wirbelt. L\u00e4sst Schlackenfeuertropfen fallen."));
 
 		HandbookEntries.add(new HandbookEntry("mobs", "molten_cube", "copper_inferno:molten_cube_spawn_egg", null,
 				null,

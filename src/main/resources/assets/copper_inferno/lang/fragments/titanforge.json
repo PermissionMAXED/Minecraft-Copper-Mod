@@ -94,5 +94,11 @@
   "item.copper_inferno.slagsteel_shovel": "Slagsteel Shovel",
   "item.copper_inferno.slagsteel_sword": "Slagsteel Sword",
   "item.copper_inferno.slagsteel_talisman": "Slagsteel Talisman",
-  "item.copper_inferno.slagsteel_totem": "Slagsteel Totem"
+  "item.copper_inferno.slagsteel_totem": "Slagsteel Totem",
+  "tag.item.copper_inferno.cinderforge_repair": "Cinderforge Repair Items",
+  "tag.item.copper_inferno.ember_steel_repair": "Ember Steel Repair Items",
+  "tag.item.copper_inferno.infernal_alloy_repair": "Infernal Alloy Repair Items",
+  "tag.item.copper_inferno.molten_titan_repair": "Molten Titan Repair Items",
+  "tag.item.copper_inferno.pyrite_repair": "Pyrite Repair Items",
+  "tag.item.copper_inferno.slagsteel_repair": "Slagsteel Repair Items"
 }

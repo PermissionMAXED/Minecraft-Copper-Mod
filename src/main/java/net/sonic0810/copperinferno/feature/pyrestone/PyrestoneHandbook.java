@@ -38,7 +38,7 @@ final class PyrestoneHandbook {
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/set_cindershale", "copper_inferno:cindershale", null,
 				null,
-				null, 0, "The Cindershale set for Inferno builds: rough, polished and brick families (block, stairs, slab, wall) plus tiles, cracked and chiseled bricks and a pillar.", "Das Aschenschiefer-Set f\u00fcr Inferno-Bauten: raue, polierte und Ziegel-Familien (Block, Treppe, Stufe, Mauer) sowie Fliesen, rissige und gemei\u00dfelte Ziegel und eine S\u00e4ule."));
+				null, 0, "The Cindershale set for Inferno builds: rough, polished and brick families (block, stairs, slab, wall) plus tiles, cracked and chiseled bricks and a pillar.", "Das Zunderschiefer-Set f\u00fcr Inferno-Bauten: raue, polierte und Ziegel-Familien (Block, Treppe, Stufe, Mauer) sowie Fliesen, rissige und gemei\u00dfelte Ziegel und eine S\u00e4ule."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/set_coalspar", "copper_inferno:coalspar", null,
 				null,
@@ -674,123 +674,123 @@ final class PyrestoneHandbook {
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/cindershale", "copper_inferno:cindershale", "pyrestone/cindershale",
 				new String[] {"minecraft:deepslate", "", "minecraft:deepslate", "", "copper_inferno:kindlerock", "", "minecraft:deepslate", "", "minecraft:deepslate"},
-				"copper_inferno:cindershale", 4, "Craft 4x Cindershale at a crafting table.", "Stellt 4x Aschenschiefer an der Werkbank her."));
+				"copper_inferno:cindershale", 4, "Craft 4x Cindershale at a crafting table.", "Stellt 4x Zunderschiefer an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/cindershale_bricks", "copper_inferno:cindershale_bricks", "pyrestone/cindershale_bricks",
 				new String[] {"copper_inferno:cindershale", "copper_inferno:cindershale", "", "copper_inferno:cindershale", "copper_inferno:cindershale", "", "", "", ""},
-				"copper_inferno:cindershale_bricks", 4, "Craft 4x Cindershale Bricks at a crafting table.", "Stellt 4x Aschenschieferziegel an der Werkbank her."));
+				"copper_inferno:cindershale_bricks", 4, "Craft 4x Cindershale Bricks at a crafting table.", "Stellt 4x Zunderschieferziegel an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/cindershale_tiles", "copper_inferno:cindershale_tiles", "pyrestone/cindershale_tiles",
 				new String[] {"copper_inferno:cindershale_bricks", "copper_inferno:cindershale_bricks", "", "copper_inferno:cindershale_bricks", "copper_inferno:cindershale_bricks", "", "", "", ""},
-				"copper_inferno:cindershale_tiles", 4, "Craft 4x Cindershale Tiles at a crafting table.", "Stellt 4x Aschenschieferfliesen an der Werkbank her."));
+				"copper_inferno:cindershale_tiles", 4, "Craft 4x Cindershale Tiles at a crafting table.", "Stellt 4x Zunderschieferfliesen an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/polished_cindershale", "copper_inferno:polished_cindershale", "pyrestone/polished_cindershale",
 				new String[] {"copper_inferno:cindershale_tiles", "copper_inferno:cindershale_tiles", "", "copper_inferno:cindershale_tiles", "copper_inferno:cindershale_tiles", "", "", "", ""},
-				"copper_inferno:polished_cindershale", 4, "Craft 4x Polished Cindershale at a crafting table.", "Stellt 4x Polierten Aschenschiefer an der Werkbank her."));
+				"copper_inferno:polished_cindershale", 4, "Craft 4x Polished Cindershale at a crafting table.", "Stellt 4x Polierten Zunderschiefer an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/cindershale_slab", "copper_inferno:cindershale_slab", "pyrestone/cindershale_slab",
 				new String[] {"copper_inferno:cindershale", "copper_inferno:cindershale", "copper_inferno:cindershale", "", "", "", "", "", ""},
-				"copper_inferno:cindershale_slab", 6, "Craft 6x Cindershale Slab at a crafting table.", "Stellt 6x Aschenschieferstufe an der Werkbank her."));
+				"copper_inferno:cindershale_slab", 6, "Craft 6x Cindershale Slab at a crafting table.", "Stellt 6x Zunderschieferstufe an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/cindershale_stairs", "copper_inferno:cindershale_stairs", "pyrestone/cindershale_stairs",
 				new String[] {"copper_inferno:cindershale", "", "", "copper_inferno:cindershale", "copper_inferno:cindershale", "", "copper_inferno:cindershale", "copper_inferno:cindershale", "copper_inferno:cindershale"},
-				"copper_inferno:cindershale_stairs", 4, "Craft 4x Cindershale Stairs at a crafting table.", "Stellt 4x Aschenschiefertreppe an der Werkbank her."));
+				"copper_inferno:cindershale_stairs", 4, "Craft 4x Cindershale Stairs at a crafting table.", "Stellt 4x Zunderschiefertreppe an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/cindershale_wall", "copper_inferno:cindershale_wall", "pyrestone/cindershale_wall",
 				new String[] {"copper_inferno:cindershale", "copper_inferno:cindershale", "copper_inferno:cindershale", "copper_inferno:cindershale", "copper_inferno:cindershale", "copper_inferno:cindershale", "", "", ""},
-				"copper_inferno:cindershale_wall", 6, "Craft 6x Cindershale Wall at a crafting table.", "Stellt 6x Aschenschiefermauer an der Werkbank her."));
+				"copper_inferno:cindershale_wall", 6, "Craft 6x Cindershale Wall at a crafting table.", "Stellt 6x Zunderschiefermauer an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/polished_cindershale_slab", "copper_inferno:polished_cindershale_slab", "pyrestone/polished_cindershale_slab",
 				new String[] {"copper_inferno:polished_cindershale", "copper_inferno:polished_cindershale", "copper_inferno:polished_cindershale", "", "", "", "", "", ""},
-				"copper_inferno:polished_cindershale_slab", 6, "Craft 6x Polished Cindershale Slab at a crafting table.", "Stellt 6x Polierte Aschenschieferstufe an der Werkbank her."));
+				"copper_inferno:polished_cindershale_slab", 6, "Craft 6x Polished Cindershale Slab at a crafting table.", "Stellt 6x Polierte Zunderschieferstufe an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/polished_cindershale_stairs", "copper_inferno:polished_cindershale_stairs", "pyrestone/polished_cindershale_stairs",
 				new String[] {"copper_inferno:polished_cindershale", "", "", "copper_inferno:polished_cindershale", "copper_inferno:polished_cindershale", "", "copper_inferno:polished_cindershale", "copper_inferno:polished_cindershale", "copper_inferno:polished_cindershale"},
-				"copper_inferno:polished_cindershale_stairs", 4, "Craft 4x Polished Cindershale Stairs at a crafting table.", "Stellt 4x Polierte Aschenschiefertreppe an der Werkbank her."));
+				"copper_inferno:polished_cindershale_stairs", 4, "Craft 4x Polished Cindershale Stairs at a crafting table.", "Stellt 4x Polierte Zunderschiefertreppe an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/polished_cindershale_wall", "copper_inferno:polished_cindershale_wall", "pyrestone/polished_cindershale_wall",
 				new String[] {"copper_inferno:polished_cindershale", "copper_inferno:polished_cindershale", "copper_inferno:polished_cindershale", "copper_inferno:polished_cindershale", "copper_inferno:polished_cindershale", "copper_inferno:polished_cindershale", "", "", ""},
-				"copper_inferno:polished_cindershale_wall", 6, "Craft 6x Polished Cindershale Wall at a crafting table.", "Stellt 6x Polierte Aschenschiefermauer an der Werkbank her."));
+				"copper_inferno:polished_cindershale_wall", 6, "Craft 6x Polished Cindershale Wall at a crafting table.", "Stellt 6x Polierte Zunderschiefermauer an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/cindershale_brick_slab", "copper_inferno:cindershale_brick_slab", "pyrestone/cindershale_brick_slab",
 				new String[] {"copper_inferno:cindershale_bricks", "copper_inferno:cindershale_bricks", "copper_inferno:cindershale_bricks", "", "", "", "", "", ""},
-				"copper_inferno:cindershale_brick_slab", 6, "Craft 6x Cindershale Brick Slab at a crafting table.", "Stellt 6x Aschenschieferziegelstufe an der Werkbank her."));
+				"copper_inferno:cindershale_brick_slab", 6, "Craft 6x Cindershale Brick Slab at a crafting table.", "Stellt 6x Zunderschieferziegelstufe an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/cindershale_brick_stairs", "copper_inferno:cindershale_brick_stairs", "pyrestone/cindershale_brick_stairs",
 				new String[] {"copper_inferno:cindershale_bricks", "", "", "copper_inferno:cindershale_bricks", "copper_inferno:cindershale_bricks", "", "copper_inferno:cindershale_bricks", "copper_inferno:cindershale_bricks", "copper_inferno:cindershale_bricks"},
-				"copper_inferno:cindershale_brick_stairs", 4, "Craft 4x Cindershale Brick Stairs at a crafting table.", "Stellt 4x Aschenschieferziegeltreppe an der Werkbank her."));
+				"copper_inferno:cindershale_brick_stairs", 4, "Craft 4x Cindershale Brick Stairs at a crafting table.", "Stellt 4x Zunderschieferziegeltreppe an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/cindershale_brick_wall", "copper_inferno:cindershale_brick_wall", "pyrestone/cindershale_brick_wall",
 				new String[] {"copper_inferno:cindershale_bricks", "copper_inferno:cindershale_bricks", "copper_inferno:cindershale_bricks", "copper_inferno:cindershale_bricks", "copper_inferno:cindershale_bricks", "copper_inferno:cindershale_bricks", "", "", ""},
-				"copper_inferno:cindershale_brick_wall", 6, "Craft 6x Cindershale Brick Wall at a crafting table.", "Stellt 6x Aschenschieferziegelmauer an der Werkbank her."));
+				"copper_inferno:cindershale_brick_wall", 6, "Craft 6x Cindershale Brick Wall at a crafting table.", "Stellt 6x Zunderschieferziegelmauer an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/cracked_cindershale_bricks", "copper_inferno:cracked_cindershale_bricks", "pyrestone/cracked_cindershale_bricks",
 				new String[] {"", "", "", "", "copper_inferno:cindershale_bricks", "", "", "", ""},
-				"copper_inferno:cracked_cindershale_bricks", 1, "Smelting Cindershale Bricks in a furnace yields Cracked Cindershale Bricks.", "Aschenschieferziegel im Ofen gebrannt ergibt Rissige Aschenschieferziegel."));
+				"copper_inferno:cracked_cindershale_bricks", 1, "Smelting Cindershale Bricks in a furnace yields Cracked Cindershale Bricks.", "Zunderschieferziegel im Ofen gebrannt ergibt Rissige Zunderschieferziegel."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/chiseled_cindershale_bricks", "copper_inferno:chiseled_cindershale_bricks", "pyrestone/chiseled_cindershale_bricks",
 				new String[] {"copper_inferno:cindershale_brick_slab", "", "", "copper_inferno:cindershale_brick_slab", "", "", "", "", ""},
-				"copper_inferno:chiseled_cindershale_bricks", 1, "Craft 1x Chiseled Cindershale Bricks at a crafting table.", "Stellt 1x Gemei\u00dfelte Aschenschieferziegel an der Werkbank her."));
+				"copper_inferno:chiseled_cindershale_bricks", 1, "Craft 1x Chiseled Cindershale Bricks at a crafting table.", "Stellt 1x Gemei\u00dfelte Zunderschieferziegel an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/cindershale_pillar", "copper_inferno:cindershale_pillar", "pyrestone/cindershale_pillar",
 				new String[] {"copper_inferno:cindershale_bricks", "", "", "copper_inferno:cindershale_bricks", "", "", "", "", ""},
-				"copper_inferno:cindershale_pillar", 2, "Craft 2x Cindershale Pillar at a crafting table.", "Stellt 2x Aschenschiefers\u00e4ule an der Werkbank her."));
+				"copper_inferno:cindershale_pillar", 2, "Craft 2x Cindershale Pillar at a crafting table.", "Stellt 2x Zunderschiefers\u00e4ule an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/cindershale_slab_from_cindershale_stonecutting", "copper_inferno:cindershale_slab", "pyrestone/cindershale_slab_from_cindershale_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:cindershale", "", "", "", ""},
-				"copper_inferno:cindershale_slab", 2, "Stonecutting: cut 2x Cindershale Slab from Cindershale.", "Steins\u00e4ge: 2x Aschenschieferstufe aus Aschenschiefer schneiden."));
+				"copper_inferno:cindershale_slab", 2, "Stonecutting: cut 2x Cindershale Slab from Cindershale.", "Steins\u00e4ge: 2x Zunderschieferstufe aus Zunderschiefer schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/cindershale_stairs_from_cindershale_stonecutting", "copper_inferno:cindershale_stairs", "pyrestone/cindershale_stairs_from_cindershale_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:cindershale", "", "", "", ""},
-				"copper_inferno:cindershale_stairs", 1, "Stonecutting: cut 1x Cindershale Stairs from Cindershale.", "Steins\u00e4ge: 1x Aschenschiefertreppe aus Aschenschiefer schneiden."));
+				"copper_inferno:cindershale_stairs", 1, "Stonecutting: cut 1x Cindershale Stairs from Cindershale.", "Steins\u00e4ge: 1x Zunderschiefertreppe aus Zunderschiefer schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/cindershale_wall_from_cindershale_stonecutting", "copper_inferno:cindershale_wall", "pyrestone/cindershale_wall_from_cindershale_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:cindershale", "", "", "", ""},
-				"copper_inferno:cindershale_wall", 1, "Stonecutting: cut 1x Cindershale Wall from Cindershale.", "Steins\u00e4ge: 1x Aschenschiefermauer aus Aschenschiefer schneiden."));
+				"copper_inferno:cindershale_wall", 1, "Stonecutting: cut 1x Cindershale Wall from Cindershale.", "Steins\u00e4ge: 1x Zunderschiefermauer aus Zunderschiefer schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/polished_cindershale_from_cindershale_stonecutting", "copper_inferno:polished_cindershale", "pyrestone/polished_cindershale_from_cindershale_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:cindershale", "", "", "", ""},
-				"copper_inferno:polished_cindershale", 1, "Stonecutting: cut 1x Polished Cindershale from Cindershale.", "Steins\u00e4ge: 1x Polierten Aschenschiefer aus Aschenschiefer schneiden."));
+				"copper_inferno:polished_cindershale", 1, "Stonecutting: cut 1x Polished Cindershale from Cindershale.", "Steins\u00e4ge: 1x Polierten Zunderschiefer aus Zunderschiefer schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/polished_cindershale_slab_from_cindershale_stonecutting", "copper_inferno:polished_cindershale_slab", "pyrestone/polished_cindershale_slab_from_cindershale_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:cindershale", "", "", "", ""},
-				"copper_inferno:polished_cindershale_slab", 2, "Stonecutting: cut 2x Polished Cindershale Slab from Cindershale.", "Steins\u00e4ge: 2x Polierte Aschenschieferstufe aus Aschenschiefer schneiden."));
+				"copper_inferno:polished_cindershale_slab", 2, "Stonecutting: cut 2x Polished Cindershale Slab from Cindershale.", "Steins\u00e4ge: 2x Polierte Zunderschieferstufe aus Zunderschiefer schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/polished_cindershale_stairs_from_cindershale_stonecutting", "copper_inferno:polished_cindershale_stairs", "pyrestone/polished_cindershale_stairs_from_cindershale_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:cindershale", "", "", "", ""},
-				"copper_inferno:polished_cindershale_stairs", 1, "Stonecutting: cut 1x Polished Cindershale Stairs from Cindershale.", "Steins\u00e4ge: 1x Polierte Aschenschiefertreppe aus Aschenschiefer schneiden."));
+				"copper_inferno:polished_cindershale_stairs", 1, "Stonecutting: cut 1x Polished Cindershale Stairs from Cindershale.", "Steins\u00e4ge: 1x Polierte Zunderschiefertreppe aus Zunderschiefer schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/polished_cindershale_wall_from_cindershale_stonecutting", "copper_inferno:polished_cindershale_wall", "pyrestone/polished_cindershale_wall_from_cindershale_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:cindershale", "", "", "", ""},
-				"copper_inferno:polished_cindershale_wall", 1, "Stonecutting: cut 1x Polished Cindershale Wall from Cindershale.", "Steins\u00e4ge: 1x Polierte Aschenschiefermauer aus Aschenschiefer schneiden."));
+				"copper_inferno:polished_cindershale_wall", 1, "Stonecutting: cut 1x Polished Cindershale Wall from Cindershale.", "Steins\u00e4ge: 1x Polierte Zunderschiefermauer aus Zunderschiefer schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/cindershale_bricks_from_cindershale_stonecutting", "copper_inferno:cindershale_bricks", "pyrestone/cindershale_bricks_from_cindershale_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:cindershale", "", "", "", ""},
-				"copper_inferno:cindershale_bricks", 1, "Stonecutting: cut 1x Cindershale Bricks from Cindershale.", "Steins\u00e4ge: 1x Aschenschieferziegel aus Aschenschiefer schneiden."));
+				"copper_inferno:cindershale_bricks", 1, "Stonecutting: cut 1x Cindershale Bricks from Cindershale.", "Steins\u00e4ge: 1x Zunderschieferziegel aus Zunderschiefer schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/cindershale_brick_slab_from_cindershale_stonecutting", "copper_inferno:cindershale_brick_slab", "pyrestone/cindershale_brick_slab_from_cindershale_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:cindershale", "", "", "", ""},
-				"copper_inferno:cindershale_brick_slab", 2, "Stonecutting: cut 2x Cindershale Brick Slab from Cindershale.", "Steins\u00e4ge: 2x Aschenschieferziegelstufe aus Aschenschiefer schneiden."));
+				"copper_inferno:cindershale_brick_slab", 2, "Stonecutting: cut 2x Cindershale Brick Slab from Cindershale.", "Steins\u00e4ge: 2x Zunderschieferziegelstufe aus Zunderschiefer schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/cindershale_brick_stairs_from_cindershale_stonecutting", "copper_inferno:cindershale_brick_stairs", "pyrestone/cindershale_brick_stairs_from_cindershale_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:cindershale", "", "", "", ""},
-				"copper_inferno:cindershale_brick_stairs", 1, "Stonecutting: cut 1x Cindershale Brick Stairs from Cindershale.", "Steins\u00e4ge: 1x Aschenschieferziegeltreppe aus Aschenschiefer schneiden."));
+				"copper_inferno:cindershale_brick_stairs", 1, "Stonecutting: cut 1x Cindershale Brick Stairs from Cindershale.", "Steins\u00e4ge: 1x Zunderschieferziegeltreppe aus Zunderschiefer schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/cindershale_brick_wall_from_cindershale_stonecutting", "copper_inferno:cindershale_brick_wall", "pyrestone/cindershale_brick_wall_from_cindershale_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:cindershale", "", "", "", ""},
-				"copper_inferno:cindershale_brick_wall", 1, "Stonecutting: cut 1x Cindershale Brick Wall from Cindershale.", "Steins\u00e4ge: 1x Aschenschieferziegelmauer aus Aschenschiefer schneiden."));
+				"copper_inferno:cindershale_brick_wall", 1, "Stonecutting: cut 1x Cindershale Brick Wall from Cindershale.", "Steins\u00e4ge: 1x Zunderschieferziegelmauer aus Zunderschiefer schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/cindershale_tiles_from_cindershale_stonecutting", "copper_inferno:cindershale_tiles", "pyrestone/cindershale_tiles_from_cindershale_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:cindershale", "", "", "", ""},
-				"copper_inferno:cindershale_tiles", 1, "Stonecutting: cut 1x Cindershale Tiles from Cindershale.", "Steins\u00e4ge: 1x Aschenschieferfliesen aus Aschenschiefer schneiden."));
+				"copper_inferno:cindershale_tiles", 1, "Stonecutting: cut 1x Cindershale Tiles from Cindershale.", "Steins\u00e4ge: 1x Zunderschieferfliesen aus Zunderschiefer schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/chiseled_cindershale_bricks_from_cindershale_stonecutting", "copper_inferno:chiseled_cindershale_bricks", "pyrestone/chiseled_cindershale_bricks_from_cindershale_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:cindershale", "", "", "", ""},
-				"copper_inferno:chiseled_cindershale_bricks", 1, "Stonecutting: cut 1x Chiseled Cindershale Bricks from Cindershale.", "Steins\u00e4ge: 1x Gemei\u00dfelte Aschenschieferziegel aus Aschenschiefer schneiden."));
+				"copper_inferno:chiseled_cindershale_bricks", 1, "Stonecutting: cut 1x Chiseled Cindershale Bricks from Cindershale.", "Steins\u00e4ge: 1x Gemei\u00dfelte Zunderschieferziegel aus Zunderschiefer schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/cindershale_pillar_from_cindershale_stonecutting", "copper_inferno:cindershale_pillar", "pyrestone/cindershale_pillar_from_cindershale_stonecutting",
 				new String[] {"", "", "", "", "copper_inferno:cindershale", "", "", "", ""},
-				"copper_inferno:cindershale_pillar", 1, "Stonecutting: cut 1x Cindershale Pillar from Cindershale.", "Steins\u00e4ge: 1x Aschenschiefers\u00e4ule aus Aschenschiefer schneiden."));
+				"copper_inferno:cindershale_pillar", 1, "Stonecutting: cut 1x Cindershale Pillar from Cindershale.", "Steins\u00e4ge: 1x Zunderschiefers\u00e4ule aus Zunderschiefer schneiden."));
 
 		HandbookEntries.add(new HandbookEntry("blocks", "pyrestone/coalspar", "copper_inferno:coalspar", "pyrestone/coalspar",
 				new String[] {"minecraft:coal_block", "", "minecraft:coal_block", "", "copper_inferno:cindershale", "", "minecraft:coal_block", "", "minecraft:coal_block"},

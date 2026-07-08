@@ -34,7 +34,7 @@ final class InfernoCuisineHandbook {
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_cinder_cider", "copper_inferno:cinder_cider", "infernocuisine/cinder_cider",
 				new String[] {"minecraft:glass_bottle", "minecraft:apple", "copper_inferno:ash_pile", "", "", "", "", "", ""},
-				"copper_inferno:cinder_cider", 1, "Craft 1x Cinder Cider at a crafting table.", "Stellt 1x Zinder-Apfelmost an der Werkbank her."));
+				"copper_inferno:cinder_cider", 1, "Craft 1x Cinder Cider at a crafting table.", "Stellt 1x Zunder-Apfelmost an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_soot_smoothie", "copper_inferno:soot_smoothie", "infernocuisine/soot_smoothie",
 				new String[] {"minecraft:glass_bottle", "minecraft:sweet_berries", "minecraft:charcoal", "", "", "", "", "", ""},
@@ -90,7 +90,7 @@ final class InfernoCuisineHandbook {
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_cinder_chowder", "copper_inferno:cinder_chowder", "infernocuisine/cinder_chowder",
 				new String[] {"minecraft:bowl", "minecraft:cod", "copper_inferno:ash_pile", "", "", "", "", "", ""},
-				"copper_inferno:cinder_chowder", 1, "Craft 1x Cinder Chowder at a crafting table.", "Stellt 1x Zinder-Fischsuppe an der Werkbank her."));
+				"copper_inferno:cinder_chowder", 1, "Craft 1x Cinder Chowder at a crafting table.", "Stellt 1x Zunder-Fischsuppe an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_blaze_broth", "copper_inferno:blaze_broth", "infernocuisine/blaze_broth",
 				new String[] {"minecraft:bowl", "minecraft:blaze_powder", "minecraft:chicken", "", "", "", "", "", ""},
@@ -130,7 +130,7 @@ final class InfernoCuisineHandbook {
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_cinder_syrup", "copper_inferno:cinder_syrup", "infernocuisine/cinder_syrup",
 				new String[] {"minecraft:glass_bottle", "minecraft:sugar", "minecraft:sugar", "copper_inferno:ash_pile", "", "", "", "", ""},
-				"copper_inferno:cinder_syrup", 1, "Craft 1x Cinder Syrup at a crafting table.", "Stellt 1x Zindersirup an der Werkbank her."));
+				"copper_inferno:cinder_syrup", 1, "Craft 1x Cinder Syrup at a crafting table.", "Stellt 1x Zundersirup an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_ash_yogurt", "copper_inferno:ash_yogurt", "infernocuisine/ash_yogurt",
 				new String[] {"minecraft:glass_bottle", "minecraft:milk_bucket", "copper_inferno:ash_pile", "", "", "", "", "", ""},
@@ -142,7 +142,7 @@ final class InfernoCuisineHandbook {
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_cinder_kimchi", "copper_inferno:cinder_kimchi", "infernocuisine/cinder_kimchi",
 				new String[] {"minecraft:glass_bottle", "minecraft:beetroot", "copper_inferno:ash_pile", "minecraft:sugar", "", "", "", "", ""},
-				"copper_inferno:cinder_kimchi", 1, "Craft 1x Cinder Kimchi at a crafting table.", "Stellt 1x Zinder-Kimchi an der Werkbank her."));
+				"copper_inferno:cinder_kimchi", 1, "Craft 1x Cinder Kimchi at a crafting table.", "Stellt 1x Zunder-Kimchi an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_magma_salsa", "copper_inferno:magma_salsa", "infernocuisine/magma_salsa",
 				new String[] {"minecraft:glass_bottle", "minecraft:beetroot", "minecraft:magma_cream", "minecraft:blaze_powder", "", "", "", "", ""},
@@ -158,7 +158,7 @@ final class InfernoCuisineHandbook {
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_raw_cinder_bacon", "copper_inferno:raw_cinder_bacon", "infernocuisine/raw_cinder_bacon",
 				new String[] {"minecraft:porkchop", "copper_inferno:ash_pile", "", "", "", "", "", "", ""},
-				"copper_inferno:raw_cinder_bacon", 2, "Craft 2x Raw Cinder Bacon at a crafting table.", "Stellt 2x Rohen Zinderspeck an der Werkbank her."));
+				"copper_inferno:raw_cinder_bacon", 2, "Craft 2x Raw Cinder Bacon at a crafting table.", "Stellt 2x Rohen Zunderspeck an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_raw_slag_ribs", "copper_inferno:raw_slag_ribs", "infernocuisine/raw_slag_ribs",
 				new String[] {"minecraft:mutton", "copper_inferno:slag_chunk", "", "", "", "", "", "", ""},
@@ -178,7 +178,7 @@ final class InfernoCuisineHandbook {
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_cinder_batter", "copper_inferno:cinder_batter", "infernocuisine/cinder_batter",
 				new String[] {"minecraft:wheat", "minecraft:egg", "minecraft:milk_bucket", "copper_inferno:ash_pile", "", "", "", "", ""},
-				"copper_inferno:cinder_batter", 2, "Craft 2x Cinder Batter at a crafting table.", "Stellt 2x Zinder-Backteig an der Werkbank her."));
+				"copper_inferno:cinder_batter", 2, "Craft 2x Cinder Batter at a crafting table.", "Stellt 2x Zunder-Backteig an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_magma_kernels", "copper_inferno:magma_kernels", "infernocuisine/magma_kernels",
 				new String[] {"minecraft:wheat_seeds", "minecraft:magma_cream", "", "", "", "", "", "", ""},
@@ -214,11 +214,11 @@ final class InfernoCuisineHandbook {
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_cinder_bacon", "copper_inferno:cinder_bacon", "infernocuisine/cinder_bacon",
 				new String[] {"", "", "", "", "copper_inferno:raw_cinder_bacon", "", "", "", ""},
-				"copper_inferno:cinder_bacon", 1, "Smelt Raw Cinder Bacon in a furnace into Cinder Bacon.", "Rohen Zinderspeck im Ofen garen, um Zinderspeck zu erhalten."));
+				"copper_inferno:cinder_bacon", 1, "Smelt Raw Cinder Bacon in a furnace into Cinder Bacon.", "Rohen Zunderspeck im Ofen garen, um Zunderspeck zu erhalten."));
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_cinder_bacon_from_campfire_cooking", "copper_inferno:cinder_bacon", "infernocuisine/cinder_bacon_from_campfire_cooking",
 				new String[] {"", "", "", "", "copper_inferno:raw_cinder_bacon", "", "", "", ""},
-				"copper_inferno:cinder_bacon", 1, "A campfire also cooks Raw Cinder Bacon - slower, but without fuel.", "Auch das Lagerfeuer gart Rohen Zinderspeck - langsamer, aber ohne Brennstoff."));
+				"copper_inferno:cinder_bacon", 1, "A campfire also cooks Raw Cinder Bacon - slower, but without fuel.", "Auch das Lagerfeuer gart Rohen Zunderspeck - langsamer, aber ohne Brennstoff."));
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_slag_ribs", "copper_inferno:slag_ribs", "infernocuisine/slag_ribs",
 				new String[] {"", "", "", "", "copper_inferno:raw_slag_ribs", "", "", "", ""},
@@ -254,11 +254,11 @@ final class InfernoCuisineHandbook {
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_cinder_pancake", "copper_inferno:cinder_pancake", "infernocuisine/cinder_pancake",
 				new String[] {"", "", "", "", "copper_inferno:cinder_batter", "", "", "", ""},
-				"copper_inferno:cinder_pancake", 1, "Smelt Cinder Batter in a furnace into Cinder Pancake.", "Zinder-Backteig im Ofen garen, um Zinder-Pfannkuchen zu erhalten."));
+				"copper_inferno:cinder_pancake", 1, "Smelt Cinder Batter in a furnace into Cinder Pancake.", "Zunder-Backteig im Ofen garen, um Zunder-Pfannkuchen zu erhalten."));
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_cinder_pancake_from_campfire_cooking", "copper_inferno:cinder_pancake", "infernocuisine/cinder_pancake_from_campfire_cooking",
 				new String[] {"", "", "", "", "copper_inferno:cinder_batter", "", "", "", ""},
-				"copper_inferno:cinder_pancake", 1, "A campfire also cooks Cinder Batter - slower, but without fuel.", "Auch das Lagerfeuer gart Zinder-Backteig - langsamer, aber ohne Brennstoff."));
+				"copper_inferno:cinder_pancake", 1, "A campfire also cooks Cinder Batter - slower, but without fuel.", "Auch das Lagerfeuer gart Zunder-Backteig - langsamer, aber ohne Brennstoff."));
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_magma_popcorn", "copper_inferno:magma_popcorn", "infernocuisine/magma_popcorn",
 				new String[] {"", "", "", "", "copper_inferno:magma_kernels", "", "", "", ""},
@@ -294,7 +294,7 @@ final class InfernoCuisineHandbook {
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_cinder_pie", "copper_inferno:cinder_pie", "infernocuisine/cinder_pie",
 				new String[] {"copper_inferno:ember_dough", "minecraft:sugar", "minecraft:egg", "copper_inferno:ember_berries", "", "", "", "", ""},
-				"copper_inferno:cinder_pie", 1, "Craft 1x Cinder Pie at a crafting table.", "Stellt 1x Zinderpastete an der Werkbank her."));
+				"copper_inferno:cinder_pie", 1, "Craft 1x Cinder Pie at a crafting table.", "Stellt 1x Zunderpastete an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_magma_tart", "copper_inferno:magma_tart", "infernocuisine/magma_tart",
 				new String[] {"copper_inferno:ember_dough", "minecraft:glow_berries", "minecraft:sugar", "", "", "", "", "", ""},
@@ -322,7 +322,7 @@ final class InfernoCuisineHandbook {
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_cinder_croissant", "copper_inferno:cinder_croissant", "infernocuisine/cinder_croissant",
 				new String[] {"copper_inferno:ember_dough", "copper_inferno:ember_dough", "minecraft:milk_bucket", "", "", "", "", "", ""},
-				"copper_inferno:cinder_croissant", 3, "Craft 3x Cinder Croissant at a crafting table.", "Stellt 3x Zinder-Croissant an der Werkbank her."));
+				"copper_inferno:cinder_croissant", 3, "Craft 3x Cinder Croissant at a crafting table.", "Stellt 3x Zunder-Croissant an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_ember_waffle", "copper_inferno:ember_waffle", "infernocuisine/ember_waffle",
 				new String[] {"copper_inferno:cinder_batter", "minecraft:honey_bottle", "", "", "", "", "", "", ""},
@@ -338,7 +338,7 @@ final class InfernoCuisineHandbook {
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_cinder_toffee", "copper_inferno:cinder_toffee", "infernocuisine/cinder_toffee",
 				new String[] {"minecraft:sugar", "minecraft:sugar", "minecraft:milk_bucket", "copper_inferno:ash_pile", "", "", "", "", ""},
-				"copper_inferno:cinder_toffee", 4, "Craft 4x Cinder Toffee at a crafting table.", "Stellt 4x Zinderkaramell an der Werkbank her."));
+				"copper_inferno:cinder_toffee", 4, "Craft 4x Cinder Toffee at a crafting table.", "Stellt 4x Zunderkaramell an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_magma_fudge", "copper_inferno:magma_fudge", "infernocuisine/magma_fudge",
 				new String[] {"minecraft:cocoa_beans", "minecraft:sugar", "minecraft:milk_bucket", "minecraft:magma_cream", "", "", "", "", ""},
@@ -366,7 +366,7 @@ final class InfernoCuisineHandbook {
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_cinder_chocolate", "copper_inferno:cinder_chocolate", "infernocuisine/cinder_chocolate",
 				new String[] {"minecraft:cocoa_beans", "minecraft:cocoa_beans", "minecraft:milk_bucket", "copper_inferno:ash_pile", "", "", "", "", ""},
-				"copper_inferno:cinder_chocolate", 2, "Craft 2x Cinder Chocolate at a crafting table.", "Stellt 2x Zinderschokolade an der Werkbank her."));
+				"copper_inferno:cinder_chocolate", 2, "Craft 2x Cinder Chocolate at a crafting table.", "Stellt 2x Zunderschokolade an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_molten_caramel", "copper_inferno:molten_caramel", "infernocuisine/molten_caramel",
 				new String[] {"minecraft:sugar", "minecraft:sugar", "minecraft:sugar", "minecraft:magma_cream", "", "", "", "", ""},
@@ -386,7 +386,7 @@ final class InfernoCuisineHandbook {
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_cinder_taco", "copper_inferno:cinder_taco", "infernocuisine/cinder_taco",
 				new String[] {"minecraft:bread", "copper_inferno:cinder_bacon", "copper_inferno:ash_pile", "", "", "", "", "", ""},
-				"copper_inferno:cinder_taco", 1, "Craft 1x Cinder Taco at a crafting table.", "Stellt 1x Zinder-Taco an der Werkbank her."));
+				"copper_inferno:cinder_taco", 1, "Craft 1x Cinder Taco at a crafting table.", "Stellt 1x Zunder-Taco an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_magma_pizza", "copper_inferno:magma_pizza", "infernocuisine/magma_pizza",
 				new String[] {"copper_inferno:ember_dough", "minecraft:milk_bucket", "minecraft:magma_cream", "minecraft:red_mushroom", "", "", "", "", ""},
@@ -410,7 +410,7 @@ final class InfernoCuisineHandbook {
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_cinder_dumpling", "copper_inferno:cinder_dumpling", "infernocuisine/cinder_dumpling",
 				new String[] {"copper_inferno:ember_dough", "minecraft:porkchop", "", "", "", "", "", "", ""},
-				"copper_inferno:cinder_dumpling", 2, "Craft 2x Cinder Dumpling at a crafting table.", "Stellt 2x Zinderkn\u00f6del an der Werkbank her."));
+				"copper_inferno:cinder_dumpling", 2, "Craft 2x Cinder Dumpling at a crafting table.", "Stellt 2x Zunderkn\u00f6del an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_blaze_kebab", "copper_inferno:blaze_kebab", "infernocuisine/blaze_kebab",
 				new String[] {"copper_inferno:blaze_chop", "", "", "copper_inferno:blaze_chop", "", "", "minecraft:stick", "", ""},
@@ -430,7 +430,7 @@ final class InfernoCuisineHandbook {
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_cinder_quiche", "copper_inferno:cinder_quiche", "infernocuisine/cinder_quiche",
 				new String[] {"copper_inferno:ember_dough", "minecraft:egg", "minecraft:milk_bucket", "copper_inferno:ash_pile", "", "", "", "", ""},
-				"copper_inferno:cinder_quiche", 1, "Craft 1x Cinder Quiche at a crafting table.", "Stellt 1x Zinder-Quiche an der Werkbank her."));
+				"copper_inferno:cinder_quiche", 1, "Craft 1x Cinder Quiche at a crafting table.", "Stellt 1x Zunder-Quiche an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_slag_burrito", "copper_inferno:slag_burrito", "infernocuisine/slag_burrito",
 				new String[] {"minecraft:bread", "copper_inferno:slag_ribs", "copper_inferno:magma_salsa", "", "", "", "", "", ""},
@@ -442,7 +442,7 @@ final class InfernoCuisineHandbook {
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_cinder_plum", "copper_inferno:cinder_plum", "infernocuisine/cinder_plum",
 				new String[] {"minecraft:apple", "copper_inferno:ash_pile", "", "", "", "", "", "", ""},
-				"copper_inferno:cinder_plum", 2, "Craft 2x Cinder Plum at a crafting table.", "Stellt 2x Zinderpflaume an der Werkbank her."));
+				"copper_inferno:cinder_plum", 2, "Craft 2x Cinder Plum at a crafting table.", "Stellt 2x Zunderpflaume an der Werkbank her."));
 
 		HandbookEntries.add(new HandbookEntry("items", "infernocuisine_magma_melon_slice", "copper_inferno:magma_melon_slice", "infernocuisine/magma_melon_slice",
 				new String[] {"minecraft:melon_slice", "minecraft:magma_cream", "", "", "", "", "", "", ""},

@@ -749,7 +749,7 @@ BASE_FLAVOR_EN = {
 }
 
 BASE_FLAVOR_DE = {
-    "blaze": "{de} - ein Lohengeist des Glutschwarms, der durch Aschen\u00f6de,"
+    "blaze": "{de} - ein Lohengeist des Glutschwarms, der durch Zunder\u00f6de,"
              " Gluthain und Schlackenmeer wirbelt. L\u00e4sst {drop} fallen.",
     "cube": "{de} - ein h\u00fcpfender Schwarmw\u00fcrfel, der sich wie ein"
             " Magmaw\u00fcrfel teilt. Streift durch die Inferno-Biome. L\u00e4sst"

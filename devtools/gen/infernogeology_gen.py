@@ -137,11 +137,11 @@ BLOCKS = [
         "stoneSettings(MapColor.GOLD, BlockSoundGroup.NETHER_ORE, 3.0F, 3.0F)", "pickaxe"),
     Blk("slag_copper_ore", "Slag Copper Ore", "Schlackenkupfererz",
         "stoneSettings(MapColor.TERRACOTTA_ORANGE, BlockSoundGroup.NETHER_ORE, 3.0F, 3.0F)", "pickaxe"),
-    Blk("cinder_quartz_ore", "Cinder Quartz Ore", "Zinderquarzerz",
+    Blk("cinder_quartz_ore", "Cinder Quartz Ore", "Zunderquarzerz",
         "stoneSettings(MapColor.OFF_WHITE, BlockSoundGroup.NETHER_ORE, 3.0F, 3.0F)", "pickaxe"),
     Blk("brimstone_ore", "Brimstone Ore", "Schwefelsteinerz",
         "stoneSettings(MapColor.YELLOW, BlockSoundGroup.NETHER_ORE, 3.0F, 3.0F)", "pickaxe"),
-    Blk("cinder_lapis_ore", "Cinder Lapis Ore", "Zinderlapiserz",
+    Blk("cinder_lapis_ore", "Cinder Lapis Ore", "Zunderlapiserz",
         "stoneSettings(MapColor.LAPIS_BLUE, BlockSoundGroup.NETHER_ORE, 3.0F, 3.0F)", "pickaxe"),
     Blk("smolder_redstone_ore", "Smolder Redstone Ore", "Schwel-Redstone-Erz",
         "stoneSettings(MapColor.BRIGHT_RED, BlockSoundGroup.NETHER_ORE, 3.0F, 3.0F)", "pickaxe"),
@@ -168,7 +168,7 @@ BLOCKS = [
         "softSettings(MapColor.PALE_YELLOW, BlockSoundGroup.SAND, 0.5F)", "shovel"),
     Blk("ember_grit", "Ember Grit", "Glutgrus",
         "softSettings(MapColor.ORANGE, BlockSoundGroup.GRAVEL, 0.6F)", "shovel"),
-    Blk("cinder_silt", "Cinder Silt", "Zinderschlick",
+    Blk("cinder_silt", "Cinder Silt", "Zunderschlick",
         "softSettings(MapColor.GRAY, BlockSoundGroup.SOUL_SAND, 0.5F)", "shovel"),
 ]
 
@@ -531,7 +531,7 @@ def build_features():
          [f"{C}cinderstone", f"{C}ash_block"], 2, 5, 2, 30, 38,
          "Cinder silt disks: soft dark mud flats (radius 2-5) slightly above the lava "
          "line, y=30 to y=38.",
-         "Zinderschlick-Scheiben: weiche dunkle Schlammfl\u00e4chen (Radius 2-5) knapp "
+         "Zunderschlick-Scheiben: weiche dunkle Schlammfl\u00e4chen (Radius 2-5) knapp "
          "\u00fcber der Lavalinie, y=30 bis y=38."),
     ]
     for name, block, targets, r_min, r_max, count, y0, y1, en, de in disks:

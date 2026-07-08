@@ -286,7 +286,7 @@ public final class InfernoMobsFeature {
 		HandbookEntries.add(new HandbookEntry("mobs", "ember_wraith",
 				"copper_inferno:ember_wraith_spawn_egg", null, null, null, 0,
 				"Ember Wraith - a towering blaze spirit haunting the Cinder Wastes, Ember Grove and Slag Sea. Tougher and larger than a common blaze. Drops Wraith Embers.",
-				"Glutschleier - ein riesiger Lohengeist, der die Aschenöde, den Gluthain und das Schlackenmeer heimsucht. Zäher und größer als eine gewöhnliche Lohe. Lässt Schleierglut fallen."));
+				"Glutschleier - ein riesiger Lohengeist, der die Zunderöde, den Gluthain und das Schlackenmeer heimsucht. Zäher und größer als eine gewöhnliche Lohe. Lässt Schleierglut fallen."));
 		HandbookEntries.add(new HandbookEntry("mobs", "slag_crawler",
 				"copper_inferno:slag_crawler_spawn_egg", null, null, null, 0,
 				"Slag Crawler - an oversized silverfish crusted in slag, skittering across the Inferno biomes. Bites hard. Drops Crawler Fangs.",
@@ -298,7 +298,7 @@ public final class InfernoMobsFeature {
 		HandbookEntries.add(new HandbookEntry("mobs", "cinder_strider",
 				"copper_inferno:cinder_strider_spawn_egg", null, null, null, 0,
 				"Cinder Strider - a placid, cinder-crusted strider that wades the lava of the Slag Sea and its neighbors. Can be saddled and ridden. Drops Strider Shells.",
-				"Aschenschreiter - ein friedlicher, aschenverkrusteter Schreiter, der durch die Lava des Schlackenmeers watet. Kann gesattelt und geritten werden. Lässt Schreiterpanzer fallen."));
+				"Zunderschreiter - ein friedlicher, zunderverkrusteter Schreiter, der durch die Lava des Schlackenmeers watet. Kann gesattelt und geritten werden. Lässt Schreiterpanzer fallen."));
 		HandbookEntries.add(new HandbookEntry("mobs", "ash_bat",
 				"copper_inferno:ash_bat_spawn_egg", null, null, null, 0,
 				"Ash Bat - an ash-grey bat roosting in the Inferno biomes, with a few straying into the Overworld. Harmless. Drops leather.",

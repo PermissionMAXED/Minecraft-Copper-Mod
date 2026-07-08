@@ -263,7 +263,7 @@ BOSSES = [
     ),
     dict(
         bid="calamity_herald", cls="CalamityHeraldEntity", base="vindicator",
-        en="Calamity Herald", de="Herold des Unheils",
+        en="Calamity Herald", de="Unheilsherold",
         attrs=[("MAX_HEALTH", "380.0"), ("ATTACK_DAMAGE", "14.0"), ("SCALE", "2.0"),
                ("KNOCKBACK_RESISTANCE", "0.6"), ("FOLLOW_RANGE", "48.0")],
         summon=("herald_omen_sigil", "Herald Omen Sigil", "Herold-Omensiegel"),
@@ -273,7 +273,7 @@ BOSSES = [
         corner="minecraft:copper_ingot", edge=f"{NS}:oxidized_copper_dust",
         center="minecraft:ominous_bottle",
         lore_en="Calamity Herald - the doom-crier of the calamities. Summon: use a Herald Omen Sigil. Every 6 seconds it marks everyone it can see within 8 blocks with Glowing and Slowness; below half health it calls 2 vindicator adds exactly once. Drops 1-2 Herald Emberglass and 2-4 Omen Fragments.",
-        lore_de="Herold des Unheils - der Unheilsrufer der Katastrophen. Beschw\u00f6rung: ein Herold-Omensiegel benutzen. Alle 6 Sekunden zeichnet er jeden, den er im Umkreis von 8 Bl\u00f6cken sehen kann, mit Leuchten und Langsamkeit; unter halber Gesundheit ruft er genau einmal 2 Diener herbei. L\u00e4sst 1-2 Herold-Glutglas und 2-4 Omenfragmente fallen.",
+        lore_de="Unheilsherold - der Unheilsrufer der Katastrophen. Beschw\u00f6rung: ein Herold-Omensiegel benutzen. Alle 6 Sekunden zeichnet er jeden, den er im Umkreis von 8 Bl\u00f6cken sehen kann, mit Leuchten und Langsamkeit; unter halber Gesundheit ruft er genau einmal 2 Diener herbei. L\u00e4sst 1-2 Herold-Glutglas und 2-4 Omenfragmente fallen.",
         pal=Pal((0x6A, 0x4E, 0x8E), (0x46, 0x32, 0x60), (0x93, 0x74, 0xBE),
                 (0x57, 0xA0, 0x7B), (0x24, 0x1A, 0x34)),
     ),

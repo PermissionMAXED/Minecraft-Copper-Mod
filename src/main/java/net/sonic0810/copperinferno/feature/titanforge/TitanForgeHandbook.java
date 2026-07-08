@@ -18,7 +18,7 @@ final class TitanForgeHandbook {
 	static void register() {
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge_overview", "copper_inferno:infernal_alloy_sword", null,
 				null,
-				null, 0, "TitanForge gear spans six forged tiers \u2014 Ember Steel, Pyrite, Slagsteel, Cinderforge, Molten Titan and Infernal Alloy \u2014 each with a full sword/pickaxe/axe/shovel/hoe tool set, helmet/chestplate/leggings/boots armor and six charm trinkets. Higher tiers are reached by alloying the previous tier's ingot or by smithing-table upgrades with the Infernium Upgrade Smithing Template; Molten Titan and Infernal Alloy gear never burns.", "TitanForge-Ausr\u00fcstung umfasst sechs geschmiedete Stufen \u2014 Glutstahl, Pyrit, Schlackenstahl, Zinderschmiede, Schmelztitan und H\u00f6llenlegierung \u2014 jede mit komplettem Werkzeugsatz (Schwert/Spitzhacke/Axt/Schaufel/Hacke), R\u00fcstung (Helm/Brustpanzer/Beinschutz/Stiefel) und sechs Anh\u00e4ngern. H\u00f6here Stufen entstehen durch Legieren des vorherigen Barrens oder per Schmiedetisch-Aufwertung mit der Infernium-Aufwertungs-Schmiedevorlage; Schmelztitan- und H\u00f6llenlegierungs-Ausr\u00fcstung verbrennt nie."));
+				null, 0, "TitanForge gear spans six forged tiers \u2014 Ember Steel, Pyrite, Slagsteel, Cinderforge, Molten Titan and Infernal Alloy \u2014 each with a full sword/pickaxe/axe/shovel/hoe tool set, helmet/chestplate/leggings/boots armor and six charm trinkets. Higher tiers are reached by alloying the previous tier's ingot or by smithing-table upgrades with the Infernium Upgrade Smithing Template; Molten Titan and Infernal Alloy gear never burns.", "TitanForge-Ausr\u00fcstung umfasst sechs geschmiedete Stufen \u2014 Glutstahl, Pyrit, Schlackenstahl, Zunderschmiede, Schmelztitan und H\u00f6llenlegierung \u2014 jede mit komplettem Werkzeugsatz (Schwert/Spitzhacke/Axt/Schaufel/Hacke), R\u00fcstung (Helm/Brustpanzer/Beinschutz/Stiefel) und sechs Anh\u00e4ngern. H\u00f6here Stufen entstehen durch Legieren des vorherigen Barrens oder per Schmiedetisch-Aufwertung mit der Infernium-Aufwertungs-Schmiedevorlage; Schmelztitan- und H\u00f6llenlegierungs-Ausr\u00fcstung verbrennt nie."));
 
 		HandbookEntries.add(new HandbookEntry("items", "titanforge/ember_steel_ingot", "copper_inferno:ember_steel_ingot", "titanforge/ember_steel_ingot",
 				new String[] {"minecraft:iron_ingot", "minecraft:blaze_powder", "minecraft:coal", "", "", "", "", "", ""},
@@ -286,103 +286,103 @@ final class TitanForgeHandbook {
 
 		HandbookEntries.add(new HandbookEntry("items", "titanforge/cinderforge_ingot", "copper_inferno:cinderforge_ingot", "titanforge/cinderforge_ingot",
 				new String[] {"copper_inferno:slagsteel_ingot", "minecraft:diamond", "minecraft:blaze_rod", "", "", "", "", "", ""},
-				"copper_inferno:cinderforge_ingot", 2, "Alloy the shown ingredients into 2x Cinderforge Ingot.", "Die gezeigten Zutaten zu 2x Zinderschmiede-Barren legieren."));
+				"copper_inferno:cinderforge_ingot", 2, "Alloy the shown ingredients into 2x Cinderforge Ingot.", "Die gezeigten Zutaten zu 2x Zunderschmiede-Barren legieren."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_sword", "copper_inferno:cinderforge_sword", "titanforge/cinderforge_sword",
 				new String[] {"", "copper_inferno:cinderforge_ingot", "", "", "copper_inferno:cinderforge_ingot", "", "", "minecraft:stick", ""},
-				"copper_inferno:cinderforge_sword", 1, "Craft the Cinderforge Sword from Cinderforge Ingots and sticks.", "Zinderschmiede-Schwert aus Zinderschmiede-Barren und St\u00f6cken herstellen."));
+				"copper_inferno:cinderforge_sword", 1, "Craft the Cinderforge Sword from Cinderforge Ingots and sticks.", "Zunderschmiede-Schwert aus Zunderschmiede-Barren und St\u00f6cken herstellen."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_pickaxe", "copper_inferno:cinderforge_pickaxe", "titanforge/cinderforge_pickaxe",
 				new String[] {"copper_inferno:cinderforge_ingot", "copper_inferno:cinderforge_ingot", "copper_inferno:cinderforge_ingot", "", "minecraft:stick", "", "", "minecraft:stick", ""},
-				"copper_inferno:cinderforge_pickaxe", 1, "Craft the Cinderforge Pickaxe from Cinderforge Ingots and sticks.", "Zinderschmiede-Spitzhacke aus Zinderschmiede-Barren und St\u00f6cken herstellen."));
+				"copper_inferno:cinderforge_pickaxe", 1, "Craft the Cinderforge Pickaxe from Cinderforge Ingots and sticks.", "Zunderschmiede-Spitzhacke aus Zunderschmiede-Barren und St\u00f6cken herstellen."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_axe", "copper_inferno:cinderforge_axe", "titanforge/cinderforge_axe",
 				new String[] {"copper_inferno:cinderforge_ingot", "copper_inferno:cinderforge_ingot", "", "copper_inferno:cinderforge_ingot", "minecraft:stick", "", "", "minecraft:stick", ""},
-				"copper_inferno:cinderforge_axe", 1, "Craft the Cinderforge Axe from Cinderforge Ingots and sticks.", "Zinderschmiede-Axt aus Zinderschmiede-Barren und St\u00f6cken herstellen."));
+				"copper_inferno:cinderforge_axe", 1, "Craft the Cinderforge Axe from Cinderforge Ingots and sticks.", "Zunderschmiede-Axt aus Zunderschmiede-Barren und St\u00f6cken herstellen."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_shovel", "copper_inferno:cinderforge_shovel", "titanforge/cinderforge_shovel",
 				new String[] {"", "copper_inferno:cinderforge_ingot", "", "", "minecraft:stick", "", "", "minecraft:stick", ""},
-				"copper_inferno:cinderforge_shovel", 1, "Craft the Cinderforge Shovel from Cinderforge Ingots and sticks.", "Zinderschmiede-Schaufel aus Zinderschmiede-Barren und St\u00f6cken herstellen."));
+				"copper_inferno:cinderforge_shovel", 1, "Craft the Cinderforge Shovel from Cinderforge Ingots and sticks.", "Zunderschmiede-Schaufel aus Zunderschmiede-Barren und St\u00f6cken herstellen."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_hoe", "copper_inferno:cinderforge_hoe", "titanforge/cinderforge_hoe",
 				new String[] {"copper_inferno:cinderforge_ingot", "copper_inferno:cinderforge_ingot", "", "", "minecraft:stick", "", "", "minecraft:stick", ""},
-				"copper_inferno:cinderforge_hoe", 1, "Craft the Cinderforge Hoe from Cinderforge Ingots and sticks.", "Zinderschmiede-Hacke aus Zinderschmiede-Barren und St\u00f6cken herstellen."));
+				"copper_inferno:cinderforge_hoe", 1, "Craft the Cinderforge Hoe from Cinderforge Ingots and sticks.", "Zunderschmiede-Hacke aus Zunderschmiede-Barren und St\u00f6cken herstellen."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_helmet", "copper_inferno:cinderforge_helmet", "titanforge/cinderforge_helmet",
 				new String[] {"copper_inferno:cinderforge_ingot", "copper_inferno:cinderforge_ingot", "copper_inferno:cinderforge_ingot", "copper_inferno:cinderforge_ingot", "", "copper_inferno:cinderforge_ingot", "", "", ""},
-				"copper_inferno:cinderforge_helmet", 1, "Craft the Cinderforge Helmet from Cinderforge Ingots.", "Zinderschmiede-Helm aus Zinderschmiede-Barren herstellen."));
+				"copper_inferno:cinderforge_helmet", 1, "Craft the Cinderforge Helmet from Cinderforge Ingots.", "Zunderschmiede-Helm aus Zunderschmiede-Barren herstellen."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_chestplate", "copper_inferno:cinderforge_chestplate", "titanforge/cinderforge_chestplate",
 				new String[] {"copper_inferno:cinderforge_ingot", "", "copper_inferno:cinderforge_ingot", "copper_inferno:cinderforge_ingot", "copper_inferno:cinderforge_ingot", "copper_inferno:cinderforge_ingot", "copper_inferno:cinderforge_ingot", "copper_inferno:cinderforge_ingot", "copper_inferno:cinderforge_ingot"},
-				"copper_inferno:cinderforge_chestplate", 1, "Craft the Cinderforge Chestplate from Cinderforge Ingots.", "Zinderschmiede-Brustpanzer aus Zinderschmiede-Barren herstellen."));
+				"copper_inferno:cinderforge_chestplate", 1, "Craft the Cinderforge Chestplate from Cinderforge Ingots.", "Zunderschmiede-Brustpanzer aus Zunderschmiede-Barren herstellen."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_leggings", "copper_inferno:cinderforge_leggings", "titanforge/cinderforge_leggings",
 				new String[] {"copper_inferno:cinderforge_ingot", "copper_inferno:cinderforge_ingot", "copper_inferno:cinderforge_ingot", "copper_inferno:cinderforge_ingot", "", "copper_inferno:cinderforge_ingot", "copper_inferno:cinderforge_ingot", "", "copper_inferno:cinderforge_ingot"},
-				"copper_inferno:cinderforge_leggings", 1, "Craft the Cinderforge Leggings from Cinderforge Ingots.", "Zinderschmiede-Beinschutz aus Zinderschmiede-Barren herstellen."));
+				"copper_inferno:cinderforge_leggings", 1, "Craft the Cinderforge Leggings from Cinderforge Ingots.", "Zunderschmiede-Beinschutz aus Zunderschmiede-Barren herstellen."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_boots", "copper_inferno:cinderforge_boots", "titanforge/cinderforge_boots",
 				new String[] {"copper_inferno:cinderforge_ingot", "", "copper_inferno:cinderforge_ingot", "copper_inferno:cinderforge_ingot", "", "copper_inferno:cinderforge_ingot", "", "", ""},
-				"copper_inferno:cinderforge_boots", 1, "Craft the Cinderforge Boots from Cinderforge Ingots.", "Zinderschmiede-Stiefel aus Zinderschmiede-Barren herstellen."));
+				"copper_inferno:cinderforge_boots", 1, "Craft the Cinderforge Boots from Cinderforge Ingots.", "Zunderschmiede-Stiefel aus Zunderschmiede-Barren herstellen."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_charm", "copper_inferno:cinderforge_charm", "titanforge/cinderforge_charm",
 				new String[] {"", "copper_inferno:cinderforge_ingot", "", "copper_inferno:cinderforge_ingot", "minecraft:string", "copper_inferno:cinderforge_ingot", "", "copper_inferno:cinderforge_ingot", ""},
-				"copper_inferno:cinderforge_charm", 1, "A pocket Cinderforge charm for luck at the forge.", "Ein Zinderschmiede-Gl\u00fccksbringer f\u00fcr Gl\u00fcck an der Esse."));
+				"copper_inferno:cinderforge_charm", 1, "A pocket Cinderforge charm for luck at the forge.", "Ein Zunderschmiede-Gl\u00fccksbringer f\u00fcr Gl\u00fcck an der Esse."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_totem", "copper_inferno:cinderforge_totem", "titanforge/cinderforge_totem",
 				new String[] {"", "copper_inferno:cinderforge_ingot", "", "copper_inferno:cinderforge_ingot", "minecraft:emerald", "copper_inferno:cinderforge_ingot", "", "copper_inferno:cinderforge_ingot", ""},
-				"copper_inferno:cinderforge_totem", 1, "A carved Cinderforge totem watching over the smithy.", "Ein geschnitztes Zinderschmiede-Totem wacht \u00fcber die Schmiede."));
+				"copper_inferno:cinderforge_totem", 1, "A carved Cinderforge totem watching over the smithy.", "Ein geschnitztes Zunderschmiede-Totem wacht \u00fcber die Schmiede."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_ring", "copper_inferno:cinderforge_ring", "titanforge/cinderforge_ring",
 				new String[] {"", "copper_inferno:cinderforge_ingot", "", "copper_inferno:cinderforge_ingot", "minecraft:gold_nugget", "copper_inferno:cinderforge_ingot", "", "copper_inferno:cinderforge_ingot", ""},
-				"copper_inferno:cinderforge_ring", 1, "A polished Cinderforge ring, warm to the touch.", "Ein polierter Zinderschmiede-Ring, warm bei Ber\u00fchrung."));
+				"copper_inferno:cinderforge_ring", 1, "A polished Cinderforge ring, warm to the touch.", "Ein polierter Zunderschmiede-Ring, warm bei Ber\u00fchrung."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_amulet", "copper_inferno:cinderforge_amulet", "titanforge/cinderforge_amulet",
 				new String[] {"", "copper_inferno:cinderforge_ingot", "", "copper_inferno:cinderforge_ingot", "minecraft:amethyst_shard", "copper_inferno:cinderforge_ingot", "", "copper_inferno:cinderforge_ingot", ""},
-				"copper_inferno:cinderforge_amulet", 1, "The Cinderforge amulet swings on a silver chain.", "Das Zinderschmiede-Amulett schwingt an silberner Kette."));
+				"copper_inferno:cinderforge_amulet", 1, "The Cinderforge amulet swings on a silver chain.", "Das Zunderschmiede-Amulett schwingt an silberner Kette."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_talisman", "copper_inferno:cinderforge_talisman", "titanforge/cinderforge_talisman",
 				new String[] {"", "copper_inferno:cinderforge_ingot", "", "copper_inferno:cinderforge_ingot", "minecraft:blaze_powder", "copper_inferno:cinderforge_ingot", "", "copper_inferno:cinderforge_ingot", ""},
-				"copper_inferno:cinderforge_talisman", 1, "This Cinderforge talisman is etched with forge runes.", "Dieser Zinderschmiede-Talisman ist mit Schmiederunen graviert."));
+				"copper_inferno:cinderforge_talisman", 1, "This Cinderforge talisman is etched with forge runes.", "Dieser Zunderschmiede-Talisman ist mit Schmiederunen graviert."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_medallion", "copper_inferno:cinderforge_medallion", "titanforge/cinderforge_medallion",
 				new String[] {"", "copper_inferno:cinderforge_ingot", "", "copper_inferno:cinderforge_ingot", "minecraft:copper_ingot", "copper_inferno:cinderforge_ingot", "", "copper_inferno:cinderforge_ingot", ""},
-				"copper_inferno:cinderforge_medallion", 1, "The Cinderforge medallion is awarded to master smiths.", "Das Zinderschmiede-Medaillon wird an Meisterschmiede verliehen."));
+				"copper_inferno:cinderforge_medallion", 1, "The Cinderforge medallion is awarded to master smiths.", "Das Zunderschmiede-Medaillon wird an Meisterschmiede verliehen."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_sword_smithing", "copper_inferno:cinderforge_sword", "titanforge/cinderforge_sword_smithing",
 				new String[] {"", "", "", "copper_inferno:infernium_upgrade_smithing_template", "copper_inferno:slagsteel_sword", "copper_inferno:cinderforge_ingot", "", "", ""},
-				"copper_inferno:cinderforge_sword", 1, "Smithing table: upgrade the Slagsteel Sword with an Infernium Upgrade Smithing Template and a Cinderforge Ingot.", "Schmiedetisch: Schlackenstahl-Schwert mit Infernium-Aufwertungs-Schmiedevorlage und Zinderschmiede-Barren aufwerten."));
+				"copper_inferno:cinderforge_sword", 1, "Smithing table: upgrade the Slagsteel Sword with an Infernium Upgrade Smithing Template and a Cinderforge Ingot.", "Schmiedetisch: Schlackenstahl-Schwert mit Infernium-Aufwertungs-Schmiedevorlage und Zunderschmiede-Barren aufwerten."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_pickaxe_smithing", "copper_inferno:cinderforge_pickaxe", "titanforge/cinderforge_pickaxe_smithing",
 				new String[] {"", "", "", "copper_inferno:infernium_upgrade_smithing_template", "copper_inferno:slagsteel_pickaxe", "copper_inferno:cinderforge_ingot", "", "", ""},
-				"copper_inferno:cinderforge_pickaxe", 1, "Smithing table: upgrade the Slagsteel Pickaxe with an Infernium Upgrade Smithing Template and a Cinderforge Ingot.", "Schmiedetisch: Schlackenstahl-Spitzhacke mit Infernium-Aufwertungs-Schmiedevorlage und Zinderschmiede-Barren aufwerten."));
+				"copper_inferno:cinderforge_pickaxe", 1, "Smithing table: upgrade the Slagsteel Pickaxe with an Infernium Upgrade Smithing Template and a Cinderforge Ingot.", "Schmiedetisch: Schlackenstahl-Spitzhacke mit Infernium-Aufwertungs-Schmiedevorlage und Zunderschmiede-Barren aufwerten."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_axe_smithing", "copper_inferno:cinderforge_axe", "titanforge/cinderforge_axe_smithing",
 				new String[] {"", "", "", "copper_inferno:infernium_upgrade_smithing_template", "copper_inferno:slagsteel_axe", "copper_inferno:cinderforge_ingot", "", "", ""},
-				"copper_inferno:cinderforge_axe", 1, "Smithing table: upgrade the Slagsteel Axe with an Infernium Upgrade Smithing Template and a Cinderforge Ingot.", "Schmiedetisch: Schlackenstahl-Axt mit Infernium-Aufwertungs-Schmiedevorlage und Zinderschmiede-Barren aufwerten."));
+				"copper_inferno:cinderforge_axe", 1, "Smithing table: upgrade the Slagsteel Axe with an Infernium Upgrade Smithing Template and a Cinderforge Ingot.", "Schmiedetisch: Schlackenstahl-Axt mit Infernium-Aufwertungs-Schmiedevorlage und Zunderschmiede-Barren aufwerten."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_shovel_smithing", "copper_inferno:cinderforge_shovel", "titanforge/cinderforge_shovel_smithing",
 				new String[] {"", "", "", "copper_inferno:infernium_upgrade_smithing_template", "copper_inferno:slagsteel_shovel", "copper_inferno:cinderforge_ingot", "", "", ""},
-				"copper_inferno:cinderforge_shovel", 1, "Smithing table: upgrade the Slagsteel Shovel with an Infernium Upgrade Smithing Template and a Cinderforge Ingot.", "Schmiedetisch: Schlackenstahl-Schaufel mit Infernium-Aufwertungs-Schmiedevorlage und Zinderschmiede-Barren aufwerten."));
+				"copper_inferno:cinderforge_shovel", 1, "Smithing table: upgrade the Slagsteel Shovel with an Infernium Upgrade Smithing Template and a Cinderforge Ingot.", "Schmiedetisch: Schlackenstahl-Schaufel mit Infernium-Aufwertungs-Schmiedevorlage und Zunderschmiede-Barren aufwerten."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_hoe_smithing", "copper_inferno:cinderforge_hoe", "titanforge/cinderforge_hoe_smithing",
 				new String[] {"", "", "", "copper_inferno:infernium_upgrade_smithing_template", "copper_inferno:slagsteel_hoe", "copper_inferno:cinderforge_ingot", "", "", ""},
-				"copper_inferno:cinderforge_hoe", 1, "Smithing table: upgrade the Slagsteel Hoe with an Infernium Upgrade Smithing Template and a Cinderforge Ingot.", "Schmiedetisch: Schlackenstahl-Hacke mit Infernium-Aufwertungs-Schmiedevorlage und Zinderschmiede-Barren aufwerten."));
+				"copper_inferno:cinderforge_hoe", 1, "Smithing table: upgrade the Slagsteel Hoe with an Infernium Upgrade Smithing Template and a Cinderforge Ingot.", "Schmiedetisch: Schlackenstahl-Hacke mit Infernium-Aufwertungs-Schmiedevorlage und Zunderschmiede-Barren aufwerten."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_helmet_smithing", "copper_inferno:cinderforge_helmet", "titanforge/cinderforge_helmet_smithing",
 				new String[] {"", "", "", "copper_inferno:infernium_upgrade_smithing_template", "copper_inferno:slagsteel_helmet", "copper_inferno:cinderforge_ingot", "", "", ""},
-				"copper_inferno:cinderforge_helmet", 1, "Smithing table: upgrade the Slagsteel Helmet with an Infernium Upgrade Smithing Template and a Cinderforge Ingot.", "Schmiedetisch: Schlackenstahl-Helm mit Infernium-Aufwertungs-Schmiedevorlage und Zinderschmiede-Barren aufwerten."));
+				"copper_inferno:cinderforge_helmet", 1, "Smithing table: upgrade the Slagsteel Helmet with an Infernium Upgrade Smithing Template and a Cinderforge Ingot.", "Schmiedetisch: Schlackenstahl-Helm mit Infernium-Aufwertungs-Schmiedevorlage und Zunderschmiede-Barren aufwerten."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_chestplate_smithing", "copper_inferno:cinderforge_chestplate", "titanforge/cinderforge_chestplate_smithing",
 				new String[] {"", "", "", "copper_inferno:infernium_upgrade_smithing_template", "copper_inferno:slagsteel_chestplate", "copper_inferno:cinderforge_ingot", "", "", ""},
-				"copper_inferno:cinderforge_chestplate", 1, "Smithing table: upgrade the Slagsteel Chestplate with an Infernium Upgrade Smithing Template and a Cinderforge Ingot.", "Schmiedetisch: Schlackenstahl-Brustpanzer mit Infernium-Aufwertungs-Schmiedevorlage und Zinderschmiede-Barren aufwerten."));
+				"copper_inferno:cinderforge_chestplate", 1, "Smithing table: upgrade the Slagsteel Chestplate with an Infernium Upgrade Smithing Template and a Cinderforge Ingot.", "Schmiedetisch: Schlackenstahl-Brustpanzer mit Infernium-Aufwertungs-Schmiedevorlage und Zunderschmiede-Barren aufwerten."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_leggings_smithing", "copper_inferno:cinderforge_leggings", "titanforge/cinderforge_leggings_smithing",
 				new String[] {"", "", "", "copper_inferno:infernium_upgrade_smithing_template", "copper_inferno:slagsteel_leggings", "copper_inferno:cinderforge_ingot", "", "", ""},
-				"copper_inferno:cinderforge_leggings", 1, "Smithing table: upgrade the Slagsteel Leggings with an Infernium Upgrade Smithing Template and a Cinderforge Ingot.", "Schmiedetisch: Schlackenstahl-Beinschutz mit Infernium-Aufwertungs-Schmiedevorlage und Zinderschmiede-Barren aufwerten."));
+				"copper_inferno:cinderforge_leggings", 1, "Smithing table: upgrade the Slagsteel Leggings with an Infernium Upgrade Smithing Template and a Cinderforge Ingot.", "Schmiedetisch: Schlackenstahl-Beinschutz mit Infernium-Aufwertungs-Schmiedevorlage und Zunderschmiede-Barren aufwerten."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/cinderforge_boots_smithing", "copper_inferno:cinderforge_boots", "titanforge/cinderforge_boots_smithing",
 				new String[] {"", "", "", "copper_inferno:infernium_upgrade_smithing_template", "copper_inferno:slagsteel_boots", "copper_inferno:cinderforge_ingot", "", "", ""},
-				"copper_inferno:cinderforge_boots", 1, "Smithing table: upgrade the Slagsteel Boots with an Infernium Upgrade Smithing Template and a Cinderforge Ingot.", "Schmiedetisch: Schlackenstahl-Stiefel mit Infernium-Aufwertungs-Schmiedevorlage und Zinderschmiede-Barren aufwerten."));
+				"copper_inferno:cinderforge_boots", 1, "Smithing table: upgrade the Slagsteel Boots with an Infernium Upgrade Smithing Template and a Cinderforge Ingot.", "Schmiedetisch: Schlackenstahl-Stiefel mit Infernium-Aufwertungs-Schmiedevorlage und Zunderschmiede-Barren aufwerten."));
 
 		HandbookEntries.add(new HandbookEntry("items", "titanforge/molten_titan_ingot", "copper_inferno:molten_titan_ingot", "titanforge/molten_titan_ingot",
 				new String[] {"copper_inferno:cinderforge_ingot", "minecraft:magma_block", "minecraft:ghast_tear", "", "", "", "", "", ""},
@@ -450,39 +450,39 @@ final class TitanForgeHandbook {
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/molten_titan_sword_smithing", "copper_inferno:molten_titan_sword", "titanforge/molten_titan_sword_smithing",
 				new String[] {"", "", "", "copper_inferno:infernium_upgrade_smithing_template", "copper_inferno:cinderforge_sword", "copper_inferno:molten_titan_ingot", "", "", ""},
-				"copper_inferno:molten_titan_sword", 1, "Smithing table: upgrade the Cinderforge Sword with an Infernium Upgrade Smithing Template and a Molten Titan Ingot.", "Schmiedetisch: Zinderschmiede-Schwert mit Infernium-Aufwertungs-Schmiedevorlage und Schmelztitan-Barren aufwerten."));
+				"copper_inferno:molten_titan_sword", 1, "Smithing table: upgrade the Cinderforge Sword with an Infernium Upgrade Smithing Template and a Molten Titan Ingot.", "Schmiedetisch: Zunderschmiede-Schwert mit Infernium-Aufwertungs-Schmiedevorlage und Schmelztitan-Barren aufwerten."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/molten_titan_pickaxe_smithing", "copper_inferno:molten_titan_pickaxe", "titanforge/molten_titan_pickaxe_smithing",
 				new String[] {"", "", "", "copper_inferno:infernium_upgrade_smithing_template", "copper_inferno:cinderforge_pickaxe", "copper_inferno:molten_titan_ingot", "", "", ""},
-				"copper_inferno:molten_titan_pickaxe", 1, "Smithing table: upgrade the Cinderforge Pickaxe with an Infernium Upgrade Smithing Template and a Molten Titan Ingot.", "Schmiedetisch: Zinderschmiede-Spitzhacke mit Infernium-Aufwertungs-Schmiedevorlage und Schmelztitan-Barren aufwerten."));
+				"copper_inferno:molten_titan_pickaxe", 1, "Smithing table: upgrade the Cinderforge Pickaxe with an Infernium Upgrade Smithing Template and a Molten Titan Ingot.", "Schmiedetisch: Zunderschmiede-Spitzhacke mit Infernium-Aufwertungs-Schmiedevorlage und Schmelztitan-Barren aufwerten."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/molten_titan_axe_smithing", "copper_inferno:molten_titan_axe", "titanforge/molten_titan_axe_smithing",
 				new String[] {"", "", "", "copper_inferno:infernium_upgrade_smithing_template", "copper_inferno:cinderforge_axe", "copper_inferno:molten_titan_ingot", "", "", ""},
-				"copper_inferno:molten_titan_axe", 1, "Smithing table: upgrade the Cinderforge Axe with an Infernium Upgrade Smithing Template and a Molten Titan Ingot.", "Schmiedetisch: Zinderschmiede-Axt mit Infernium-Aufwertungs-Schmiedevorlage und Schmelztitan-Barren aufwerten."));
+				"copper_inferno:molten_titan_axe", 1, "Smithing table: upgrade the Cinderforge Axe with an Infernium Upgrade Smithing Template and a Molten Titan Ingot.", "Schmiedetisch: Zunderschmiede-Axt mit Infernium-Aufwertungs-Schmiedevorlage und Schmelztitan-Barren aufwerten."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/molten_titan_shovel_smithing", "copper_inferno:molten_titan_shovel", "titanforge/molten_titan_shovel_smithing",
 				new String[] {"", "", "", "copper_inferno:infernium_upgrade_smithing_template", "copper_inferno:cinderforge_shovel", "copper_inferno:molten_titan_ingot", "", "", ""},
-				"copper_inferno:molten_titan_shovel", 1, "Smithing table: upgrade the Cinderforge Shovel with an Infernium Upgrade Smithing Template and a Molten Titan Ingot.", "Schmiedetisch: Zinderschmiede-Schaufel mit Infernium-Aufwertungs-Schmiedevorlage und Schmelztitan-Barren aufwerten."));
+				"copper_inferno:molten_titan_shovel", 1, "Smithing table: upgrade the Cinderforge Shovel with an Infernium Upgrade Smithing Template and a Molten Titan Ingot.", "Schmiedetisch: Zunderschmiede-Schaufel mit Infernium-Aufwertungs-Schmiedevorlage und Schmelztitan-Barren aufwerten."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/molten_titan_hoe_smithing", "copper_inferno:molten_titan_hoe", "titanforge/molten_titan_hoe_smithing",
 				new String[] {"", "", "", "copper_inferno:infernium_upgrade_smithing_template", "copper_inferno:cinderforge_hoe", "copper_inferno:molten_titan_ingot", "", "", ""},
-				"copper_inferno:molten_titan_hoe", 1, "Smithing table: upgrade the Cinderforge Hoe with an Infernium Upgrade Smithing Template and a Molten Titan Ingot.", "Schmiedetisch: Zinderschmiede-Hacke mit Infernium-Aufwertungs-Schmiedevorlage und Schmelztitan-Barren aufwerten."));
+				"copper_inferno:molten_titan_hoe", 1, "Smithing table: upgrade the Cinderforge Hoe with an Infernium Upgrade Smithing Template and a Molten Titan Ingot.", "Schmiedetisch: Zunderschmiede-Hacke mit Infernium-Aufwertungs-Schmiedevorlage und Schmelztitan-Barren aufwerten."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/molten_titan_helmet_smithing", "copper_inferno:molten_titan_helmet", "titanforge/molten_titan_helmet_smithing",
 				new String[] {"", "", "", "copper_inferno:infernium_upgrade_smithing_template", "copper_inferno:cinderforge_helmet", "copper_inferno:molten_titan_ingot", "", "", ""},
-				"copper_inferno:molten_titan_helmet", 1, "Smithing table: upgrade the Cinderforge Helmet with an Infernium Upgrade Smithing Template and a Molten Titan Ingot.", "Schmiedetisch: Zinderschmiede-Helm mit Infernium-Aufwertungs-Schmiedevorlage und Schmelztitan-Barren aufwerten."));
+				"copper_inferno:molten_titan_helmet", 1, "Smithing table: upgrade the Cinderforge Helmet with an Infernium Upgrade Smithing Template and a Molten Titan Ingot.", "Schmiedetisch: Zunderschmiede-Helm mit Infernium-Aufwertungs-Schmiedevorlage und Schmelztitan-Barren aufwerten."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/molten_titan_chestplate_smithing", "copper_inferno:molten_titan_chestplate", "titanforge/molten_titan_chestplate_smithing",
 				new String[] {"", "", "", "copper_inferno:infernium_upgrade_smithing_template", "copper_inferno:cinderforge_chestplate", "copper_inferno:molten_titan_ingot", "", "", ""},
-				"copper_inferno:molten_titan_chestplate", 1, "Smithing table: upgrade the Cinderforge Chestplate with an Infernium Upgrade Smithing Template and a Molten Titan Ingot.", "Schmiedetisch: Zinderschmiede-Brustpanzer mit Infernium-Aufwertungs-Schmiedevorlage und Schmelztitan-Barren aufwerten."));
+				"copper_inferno:molten_titan_chestplate", 1, "Smithing table: upgrade the Cinderforge Chestplate with an Infernium Upgrade Smithing Template and a Molten Titan Ingot.", "Schmiedetisch: Zunderschmiede-Brustpanzer mit Infernium-Aufwertungs-Schmiedevorlage und Schmelztitan-Barren aufwerten."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/molten_titan_leggings_smithing", "copper_inferno:molten_titan_leggings", "titanforge/molten_titan_leggings_smithing",
 				new String[] {"", "", "", "copper_inferno:infernium_upgrade_smithing_template", "copper_inferno:cinderforge_leggings", "copper_inferno:molten_titan_ingot", "", "", ""},
-				"copper_inferno:molten_titan_leggings", 1, "Smithing table: upgrade the Cinderforge Leggings with an Infernium Upgrade Smithing Template and a Molten Titan Ingot.", "Schmiedetisch: Zinderschmiede-Beinschutz mit Infernium-Aufwertungs-Schmiedevorlage und Schmelztitan-Barren aufwerten."));
+				"copper_inferno:molten_titan_leggings", 1, "Smithing table: upgrade the Cinderforge Leggings with an Infernium Upgrade Smithing Template and a Molten Titan Ingot.", "Schmiedetisch: Zunderschmiede-Beinschutz mit Infernium-Aufwertungs-Schmiedevorlage und Schmelztitan-Barren aufwerten."));
 
 		HandbookEntries.add(new HandbookEntry("gear", "titanforge/molten_titan_boots_smithing", "copper_inferno:molten_titan_boots", "titanforge/molten_titan_boots_smithing",
 				new String[] {"", "", "", "copper_inferno:infernium_upgrade_smithing_template", "copper_inferno:cinderforge_boots", "copper_inferno:molten_titan_ingot", "", "", ""},
-				"copper_inferno:molten_titan_boots", 1, "Smithing table: upgrade the Cinderforge Boots with an Infernium Upgrade Smithing Template and a Molten Titan Ingot.", "Schmiedetisch: Zinderschmiede-Stiefel mit Infernium-Aufwertungs-Schmiedevorlage und Schmelztitan-Barren aufwerten."));
+				"copper_inferno:molten_titan_boots", 1, "Smithing table: upgrade the Cinderforge Boots with an Infernium Upgrade Smithing Template and a Molten Titan Ingot.", "Schmiedetisch: Zunderschmiede-Stiefel mit Infernium-Aufwertungs-Schmiedevorlage und Schmelztitan-Barren aufwerten."));
 
 		HandbookEntries.add(new HandbookEntry("items", "titanforge/infernal_alloy_ingot", "copper_inferno:infernal_alloy_ingot", "titanforge/infernal_alloy_ingot",
 				new String[] {"copper_inferno:molten_titan_ingot", "minecraft:netherite_ingot", "minecraft:blaze_rod", "", "", "", "", "", ""},
