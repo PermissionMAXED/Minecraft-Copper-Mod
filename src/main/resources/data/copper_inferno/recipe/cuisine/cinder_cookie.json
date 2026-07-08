@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:ember_flour",
+    "copper_inferno:cinder_cocoa"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:cinder_cookie"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

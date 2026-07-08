@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:bowl",
+    "copper_inferno:cuisine_spice",
+    "minecraft:cooked_beef",
+    "copper_inferno:ember_oil"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:magma_chili"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

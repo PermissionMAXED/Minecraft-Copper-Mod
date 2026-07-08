@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:ember_flour",
+    "copper_inferno:ash_yeast",
+    "copper_inferno:magma_butter"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:ash_biscuit"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:egg",
+    "minecraft:egg",
+    "copper_inferno:ember_oil",
+    "copper_inferno:cinder_salt"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:ember_omelette"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:ember_flour",
+    "minecraft:sweet_berries",
+    "copper_inferno:ember_oil"
+  ],
+  "result": {
+    "count": 3,
+    "id": "copper_inferno:ember_pie_slice"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

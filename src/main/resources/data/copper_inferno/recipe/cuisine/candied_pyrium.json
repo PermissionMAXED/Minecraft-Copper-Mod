@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:pyrium_nugget",
+    "copper_inferno:soda_sugar",
+    "copper_inferno:soda_sugar"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:candied_pyrium"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

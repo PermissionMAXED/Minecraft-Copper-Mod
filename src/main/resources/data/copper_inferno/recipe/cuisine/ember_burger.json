@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:soda_bread",
+    "minecraft:cooked_beef",
+    "copper_inferno:cuisine_spice"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ember_burger"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

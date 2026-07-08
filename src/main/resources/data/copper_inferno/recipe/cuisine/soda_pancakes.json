@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:ember_flour",
+    "minecraft:egg",
+    "copper_inferno:soda_sugar"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:soda_pancakes"
+  },
+  "type": "minecraft:crafting_shapeless"
+}
