@@ -1,0 +1,18 @@
+{
+  "category": "equipment",
+  "key": {
+    "B": "minecraft:blaze_rod",
+    "C": "minecraft:copper_ingot",
+    "F": "minecraft:flint"
+  },
+  "pattern": [
+    "F",
+    "C",
+    "B"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:infernium_igniter"
+  },
+  "type": "minecraft:crafting_shaped"
+}

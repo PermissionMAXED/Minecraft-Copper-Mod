@@ -1,0 +1,18 @@
+{
+  "category": "building",
+  "key": {
+    "C": "copper_inferno:cinderstone",
+    "I": "minecraft:copper_ingot",
+    "M": "minecraft:magma_block"
+  },
+  "pattern": [
+    "CIC",
+    "IMI",
+    "CIC"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:infernium_portal_frame"
+  },
+  "type": "minecraft:crafting_shaped"
+}

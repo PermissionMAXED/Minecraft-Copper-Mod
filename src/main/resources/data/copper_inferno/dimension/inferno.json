@@ -1,0 +1,16 @@
+{
+  "generator": {
+    "biome_source": {
+      "biomes": [
+        "copper_inferno:cinder_wastes",
+        "copper_inferno:ember_grove",
+        "copper_inferno:slag_sea"
+      ],
+      "scale": 3,
+      "type": "minecraft:checkerboard"
+    },
+    "settings": "copper_inferno:inferno",
+    "type": "minecraft:noise"
+  },
+  "type": "copper_inferno:inferno"
+}

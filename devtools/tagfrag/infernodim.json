@@ -1,0 +1,17 @@
+{
+  "block/mineable/pickaxe": [
+    "copper_inferno:cinderstone",
+    "copper_inferno:cobbled_cinderstone",
+    "copper_inferno:slagstone",
+    "copper_inferno:infernium_ore",
+    "copper_inferno:smolder_crystal_ore",
+    "copper_inferno:molten_slag",
+    "copper_inferno:infernium_portal_frame"
+  ],
+  "block/mineable/shovel": [
+    "copper_inferno:ash_block",
+    "copper_inferno:ember_soil",
+    "copper_inferno:scorched_sand",
+    "copper_inferno:cinder_gravel"
+  ]
+}
