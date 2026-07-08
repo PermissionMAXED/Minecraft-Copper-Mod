@@ -2,9 +2,11 @@ package net.sonic0810.copperinferno.feature.handbook.client;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 import org.lwjgl.glfw.GLFW;
 
@@ -27,6 +29,12 @@ import net.sonic0810.copperinferno.core.handbook.HandbookEntry;
  * {@link HandbookEntry} categories plus a synthetic "recipes" tab collecting every entry with a
  * crafting grid), a paginated page area on the right, prev/next page buttons and a DE/EN
  * language toggle.
+ *
+ * <p>The "recipes" tab additionally lists EVERY recipe of the mod: after the curated grid
+ * entries it appends one auto-generated entry per {@link HandbookRecipeIndex} recipe that no
+ * curated entry documents (recipeId matching accepts both "dir/name" and bare-name forms,
+ * mirroring devtools/check_handbook.py). The auto list is built lazily on the first visit to
+ * the tab so the other categories never pay for the 2000+ index entries.
  *
  * <p>Entry BODY text follows the toggle ({@code textDe}/{@code textEn}); static UI labels are
  * {@code Text.translatable} keys (present in both lang fragments) and item names come from
@@ -53,6 +61,10 @@ public class HandbookScreen extends Screen {
 	/** ItemStacks rendered in icons/grids, cached per item id (missing/typo ids -> air). */
 	private final Map<String, ItemStack> stackCache = new HashMap<>();
 	private final Map<String, ButtonWidget> categoryButtons = new HashMap<>();
+	/** Auto entries from the recipe index, built lazily for the recipes tab; null = not built. */
+	private List<HandbookEntry> autoEntries;
+	/** Index recipe type (smelting/stonecutting/...) per auto entry id, for the type badge. */
+	private final Map<String, String> autoEntryTypes = new HashMap<>();
 
 	private String category = "blocks";
 	private boolean german;
@@ -173,6 +185,10 @@ public class HandbookScreen extends Screen {
 				filtered.add(entry);
 			}
 		}
+		if ("recipes".equals(this.category)) {
+			// Curated grid entries first, then every not-yet-documented indexed recipe.
+			filtered.addAll(this.autoRecipeEntries());
+		}
 		int budget = this.pageBottom() - PAGE_TOP;
 		List<List<HandbookEntry>> newPages = new ArrayList<>();
 		List<HandbookEntry> current = new ArrayList<>();
@@ -192,6 +208,48 @@ public class HandbookScreen extends Screen {
 		}
 		this.pages = newPages;
 		this.page = Math.max(0, Math.min(newPages.size() - 1, this.page));
+	}
+
+	/**
+	 * One synthetic entry per indexed recipe that no curated entry documents, built lazily on
+	 * the first visit to the recipes tab and cached for this screen's lifetime. Dedupe accepts
+	 * a curated {@link HandbookEntry#recipeId()} in both "dir/name" and bare-name form, with or
+	 * without the {@code copper_inferno:} prefix (mirrors devtools/check_handbook.py).
+	 */
+	private List<HandbookEntry> autoRecipeEntries() {
+		if (this.autoEntries != null) {
+			return this.autoEntries;
+		}
+		Set<String> documented = new HashSet<>();
+		for (HandbookEntry entry : HandbookEntries.all()) {
+			if (entry.recipeId() != null) {
+				String id = entry.recipeId();
+				if (id.startsWith("copper_inferno:")) {
+					id = id.substring("copper_inferno:".length());
+				}
+				documented.add(id);
+			}
+		}
+		List<HandbookEntry> built = new ArrayList<>();
+		for (HandbookRecipeIndex.IndexedRecipe recipe
+				: HandbookRecipeIndex.load(MinecraftClient.getInstance().getResourceManager())) {
+			String recipeId = recipe.recipeId();
+			String bareName = recipeId.substring(recipeId.lastIndexOf('/') + 1);
+			if (documented.contains(recipeId) || documented.contains(bareName)) {
+				continue;
+			}
+			// ItemStack#getName follows the client language automatically; the
+			// Crafted/Herstellung template prefix follows the DE/EN toggle like all body text.
+			String resultName = this.stackFor(recipe.result()).getName().getString();
+			HandbookEntry entry = new HandbookEntry("recipes", "auto/" + recipeId, recipe.result(),
+					recipeId, recipe.grid9(), recipe.result(), recipe.count(),
+					"Crafted: " + resultName + " x" + recipe.count() + ".",
+					"Herstellung: " + resultName + " x" + recipe.count() + ".");
+			this.autoEntryTypes.put(entry.id(), recipe.type());
+			built.add(entry);
+		}
+		this.autoEntries = built;
+		return built;
 	}
 
 	private int entryHeight(HandbookEntry entry) {
@@ -282,9 +340,20 @@ public class HandbookScreen extends Screen {
 			if (!result.isEmpty()) {
 				context.drawItem(result, resultX + 1, middleY - 8);
 			}
+			int afterResultX = resultX + CELL_SIZE + 4;
 			if (entry.resultCount() > 1) {
-				context.drawTextWithShadow(this.textRenderer, "x" + entry.resultCount(),
-						resultX + CELL_SIZE + 4, middleY - this.textRenderer.fontHeight / 2, 0xFFFFFFFF);
+				String count = "x" + entry.resultCount();
+				context.drawTextWithShadow(this.textRenderer, count,
+						afterResultX, middleY - this.textRenderer.fontHeight / 2, 0xFFFFFFFF);
+				afterResultX += this.textRenderer.getWidth(count) + 8;
+			}
+			// Auto entries from the recipe index: badge the non-crafting station so a lone
+			// center-slot ingredient is not mistaken for a crafting-table recipe.
+			String type = this.autoEntryTypes.get(entry.id());
+			if (type != null && !"crafting".equals(type)) {
+				context.drawTextWithShadow(this.textRenderer,
+						Text.translatable("screen.copper_inferno.handbook.type." + type),
+						afterResultX, middleY - this.textRenderer.fontHeight / 2, 0xFFA0A0A0);
 			}
 		}
 		return textBlock + 2 + GRID_HEIGHT + ENTRY_SPACING;

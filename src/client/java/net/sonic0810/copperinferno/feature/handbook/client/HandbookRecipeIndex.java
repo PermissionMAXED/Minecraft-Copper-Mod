@@ -21,8 +21,8 @@ import net.sonic0810.copperinferno.CopperInferno;
  * {@code recipeId}, {@code grid9} (array of 9 item-id strings, "" = empty slot), {@code result},
  * {@code count}, {@code type}).
  *
- * <p>WP1 ships only this loader; the generator that emits the index (and the HandbookScreen
- * integration) land in a later work package. A missing or malformed file is NOT an error: the
+ * <p>The index is emitted by {@code devtools/gen/handbook_index_gen.py} and consumed by
+ * {@link HandbookScreen}'s all-recipes tab. A missing or malformed file is NOT an error: the
  * loader returns an empty list so the handbook keeps working without the index.
  */
 public final class HandbookRecipeIndex {
