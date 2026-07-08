@@ -41,6 +41,52 @@ public final class ModCreativeTab {
 					.icon(iconFor("copper_bricks"))
 					.build());
 
+	// ------------------------------------------------------------------
+	// v4 mega-content-update tabs. The icon items are registered later (by the
+	// v4 feature wave) or not at all yet; iconFor() resolves lazily on first
+	// render, so a missing icon item degrades to minecraft:air, never crashes.
+	// ------------------------------------------------------------------
+
+	public static final RegistryKey<ItemGroup> CHROMATIC_KEY = RegistryKey.of(RegistryKeys.ITEM_GROUP, CopperInferno.id("chromatic"));
+
+	public static final ItemGroup CHROMATIC = Registry.register(
+			Registries.ITEM_GROUP,
+			CHROMATIC_KEY,
+			FabricItemGroup.builder()
+					.displayName(Text.translatable("itemGroup.copper_inferno.chromatic"))
+					.icon(iconFor("azure_copper"))
+					.build());
+
+	public static final RegistryKey<ItemGroup> DEPTHS_KEY = RegistryKey.of(RegistryKeys.ITEM_GROUP, CopperInferno.id("depths"));
+
+	public static final ItemGroup DEPTHS = Registry.register(
+			Registries.ITEM_GROUP,
+			DEPTHS_KEY,
+			FabricItemGroup.builder()
+					.displayName(Text.translatable("itemGroup.copper_inferno.depths"))
+					.icon(iconFor("voidstone"))
+					.build());
+
+	public static final RegistryKey<ItemGroup> GEMS_KEY = RegistryKey.of(RegistryKeys.ITEM_GROUP, CopperInferno.id("gems"));
+
+	public static final ItemGroup GEMS = Registry.register(
+			Registries.ITEM_GROUP,
+			GEMS_KEY,
+			FabricItemGroup.builder()
+					.displayName(Text.translatable("itemGroup.copper_inferno.gems"))
+					.icon(iconFor("pyrium_block"))
+					.build());
+
+	public static final RegistryKey<ItemGroup> FAUNA_KEY = RegistryKey.of(RegistryKeys.ITEM_GROUP, CopperInferno.id("fauna"));
+
+	public static final ItemGroup FAUNA = Registry.register(
+			Registries.ITEM_GROUP,
+			FAUNA_KEY,
+			FabricItemGroup.builder()
+					.displayName(Text.translatable("itemGroup.copper_inferno.fauna"))
+					.icon(iconFor("copper_beetle_spawn_egg"))
+					.build());
+
 	/**
 	 * Registration-order-safe icon supplier: the tabs are registered by
 	 * {@code CopperInfernoCore.init()} BEFORE any feature item exists, so the icon item is
