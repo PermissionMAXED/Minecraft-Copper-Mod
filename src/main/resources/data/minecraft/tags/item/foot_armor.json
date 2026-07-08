@@ -1,8 +1,12 @@
 {
   "values": [
+    "copper_inferno:ashsteel_boots",
+    "copper_inferno:emberite_boots",
     "copper_inferno:exposed_copper_boots",
     "copper_inferno:infernium_boots",
     "copper_inferno:oxidized_copper_boots",
+    "copper_inferno:pyrium_boots",
+    "copper_inferno:voidsteel_boots",
     "copper_inferno:weathered_copper_boots"
   ]
 }

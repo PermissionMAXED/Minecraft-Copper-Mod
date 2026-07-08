@@ -1,8 +1,12 @@
 {
   "values": [
+    "copper_inferno:ashsteel_hoe",
+    "copper_inferno:emberite_hoe",
     "copper_inferno:exposed_copper_hoe",
     "copper_inferno:infernium_hoe",
     "copper_inferno:oxidized_copper_hoe",
+    "copper_inferno:pyrium_hoe",
+    "copper_inferno:voidsteel_hoe",
     "copper_inferno:weathered_copper_hoe"
   ]
 }
