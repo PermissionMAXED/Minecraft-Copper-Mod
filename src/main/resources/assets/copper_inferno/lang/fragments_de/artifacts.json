@@ -1,0 +1,13 @@
+{
+  "block.copper_inferno.brew_keg": "Braufass",
+  "block.copper_inferno.trophy_pedestal": "Trophäensockel",
+  "item.copper_inferno.copper_drill": "Kupferbohrer",
+  "item.copper_inferno.doom_horn": "Doom-Horn",
+  "item.copper_inferno.ember_shield": "Glutschild",
+  "item.copper_inferno.fizz_jetpack": "Brause-Jetpack",
+  "item.copper_inferno.grappling_coil": "Greifhaken-Spule",
+  "message.copper_inferno.brew_keg.empty": "Das Fass ist leer.",
+  "message.copper_inferno.brew_keg.full": "Das Fass ist voll.",
+  "message.copper_inferno.brew_keg.stored": "Fass: %s/%s Getränke",
+  "message.copper_inferno.heat_suit_bonus.active": "Hitzeanzug versiegelt - Feuer kann dir nichts anhaben."
+}

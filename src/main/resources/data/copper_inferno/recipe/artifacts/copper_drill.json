@@ -1,0 +1,18 @@
+{
+  "category": "equipment",
+  "key": {
+    "C": "minecraft:copper_ingot",
+    "M": "copper_inferno:tool_matrix",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "CCC",
+    "CMC",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:copper_drill"
+  },
+  "type": "minecraft:crafting_shaped"
+}
