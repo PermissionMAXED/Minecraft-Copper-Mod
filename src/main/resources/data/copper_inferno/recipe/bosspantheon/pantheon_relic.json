@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "A": "minecraft:amethyst_shard",
+    "C": "minecraft:copper_ingot",
+    "D": "minecraft:diamond"
+  },
+  "pattern": [
+    "CAC",
+    "ADA",
+    "CAC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:pantheon_relic"
+  },
+  "type": "minecraft:crafting_shaped"
+}
