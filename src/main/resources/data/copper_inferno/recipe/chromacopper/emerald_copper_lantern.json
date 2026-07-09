@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "#": "copper_inferno:emerald_copper",
+    "N": "minecraft:iron_nugget"
+  },
+  "pattern": [
+    "NNN",
+    "N#N",
+    "NNN"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:emerald_copper_lantern"
+  },
+  "type": "minecraft:crafting_shaped"
+}

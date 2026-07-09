@@ -1,8 +1,0 @@
-{
-  "ingredient": "copper_inferno:tinted_gilded_copper",
-  "result": {
-    "count": 1,
-    "id": "copper_inferno:tinted_gilded_copper_lamp"
-  },
-  "type": "minecraft:stonecutting"
-}
