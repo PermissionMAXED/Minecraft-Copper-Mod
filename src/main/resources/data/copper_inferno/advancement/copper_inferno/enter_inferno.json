@@ -1,0 +1,28 @@
+{
+  "criteria": {
+    "entered_inferno": {
+      "conditions": {
+        "to": "copper_inferno:inferno"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.copper_inferno.enter_inferno.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "copper_inferno:infernium_portal_frame"
+    },
+    "title": {
+      "translate": "advancements.copper_inferno.enter_inferno.title"
+    }
+  },
+  "parent": "copper_inferno:copper_inferno/infernium_igniter",
+  "requirements": [
+    [
+      "entered_inferno"
+    ]
+  ]
+}

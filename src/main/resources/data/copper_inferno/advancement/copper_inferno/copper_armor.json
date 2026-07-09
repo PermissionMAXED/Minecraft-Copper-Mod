@@ -1,0 +1,65 @@
+{
+  "criteria": {
+    "copper_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:copper_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "copper_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:copper_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "copper_helmet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:copper_helmet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "copper_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:copper_leggings"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.copper_inferno.copper_armor.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "copper_inferno:exposed_copper_chestplate"
+    },
+    "title": {
+      "translate": "advancements.copper_inferno.copper_armor.title"
+    }
+  },
+  "parent": "copper_inferno:copper_inferno/get_copper",
+  "requirements": [
+    [
+      "copper_helmet",
+      "copper_chestplate",
+      "copper_leggings",
+      "copper_boots"
+    ]
+  ]
+}

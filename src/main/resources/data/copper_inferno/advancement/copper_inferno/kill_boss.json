@@ -1,0 +1,100 @@
+{
+  "criteria": {
+    "copper_inferno:ash_colossus": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "copper_inferno:ash_colossus"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "copper_inferno:dr_doompepper": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "copper_inferno:dr_doompepper"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "copper_inferno:inferno_titan": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "copper_inferno:inferno_titan"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "copper_inferno:kiln_archon": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "copper_inferno:kiln_archon"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    },
+    "copper_inferno:magma_leviathan": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "copper_inferno:magma_leviathan"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.copper_inferno.kill_boss.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "copper_inferno:doompepper_crown"
+    },
+    "title": {
+      "translate": "advancements.copper_inferno.kill_boss.title"
+    }
+  },
+  "parent": "copper_inferno:copper_inferno/enter_inferno",
+  "requirements": [
+    [
+      "copper_inferno:inferno_titan",
+      "copper_inferno:magma_leviathan",
+      "copper_inferno:ash_colossus",
+      "copper_inferno:kiln_archon",
+      "copper_inferno:dr_doompepper"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  }
+}

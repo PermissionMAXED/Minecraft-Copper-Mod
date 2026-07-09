@@ -1,0 +1,32 @@
+{
+  "criteria": {
+    "copper_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:copper_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.copper_inferno.get_copper.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:copper_ingot"
+    },
+    "title": {
+      "translate": "advancements.copper_inferno.get_copper.title"
+    }
+  },
+  "parent": "copper_inferno:copper_inferno/root",
+  "requirements": [
+    [
+      "copper_ingot"
+    ]
+  ]
+}
