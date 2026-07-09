@@ -14,12 +14,14 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
+import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.input.KeyInput;
 import net.minecraft.client.resource.language.LanguageManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.text.OrderedText;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.sonic0810.copperinferno.core.handbook.HandbookEntries;
 import net.sonic0810.copperinferno.core.handbook.HandbookEntry;
@@ -27,8 +29,8 @@ import net.sonic0810.copperinferno.core.handbook.HandbookEntry;
 /**
  * The COPPER INFERNO Handbook screen: a left column of category buttons (the six
  * {@link HandbookEntry} categories plus a synthetic "recipes" tab collecting every entry with a
- * crafting grid), a paginated page area on the right, prev/next page buttons and a DE/EN
- * language toggle.
+ * crafting grid), a paginated page area on the right, prev/next page buttons, a header search
+ * field that live-filters the current tab, and a DE/EN language toggle.
  *
  * <p>The "recipes" tab additionally lists EVERY recipe of the mod: after the curated grid
  * entries it appends one auto-generated entry per {@link HandbookRecipeIndex} recipe that no
@@ -63,17 +65,20 @@ public class HandbookScreen extends Screen {
 	private final Map<String, ButtonWidget> categoryButtons = new HashMap<>();
 	/** Auto entries from the recipe index, built lazily for the recipes tab; null = not built. */
 	private List<HandbookEntry> autoEntries;
-	/** Index recipe type (smelting/stonecutting/...) per auto entry id, for the type badge. */
+	/** Index recipe type (shaped/shapeless/smelting/...) per auto entry id, for the type badge. */
 	private final Map<String, String> autoEntryTypes = new HashMap<>();
 
 	private String category = "blocks";
 	private boolean german;
 	private int page;
+	/** Raw search-field text; survives init() re-layouts (resize). Empty = no filter. */
+	private String searchQuery = "";
 	private List<List<HandbookEntry>> pages = List.of();
 
 	private ButtonWidget prevButton;
 	private ButtonWidget nextButton;
 	private ButtonWidget langButton;
+	private TextFieldWidget searchField;
 
 	public HandbookScreen() {
 		super(TITLE);
@@ -109,8 +114,45 @@ public class HandbookScreen extends Screen {
 		this.langButton = this.addDrawableChild(ButtonWidget.builder(this.langLabel(), b -> this.toggleLanguage())
 				.dimensions(this.width - 48, 4, 40, 18)
 				.build());
+		// Header search field (left of the language toggle), shared by every tab. Ctor
+		// (TextRenderer, x, y, w, h, Text) verified via javap.
+		int searchWidth = Math.min(140, this.width / 3);
+		this.searchField = new TextFieldWidget(this.textRenderer,
+				this.width - 48 - 8 - searchWidth, 4, searchWidth, 18,
+				Text.translatable("screen.copper_inferno.handbook.search"));
+		this.searchField.setMaxLength(64);
+		this.searchField.setPlaceholder(
+				Text.translatable("screen.copper_inferno.handbook.search").formatted(Formatting.GRAY));
+		this.searchField.setText(this.searchQuery); // restore across resize re-inits
+		this.searchField.setChangedListener(this::onSearchChanged);
+		this.addDrawableChild(this.searchField);
 		this.repaginate();
 		this.updateButtons();
+	}
+
+	/** Live filter: any edit re-filters the current tab and jumps back to page 0. */
+	private void onSearchChanged(String query) {
+		if (query.equals(this.searchQuery)) {
+			return; // e.g. the setText() during init(); nothing changed
+		}
+		this.searchQuery = query;
+		this.page = 0;
+		this.repaginate();
+		this.updateButtons();
+	}
+
+	/**
+	 * Case-insensitive substring match against the entry's display name (the icon stack's
+	 * {@link ItemStack#getName()}, i.e. the same name the page renderer shows) and the raw
+	 * result item id (e.g. "copper_inferno:copper_gear").
+	 */
+	private boolean matchesSearch(HandbookEntry entry, String query) {
+		String name = this.stackFor(entry.iconItemId()).getName().getString();
+		if (name.toLowerCase(Locale.ROOT).contains(query)) {
+			return true;
+		}
+		return entry.resultItemId() != null
+				&& entry.resultItemId().toLowerCase(Locale.ROOT).contains(query);
 	}
 
 	private int pageLeft() {
@@ -189,6 +231,10 @@ public class HandbookScreen extends Screen {
 			// Curated grid entries first, then every not-yet-documented indexed recipe.
 			filtered.addAll(this.autoRecipeEntries());
 		}
+		String query = this.searchQuery.trim().toLowerCase(Locale.ROOT);
+		if (!query.isEmpty()) {
+			filtered.removeIf(entry -> !this.matchesSearch(entry, query));
+		}
 		int budget = this.pageBottom() - PAGE_TOP;
 		List<List<HandbookEntry>> newPages = new ArrayList<>();
 		List<HandbookEntry> current = new ArrayList<>();
@@ -252,8 +298,24 @@ public class HandbookScreen extends Screen {
 		return built;
 	}
 
+	/** The badge label for an auto (recipe-index) entry, or null for curated entries. */
+	private Text badgeFor(HandbookEntry entry) {
+		String type = this.autoEntryTypes.get(entry.id());
+		return type == null ? null : Text.translatable("screen.copper_inferno.handbook.type." + type);
+	}
+
+	/** Body wrap width; entries with a type badge reserve the badge's width on the right. */
+	private int bodyTextWidth(HandbookEntry entry) {
+		int width = this.pageRight() - this.pageLeft() - TEXT_INDENT;
+		Text badge = this.badgeFor(entry);
+		if (badge != null) {
+			width -= this.textRenderer.getWidth(badge) + 8;
+		}
+		return width;
+	}
+
 	private int entryHeight(HandbookEntry entry) {
-		int textWidth = this.pageRight() - this.pageLeft() - TEXT_INDENT;
+		int textWidth = this.bodyTextWidth(entry);
 		int lines = this.textRenderer.wrapLines(Text.literal(this.body(entry)), textWidth).size();
 		int height = Math.max(CELL_SIZE, lines * (this.textRenderer.fontHeight + 1));
 		if (entry.grid() != null) {
@@ -265,7 +327,8 @@ public class HandbookScreen extends Screen {
 	@Override
 	public void render(DrawContext context, int mouseX, int mouseY, float deltaTicks) {
 		super.render(context, mouseX, mouseY, deltaTicks);
-		context.drawCenteredTextWithShadow(this.textRenderer, this.title, this.width / 2, 10, 0xFFFFFFFF);
+		// Title sits left in the header so it cannot collide with the search field.
+		context.drawTextWithShadow(this.textRenderer, this.title, CATEGORY_X, 10, 0xFFFFFFFF);
 		if (this.pages.isEmpty()) {
 			context.drawCenteredTextWithShadow(this.textRenderer,
 					Text.translatable("screen.copper_inferno.handbook.empty"),
@@ -302,7 +365,14 @@ public class HandbookScreen extends Screen {
 		if (!icon.isEmpty()) {
 			context.drawItem(icon, x, y);
 		}
-		int textWidth = this.pageRight() - x - TEXT_INDENT;
+		// Recipe-type badge (shaped/shapeless/smelting/...), right-aligned on auto entries;
+		// bodyTextWidth() reserved this horizontal strip so the body text cannot collide.
+		Text badge = this.badgeFor(entry);
+		if (badge != null) {
+			context.drawTextWithShadow(this.textRenderer, badge,
+					this.pageRight() - this.textRenderer.getWidth(badge) - 2, y, 0xFFA0A0A0);
+		}
+		int textWidth = this.bodyTextWidth(entry);
 		List<OrderedText> lines = this.textRenderer.wrapLines(Text.literal(this.body(entry)), textWidth);
 		int lineY = y;
 		for (OrderedText line : lines) {
@@ -340,20 +410,10 @@ public class HandbookScreen extends Screen {
 			if (!result.isEmpty()) {
 				context.drawItem(result, resultX + 1, middleY - 8);
 			}
-			int afterResultX = resultX + CELL_SIZE + 4;
 			if (entry.resultCount() > 1) {
 				String count = "x" + entry.resultCount();
 				context.drawTextWithShadow(this.textRenderer, count,
-						afterResultX, middleY - this.textRenderer.fontHeight / 2, 0xFFFFFFFF);
-				afterResultX += this.textRenderer.getWidth(count) + 8;
-			}
-			// Auto entries from the recipe index: badge the non-crafting station so a lone
-			// center-slot ingredient is not mistaken for a crafting-table recipe.
-			String type = this.autoEntryTypes.get(entry.id());
-			if (type != null && !"crafting".equals(type)) {
-				context.drawTextWithShadow(this.textRenderer,
-						Text.translatable("screen.copper_inferno.handbook.type." + type),
-						afterResultX, middleY - this.textRenderer.fontHeight / 2, 0xFFA0A0A0);
+						resultX + CELL_SIZE + 4, middleY - this.textRenderer.fontHeight / 2, 0xFFFFFFFF);
 			}
 		}
 		return textBlock + 2 + GRID_HEIGHT + ENTRY_SPACING;
@@ -361,6 +421,11 @@ public class HandbookScreen extends Screen {
 
 	@Override
 	public boolean keyPressed(KeyInput input) {
+		if (this.searchField != null && this.searchField.isFocused()) {
+			// While typing a query, arrows/page keys belong to the text field (cursor
+			// movement), not the page-turn shortcuts; super routes to the focused child.
+			return super.keyPressed(input);
+		}
 		if (input.key() == GLFW.GLFW_KEY_LEFT || input.key() == GLFW.GLFW_KEY_PAGE_UP) {
 			this.turnPage(-1);
 			return true;

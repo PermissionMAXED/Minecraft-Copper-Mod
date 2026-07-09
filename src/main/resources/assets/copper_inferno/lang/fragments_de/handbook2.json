@@ -1,5 +1,7 @@
 {
   "screen.copper_inferno.handbook.type.blasting": "Schmelzofen",
+  "screen.copper_inferno.handbook.type.shaped": "Geformt",
+  "screen.copper_inferno.handbook.type.shapeless": "Formlos",
   "screen.copper_inferno.handbook.type.smelting": "Ofen",
   "screen.copper_inferno.handbook.type.smithing": "Schmiedetisch",
   "screen.copper_inferno.handbook.type.smoking": "Räucherofen",

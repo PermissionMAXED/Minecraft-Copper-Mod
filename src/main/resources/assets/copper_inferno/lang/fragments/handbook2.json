@@ -1,5 +1,7 @@
 {
   "screen.copper_inferno.handbook.type.blasting": "Blast Furnace",
+  "screen.copper_inferno.handbook.type.shaped": "Shaped",
+  "screen.copper_inferno.handbook.type.shapeless": "Shapeless",
   "screen.copper_inferno.handbook.type.smelting": "Furnace",
   "screen.copper_inferno.handbook.type.smithing": "Smithing Table",
   "screen.copper_inferno.handbook.type.smoking": "Smoker",
