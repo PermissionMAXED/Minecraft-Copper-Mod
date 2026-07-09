@@ -21,7 +21,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.text.OrderedText;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.sonic0810.copperinferno.core.handbook.HandbookEntries;
 import net.sonic0810.copperinferno.core.handbook.HandbookEntry;
@@ -46,6 +45,15 @@ import net.sonic0810.copperinferno.core.handbook.HandbookEntry;
  */
 public class HandbookScreen extends Screen {
 	private static final Text TITLE = Text.translatable("screen.copper_inferno.handbook.title");
+	/**
+	 * Search hint, drawn (gray) in {@link #render} ONLY while the field is empty. The vanilla
+	 * {@code TextFieldWidget#setPlaceholder} is not used because it hides the hint while the
+	 * empty field is merely focused (verified via javap on the 1.21.9 renderWidget bytecode);
+	 * this manual draw keeps the hint up until the user actually types, and its isEmpty()
+	 * guard guarantees the hint can never render underneath typed text.
+	 */
+	private static final Text SEARCH_PLACEHOLDER =
+			Text.translatable("screen.copper_inferno.handbook.search");
 	/** The six HandbookEntry categories plus the synthetic all-recipes tab. */
 	private static final String[] CATEGORIES = {"blocks", "items", "gear", "dimension", "mobs", "bosses", "recipes"};
 
@@ -121,8 +129,6 @@ public class HandbookScreen extends Screen {
 				this.width - 48 - 8 - searchWidth, 4, searchWidth, 18,
 				Text.translatable("screen.copper_inferno.handbook.search"));
 		this.searchField.setMaxLength(64);
-		this.searchField.setPlaceholder(
-				Text.translatable("screen.copper_inferno.handbook.search").formatted(Formatting.GRAY));
 		this.searchField.setText(this.searchQuery); // restore across resize re-inits
 		this.searchField.setChangedListener(this::onSearchChanged);
 		this.addDrawableChild(this.searchField);
@@ -329,6 +335,15 @@ public class HandbookScreen extends Screen {
 		super.render(context, mouseX, mouseY, deltaTicks);
 		// Title sits left in the header so it cannot collide with the search field.
 		context.drawTextWithShadow(this.textRenderer, this.title, CATEGORY_X, 10, 0xFFFFFFFF);
+		// Search hint: ONLY while the field is empty, so typed text never overlaps it. Drawn
+		// at the widget's own text anchor (x+4, vertically centered), matching vanilla
+		// TextFieldWidget.updateTextPosition() for a background-drawing field.
+		if (this.searchField != null && this.searchField.getText().isEmpty()) {
+			context.drawTextWithShadow(this.textRenderer, SEARCH_PLACEHOLDER,
+					this.searchField.getX() + 4,
+					this.searchField.getY() + (this.searchField.getHeight() - 8) / 2,
+					0xFFA0A0A0);
+		}
 		if (this.pages.isEmpty()) {
 			context.drawCenteredTextWithShadow(this.textRenderer,
 					Text.translatable("screen.copper_inferno.handbook.empty"),
