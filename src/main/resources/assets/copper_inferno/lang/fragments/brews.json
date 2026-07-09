@@ -1,0 +1,14 @@
+{
+  "item.minecraft.lingering_potion.effect.copperskin_potion": "Lingering Copperskin Potion",
+  "item.minecraft.lingering_potion.effect.doompepper_brew": "Lingering Doompepper Brew",
+  "item.minecraft.lingering_potion.effect.fizz_potion": "Lingering Fizz Potion",
+  "item.minecraft.potion.effect.copperskin_potion": "Copperskin Potion",
+  "item.minecraft.potion.effect.doompepper_brew": "Doompepper Brew",
+  "item.minecraft.potion.effect.fizz_potion": "Fizz Potion",
+  "item.minecraft.splash_potion.effect.copperskin_potion": "Splash Copperskin Potion",
+  "item.minecraft.splash_potion.effect.doompepper_brew": "Splash Doompepper Brew",
+  "item.minecraft.splash_potion.effect.fizz_potion": "Splash Fizz Potion",
+  "item.minecraft.tipped_arrow.effect.copperskin_potion": "Arrow of Copperskin",
+  "item.minecraft.tipped_arrow.effect.doompepper_brew": "Arrow of Doompepper",
+  "item.minecraft.tipped_arrow.effect.fizz_potion": "Arrow of Fizz"
+}

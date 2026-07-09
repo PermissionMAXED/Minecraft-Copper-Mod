@@ -1,0 +1,14 @@
+{
+  "item.minecraft.lingering_potion.effect.copperskin_potion": "Verweil-Kupferhauttrank",
+  "item.minecraft.lingering_potion.effect.doompepper_brew": "Verweil-Doompepper-Gebräu",
+  "item.minecraft.lingering_potion.effect.fizz_potion": "Verweil-Sprudeltrank",
+  "item.minecraft.potion.effect.copperskin_potion": "Kupferhauttrank",
+  "item.minecraft.potion.effect.doompepper_brew": "Doompepper-Gebräu",
+  "item.minecraft.potion.effect.fizz_potion": "Sprudeltrank",
+  "item.minecraft.splash_potion.effect.copperskin_potion": "Wurf-Kupferhauttrank",
+  "item.minecraft.splash_potion.effect.doompepper_brew": "Wurf-Doompepper-Gebräu",
+  "item.minecraft.splash_potion.effect.fizz_potion": "Wurf-Sprudeltrank",
+  "item.minecraft.tipped_arrow.effect.copperskin_potion": "Kupferhautpfeil",
+  "item.minecraft.tipped_arrow.effect.doompepper_brew": "Doompepper-Pfeil",
+  "item.minecraft.tipped_arrow.effect.fizz_potion": "Sprudelpfeil"
+}
