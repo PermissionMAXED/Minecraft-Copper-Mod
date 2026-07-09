@@ -1,0 +1,47 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.copper_inferno.doomtouch"
+  },
+  "effects": {
+    "minecraft:post_attack": [
+      {
+        "affected": "victim",
+        "effect": {
+          "max_amplifier": 0.0,
+          "max_duration": {
+            "base": 3.0,
+            "per_level_above_first": 2.0,
+            "type": "minecraft:linear"
+          },
+          "min_amplifier": 0.0,
+          "min_duration": 1.5,
+          "to_apply": "minecraft:weakness",
+          "type": "minecraft:apply_mob_effect"
+        },
+        "enchanted": "attacker",
+        "requirements": {
+          "condition": "minecraft:damage_source_properties",
+          "predicate": {
+            "is_direct": true
+          }
+        }
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 60,
+    "per_level_above_first": 20
+  },
+  "max_level": 2,
+  "min_cost": {
+    "base": 10,
+    "per_level_above_first": 20
+  },
+  "primary_items": "#minecraft:enchantable/sword",
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#minecraft:enchantable/sharp_weapon",
+  "weight": 2
+}
