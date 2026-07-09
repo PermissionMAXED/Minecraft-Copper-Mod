@@ -228,7 +228,7 @@ DROP_NAMES_DE = {
     "sprite_essence": "Limoessenz",
     "gummy_drop": "Gummitropfen",
     "caramel_glob": "Karamellklumpen",
-    "bottlecap": "Kronkorken",
+    "bottlecap": "Flaschenkapsel",
     "sugar_crystal": "Zuckerkristall",
     "cream_swirl": "Sahnewirbel",
     "pepper_spice": "Pfeffergewürz",
