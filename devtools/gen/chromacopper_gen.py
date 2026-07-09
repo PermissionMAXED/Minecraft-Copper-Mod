@@ -8,9 +8,10 @@ into src/main/resources (plus the tag fragment under devtools/tagfrag):
   - loot tables (drop-self; slabs use the vanilla double-drops-2 format)
   - recipes (data/copper_inferno/recipe/chromacopper/*.json): base = 8 copper blocks ringed
     around one palette-distinct vanilla dye -> 8; bricks 2x2 from base; tiles 2x2 from
-    bricks; slab/stairs/wall shaped from base; glass by smelting base; pane 6 glass -> 16;
-    stonecutting from base to every stone shape (incl. chiseled/carved/cut/pillar/lamp/
-    lantern; slabs cut 2)
+    bricks; slab/stairs/wall shaped from base; lamp = 4 base blocks in a plus around
+    glowstone; lantern = 8 iron nuggets ringed around base; glass by smelting base; pane
+    6 glass -> 16; stonecutting from base to every non-luminous stone shape (incl.
+    chiseled/carved/cut/pillar; slabs cut 2 -- lamps/lanterns are crafted, not stonecut)
   - lang fragments: assets/copper_inferno/lang/fragments/chromacopper.json (EN) and
     fragments_de/chromacopper.json (real German)
   - tag fragment: devtools/tagfrag/chromacopper.json (mineable/pickaxe for everything
@@ -229,13 +230,14 @@ def stonecutting(name: str, ingredient: str, result_id: str, count: int) -> dict
     }}
 
 
-# Every non-glass shape is stonecuttable straight from the base block (slabs cut 2).
+# Every non-glass, non-luminous shape is stonecuttable straight from the base block
+# (slabs cut 2). Lamps/lanterns are deliberately NOT stonecut -- a 1:1 cut would be a
+# free light source; they have proper shaped recipes in emit_palette_recipes instead.
 STONECUT_TARGETS = [
     ("{p}_slab", 2), ("{p}_stairs", 1), ("{p}_wall", 1),
     ("{p}_bricks", 1), ("{p}_brick_slab", 2), ("{p}_brick_stairs", 1), ("{p}_brick_wall", 1),
     ("{p}_tiles", 1), ("{p}_tile_slab", 2), ("{p}_tile_stairs", 1), ("{p}_tile_wall", 1),
     ("chiseled_{p}", 1), ("carved_{p}", 1), ("{p}_pillar", 1), ("cut_{p}", 1),
-    ("{p}_lamp", 1), ("{p}_lantern", 1),
 ]
 
 
@@ -251,6 +253,11 @@ def emit_palette_recipes(p: str, spec: dict) -> dict:
         shaped(f"{p}_slab", {"#": base}, ["###"], f"{ci}{p}_slab", 6),
         shaped(f"{p}_stairs", {"#": base}, ["#  ", "## ", "###"], f"{ci}{p}_stairs", 4),
         shaped(f"{p}_wall", {"#": base}, ["###", "###"], f"{ci}{p}_wall", 6, category="misc"),
+        # Light sources cost extra (unique input: the palette base block).
+        shaped(f"{p}_lamp", {"#": base, "G": "minecraft:glowstone"},
+               [" # ", "#G#", " # "], f"{ci}{p}_lamp", 1, category="redstone"),
+        shaped(f"{p}_lantern", {"N": "minecraft:iron_nugget", "#": base},
+               ["NNN", "N#N", "NNN"], f"{ci}{p}_lantern", 1, category="misc"),
         smelting(f"{p}_glass", base, f"{ci}{p}_glass"),
         shaped(f"{p}_glass_pane", {"G": f"{ci}{p}_glass"}, ["GGG", "GGG"],
                f"{ci}{p}_glass_pane", 16),
@@ -500,7 +507,10 @@ def main() -> None:
     recipes = [f for f in files if "/recipe/" in f]
     assert len(blockstates) == len(items) == len(loot) == 320, \
         f"expected 320 ids, got {len(blockstates)}/{len(items)}/{len(loot)}"
-    assert len(recipes) == 16 * 25, f"expected 400 recipes, got {len(recipes)}"
+    # 10 crafting/smelting (base, bricks, tiles, slab, stairs, wall, lamp, lantern,
+    # glass, pane) + 15 stonecutting per palette.
+    assert len(recipes) == 16 * (10 + len(STONECUT_TARGETS)), \
+        f"expected {16 * (10 + len(STONECUT_TARGETS))} recipes, got {len(recipes)}"
 
     print(f"chromacopper_gen: {json_count} JSON files (320 blocks, {len(recipes)} recipes), "
           f"{png_written}/{png_total} PNGs written, lang EN+DE {len(lang_en)}+{len(lang_de)} keys, "
