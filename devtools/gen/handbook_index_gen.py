@@ -5,8 +5,12 @@ Walks src/main/resources/data/copper_inferno/recipe/**/*.json and emits
 src/main/resources/assets/copper_inferno/handbook/recipe_index.json: a JSON array (sorted by
 recipeId, one object per line) of
 
-  {"recipeId": "<dir>/<name>", "type": "crafting|smelting|blasting|smoking|stonecutting|smithing",
+  {"recipeId": "<dir>/<name>",
+   "type": "shaped|shapeless|smelting|blasting|smoking|stonecutting|smithing",
    "grid9": [9 item-id strings, "" = empty slot], "result": "ns:id", "count": N}
+
+The type is the recipe JSON "type" with the "minecraft:" (and for the two crafting types the
+"minecraft:crafting_") prefix stripped; HandbookScreen renders it as the per-entry badge.
 
 matching the WP1 client loader contract (HandbookRecipeIndex reads key "grid9").
 
@@ -32,8 +36,8 @@ RECIPE_ROOT = os.path.join(ROOT, "src/main/resources/data/copper_inferno/recipe"
 OUT_PATH = os.path.join(ROOT, "src/main/resources/assets/copper_inferno/handbook/recipe_index.json")
 
 TYPE_MAP = {
-    "minecraft:crafting_shaped": "crafting",
-    "minecraft:crafting_shapeless": "crafting",
+    "minecraft:crafting_shaped": "shaped",
+    "minecraft:crafting_shapeless": "shapeless",
     "minecraft:smelting": "smelting",
     "minecraft:blasting": "blasting",
     "minecraft:smoking": "smoking",
