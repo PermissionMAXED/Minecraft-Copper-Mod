@@ -1,0 +1,10 @@
+{
+  "command.copper_inferno.emberstorm.no_world": "The Inferno dimension is not loaded.",
+  "command.copper_inferno.emberstorm.not_storming": "No ember storm is running.",
+  "command.copper_inferno.emberstorm.started": "Ember storm started in the Inferno - %s remaining.",
+  "command.copper_inferno.emberstorm.status.calm": "Ember Storm: calm - next storm in %s.",
+  "command.copper_inferno.emberstorm.status.storm": "Ember Storm: storm - %s remaining.",
+  "command.copper_inferno.emberstorm.stopped": "Ember storm stopped - the Inferno calms (next storm in %s).",
+  "message.copper_inferno.emberstorm.begin": "An ember storm sweeps across the Inferno - take cover!",
+  "message.copper_inferno.emberstorm.end": "The ember storm dies down."
+}
