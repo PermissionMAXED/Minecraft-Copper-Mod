@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "copper_inferno:item/root_beer_boar_spawn_egg"
+  }
+}

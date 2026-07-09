@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:ember_flour",
+    "copper_inferno:smoke_cheese",
+    "copper_inferno:cuisine_spice"
+  ],
+  "result": {
+    "count": 3,
+    "id": "copper_inferno:cinder_pizza_slice"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

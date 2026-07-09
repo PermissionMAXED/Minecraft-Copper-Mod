@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "A": "copper_inferno:colossal_ash",
+    "B": "minecraft:bone_meal",
+    "T": "minecraft:tuff"
+  },
+  "pattern": [
+    "TBT",
+    "BAB",
+    "TBT"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ash_colossus_core"
+  },
+  "type": "minecraft:crafting_shaped"
+}

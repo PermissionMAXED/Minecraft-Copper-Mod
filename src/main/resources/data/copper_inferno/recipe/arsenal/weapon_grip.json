@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:catalyst_dust",
+    "minecraft:stick",
+    "minecraft:leather"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:weapon_grip"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "copper_inferno:block/doomium_tiles",
+    "side": "copper_inferno:block/doomium_tiles",
+    "top": "copper_inferno:block/doomium_tiles"
+  }
+}

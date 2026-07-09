@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:ember_flour",
+    "minecraft:cooked_chicken",
+    "copper_inferno:cuisine_spice"
+  ],
+  "result": {
+    "count": 3,
+    "id": "copper_inferno:ember_dumpling"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

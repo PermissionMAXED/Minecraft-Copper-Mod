@@ -1,0 +1,13 @@
+{
+  "category": "equipment",
+  "ingredients": [
+    "copper_inferno:hardened_strap",
+    "minecraft:paper",
+    "minecraft:iron_nugget"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:field_kit"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

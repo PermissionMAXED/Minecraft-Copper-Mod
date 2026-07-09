@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:cindralite_block",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:cut_cindralite"
+  },
+  "type": "minecraft:stonecutting"
+}

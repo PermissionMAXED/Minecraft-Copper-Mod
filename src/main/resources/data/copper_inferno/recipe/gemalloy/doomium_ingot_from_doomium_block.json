@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "group": "doomium_ingot",
+  "ingredients": [
+    "copper_inferno:doomium_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "copper_inferno:doomium_ingot"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:catalyst_dust",
+    "copper_inferno:tempered_plate",
+    "minecraft:redstone"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:tool_matrix"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

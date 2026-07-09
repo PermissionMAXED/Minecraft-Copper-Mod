@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "group": "voidsteel_ingot",
+  "key": {
+    "#": "copper_inferno:voidsteel_nugget"
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:voidsteel_ingot"
+  },
+  "type": "minecraft:crafting_shaped"
+}

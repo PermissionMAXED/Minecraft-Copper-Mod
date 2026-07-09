@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:catalyst_dust",
+    "minecraft:iron_ingot",
+    "minecraft:iron_nugget"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:grapnel_hook"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

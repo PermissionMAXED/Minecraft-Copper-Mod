@@ -1,0 +1,18 @@
+{
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:stick",
+    "C": "copper_inferno:arsenal_catalyst",
+    "X": "copper_inferno:emberite_ingot"
+  },
+  "pattern": [
+    "XX",
+    "XC",
+    " #"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:emberite_axe"
+  },
+  "type": "minecraft:crafting_shaped"
+}

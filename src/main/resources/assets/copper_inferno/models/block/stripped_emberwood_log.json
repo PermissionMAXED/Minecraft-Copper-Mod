@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "copper_inferno:block/stripped_emberwood_log_top",
+    "side": "copper_inferno:block/stripped_emberwood_log"
+  }
+}

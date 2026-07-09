@@ -1,0 +1,65 @@
+{
+  "criteria": {
+    "ashsteel_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:ashsteel_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "emberite_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:emberite_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pyrium_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:pyrium_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "voidsteel_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:voidsteel_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.copper_inferno.gemalloy_armor.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "copper_inferno:pyrium_chestplate"
+    },
+    "title": {
+      "translate": "advancements.copper_inferno.gemalloy_armor.title"
+    }
+  },
+  "parent": "copper_inferno:copper_inferno/gemalloy_ingot",
+  "requirements": [
+    [
+      "pyrium_chestplate",
+      "emberite_chestplate",
+      "ashsteel_chestplate",
+      "voidsteel_chestplate"
+    ]
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "block.copper_inferno.brew_keg": "Brew Keg",
+  "block.copper_inferno.trophy_pedestal": "Trophy Pedestal",
+  "item.copper_inferno.copper_drill": "Copper Drill",
+  "item.copper_inferno.doom_horn": "Doom Horn",
+  "item.copper_inferno.ember_shield": "Ember Shield",
+  "item.copper_inferno.fizz_jetpack": "Fizz Jetpack",
+  "item.copper_inferno.grappling_coil": "Grappling Coil",
+  "message.copper_inferno.brew_keg.empty": "The keg is empty.",
+  "message.copper_inferno.brew_keg.full": "The keg is full.",
+  "message.copper_inferno.brew_keg.stored": "Keg: %s/%s drinks",
+  "message.copper_inferno.heat_suit_bonus.active": "Heat suit sealed - fire cannot touch you."
+}

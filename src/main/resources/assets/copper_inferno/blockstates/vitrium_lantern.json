@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "copper_inferno:block/vitrium_lantern"
+    },
+    "hanging=true": {
+      "model": "copper_inferno:block/vitrium_lantern_hanging"
+    }
+  }
+}

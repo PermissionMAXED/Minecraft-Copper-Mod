@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "D": "copper_inferno:dr_pepper",
+    "M": "minecraft:phantom_membrane",
+    "S": "minecraft:sugar"
+  },
+  "pattern": [
+    "MSM",
+    "SDS",
+    "MSM"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:soda_seraph_sigil"
+  },
+  "type": "minecraft:crafting_shaped"
+}

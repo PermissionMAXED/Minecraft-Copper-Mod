@@ -1,6 +1,14 @@
 {
   "values": [
+    "copper_inferno:ashwillow_fence_gate",
+    "copper_inferno:charoak_fence_gate",
+    "copper_inferno:cinderpine_fence_gate",
     "copper_inferno:copper_fence_gate",
-    "copper_inferno:scorched_fence_gate"
+    "copper_inferno:duskthorn_fence_gate",
+    "copper_inferno:emberwood_fence_gate",
+    "copper_inferno:glowbirch_fence_gate",
+    "copper_inferno:pyrewood_fence_gate",
+    "copper_inferno:scorched_fence_gate",
+    "copper_inferno:sootmaple_fence_gate"
   ]
 }

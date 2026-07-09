@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glass_bottle",
+    "copper_inferno:fizz_crystal",
+    "minecraft:emerald"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:lucky_fizz"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

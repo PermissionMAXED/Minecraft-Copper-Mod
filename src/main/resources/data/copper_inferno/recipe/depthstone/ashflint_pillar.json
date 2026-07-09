@@ -1,0 +1,15 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:ashflint"
+  },
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:ashflint_pillar"
+  },
+  "type": "minecraft:crafting_shaped"
+}

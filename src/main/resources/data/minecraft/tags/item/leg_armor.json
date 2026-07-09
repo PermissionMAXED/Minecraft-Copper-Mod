@@ -1,8 +1,12 @@
 {
   "values": [
+    "copper_inferno:ashsteel_leggings",
+    "copper_inferno:emberite_leggings",
     "copper_inferno:exposed_copper_leggings",
     "copper_inferno:infernium_leggings",
     "copper_inferno:oxidized_copper_leggings",
+    "copper_inferno:pyrium_leggings",
+    "copper_inferno:voidsteel_leggings",
     "copper_inferno:weathered_copper_leggings"
   ]
 }

@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:ashwillow_log",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:stripped_ashwillow_log"
+  },
+  "type": "minecraft:stonecutting"
+}

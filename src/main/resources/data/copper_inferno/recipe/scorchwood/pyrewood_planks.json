@@ -1,0 +1,12 @@
+{
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    "#copper_inferno:pyrewood_logs"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:pyrewood_planks"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

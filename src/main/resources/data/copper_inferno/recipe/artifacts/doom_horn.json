@@ -1,0 +1,13 @@
+{
+  "category": "equipment",
+  "ingredients": [
+    "copper_inferno:doom_alloy_shard",
+    "copper_inferno:horn_valve",
+    "minecraft:copper_ingot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:doom_horn"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

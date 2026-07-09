@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "vitrium_ingot",
+  "ingredient": "copper_inferno:cinder_vitrium_ore",
+  "result": {
+    "id": "copper_inferno:vitrium_ingot"
+  },
+  "type": "minecraft:smelting"
+}

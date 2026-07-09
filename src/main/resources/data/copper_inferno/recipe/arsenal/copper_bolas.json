@@ -1,0 +1,13 @@
+{
+  "category": "equipment",
+  "ingredients": [
+    "copper_inferno:talisman_cord",
+    "minecraft:copper_ingot",
+    "minecraft:copper_ingot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:copper_bolas"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

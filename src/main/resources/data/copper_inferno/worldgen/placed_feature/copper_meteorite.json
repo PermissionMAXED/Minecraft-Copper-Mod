@@ -1,0 +1,19 @@
+{
+  "feature": "copper_inferno:copper_meteorite",
+  "placement": [
+    {
+      "chance": 32,
+      "type": "minecraft:rarity_filter"
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "heightmap": "MOTION_BLOCKING",
+      "type": "minecraft:heightmap"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

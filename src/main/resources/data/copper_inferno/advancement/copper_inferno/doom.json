@@ -1,0 +1,32 @@
+{
+  "criteria": {
+    "doom_syrup": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:doom_syrup"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.copper_inferno.doom.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "copper_inferno:doom_syrup"
+    },
+    "title": {
+      "translate": "advancements.copper_inferno.doom.title"
+    }
+  },
+  "parent": "copper_inferno:copper_inferno/dr_pepper",
+  "requirements": [
+    [
+      "doom_syrup"
+    ]
+  ]
+}

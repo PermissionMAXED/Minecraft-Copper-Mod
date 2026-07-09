@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "group": "emberite_ingot",
+  "ingredients": [
+    "copper_inferno:emberite_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "copper_inferno:emberite_ingot"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

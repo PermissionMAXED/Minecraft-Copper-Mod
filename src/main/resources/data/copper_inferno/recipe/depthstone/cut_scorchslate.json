@@ -1,0 +1,15 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:scorchslate_slab"
+  },
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:cut_scorchslate"
+  },
+  "type": "minecraft:crafting_shaped"
+}

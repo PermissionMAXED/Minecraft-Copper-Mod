@@ -1,0 +1,16 @@
+{
+  "category": "equipment",
+  "key": {
+    "C": "copper_inferno:arsenal_catalyst",
+    "X": "copper_inferno:voidsteel_ingot"
+  },
+  "pattern": [
+    "XXX",
+    "XCX"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:voidsteel_helmet"
+  },
+  "type": "minecraft:crafting_shaped"
+}

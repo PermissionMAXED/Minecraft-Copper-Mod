@@ -1,0 +1,18 @@
+{
+  "category": "building",
+  "key": {
+    "D": "copper_inferno:ember_dust",
+    "F": "minecraft:blast_furnace",
+    "I": "minecraft:copper_ingot"
+  },
+  "pattern": [
+    "DDD",
+    "IFI",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:tempering_forge"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,8 +1,13 @@
 {
   "values": [
+    "copper_inferno:ashsteel_pickaxe",
+    "copper_inferno:copper_drill",
+    "copper_inferno:emberite_pickaxe",
     "copper_inferno:exposed_copper_pickaxe",
     "copper_inferno:infernium_pickaxe",
     "copper_inferno:oxidized_copper_pickaxe",
+    "copper_inferno:pyrium_pickaxe",
+    "copper_inferno:voidsteel_pickaxe",
     "copper_inferno:weathered_copper_pickaxe"
   ]
 }

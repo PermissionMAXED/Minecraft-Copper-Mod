@@ -1,0 +1,17 @@
+{
+  "category": "equipment",
+  "key": {
+    "I": "minecraft:iron_block",
+    "T": "copper_inferno:tempered_plate"
+  },
+  "pattern": [
+    "TTT",
+    " I ",
+    "TTT"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:portable_anvil"
+  },
+  "type": "minecraft:crafting_shaped"
+}

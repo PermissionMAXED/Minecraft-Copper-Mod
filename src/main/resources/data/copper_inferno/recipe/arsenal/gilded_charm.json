@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:charm_locket",
+    "minecraft:gold_ingot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:gilded_charm"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

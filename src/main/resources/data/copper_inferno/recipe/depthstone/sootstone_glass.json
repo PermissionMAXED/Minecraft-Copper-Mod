@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:sootstone",
+    "G": "minecraft:glass"
+  },
+  "pattern": [
+    "GGG",
+    "G#G",
+    "GGG"
+  ],
+  "result": {
+    "count": 8,
+    "id": "copper_inferno:sootstone_glass"
+  },
+  "type": "minecraft:crafting_shaped"
+}

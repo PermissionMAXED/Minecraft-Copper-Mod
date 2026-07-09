@@ -6,7 +6,9 @@ Checks (exit non-zero and print findings if any fail):
        a top-level object whose "values" is a list of strings (ids or #tag refs),
        with an optional boolean "replace"
   (t2) every copper_inferno: id in a BLOCK tag has assets/copper_inferno/blockstates/<id>.json,
-       and every copper_inferno: id in an ITEM tag has assets/copper_inferno/items/<id>.json
+       every copper_inferno: id in an ITEM tag has assets/copper_inferno/items/<id>.json, and
+       every copper_inferno: id in an ENCHANTMENT tag (the 1.21+ data-driven enchantment
+       registry) has data/copper_inferno/enchantment/<id>.json
   (t3) generative rules for every block family registered with requiresTool() (masonry 56,
        decostone 19, inferno 17, utilityblocks 8, sodablocks 10 = 110 ids): each MUST be listed
        in tags/block/mineable/pickaxe.json, or the block drops nothing in survival
@@ -17,6 +19,20 @@ Checks (exit non-zero and print findings if any fail):
        tags/block/mineable/pickaxe.json; the infernodim shovel-family blocks (ash_block,
        ember_soil, scorched_sand, cinder_gravel) MUST be in tags/block/mineable/shovel.json
   (t7) all 14 v3 walls (cinderstone 8 + copperdeco 6) are in tags/block/walls.json
+  (t8) generative rules for the v4 PaletteSets families (chromacopper 16 palettes +
+       depthstone 16 palettes, 20-id template each): every id EXCEPT <p>_glass/<p>_glass_pane
+       (registered WITHOUT requiresTool) MUST be in tags/block/mineable/pickaxe.json (18 ids
+       per palette = 576), and the 3 walls/slabs/stairs per palette MUST be in
+       tags/block/walls.json / block/slabs.json / block/stairs.json (96 each)
+  (t9) generative rules for the v4 AlloySets families (gemalloy, 12 materials, 22-id
+       template each): every id EXCEPT <m>_glass/<m>_glass_pane (registered WITHOUT
+       requiresTool in GemAlloyFeature.alloyGlassSettings) MUST be in
+       tags/block/mineable/pickaxe.json (20 ids per material = 240), and the 3 ores per
+       material MUST be in tags/block/needs_stone_tool.json (36)
+  (t10) generative rules for the v4 WoodSets families (scorchwood, 8 woods): all 13 wood-set
+       ids per wood MUST be in tags/block/mineable/axe.json (104), <w>_leaves MUST be in
+       tags/block/mineable/hoe.json (8), and the 4 log-family ids per wood MUST be in
+       tags/block/logs_that_burn.json (32)
 """
 import json
 import os
@@ -26,6 +42,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TAGS = os.path.join(ROOT, "src/main/resources/data/minecraft/tags")
 BLOCKSTATES = os.path.join(ROOT, "src/main/resources/assets/copper_inferno/blockstates")
 ITEM_DEFS = os.path.join(ROOT, "src/main/resources/assets/copper_inferno/items")
+ENCHANT_DEFS = os.path.join(ROOT, "src/main/resources/data/copper_inferno/enchantment")
 
 findings = []
 
@@ -179,6 +196,115 @@ V3_WALLS = (
 )
 assert len(V3_WALLS) == 14
 
+# ---------- v4 generative rules mirroring the v4 wrapper-registrar registrations ----------
+# Palette names as passed (as string literals) to core.content.PaletteSets.registerPaletteSet
+# in ChromaCopperFeature.init(); list mirrors PALETTES in devtools/gen/chromacopper_gen.py.
+CHROMACOPPER_PALETTES = [
+    "azure_copper", "crimson_copper", "tinted_gilded_copper", "cobalt_copper",
+    "emerald_copper", "amethyst_copper", "obsidian_copper", "ivory_copper",
+    "jade_copper", "umber_copper", "scarlet_copper", "indigo_copper",
+    "viridian_copper", "onyx_copper", "pearl_copper", "saffron_copper",
+]
+# Palette names as passed to PaletteSets.registerPaletteSet in DepthStoneFeature.init();
+# list mirrors PALETTES in devtools/gen/depthstone_gen.py.
+DEPTHSTONE_PALETTES = [
+    "voidstone", "duskshale", "pyroclast", "cindermarl", "fumarolite", "scorchslate",
+    "emberchert", "slagbasalt", "ashflint", "charwacke", "smokestone", "kilnrock",
+    "magmarl", "sootstone", "vitricite", "coalspar",
+]
+# Material names as passed to core.content.AlloySets.registerAlloySet in
+# GemAlloyFeature.init(); list mirrors MATERIALS in devtools/gen/gemalloy_gen.py.
+GEMALLOY_MATERIALS = [
+    "pyrium", "emberite", "cindralite", "slagbronze", "ashsteel", "voidsteel",
+    "doomium", "pepperite", "fizzium", "vitrium", "smokequartz", "kilnite",
+]
+# Wood names as passed to core.content.WoodSets.registerWoodSet in
+# ScorchWoodFeature.init(); list mirrors WOODS in devtools/gen/scorchwood_gen.py.
+SCORCHWOOD_WOODS = [
+    "emberwood", "ashwillow", "cinderpine", "charoak",
+    "glowbirch", "sootmaple", "duskthorn", "pyrewood",
+]
+
+assert len(CHROMACOPPER_PALETTES) == len(DEPTHSTONE_PALETTES) == 16
+assert len(GEMALLOY_MATERIALS) == 12
+assert len(SCORCHWOOD_WOODS) == 8
+
+
+def palette_set_ids(p: str) -> list[str]:
+    """The 20 ids of one PaletteSets.registerPaletteSet call, in registration order."""
+    return [p, f"{p}_slab", f"{p}_stairs", f"{p}_wall",
+            f"{p}_bricks", f"{p}_brick_slab", f"{p}_brick_stairs", f"{p}_brick_wall",
+            f"{p}_tiles", f"{p}_tile_slab", f"{p}_tile_stairs", f"{p}_tile_wall",
+            f"chiseled_{p}", f"carved_{p}", f"{p}_pillar", f"cut_{p}",
+            f"{p}_lamp", f"{p}_lantern", f"{p}_glass", f"{p}_glass_pane"]
+
+
+def alloy_set_ids(m: str) -> list[str]:
+    """The 22 ids of one AlloySets.registerAlloySet call, in registration order."""
+    return [f"{m}_ore", f"deepslate_{m}_ore", f"cinder_{m}_ore",
+            f"raw_{m}_block", f"{m}_block", f"{m}_bricks", f"{m}_brick_slab",
+            f"{m}_brick_stairs", f"{m}_brick_wall", f"{m}_tiles", f"{m}_tile_slab",
+            f"{m}_tile_stairs", f"{m}_tile_wall", f"cut_{m}", f"chiseled_{m}",
+            f"{m}_pillar", f"{m}_lamp", f"{m}_bulb", f"{m}_grate", f"{m}_glass",
+            f"{m}_glass_pane", f"{m}_lantern"]
+
+
+def wood_set_ids(w: str) -> list[str]:
+    """The 13 ids of one WoodSets.registerWoodSet call, in registration order."""
+    return [f"{w}_planks", f"{w}_plank_slab", f"{w}_plank_stairs", f"{w}_fence",
+            f"{w}_fence_gate", f"{w}_button", f"{w}_pressure_plate", f"{w}_log",
+            f"stripped_{w}_log", f"{w}_wood", f"stripped_{w}_wood", f"{w}_mosaic",
+            f"{w}_pillar"]
+
+
+def palette_pickaxe_ids(p: str) -> list[str]:
+    """Every palette id with requiresTool(): all 20 except glass + glass pane, which the
+    chroma/depth glass settings register WITHOUT requiresTool (hand-mineable)."""
+    return [bid for bid in palette_set_ids(p)
+            if bid not in (f"{p}_glass", f"{p}_glass_pane")]
+
+
+def alloy_pickaxe_ids(m: str) -> list[str]:
+    """Every alloy id with requiresTool(): all 22 except glass + glass pane
+    (GemAlloyFeature.alloyGlassSettings has NO requiresTool, vanilla glass semantics)."""
+    return [bid for bid in alloy_set_ids(m)
+            if bid not in (f"{m}_glass", f"{m}_glass_pane")]
+
+
+REQUIRES_TOOL_V4 = {}
+for _p in CHROMACOPPER_PALETTES:
+    REQUIRES_TOOL_V4[f"chromacopper {_p} (18)"] = palette_pickaxe_ids(_p)
+for _p in DEPTHSTONE_PALETTES:
+    REQUIRES_TOOL_V4[f"depthstone {_p} (18)"] = palette_pickaxe_ids(_p)
+for _m in GEMALLOY_MATERIALS:
+    REQUIRES_TOOL_V4[f"gemalloy {_m} (20)"] = alloy_pickaxe_ids(_m)
+assert sum(len(v) for v in REQUIRES_TOOL_V4.values()) == 16 * 18 * 2 + 12 * 20  # 816
+
+# Per palette: base/brick/tile wall, slab and stairs each join their vanilla shape tag.
+V4_PALETTE_WALLS = [f"{p}{mid}_wall" for p in CHROMACOPPER_PALETTES + DEPTHSTONE_PALETTES
+                    for mid in ("", "_brick", "_tile")]
+V4_PALETTE_SLABS = [f"{p}{mid}_slab" for p in CHROMACOPPER_PALETTES + DEPTHSTONE_PALETTES
+                    for mid in ("", "_brick", "_tile")]
+V4_PALETTE_STAIRS = [f"{p}{mid}_stairs" for p in CHROMACOPPER_PALETTES + DEPTHSTONE_PALETTES
+                     for mid in ("", "_brick", "_tile")]
+assert len(V4_PALETTE_WALLS) == len(V4_PALETTE_SLABS) == len(V4_PALETTE_STAIRS) == 96
+
+# Per material: the 3 ore variants use the vanilla iron-ore profile -> needs_stone_tool.
+GEMALLOY_ORES = [oid for m in GEMALLOY_MATERIALS
+                 for oid in (f"{m}_ore", f"deepslate_{m}_ore", f"cinder_{m}_ore")]
+assert len(GEMALLOY_ORES) == 36
+
+# Scorchwood: 13-id wood sets are axe-mineable; leaves are hoe-mineable; the 4 log-family
+# ids per wood join logs_that_burn (charcoal smelting + vanilla fire behavior).
+SCORCHWOOD_AXE = [bid for w in SCORCHWOOD_WOODS for bid in wood_set_ids(w)]
+SCORCHWOOD_HOE = [f"{w}_leaves" for w in SCORCHWOOD_WOODS]
+SCORCHWOOD_LOGS_THAT_BURN = [f"{prefix}{w}{suffix}" for w in SCORCHWOOD_WOODS
+                             for prefix, suffix in (("", "_log"), ("stripped_", "_log"),
+                                                    ("", "_wood"), ("stripped_", "_wood"))]
+assert len(SCORCHWOOD_AXE) == 104
+assert len(SCORCHWOOD_HOE) == 8
+assert len(SCORCHWOOD_LOGS_THAT_BURN) == 32
+
 # ---------- (t1) parse + vanilla-format validation ----------
 tag_values: dict[str, list[str]] = {}  # tags-relative path (fwd slashes) -> values
 tag_count = 0
@@ -226,8 +352,9 @@ checked_ids = 0
 for rel, values in tag_values.items():
     is_block = rel.startswith("block/")
     is_item = rel.startswith("item/")
-    if not (is_block or is_item):
-        finding("t2", f"{rel}: unexpected tag registry (expected block/ or item/)")
+    is_enchant = rel.startswith("enchantment/")
+    if not (is_block or is_item or is_enchant):
+        finding("t2", f"{rel}: unexpected tag registry (expected block/, item/ or enchantment/)")
         continue
     for v in values:
         if v.startswith("#"):
@@ -243,7 +370,9 @@ for rel, values in tag_values.items():
             finding("t2", f"{rel}: {v} has no blockstates/{path}.json")
         if is_item and not os.path.isfile(os.path.join(ITEM_DEFS, path + ".json")):
             finding("t2", f"{rel}: {v} has no items/{path}.json")
-print(f"[check_tags] (t2) {checked_ids} copper_inferno ids resolved against blockstates/items")
+        if is_enchant and not os.path.isfile(os.path.join(ENCHANT_DEFS, path + ".json")):
+            finding("t2", f"{rel}: {v} has no data/copper_inferno/enchantment/{path}.json")
+print(f"[check_tags] (t2) {checked_ids} copper_inferno ids resolved against blockstates/items/enchantments")
 
 # ---------- (t3) every requiresTool() block is pickaxe-mineable ----------
 pickaxe = set(tag_values.get("block/mineable/pickaxe.json", []))
@@ -287,6 +416,53 @@ for wid in V3_WALLS:
     if "copper_inferno:" + wid not in walls:
         finding("t7", f"v3 wall copper_inferno:{wid} missing from tags/block/walls.json")
 print(f"[check_tags] (t7) {len(V3_WALLS)} v3 walls checked")
+
+# ---------- (t8/t9) every v4 requiresTool() block is pickaxe-mineable + shape/ore tags ----------
+missing_v4 = 0
+for group, ids in REQUIRES_TOOL_V4.items():
+    for bid in ids:
+        if "copper_inferno:" + bid not in pickaxe:
+            finding("t8" if not group.startswith("gemalloy") else "t9",
+                    f"v4 requiresTool block {group}: copper_inferno:{bid} missing from "
+                    "mineable/pickaxe.json (would drop NOTHING in survival)")
+            missing_v4 += 1
+slabs = set(tag_values.get("block/slabs.json", []))
+stairs = set(tag_values.get("block/stairs.json", []))
+for wid in V4_PALETTE_WALLS:
+    if "copper_inferno:" + wid not in walls:
+        finding("t8", f"v4 palette wall copper_inferno:{wid} missing from tags/block/walls.json")
+for sid in V4_PALETTE_SLABS:
+    if "copper_inferno:" + sid not in slabs:
+        finding("t8", f"v4 palette slab copper_inferno:{sid} missing from tags/block/slabs.json")
+for sid in V4_PALETTE_STAIRS:
+    if "copper_inferno:" + sid not in stairs:
+        finding("t8", f"v4 palette stairs copper_inferno:{sid} missing from tags/block/stairs.json")
+print(f"[check_tags] (t8) {16 * 18 * 2} palette requiresTool blocks + "
+      f"{len(V4_PALETTE_WALLS)} walls + {len(V4_PALETTE_SLABS)} slabs + "
+      f"{len(V4_PALETTE_STAIRS)} stairs checked")
+
+needs_stone = set(tag_values.get("block/needs_stone_tool.json", []))
+for oid in GEMALLOY_ORES:
+    if "copper_inferno:" + oid not in needs_stone:
+        finding("t9", f"gemalloy ore copper_inferno:{oid} missing from tags/block/needs_stone_tool.json")
+print(f"[check_tags] (t9) {12 * 20} gemalloy requiresTool blocks + "
+      f"{len(GEMALLOY_ORES)} ores checked, {missing_v4} v4 blocks missing from mineable/pickaxe")
+
+# ---------- (t10) scorchwood axe/hoe mineability + logs_that_burn ----------
+axe = set(tag_values.get("block/mineable/axe.json", []))
+hoe = set(tag_values.get("block/mineable/hoe.json", []))
+logs_that_burn = set(tag_values.get("block/logs_that_burn.json", []))
+for bid in SCORCHWOOD_AXE:
+    if "copper_inferno:" + bid not in axe:
+        finding("t10", f"scorchwood block copper_inferno:{bid} missing from mineable/axe.json")
+for bid in SCORCHWOOD_HOE:
+    if "copper_inferno:" + bid not in hoe:
+        finding("t10", f"scorchwood leaves copper_inferno:{bid} missing from mineable/hoe.json")
+for bid in SCORCHWOOD_LOGS_THAT_BURN:
+    if "copper_inferno:" + bid not in logs_that_burn:
+        finding("t10", f"scorchwood log copper_inferno:{bid} missing from logs_that_burn.json")
+print(f"[check_tags] (t10) {len(SCORCHWOOD_AXE)} scorchwood axe blocks + "
+      f"{len(SCORCHWOOD_HOE)} hoe leaves + {len(SCORCHWOOD_LOGS_THAT_BURN)} burning logs checked")
 
 # ---------- report ----------
 print()

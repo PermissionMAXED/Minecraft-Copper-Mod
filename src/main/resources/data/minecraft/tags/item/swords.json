@@ -1,8 +1,12 @@
 {
   "values": [
+    "copper_inferno:ashsteel_sword",
+    "copper_inferno:emberite_sword",
     "copper_inferno:exposed_copper_sword",
     "copper_inferno:infernium_sword",
     "copper_inferno:oxidized_copper_sword",
+    "copper_inferno:pyrium_sword",
+    "copper_inferno:voidsteel_sword",
     "copper_inferno:weathered_copper_sword"
   ]
 }

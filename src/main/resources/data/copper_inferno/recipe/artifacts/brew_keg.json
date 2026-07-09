@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "C": "minecraft:copper_ingot",
+    "D": "copper_inferno:dr_pepper",
+    "W": "#minecraft:planks"
+  },
+  "pattern": [
+    "WCW",
+    "WDW",
+    "WWW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:brew_keg"
+  },
+  "type": "minecraft:crafting_shaped"
+}

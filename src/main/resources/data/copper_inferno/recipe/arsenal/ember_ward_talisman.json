@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:talisman_cord",
+    "minecraft:magma_cream"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ember_ward_talisman"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

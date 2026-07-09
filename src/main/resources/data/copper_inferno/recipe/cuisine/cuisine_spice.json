@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:blaze_powder",
+    "minecraft:sugar",
+    "copper_inferno:ember_dust"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:cuisine_spice"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

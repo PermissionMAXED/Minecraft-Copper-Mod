@@ -1,0 +1,43 @@
+{
+  "criteria": {
+    "infernium_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:infernium_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "raw_infernium": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:raw_infernium"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.copper_inferno.infernium.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "copper_inferno:infernium_ingot"
+    },
+    "title": {
+      "translate": "advancements.copper_inferno.infernium.title"
+    }
+  },
+  "parent": "copper_inferno:copper_inferno/get_copper",
+  "requirements": [
+    [
+      "raw_infernium",
+      "infernium_ingot"
+    ]
+  ]
+}

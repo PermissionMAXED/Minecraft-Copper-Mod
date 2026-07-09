@@ -1,0 +1,15 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:smokestone"
+  },
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:smokestone_pillar"
+  },
+  "type": "minecraft:crafting_shaped"
+}

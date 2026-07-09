@@ -1,0 +1,18 @@
+{
+  "category": "equipment",
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "L": "copper_inferno:charm_locket",
+    "R": "minecraft:redstone"
+  },
+  "pattern": [
+    " I ",
+    "IRI",
+    " L "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:magnet_charm"
+  },
+  "type": "minecraft:crafting_shaped"
+}

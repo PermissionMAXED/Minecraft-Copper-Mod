@@ -1,0 +1,56 @@
+{
+  "item/axes": [
+    "copper_inferno:ashsteel_axe",
+    "copper_inferno:emberite_axe",
+    "copper_inferno:pyrium_axe",
+    "copper_inferno:voidsteel_axe"
+  ],
+  "item/chest_armor": [
+    "copper_inferno:ashsteel_chestplate",
+    "copper_inferno:emberite_chestplate",
+    "copper_inferno:pyrium_chestplate",
+    "copper_inferno:voidsteel_chestplate"
+  ],
+  "item/foot_armor": [
+    "copper_inferno:ashsteel_boots",
+    "copper_inferno:emberite_boots",
+    "copper_inferno:pyrium_boots",
+    "copper_inferno:voidsteel_boots"
+  ],
+  "item/head_armor": [
+    "copper_inferno:ashsteel_helmet",
+    "copper_inferno:emberite_helmet",
+    "copper_inferno:pyrium_helmet",
+    "copper_inferno:voidsteel_helmet"
+  ],
+  "item/hoes": [
+    "copper_inferno:ashsteel_hoe",
+    "copper_inferno:emberite_hoe",
+    "copper_inferno:pyrium_hoe",
+    "copper_inferno:voidsteel_hoe"
+  ],
+  "item/leg_armor": [
+    "copper_inferno:ashsteel_leggings",
+    "copper_inferno:emberite_leggings",
+    "copper_inferno:pyrium_leggings",
+    "copper_inferno:voidsteel_leggings"
+  ],
+  "item/pickaxes": [
+    "copper_inferno:ashsteel_pickaxe",
+    "copper_inferno:emberite_pickaxe",
+    "copper_inferno:pyrium_pickaxe",
+    "copper_inferno:voidsteel_pickaxe"
+  ],
+  "item/shovels": [
+    "copper_inferno:ashsteel_shovel",
+    "copper_inferno:emberite_shovel",
+    "copper_inferno:pyrium_shovel",
+    "copper_inferno:voidsteel_shovel"
+  ],
+  "item/swords": [
+    "copper_inferno:ashsteel_sword",
+    "copper_inferno:emberite_sword",
+    "copper_inferno:pyrium_sword",
+    "copper_inferno:voidsteel_sword"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "copper_inferno:block/stripped_glowbirch_wood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "copper_inferno:block/stripped_glowbirch_wood"
+    },
+    "axis=z": {
+      "model": "copper_inferno:block/stripped_glowbirch_wood",
+      "x": 90
+    }
+  }
+}

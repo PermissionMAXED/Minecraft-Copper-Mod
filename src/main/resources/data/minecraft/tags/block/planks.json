@@ -1,5 +1,13 @@
 {
   "values": [
-    "copper_inferno:scorched_planks"
+    "copper_inferno:ashwillow_planks",
+    "copper_inferno:charoak_planks",
+    "copper_inferno:cinderpine_planks",
+    "copper_inferno:duskthorn_planks",
+    "copper_inferno:emberwood_planks",
+    "copper_inferno:glowbirch_planks",
+    "copper_inferno:pyrewood_planks",
+    "copper_inferno:scorched_planks",
+    "copper_inferno:sootmaple_planks"
   ]
 }

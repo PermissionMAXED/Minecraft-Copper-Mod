@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:beef",
+    "copper_inferno:cinder_salt",
+    "copper_inferno:cuisine_spice"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:ember_jerky"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,8 +1,12 @@
 {
   "values": [
+    "copper_inferno:ashsteel_axe",
+    "copper_inferno:emberite_axe",
     "copper_inferno:exposed_copper_axe",
     "copper_inferno:infernium_axe",
     "copper_inferno:oxidized_copper_axe",
+    "copper_inferno:pyrium_axe",
+    "copper_inferno:voidsteel_axe",
     "copper_inferno:weathered_copper_axe"
   ]
 }

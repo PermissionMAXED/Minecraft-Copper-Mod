@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:indigo_copper",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:indigo_copper_brick_wall"
+  },
+  "type": "minecraft:stonecutting"
+}

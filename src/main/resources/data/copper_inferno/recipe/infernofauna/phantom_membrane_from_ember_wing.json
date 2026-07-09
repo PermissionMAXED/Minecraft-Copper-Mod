@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:ember_wing",
+    "copper_inferno:ember_wing"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:phantom_membrane"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

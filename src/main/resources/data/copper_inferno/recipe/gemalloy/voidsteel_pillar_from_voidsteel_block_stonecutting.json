@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:voidsteel_block",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:voidsteel_pillar"
+  },
+  "type": "minecraft:stonecutting"
+}

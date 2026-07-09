@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "B": "minecraft:bone",
+    "C": "copper_inferno:reaper_cinder",
+    "S": "minecraft:soul_sand"
+  },
+  "pattern": [
+    "BSB",
+    "SCS",
+    "BSB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:cinder_reaper_sigil"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,18 @@
+{
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:stick",
+    "C": "copper_inferno:arsenal_catalyst",
+    "X": "copper_inferno:voidsteel_ingot"
+  },
+  "pattern": [
+    "XX",
+    " C",
+    " #"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:voidsteel_hoe"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:charm_locket",
+    "copper_inferno:dr_pepper"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:pepper_charm"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

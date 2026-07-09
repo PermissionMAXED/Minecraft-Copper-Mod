@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:brimstone_hide"
+  ],
+  "result": {
+    "count": 2,
+    "id": "minecraft:leather"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

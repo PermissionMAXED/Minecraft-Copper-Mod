@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:bowl",
+    "copper_inferno:ember_oil",
+    "minecraft:baked_potato",
+    "copper_inferno:cuisine_spice"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:magma_stew"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

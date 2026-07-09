@@ -1,0 +1,10 @@
+{
+  "command.copper_inferno.emberstorm.no_world": "Die Inferno-Dimension ist nicht geladen.",
+  "command.copper_inferno.emberstorm.not_storming": "Es tobt gerade kein Glutsturm.",
+  "command.copper_inferno.emberstorm.started": "Glutsturm im Inferno gestartet - noch %s.",
+  "command.copper_inferno.emberstorm.status.calm": "Glutsturm: ruhig - nächster Sturm in %s.",
+  "command.copper_inferno.emberstorm.status.storm": "Glutsturm: Sturm - noch %s.",
+  "command.copper_inferno.emberstorm.stopped": "Glutsturm gestoppt - das Inferno beruhigt sich (nächster Sturm in %s).",
+  "message.copper_inferno.emberstorm.begin": "Ein Glutsturm fegt über das Inferno - such Schutz!",
+  "message.copper_inferno.emberstorm.end": "Der Glutsturm flaut ab."
+}

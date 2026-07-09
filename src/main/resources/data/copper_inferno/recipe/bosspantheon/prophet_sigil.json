@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "C": "minecraft:oxidized_copper",
+    "E": "minecraft:emerald",
+    "R": "copper_inferno:pantheon_relic"
+  },
+  "pattern": [
+    "CEC",
+    "ERE",
+    "CEC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:prophet_sigil"
+  },
+  "type": "minecraft:crafting_shaped"
+}

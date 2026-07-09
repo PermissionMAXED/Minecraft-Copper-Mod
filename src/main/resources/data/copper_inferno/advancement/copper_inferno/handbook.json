@@ -1,0 +1,32 @@
+{
+  "criteria": {
+    "handbook": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:copper_inferno_handbook"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.copper_inferno.handbook.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "copper_inferno:copper_inferno_handbook"
+    },
+    "title": {
+      "translate": "advancements.copper_inferno.handbook.title"
+    }
+  },
+  "parent": "copper_inferno:copper_inferno/root",
+  "requirements": [
+    [
+      "handbook"
+    ]
+  ]
+}

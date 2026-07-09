@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:raw_emberite_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "copper_inferno:raw_emberite"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

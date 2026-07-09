@@ -13,5 +13,6 @@
   "screen.copper_inferno.handbook.next": ">",
   "screen.copper_inferno.handbook.page": "Seite %s/%s",
   "screen.copper_inferno.handbook.prev": "<",
+  "screen.copper_inferno.handbook.search": "Suchen...",
   "screen.copper_inferno.handbook.title": "COPPER-INFERNO-Handbuch"
 }

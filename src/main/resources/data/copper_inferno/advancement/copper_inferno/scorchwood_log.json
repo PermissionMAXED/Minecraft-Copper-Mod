@@ -1,0 +1,109 @@
+{
+  "criteria": {
+    "ashwillow_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:ashwillow_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "charoak_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:charoak_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "cinderpine_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:cinderpine_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "duskthorn_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:duskthorn_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "emberwood_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:emberwood_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "glowbirch_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:glowbirch_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pyrewood_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:pyrewood_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "sootmaple_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:sootmaple_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.copper_inferno.scorchwood_log.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "copper_inferno:emberwood_log"
+    },
+    "title": {
+      "translate": "advancements.copper_inferno.scorchwood_log.title"
+    }
+  },
+  "parent": "copper_inferno:copper_inferno/scorchwood_sapling",
+  "requirements": [
+    [
+      "emberwood_log",
+      "ashwillow_log",
+      "cinderpine_log",
+      "charoak_log",
+      "glowbirch_log",
+      "sootmaple_log",
+      "duskthorn_log",
+      "pyrewood_log"
+    ]
+  ]
+}

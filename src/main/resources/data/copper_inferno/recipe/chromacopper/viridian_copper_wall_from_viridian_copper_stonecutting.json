@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:viridian_copper",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:viridian_copper_wall"
+  },
+  "type": "minecraft:stonecutting"
+}

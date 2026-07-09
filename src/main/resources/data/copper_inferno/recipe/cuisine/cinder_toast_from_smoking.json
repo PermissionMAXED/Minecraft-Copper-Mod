@@ -1,0 +1,10 @@
+{
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 0.35,
+  "ingredient": "copper_inferno:soda_bread",
+  "result": {
+    "id": "copper_inferno:cinder_toast"
+  },
+  "type": "minecraft:smoking"
+}

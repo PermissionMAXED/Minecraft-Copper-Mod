@@ -1,0 +1,32 @@
+{
+  "criteria": {
+    "dr_pepper": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:dr_pepper"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.copper_inferno.dr_pepper.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "copper_inferno:dr_pepper"
+    },
+    "title": {
+      "translate": "advancements.copper_inferno.dr_pepper.title"
+    }
+  },
+  "parent": "copper_inferno:copper_inferno/root",
+  "requirements": [
+    [
+      "dr_pepper"
+    ]
+  ]
+}

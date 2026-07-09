@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "ashsteel_ingot",
+  "ingredient": "copper_inferno:deepslate_ashsteel_ore",
+  "result": {
+    "id": "copper_inferno:ashsteel_ingot"
+  },
+  "type": "minecraft:smelting"
+}

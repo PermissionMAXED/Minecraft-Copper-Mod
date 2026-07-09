@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glass_bottle",
+    "copper_inferno:fizz_crystal",
+    "minecraft:glistering_melon_slice"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:mending_fizz"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

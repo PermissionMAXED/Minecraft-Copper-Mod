@@ -1,0 +1,15 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:emberchert"
+  },
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:emberchert_pillar"
+  },
+  "type": "minecraft:crafting_shaped"
+}

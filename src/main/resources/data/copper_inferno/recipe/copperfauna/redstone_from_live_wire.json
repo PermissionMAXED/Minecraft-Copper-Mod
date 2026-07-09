@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:live_wire",
+    "copper_inferno:live_wire"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:redstone"
+  },
+  "type": "minecraft:crafting_shapeless"
+}
