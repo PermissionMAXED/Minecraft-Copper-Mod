@@ -1,0 +1,18 @@
+{
+  "category": "equipment",
+  "key": {
+    "C": "minecraft:copper_ingot",
+    "H": "minecraft:goat_horn",
+    "P": "copper_inferno:verdigris_pearl"
+  },
+  "pattern": [
+    " P ",
+    "CHC",
+    " C "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:verdant_calm_horn"
+  },
+  "type": "minecraft:crafting_shaped"
+}
