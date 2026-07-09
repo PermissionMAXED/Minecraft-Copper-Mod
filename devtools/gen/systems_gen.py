@@ -403,7 +403,7 @@ LANG_DE = {
     "message.copper_inferno.tempering_forge.undamaged": "Dieser Gegenstand braucht keine H\u00e4rtung.",
     "message.copper_inferno.soda_fountain.no_syrup": "Der Brunnen muss auf einem Sodasirupblock stehen.",
     "message.copper_inferno.emote_statue.pose": "Die Statue posiert: %s",
-    "emote.copper_inferno.salute": "Salut",
+    "emote.copper_inferno.salute": "Salutieren",
     "emote.copper_inferno.wave": "Winken",
     "emote.copper_inferno.cheer": "Jubeln",
     "emote.copper_inferno.facepalm": "Facepalm",
