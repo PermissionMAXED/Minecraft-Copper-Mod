@@ -6,7 +6,9 @@ Checks (exit non-zero and print findings if any fail):
        a top-level object whose "values" is a list of strings (ids or #tag refs),
        with an optional boolean "replace"
   (t2) every copper_inferno: id in a BLOCK tag has assets/copper_inferno/blockstates/<id>.json,
-       and every copper_inferno: id in an ITEM tag has assets/copper_inferno/items/<id>.json
+       every copper_inferno: id in an ITEM tag has assets/copper_inferno/items/<id>.json, and
+       every copper_inferno: id in an ENCHANTMENT tag (the 1.21+ data-driven enchantment
+       registry) has data/copper_inferno/enchantment/<id>.json
   (t3) generative rules for every block family registered with requiresTool() (masonry 56,
        decostone 19, inferno 17, utilityblocks 8, sodablocks 10 = 110 ids): each MUST be listed
        in tags/block/mineable/pickaxe.json, or the block drops nothing in survival
@@ -26,6 +28,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TAGS = os.path.join(ROOT, "src/main/resources/data/minecraft/tags")
 BLOCKSTATES = os.path.join(ROOT, "src/main/resources/assets/copper_inferno/blockstates")
 ITEM_DEFS = os.path.join(ROOT, "src/main/resources/assets/copper_inferno/items")
+ENCHANT_DEFS = os.path.join(ROOT, "src/main/resources/data/copper_inferno/enchantment")
 
 findings = []
 
@@ -226,8 +229,9 @@ checked_ids = 0
 for rel, values in tag_values.items():
     is_block = rel.startswith("block/")
     is_item = rel.startswith("item/")
-    if not (is_block or is_item):
-        finding("t2", f"{rel}: unexpected tag registry (expected block/ or item/)")
+    is_enchant = rel.startswith("enchantment/")
+    if not (is_block or is_item or is_enchant):
+        finding("t2", f"{rel}: unexpected tag registry (expected block/, item/ or enchantment/)")
         continue
     for v in values:
         if v.startswith("#"):
@@ -243,7 +247,9 @@ for rel, values in tag_values.items():
             finding("t2", f"{rel}: {v} has no blockstates/{path}.json")
         if is_item and not os.path.isfile(os.path.join(ITEM_DEFS, path + ".json")):
             finding("t2", f"{rel}: {v} has no items/{path}.json")
-print(f"[check_tags] (t2) {checked_ids} copper_inferno ids resolved against blockstates/items")
+        if is_enchant and not os.path.isfile(os.path.join(ENCHANT_DEFS, path + ".json")):
+            finding("t2", f"{rel}: {v} has no data/copper_inferno/enchantment/{path}.json")
+print(f"[check_tags] (t2) {checked_ids} copper_inferno ids resolved against blockstates/items/enchantments")
 
 # ---------- (t3) every requiresTool() block is pickaxe-mineable ----------
 pickaxe = set(tag_values.get("block/mineable/pickaxe.json", []))
