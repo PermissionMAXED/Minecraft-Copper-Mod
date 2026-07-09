@@ -1,0 +1,32 @@
+{
+  "criteria": {
+    "cobbled_cinderstone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:cobbled_cinderstone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.copper_inferno.cinderstone.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "copper_inferno:cobbled_cinderstone"
+    },
+    "title": {
+      "translate": "advancements.copper_inferno.cinderstone.title"
+    }
+  },
+  "parent": "copper_inferno:copper_inferno/enter_inferno",
+  "requirements": [
+    [
+      "cobbled_cinderstone"
+    ]
+  ]
+}

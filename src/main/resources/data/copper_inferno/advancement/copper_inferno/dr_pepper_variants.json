@@ -1,0 +1,54 @@
+{
+  "criteria": {
+    "cherry_dr_pepper": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:cherry_dr_pepper"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "dr_pepper_zero": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:dr_pepper_zero"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "vanilla_dr_pepper": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:vanilla_dr_pepper"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.copper_inferno.dr_pepper_variants.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "copper_inferno:cherry_dr_pepper"
+    },
+    "title": {
+      "translate": "advancements.copper_inferno.dr_pepper_variants.title"
+    }
+  },
+  "parent": "copper_inferno:copper_inferno/dr_pepper",
+  "requirements": [
+    [
+      "cherry_dr_pepper",
+      "dr_pepper_zero",
+      "vanilla_dr_pepper"
+    ]
+  ]
+}

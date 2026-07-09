@@ -1,0 +1,153 @@
+{
+  "criteria": {
+    "ashsteel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:ashsteel_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "cindralite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:cindralite_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "doomium": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:doomium_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "emberite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:emberite_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "fizzium": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:fizzium_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "kilnite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:kilnite_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pepperite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:pepperite_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "pyrium": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:pyrium_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "slagbronze": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:slagbronze_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "smokequartz": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:smokequartz_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "vitrium": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:vitrium_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "voidsteel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:voidsteel_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.copper_inferno.gemalloy_ingot.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "copper_inferno:pyrium_ingot"
+    },
+    "title": {
+      "translate": "advancements.copper_inferno.gemalloy_ingot.title"
+    }
+  },
+  "parent": "copper_inferno:copper_inferno/get_copper",
+  "requirements": [
+    [
+      "pyrium",
+      "emberite",
+      "cindralite",
+      "slagbronze",
+      "ashsteel",
+      "voidsteel",
+      "doomium",
+      "pepperite",
+      "fizzium",
+      "vitrium",
+      "smokequartz",
+      "kilnite"
+    ]
+  ]
+}
