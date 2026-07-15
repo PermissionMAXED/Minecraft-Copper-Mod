@@ -62,7 +62,7 @@ final class CarrotCatchScene: SKScene {
     private var gameOverOverlay: SKNode?
     private var didBuild = false
 
-    init() {
+    override init() {
         super.init(size: SceneRouter.designSize)
         scaleMode = .aspectFill
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
