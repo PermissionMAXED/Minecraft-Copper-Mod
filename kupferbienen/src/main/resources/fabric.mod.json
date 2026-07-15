@@ -1,0 +1,29 @@
+{
+	"schemaVersion": 1,
+	"id": "kupferbienen",
+	"version": "${version}",
+	"name": "KUPFERBIENEN",
+	"description": "Copper bees that make copper farmable: Kupferstock apiary automation, copper blooms, and brewable oxidation/cleansing splash vials.",
+	"authors": [
+		"Sonic0810"
+	],
+	"contact": {},
+	"license": "MIT",
+	"icon": "assets/kupferbienen/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.sonic0810.kupferbienen.Kupferbienen"
+		],
+		"client": [
+			"net.sonic0810.kupferbienen.KupferbienenClient"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.0",
+		"minecraft": "~1.21.9",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {}
+}
