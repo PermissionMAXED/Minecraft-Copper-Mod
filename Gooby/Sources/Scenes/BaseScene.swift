@@ -8,7 +8,7 @@ class BaseScene: SKScene {
     init(room: Room) {
         self.room = room
         super.init(size: SceneRouter.designSize)
-        scaleMode = .aspectFill
+        scaleMode = .aspectFit
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         backgroundColor = Theme.backgroundColor(for: room)
     }

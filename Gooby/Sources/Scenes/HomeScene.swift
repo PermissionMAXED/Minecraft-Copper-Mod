@@ -14,6 +14,9 @@ final class HomeScene: BaseScene {
     private var micTint: SKShapeNode?
     private var stateObserverToken: NSObjectProtocol?
     private var didShowMicDeniedToast = false
+    private var sleepOverlay: SKSpriteNode?
+    private var sleepHint: SKLabelNode?
+    private var lastKnownIsSleeping = false
 
     // Poke / tickle touch tracking.
     private var isTrackingGoobyTouch = false
@@ -63,7 +66,13 @@ final class HomeScene: BaseScene {
             object: nil,
             queue: .main
         ) { [weak self] _ in
-            self?.gooby?.mood = GameState.shared.stats.mood
+            guard let self = self else { return }
+            self.gooby?.mood = GameState.shared.stats.mood
+            let sleeping = GameState.shared.isSleeping
+            if sleeping != self.lastKnownIsSleeping {
+                self.lastKnownIsSleeping = sleeping
+                self.applySleepVisuals(sleeping)
+            }
         }
     }
 
@@ -140,6 +149,11 @@ final class HomeScene: BaseScene {
         mic.onStateChange = { [weak self] state in
             DispatchQueue.main.async {
                 self?.applyMicTint(for: state)
+                // onPlaybackLevel stops firing outside .playing, so close
+                // the mouth here or it can stay stuck open after playback.
+                if state != .playing {
+                    self?.gooby?.setTalkingLevel(0)
+                }
             }
         }
         mic.onPlaybackLevel = { [weak self] level in
@@ -218,13 +232,26 @@ final class HomeScene: BaseScene {
     // MARK: - Sleeping state
 
     private func installSleepOverlayIfNeeded() {
-        guard GameState.shared.isSleeping else { return }
-        gooby?.playSleep(true)
+        lastKnownIsSleeping = GameState.shared.isSleeping
+        guard lastKnownIsSleeping else { return }
+        applySleepVisuals(true)
+    }
+
+    private func applySleepVisuals(_ sleeping: Bool) {
+        gooby?.playSleep(sleeping)
+
+        sleepOverlay?.removeFromParent()
+        sleepOverlay = nil
+        sleepHint?.removeFromParent()
+        sleepHint = nil
+
+        guard sleeping else { return }
 
         let overlay = SKSpriteNode(color: UIColor(white: 0, alpha: 0.45),
                                    size: SceneRouter.designSize)
         overlay.zPosition = ZLayer.sleepOverlay
         addChild(overlay)
+        sleepOverlay = overlay
 
         let hint = SKLabelNode(fontNamed: Theme.fontName)
         hint.text = "Gooby is sleeping… go to the Bedroom"
@@ -234,6 +261,7 @@ final class HomeScene: BaseScene {
         hint.position = CGPoint(x: 0, y: 150)
         hint.zPosition = ZLayer.sleepOverlay + 1
         addChild(hint)
+        sleepHint = hint
     }
 
     // MARK: - Poke & tickle touch handling

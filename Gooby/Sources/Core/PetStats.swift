@@ -53,6 +53,7 @@ struct PetStats: Codable, Equatable {
     var mood: Mood {
         if hunger < 30 { return .hungry }
         if hygiene < 30 { return .dirty }
+        if energy < 25 { return .sleepy }
         if happiness < 30 { return .sad }
         if hunger > 70 && happiness > 70 && energy > 70 && hygiene > 70 { return .happy }
         return .neutral

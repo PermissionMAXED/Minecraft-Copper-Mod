@@ -64,7 +64,7 @@ final class CarrotCatchScene: SKScene {
 
     override init() {
         super.init(size: SceneRouter.designSize)
-        scaleMode = .aspectFill
+        scaleMode = .aspectFit
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         backgroundColor = UIColor(red: 0.67, green: 0.86, blue: 0.98, alpha: 1)
     }

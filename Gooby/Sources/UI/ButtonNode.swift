@@ -67,6 +67,7 @@ final class ButtonNode: SKNode {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard isEnabled else { return }
         setScale(0.92)
         AudioManager.shared.playSFX(.click)
     }

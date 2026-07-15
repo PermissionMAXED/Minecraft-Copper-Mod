@@ -35,7 +35,7 @@ final class SceneRouter {
 
     func presentMiniGame(_ scene: SKScene) {
         guard let view = view else { return }
-        scene.scaleMode = .aspectFill
+        scene.scaleMode = .aspectFit
         view.presentScene(scene, transition: SKTransition.doorsOpenVertical(withDuration: 0.4))
     }
 

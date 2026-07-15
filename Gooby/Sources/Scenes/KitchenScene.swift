@@ -155,7 +155,7 @@ final class KitchenScene: BaseScene {
         flying.run(SKAction.sequence([flight, fade])) { [weak self] in
             flying.removeFromParent()
             guard let self = self else { return }
-            AudioManager.shared.playSFX(.eat)
+            // Eat SFX is played inside GoobyNode.playEat.
             GameState.shared.feed(item)
             self.gooby.playEat { [weak self] in
                 guard let self = self else { return }

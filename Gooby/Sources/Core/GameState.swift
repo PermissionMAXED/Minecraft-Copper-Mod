@@ -105,11 +105,23 @@ final class GameState: Codable {
         let elapsed = min(now.timeIntervalSince(lastUpdated), 72 * 3600)
         let hours = elapsed / 3600
         if hours <= 0 { return }
+        let statsBefore = stats
+        let wasSleeping = isSleeping
         stats.applyDecay(hours: hours, isSleeping: isSleeping)
         if isSleeping && stats.energy >= PetStats.maxValue {
             isSleeping = false
         }
-        didMutate()
+        // Always record the decay progress so the same span is never
+        // re-applied; it is persisted with the next save.
+        lastUpdated = Date()
+        // Only fan out save/notify when something visible changed:
+        // a stat crossed a whole-point boundary or sleep flipped.
+        let statsChangedNoticeably = StatKind.allCases.contains { kind in
+            Int(statsBefore[kind].rounded()) != Int(stats[kind].rounded())
+        }
+        if statsChangedNoticeably || isSleeping != wasSleeping {
+            didMutate()
+        }
     }
 
     private func didMutate() {

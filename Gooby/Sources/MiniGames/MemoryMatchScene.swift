@@ -138,7 +138,7 @@ final class MemoryMatchScene: SKScene {
 
     override init() {
         super.init(size: SceneRouter.designSize)
-        scaleMode = .aspectFill
+        scaleMode = .aspectFit
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         backgroundColor = UIColor(red: 0.87, green: 0.80, blue: 0.96, alpha: 1)
     }

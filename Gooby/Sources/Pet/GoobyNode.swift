@@ -47,7 +47,12 @@ final class GoobyNode: SKNode {
     private static let faceRestoreKey = "gooby.facerestore"
 
     var mood: Mood = .neutral {
-        didSet { applyMoodFace() }
+        didSet {
+            // Skip redundant reassignments (e.g. per-second state ticks)
+            // so in-flight blink/ear actions are not clipped.
+            guard oldValue != mood else { return }
+            applyMoodFace()
+        }
     }
 
     // MARK: - Init

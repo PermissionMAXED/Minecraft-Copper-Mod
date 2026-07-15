@@ -28,28 +28,55 @@ final class SaveManager {
     }
 
     func scheduleSave() {
-        queue.async { [weak self] in
-            guard let self = self else { return }
-            self.pendingSave?.cancel()
-            let item = DispatchWorkItem { [weak self] in
-                self?.saveNow()
+        // Debounce state lives on the main thread so cancel/re-arm is
+        // race-free, and the fired work item encodes on main as well.
+        if Thread.isMainThread {
+            scheduleSaveOnMain()
+        } else {
+            DispatchQueue.main.async { [weak self] in
+                self?.scheduleSaveOnMain()
             }
-            self.pendingSave = item
-            self.queue.asyncAfter(deadline: .now() + 0.5, execute: item)
         }
     }
 
+    private func scheduleSaveOnMain() {
+        pendingSave?.cancel()
+        let item = DispatchWorkItem { [weak self] in
+            self?.saveNow()
+        }
+        pendingSave = item
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: item)
+    }
+
     func saveNow() {
-        guard let url = saveURL else { return }
-        do {
-            try FileManager.default.createDirectory(at: url.deletingLastPathComponent(),
-                                                    withIntermediateDirectories: true)
+        // GameState is only mutated on the main thread, so the snapshot
+        // must be encoded there; only the file write goes off-main.
+        guard let data = encodeStateOnMain() else { return }
+        writeToDisk(data)
+    }
+
+    private func encodeStateOnMain() -> Data? {
+        let encode: () -> Data? = {
             let encoder = JSONEncoder()
             encoder.dateEncodingStrategy = .iso8601
-            let data = try encoder.encode(GameState.shared)
-            try data.write(to: url, options: .atomic)
-        } catch {
-            // Saving is best-effort; errors are ignored.
+            return try? encoder.encode(GameState.shared)
+        }
+        if Thread.isMainThread {
+            return encode()
+        }
+        return DispatchQueue.main.sync(execute: encode)
+    }
+
+    private func writeToDisk(_ data: Data) {
+        guard let url = saveURL else { return }
+        queue.async {
+            do {
+                try FileManager.default.createDirectory(at: url.deletingLastPathComponent(),
+                                                        withIntermediateDirectories: true)
+                try data.write(to: url, options: .atomic)
+            } catch {
+                // Saving is best-effort; errors are ignored.
+            }
         }
     }
 }
