@@ -1,4 +1,11 @@
 {
   "itemGroup.kupferbienen.main": "Kupferbienen",
-  "item.kupferbienen.kupferwabe": "Copper Comb"
+  "item.kupferbienen.kupferwabe": "Copper Comb",
+  "item.kupferbienen.gruenspanpollen": "Verdigris Pollen",
+  "item.kupferbienen.kupferbiene_spawn_egg": "Copper Bee Spawn Egg",
+  "item.kupferbienen.gruenspanbiene_spawn_egg": "Verdigris Bee Spawn Egg",
+  "block.kupferbienen.kupferbluete": "Copper Bloom",
+  "block.kupferbienen.kupferstock": "Copper Apiary",
+  "entity.kupferbienen.kupferbiene": "Copper Bee",
+  "entity.kupferbienen.gruenspanbiene": "Verdigris Bee"
 }

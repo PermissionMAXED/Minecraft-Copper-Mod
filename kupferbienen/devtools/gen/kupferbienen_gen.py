@@ -9,20 +9,39 @@ Emits (always):
     src/main/resources/assets/kupferbienen/textures/item/kupferwabe.png
         16x16 copper honeycomb: hex-cell pattern in copper tones
         #B87333 / #8C5A28 / #E0955B.
+    src/main/resources/assets/kupferbienen/textures/item/gruenspanpollen.png
+        16x16 verdigris pollen puff.
+    src/main/resources/assets/kupferbienen/textures/item/kupferbiene_spawn_egg.png
+    src/main/resources/assets/kupferbienen/textures/item/gruenspanbiene_spawn_egg.png
+        16x16 classic spawn-egg silhouettes (copper / verdigris).
+    src/main/resources/assets/kupferbienen/textures/block/kupferbluete.png
+        16x16 cross-model copper flower: green stem, copper petals, verdigris tips.
+    src/main/resources/assets/kupferbienen/textures/block/kupferstock_side.png
+    src/main/resources/assets/kupferbienen/textures/block/kupferstock_top.png
+        16x16 copper-plank apiary faces (side has the entrance hole).
+    src/client/resources/assets/kupferbienen/textures/entity/kupferbiene.png
+    src/client/resources/assets/kupferbienen/textures/entity/gruenspanbiene.png
+        The vanilla bee texture (assets/minecraft/textures/entity/bee/bee.png inside
+        the loom minecraft-client.jar, path verified via unzip -l) luminance-remapped
+        onto the copper / verdigris palettes. Pure function of the vanilla bytes +
+        palette (alpha copied through unchanged, pixels never move), so byte-identical
+        across runs.
     src/main/resources/assets/kupferbienen/icon.png
         128x128 mod icon: copper bee motif on a dark background.
 
 Emits (only with --write-json; the JSON in src/main/resources stays authoritative):
-    assets/kupferbienen/items/kupferwabe.json        (1.21.9 item model-definition)
-    assets/kupferbienen/models/item/kupferwabe.json  (item/generated sprite model)
+    assets/kupferbienen/items/<id>.json        (1.21.9 item model-definitions)
+    assets/kupferbienen/models/item/<id>.json  (item/generated sprite models)
 
 Determinism: all texture noise is seeded per texture name via rng_for("<name>")
 (== Random(f"kupferbienen:<name>")) so re-runs produce byte-identical PNGs.
 """
 
+import io
 import json
 import math
 import sys
+import zipfile
 from pathlib import Path
 from random import Random
 
@@ -32,6 +51,9 @@ NS = "kupferbienen"
 ROOT = Path(__file__).resolve().parents[2]
 RES = ROOT / "src" / "main" / "resources"
 ASSETS = RES / "assets" / NS
+CLIENT_ASSETS = ROOT / "src" / "client" / "resources" / "assets" / NS
+CLIENT_JAR = Path.home() / ".gradle/caches/fabric-loom/1.21.9/minecraft-client.jar"
+BEE_TEXTURE_IN_JAR = "assets/minecraft/textures/entity/bee/bee.png"
 
 # Copper palette (fixed by the mod spec).
 COPPER = (0xB8, 0x73, 0x33)
@@ -39,6 +61,19 @@ COPPER_DARK = (0x8C, 0x5A, 0x28)
 COPPER_LIGHT = (0xE0, 0x95, 0x5B)
 ICON_BG = (0x14, 0x0D, 0x09)
 ICON_BG_HEX = (0x26, 0x19, 0x0F)
+
+# Entity-remap palettes (fixed by the mod spec).
+BEE_COPPER_DARK = (0x5A, 0x32, 0x14)
+BEE_COPPER = (0xB8, 0x73, 0x33)
+BEE_COPPER_LIGHT = (0xE0, 0x95, 0x5B)
+VERDIGRIS_DARK = (0x1E, 0x4D, 0x33)
+VERDIGRIS = (0x43, 0xA0, 0x47)
+VERDIGRIS_LIGHT = (0x7F, 0xD8, 0xA0)
+
+# Flora accents.
+STEM_GREEN = (0x4A, 0x8F, 0x3C)
+STEM_DARK = (0x2F, 0x66, 0x28)
+OUTLINE_DARK = (0x3B, 0x25, 0x10)
 
 
 # ---------------------------------------------------------------------------
@@ -198,8 +233,209 @@ def icon_image() -> Image.Image:
 
 
 # ---------------------------------------------------------------------------
+# Bees: 16x16 helpers (px/blank/spawn_egg copied from the Copper Inferno
+# infernomobs_gen.py painter conventions, NS switched)
+# ---------------------------------------------------------------------------
+
+def blank() -> Image.Image:
+    return Image.new("RGBA", (16, 16), (0, 0, 0, 0))
+
+
+def px(img: Image.Image, x: int, y: int, color, alpha: int = 255) -> None:
+    if 0 <= x < 16 and 0 <= y < 16:
+        img.putpixel((x, y), (color[0], color[1], color[2], alpha))
+
+
+def spawn_egg(rng: Random, base, base_dark, base_light, spots, outline) -> Image.Image:
+    """Classic spawn-egg silhouette (narrow top, wide bottom) with seeded speckles."""
+    img = blank()
+    half = {2: 1.6, 3: 2.4, 4: 3.0, 5: 3.5, 6: 4.0, 7: 4.4, 8: 4.7, 9: 4.9,
+            10: 5.0, 11: 5.0, 12: 4.7, 13: 4.0, 14: 2.8}
+    cells = []
+    for y, h in half.items():
+        x0 = int(math.ceil(7.5 - h))
+        x1 = int(math.floor(7.5 + h))
+        for x in range(x0, x1 + 1):
+            cells.append((x, y, x == x0 or x == x1 or y in (2, 14)))
+    for x, y, edge in cells:
+        if edge:
+            color = outline
+        elif x <= 5 and y <= 9:
+            color = base_light  # top-left sheen
+        elif x >= 10 or y >= 12:
+            color = base_dark
+        else:
+            color = base
+        px(img, x, y, color)
+    interior = [(x, y) for x, y, edge in cells if not edge]
+    for x, y in rng.sample(interior, 12):
+        px(img, x, y, spots)
+    return img
+
+
+def tex_kupferbiene_spawn_egg(rng: Random) -> Image.Image:
+    return spawn_egg(rng, BEE_COPPER, BEE_COPPER_DARK, BEE_COPPER_LIGHT,
+                     OUTLINE_DARK, OUTLINE_DARK)
+
+
+def tex_gruenspanbiene_spawn_egg(rng: Random) -> Image.Image:
+    return spawn_egg(rng, VERDIGRIS, VERDIGRIS_DARK, VERDIGRIS_LIGHT,
+                     BEE_COPPER, VERDIGRIS_DARK)
+
+
+def tex_gruenspanpollen(rng: Random) -> Image.Image:
+    """Verdigris pollen puff: soft round clump with light sparkles and loose motes."""
+    img = blank()
+    cx, cy = 7.5, 8.0
+    for y in range(16):
+        for x in range(16):
+            jitter = rng.random()  # consumed unconditionally: fixed rng stream
+            d = math.hypot(x - cx, y - cy)
+            if d > 4.6:
+                continue
+            if d > 3.8:
+                if jitter < 0.55:  # ragged rim
+                    px(img, x, y, VERDIGRIS_DARK)
+            elif d > 2.4:
+                px(img, x, y, VERDIGRIS_DARK if jitter < 0.25 else VERDIGRIS)
+            else:
+                px(img, x, y, VERDIGRIS_LIGHT if jitter < 0.35 else VERDIGRIS)
+    # Loose motes drifting off the puff (seeded, kept off the clump).
+    for mx, my in ((2, 3), (13, 2), (14, 12), (2, 13), (12, 14), (3, 8)):
+        px(img, mx, my, VERDIGRIS_LIGHT if (mx + my) % 2 else VERDIGRIS)
+    return img
+
+
+def tex_kupferbluete(rng: Random) -> Image.Image:
+    """Cross-model copper flower: green stem + leaves, 8 copper petals around a light
+    copper heart, verdigris petal tips."""
+    img = blank()
+    fx, fy = 7.5, 4.0  # flower-head centre
+    for y in range(16):
+        for x in range(16):
+            spark = rng.random()  # consumed unconditionally: fixed rng stream
+            d = math.hypot(x - fx, y - fy)
+            if d <= 1.2:
+                px(img, x, y, BEE_COPPER_LIGHT)     # glowing heart
+            elif d <= 2.3:
+                px(img, x, y, BEE_COPPER_DARK if spark < 0.2 else BEE_COPPER)
+            elif d <= 3.6:
+                # 8 petals: keep pixels near the 45-degree spoke directions.
+                ang = math.degrees(math.atan2(y - fy, x - fx)) % 45.0
+                if min(ang, 45.0 - ang) <= 11.0:
+                    px(img, x, y, VERDIGRIS if d >= 2.9 else BEE_COPPER)
+    # Stem with two leaves.
+    for y in range(7, 16):
+        px(img, 7, y, STEM_DARK if y % 3 == 0 else STEM_GREEN)
+    for lx, ly in ((6, 10), (5, 10), (5, 9)):
+        px(img, lx, ly, STEM_GREEN)
+    for lx, ly in ((8, 12), (9, 12), (9, 11)):
+        px(img, lx, ly, STEM_DARK)
+    return img
+
+
+# ---------------------------------------------------------------------------
+# Kupferstock (copper apiary) block faces: copper planks, side with entrance
+# ---------------------------------------------------------------------------
+
+def _plank_base(rng: Random) -> Image.Image:
+    """16x16 copper planks: four 4px horizontal boards with dark seams + mottle."""
+    img = blank()
+    for y in range(16):
+        for x in range(16):
+            mottle = rng.random()
+            if y % 4 == 3:
+                color = COPPER_DARK          # horizontal seam
+            elif (y // 4 * 5 + x) % 8 == 0:
+                color = COPPER_DARK          # staggered board-end notches
+            elif mottle < 0.08:
+                color = COPPER_DARK
+            elif mottle > 0.93:
+                color = COPPER_LIGHT
+            else:
+                color = COPPER
+            px(img, x, y, color)
+    return img
+
+
+def tex_kupferstock_side(rng: Random) -> Image.Image:
+    img = _plank_base(rng)
+    # Entrance: dark notch low-centre, with a light lip above (beehive-style).
+    for y in range(10, 14):
+        for x in range(6, 10):
+            px(img, x, y, OUTLINE_DARK)
+    for x in range(6, 10):
+        px(img, x, 9, COPPER_LIGHT)
+    return img
+
+
+def tex_kupferstock_top(rng: Random) -> Image.Image:
+    img = _plank_base(rng)
+    # Border ring so the top face reads as a lid.
+    for i in range(16):
+        for (bx, by) in ((i, 0), (i, 15), (0, i), (15, i)):
+            px(img, bx, by, COPPER_DARK)
+    return img
+
+
+# ---------------------------------------------------------------------------
+# Entity textures: vanilla bee texture luminance-remapped (calamities_gen
+# recolor_entity_texture pattern: dark -> base -> light ramp, alpha unchanged)
+# ---------------------------------------------------------------------------
+
+def lerp(a, b, t):
+    return tuple(int(round(a[i] + (b[i] - a[i]) * t)) for i in range(3))
+
+
+def recolor_entity_texture(png_bytes: bytes, dark, base, light) -> Image.Image:
+    src = Image.open(io.BytesIO(png_bytes)).convert("RGBA")
+    out = Image.new("RGBA", src.size, (0, 0, 0, 0))
+    for y in range(src.size[1]):
+        for x in range(src.size[0]):
+            r, g, b, a = src.getpixel((x, y))
+            if a == 0:
+                continue
+            lum = (r + g + b) / (3 * 255)
+            if lum < 0.5:
+                color = lerp(dark, base, lum / 0.5)
+            else:
+                color = lerp(base, light, (lum - 0.5) / 0.5)
+            out.putpixel((x, y), (*color, a))
+    return out
+
+
+def emit_entity_textures() -> None:
+    if not CLIENT_JAR.is_file():
+        print(f"kupferbienen_gen: WARNING client jar not found at {CLIENT_JAR}; "
+              "skipping bee entity textures", file=sys.stderr)
+        return
+    tex_dir = CLIENT_ASSETS / "textures" / "entity"
+    with zipfile.ZipFile(CLIENT_JAR) as jar:
+        bee_bytes = jar.read(BEE_TEXTURE_IN_JAR)
+    save_png(recolor_entity_texture(bee_bytes, BEE_COPPER_DARK, BEE_COPPER, BEE_COPPER_LIGHT),
+             tex_dir / "kupferbiene.png")
+    save_png(recolor_entity_texture(bee_bytes, VERDIGRIS_DARK, VERDIGRIS, VERDIGRIS_LIGHT),
+             tex_dir / "gruenspanbiene.png")
+    print(f"wrote {tex_dir / 'kupferbiene.png'}")
+    print(f"wrote {tex_dir / 'gruenspanbiene.png'}")
+
+
+# ---------------------------------------------------------------------------
 # main
 # ---------------------------------------------------------------------------
+
+ITEM_TEXTURES = {
+    "gruenspanpollen": tex_gruenspanpollen,
+    "kupferbiene_spawn_egg": tex_kupferbiene_spawn_egg,
+    "gruenspanbiene_spawn_egg": tex_gruenspanbiene_spawn_egg,
+}
+
+BLOCK_TEXTURES = {
+    "kupferbluete": tex_kupferbluete,
+    "kupferstock_side": tex_kupferstock_side,
+    "kupferstock_top": tex_kupferstock_top,
+}
+
 
 def main(argv: list) -> None:
     write_json_files = "--write-json" in argv
@@ -209,10 +445,23 @@ def main(argv: list) -> None:
     print(f"wrote {ASSETS / 'textures' / 'item' / 'kupferwabe.png'}")
     print(f"wrote {ASSETS / 'icon.png'}")
 
+    for name, painter in ITEM_TEXTURES.items():
+        path = ASSETS / "textures" / "item" / f"{name}.png"
+        save_png(painter(rng_for(name)), path)
+        print(f"wrote {path}")
+    for name, painter in BLOCK_TEXTURES.items():
+        path = ASSETS / "textures" / "block" / f"{name}.png"
+        save_png(painter(rng_for(name)), path)
+        print(f"wrote {path}")
+
+    emit_entity_textures()
+
     if write_json_files:
-        emit_item_def(ASSETS, "kupferwabe")
-        emit_item_model(ASSETS, "kupferwabe")
-        print("wrote item def + model JSON for kupferwabe")
+        for item_id in ("kupferwabe", "gruenspanpollen",
+                        "kupferbiene_spawn_egg", "gruenspanbiene_spawn_egg"):
+            emit_item_def(ASSETS, item_id)
+            emit_item_model(ASSETS, item_id)
+        print("wrote item def + model JSON")
 
 
 if __name__ == "__main__":

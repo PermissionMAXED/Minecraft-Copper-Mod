@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "B": "kupferbienen:kupferbluete",
+    "I": "minecraft:copper_ingot",
+    "W": "minecraft:honeycomb"
+  },
+  "pattern": [
+    "III",
+    "WBW",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "kupferbienen:kupferstock"
+  },
+  "type": "minecraft:crafting_shaped"
+}

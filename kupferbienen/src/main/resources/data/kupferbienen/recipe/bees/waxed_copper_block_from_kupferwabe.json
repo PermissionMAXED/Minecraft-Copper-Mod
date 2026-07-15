@@ -1,0 +1,16 @@
+{
+  "category": "building",
+  "key": {
+    "W": "kupferbienen:kupferwabe"
+  },
+  "pattern": [
+    "WWW",
+    "WWW",
+    "WWW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:waxed_copper_block"
+  },
+  "type": "minecraft:crafting_shaped"
+}

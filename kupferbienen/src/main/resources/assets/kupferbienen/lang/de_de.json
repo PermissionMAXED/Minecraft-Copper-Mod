@@ -1,4 +1,11 @@
 {
   "itemGroup.kupferbienen.main": "Kupferbienen",
-  "item.kupferbienen.kupferwabe": "Kupferwabe"
+  "item.kupferbienen.kupferwabe": "Kupferwabe",
+  "item.kupferbienen.gruenspanpollen": "Grünspanpollen",
+  "item.kupferbienen.kupferbiene_spawn_egg": "Kupferbiene-Spawn-Ei",
+  "item.kupferbienen.gruenspanbiene_spawn_egg": "Grünspanbiene-Spawn-Ei",
+  "block.kupferbienen.kupferbluete": "Kupferblüte",
+  "block.kupferbienen.kupferstock": "Kupferstock",
+  "entity.kupferbienen.kupferbiene": "Kupferbiene",
+  "entity.kupferbienen.gruenspanbiene": "Grünspanbiene"
 }

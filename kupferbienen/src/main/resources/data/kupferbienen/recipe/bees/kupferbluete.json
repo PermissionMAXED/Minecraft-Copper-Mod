@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:copper_nugget",
+    "minecraft:copper_nugget",
+    "#minecraft:small_flowers"
+  ],
+  "result": {
+    "count": 1,
+    "id": "kupferbienen:kupferbluete"
+  },
+  "type": "minecraft:crafting_shapeless"
+}
