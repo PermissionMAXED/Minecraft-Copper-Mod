@@ -75,6 +75,18 @@ STEM_GREEN = (0x4A, 0x8F, 0x3C)
 STEM_DARK = (0x2F, 0x66, 0x28)
 OUTLINE_DARK = (0x3B, 0x25, 0x10)
 
+# Potion glassware (bottles + splash flasks).
+GLASS = (0xBF, 0xD6, 0xE4)
+GLASS_DARK = (0x5C, 0x74, 0x86)
+GLASS_SHINE = (0xE8, 0xF4, 0xFA)
+CORK = (0x9C, 0x6B, 0x38)
+CORK_DARK = (0x6E, 0x49, 0x24)
+
+# Liquid palettes (dark, base, light) — fixed by the mod spec.
+SUD_LIQUID = ((0x5A, 0x3A, 0x18), (0x8C, 0x5A, 0x28), (0xB8, 0x73, 0x33))
+OXIDATION_LIQUID = ((0x2E, 0x70, 0x32), (0x43, 0xA0, 0x47), (0x7F, 0xD8, 0xA0))
+ENTOXIDATION_LIQUID = ((0xC9, 0x98, 0x50), (0xFF, 0xD9, 0xA0), (0xFF, 0xEF, 0xD0))
+
 
 # ---------------------------------------------------------------------------
 # Core helpers (copied from genlib.py, NS switched)
@@ -335,6 +347,91 @@ def tex_kupferbluete(rng: Random) -> Image.Image:
 
 
 # ---------------------------------------------------------------------------
+# Potion bottles + splash flasks (oxidation brewing chain)
+# ---------------------------------------------------------------------------
+
+def _bottle(rng: Random, liquid, flask: bool) -> Image.Image:
+    """16x16 glassware sprite. Drink bottle (flask=False): glass lip + tall neck over a
+    round body. Wurfphiole (flask=True): rounder/wider bulb with a cork stopper. The
+    liquid tri-tone fills the lower body; rng is consumed once per canvas pixel so the
+    stream (and thus the sprite) is a pure function of the seed."""
+    dark, base, light = liquid
+    img = blank()
+    if flask:
+        cx, cy, r = 7.5, 9.5, 4.8
+        neck_rows = (3, 4)
+        liquid_top = 8
+    else:
+        cx, cy, r = 7.5, 10.0, 4.2
+        neck_rows = (3, 4, 5)
+        liquid_top = 9
+
+    body = [[math.hypot(x - cx, y - cy) <= r for x in range(16)] for y in range(16)]
+    for y in neck_rows:
+        for x in (6, 7, 8, 9):
+            body[y][x] = True
+
+    for y in range(16):
+        for x in range(16):
+            shimmer = rng.random()  # consumed unconditionally: fixed rng stream
+            if not body[y][x]:
+                continue
+            rim = any(not (0 <= nx < 16 and 0 <= ny < 16 and body[ny][nx])
+                      for nx, ny in ((x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)))
+            if rim:
+                px(img, x, y, GLASS_DARK)
+            elif y >= liquid_top:
+                if shimmer < 0.15:
+                    px(img, x, y, dark)
+                elif shimmer > 0.88:
+                    px(img, x, y, light)
+                else:
+                    px(img, x, y, base)
+            else:
+                px(img, x, y, GLASS)
+
+    # Fixed shine glints on the upper-left glass, above the liquid line.
+    for sx, sy in ((5, liquid_top - 2), (5, liquid_top - 1)):
+        if 0 <= sy < 16 and body[sy][sx]:
+            px(img, sx, sy, GLASS_SHINE)
+
+    if flask:
+        # Cork stopper plugging the short neck.
+        for y in (1, 2):
+            for x in (6, 7, 8, 9):
+                px(img, x, y, CORK_DARK if (y == 1 or x in (6, 9)) else CORK)
+    else:
+        # Vanilla-style glass lip above the neck.
+        for x in range(5, 11):
+            px(img, x, 2, GLASS_DARK)
+        px(img, 6, 1, GLASS)
+        px(img, 7, 1, GLASS)
+        px(img, 8, 1, GLASS)
+        px(img, 9, 1, GLASS)
+    return img
+
+
+def tex_kupfersud(rng: Random) -> Image.Image:
+    return _bottle(rng, SUD_LIQUID, flask=False)
+
+
+def tex_trank_der_oxidation(rng: Random) -> Image.Image:
+    return _bottle(rng, OXIDATION_LIQUID, flask=False)
+
+
+def tex_trank_der_entoxidation(rng: Random) -> Image.Image:
+    return _bottle(rng, ENTOXIDATION_LIQUID, flask=False)
+
+
+def tex_wurfphiole_oxidation(rng: Random) -> Image.Image:
+    return _bottle(rng, OXIDATION_LIQUID, flask=True)
+
+
+def tex_wurfphiole_entoxidation(rng: Random) -> Image.Image:
+    return _bottle(rng, ENTOXIDATION_LIQUID, flask=True)
+
+
+# ---------------------------------------------------------------------------
 # Kupferstock (copper apiary) block faces: copper planks, side with entrance
 # ---------------------------------------------------------------------------
 
@@ -428,6 +525,11 @@ ITEM_TEXTURES = {
     "gruenspanpollen": tex_gruenspanpollen,
     "kupferbiene_spawn_egg": tex_kupferbiene_spawn_egg,
     "gruenspanbiene_spawn_egg": tex_gruenspanbiene_spawn_egg,
+    "kupfersud": tex_kupfersud,
+    "trank_der_oxidation": tex_trank_der_oxidation,
+    "trank_der_entoxidation": tex_trank_der_entoxidation,
+    "wurfphiole_oxidation": tex_wurfphiole_oxidation,
+    "wurfphiole_entoxidation": tex_wurfphiole_entoxidation,
 }
 
 BLOCK_TEXTURES = {
@@ -458,7 +560,9 @@ def main(argv: list) -> None:
 
     if write_json_files:
         for item_id in ("kupferwabe", "gruenspanpollen",
-                        "kupferbiene_spawn_egg", "gruenspanbiene_spawn_egg"):
+                        "kupferbiene_spawn_egg", "gruenspanbiene_spawn_egg",
+                        "kupfersud", "trank_der_oxidation", "trank_der_entoxidation",
+                        "wurfphiole_oxidation", "wurfphiole_entoxidation"):
             emit_item_def(ASSETS, item_id)
             emit_item_model(ASSETS, item_id)
         print("wrote item def + model JSON")

@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import net.sonic0810.kupferbienen.core.ModCreativeTab;
 import net.sonic0810.kupferbienen.feature.bees.BeesFeature;
+import net.sonic0810.kupferbienen.feature.potions.PotionsFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,5 +23,7 @@ public class Kupferbienen implements ModInitializer {
 		// ItemGroupEvents callbacks against the tab keys created there.
 		ModCreativeTab.init();
 		BeesFeature.init();
+		// After BeesFeature.init(): the brewing chain references KUPFERWABE/GRUENSPANPOLLEN.
+		PotionsFeature.init();
 	}
 }

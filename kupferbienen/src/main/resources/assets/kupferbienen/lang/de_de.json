@@ -4,8 +4,16 @@
   "item.kupferbienen.gruenspanpollen": "Grünspanpollen",
   "item.kupferbienen.kupferbiene_spawn_egg": "Kupferbiene-Spawn-Ei",
   "item.kupferbienen.gruenspanbiene_spawn_egg": "Grünspanbiene-Spawn-Ei",
+  "item.kupferbienen.kupfersud": "Kupfersud",
+  "item.kupferbienen.trank_der_oxidation": "Trank der Oxidation",
+  "item.kupferbienen.trank_der_entoxidation": "Trank der Entoxidation",
+  "item.kupferbienen.wurfphiole_oxidation": "Wurfphiole der Oxidation",
+  "item.kupferbienen.wurfphiole_entoxidation": "Wurfphiole der Entoxidation",
   "block.kupferbienen.kupferbluete": "Kupferblüte",
   "block.kupferbienen.kupferstock": "Kupferstock",
   "entity.kupferbienen.kupferbiene": "Kupferbiene",
-  "entity.kupferbienen.gruenspanbiene": "Grünspanbiene"
+  "entity.kupferbienen.gruenspanbiene": "Grünspanbiene",
+  "entity.kupferbienen.geworfene_phiole": "Geworfene Phiole",
+  "effect.kupferbienen.patina_haut": "Patina-Haut",
+  "effect.kupferbienen.blitzblank": "Blitzblank"
 }

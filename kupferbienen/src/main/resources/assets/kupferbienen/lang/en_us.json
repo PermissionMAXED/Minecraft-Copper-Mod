@@ -4,8 +4,16 @@
   "item.kupferbienen.gruenspanpollen": "Verdigris Pollen",
   "item.kupferbienen.kupferbiene_spawn_egg": "Copper Bee Spawn Egg",
   "item.kupferbienen.gruenspanbiene_spawn_egg": "Verdigris Bee Spawn Egg",
+  "item.kupferbienen.kupfersud": "Copper Mash",
+  "item.kupferbienen.trank_der_oxidation": "Potion of Oxidation",
+  "item.kupferbienen.trank_der_entoxidation": "Potion of Cleansing",
+  "item.kupferbienen.wurfphiole_oxidation": "Splash Vial of Oxidation",
+  "item.kupferbienen.wurfphiole_entoxidation": "Splash Vial of Cleansing",
   "block.kupferbienen.kupferbluete": "Copper Bloom",
   "block.kupferbienen.kupferstock": "Copper Apiary",
   "entity.kupferbienen.kupferbiene": "Copper Bee",
-  "entity.kupferbienen.gruenspanbiene": "Verdigris Bee"
+  "entity.kupferbienen.gruenspanbiene": "Verdigris Bee",
+  "entity.kupferbienen.geworfene_phiole": "Thrown Vial",
+  "effect.kupferbienen.patina_haut": "Patina Skin",
+  "effect.kupferbienen.blitzblank": "Polished"
 }
