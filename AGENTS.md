@@ -2,6 +2,8 @@
 
 A Minecraft **Fabric** mod (author: Sonic0810) for **Minecraft 1.21.9** (the "Copper Age", which ships the vanilla Copper Golem). Adds oxidizing copper armor & tools, a copper player statue, Dr.Pepper brewing with a DOOM kick, Dr.Pepper golems, and more.
 
+Note: the repo also contains a SECOND, fully standalone Fabric mod in `kupferbienen/` ("Kupferbienen" — copper bees + oxidation potions). It is its own Gradle root project (own `gradlew`, `settings.gradle`, run dir) and must be built/run from inside that directory; see `kupferbienen/AGENTS.md` for its commands and gotchas. Never run the root `./gradlew` against it or vice versa.
+
 ## Cursor Cloud specific instructions
 
 Environment: Java 21 + Gradle (via the committed `./gradlew` wrapper, Gradle 8.14) + Fabric Loom 1.13.6. **Yarn mappings** (`1.21.9+build.1`) are used, NOT Mojang mappings — vanilla classes/methods use Yarn names (e.g. `net.minecraft.item.Item`, `Item.Settings`, `Identifier.of`).
