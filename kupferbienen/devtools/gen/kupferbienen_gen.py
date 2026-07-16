@@ -28,6 +28,10 @@ Emits (always):
         across runs.
     src/main/resources/assets/kupferbienen/icon.png
         128x128 mod icon: copper bee motif on a dark background.
+    src/main/resources/assets/kupferbienen/textures/mob_effect/patina_haut.png
+        18x18 status-effect icon: copper lump overgrown by a verdigris crust.
+    src/main/resources/assets/kupferbienen/textures/mob_effect/blitzblank.png
+        18x18 status-effect icon: polished copper ingot with white sparkle glints.
 
 Emits (only with --write-json; the JSON in src/main/resources stays authoritative):
     assets/kupferbienen/items/<id>.json        (1.21.9 item model-definitions)
@@ -476,6 +480,72 @@ def tex_kupferstock_top(rng: Random) -> Image.Image:
 
 
 # ---------------------------------------------------------------------------
+# Mob-effect icons: 18x18 (the vanilla mob_effect sprite size). px()/blank()
+# hardcode 16x16, so these use the size-aware variants below.
+# ---------------------------------------------------------------------------
+
+def blank_sized(size: int) -> Image.Image:
+    return Image.new("RGBA", (size, size), (0, 0, 0, 0))
+
+
+def px_sized(img: Image.Image, x: int, y: int, color, alpha: int = 255) -> None:
+    w, h = img.size
+    if 0 <= x < w and 0 <= y < h:
+        img.putpixel((x, y), (color[0], color[1], color[2], alpha))
+
+
+def tex_patina_haut(rng: Random) -> Image.Image:
+    """18x18 effect icon: a copper lump overgrown by a verdigris crust that has taken
+    hold from the top-left; ragged dark rim. rng consumed once per canvas pixel."""
+    img = blank_sized(18)
+    cx, cy = 8.5, 9.0
+    for y in range(18):
+        for x in range(18):
+            noise = rng.random()  # consumed unconditionally: fixed rng stream
+            d = math.hypot(x - cx, (y - cy) * 1.1)
+            if d > 6.9:
+                continue
+            rim = d > 5.9
+            # Crust coverage fades from the top-left (overgrown) to the bottom-right
+            # (bare copper still showing).
+            crusted = noise > (x + y) / 34.0 * 0.9 + 0.18
+            if rim:
+                px_sized(img, x, y, VERDIGRIS_DARK if crusted else COPPER_DARK)
+            elif crusted:
+                px_sized(img, x, y, VERDIGRIS_LIGHT if noise > 0.93 else VERDIGRIS)
+            else:
+                px_sized(img, x, y, COPPER_LIGHT if noise < 0.08 else COPPER)
+    return img
+
+
+def tex_blitzblank(rng: Random) -> Image.Image:
+    """18x18 effect icon: a polished copper ingot (trapezoid, lit top face) with white
+    four-point sparkle glints at fixed positions."""
+    img = blank_sized(18)
+    for y in range(6, 14):
+        half = 4.0 + 3.0 * (y - 6) / 7.0  # widens toward the base
+        x0 = int(round(8.5 - half))
+        x1 = int(round(8.5 + half))
+        for x in range(x0, x1 + 1):
+            sheen = rng.random()  # consumed unconditionally: fixed rng stream
+            if x == x0 or x == x1 or y in (6, 13):
+                color = COPPER_DARK
+            elif y <= 8:
+                color = COPPER_LIGHT          # lit top face
+            elif sheen < 0.10:
+                color = COPPER_LIGHT          # polished speckle
+            else:
+                color = COPPER
+            px_sized(img, x, y, color)
+    white = (0xFF, 0xFF, 0xFF)
+    for sx, sy in ((4, 4), (13, 3), (15, 12), (2, 14)):
+        px_sized(img, sx, sy, white)
+        for ox, oy in ((-1, 0), (1, 0), (0, -1), (0, 1)):
+            px_sized(img, sx + ox, sy + oy, white, 200)
+    return img
+
+
+# ---------------------------------------------------------------------------
 # Entity textures: vanilla bee texture luminance-remapped (calamities_gen
 # recolor_entity_texture pattern: dark -> base -> light ramp, alpha unchanged)
 # ---------------------------------------------------------------------------
@@ -538,6 +608,11 @@ BLOCK_TEXTURES = {
     "kupferstock_top": tex_kupferstock_top,
 }
 
+MOB_EFFECT_TEXTURES = {
+    "patina_haut": tex_patina_haut,
+    "blitzblank": tex_blitzblank,
+}
+
 
 def main(argv: list) -> None:
     write_json_files = "--write-json" in argv
@@ -553,6 +628,10 @@ def main(argv: list) -> None:
         print(f"wrote {path}")
     for name, painter in BLOCK_TEXTURES.items():
         path = ASSETS / "textures" / "block" / f"{name}.png"
+        save_png(painter(rng_for(name)), path)
+        print(f"wrote {path}")
+    for name, painter in MOB_EFFECT_TEXTURES.items():
+        path = ASSETS / "textures" / "mob_effect" / f"{name}.png"
         save_png(painter(rng_for(name)), path)
         print(f"wrote {path}")
 

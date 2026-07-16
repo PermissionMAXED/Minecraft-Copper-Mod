@@ -1,0 +1,25 @@
+{
+  "parent": "kupferbienen:kupferbienen/trank",
+  "criteria": {
+    "converted_bee": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.kupferbienen.verwandlung.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "kupferbienen:wurfphiole_oxidation"
+    },
+    "title": {
+      "translate": "advancements.kupferbienen.verwandlung.title"
+    }
+  },
+  "requirements": [
+    [
+      "converted_bee"
+    ]
+  ]
+}

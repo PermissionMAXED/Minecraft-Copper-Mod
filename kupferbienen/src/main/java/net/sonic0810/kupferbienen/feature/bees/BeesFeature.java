@@ -6,17 +6,23 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.SpawnLocationTypes;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.SpawnRestriction;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.BeeEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.SpawnEggItem;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.Heightmap;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.biome.BiomeKeys;
 import net.sonic0810.kupferbienen.core.ModBlockEntities;
 import net.sonic0810.kupferbienen.core.ModBlocks;
@@ -79,17 +85,17 @@ public final class BeesFeature {
 	}
 
 	private static void registerBlocks() {
-		KUPFERBLUETE = ModBlocks.register("kupferbluete", Block::new,
+		KUPFERBLUETE = ModBlocks.register("kupferbluete", KupferblueteBlock::new,
 				AbstractBlock.Settings.create()
 						.noCollision()
 						.breakInstantly()
 						.sounds(BlockSoundGroup.GRASS),
-				true);
+				"tooltip.kupferbienen.kupferbluete");
 		KUPFERSTOCK = ModBlocks.register("kupferstock", KupferstockBlock::new,
 				AbstractBlock.Settings.create()
 						.strength(2.0f)
 						.sounds(BlockSoundGroup.WOOD),
-				true);
+				"tooltip.kupferbienen.kupferstock.1", "tooltip.kupferbienen.kupferstock.2");
 		KUPFERSTOCK_BLOCK_ENTITY = ModBlockEntities.register("kupferstock",
 				KupferstockBlockEntity::new, KUPFERSTOCK);
 	}
@@ -117,15 +123,19 @@ public final class BeesFeature {
 	private static void registerSpawning() {
 		// SpawnRestriction.register is private in vanilla but access-widened by Fabric's
 		// transitive access wideners (InfernoMobsFeature/MoltenFaunaFeature pattern). Vanilla
-		// registers NO SpawnRestriction entry for the bee (it only spawns with worldgen nests),
-		// so both bees use the standard animal predicate
+		// registers NO SpawnRestriction entry for the bee (it only spawns with worldgen nests).
+		// The Kupferbiene uses the standard animal predicate
 		// AnimalEntity::isValidNaturalSpawn(EntityType<? extends AnimalEntity>, WorldAccess,
 		// SpawnReason, BlockPos, Random) — assignable to SpawnPredicate<T> because
 		// ServerWorldAccess extends WorldAccess (both signatures verified via javap).
+		// The Gruenspanbiene is a cave dweller: the standard animal predicate (grass/light)
+		// near-never passes in LUSH/DRIPSTONE_CAVES, so it gets a cave-tuned predicate
+		// instead (below sea level, on stone/moss/dripstone/animal-spawnable floors, no
+		// light requirement — deliberate, caves are dark).
 		SpawnRestriction.register(KUPFERBIENE, SpawnLocationTypes.ON_GROUND,
 				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::isValidNaturalSpawn);
 		SpawnRestriction.register(GRUENSPANBIENE, SpawnLocationTypes.ON_GROUND,
-				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::isValidNaturalSpawn);
+				Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, BeesFeature::isValidGruenspanbieneSpawn);
 
 		BiomeModifications.addSpawn(
 				BiomeSelectors.includeByKey(BiomeKeys.FLOWER_FOREST, BiomeKeys.MEADOW,
@@ -134,5 +144,15 @@ public final class BeesFeature {
 		BiomeModifications.addSpawn(
 				BiomeSelectors.includeByKey(BiomeKeys.LUSH_CAVES, BiomeKeys.DRIPSTONE_CAVES),
 				SpawnGroup.CREATURE, GRUENSPANBIENE, 4, 1, 2);
+	}
+
+	/** Cave spawn predicate for the Gruenspanbiene (matches SpawnRestriction.SpawnPredicate). */
+	private static boolean isValidGruenspanbieneSpawn(EntityType<GruenspanbieneEntity> type,
+			ServerWorldAccess world, SpawnReason reason, BlockPos pos, Random random) {
+		BlockState floor = world.getBlockState(pos.down());
+		return pos.getY() < 63 && (floor.isIn(BlockTags.BASE_STONE_OVERWORLD)
+				|| floor.isIn(BlockTags.MOSS_REPLACEABLE)
+				|| floor.isIn(BlockTags.DRIPSTONE_REPLACEABLE_BLOCKS)
+				|| floor.isIn(BlockTags.ANIMALS_SPAWNABLE_ON));
 	}
 }

@@ -1,13 +1,20 @@
 package net.sonic0810.kupferbienen.feature.potions;
 
+import java.util.function.Consumer;
+
+import net.minecraft.component.type.TooltipDisplayComponent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.tooltip.TooltipType;
+import net.minecraft.registry.Registries;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
 
@@ -18,11 +25,21 @@ import net.minecraft.world.World;
  * splash-potion throw sound with the same randomized pitch, then on the server
  * {@code ProjectileEntity.spawnWithVelocity(creator, world, stack, user, -20.0F, 0.5F, 1.0F)}
  * (pitch offset -20, ThrowablePotionItem.POWER = 0.5), used-stat increment and
- * {@code decrementUnlessCreative}.
+ * {@code decrementUnlessCreative}. A gray {@code tooltip.kupferbienen.<id>} line describes
+ * the impact behavior (mitigates the bare "No Effects" potion-contents line).
  */
 public class WurfphioleItem extends BrewPotionItem {
 	public WurfphioleItem(Settings settings) {
 		super(settings);
+	}
+
+	@Override
+	public void appendTooltip(ItemStack stack, TooltipContext context,
+			TooltipDisplayComponent displayComponent, Consumer<Text> textConsumer, TooltipType type) {
+		super.appendTooltip(stack, context, displayComponent, textConsumer, type);
+		textConsumer.accept(Text.translatable(
+				"tooltip.kupferbienen." + Registries.ITEM.getId(this).getPath())
+				.formatted(Formatting.GRAY));
 	}
 
 	@Override

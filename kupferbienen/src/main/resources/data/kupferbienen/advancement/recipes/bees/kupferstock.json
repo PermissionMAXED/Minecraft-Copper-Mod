@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_kupferbluete": {
+      "conditions": {
+        "items": [
+          {
+            "items": "kupferbienen:kupferbluete"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "kupferbienen:bees/kupferstock"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_kupferbluete"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "kupferbienen:bees/kupferstock"
+    ]
+  }
+}

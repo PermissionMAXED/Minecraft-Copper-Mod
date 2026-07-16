@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_kupferwabe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "kupferbienen:kupferwabe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "kupferbienen:bees/copper_ingot_from_kupferwabe"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_kupferwabe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "kupferbienen:bees/copper_ingot_from_kupferwabe"
+    ]
+  }
+}

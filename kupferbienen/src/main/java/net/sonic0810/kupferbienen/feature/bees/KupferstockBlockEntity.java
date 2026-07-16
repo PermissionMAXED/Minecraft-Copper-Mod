@@ -10,12 +10,17 @@ import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.storage.ReadView;
 import net.minecraft.storage.WriteView;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 /**
@@ -24,6 +29,10 @@ import net.minecraft.world.World;
  * {@code 20 * min(beeCount, 5)} work units. At {@value #WORK_TARGET} units it produces one
  * Kupferwabe (20% chance of one Gruenspanpollen instead when a Gruenspanbiene contributed to
  * the cycle) into the first free slot of a 3-slot inventory.
+ *
+ * <p>Anti-stacking: a bee contributes to at most ONE apiary per scan — this block entity only
+ * counts a bee if it is the NEAREST Kupferstock within the bee's reach (ties broken by
+ * {@code BlockPos.asLong()}), see {@link #isNearestKupferstock}.
  *
  * <p>{@link SidedInventory}: extraction is allowed from every side for everything, insertion
  * never (verified signatures: getAvailableSlots/canInsert/canExtract) — so a hopper below
@@ -62,13 +71,17 @@ public class KupferstockBlockEntity extends BlockEntity implements SidedInventor
 		stock.scanCooldown = SCAN_INTERVAL_TICKS;
 
 		List<BeeEntity> bees = world.getEntitiesByClass(BeeEntity.class, new Box(pos).expand(RANGE),
-				bee -> bee.isAlive() && (bee instanceof KupferbieneEntity || bee instanceof GruenspanbieneEntity));
+				bee -> bee.isAlive() && (bee instanceof KupferbieneEntity || bee instanceof GruenspanbieneEntity)
+						&& stock.isNearestKupferstock(world, bee));
 		if (bees.isEmpty() || !hasKupferblueteNearby(world, pos)) {
 			return;
 		}
-		if (bees.stream().anyMatch(bee -> bee instanceof GruenspanbieneEntity)) {
+		boolean dirty = false;
+		if (!stock.gruenspanContributed && bees.stream().anyMatch(bee -> bee instanceof GruenspanbieneEntity)) {
 			stock.gruenspanContributed = true;
+			dirty = true;
 		}
+		int oldProgress = stock.progress;
 		stock.progress += SCAN_INTERVAL_TICKS * Math.min(bees.size(), MAX_COUNTED_BEES);
 		if (stock.progress >= WORK_TARGET) {
 			ItemStack product = stock.gruenspanContributed && world.getRandom().nextFloat() < GRUENSPAN_CHANCE
@@ -77,12 +90,49 @@ public class KupferstockBlockEntity extends BlockEntity implements SidedInventor
 			if (stock.insert(product)) {
 				stock.progress = 0;
 				stock.gruenspanContributed = false;
+				dirty = true;
+				if (world instanceof ServerWorld serverWorld) {
+					serverWorld.spawnParticles(ParticleTypes.WAX_ON,
+							pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5,
+							8, 0.3, 0.2, 0.3, 0.0);
+					serverWorld.playSound(null, pos, SoundEvents.BLOCK_BEEHIVE_WORK,
+							SoundCategory.BLOCKS, 1.0F, 1.0F);
+				}
 			} else {
-				// Inventory full: hold the finished cycle until a slot frees up.
+				// Inventory full: hold the finished cycle until a slot frees up. NOT dirty —
+				// held-at-target is already the persisted state, so no markDirty every second.
 				stock.progress = WORK_TARGET;
 			}
 		}
-		stock.markDirty();
+		if (stock.progress != oldProgress) {
+			dirty = true;
+		}
+		if (dirty) {
+			stock.markDirty();
+		}
+	}
+
+	/**
+	 * True when this block entity is the nearest Kupferstock within the bee's reach, so each
+	 * bee contributes to at most one apiary per scan. Radius is ±5 because the entity scan
+	 * ({@code new Box(pos).expand(4)}) reaches past 4 blocks at box corners. Ties are broken
+	 * deterministically by {@code BlockPos.asLong()}. {@code BlockPos.iterate} reuses a
+	 * Mutable — fine here, positions are only compared, never stored.
+	 */
+	private boolean isNearestKupferstock(World world, BeeEntity bee) {
+		Vec3d beePos = bee.getEntityPos();
+		double selfDist = this.pos.getSquaredDistance(beePos);
+		BlockPos beeBlock = bee.getBlockPos();
+		for (BlockPos p : BlockPos.iterate(beeBlock.add(-5, -5, -5), beeBlock.add(5, 5, 5))) {
+			if (p.equals(this.pos) || !world.getBlockState(p).isOf(BeesFeature.KUPFERSTOCK)) {
+				continue;
+			}
+			double d = p.getSquaredDistance(beePos);
+			if (d < selfDist || (d == selfDist && p.asLong() < this.pos.asLong())) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	private static boolean hasKupferblueteNearby(World world, BlockPos pos) {

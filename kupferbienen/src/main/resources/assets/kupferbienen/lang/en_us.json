@@ -15,5 +15,18 @@
   "entity.kupferbienen.gruenspanbiene": "Verdigris Bee",
   "entity.kupferbienen.geworfene_phiole": "Thrown Vial",
   "effect.kupferbienen.patina_haut": "Patina Skin",
-  "effect.kupferbienen.blitzblank": "Polished"
+  "effect.kupferbienen.blitzblank": "Polished",
+  "tooltip.kupferbienen.kupferstock.1": "Bees and a Copper Bloom within 4 blocks produce Copper Combs.",
+  "tooltip.kupferbienen.kupferstock.2": "Right-click with an empty hand to collect; hoppers drain from below; comparators read the fill level.",
+  "tooltip.kupferbienen.kupferbluete": "Copper bees pollinate it. Grows on dirt and grass.",
+  "tooltip.kupferbienen.wurfphiole_oxidation": "Oxidizes copper blocks on impact and turns Copper Bees into Verdigris Bees.",
+  "tooltip.kupferbienen.wurfphiole_entoxidation": "Scrapes copper blocks clean on impact and turns Verdigris Bees back into Copper Bees.",
+  "advancements.kupferbienen.root.title": "A Taste of Copper",
+  "advancements.kupferbienen.root.description": "Obtain a Copper Comb from a Copper Apiary",
+  "advancements.kupferbienen.kupfersud.title": "Brewing with Bees",
+  "advancements.kupferbienen.kupfersud.description": "Brew a Water Bottle with a Copper Comb into Copper Mash",
+  "advancements.kupferbienen.trank.title": "Oxidation Alchemy",
+  "advancements.kupferbienen.trank.description": "Brew Copper Mash with Verdigris Pollen or a Honeycomb into a potion",
+  "advancements.kupferbienen.verwandlung.title": "A New Patina",
+  "advancements.kupferbienen.verwandlung.description": "Convert a bee with a splash vial"
 }

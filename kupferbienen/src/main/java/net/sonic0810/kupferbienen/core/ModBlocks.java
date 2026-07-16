@@ -36,4 +36,19 @@ public final class ModBlocks {
 		}
 		return block;
 	}
+
+	/**
+	 * Like {@link #register(String, Function, AbstractBlock.Settings, boolean)} with a block
+	 * item, but the item is a {@link TooltipBlockItem} appending one gray translatable line
+	 * per tooltip key.
+	 */
+	public static Block register(String path, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings, String... tooltipKeys) {
+		RegistryKey<Block> key = RegistryKey.of(RegistryKeys.BLOCK, Kupferbienen.id(path));
+		Block block = factory.apply(settings.registryKey(key));
+		Registry.register(Registries.BLOCK, key, block);
+		RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, Kupferbienen.id(path));
+		Registry.register(Registries.ITEM, itemKey, new TooltipBlockItem(block,
+				new Item.Settings().registryKey(itemKey).useBlockPrefixedTranslationKey(), tooltipKeys));
+		return block;
+	}
 }

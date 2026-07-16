@@ -10,8 +10,8 @@ import net.minecraft.entity.effect.StatusEffectCategory;
  * {@code StatusEffect(StatusEffectCategory, int)} verified via javap.
  */
 public class BlitzblankEffect extends StatusEffect {
-	/** Pale polished-copper gold, matching the cleansing potion tint. */
-	public static final int COLOR = 0xFFC66E;
+	/** Pale polished-copper gold, matching the cleansing potion tint (ENTOXIDATION_COLOR). */
+	public static final int COLOR = 0xFFD9A0;
 
 	public BlitzblankEffect() {
 		super(StatusEffectCategory.BENEFICIAL, COLOR);

@@ -1,0 +1,32 @@
+{
+  "parent": "kupferbienen:kupferbienen/root",
+  "criteria": {
+    "has_kupfersud": {
+      "conditions": {
+        "items": [
+          {
+            "items": "kupferbienen:kupfersud"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.kupferbienen.kupfersud.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "kupferbienen:kupfersud"
+    },
+    "title": {
+      "translate": "advancements.kupferbienen.kupfersud.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_kupfersud"
+    ]
+  ]
+}
