@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:emberware",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:emberware_brick_stairs"
+  },
+  "type": "minecraft:stonecutting"
+}

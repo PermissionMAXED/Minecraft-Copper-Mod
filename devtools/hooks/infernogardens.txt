@@ -1,0 +1,17 @@
+# infernogardens feature hooks (format: devtools/hooks/README.md)
+
+[init]
+# After InfernoDimensionFeature + InfernoFloraFeature: the worldgen JSON places
+# their terrain/flora blocks (cinderstone grounds, scorched_stem fungus stems,
+# glowing_spore_block/fungal_light decor, ember_moss_carpet shelves).
+import net.sonic0810.copperinferno.feature.infernogardens.InfernoGardensFeature;
+		InfernoGardensFeature.init();
+
+[client-init]
+import net.sonic0810.copperinferno.feature.infernogardens.client.InfernoGardensFeatureClient;
+		InfernoGardensFeatureClient.initClient();
+
+[counts]
+worldgen-features: 25
+blocks: 20
+handbook-entries: 25

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "copper_inferno:block/polished_magmite",
+    "side": "copper_inferno:block/polished_magmite",
+    "top": "copper_inferno:block/polished_magmite"
+  }
+}

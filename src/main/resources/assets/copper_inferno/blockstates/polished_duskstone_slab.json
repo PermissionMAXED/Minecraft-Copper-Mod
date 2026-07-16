@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/polished_duskstone_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/polished_duskstone"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/polished_duskstone_slab_top"
+    }
+  }
+}

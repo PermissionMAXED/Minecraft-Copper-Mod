@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "P": "copper_inferno:fumarite_dust",
+    "V": "minecraft:flint"
+  },
+  "pattern": [
+    "V V",
+    " P ",
+    "V V"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:ignitium_dust"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:sugar",
+    "minecraft:sugar",
+    "minecraft:milk_bucket",
+    "copper_inferno:ash_pile"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:cinder_toffee"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

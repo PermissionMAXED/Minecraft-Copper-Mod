@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/magma_geode_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/magma_geode"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/magma_geode_slab_top"
+    }
+  }
+}

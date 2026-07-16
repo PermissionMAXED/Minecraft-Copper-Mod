@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/kindlerock_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/kindlerock"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/kindlerock_slab_top"
+    }
+  }
+}

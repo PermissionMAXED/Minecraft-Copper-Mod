@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "P": "copper_inferno:cindrium_dust",
+    "V": "minecraft:blaze_powder"
+  },
+  "pattern": [
+    "V V",
+    " P ",
+    "V V"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:pyrium_dust"
+  },
+  "type": "minecraft:crafting_shaped"
+}

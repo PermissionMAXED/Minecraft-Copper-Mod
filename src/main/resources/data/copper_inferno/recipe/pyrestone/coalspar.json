@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:cindershale",
+    "S": "minecraft:coal_block"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:coalspar"
+  },
+  "type": "minecraft:crafting_shaped"
+}

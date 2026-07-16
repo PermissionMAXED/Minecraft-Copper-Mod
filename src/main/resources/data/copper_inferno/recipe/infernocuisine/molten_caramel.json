@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:sugar",
+    "minecraft:sugar",
+    "minecraft:sugar",
+    "minecraft:magma_cream"
+  ],
+  "result": {
+    "count": 3,
+    "id": "copper_inferno:molten_caramel"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

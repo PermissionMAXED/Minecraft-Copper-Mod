@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:sulfur_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "copper_inferno:brimstone"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

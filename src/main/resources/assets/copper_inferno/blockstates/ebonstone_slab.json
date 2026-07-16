@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/ebonstone_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/ebonstone"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/ebonstone_slab_top"
+    }
+  }
+}

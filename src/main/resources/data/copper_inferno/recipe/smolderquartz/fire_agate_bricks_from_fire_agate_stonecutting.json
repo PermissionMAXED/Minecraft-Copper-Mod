@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:fire_agate",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:fire_agate_bricks"
+  },
+  "type": "minecraft:stonecutting"
+}

@@ -1,0 +1,10 @@
+{
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": "copper_inferno:vitrified_ash_bricks",
+  "result": {
+    "id": "copper_inferno:cracked_vitrified_ash_bricks"
+  },
+  "type": "minecraft:smelting"
+}

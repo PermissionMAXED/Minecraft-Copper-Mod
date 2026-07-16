@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:blistered_bronze",
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:polished_blistered_bronze_slab"
+  },
+  "type": "minecraft:stonecutting"
+}

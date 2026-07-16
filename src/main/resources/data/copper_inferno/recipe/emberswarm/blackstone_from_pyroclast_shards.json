@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:pyroclast_shard",
+    "copper_inferno:pyroclast_shard"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:blackstone"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

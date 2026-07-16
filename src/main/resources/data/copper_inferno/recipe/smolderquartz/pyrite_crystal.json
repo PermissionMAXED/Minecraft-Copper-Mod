@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:magma_geode",
+    "S": "minecraft:raw_gold"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:pyrite_crystal"
+  },
+  "type": "minecraft:crafting_shaped"
+}

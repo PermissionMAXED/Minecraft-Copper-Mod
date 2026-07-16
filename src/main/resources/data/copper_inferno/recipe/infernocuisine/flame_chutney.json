@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glass_bottle",
+    "minecraft:apple",
+    "minecraft:blaze_powder",
+    "minecraft:sugar"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:flame_chutney"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

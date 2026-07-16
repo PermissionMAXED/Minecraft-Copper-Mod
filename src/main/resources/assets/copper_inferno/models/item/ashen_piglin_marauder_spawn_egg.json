@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "copper_inferno:item/ashen_piglin_marauder_spawn_egg"
+  }
+}

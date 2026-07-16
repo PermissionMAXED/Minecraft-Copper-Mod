@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:basalt_scale",
+    "copper_inferno:basalt_scale",
+    "copper_inferno:basalt_scale",
+    "copper_inferno:basalt_scale"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:basalt"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

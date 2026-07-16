@@ -1,0 +1,15 @@
+{
+  "category": "equipment",
+  "key": {
+    "X": "copper_inferno:cinderforge_ingot"
+  },
+  "pattern": [
+    "X X",
+    "X X"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:cinderforge_boots"
+  },
+  "type": "minecraft:crafting_shaped"
+}

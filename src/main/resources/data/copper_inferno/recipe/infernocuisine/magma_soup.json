@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:bowl",
+    "minecraft:magma_cream",
+    "minecraft:red_mushroom"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:magma_soup"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

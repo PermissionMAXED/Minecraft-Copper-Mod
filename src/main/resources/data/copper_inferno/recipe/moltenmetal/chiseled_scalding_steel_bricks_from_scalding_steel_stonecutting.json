@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:scalding_steel",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:chiseled_scalding_steel_bricks"
+  },
+  "type": "minecraft:stonecutting"
+}

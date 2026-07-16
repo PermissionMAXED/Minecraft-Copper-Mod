@@ -1,0 +1,9 @@
+{
+  "addition": "copper_inferno:pyrite_ingot",
+  "base": "copper_inferno:ember_steel_pickaxe",
+  "result": {
+    "id": "copper_inferno:pyrite_pickaxe"
+  },
+  "template": "copper_inferno:infernium_upgrade_smithing_template",
+  "type": "minecraft:smithing_transform"
+}

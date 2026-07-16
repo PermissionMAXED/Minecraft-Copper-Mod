@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "I": "copper_inferno:slagsteel_ingot",
+    "X": "minecraft:copper_ingot"
+  },
+  "pattern": [
+    " I ",
+    "IXI",
+    " I "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:slagsteel_medallion"
+  },
+  "type": "minecraft:crafting_shaped"
+}

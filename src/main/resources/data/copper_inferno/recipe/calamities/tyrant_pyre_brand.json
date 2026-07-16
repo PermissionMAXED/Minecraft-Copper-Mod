@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "A": "minecraft:blaze_rod",
+    "B": "copper_inferno:inferno_powder",
+    "C": "minecraft:campfire"
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:tyrant_pyre_brand"
+  },
+  "type": "minecraft:crafting_shaped"
+}

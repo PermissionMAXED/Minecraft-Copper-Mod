@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:furnace_steel",
+    "S": "minecraft:prismarine_shard"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:quench_iron"
+  },
+  "type": "minecraft:crafting_shaped"
+}

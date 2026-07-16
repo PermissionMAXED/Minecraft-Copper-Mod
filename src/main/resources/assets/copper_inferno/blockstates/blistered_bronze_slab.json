@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/blistered_bronze_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/blistered_bronze"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/blistered_bronze_slab_top"
+    }
+  }
+}

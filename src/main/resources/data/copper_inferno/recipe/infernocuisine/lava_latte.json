@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glass_bottle",
+    "minecraft:milk_bucket",
+    "minecraft:blaze_powder"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:lava_latte"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

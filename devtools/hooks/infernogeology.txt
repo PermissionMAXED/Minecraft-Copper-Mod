@@ -1,0 +1,34 @@
+# infernogeology feature hooks (format: devtools/hooks/README.md)
+
+[init]
+# After InfernoDimensionFeature.init() (the worldgen JSON targets cinderstone
+# and the placed features join the infernodim biomes' generation steps).
+import net.sonic0810.copperinferno.feature.infernogeology.InfernoGeologyFeature;
+		InfernoGeologyFeature.init();
+
+[requires-tool]
+ember_iron_ore
+ash_gold_ore
+slag_copper_ore
+cinder_quartz_ore
+brimstone_ore
+cinder_lapis_ore
+smolder_redstone_ore
+deep_infernium_ore
+scorched_debris
+ashfall_tuff
+ember_pumice
+scoria
+geyserite
+hardened_slag
+sulfur_block
+
+[recipe-dir]
+infernogeology
+
+[counts]
+worldgen-features: 25
+blocks: 18
+items: 1
+recipes: 4
+handbook-entries: 29

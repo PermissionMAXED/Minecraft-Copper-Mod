@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:magma_geode",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:magma_geode_brick_stairs"
+  },
+  "type": "minecraft:stonecutting"
+}

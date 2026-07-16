@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:ember_dough",
+    "minecraft:egg",
+    "minecraft:milk_bucket",
+    "copper_inferno:ash_pile"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:cinder_quiche"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

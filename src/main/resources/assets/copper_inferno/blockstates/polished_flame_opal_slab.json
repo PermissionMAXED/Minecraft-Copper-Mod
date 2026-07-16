@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/polished_flame_opal_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/polished_flame_opal"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/polished_flame_opal_slab_top"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "copper_inferno:block/chiseled_cinder_crystal_bricks"
+  }
+}

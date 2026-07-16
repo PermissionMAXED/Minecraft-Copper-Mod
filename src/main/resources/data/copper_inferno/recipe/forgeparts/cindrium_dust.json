@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "P": "copper_inferno:emberite_dust",
+    "V": "minecraft:charcoal"
+  },
+  "pattern": [
+    "V V",
+    " P ",
+    "V V"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:cindrium_dust"
+  },
+  "type": "minecraft:crafting_shaped"
+}

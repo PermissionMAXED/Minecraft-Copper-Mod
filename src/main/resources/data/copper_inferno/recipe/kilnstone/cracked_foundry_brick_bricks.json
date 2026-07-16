@@ -1,0 +1,10 @@
+{
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": "copper_inferno:foundry_brick_bricks",
+  "result": {
+    "id": "copper_inferno:cracked_foundry_brick_bricks"
+  },
+  "type": "minecraft:smelting"
+}

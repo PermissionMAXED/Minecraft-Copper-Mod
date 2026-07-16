@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:pyroclast_stone",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:polished_pyroclast_stone_stairs"
+  },
+  "type": "minecraft:stonecutting"
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "copper_inferno:block/cinderdark_stone",
+    "side": "copper_inferno:block/cinderdark_stone",
+    "top": "copper_inferno:block/cinderdark_stone"
+  }
+}

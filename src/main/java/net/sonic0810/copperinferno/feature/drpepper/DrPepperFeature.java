@@ -97,7 +97,7 @@ public final class DrPepperFeature {
 						.build()));
 
 		// All three entries are drinks, listed in brewing-progression order.
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.FOODS_KEY).register(entries -> {
 			entries.add(DARK_BREW);
 			entries.add(SWEET_DARK_BREW);
 			entries.add(DR_PEPPER);

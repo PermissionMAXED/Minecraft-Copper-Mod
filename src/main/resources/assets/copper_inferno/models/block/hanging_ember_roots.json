@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "copper_inferno:block/hanging_ember_roots"
+  }
+}

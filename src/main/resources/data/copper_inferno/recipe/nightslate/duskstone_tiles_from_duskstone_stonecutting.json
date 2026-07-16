@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:duskstone",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:duskstone_tiles"
+  },
+  "type": "minecraft:stonecutting"
+}

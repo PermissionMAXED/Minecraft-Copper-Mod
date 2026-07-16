@@ -1,0 +1,18 @@
+# moltenfauna feature hooks (format: devtools/hooks/README.md)
+
+[init]
+import net.sonic0810.copperinferno.feature.moltenfauna.MoltenFaunaFeature;
+		MoltenFaunaFeature.init();
+
+[client-init]
+import net.sonic0810.copperinferno.feature.moltenfauna.client.MoltenFaunaFeatureClient;
+		MoltenFaunaFeatureClient.initClient();
+
+[recipe-dir]
+moltenfauna
+
+[counts]
+mobs: 25
+items: 50
+recipes: 25
+handbook-entries: 50

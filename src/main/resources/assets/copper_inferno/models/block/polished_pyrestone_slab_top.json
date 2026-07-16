@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "copper_inferno:block/polished_pyrestone",
+    "side": "copper_inferno:block/polished_pyrestone",
+    "top": "copper_inferno:block/polished_pyrestone"
+  }
+}

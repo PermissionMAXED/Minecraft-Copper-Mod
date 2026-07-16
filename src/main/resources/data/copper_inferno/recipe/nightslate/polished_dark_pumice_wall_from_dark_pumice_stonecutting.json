@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:dark_pumice",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:polished_dark_pumice_wall"
+  },
+  "type": "minecraft:stonecutting"
+}

@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:ash_chitin",
+    "copper_inferno:ash_chitin"
+  ],
+  "result": {
+    "count": 2,
+    "id": "minecraft:string"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

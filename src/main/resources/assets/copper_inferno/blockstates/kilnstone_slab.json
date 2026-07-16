@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/kilnstone_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/kilnstone"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/kilnstone_slab_top"
+    }
+  }
+}

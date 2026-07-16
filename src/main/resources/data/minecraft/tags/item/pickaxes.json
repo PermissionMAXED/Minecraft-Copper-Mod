@@ -1,8 +1,14 @@
 {
   "values": [
+    "copper_inferno:cinderforge_pickaxe",
+    "copper_inferno:ember_steel_pickaxe",
     "copper_inferno:exposed_copper_pickaxe",
+    "copper_inferno:infernal_alloy_pickaxe",
     "copper_inferno:infernium_pickaxe",
+    "copper_inferno:molten_titan_pickaxe",
     "copper_inferno:oxidized_copper_pickaxe",
+    "copper_inferno:pyrite_pickaxe",
+    "copper_inferno:slagsteel_pickaxe",
     "copper_inferno:weathered_copper_pickaxe"
   ]
 }

@@ -1,0 +1,16 @@
+{
+  "config": {
+    "block": "copper_inferno:verdigris_lichen",
+    "can_be_placed_on": [
+      "copper_inferno:cinderstone",
+      "copper_inferno:slagstone",
+      "copper_inferno:cobbled_cinderstone"
+    ],
+    "can_place_on_ceiling": true,
+    "can_place_on_floor": false,
+    "can_place_on_wall": true,
+    "chance_of_spreading": 0.5,
+    "search_range": 20
+  },
+  "type": "minecraft:multiface_growth"
+}

@@ -99,7 +99,7 @@ public final class InfernoBossFeature {
 		INFERNO_TITAN_SPAWN_EGG = ModItems.register("inferno_titan_spawn_egg", SpawnEggItem::new,
 				new Item.Settings().spawnEgg(INFERNO_TITAN));
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MOBS_KEY).register(entries -> {
 			// Summon items, then drops/trophy, then the spawn eggs.
 			entries.add(OXIDIZER_CORE);
 			entries.add(TITAN_SIGIL);

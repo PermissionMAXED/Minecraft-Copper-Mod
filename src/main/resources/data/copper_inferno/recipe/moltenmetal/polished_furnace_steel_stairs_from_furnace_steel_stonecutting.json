@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:furnace_steel",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:polished_furnace_steel_stairs"
+  },
+  "type": "minecraft:stonecutting"
+}

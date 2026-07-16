@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "copper_inferno:block/terracotta_slag_bricks",
+    "side": "copper_inferno:block/terracotta_slag_bricks",
+    "top": "copper_inferno:block/terracotta_slag_bricks"
+  }
+}

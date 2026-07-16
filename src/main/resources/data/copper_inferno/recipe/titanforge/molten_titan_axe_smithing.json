@@ -1,0 +1,9 @@
+{
+  "addition": "copper_inferno:molten_titan_ingot",
+  "base": "copper_inferno:cinderforge_axe",
+  "result": {
+    "id": "copper_inferno:molten_titan_axe"
+  },
+  "template": "copper_inferno:infernium_upgrade_smithing_template",
+  "type": "minecraft:smithing_transform"
+}

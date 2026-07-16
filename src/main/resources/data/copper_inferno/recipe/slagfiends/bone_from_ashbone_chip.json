@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:ashbone_chip",
+    "copper_inferno:ashbone_chip"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:bone"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

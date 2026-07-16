@@ -1,0 +1,116 @@
+# charwood feature hooks (format: devtools/hooks/README.md)
+
+[init]
+import net.sonic0810.copperinferno.feature.charwood.CharwoodFeature;
+		CharwoodFeature.init();
+
+[families]
+charwood, charwood
+polished_charwood, polished_charwood
+charwood_bricks, charwood_brick
+emberbark, emberbark
+polished_emberbark, polished_emberbark
+emberbark_bricks, emberbark_brick
+sootbark, sootbark
+polished_sootbark, polished_sootbark
+sootbark_bricks, sootbark_brick
+cinderlog_block, cinderlog_block
+polished_cinderlog_block, polished_cinderlog_block
+cinderlog_block_bricks, cinderlog_block_brick
+blazewood, blazewood
+polished_blazewood, polished_blazewood
+blazewood_bricks, blazewood_brick
+magmawood, magmawood
+polished_magmawood, polished_magmawood
+magmawood_bricks, magmawood_brick
+kindlewood, kindlewood
+polished_kindlewood, polished_kindlewood
+kindlewood_bricks, kindlewood_brick
+pyrewood, pyrewood
+polished_pyrewood, polished_pyrewood
+pyrewood_bricks, pyrewood_brick
+smolderwood, smolderwood
+polished_smolderwood, polished_smolderwood
+smolderwood_bricks, smolderwood_brick
+glowbark, glowbark
+polished_glowbark, polished_glowbark
+glowbark_bricks, glowbark_brick
+coalwood, coalwood
+polished_coalwood, polished_coalwood
+coalwood_bricks, coalwood_brick
+tarwood, tarwood
+polished_tarwood, polished_tarwood
+tarwood_bricks, tarwood_brick
+brimwood, brimwood
+polished_brimwood, polished_brimwood
+brimwood_bricks, brimwood_brick
+flarewood, flarewood
+polished_flarewood, polished_flarewood
+flarewood_bricks, flarewood_brick
+
+[requires-tool]
+charwood_tiles
+cracked_charwood_bricks
+chiseled_charwood_bricks
+charwood_pillar
+emberbark_tiles
+cracked_emberbark_bricks
+chiseled_emberbark_bricks
+emberbark_pillar
+sootbark_tiles
+cracked_sootbark_bricks
+chiseled_sootbark_bricks
+sootbark_pillar
+cinderlog_block_tiles
+cracked_cinderlog_block_bricks
+chiseled_cinderlog_block_bricks
+cinderlog_block_pillar
+blazewood_tiles
+cracked_blazewood_bricks
+chiseled_blazewood_bricks
+blazewood_pillar
+magmawood_tiles
+cracked_magmawood_bricks
+chiseled_magmawood_bricks
+magmawood_pillar
+kindlewood_tiles
+cracked_kindlewood_bricks
+chiseled_kindlewood_bricks
+kindlewood_pillar
+pyrewood_tiles
+cracked_pyrewood_bricks
+chiseled_pyrewood_bricks
+pyrewood_pillar
+smolderwood_tiles
+cracked_smolderwood_bricks
+chiseled_smolderwood_bricks
+smolderwood_pillar
+glowbark_tiles
+cracked_glowbark_bricks
+chiseled_glowbark_bricks
+glowbark_pillar
+coalwood_tiles
+cracked_coalwood_bricks
+chiseled_coalwood_bricks
+coalwood_pillar
+tarwood_tiles
+cracked_tarwood_bricks
+chiseled_tarwood_bricks
+tarwood_pillar
+brimwood_tiles
+cracked_brimwood_bricks
+chiseled_brimwood_bricks
+brimwood_pillar
+flarewood_tiles
+cracked_flarewood_bricks
+chiseled_flarewood_bricks
+flarewood_pillar
+
+[recipe-dir]
+charwood
+
+[counts]
+blocks: 224
+items: 0
+recipes: 420
+handbook-entries: 462

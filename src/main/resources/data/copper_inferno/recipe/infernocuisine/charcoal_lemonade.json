@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glass_bottle",
+    "minecraft:sugar",
+    "minecraft:charcoal",
+    "minecraft:glow_berries"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:charcoal_lemonade"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

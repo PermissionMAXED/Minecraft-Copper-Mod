@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glass_bottle",
+    "minecraft:sugar",
+    "minecraft:sugar",
+    "copper_inferno:ash_pile"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:cinder_syrup"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

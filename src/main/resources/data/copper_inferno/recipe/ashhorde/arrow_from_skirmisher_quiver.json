@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:skirmisher_quiver"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:arrow"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

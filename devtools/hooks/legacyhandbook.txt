@@ -1,0 +1,15 @@
+# legacyhandbook feature hooks (format: devtools/hooks/README.md)
+
+[init]
+# Handbook-only feature (no blocks/items/recipes of its own): registers handbook
+# entries for the 12 legacy recipe dirs + 4 lore pages. Insert IMMEDIATELY BEFORE
+# HandbookFeature.init(); (HandbookFeature stays LAST).
+# devtools/check_handbook.py "legacy coverage" group:
+# FEATURE_PKGS += ["masonry", "sodablocks", "materials", "decostone", "foods",
+#                  "inferno", "music", "utilityblocks", "glasslight", "gear",
+#                  "extras", "statue", "legacyhandbook"]
+import net.sonic0810.copperinferno.feature.legacyhandbook.LegacyHandbookFeature;
+		LegacyHandbookFeature.init();
+
+[counts]
+handbook-entries: 224

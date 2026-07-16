@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:crucible_stone",
+    "S": "minecraft:tuff"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:slagware"
+  },
+  "type": "minecraft:crafting_shaped"
+}

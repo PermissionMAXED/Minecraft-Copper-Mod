@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:flame_opal",
+    "S": "minecraft:amethyst_shard"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:ember_prism"
+  },
+  "type": "minecraft:crafting_shaped"
+}

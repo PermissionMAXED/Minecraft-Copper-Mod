@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "kupferbienen:kupferwabe",
+    "kupferbienen:kupferwabe",
+    "kupferbienen:kupferwabe"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:copper_ingot"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "copper_inferno:block/quench_iron_bricks",
+    "side": "copper_inferno:block/quench_iron_bricks",
+    "top": "copper_inferno:block/quench_iron_bricks"
+  }
+}

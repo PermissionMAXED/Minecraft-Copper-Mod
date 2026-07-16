@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:cinder_batter",
+    "minecraft:sugar",
+    "copper_inferno:ash_pile"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ash_cupcake"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

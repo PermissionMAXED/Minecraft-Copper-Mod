@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:flame_opal",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:chiseled_flame_opal_bricks"
+  },
+  "type": "minecraft:stonecutting"
+}

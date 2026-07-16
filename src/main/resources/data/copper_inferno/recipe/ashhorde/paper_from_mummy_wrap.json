@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:mummy_wrap"
+  ],
+  "result": {
+    "count": 2,
+    "id": "minecraft:paper"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

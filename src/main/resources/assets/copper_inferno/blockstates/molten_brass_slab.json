@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/molten_brass_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/molten_brass"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/molten_brass_slab_top"
+    }
+  }
+}

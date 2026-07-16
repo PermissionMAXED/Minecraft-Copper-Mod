@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:nightslate",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:nightslate_wall"
+  },
+  "type": "minecraft:stonecutting"
+}

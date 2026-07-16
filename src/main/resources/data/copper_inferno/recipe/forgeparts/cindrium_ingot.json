@@ -1,0 +1,10 @@
+{
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "ingredient": "copper_inferno:cindrium_dust",
+  "result": {
+    "id": "copper_inferno:cindrium_ingot"
+  },
+  "type": "minecraft:smelting"
+}

@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:cinderbound_shackle"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:iron_nugget"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

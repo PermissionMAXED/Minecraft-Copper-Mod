@@ -1,0 +1,34 @@
+{
+  "criteria": {
+    "has_kupferwabe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "kupferbienen:kupferwabe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "minecraft:gui/advancements/backgrounds/husbandry",
+    "description": {
+      "translate": "advancements.kupferbienen.root.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "kupferbienen:kupferwabe"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.kupferbienen.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_kupferwabe"
+    ]
+  ]
+}

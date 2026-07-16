@@ -1,0 +1,10 @@
+{
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": "copper_inferno:magma_geode_bricks",
+  "result": {
+    "id": "copper_inferno:cracked_magma_geode_bricks"
+  },
+  "type": "minecraft:smelting"
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/sootware_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/sootware"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/sootware_slab_top"
+    }
+  }
+}

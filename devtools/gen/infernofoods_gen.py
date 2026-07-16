@@ -411,7 +411,7 @@ LANG_DE = {
     "roasted_ember_fungus": "Ger\u00f6steter Glutpilz",
     "ash_bread": "Aschebrot",
     "smolder_stew": "Schweleintopf",
-    "cinder_candy": "Zinderbonbon",
+    "cinder_candy": "Zunderbonbon",
     "strider_escargot": "Schreiter-Escargot",
     "infernium_apple": "Infernium-Apfel",
     "ember_jam": "Glutmarmelade",

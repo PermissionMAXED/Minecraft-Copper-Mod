@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:firebrick_stone",
+    "S": "minecraft:charcoal"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:glazed_cinder"
+  },
+  "type": "minecraft:crafting_shaped"
+}

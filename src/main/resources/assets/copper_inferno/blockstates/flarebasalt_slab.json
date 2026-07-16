@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/flarebasalt_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/flarebasalt"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/flarebasalt_slab_top"
+    }
+  }
+}

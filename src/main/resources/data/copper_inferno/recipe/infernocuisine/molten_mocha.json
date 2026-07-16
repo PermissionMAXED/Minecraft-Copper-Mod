@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glass_bottle",
+    "minecraft:cocoa_beans",
+    "minecraft:magma_cream"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:molten_mocha"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

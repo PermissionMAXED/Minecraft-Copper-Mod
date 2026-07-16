@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:baked_ash_block",
+    "S": "minecraft:iron_nugget"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:foundry_brick"
+  },
+  "type": "minecraft:crafting_shaped"
+}

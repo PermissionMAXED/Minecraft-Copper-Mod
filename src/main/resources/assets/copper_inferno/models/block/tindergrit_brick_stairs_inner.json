@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "copper_inferno:block/tindergrit_bricks",
+    "side": "copper_inferno:block/tindergrit_bricks",
+    "top": "copper_inferno:block/tindergrit_bricks"
+  }
+}

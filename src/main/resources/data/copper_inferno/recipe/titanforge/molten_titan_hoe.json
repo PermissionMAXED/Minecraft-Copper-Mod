@@ -1,0 +1,17 @@
+{
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:stick",
+    "X": "copper_inferno:molten_titan_ingot"
+  },
+  "pattern": [
+    "XX",
+    " #",
+    " #"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:molten_titan_hoe"
+  },
+  "type": "minecraft:crafting_shaped"
+}

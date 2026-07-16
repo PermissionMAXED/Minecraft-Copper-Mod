@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/blazewood_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/blazewood"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/blazewood_slab_top"
+    }
+  }
+}

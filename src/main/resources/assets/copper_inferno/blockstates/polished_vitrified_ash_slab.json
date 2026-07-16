@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/polished_vitrified_ash_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/polished_vitrified_ash"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/polished_vitrified_ash_slab_top"
+    }
+  }
+}

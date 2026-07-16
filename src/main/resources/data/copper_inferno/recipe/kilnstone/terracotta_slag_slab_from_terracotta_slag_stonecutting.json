@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:terracotta_slag",
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:terracotta_slag_slab"
+  },
+  "type": "minecraft:stonecutting"
+}

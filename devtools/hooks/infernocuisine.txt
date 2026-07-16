@@ -1,0 +1,15 @@
+# infernocuisine feature hooks (format: devtools/hooks/README.md)
+
+[init]
+# After MaterialsFeature/InfernoFeature/InfernoFloraFeature/InfernoFoodsFeature:
+# recipes consume ember_dust, slag_chunk, ash_pile and ember_berries.
+import net.sonic0810.copperinferno.feature.infernocuisine.InfernoCuisineFeature;
+		InfernoCuisineFeature.init();
+
+[recipe-dir]
+infernocuisine
+
+[counts]
+items: 100
+recipes: 112
+handbook-entries: 113

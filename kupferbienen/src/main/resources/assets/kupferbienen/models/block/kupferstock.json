@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "kupferbienen:block/kupferstock_top",
+    "side": "kupferbienen:block/kupferstock_side",
+    "top": "kupferbienen:block/kupferstock_top"
+  }
+}

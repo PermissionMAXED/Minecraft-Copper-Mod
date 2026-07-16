@@ -1,0 +1,10 @@
+{
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": "copper_inferno:flarewood_bricks",
+  "result": {
+    "id": "copper_inferno:cracked_flarewood_bricks"
+  },
+  "type": "minecraft:smelting"
+}

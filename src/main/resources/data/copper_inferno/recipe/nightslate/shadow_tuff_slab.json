@@ -1,0 +1,14 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:shadow_tuff"
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "count": 6,
+    "id": "copper_inferno:shadow_tuff_slab"
+  },
+  "type": "minecraft:crafting_shaped"
+}

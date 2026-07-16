@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:cinderhide_scrap",
+    "copper_inferno:cinderhide_scrap"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:leather"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

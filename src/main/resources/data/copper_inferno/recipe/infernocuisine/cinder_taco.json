@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:bread",
+    "copper_inferno:cinder_bacon",
+    "copper_inferno:ash_pile"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:cinder_taco"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

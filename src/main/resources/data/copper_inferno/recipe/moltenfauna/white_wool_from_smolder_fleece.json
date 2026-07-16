@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:smolder_fleece"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:white_wool"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

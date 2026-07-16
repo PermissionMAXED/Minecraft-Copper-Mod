@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:magma_steak",
+    "copper_inferno:ember_dust"
+  ],
+  "result": {
+    "count": 3,
+    "id": "copper_inferno:ember_jerky"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

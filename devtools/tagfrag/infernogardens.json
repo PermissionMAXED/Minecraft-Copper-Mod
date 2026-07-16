@@ -1,0 +1,10 @@
+{
+  "block/mineable/hoe": [
+    "copper_inferno:embercap_block",
+    "copper_inferno:gloomcap_block"
+  ],
+  "block/mineable/pickaxe": [
+    "copper_inferno:cinder_crystal_block",
+    "copper_inferno:verdigris_crystal_block"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "category": "equipment",
+  "key": {
+    "X": "copper_inferno:infernal_alloy_ingot"
+  },
+  "pattern": [
+    "XXX",
+    "X X",
+    "X X"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:infernal_alloy_leggings"
+  },
+  "type": "minecraft:crafting_shaped"
+}

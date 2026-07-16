@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:sweet_berries",
+    "copper_inferno:ash_pile"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:ash_date"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glass_bottle",
+    "minecraft:glow_berries",
+    "minecraft:sweet_berries",
+    "minecraft:blaze_powder"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:inferno_punch"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

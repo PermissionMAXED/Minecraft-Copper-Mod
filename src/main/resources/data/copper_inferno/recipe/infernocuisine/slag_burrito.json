@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:bread",
+    "copper_inferno:slag_ribs",
+    "copper_inferno:magma_salsa"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:slag_burrito"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

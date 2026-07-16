@@ -11,6 +11,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import net.sonic0810.copperinferno.feature.infernodim2.InfernoDim2Feature;
 
 /**
  * Flint-and-steel-like igniter for the Inferno portal. Clicking an infernium portal frame
@@ -84,7 +85,10 @@ public class InferniumIgniterItem extends Item {
 	}
 
 	private static boolean isFrame(World world, BlockPos pos) {
-		return world.getBlockState(pos).isOf(InfernoDimensionFeature.INFERNIUM_PORTAL_FRAME);
+		// The decorative infernodim2 corner block counts as a full frame block.
+		BlockState state = world.getBlockState(pos);
+		return state.isOf(InfernoDimensionFeature.INFERNIUM_PORTAL_FRAME)
+				|| state.isOf(InfernoDim2Feature.INFERNIUM_PORTAL_CORNER);
 	}
 
 	private static void fillPortal(World world, BlockPos origin, Direction right, Direction.Axis axis) {

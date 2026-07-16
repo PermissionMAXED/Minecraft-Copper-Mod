@@ -20,5 +20,6 @@
   "block.copper_inferno.smolder_bloom": "Smolder Bloom",
   "block.copper_inferno.spore_cluster": "Spore Cluster",
   "block.copper_inferno.stripped_scorched_hyphae": "Stripped Scorched Hyphae",
-  "block.copper_inferno.stripped_scorched_stem": "Stripped Scorched Stem"
+  "block.copper_inferno.stripped_scorched_stem": "Stripped Scorched Stem",
+  "tag.item.copper_inferno.scorched_logs": "Scorched Logs"
 }

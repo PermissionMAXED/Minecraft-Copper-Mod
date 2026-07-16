@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/polished_coalwood_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/polished_coalwood"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/polished_coalwood_slab_top"
+    }
+  }
+}

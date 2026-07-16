@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:pyrium_gem"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:pyrium_shard"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

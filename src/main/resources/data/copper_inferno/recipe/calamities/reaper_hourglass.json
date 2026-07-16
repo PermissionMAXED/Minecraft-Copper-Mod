@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:soot_scythe_blade",
+    "copper_inferno:reaper_soot",
+    "copper_inferno:reaper_soot",
+    "minecraft:gold_block"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:reaper_hourglass"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

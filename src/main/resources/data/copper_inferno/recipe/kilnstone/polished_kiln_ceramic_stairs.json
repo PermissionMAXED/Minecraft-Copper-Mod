@@ -1,0 +1,16 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:polished_kiln_ceramic"
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:polished_kiln_ceramic_stairs"
+  },
+  "type": "minecraft:crafting_shaped"
+}

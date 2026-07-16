@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glass_bottle",
+    "minecraft:cocoa_beans",
+    "copper_inferno:ember_dust"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ember_espresso"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:emberlord_tusk",
+    "copper_inferno:charred_hide",
+    "copper_inferno:charred_hide",
+    "minecraft:gold_block"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:emberlord_crest"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

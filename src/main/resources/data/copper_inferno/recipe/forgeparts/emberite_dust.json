@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "P": "copper_inferno:ember_dust",
+    "V": "minecraft:magma_cream"
+  },
+  "pattern": [
+    "V V",
+    " P ",
+    "V V"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:emberite_dust"
+  },
+  "type": "minecraft:crafting_shaped"
+}

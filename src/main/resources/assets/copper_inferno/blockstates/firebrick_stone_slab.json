@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/firebrick_stone_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/firebrick_stone"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/firebrick_stone_slab_top"
+    }
+  }
+}

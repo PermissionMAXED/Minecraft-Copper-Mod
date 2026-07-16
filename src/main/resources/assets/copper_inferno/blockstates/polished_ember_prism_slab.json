@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/polished_ember_prism_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/polished_ember_prism"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/polished_ember_prism_slab_top"
+    }
+  }
+}

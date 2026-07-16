@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:emberchrome",
+    "S": "minecraft:lapis_lazuli"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:molten_cobalt"
+  },
+  "type": "minecraft:crafting_shaped"
+}

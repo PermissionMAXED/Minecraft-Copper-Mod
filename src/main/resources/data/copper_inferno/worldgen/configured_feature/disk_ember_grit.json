@@ -1,0 +1,27 @@
+{
+  "config": {
+    "half_height": 2,
+    "radius": {
+      "max_inclusive": 5,
+      "min_inclusive": 2,
+      "type": "minecraft:uniform"
+    },
+    "state_provider": {
+      "fallback": {
+        "state": {
+          "Name": "copper_inferno:ember_grit"
+        },
+        "type": "minecraft:simple_state_provider"
+      },
+      "rules": []
+    },
+    "target": {
+      "blocks": [
+        "copper_inferno:cinderstone",
+        "copper_inferno:cinder_gravel"
+      ],
+      "type": "minecraft:matching_blocks"
+    }
+  },
+  "type": "minecraft:disk"
+}

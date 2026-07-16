@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:molten_brass",
+    "S": "minecraft:oxidized_copper"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:patina_steel"
+  },
+  "type": "minecraft:crafting_shaped"
+}

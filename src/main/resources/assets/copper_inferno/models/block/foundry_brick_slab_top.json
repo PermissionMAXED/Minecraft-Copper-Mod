@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "copper_inferno:block/foundry_brick",
+    "side": "copper_inferno:block/foundry_brick",
+    "top": "copper_inferno:block/foundry_brick"
+  }
+}

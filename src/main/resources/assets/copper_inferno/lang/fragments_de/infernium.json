@@ -2,7 +2,7 @@
   "block.copper_inferno.infernium_block": "Infernium-Block",
   "block.copper_inferno.smolder_crystal_block": "Schwelkristallblock",
   "item.copper_inferno.ash_pile": "Aschehaufen",
-  "item.copper_inferno.cinder_rod": "Zinderstab",
+  "item.copper_inferno.cinder_rod": "Zunderstab",
   "item.copper_inferno.ember_dust": "Glutstaub",
   "item.copper_inferno.infernium_axe": "Infernium-Axt",
   "item.copper_inferno.infernium_boots": "Infernium-Stiefel",
@@ -21,5 +21,6 @@
   "item.copper_inferno.raw_infernium": "Rohinfernium",
   "item.copper_inferno.slag_chunk": "Schlackenbrocken",
   "item.copper_inferno.smolder_crystal": "Schwelkristall",
-  "item.copper_inferno.smolder_lens": "Schwellinse"
+  "item.copper_inferno.smolder_lens": "Schwellinse",
+  "tag.item.copper_inferno.infernium_repair": "Infernium-Reparaturgegenst\u00e4nde"
 }

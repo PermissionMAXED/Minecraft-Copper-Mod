@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "P": "copper_inferno:brazium_dust",
+    "V": "minecraft:basalt"
+  },
+  "pattern": [
+    "V V",
+    " P ",
+    "V V"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:volkanite_dust"
+  },
+  "type": "minecraft:crafting_shaped"
+}

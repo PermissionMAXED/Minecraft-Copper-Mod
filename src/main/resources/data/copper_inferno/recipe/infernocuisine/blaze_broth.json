@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:bowl",
+    "minecraft:blaze_powder",
+    "minecraft:chicken"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:blaze_broth"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:wanderer_shroud"
+  ],
+  "result": {
+    "count": 2,
+    "id": "minecraft:gray_wool"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

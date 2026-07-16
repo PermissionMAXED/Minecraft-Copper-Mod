@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glass_bottle",
+    "minecraft:dried_kelp",
+    "copper_inferno:ember_dust"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ember_tea"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

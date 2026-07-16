@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:glass_bottle",
+    "minecraft:milk_bucket",
+    "copper_inferno:slag_chunk"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:slag_shake"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

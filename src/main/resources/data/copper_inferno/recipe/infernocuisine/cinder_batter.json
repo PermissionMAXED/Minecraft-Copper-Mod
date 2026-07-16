@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:wheat",
+    "minecraft:egg",
+    "minecraft:milk_bucket",
+    "copper_inferno:ash_pile"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:cinder_batter"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:smolderwood",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:smolderwood_stairs"
+  },
+  "type": "minecraft:stonecutting"
+}

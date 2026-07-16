@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:sootware",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:sootware_pillar"
+  },
+  "type": "minecraft:stonecutting"
+}

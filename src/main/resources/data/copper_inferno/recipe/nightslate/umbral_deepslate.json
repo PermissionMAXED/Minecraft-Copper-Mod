@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:shadow_tuff",
+    "S": "minecraft:cobbled_deepslate"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:umbral_deepslate"
+  },
+  "type": "minecraft:crafting_shaped"
+}

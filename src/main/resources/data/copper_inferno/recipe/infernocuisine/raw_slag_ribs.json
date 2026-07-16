@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:mutton",
+    "copper_inferno:slag_chunk"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:raw_slag_ribs"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

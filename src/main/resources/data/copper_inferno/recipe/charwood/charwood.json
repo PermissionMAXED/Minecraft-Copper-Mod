@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:scorched_planks",
+    "S": "minecraft:charcoal"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:charwood"
+  },
+  "type": "minecraft:crafting_shaped"
+}

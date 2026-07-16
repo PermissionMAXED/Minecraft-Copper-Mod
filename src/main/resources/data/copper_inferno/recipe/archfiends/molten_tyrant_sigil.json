@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "A": "minecraft:crimson_fungus",
+    "B": "minecraft:magma_cream",
+    "C": "minecraft:shroomlight"
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:molten_tyrant_sigil"
+  },
+  "type": "minecraft:crafting_shaped"
+}

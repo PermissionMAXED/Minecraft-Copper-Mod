@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:ember_brass",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:ember_brass_bricks"
+  },
+  "type": "minecraft:stonecutting"
+}

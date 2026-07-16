@@ -1,0 +1,21 @@
+{
+  "block.copper_inferno.ash_gold_ore": "Aschgolderz",
+  "block.copper_inferno.ashfall_tuff": "Aschentuff",
+  "block.copper_inferno.brimstone_ore": "Schwefelsteinerz",
+  "block.copper_inferno.cinder_lapis_ore": "Zunderlapiserz",
+  "block.copper_inferno.cinder_quartz_ore": "Zunderquarzerz",
+  "block.copper_inferno.cinder_silt": "Zunderschlick",
+  "block.copper_inferno.deep_infernium_ore": "Tiefen-Infernium-Erz",
+  "block.copper_inferno.ember_grit": "Glutgrus",
+  "block.copper_inferno.ember_iron_ore": "Gluteisenerz",
+  "block.copper_inferno.ember_pumice": "Glutbims",
+  "block.copper_inferno.geyserite": "Geysirit",
+  "block.copper_inferno.hardened_slag": "Gehärtete Schlacke",
+  "block.copper_inferno.scorched_debris": "Versengte Trümmer",
+  "block.copper_inferno.scoria": "Skoria",
+  "block.copper_inferno.slag_copper_ore": "Schlackenkupfererz",
+  "block.copper_inferno.smolder_redstone_ore": "Schwel-Redstone-Erz",
+  "block.copper_inferno.sulfur_block": "Schwefelblock",
+  "block.copper_inferno.sulfur_sand": "Schwefelsand",
+  "item.copper_inferno.brimstone": "Schwefelbrocken"
+}

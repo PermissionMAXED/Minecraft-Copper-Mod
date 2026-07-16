@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:ember_dough",
+    "minecraft:milk_bucket",
+    "minecraft:magma_cream",
+    "minecraft:red_mushroom"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:magma_pizza"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,10 @@
+{
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 0.35,
+  "ingredient": "copper_inferno:ember_dough",
+  "result": {
+    "id": "copper_inferno:ash_biscuit"
+  },
+  "type": "minecraft:campfire_cooking"
+}

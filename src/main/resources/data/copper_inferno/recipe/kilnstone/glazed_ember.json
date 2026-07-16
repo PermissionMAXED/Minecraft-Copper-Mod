@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:sootware",
+    "S": "minecraft:glowstone_dust"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:glazed_ember"
+  },
+  "type": "minecraft:crafting_shaped"
+}

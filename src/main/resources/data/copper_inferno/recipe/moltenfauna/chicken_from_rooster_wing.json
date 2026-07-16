@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:rooster_wing"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:chicken"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

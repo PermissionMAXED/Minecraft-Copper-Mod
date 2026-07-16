@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:cinder_iron",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:chiseled_cinder_iron_bricks"
+  },
+  "type": "minecraft:stonecutting"
+}

@@ -91,6 +91,9 @@ LANG_EN = {
     "item.copper_inferno.infernium_boots": "Infernium Boots",
     "block.copper_inferno.infernium_block": "Block of Infernium",
     "block.copper_inferno.smolder_crystal_block": "Smolder Crystal Block",
+    # Tag translation (tag.item.<ns>.<path>, fabric-tag-conventions-v2 format) for the
+    # repair tag emitted by emit_repair_tag().
+    "tag.item.copper_inferno.infernium_repair": "Infernium Repair Items",
 }
 LANG_DE = {
     "item.copper_inferno.raw_infernium": "Rohinfernium",
@@ -98,9 +101,9 @@ LANG_DE = {
     "item.copper_inferno.infernium_nugget": "Infernium-Klumpen",
     "item.copper_inferno.smolder_crystal": "Schwelkristall",
     "item.copper_inferno.ember_dust": "Glutstaub",
-    "item.copper_inferno.slag_chunk": "Schlackebrocken",
+    "item.copper_inferno.slag_chunk": "Schlackenbrocken",
     "item.copper_inferno.ash_pile": "Aschehaufen",
-    "item.copper_inferno.cinder_rod": "Zinderstab",
+    "item.copper_inferno.cinder_rod": "Zunderstab",
     "item.copper_inferno.infernium_plate": "Infernium-Platte",
     "item.copper_inferno.infernium_gear": "Infernium-Zahnrad",
     "item.copper_inferno.smolder_lens": "Schwellinse",
@@ -116,6 +119,7 @@ LANG_DE = {
     "item.copper_inferno.infernium_boots": "Infernium-Stiefel",
     "block.copper_inferno.infernium_block": "Infernium-Block",
     "block.copper_inferno.smolder_crystal_block": "Schwelkristallblock",
+    "tag.item.copper_inferno.infernium_repair": "Infernium-Reparaturgegenst\u00e4nde",
 }
 
 TAGFRAG_CONTENT = {

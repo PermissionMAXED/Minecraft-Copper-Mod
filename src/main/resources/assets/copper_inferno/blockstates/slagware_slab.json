@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/slagware_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/slagware"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/slagware_slab_top"
+    }
+  }
+}

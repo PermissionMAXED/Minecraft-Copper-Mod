@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "copper_inferno:block/polished_umbral_deepslate",
+    "side": "copper_inferno:block/polished_umbral_deepslate",
+    "top": "copper_inferno:block/polished_umbral_deepslate"
+  }
+}

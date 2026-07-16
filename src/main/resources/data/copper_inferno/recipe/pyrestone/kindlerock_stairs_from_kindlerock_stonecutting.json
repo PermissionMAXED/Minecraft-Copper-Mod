@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:kindlerock",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:kindlerock_stairs"
+  },
+  "type": "minecraft:stonecutting"
+}

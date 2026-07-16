@@ -115,7 +115,7 @@ public final class InfernoDimensionFeature {
 		INFERNIUM_IGNITER = ModItems.register("infernium_igniter", InferniumIgniterItem::new,
 				new Item.Settings().maxDamage(64));
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.BLOCKS_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.NATURE_KEY).register(entries -> {
 			entries.add(CINDERSTONE);
 			entries.add(COBBLED_CINDERSTONE);
 			entries.add(SLAGSTONE);
@@ -180,7 +180,7 @@ public final class InfernoDimensionFeature {
 		HandbookEntries.add(new HandbookEntry("dimension", "infernodim_biome_cinder_wastes",
 				"copper_inferno:cinderstone", null, null, null, 0,
 				"Cinder Wastes: the Inferno's open ember plains. Bare cinderstone, drifting sparks and lava seas under an orange haze.",
-				"Aschenöde: die offenen Glut-Ebenen des Infernos. Nackter Zunderstein, treibende Funken und Lavaseen unter orangefarbenem Dunst."));
+				"Zunderöde: die offenen Glut-Ebenen des Infernos. Nackter Zunderstein, treibende Funken und Lavaseen unter orangefarbenem Dunst."));
 		HandbookEntries.add(new HandbookEntry("dimension", "infernodim_biome_ember_grove",
 				"copper_inferno:ember_soil", null, null, null, 0,
 				"Ember Grove: a smouldering forest biome. Glowing ember soil underfoot and thick verdigris-tinted air.",

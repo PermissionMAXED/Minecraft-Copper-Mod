@@ -84,7 +84,7 @@ DE_NAMES = {
     "ember_wart_block": "Glutwarzenblock",
     "ember_fungus": "Glutpilz",
     "ash_sprouts": "Aschensprossen",
-    "cinder_roots": "Schlackenwurzeln",
+    "cinder_roots": "Zunderwurzeln",
     "smolder_bloom": "Schwelbl\u00fcte",
     "ashen_grass": "Aschengras",
     "ember_moss_block": "Glutmoosblock",
@@ -92,7 +92,7 @@ DE_NAMES = {
     "glowing_spore_block": "Leuchtsporenblock",
     "fungal_light": "Pilzlicht",
     "spore_cluster": "Sporenhaufen",
-    "cinder_nest": "Schlackennest",
+    "cinder_nest": "Zundernest",
 }
 
 
@@ -682,6 +682,10 @@ def main() -> None:
     # ------------------------------------------------------------------
     lang_en = {f"block.{MODID}.{bid}": display_name(bid) for bid in ALL_IDS}
     lang_de = {f"block.{MODID}.{bid}": DE_NAMES[bid] for bid in ALL_IDS}
+    # Tag translation (tag.item.<ns>.<path>, fabric-tag-conventions-v2 format) for the
+    # committed data/copper_inferno/tags/item/scorched_logs.json item tag.
+    lang_en[f"tag.item.{MODID}.scorched_logs"] = "Scorched Logs"
+    lang_de[f"tag.item.{MODID}.scorched_logs"] = "Versengte St\u00e4mme"
 
     # ------------------------------------------------------------------
     # write everything

@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:ember_dust",
+    "S": "copper_inferno:cinderstone"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:pyrestone"
+  },
+  "type": "minecraft:crafting_shaped"
+}

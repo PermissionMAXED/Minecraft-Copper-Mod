@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:broken_war_axe",
+    "copper_inferno:warlord_slag_chunk",
+    "copper_inferno:warlord_slag_chunk",
+    "minecraft:gold_block"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:warlord_totem"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

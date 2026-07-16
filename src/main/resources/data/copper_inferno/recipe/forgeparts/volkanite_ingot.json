@@ -1,0 +1,10 @@
+{
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "ingredient": "copper_inferno:volkanite_dust",
+  "result": {
+    "id": "copper_inferno:volkanite_ingot"
+  },
+  "type": "minecraft:smelting"
+}

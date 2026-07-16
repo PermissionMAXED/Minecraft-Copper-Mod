@@ -1,0 +1,21 @@
+{
+  "block.copper_inferno.ash_gold_ore": "Ash Gold Ore",
+  "block.copper_inferno.ashfall_tuff": "Ashfall Tuff",
+  "block.copper_inferno.brimstone_ore": "Brimstone Ore",
+  "block.copper_inferno.cinder_lapis_ore": "Cinder Lapis Ore",
+  "block.copper_inferno.cinder_quartz_ore": "Cinder Quartz Ore",
+  "block.copper_inferno.cinder_silt": "Cinder Silt",
+  "block.copper_inferno.deep_infernium_ore": "Deep Infernium Ore",
+  "block.copper_inferno.ember_grit": "Ember Grit",
+  "block.copper_inferno.ember_iron_ore": "Ember Iron Ore",
+  "block.copper_inferno.ember_pumice": "Ember Pumice",
+  "block.copper_inferno.geyserite": "Geyserite",
+  "block.copper_inferno.hardened_slag": "Hardened Slag",
+  "block.copper_inferno.scorched_debris": "Scorched Debris",
+  "block.copper_inferno.scoria": "Scoria",
+  "block.copper_inferno.slag_copper_ore": "Slag Copper Ore",
+  "block.copper_inferno.smolder_redstone_ore": "Smolder Redstone Ore",
+  "block.copper_inferno.sulfur_block": "Sulfur Block",
+  "block.copper_inferno.sulfur_sand": "Sulfur Sand",
+  "item.copper_inferno.brimstone": "Brimstone"
+}

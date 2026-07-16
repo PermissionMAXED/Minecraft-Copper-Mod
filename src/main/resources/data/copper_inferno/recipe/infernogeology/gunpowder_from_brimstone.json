@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:brimstone",
+    "copper_inferno:brimstone",
+    "minecraft:charcoal",
+    "copper_inferno:ash_pile"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:gunpowder"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

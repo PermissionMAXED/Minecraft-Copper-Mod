@@ -1,0 +1,116 @@
+# pyrestone feature hooks (format: devtools/hooks/README.md)
+
+[init]
+import net.sonic0810.copperinferno.feature.pyrestone.PyrestoneFeature;
+		PyrestoneFeature.init();
+
+[families]
+pyrestone, pyrestone
+polished_pyrestone, polished_pyrestone
+pyrestone_bricks, pyrestone_brick
+emberstone, emberstone
+polished_emberstone, polished_emberstone
+emberstone_bricks, emberstone_brick
+sootstone, sootstone
+polished_sootstone, polished_sootstone
+sootstone_bricks, sootstone_brick
+charflint, charflint
+polished_charflint, polished_charflint
+charflint_bricks, charflint_brick
+kindlerock, kindlerock
+polished_kindlerock, polished_kindlerock
+kindlerock_bricks, kindlerock_brick
+cindershale, cindershale
+polished_cindershale, polished_cindershale
+cindershale_bricks, cindershale_brick
+coalspar, coalspar
+polished_coalspar, polished_coalspar
+coalspar_bricks, coalspar_brick
+tindergrit, tindergrit
+polished_tindergrit, polished_tindergrit
+tindergrit_bricks, tindergrit_brick
+flarebasalt, flarebasalt
+polished_flarebasalt, polished_flarebasalt
+flarebasalt_bricks, flarebasalt_brick
+magmite, magmite
+polished_magmite, polished_magmite
+magmite_bricks, magmite_brick
+fumarole_rock, fumarole_rock
+polished_fumarole_rock, polished_fumarole_rock
+fumarole_rock_bricks, fumarole_rock_brick
+pyroclast_stone, pyroclast_stone
+polished_pyroclast_stone, polished_pyroclast_stone
+pyroclast_stone_bricks, pyroclast_stone_brick
+vitrified_ash, vitrified_ash
+polished_vitrified_ash, polished_vitrified_ash
+vitrified_ash_bricks, vitrified_ash_brick
+blazewrought_stone, blazewrought_stone
+polished_blazewrought_stone, polished_blazewrought_stone
+blazewrought_stone_bricks, blazewrought_stone_brick
+
+[requires-tool]
+pyrestone_tiles
+cracked_pyrestone_bricks
+chiseled_pyrestone_bricks
+pyrestone_pillar
+emberstone_tiles
+cracked_emberstone_bricks
+chiseled_emberstone_bricks
+emberstone_pillar
+sootstone_tiles
+cracked_sootstone_bricks
+chiseled_sootstone_bricks
+sootstone_pillar
+charflint_tiles
+cracked_charflint_bricks
+chiseled_charflint_bricks
+charflint_pillar
+kindlerock_tiles
+cracked_kindlerock_bricks
+chiseled_kindlerock_bricks
+kindlerock_pillar
+cindershale_tiles
+cracked_cindershale_bricks
+chiseled_cindershale_bricks
+cindershale_pillar
+coalspar_tiles
+cracked_coalspar_bricks
+chiseled_coalspar_bricks
+coalspar_pillar
+tindergrit_tiles
+cracked_tindergrit_bricks
+chiseled_tindergrit_bricks
+tindergrit_pillar
+flarebasalt_tiles
+cracked_flarebasalt_bricks
+chiseled_flarebasalt_bricks
+flarebasalt_pillar
+magmite_tiles
+cracked_magmite_bricks
+chiseled_magmite_bricks
+magmite_pillar
+fumarole_rock_tiles
+cracked_fumarole_rock_bricks
+chiseled_fumarole_rock_bricks
+fumarole_rock_pillar
+pyroclast_stone_tiles
+cracked_pyroclast_stone_bricks
+chiseled_pyroclast_stone_bricks
+pyroclast_stone_pillar
+vitrified_ash_tiles
+cracked_vitrified_ash_bricks
+chiseled_vitrified_ash_bricks
+vitrified_ash_pillar
+blazewrought_stone_tiles
+cracked_blazewrought_stone_bricks
+chiseled_blazewrought_stone_bricks
+blazewrought_stone_pillar
+
+[recipe-dir]
+pyrestone
+
+[counts]
+blocks: 224
+items: 0
+recipes: 420
+handbook-entries: 434

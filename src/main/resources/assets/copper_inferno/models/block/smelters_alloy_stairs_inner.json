@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "copper_inferno:block/smelters_alloy",
+    "side": "copper_inferno:block/smelters_alloy",
+    "top": "copper_inferno:block/smelters_alloy"
+  }
+}

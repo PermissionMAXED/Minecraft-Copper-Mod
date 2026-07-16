@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:porkchop",
+    "copper_inferno:ember_dust",
+    "minecraft:string"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:raw_ember_sausage"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

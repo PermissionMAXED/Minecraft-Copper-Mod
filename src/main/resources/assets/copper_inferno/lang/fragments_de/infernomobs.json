@@ -1,11 +1,11 @@
 {
   "entity.copper_inferno.ash_bat": "Aschenfledermaus",
-  "entity.copper_inferno.cinder_strider": "Aschenschreiter",
+  "entity.copper_inferno.cinder_strider": "Zunderschreiter",
   "entity.copper_inferno.ember_wraith": "Glutschleier",
   "entity.copper_inferno.molten_slagling": "Schmelzschlackling",
   "entity.copper_inferno.slag_crawler": "Schlackenkriecher",
   "item.copper_inferno.ash_bat_spawn_egg": "Aschenfledermaus-Spawn-Ei",
-  "item.copper_inferno.cinder_strider_spawn_egg": "Aschenschreiter-Spawn-Ei",
+  "item.copper_inferno.cinder_strider_spawn_egg": "Zunderschreiter-Spawn-Ei",
   "item.copper_inferno.crawler_fang": "Kriecherzahn",
   "item.copper_inferno.ember_wraith_spawn_egg": "Glutschleier-Spawn-Ei",
   "item.copper_inferno.molten_slagling_spawn_egg": "Schmelzschlackling-Spawn-Ei",

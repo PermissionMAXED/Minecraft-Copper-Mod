@@ -1,0 +1,16 @@
+# forgeparts feature hooks (format: devtools/hooks/README.md)
+
+[init]
+# Insert BEFORE HandbookFeature.init(); no other ordering constraint
+# (recipes consume only vanilla ids, forgeparts' own ids and infernium's
+# ember_dust — recipes are data, so no init-order dependency).
+import net.sonic0810.copperinferno.feature.forgeparts.ForgePartsFeature;
+		ForgePartsFeature.init();
+
+[recipe-dir]
+forgeparts
+
+[counts]
+items: 120
+recipes: 120
+handbook-entries: 130

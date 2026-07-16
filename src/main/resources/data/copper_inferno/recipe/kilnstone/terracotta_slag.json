@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:glazed_cinder",
+    "S": "minecraft:red_terracotta"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:terracotta_slag"
+  },
+  "type": "minecraft:crafting_shaped"
+}

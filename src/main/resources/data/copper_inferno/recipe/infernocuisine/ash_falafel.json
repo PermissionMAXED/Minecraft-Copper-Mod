@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:wheat_seeds",
+    "minecraft:wheat_seeds",
+    "copper_inferno:ash_pile"
+  ],
+  "result": {
+    "count": 3,
+    "id": "copper_inferno:ash_falafel"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:wether_ribs"
+  ],
+  "result": {
+    "count": 2,
+    "id": "minecraft:mutton"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

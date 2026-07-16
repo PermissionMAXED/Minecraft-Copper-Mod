@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:pyroceramic",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:pyroceramic_tiles"
+  },
+  "type": "minecraft:stonecutting"
+}

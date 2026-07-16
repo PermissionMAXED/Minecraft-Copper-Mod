@@ -1,0 +1,116 @@
+# nightslate feature hooks (format: devtools/hooks/README.md)
+
+[init]
+import net.sonic0810.copperinferno.feature.nightslate.NightslateFeature;
+		NightslateFeature.init();
+
+[families]
+nightslate, nightslate
+polished_nightslate, polished_nightslate
+nightslate_bricks, nightslate_brick
+voidbasalt, voidbasalt
+polished_voidbasalt, polished_voidbasalt
+voidbasalt_bricks, voidbasalt_brick
+duskstone, duskstone
+polished_duskstone, polished_duskstone
+duskstone_bricks, duskstone_brick
+gloomstone, gloomstone
+polished_gloomstone, polished_gloomstone
+gloomstone_bricks, gloomstone_brick
+shadow_tuff, shadow_tuff
+polished_shadow_tuff, polished_shadow_tuff
+shadow_tuff_bricks, shadow_tuff_brick
+umbral_deepslate, umbral_deepslate
+polished_umbral_deepslate, polished_umbral_deepslate
+umbral_deepslate_bricks, umbral_deepslate_brick
+blacksoot_stone, blacksoot_stone
+polished_blacksoot_stone, polished_blacksoot_stone
+blacksoot_stone_bricks, blacksoot_stone_brick
+char_obsidian, char_obsidian
+polished_char_obsidian, polished_char_obsidian
+char_obsidian_bricks, char_obsidian_brick
+dark_pumice, dark_pumice
+polished_dark_pumice, polished_dark_pumice
+dark_pumice_bricks, dark_pumice_brick
+ebonstone, ebonstone
+polished_ebonstone, polished_ebonstone
+ebonstone_bricks, ebonstone_brick
+murkrock, murkrock
+polished_murkrock, polished_murkrock
+murkrock_bricks, murkrock_brick
+cinderdark_stone, cinderdark_stone
+polished_cinderdark_stone, polished_cinderdark_stone
+cinderdark_stone_bricks, cinderdark_stone_brick
+netherveil_stone, netherveil_stone
+polished_netherveil_stone, polished_netherveil_stone
+netherveil_stone_bricks, netherveil_stone_brick
+obscura_stone, obscura_stone
+polished_obscura_stone, polished_obscura_stone
+obscura_stone_bricks, obscura_stone_brick
+
+[requires-tool]
+nightslate_tiles
+cracked_nightslate_bricks
+chiseled_nightslate_bricks
+nightslate_pillar
+voidbasalt_tiles
+cracked_voidbasalt_bricks
+chiseled_voidbasalt_bricks
+voidbasalt_pillar
+duskstone_tiles
+cracked_duskstone_bricks
+chiseled_duskstone_bricks
+duskstone_pillar
+gloomstone_tiles
+cracked_gloomstone_bricks
+chiseled_gloomstone_bricks
+gloomstone_pillar
+shadow_tuff_tiles
+cracked_shadow_tuff_bricks
+chiseled_shadow_tuff_bricks
+shadow_tuff_pillar
+umbral_deepslate_tiles
+cracked_umbral_deepslate_bricks
+chiseled_umbral_deepslate_bricks
+umbral_deepslate_pillar
+blacksoot_stone_tiles
+cracked_blacksoot_stone_bricks
+chiseled_blacksoot_stone_bricks
+blacksoot_stone_pillar
+char_obsidian_tiles
+cracked_char_obsidian_bricks
+chiseled_char_obsidian_bricks
+char_obsidian_pillar
+dark_pumice_tiles
+cracked_dark_pumice_bricks
+chiseled_dark_pumice_bricks
+dark_pumice_pillar
+ebonstone_tiles
+cracked_ebonstone_bricks
+chiseled_ebonstone_bricks
+ebonstone_pillar
+murkrock_tiles
+cracked_murkrock_bricks
+chiseled_murkrock_bricks
+murkrock_pillar
+cinderdark_stone_tiles
+cracked_cinderdark_stone_bricks
+chiseled_cinderdark_stone_bricks
+cinderdark_stone_pillar
+netherveil_stone_tiles
+cracked_netherveil_stone_bricks
+chiseled_netherveil_stone_bricks
+netherveil_stone_pillar
+obscura_stone_tiles
+cracked_obscura_stone_bricks
+chiseled_obscura_stone_bricks
+obscura_stone_pillar
+
+[recipe-dir]
+nightslate
+
+[counts]
+blocks: 224
+items: 0
+recipes: 420
+handbook-entries: 434

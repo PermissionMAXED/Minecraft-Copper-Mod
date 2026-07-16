@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "copper_inferno:block/smelters_alloy_tiles"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:voidbasalt",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:voidbasalt_brick_wall"
+  },
+  "type": "minecraft:stonecutting"
+}

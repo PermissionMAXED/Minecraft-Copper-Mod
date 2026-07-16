@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:umbral_deepslate",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:umbral_deepslate_bricks"
+  },
+  "type": "minecraft:stonecutting"
+}

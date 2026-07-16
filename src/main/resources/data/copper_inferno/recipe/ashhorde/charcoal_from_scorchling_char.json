@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:scorchling_char"
+  ],
+  "result": {
+    "count": 2,
+    "id": "minecraft:charcoal"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

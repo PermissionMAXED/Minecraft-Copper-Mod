@@ -1,0 +1,10 @@
+{
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": "copper_inferno:forgeworn_metal_bricks",
+  "result": {
+    "id": "copper_inferno:cracked_forgeworn_metal_bricks"
+  },
+  "type": "minecraft:smelting"
+}

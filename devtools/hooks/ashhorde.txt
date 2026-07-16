@@ -1,0 +1,21 @@
+# ashhorde feature hooks (format: devtools/hooks/README.md)
+
+[init]
+# No Java init-order constraint: natural spawns use includeByKey on the Inferno
+# biome keys (biome JSONs are owned by infernodim; the selector matches nothing
+# until those biomes are loaded).
+import net.sonic0810.copperinferno.feature.ashhorde.AshHordeFeature;
+		AshHordeFeature.init();
+
+[client-init]
+import net.sonic0810.copperinferno.feature.ashhorde.client.AshHordeFeatureClient;
+		AshHordeFeatureClient.initClient();
+
+[recipe-dir]
+ashhorde
+
+[counts]
+mobs: 25
+items: 50
+recipes: 25
+handbook-entries: 50

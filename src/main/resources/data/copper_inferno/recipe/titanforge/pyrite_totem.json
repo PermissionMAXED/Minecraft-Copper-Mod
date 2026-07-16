@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "key": {
+    "I": "copper_inferno:pyrite_ingot",
+    "X": "minecraft:emerald"
+  },
+  "pattern": [
+    " I ",
+    "IXI",
+    " I "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:pyrite_totem"
+  },
+  "type": "minecraft:crafting_shaped"
+}

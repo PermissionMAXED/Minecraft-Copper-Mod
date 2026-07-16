@@ -607,7 +607,9 @@ def java_feature_class(feature_pkg: str, class_name: str, doc_lines,
       tabs              iterable of (tab_key, entry_exprs): one
                         `ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.<tab_key>)
                         .register(entries -> { entries.add(<expr>); ... });`
-                        block per pair. tab_key is "BLOCKS_KEY" or "MAIN_KEY".
+                        block per pair. tab_key is any ModCreativeTab key field name
+                        (e.g. "BLOCKS_KEY", "MAIN_KEY", "EQUIPMENT_KEY", "FOODS_KEY",
+                        "MOBS_KEY", "NATURE_KEY", "SETS_KEY").
       extra_imports     fully-qualified imports for types referenced only inside
                         factory/settings expressions or verbatim code (e.g.
                         net.minecraft.block.MapColor, net.minecraft.sound.BlockSoundGroup,

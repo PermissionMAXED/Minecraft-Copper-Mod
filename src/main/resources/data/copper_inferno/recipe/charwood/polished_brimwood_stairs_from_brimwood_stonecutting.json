@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:brimwood",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:polished_brimwood_stairs"
+  },
+  "type": "minecraft:stonecutting"
+}

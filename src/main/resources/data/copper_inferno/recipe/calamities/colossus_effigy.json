@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "A": "copper_inferno:copper_dust",
+    "B": "minecraft:iron_ingot",
+    "C": "minecraft:copper_block"
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:colossus_effigy"
+  },
+  "type": "minecraft:crafting_shaped"
+}

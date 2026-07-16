@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:molten_cobalt",
+    "S": "minecraft:charcoal"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:ashiron"
+  },
+  "type": "minecraft:crafting_shaped"
+}

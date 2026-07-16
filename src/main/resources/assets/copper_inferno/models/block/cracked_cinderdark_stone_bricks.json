@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "copper_inferno:block/cracked_cinderdark_stone_bricks"
+  }
+}

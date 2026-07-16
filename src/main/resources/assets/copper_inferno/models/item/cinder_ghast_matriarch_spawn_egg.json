@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "copper_inferno:item/cinder_ghast_matriarch_spawn_egg"
+  }
+}

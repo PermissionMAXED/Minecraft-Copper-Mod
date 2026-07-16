@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:char_obsidian",
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:polished_char_obsidian_slab"
+  },
+  "type": "minecraft:stonecutting"
+}

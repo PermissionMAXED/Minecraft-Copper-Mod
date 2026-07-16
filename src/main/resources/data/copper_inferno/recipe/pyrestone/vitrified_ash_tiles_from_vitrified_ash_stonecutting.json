@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:vitrified_ash",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:vitrified_ash_tiles"
+  },
+  "type": "minecraft:stonecutting"
+}

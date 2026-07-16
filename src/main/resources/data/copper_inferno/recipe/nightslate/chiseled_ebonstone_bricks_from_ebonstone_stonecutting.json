@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:ebonstone",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:chiseled_ebonstone_bricks"
+  },
+  "type": "minecraft:stonecutting"
+}

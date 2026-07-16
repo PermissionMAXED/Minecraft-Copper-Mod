@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/charflint_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/charflint"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/charflint_slab_top"
+    }
+  }
+}

@@ -2,10 +2,8 @@ package net.sonic0810.copperinferno.feature.handbook;
 
 import java.util.function.Consumer;
 
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.sonic0810.copperinferno.core.ModCreativeTab;
 import net.sonic0810.copperinferno.core.ModItems;
 import net.sonic0810.copperinferno.core.handbook.HandbookEntries;
 import net.sonic0810.copperinferno.core.handbook.HandbookEntry;
@@ -35,8 +33,8 @@ public final class HandbookFeature {
 		HANDBOOK = ModItems.register("copper_inferno_handbook", HandbookItem::new,
 				new Item.Settings().maxCount(1));
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY)
-				.register(entries -> entries.add(HANDBOOK));
+		// The MAIN creative-tab entry is added by ModCreativeTab.init() (registered before
+		// every feature callback) so the handbook is always the tab's FIRST entry.
 
 		registerHandbookEntries();
 	}
@@ -53,7 +51,7 @@ public final class HandbookFeature {
 		// ...and carries a "?" hint page explaining how to use it.
 		HandbookEntries.add(new HandbookEntry("items", "copper_inferno_handbook_hint",
 				"copper_inferno:copper_inferno_handbook", null, null, null, 0,
-				"? Hold the handbook and right-click to open it. Pick a category on the left, flip pages with the arrows below, and press the DE/EN button to switch the text between German and English. The Recipes tab collects every entry with a crafting grid.",
-				"? Halte das Handbuch in der Hand und \u00f6ffne es mit Rechtsklick. W\u00e4hle links eine Kategorie, bl\u00e4ttere mit den Pfeilen unten und dr\u00fccke den DE/EN-Knopf, um den Text zwischen Deutsch und Englisch umzuschalten. Der Rezepte-Reiter sammelt jeden Eintrag mit Craftingraster."));
+				"? Hold the handbook and right-click to open it. Pick a category on the left (the number is its entry count), type in the search box to filter entries by name, flip pages with the arrows, keys or mouse wheel, and press the DE/EN button to switch the text between German and English. The Recipes tab collects every entry with a crafting grid.",
+				"? Halte das Handbuch in der Hand und \u00f6ffne es mit Rechtsklick. W\u00e4hle links eine Kategorie (die Zahl ist ihre Eintragsanzahl), tippe ins Suchfeld, um Eintr\u00e4ge nach Namen zu filtern, bl\u00e4ttere mit den Pfeilen, Tasten oder dem Mausrad und dr\u00fccke den DE/EN-Knopf, um den Text zwischen Deutsch und Englisch umzuschalten. Der Rezepte-Reiter sammelt jeden Eintrag mit Craftingraster."));
 	}
 }

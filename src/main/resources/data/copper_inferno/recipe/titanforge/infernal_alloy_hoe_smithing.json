@@ -1,0 +1,9 @@
+{
+  "addition": "copper_inferno:infernal_alloy_ingot",
+  "base": "copper_inferno:molten_titan_hoe",
+  "result": {
+    "id": "copper_inferno:infernal_alloy_hoe"
+  },
+  "template": "copper_inferno:infernium_upgrade_smithing_template",
+  "type": "minecraft:smithing_transform"
+}

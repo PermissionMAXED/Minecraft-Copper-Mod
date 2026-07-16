@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:slagware",
+    "S": "minecraft:clay_ball"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:ash_ceramic"
+  },
+  "type": "minecraft:crafting_shaped"
+}

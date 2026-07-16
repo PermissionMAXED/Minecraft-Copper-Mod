@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "A": "minecraft:emerald",
+    "B": "copper_inferno:oxidized_copper_dust",
+    "C": "minecraft:oxidized_copper"
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:verdigris_regalia"
+  },
+  "type": "minecraft:crafting_shaped"
+}

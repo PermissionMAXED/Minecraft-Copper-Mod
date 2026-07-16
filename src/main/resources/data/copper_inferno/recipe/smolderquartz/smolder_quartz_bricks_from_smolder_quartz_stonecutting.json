@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:smolder_quartz",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:smolder_quartz_bricks"
+  },
+  "type": "minecraft:stonecutting"
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/polished_ashglass_stone_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/polished_ashglass_stone"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/polished_ashglass_stone_slab_top"
+    }
+  }
+}

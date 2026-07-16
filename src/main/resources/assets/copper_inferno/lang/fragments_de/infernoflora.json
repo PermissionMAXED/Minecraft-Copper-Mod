@@ -1,8 +1,8 @@
 {
   "block.copper_inferno.ash_sprouts": "Aschensprossen",
   "block.copper_inferno.ashen_grass": "Aschengras",
-  "block.copper_inferno.cinder_nest": "Zindernest",
-  "block.copper_inferno.cinder_roots": "Zinderwurzeln",
+  "block.copper_inferno.cinder_nest": "Zundernest",
+  "block.copper_inferno.cinder_roots": "Zunderwurzeln",
   "block.copper_inferno.ember_fungus": "Glutpilz",
   "block.copper_inferno.ember_moss_block": "Glutmoosblock",
   "block.copper_inferno.ember_moss_carpet": "Glutmoosteppich",
@@ -20,5 +20,6 @@
   "block.copper_inferno.smolder_bloom": "Schwelblüte",
   "block.copper_inferno.spore_cluster": "Sporenhaufen",
   "block.copper_inferno.stripped_scorched_hyphae": "Entrindete versengte Hyphen",
-  "block.copper_inferno.stripped_scorched_stem": "Entrindeter versengter Stiel"
+  "block.copper_inferno.stripped_scorched_stem": "Entrindeter versengter Stiel",
+  "tag.item.copper_inferno.scorched_logs": "Versengte Stämme"
 }

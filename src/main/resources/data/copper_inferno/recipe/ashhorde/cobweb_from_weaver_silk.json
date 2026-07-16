@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:weaver_silk",
+    "copper_inferno:weaver_silk"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:cobweb"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

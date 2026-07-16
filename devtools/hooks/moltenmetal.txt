@@ -1,0 +1,116 @@
+# moltenmetal feature hooks (format: devtools/hooks/README.md)
+
+[init]
+import net.sonic0810.copperinferno.feature.moltenmetal.MoltenMetalFeature;
+		MoltenMetalFeature.init();
+
+[families]
+ember_brass, ember_brass
+polished_ember_brass, polished_ember_brass
+ember_brass_bricks, ember_brass_brick
+slag_bronze, slag_bronze
+polished_slag_bronze, polished_slag_bronze
+slag_bronze_bricks, slag_bronze_brick
+molten_brass, molten_brass
+polished_molten_brass, polished_molten_brass
+molten_brass_bricks, molten_brass_brick
+patina_steel, patina_steel
+polished_patina_steel, polished_patina_steel
+patina_steel_bricks, patina_steel_brick
+cinder_iron, cinder_iron
+polished_cinder_iron, polished_cinder_iron
+cinder_iron_bricks, cinder_iron_brick
+forgeworn_metal, forgeworn_metal
+polished_forgeworn_metal, polished_forgeworn_metal
+forgeworn_metal_bricks, forgeworn_metal_brick
+blistered_bronze, blistered_bronze
+polished_blistered_bronze, polished_blistered_bronze
+blistered_bronze_bricks, blistered_bronze_brick
+scalding_steel, scalding_steel
+polished_scalding_steel, polished_scalding_steel
+scalding_steel_bricks, scalding_steel_brick
+smelters_alloy, smelters_alloy
+polished_smelters_alloy, polished_smelters_alloy
+smelters_alloy_bricks, smelters_alloy_brick
+furnace_steel, furnace_steel
+polished_furnace_steel, polished_furnace_steel
+furnace_steel_bricks, furnace_steel_brick
+quench_iron, quench_iron
+polished_quench_iron, polished_quench_iron
+quench_iron_bricks, quench_iron_brick
+emberchrome, emberchrome
+polished_emberchrome, polished_emberchrome
+emberchrome_bricks, emberchrome_brick
+molten_cobalt, molten_cobalt
+polished_molten_cobalt, polished_molten_cobalt
+molten_cobalt_bricks, molten_cobalt_brick
+ashiron, ashiron
+polished_ashiron, polished_ashiron
+ashiron_bricks, ashiron_brick
+
+[requires-tool]
+ember_brass_tiles
+cracked_ember_brass_bricks
+chiseled_ember_brass_bricks
+ember_brass_pillar
+slag_bronze_tiles
+cracked_slag_bronze_bricks
+chiseled_slag_bronze_bricks
+slag_bronze_pillar
+molten_brass_tiles
+cracked_molten_brass_bricks
+chiseled_molten_brass_bricks
+molten_brass_pillar
+patina_steel_tiles
+cracked_patina_steel_bricks
+chiseled_patina_steel_bricks
+patina_steel_pillar
+cinder_iron_tiles
+cracked_cinder_iron_bricks
+chiseled_cinder_iron_bricks
+cinder_iron_pillar
+forgeworn_metal_tiles
+cracked_forgeworn_metal_bricks
+chiseled_forgeworn_metal_bricks
+forgeworn_metal_pillar
+blistered_bronze_tiles
+cracked_blistered_bronze_bricks
+chiseled_blistered_bronze_bricks
+blistered_bronze_pillar
+scalding_steel_tiles
+cracked_scalding_steel_bricks
+chiseled_scalding_steel_bricks
+scalding_steel_pillar
+smelters_alloy_tiles
+cracked_smelters_alloy_bricks
+chiseled_smelters_alloy_bricks
+smelters_alloy_pillar
+furnace_steel_tiles
+cracked_furnace_steel_bricks
+chiseled_furnace_steel_bricks
+furnace_steel_pillar
+quench_iron_tiles
+cracked_quench_iron_bricks
+chiseled_quench_iron_bricks
+quench_iron_pillar
+emberchrome_tiles
+cracked_emberchrome_bricks
+chiseled_emberchrome_bricks
+emberchrome_pillar
+molten_cobalt_tiles
+cracked_molten_cobalt_bricks
+chiseled_molten_cobalt_bricks
+molten_cobalt_pillar
+ashiron_tiles
+cracked_ashiron_bricks
+chiseled_ashiron_bricks
+ashiron_pillar
+
+[recipe-dir]
+moltenmetal
+
+[counts]
+blocks: 224
+items: 0
+recipes: 420
+handbook-entries: 434

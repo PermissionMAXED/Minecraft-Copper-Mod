@@ -29,6 +29,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.tick.ScheduledTickView;
 import net.sonic0810.copperinferno.core.ModDimensions;
+import net.sonic0810.copperinferno.feature.infernodim2.InfernoDim2Feature;
 
 /**
  * The Inferno portal interior block. Mirrors {@link net.minecraft.block.NetherPortalBlock}:
@@ -92,9 +93,11 @@ public class InfernoPortalBlock extends Block implements Portal {
 		Direction.Axis portalAxis = state.get(AXIS);
 		boolean inPlane = direction.getAxis() == Direction.Axis.Y || direction.getAxis() == portalAxis;
 		// A neighboring pane only counts as support when it shares this pane's axis, so
-		// perpendicular panes crossing at a corner cannot prop each other up.
+		// perpendicular panes crossing at a corner cannot prop each other up. The decorative
+		// infernodim2 corner block is a full-fledged frame block.
 		boolean supported = (neighborState.isOf(this) && neighborState.get(AXIS) == portalAxis)
-				|| neighborState.isOf(InfernoDimensionFeature.INFERNIUM_PORTAL_FRAME);
+				|| neighborState.isOf(InfernoDimensionFeature.INFERNIUM_PORTAL_FRAME)
+				|| neighborState.isOf(InfernoDim2Feature.INFERNIUM_PORTAL_CORNER);
 		if (inPlane && !supported) {
 			return Blocks.AIR.getDefaultState();
 		}

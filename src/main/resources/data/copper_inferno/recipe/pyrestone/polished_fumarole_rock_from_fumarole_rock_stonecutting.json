@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:fumarole_rock",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:polished_fumarole_rock"
+  },
+  "type": "minecraft:stonecutting"
+}

@@ -1,0 +1,18 @@
+# calamities feature hooks (format: devtools/hooks/README.md)
+
+[init]
+import net.sonic0810.copperinferno.feature.calamities.CalamitiesFeature;
+		CalamitiesFeature.init();
+
+[client-init]
+import net.sonic0810.copperinferno.feature.calamities.client.CalamitiesFeatureClient;
+		CalamitiesFeatureClient.initClient();
+
+[recipe-dir]
+calamities
+
+[counts]
+bosses: 10
+items: 50
+recipes: 20
+handbook-entries: 30

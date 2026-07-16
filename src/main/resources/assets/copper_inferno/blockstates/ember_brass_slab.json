@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/ember_brass_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/ember_brass"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/ember_brass_slab_top"
+    }
+  }
+}

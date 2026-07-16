@@ -21,7 +21,24 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FEATURE_PKGS = ["infernodim", "cinderstone", "infernoflora", "copperdeco", "infernium",
-                "infernomobs", "infernoboss", "infernofoods", "infernofx", "handbook"]
+                "infernomobs", "infernoboss", "infernofoods", "infernofx", "handbook",
+                # v4 content wave
+                "pyrestone", "moltenmetal", "smolderquartz", "nightslate", "charwood",
+                "kilnstone", "forgeparts", "infernocuisine", "titanforge",
+                # v5 content wave (mobs, bosses, worldgen; the worldgen features
+                # infernogeology/infernogardens have no recipe dirs — the recipe scan
+                # skips missing dirs, but their handbook entries still get item-checked)
+                "ashhorde", "emberswarm", "moltenfauna", "slagfiends",
+                "calamities", "archfiends", "infernogeology", "infernogardens",
+                # v6: Inferno dimension expansion
+                "infernodim2",
+                # legacy coverage: the 12 pre-v3 recipe dirs, whose handbook entries are
+                # generated into feature/legacyhandbook by
+                # devtools/gen/legacyhandbook_gen.py (legacyhandbook itself has no recipe
+                # dir; it is listed so its entry sources get scanned)
+                "masonry", "sodablocks", "materials", "decostone", "foods", "inferno",
+                "music", "utilityblocks", "glasslight", "gear", "extras", "statue",
+                "legacyhandbook"]
 JAVA_ROOTS = [
     os.path.join(ROOT, "src/main/java/net/sonic0810/copperinferno/feature"),
     os.path.join(ROOT, "src/client/java/net/sonic0810/copperinferno/feature"),

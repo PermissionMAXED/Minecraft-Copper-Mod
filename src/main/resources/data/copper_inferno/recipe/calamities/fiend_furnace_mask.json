@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:fiend_talon",
+    "copper_inferno:fiend_cinder",
+    "copper_inferno:fiend_cinder",
+    "minecraft:gold_block"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:fiend_furnace_mask"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

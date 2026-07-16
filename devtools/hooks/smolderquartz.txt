@@ -1,0 +1,116 @@
+# smolderquartz feature hooks (format: devtools/hooks/README.md)
+
+[init]
+import net.sonic0810.copperinferno.feature.smolderquartz.SmolderQuartzFeature;
+		SmolderQuartzFeature.init();
+
+[families]
+smolder_quartz, smolder_quartz
+polished_smolder_quartz, polished_smolder_quartz
+smolder_quartz_bricks, smolder_quartz_brick
+cinder_crystal, cinder_crystal
+polished_cinder_crystal, polished_cinder_crystal
+cinder_crystal_bricks, cinder_crystal_brick
+flame_opal, flame_opal
+polished_flame_opal, polished_flame_opal
+flame_opal_bricks, flame_opal_brick
+ember_prism, ember_prism
+polished_ember_prism, polished_ember_prism
+ember_prism_bricks, ember_prism_brick
+ashglass_stone, ashglass_stone
+polished_ashglass_stone, polished_ashglass_stone
+ashglass_stone_bricks, ashglass_stone_brick
+glowspar, glowspar
+polished_glowspar, polished_glowspar
+glowspar_bricks, glowspar_brick
+heatlens_stone, heatlens_stone
+polished_heatlens_stone, polished_heatlens_stone
+heatlens_stone_bricks, heatlens_stone_brick
+magma_geode, magma_geode
+polished_magma_geode, polished_magma_geode
+magma_geode_bricks, magma_geode_brick
+pyrite_crystal, pyrite_crystal
+polished_pyrite_crystal, polished_pyrite_crystal
+pyrite_crystal_bricks, pyrite_crystal_brick
+sulfur_crystal, sulfur_crystal
+polished_sulfur_crystal, polished_sulfur_crystal
+sulfur_crystal_bricks, sulfur_crystal_brick
+obsid_glassblock, obsid_glassblock
+polished_obsid_glassblock, polished_obsid_glassblock
+obsid_glassblock_bricks, obsid_glassblock_brick
+ember_amber, ember_amber
+polished_ember_amber, polished_ember_amber
+ember_amber_bricks, ember_amber_brick
+fire_agate, fire_agate
+polished_fire_agate, polished_fire_agate
+fire_agate_bricks, fire_agate_brick
+lava_pearl, lava_pearl
+polished_lava_pearl, polished_lava_pearl
+lava_pearl_bricks, lava_pearl_brick
+
+[requires-tool]
+smolder_quartz_tiles
+cracked_smolder_quartz_bricks
+chiseled_smolder_quartz_bricks
+smolder_quartz_pillar
+cinder_crystal_tiles
+cracked_cinder_crystal_bricks
+chiseled_cinder_crystal_bricks
+cinder_crystal_pillar
+flame_opal_tiles
+cracked_flame_opal_bricks
+chiseled_flame_opal_bricks
+flame_opal_pillar
+ember_prism_tiles
+cracked_ember_prism_bricks
+chiseled_ember_prism_bricks
+ember_prism_pillar
+ashglass_stone_tiles
+cracked_ashglass_stone_bricks
+chiseled_ashglass_stone_bricks
+ashglass_stone_pillar
+glowspar_tiles
+cracked_glowspar_bricks
+chiseled_glowspar_bricks
+glowspar_pillar
+heatlens_stone_tiles
+cracked_heatlens_stone_bricks
+chiseled_heatlens_stone_bricks
+heatlens_stone_pillar
+magma_geode_tiles
+cracked_magma_geode_bricks
+chiseled_magma_geode_bricks
+magma_geode_pillar
+pyrite_crystal_tiles
+cracked_pyrite_crystal_bricks
+chiseled_pyrite_crystal_bricks
+pyrite_crystal_pillar
+sulfur_crystal_tiles
+cracked_sulfur_crystal_bricks
+chiseled_sulfur_crystal_bricks
+sulfur_crystal_pillar
+obsid_glassblock_tiles
+cracked_obsid_glassblock_bricks
+chiseled_obsid_glassblock_bricks
+obsid_glassblock_pillar
+ember_amber_tiles
+cracked_ember_amber_bricks
+chiseled_ember_amber_bricks
+ember_amber_pillar
+fire_agate_tiles
+cracked_fire_agate_bricks
+chiseled_fire_agate_bricks
+fire_agate_pillar
+lava_pearl_tiles
+cracked_lava_pearl_bricks
+chiseled_lava_pearl_bricks
+lava_pearl_pillar
+
+[recipe-dir]
+smolderquartz
+
+[counts]
+blocks: 224
+items: 0
+recipes: 420
+handbook-entries: 462

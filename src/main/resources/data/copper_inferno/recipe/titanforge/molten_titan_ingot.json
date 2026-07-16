@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:cinderforge_ingot",
+    "minecraft:magma_block",
+    "minecraft:ghast_tear"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:molten_titan_ingot"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

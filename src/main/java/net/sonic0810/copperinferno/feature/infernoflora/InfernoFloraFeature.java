@@ -192,7 +192,7 @@ public final class InfernoFloraFeature {
 		StrippableBlockRegistry.register(SCORCHED_STEM, STRIPPED_SCORCHED_STEM);
 		StrippableBlockRegistry.register(SCORCHED_HYPHAE, STRIPPED_SCORCHED_HYPHAE);
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.BLOCKS_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.NATURE_KEY).register(entries -> {
 			entries.add(SCORCHED_STEM);
 			entries.add(STRIPPED_SCORCHED_STEM);
 			entries.add(SCORCHED_HYPHAE);

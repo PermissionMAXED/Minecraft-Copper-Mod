@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:sootrot_hide",
+    "copper_inferno:sootrot_hide"
+  ],
+  "result": {
+    "count": 2,
+    "id": "minecraft:brown_dye"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,43 @@
+{
+  "parent": "kupferbienen:kupferbienen/kupfersud",
+  "criteria": {
+    "has_oxidation": {
+      "conditions": {
+        "items": [
+          {
+            "items": "kupferbienen:trank_der_oxidation"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_entoxidation": {
+      "conditions": {
+        "items": [
+          {
+            "items": "kupferbienen:trank_der_entoxidation"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.kupferbienen.trank.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "kupferbienen:trank_der_oxidation"
+    },
+    "title": {
+      "translate": "advancements.kupferbienen.trank.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_oxidation",
+      "has_entoxidation"
+    ]
+  ]
+}

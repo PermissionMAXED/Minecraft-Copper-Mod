@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:forgeworn_metal",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:polished_forgeworn_metal_stairs"
+  },
+  "type": "minecraft:stonecutting"
+}

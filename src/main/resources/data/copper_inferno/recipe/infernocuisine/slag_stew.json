@@ -1,0 +1,14 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:bowl",
+    "copper_inferno:slag_chunk",
+    "minecraft:potato",
+    "minecraft:carrot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:slag_stew"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "P": "copper_inferno:duskstone",
+    "S": "minecraft:blackstone"
+  },
+  "pattern": [
+    "S S",
+    " P ",
+    "S S"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:gloomstone"
+  },
+  "type": "minecraft:crafting_shaped"
+}

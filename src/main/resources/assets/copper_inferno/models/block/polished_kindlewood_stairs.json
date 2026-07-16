@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "copper_inferno:block/polished_kindlewood",
+    "side": "copper_inferno:block/polished_kindlewood",
+    "top": "copper_inferno:block/polished_kindlewood"
+  }
+}

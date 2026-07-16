@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:brazium_powder",
+    "copper_inferno:brazium_shard",
+    "minecraft:redstone"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:brazium_catalyst"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

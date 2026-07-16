@@ -1,8 +1,14 @@
 {
   "values": [
+    "copper_inferno:cinderforge_helmet",
+    "copper_inferno:ember_steel_helmet",
     "copper_inferno:exposed_copper_helmet",
+    "copper_inferno:infernal_alloy_helmet",
     "copper_inferno:infernium_helmet",
+    "copper_inferno:molten_titan_helmet",
     "copper_inferno:oxidized_copper_helmet",
+    "copper_inferno:pyrite_helmet",
+    "copper_inferno:slagsteel_helmet",
     "copper_inferno:weathered_copper_helmet"
   ]
 }

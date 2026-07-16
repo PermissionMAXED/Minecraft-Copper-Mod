@@ -1,0 +1,10 @@
+{
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 0.35,
+  "ingredient": "copper_inferno:raw_slag_ribs",
+  "result": {
+    "id": "copper_inferno:slag_ribs"
+  },
+  "type": "minecraft:campfire_cooking"
+}

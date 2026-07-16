@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "copper_inferno:block/forgeworn_metal_pillar_top",
+    "side": "copper_inferno:block/forgeworn_metal_pillar_side"
+  }
+}

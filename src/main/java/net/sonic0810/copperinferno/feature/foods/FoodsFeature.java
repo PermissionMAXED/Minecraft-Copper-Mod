@@ -106,7 +106,7 @@ public final class FoodsFeature {
 						new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 600, 0)))); // Fire Res 30s
 
 		// Grouped: all 6 drinks first, then the 12 foods.
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.FOODS_KEY).register(entries -> {
 			entries.add(CHERRY_DR_PEPPER);
 			entries.add(VANILLA_DR_PEPPER);
 			entries.add(CREAM_SODA);

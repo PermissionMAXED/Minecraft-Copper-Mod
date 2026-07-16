@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/umbral_deepslate_brick_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/umbral_deepslate_bricks"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/umbral_deepslate_brick_slab_top"
+    }
+  }
+}

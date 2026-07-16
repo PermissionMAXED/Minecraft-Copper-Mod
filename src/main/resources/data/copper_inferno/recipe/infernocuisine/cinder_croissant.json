@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:ember_dough",
+    "copper_inferno:ember_dough",
+    "minecraft:milk_bucket"
+  ],
+  "result": {
+    "count": 3,
+    "id": "copper_inferno:cinder_croissant"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

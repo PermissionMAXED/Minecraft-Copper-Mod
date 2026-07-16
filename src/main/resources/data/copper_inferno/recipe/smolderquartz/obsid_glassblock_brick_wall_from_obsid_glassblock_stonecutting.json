@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:obsid_glassblock",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:obsid_glassblock_brick_wall"
+  },
+  "type": "minecraft:stonecutting"
+}

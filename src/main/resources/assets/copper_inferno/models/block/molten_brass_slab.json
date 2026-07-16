@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "copper_inferno:block/molten_brass",
+    "side": "copper_inferno:block/molten_brass",
+    "top": "copper_inferno:block/molten_brass"
+  }
+}
