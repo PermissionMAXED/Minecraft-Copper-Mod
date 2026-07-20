@@ -772,7 +772,38 @@ def emit_crop(block_id: str, stages: int) -> None:
 
 # <flower block id> -> flower() kwargs:
 # {"petal": (dark, base), "tip": color, "heart": color, "stem": (green, dark)}
-SIMPLE_FLOWERS = {}
+SIMPLE_FLOWERS = {
+    "wachsblume": {
+        "petal": ((0xA8, 0x79, 0x2D), (0xF0, 0xC9, 0x62)),
+        "tip": (0xFF, 0xE8, 0xA3),
+        "heart": COPPER_DARK,
+        "stem": (STEM_GREEN, STEM_DARK),
+    },
+    "honigkelch": {
+        "petal": ((0x9D, 0x55, 0x18), (0xE7, 0x8A, 0x24)),
+        "tip": (0xFF, 0xBD, 0x45),
+        "heart": (0x5A, 0x32, 0x14),
+        "stem": (STEM_GREEN, STEM_DARK),
+    },
+    "blitzblume": {
+        "petal": ((0x6C, 0x78, 0xB8), (0xB6, 0xC9, 0xFF)),
+        "tip": (0xF5, 0xFA, 0xFF),
+        "heart": (0xFF, 0xE1, 0x4A),
+        "stem": (STEM_GREEN, STEM_DARK),
+    },
+    "gruenspanroeschen": {
+        "petal": (VERDIGRIS_DARK, VERDIGRIS),
+        "tip": VERDIGRIS_LIGHT,
+        "heart": COPPER_LIGHT,
+        "stem": (STEM_GREEN, STEM_DARK),
+    },
+    "tiefenglocke": {
+        "petal": ((0x23, 0x2E, 0x57), (0x4E, 0x67, 0xA1)),
+        "tip": (0x79, 0xA7, 0xC8),
+        "heart": VERDIGRIS_LIGHT,
+        "stem": ((0x35, 0x69, 0x5E), (0x1E, 0x43, 0x3C)),
+    },
+}
 
 # <machine block id> -> {"base": (dark, mid, light), "accent": color,
 #                        "side_motif": motif_fn, "top_motif": motif_fn}
@@ -781,7 +812,12 @@ MACHINE_BLOCKS = {}
 
 # <crop block id> -> {"stages": N, "palette": (dark, base, light)}
 # Textures emitted: <id>_stage0..N-1.png (crop_stage).
-CROPS = {}
+CROPS = {
+    "kupferklee": {
+        "stages": 4,
+        "palette": ((0x2C, 0x5F, 0x32), (0x4F, 0x9A, 0x48), (0xC5, 0xA4, 0x4A)),
+    },
+}
 
 
 # ---------------------------------------------------------------------------
@@ -798,6 +834,10 @@ ITEM_TEXTURES = {
     "trank_der_entoxidation": tex_trank_der_entoxidation,
     "wurfphiole_oxidation": tex_wurfphiole_oxidation,
     "wurfphiole_entoxidation": tex_wurfphiole_entoxidation,
+    "kupferklee_samen": lambda rng: crop_stage(
+        rng, 0, 4, ((0x2C, 0x5F, 0x32), (0x4F, 0x9A, 0x48), (0xC5, 0xA4, 0x4A))),
+    "kupferkleeblatt": lambda rng: crop_stage(
+        rng, 3, 4, ((0x2C, 0x5F, 0x32), (0x4F, 0x9A, 0x48), (0xC5, 0xA4, 0x4A))),
 }
 
 BLOCK_TEXTURES = {
@@ -857,7 +897,8 @@ def main(argv: list) -> None:
         for item_id in ("kupferwabe", "gruenspanpollen",
                         "kupferbiene_spawn_egg", "gruenspanbiene_spawn_egg",
                         "kupfersud", "trank_der_oxidation", "trank_der_entoxidation",
-                        "wurfphiole_oxidation", "wurfphiole_entoxidation"):
+                        "wurfphiole_oxidation", "wurfphiole_entoxidation",
+                        "kupferklee_samen", "kupferkleeblatt"):
             emit_item_def(ASSETS, item_id)
             emit_item_model(ASSETS, item_id)
         for flower_id in SIMPLE_FLOWERS:

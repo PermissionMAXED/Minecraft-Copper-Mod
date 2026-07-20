@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "kupferbienen:block/kupferklee_stage0"
+    },
+    "age=1": {
+      "model": "kupferbienen:block/kupferklee_stage1"
+    },
+    "age=2": {
+      "model": "kupferbienen:block/kupferklee_stage2"
+    },
+    "age=3": {
+      "model": "kupferbienen:block/kupferklee_stage3"
+    }
+  }
+}

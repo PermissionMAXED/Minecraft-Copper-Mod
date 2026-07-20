@@ -31,5 +31,18 @@
   "advancements.kupferbienen.verwandlung.description": "Convert a bee with a splash vial",
   "itemGroup.kupferbienen.bienen": "Kupferbienen: Bees",
   "itemGroup.kupferbienen.alchemie": "Kupferbienen: Alchemy",
-  "itemGroup.kupferbienen.maschinen": "Kupferbienen: Machinery"
+  "itemGroup.kupferbienen.maschinen": "Kupferbienen: Machinery",
+  "block.kupferbienen.wachsblume": "Waxflower",
+  "block.kupferbienen.honigkelch": "Honey Chalice",
+  "block.kupferbienen.blitzblume": "Lightning Bloom",
+  "block.kupferbienen.gruenspanroeschen": "Verdigris Rose",
+  "block.kupferbienen.tiefenglocke": "Deepbell",
+  "block.kupferbienen.kupferklee": "Copper Clover",
+  "item.kupferbienen.kupferklee_samen": "Copper Clover Seeds",
+  "item.kupferbienen.kupferkleeblatt": "Copper Clover Leaf",
+  "tooltip.kupferbienen.wachsblume": "Its waxy petals thrive on ordinary soil.",
+  "tooltip.kupferbienen.honigkelch": "Its sweet chalice draws nearby bees.",
+  "tooltip.kupferbienen.blitzblume": "Takes root in soil or exposed overworld stone.",
+  "tooltip.kupferbienen.gruenspanroeschen": "Flourishes on soil and moss.",
+  "tooltip.kupferbienen.tiefenglocke": "Grows on soil, deepslate, and tuff."
 }

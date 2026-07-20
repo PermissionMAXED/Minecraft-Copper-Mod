@@ -1,6 +1,11 @@
 {
   "replace": false,
   "values": [
-    "kupferbienen:kupferbluete"
+    "kupferbienen:kupferbluete",
+    "kupferbienen:wachsblume",
+    "kupferbienen:honigkelch",
+    "kupferbienen:blitzblume",
+    "kupferbienen:gruenspanroeschen",
+    "kupferbienen:tiefenglocke"
   ]
 }

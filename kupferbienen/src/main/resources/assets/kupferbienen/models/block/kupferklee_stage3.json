@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "kupferbienen:block/kupferklee_stage3"
+  }
+}

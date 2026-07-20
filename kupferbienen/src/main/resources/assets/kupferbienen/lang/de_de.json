@@ -31,5 +31,18 @@
   "advancements.kupferbienen.verwandlung.description": "Verwandle eine Biene mit einer Wurfphiole",
   "itemGroup.kupferbienen.bienen": "Kupferbienen: Bienen",
   "itemGroup.kupferbienen.alchemie": "Kupferbienen: Alchemie",
-  "itemGroup.kupferbienen.maschinen": "Kupferbienen: Maschinen"
+  "itemGroup.kupferbienen.maschinen": "Kupferbienen: Maschinen",
+  "block.kupferbienen.wachsblume": "Wachsblume",
+  "block.kupferbienen.honigkelch": "Honigkelch",
+  "block.kupferbienen.blitzblume": "Blitzblume",
+  "block.kupferbienen.gruenspanroeschen": "Grünspanröschen",
+  "block.kupferbienen.tiefenglocke": "Tiefenglocke",
+  "block.kupferbienen.kupferklee": "Kupferklee",
+  "item.kupferbienen.kupferklee_samen": "Kupferkleesamen",
+  "item.kupferbienen.kupferkleeblatt": "Kupferkleeblatt",
+  "tooltip.kupferbienen.wachsblume": "Ihre wachsigen Blüten gedeihen auf gewöhnlicher Erde.",
+  "tooltip.kupferbienen.honigkelch": "Ihr süßer Kelch lockt Bienen aus der Nähe an.",
+  "tooltip.kupferbienen.blitzblume": "Wurzelt in Erde oder freiliegendem Oberweltgestein.",
+  "tooltip.kupferbienen.gruenspanroeschen": "Gedeiht auf Erde und Moos.",
+  "tooltip.kupferbienen.tiefenglocke": "Wächst auf Erde, Tiefenschiefer und Tuffstein."
 }
