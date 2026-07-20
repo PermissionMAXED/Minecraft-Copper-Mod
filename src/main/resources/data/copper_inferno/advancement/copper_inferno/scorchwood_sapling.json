@@ -1,0 +1,117 @@
+{
+  "criteria": {
+    "ashwillow_sapling": {
+      "conditions": {
+        "location": [
+          {
+            "block": "copper_inferno:ashwillow_sapling",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "charoak_sapling": {
+      "conditions": {
+        "location": [
+          {
+            "block": "copper_inferno:charoak_sapling",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "cinderpine_sapling": {
+      "conditions": {
+        "location": [
+          {
+            "block": "copper_inferno:cinderpine_sapling",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "duskthorn_sapling": {
+      "conditions": {
+        "location": [
+          {
+            "block": "copper_inferno:duskthorn_sapling",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "emberwood_sapling": {
+      "conditions": {
+        "location": [
+          {
+            "block": "copper_inferno:emberwood_sapling",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "glowbirch_sapling": {
+      "conditions": {
+        "location": [
+          {
+            "block": "copper_inferno:glowbirch_sapling",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "pyrewood_sapling": {
+      "conditions": {
+        "location": [
+          {
+            "block": "copper_inferno:pyrewood_sapling",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "sootmaple_sapling": {
+      "conditions": {
+        "location": [
+          {
+            "block": "copper_inferno:sootmaple_sapling",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.copper_inferno.scorchwood_sapling.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "copper_inferno:emberwood_sapling"
+    },
+    "title": {
+      "translate": "advancements.copper_inferno.scorchwood_sapling.title"
+    }
+  },
+  "parent": "copper_inferno:copper_inferno/enter_inferno",
+  "requirements": [
+    [
+      "emberwood_sapling",
+      "ashwillow_sapling",
+      "cinderpine_sapling",
+      "charoak_sapling",
+      "glowbirch_sapling",
+      "sootmaple_sapling",
+      "duskthorn_sapling",
+      "pyrewood_sapling"
+    ]
+  ]
+}

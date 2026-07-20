@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/kilnite_brick_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/kilnite_bricks"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/kilnite_brick_slab_top"
+    }
+  }
+}

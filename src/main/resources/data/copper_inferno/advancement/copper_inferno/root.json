@@ -1,0 +1,27 @@
+{
+  "criteria": {
+    "anything": {
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "minecraft:block/copper_block",
+    "description": {
+      "translate": "advancements.copper_inferno.root.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "copper_inferno:dr_pepper"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.copper_inferno.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "anything"
+    ]
+  ]
+}

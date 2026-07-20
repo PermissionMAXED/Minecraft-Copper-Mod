@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "copper_inferno:block/emberite_bricks",
+    "side": "copper_inferno:block/emberite_bricks",
+    "top": "copper_inferno:block/emberite_bricks"
+  }
+}

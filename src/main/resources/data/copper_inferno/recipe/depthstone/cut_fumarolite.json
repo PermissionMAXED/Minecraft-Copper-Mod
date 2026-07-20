@@ -1,0 +1,15 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:fumarolite_slab"
+  },
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:cut_fumarolite"
+  },
+  "type": "minecraft:crafting_shaped"
+}

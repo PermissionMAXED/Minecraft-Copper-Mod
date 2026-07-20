@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:talisman_cord",
+    "minecraft:ender_pearl"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:void_ward_talisman"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

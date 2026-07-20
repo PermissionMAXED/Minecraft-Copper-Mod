@@ -1,0 +1,19 @@
+{
+  "feature": "copper_inferno:copper_shrine",
+  "placement": [
+    {
+      "chance": 40,
+      "type": "minecraft:rarity_filter"
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "heightmap": "MOTION_BLOCKING",
+      "type": "minecraft:heightmap"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

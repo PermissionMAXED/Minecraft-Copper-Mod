@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "group": "wooden_stairs",
+  "key": {
+    "#": "copper_inferno:ashwillow_planks"
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:ashwillow_plank_stairs"
+  },
+  "type": "minecraft:crafting_shaped"
+}

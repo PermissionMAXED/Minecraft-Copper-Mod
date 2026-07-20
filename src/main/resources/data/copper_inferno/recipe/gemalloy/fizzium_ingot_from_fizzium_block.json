@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "group": "fizzium_ingot",
+  "ingredients": [
+    "copper_inferno:fizzium_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "copper_inferno:fizzium_ingot"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

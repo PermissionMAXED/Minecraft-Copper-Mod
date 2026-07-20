@@ -1,0 +1,13 @@
+{
+  "category": "equipment",
+  "ingredients": [
+    "copper_inferno:talisman_cord",
+    "minecraft:copper_ingot",
+    "minecraft:iron_nugget"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:copper_plumb_line"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

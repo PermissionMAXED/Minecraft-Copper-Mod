@@ -1,0 +1,18 @@
+{
+  "category": "redstone",
+  "key": {
+    "B": "minecraft:blaze_rod",
+    "C": "copper_inferno:smokequartz_block",
+    "R": "minecraft:redstone"
+  },
+  "pattern": [
+    " C ",
+    "CBC",
+    " R "
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:smokequartz_bulb"
+  },
+  "type": "minecraft:crafting_shaped"
+}

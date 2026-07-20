@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:ember_flour",
+    "copper_inferno:magma_butter",
+    "minecraft:honey_bottle"
+  ],
+  "result": {
+    "count": 2,
+    "id": "copper_inferno:soda_waffle"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

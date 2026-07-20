@@ -1,0 +1,18 @@
+{
+  "category": "equipment",
+  "key": {
+    "C": "minecraft:copper_ingot",
+    "H": "minecraft:goat_horn",
+    "V": "copper_inferno:horn_valve"
+  },
+  "pattern": [
+    " C ",
+    "CHC",
+    " V "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:copper_war_horn"
+  },
+  "type": "minecraft:crafting_shaped"
+}

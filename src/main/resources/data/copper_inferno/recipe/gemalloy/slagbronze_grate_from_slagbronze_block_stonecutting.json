@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:slagbronze_block",
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:slagbronze_grate"
+  },
+  "type": "minecraft:stonecutting"
+}

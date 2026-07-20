@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:smolder_scute"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:turtle_scute"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

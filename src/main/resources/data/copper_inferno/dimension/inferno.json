@@ -4,7 +4,9 @@
       "biomes": [
         "copper_inferno:cinder_wastes",
         "copper_inferno:ember_grove",
-        "copper_inferno:slag_sea"
+        "copper_inferno:slag_sea",
+        "copper_inferno:verdigris_jungle",
+        "copper_inferno:doom_basin"
       ],
       "scale": 3,
       "type": "minecraft:checkerboard"

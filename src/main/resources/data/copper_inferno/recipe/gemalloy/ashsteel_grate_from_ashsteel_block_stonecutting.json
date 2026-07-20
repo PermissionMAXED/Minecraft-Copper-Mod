@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:ashsteel_block",
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:ashsteel_grate"
+  },
+  "type": "minecraft:stonecutting"
+}

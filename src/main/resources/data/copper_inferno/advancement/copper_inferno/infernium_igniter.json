@@ -1,0 +1,32 @@
+{
+  "criteria": {
+    "infernium_igniter": {
+      "conditions": {
+        "items": [
+          {
+            "items": "copper_inferno:infernium_igniter"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.copper_inferno.infernium_igniter.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "copper_inferno:infernium_igniter"
+    },
+    "title": {
+      "translate": "advancements.copper_inferno.infernium_igniter.title"
+    }
+  },
+  "parent": "copper_inferno:copper_inferno/infernium",
+  "requirements": [
+    [
+      "infernium_igniter"
+    ]
+  ]
+}

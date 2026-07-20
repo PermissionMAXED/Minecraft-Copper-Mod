@@ -1,0 +1,10 @@
+{
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 0.35,
+  "ingredient": "copper_inferno:magma_butter",
+  "result": {
+    "id": "copper_inferno:smoke_cheese"
+  },
+  "type": "minecraft:smoking"
+}

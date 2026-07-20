@@ -1,0 +1,16 @@
+{
+  "category": "building",
+  "key": {
+    "#": "copper_inferno:meteoric_iron_chunk"
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:meteoric_iron"
+  },
+  "type": "minecraft:crafting_shaped"
+}

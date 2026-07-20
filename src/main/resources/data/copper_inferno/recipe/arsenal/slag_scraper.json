@@ -1,0 +1,16 @@
+{
+  "category": "equipment",
+  "key": {
+    "G": "copper_inferno:weapon_grip",
+    "S": "copper_inferno:slag_chunk"
+  },
+  "pattern": [
+    "S",
+    "G"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:slag_scraper"
+  },
+  "type": "minecraft:crafting_shaped"
+}

@@ -1,0 +1,52 @@
+{
+  "anvil_cost": 2,
+  "description": {
+    "translate": "enchantment.copper_inferno.fizz_burst"
+  },
+  "effects": {
+    "minecraft:post_attack": [
+      {
+        "affected": "attacker",
+        "effect": {
+          "block_interaction": "trigger",
+          "immune_blocks": "#minecraft:blocks_wind_charge_explosions",
+          "knockback_multiplier": {
+            "base": 0.8,
+            "per_level_above_first": 0.4,
+            "type": "minecraft:linear"
+          },
+          "large_particle": {
+            "type": "minecraft:gust_emitter_large"
+          },
+          "radius": 2.5,
+          "small_particle": {
+            "type": "minecraft:gust_emitter_small"
+          },
+          "sound": "minecraft:entity.wind_charge.wind_burst",
+          "type": "minecraft:explode"
+        },
+        "enchanted": "attacker",
+        "requirements": {
+          "condition": "minecraft:damage_source_properties",
+          "predicate": {
+            "is_direct": true
+          }
+        }
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 55,
+    "per_level_above_first": 20
+  },
+  "max_level": 2,
+  "min_cost": {
+    "base": 5,
+    "per_level_above_first": 20
+  },
+  "slots": [
+    "feet"
+  ],
+  "supported_items": "#minecraft:enchantable/foot_armor",
+  "weight": 5
+}

@@ -1,0 +1,17 @@
+{
+  "category": "building",
+  "key": {
+    "C": "copper_inferno:cobbled_cinderstone",
+    "M": "copper_inferno:meteoric_iron_chunk"
+  },
+  "pattern": [
+    "CMC",
+    "C C",
+    "CCC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:fumarole_vent"
+  },
+  "type": "minecraft:crafting_shaped"
+}

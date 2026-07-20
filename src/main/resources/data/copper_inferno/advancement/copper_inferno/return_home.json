@@ -1,0 +1,28 @@
+{
+  "criteria": {
+    "returned_to_overworld": {
+      "conditions": {
+        "to": "minecraft:overworld"
+      },
+      "trigger": "minecraft:changed_dimension"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.copper_inferno.return_home.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:red_bed"
+    },
+    "title": {
+      "translate": "advancements.copper_inferno.return_home.title"
+    }
+  },
+  "parent": "copper_inferno:copper_inferno/enter_inferno",
+  "requirements": [
+    [
+      "returned_to_overworld"
+    ]
+  ]
+}

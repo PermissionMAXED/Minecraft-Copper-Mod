@@ -1,0 +1,17 @@
+{
+  "category": "misc",
+  "group": "fizzium_ingot",
+  "key": {
+    "#": "copper_inferno:fizzium_nugget"
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:fizzium_ingot"
+  },
+  "type": "minecraft:crafting_shaped"
+}

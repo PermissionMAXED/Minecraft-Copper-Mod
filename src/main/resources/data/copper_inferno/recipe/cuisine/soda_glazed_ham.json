@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "minecraft:cooked_porkchop",
+    "copper_inferno:soda_sugar",
+    "copper_inferno:ember_oil"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:soda_glazed_ham"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

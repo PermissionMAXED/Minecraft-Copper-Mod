@@ -1,8 +1,12 @@
 {
   "values": [
+    "copper_inferno:ashsteel_shovel",
+    "copper_inferno:emberite_shovel",
     "copper_inferno:exposed_copper_shovel",
     "copper_inferno:infernium_shovel",
     "copper_inferno:oxidized_copper_shovel",
+    "copper_inferno:pyrium_shovel",
+    "copper_inferno:voidsteel_shovel",
     "copper_inferno:weathered_copper_shovel"
   ]
 }

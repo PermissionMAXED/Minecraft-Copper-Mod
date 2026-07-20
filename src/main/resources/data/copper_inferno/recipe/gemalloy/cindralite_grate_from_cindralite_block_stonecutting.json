@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:cindralite_block",
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:cindralite_grate"
+  },
+  "type": "minecraft:stonecutting"
+}

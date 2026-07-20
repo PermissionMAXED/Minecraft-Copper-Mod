@@ -55,6 +55,7 @@ LANG_EN = {
     "screen.copper_inferno.handbook.next": ">",
     "screen.copper_inferno.handbook.page": "Page %s/%s",
     "screen.copper_inferno.handbook.empty": "No entries in this category yet.",
+    "screen.copper_inferno.handbook.search": "Search...",
     "screen.copper_inferno.handbook.lang_de": "DE",
     "screen.copper_inferno.handbook.lang_en": "EN",
 }
@@ -72,6 +73,7 @@ LANG_DE = {
     "screen.copper_inferno.handbook.next": ">",
     "screen.copper_inferno.handbook.page": "Seite %s/%s",
     "screen.copper_inferno.handbook.empty": "Noch keine Eintr\u00e4ge in dieser Kategorie.",
+    "screen.copper_inferno.handbook.search": "Suchen...",
     "screen.copper_inferno.handbook.lang_de": "DE",
     "screen.copper_inferno.handbook.lang_en": "EN",
 }

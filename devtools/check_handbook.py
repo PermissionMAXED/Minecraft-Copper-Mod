@@ -1,27 +1,33 @@
 #!/usr/bin/env python3
-"""Handbook coverage check for the v3 "Inferno Dimension" features.
+"""Handbook coverage check for the mod's curated handbook entries.
 
-Scans the v3 feature Java packages (main + client source sets) for
+Scans EVERY feature Java package (main + client source sets, the whole feature/ tree) for
 HandbookEntries.add(new HandbookEntry(...)) calls and extracts each entry's recipeId,
 iconItemId, grid item ids and resultItemId string literals.
 
 Fails (exit 1) when:
-  - a recipe JSON under a v3 recipe dir (data/copper_inferno/recipe/{infernodim,cinderstone,
-    infernoflora,copperdeco,infernium,infernofoods,infernofx,handbook,infernoboss,
-    infernomobs}) has no handbook entry whose recipeId matches it — matching accepts the
-    "dir/name" path or the bare file name, with or without the copper_inferno: prefix — or
+  - a recipe JSON under a curated-coverage recipe dir (data/copper_inferno/recipe/
+    {infernodim,cinderstone,infernoflora,copperdeco,infernium,infernofoods,infernofx,
+    handbook,infernoboss,infernomobs}) has no handbook entry whose recipeId matches it —
+    matching accepts the "dir/name" path or the bare file name, with or without the
+    copper_inferno: prefix — or
   - a referenced copper_inferno item id has no assets/copper_inferno/items/<id>.json on disk.
 
-Lenient by design: only recipe dirs that exist are considered, so a tree with no v3 recipe
-dirs is green. Prints "[check_handbook] OK" when green.
+Lenient by design: only recipe dirs that exist are considered, so a tree with no curated
+recipe dirs is green. Prints "[check_handbook] OK" when green.
 """
 import os
 import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FEATURE_PKGS = ["infernodim", "cinderstone", "infernoflora", "copperdeco", "infernium",
-                "infernomobs", "infernoboss", "infernofoods", "infernofx", "handbook"]
+# Recipe dirs whose EVERY recipe must have a curated handbook entry (the v3 dirs). The v4
+# dirs (chromacopper, depthstone, gemalloy, scorchwood, ...) are deliberately NOT listed:
+# their hundreds of generated recipes are surfaced in the handbook through the auto recipe
+# index (devtools/gen/handbook_index_gen.py -> assets/copper_inferno/handbook/
+# recipe_index.json), so per-recipe curated coverage is not required there.
+RECIPE_COVERAGE_DIRS = ["infernodim", "cinderstone", "infernoflora", "copperdeco", "infernium",
+                        "infernomobs", "infernoboss", "infernofoods", "infernofx", "handbook"]
 JAVA_ROOTS = [
     os.path.join(ROOT, "src/main/java/net/sonic0810/copperinferno/feature"),
     os.path.join(ROOT, "src/client/java/net/sonic0810/copperinferno/feature"),
@@ -113,6 +119,23 @@ def single_literal(arg: str) -> str | None:
     return m.group(1) if m else None
 
 
+def grid_literals(arg: str) -> list[str]:
+    """Item-id literals from a `new String[]{...}` grid argument. Only array elements that
+    are EXACTLY one string literal count; concatenations (e.g. "ns:" + var + "_log") and
+    variables are skipped — they cannot be resolved statically and their fragments must not
+    be misread as item ids."""
+    open_brace = arg.find("{")
+    close_brace = arg.rfind("}")
+    if open_brace == -1 or close_brace <= open_brace:
+        return []
+    out = []
+    for element in split_top_level(arg[open_brace + 1:close_brace]):
+        lit = single_literal(element)
+        if lit:
+            out.append(lit)
+    return out
+
+
 def main() -> int:
     # ---------- collect HandbookEntries.add(new HandbookEntry(...)) calls ----------
     recipe_ids: set[str] = set()   # normalized: copper_inferno: prefix stripped
@@ -120,52 +143,51 @@ def main() -> int:
     call_count = 0
 
     for java_root in JAVA_ROOTS:
-        for pkg in FEATURE_PKGS:
-            pkg_dir = os.path.join(java_root, pkg)
-            if not os.path.isdir(pkg_dir):
-                continue
-            for dirpath, _dirs, files in os.walk(pkg_dir):
-                for fn in sorted(files):
-                    if not fn.endswith(".java"):
+        if not os.path.isdir(java_root):
+            continue
+        # Walk the whole feature/ tree: EVERY feature package's curated entries are checked
+        # (not just the v3 list), so new packages are covered automatically.
+        for dirpath, _dirs, files in os.walk(java_root):
+            for fn in sorted(files):
+                if not fn.endswith(".java"):
+                    continue
+                path = os.path.join(dirpath, fn)
+                rel = os.path.relpath(path, ROOT)
+                with open(path, encoding="utf-8") as f:
+                    text = strip_comments(f.read())
+                for m in re.finditer(r"HandbookEntries\s*\.\s*add\s*\(", text):
+                    call_count += 1
+                    add_args = balanced_args(text, m.end() - 1)
+                    ctor = re.search(r"new\s+HandbookEntry\s*\(", add_args)
+                    if ctor is None:
+                        print(f"[check_handbook] WARNING: cannot positionally parse "
+                              f"HandbookEntries.add(...) in {rel} (no inline `new HandbookEntry(`); skipping")
                         continue
-                    path = os.path.join(dirpath, fn)
-                    rel = os.path.relpath(path, ROOT)
-                    with open(path, encoding="utf-8") as f:
-                        text = strip_comments(f.read())
-                    for m in re.finditer(r"HandbookEntries\s*\.\s*add\s*\(", text):
-                        call_count += 1
-                        add_args = balanced_args(text, m.end() - 1)
-                        ctor = re.search(r"new\s+HandbookEntry\s*\(", add_args)
-                        if ctor is None:
-                            print(f"[check_handbook] WARNING: cannot positionally parse "
-                                  f"HandbookEntries.add(...) in {rel} (no inline `new HandbookEntry(`); skipping")
-                            continue
-                        args = split_top_level(balanced_args(add_args, ctor.end() - 1))
-                        if len(args) != 9:
-                            print(f"[check_handbook] WARNING: `new HandbookEntry(...)` in {rel} has "
-                                  f"{len(args)} args (expected 9); skipping")
-                            continue
-                        # (category, id, iconItemId, recipeId, grid, resultItemId, resultCount, textEn, textDe)
-                        icon = single_literal(args[2])
-                        if icon:
-                            item_ids.setdefault(icon, rel)
-                        rid = single_literal(args[3])
-                        if rid is not None:
-                            recipe_ids.add(rid.removeprefix("copper_inferno:"))
-                        if args[4] != "null":
-                            for g in STRING_RE.findall(args[4]):
-                                if g:
-                                    item_ids.setdefault(g, rel)
-                        result = single_literal(args[5])
-                        if result:
-                            item_ids.setdefault(result, rel)
+                    args = split_top_level(balanced_args(add_args, ctor.end() - 1))
+                    if len(args) != 9:
+                        print(f"[check_handbook] WARNING: `new HandbookEntry(...)` in {rel} has "
+                              f"{len(args)} args (expected 9); skipping")
+                        continue
+                    # (category, id, iconItemId, recipeId, grid, resultItemId, resultCount, textEn, textDe)
+                    icon = single_literal(args[2])
+                    if icon:
+                        item_ids.setdefault(icon, rel)
+                    rid = single_literal(args[3])
+                    if rid is not None:
+                        recipe_ids.add(rid.removeprefix("copper_inferno:"))
+                    if args[4] != "null":
+                        for g in grid_literals(args[4]):
+                            item_ids.setdefault(g, rel)
+                    result = single_literal(args[5])
+                    if result:
+                        item_ids.setdefault(result, rel)
     print(f"[check_handbook] {call_count} HandbookEntries.add calls scanned; "
           f"{len(recipe_ids)} recipe ids, {len(item_ids)} distinct item ids referenced")
 
-    # ---------- every v3 recipe has a handbook entry ----------
-    v3_recipe_dirs = [d for d in FEATURE_PKGS if os.path.isdir(os.path.join(RECIPE_ROOT, d))]
+    # ---------- every recipe in a curated-coverage dir has a handbook entry ----------
+    coverage_dirs = [d for d in RECIPE_COVERAGE_DIRS if os.path.isdir(os.path.join(RECIPE_ROOT, d))]
     recipe_count = 0
-    for d in sorted(v3_recipe_dirs):
+    for d in sorted(coverage_dirs):
         base = os.path.join(RECIPE_ROOT, d)
         for dirpath, _dirs, files in os.walk(base):
             for fn in sorted(files):
@@ -177,7 +199,7 @@ def main() -> int:
                 if rel_id not in recipe_ids and stem not in recipe_ids:
                     finding(f"recipe data/copper_inferno/recipe/{rel_id}.json has no handbook entry "
                             f"(no HandbookEntries.add with recipeId {rel_id!r} or {stem!r})")
-    print(f"[check_handbook] {recipe_count} recipes in v3 dirs {sorted(v3_recipe_dirs)} checked against handbook entries")
+    print(f"[check_handbook] {recipe_count} recipes in curated dirs {sorted(coverage_dirs)} checked against handbook entries")
 
     # ---------- every referenced item id resolves to items/<id>.json ----------
     checked = 0

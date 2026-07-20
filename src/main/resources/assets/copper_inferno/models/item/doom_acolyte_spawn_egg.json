@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "copper_inferno:item/doom_acolyte_spawn_egg"
+  }
+}

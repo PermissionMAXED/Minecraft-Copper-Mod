@@ -1,8 +1,12 @@
 {
   "values": [
+    "copper_inferno:ashsteel_helmet",
+    "copper_inferno:emberite_helmet",
     "copper_inferno:exposed_copper_helmet",
     "copper_inferno:infernium_helmet",
     "copper_inferno:oxidized_copper_helmet",
+    "copper_inferno:pyrium_helmet",
+    "copper_inferno:voidsteel_helmet",
     "copper_inferno:weathered_copper_helmet"
   ]
 }

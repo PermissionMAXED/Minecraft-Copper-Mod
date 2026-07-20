@@ -1,0 +1,11 @@
+{
+  "block/mineable/axe": [
+    "copper_inferno:brew_keg"
+  ],
+  "block/mineable/pickaxe": [
+    "copper_inferno:trophy_pedestal"
+  ],
+  "item/pickaxes": [
+    "copper_inferno:copper_drill"
+  ]
+}

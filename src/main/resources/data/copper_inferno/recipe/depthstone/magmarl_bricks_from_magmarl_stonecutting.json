@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:magmarl",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:magmarl_bricks"
+  },
+  "type": "minecraft:stonecutting"
+}

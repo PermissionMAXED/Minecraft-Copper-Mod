@@ -1,0 +1,17 @@
+{
+  "category": "redstone",
+  "key": {
+    "#": "copper_inferno:scarlet_copper",
+    "G": "minecraft:glowstone"
+  },
+  "pattern": [
+    " # ",
+    "#G#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:scarlet_copper_lamp"
+  },
+  "type": "minecraft:crafting_shaped"
+}

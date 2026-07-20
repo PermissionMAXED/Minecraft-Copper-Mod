@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:slag_grit",
+    "copper_inferno:slag_grit"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:flint"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

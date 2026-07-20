@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:boiler_plate",
+    "copper_inferno:boiler_plate",
+    "copper_inferno:boiler_plate"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:bucket"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

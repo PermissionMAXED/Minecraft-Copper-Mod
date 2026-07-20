@@ -1,0 +1,12 @@
+{
+  "category": "misc",
+  "group": "ashsteel_ingot",
+  "ingredients": [
+    "copper_inferno:ashsteel_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "copper_inferno:ashsteel_ingot"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

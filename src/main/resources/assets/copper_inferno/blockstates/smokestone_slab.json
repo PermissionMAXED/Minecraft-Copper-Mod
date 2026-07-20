@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/smokestone_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/smokestone"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/smokestone_slab_top"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "category": "building",
+  "key": {
+    "D": "minecraft:cobbled_deepslate",
+    "U": "minecraft:smooth_basalt"
+  },
+  "pattern": [
+    "UD",
+    "DD"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:slagbasalt"
+  },
+  "type": "minecraft:crafting_shaped"
+}

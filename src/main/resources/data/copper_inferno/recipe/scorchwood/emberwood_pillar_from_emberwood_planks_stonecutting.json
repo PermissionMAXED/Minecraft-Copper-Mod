@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:emberwood_planks",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:emberwood_pillar"
+  },
+  "type": "minecraft:stonecutting"
+}

@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:cobalt_copper",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:cobalt_copper_stairs"
+  },
+  "type": "minecraft:stonecutting"
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_lantern",
+  "textures": {
+    "lantern": "copper_inferno:block/cindralite_lantern"
+  }
+}

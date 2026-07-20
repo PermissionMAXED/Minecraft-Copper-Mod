@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:ember_flour",
+    "copper_inferno:cinder_salt",
+    "copper_inferno:ash_yeast"
+  ],
+  "result": {
+    "count": 4,
+    "id": "copper_inferno:ash_cracker"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

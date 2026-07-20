@@ -1,0 +1,18 @@
+{
+  "category": "equipment",
+  "key": {
+    "C": "minecraft:copper_ingot",
+    "D": "copper_inferno:catalyst_dust",
+    "L": "copper_inferno:lens_blank"
+  },
+  "pattern": [
+    " C ",
+    "CLC",
+    " D "
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:prospector_lens"
+  },
+  "type": "minecraft:crafting_shaped"
+}

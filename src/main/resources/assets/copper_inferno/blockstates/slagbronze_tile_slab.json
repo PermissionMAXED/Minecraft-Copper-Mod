@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/slagbronze_tile_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/slagbronze_tiles"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/slagbronze_tile_slab_top"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:onyx_copper",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:chiseled_onyx_copper"
+  },
+  "type": "minecraft:stonecutting"
+}

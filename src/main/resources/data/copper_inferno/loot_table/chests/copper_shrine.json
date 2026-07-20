@@ -1,0 +1,53 @@
+{
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "max": 5.0,
+                "min": 2.0,
+                "type": "minecraft:uniform"
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:copper_ingot",
+          "type": "minecraft:item",
+          "weight": 10
+        },
+        {
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "max": 3.0,
+                "min": 1.0,
+                "type": "minecraft:uniform"
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "copper_inferno:pyrium_nugget",
+          "type": "minecraft:item",
+          "weight": 5
+        },
+        {
+          "name": "copper_inferno:dr_pepper",
+          "type": "minecraft:item",
+          "weight": 4
+        }
+      ],
+      "rolls": {
+        "max": 5.0,
+        "min": 3.0,
+        "type": "minecraft:uniform"
+      }
+    }
+  ],
+  "random_sequence": "copper_inferno:chests/copper_shrine",
+  "type": "minecraft:chest"
+}

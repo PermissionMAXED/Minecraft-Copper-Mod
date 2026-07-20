@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:scorchslate",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:scorchslate_brick_stairs"
+  },
+  "type": "minecraft:stonecutting"
+}

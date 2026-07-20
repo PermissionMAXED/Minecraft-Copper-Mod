@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:meteoric_iron"
+  ],
+  "result": {
+    "count": 9,
+    "id": "copper_inferno:meteoric_iron_chunk"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

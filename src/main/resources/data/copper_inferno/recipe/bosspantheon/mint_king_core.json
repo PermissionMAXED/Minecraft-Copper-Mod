@@ -1,0 +1,18 @@
+{
+  "category": "misc",
+  "key": {
+    "C": "minecraft:slime_ball",
+    "E": "minecraft:sugar",
+    "R": "copper_inferno:pantheon_relic"
+  },
+  "pattern": [
+    "CEC",
+    "ERE",
+    "CEC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:mint_king_core"
+  },
+  "type": "minecraft:crafting_shaped"
+}

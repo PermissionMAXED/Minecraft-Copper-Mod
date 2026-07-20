@@ -1,0 +1,26 @@
+{
+  "enchantment/in_enchanting_table": [
+    "copper_inferno:ember_edge",
+    "copper_inferno:verdigris_guard",
+    "copper_inferno:fizz_burst",
+    "copper_inferno:coppersoul",
+    "copper_inferno:slag_breaker",
+    "copper_inferno:doomtouch"
+  ],
+  "enchantment/non_treasure": [
+    "copper_inferno:ember_edge",
+    "copper_inferno:verdigris_guard",
+    "copper_inferno:fizz_burst",
+    "copper_inferno:coppersoul",
+    "copper_inferno:slag_breaker",
+    "copper_inferno:doomtouch"
+  ],
+  "enchantment/tradeable": [
+    "copper_inferno:ember_edge",
+    "copper_inferno:verdigris_guard",
+    "copper_inferno:fizz_burst",
+    "copper_inferno:coppersoul",
+    "copper_inferno:slag_breaker",
+    "copper_inferno:doomtouch"
+  ]
+}

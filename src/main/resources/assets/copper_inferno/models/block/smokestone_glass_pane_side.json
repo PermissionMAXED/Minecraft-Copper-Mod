@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_glass_pane_side",
+  "textures": {
+    "edge": "copper_inferno:block/smokestone_glass_pane_top",
+    "pane": "copper_inferno:block/smokestone_glass"
+  }
+}

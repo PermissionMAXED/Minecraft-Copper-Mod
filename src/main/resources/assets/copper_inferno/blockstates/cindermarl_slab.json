@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "copper_inferno:block/cindermarl_slab"
+    },
+    "type=double": {
+      "model": "copper_inferno:block/cindermarl"
+    },
+    "type=top": {
+      "model": "copper_inferno:block/cindermarl_slab_top"
+    }
+  }
+}

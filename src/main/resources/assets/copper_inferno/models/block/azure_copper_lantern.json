@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_lantern",
+  "textures": {
+    "lantern": "copper_inferno:block/azure_copper_lantern"
+  }
+}

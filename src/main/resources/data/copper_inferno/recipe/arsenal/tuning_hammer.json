@@ -1,0 +1,16 @@
+{
+  "category": "equipment",
+  "key": {
+    "G": "copper_inferno:weapon_grip",
+    "I": "minecraft:iron_nugget"
+  },
+  "pattern": [
+    "I",
+    "G"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:tuning_hammer"
+  },
+  "type": "minecraft:crafting_shaped"
+}

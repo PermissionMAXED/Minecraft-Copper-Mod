@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:pepperite_ingot"
+  ],
+  "result": {
+    "count": 9,
+    "id": "copper_inferno:pepperite_nugget"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

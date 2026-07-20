@@ -1,0 +1,11 @@
+{
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "slagbronze_ingot",
+  "ingredient": "copper_inferno:deepslate_slagbronze_ore",
+  "result": {
+    "id": "copper_inferno:slagbronze_ingot"
+  },
+  "type": "minecraft:smelting"
+}

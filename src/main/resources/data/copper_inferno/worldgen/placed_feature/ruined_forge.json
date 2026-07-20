@@ -1,0 +1,27 @@
+{
+  "feature": "copper_inferno:ruined_forge",
+  "placement": [
+    {
+      "chance": 5,
+      "type": "minecraft:rarity_filter"
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "height": {
+        "max_inclusive": {
+          "absolute": 80
+        },
+        "min_inclusive": {
+          "absolute": 34
+        },
+        "type": "minecraft:uniform"
+      },
+      "type": "minecraft:height_range"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

@@ -301,6 +301,15 @@ for wname, (params, exprs) in wrapper_templates.items():
     lit_group = r'"([a-z0-9_/]+)"\s*[,)]\s*' * len(params)
     callsites = list(re.finditer(r"\b" + re.escape(wname) + r"\(\s*" + lit_group, all_java))
     if not callsites:
+        # Pre-wired registrar wrappers (core.content) may exist before any feature
+        # calls them: a wrapper with ZERO invocations registers nothing, so nothing
+        # needs assets. Only flag wrappers that ARE invoked somewhere but never with
+        # string-literal leading args (those registrations would escape the audit).
+        def_count = sum(1 for mm in METHOD_RE.finditer(all_java) if mm.group(1) == wname)
+        occ_count = len(re.findall(r"\b" + re.escape(wname) + r"\(", all_java))
+        if occ_count <= def_count:
+            print(f"[audit] (f) wrapper {wname} is pre-wired but never invoked; registers nothing")
+            continue
         finding("f", f"wrapper {wname} registers computed ids but no literal call sites found")
     for cs in callsites:
         bindings = dict(zip(params, cs.groups()))

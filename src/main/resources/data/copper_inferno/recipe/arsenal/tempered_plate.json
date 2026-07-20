@@ -1,0 +1,13 @@
+{
+  "category": "misc",
+  "ingredients": [
+    "copper_inferno:catalyst_dust",
+    "minecraft:iron_ingot",
+    "minecraft:iron_ingot"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:tempered_plate"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

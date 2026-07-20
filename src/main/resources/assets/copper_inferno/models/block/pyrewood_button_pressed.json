@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button_pressed",
+  "textures": {
+    "texture": "copper_inferno:block/pyrewood_planks"
+  }
+}
