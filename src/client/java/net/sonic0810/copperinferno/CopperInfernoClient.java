@@ -11,7 +11,9 @@ import net.sonic0810.copperinferno.feature.cinderstone.client.CinderStoneFeature
 import net.sonic0810.copperinferno.feature.companions.client.CompanionsFeatureClient;
 import net.sonic0810.copperinferno.feature.constructs.client.ConstructsFeatureClient;
 import net.sonic0810.copperinferno.feature.copperfauna.client.CopperFaunaFeatureClient;
+import net.sonic0810.copperinferno.feature.corsairs.client.CorsairsFeatureClient;
 import net.sonic0810.copperinferno.feature.depthstone.client.DepthStoneFeatureClient;
+import net.sonic0810.copperinferno.feature.driftwood.client.DriftwoodFeatureClient;
 import net.sonic0810.copperinferno.feature.drpepper.client.DrPepperFeatureClient;
 import net.sonic0810.copperinferno.feature.extras.client.ExtrasFeatureClient;
 import net.sonic0810.copperinferno.feature.gemalloy.client.GemAlloyFeatureClient;
@@ -24,10 +26,19 @@ import net.sonic0810.copperinferno.feature.infernofauna.client.InfernoFaunaFeatu
 import net.sonic0810.copperinferno.feature.infernoflora.client.InfernoFloraFeatureClient;
 import net.sonic0810.copperinferno.feature.infernofx.client.InfernoFxFeatureClient;
 import net.sonic0810.copperinferno.feature.infernomobs.client.InfernoMobsFeatureClient;
+import net.sonic0810.copperinferno.feature.monsoon.client.MonsoonFeatureClient;
 import net.sonic0810.copperinferno.feature.scorchwood.client.ScorchWoodFeatureClient;
 import net.sonic0810.copperinferno.feature.sodafauna.client.SodaFaunaFeatureClient;
 import net.sonic0810.copperinferno.feature.statue.client.PlayerStatueFeatureClient;
 import net.sonic0810.copperinferno.feature.systems.client.SystemsFeatureClient;
+import net.sonic0810.copperinferno.feature.tidebosses.client.TideBossesFeatureClient;
+import net.sonic0810.copperinferno.feature.tidecoast.client.TideCoastFeatureClient;
+import net.sonic0810.copperinferno.feature.tidefauna.client.TideFaunaFeatureClient;
+import net.sonic0810.copperinferno.feature.tidemetal.client.TideMetalFeatureClient;
+import net.sonic0810.copperinferno.feature.tiderelics.client.TideRelicsFeatureClient;
+import net.sonic0810.copperinferno.feature.tidestone.client.TideStoneFeatureClient;
+import net.sonic0810.copperinferno.feature.tideworks.client.TideWorksFeatureClient;
+import net.sonic0810.copperinferno.feature.vessels.client.VesselsFeatureClient;
 import net.sonic0810.copperinferno.feature.wildworld.client.WildWorldFeatureClient;
 
 public class CopperInfernoClient implements ClientModInitializer {
@@ -65,6 +76,20 @@ public class CopperInfernoClient implements ClientModInitializer {
 		SystemsFeatureClient.initClient();
 		WildWorldFeatureClient.initClient();
 		ArtifactsFeatureClient.initClient();
+		// v5 Grünspanflut wave, pre-wired (WP1) so parallel work packages never edit this
+		// file again: same relative order as the common side; empty skeletons until their
+		// work package lands. HandbookFeatureClient stays LAST.
+		TideStoneFeatureClient.initClient();
+		DriftwoodFeatureClient.initClient();
+		TideMetalFeatureClient.initClient();
+		TideFaunaFeatureClient.initClient();
+		CorsairsFeatureClient.initClient();
+		TideWorksFeatureClient.initClient();
+		MonsoonFeatureClient.initClient();
+		VesselsFeatureClient.initClient();
+		TideBossesFeatureClient.initClient();
+		TideRelicsFeatureClient.initClient();
+		TideCoastFeatureClient.initClient();
 		HandbookFeatureClient.initClient();
 	}
 }

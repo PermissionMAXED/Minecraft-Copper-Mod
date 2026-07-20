@@ -17,9 +17,11 @@ import net.sonic0810.copperinferno.feature.companions.CompanionsFeature;
 import net.sonic0810.copperinferno.feature.constructs.ConstructsFeature;
 import net.sonic0810.copperinferno.feature.copperdeco.CopperDecoFeature;
 import net.sonic0810.copperinferno.feature.copperfauna.CopperFaunaFeature;
+import net.sonic0810.copperinferno.feature.corsairs.CorsairsFeature;
 import net.sonic0810.copperinferno.feature.cuisine.CuisineFeature;
 import net.sonic0810.copperinferno.feature.decostone.DecoStoneFeature;
 import net.sonic0810.copperinferno.feature.depthstone.DepthStoneFeature;
+import net.sonic0810.copperinferno.feature.driftwood.DriftwoodFeature;
 import net.sonic0810.copperinferno.feature.drpepper.DrPepperFeature;
 import net.sonic0810.copperinferno.feature.emberstorm.EmberStormFeature;
 import net.sonic0810.copperinferno.feature.enchants.EnchantsFeature;
@@ -42,6 +44,7 @@ import net.sonic0810.copperinferno.feature.infernium.InferniumFeature;
 import net.sonic0810.copperinferno.feature.infernomobs.InfernoMobsFeature;
 import net.sonic0810.copperinferno.feature.masonry.MasonryFeature;
 import net.sonic0810.copperinferno.feature.materials.MaterialsFeature;
+import net.sonic0810.copperinferno.feature.monsoon.MonsoonFeature;
 import net.sonic0810.copperinferno.feature.music.MusicFeature;
 import net.sonic0810.copperinferno.feature.scorchwood.ScorchWoodFeature;
 import net.sonic0810.copperinferno.feature.shrines.ShrinesFeature;
@@ -49,9 +52,18 @@ import net.sonic0810.copperinferno.feature.sodablocks.SodaBlocksFeature;
 import net.sonic0810.copperinferno.feature.sodafauna.SodaFaunaFeature;
 import net.sonic0810.copperinferno.feature.statue.PlayerStatueFeature;
 import net.sonic0810.copperinferno.feature.systems.SystemsFeature;
+import net.sonic0810.copperinferno.feature.tidebosses.TideBossesFeature;
+import net.sonic0810.copperinferno.feature.tidecoast.TideCoastFeature;
+import net.sonic0810.copperinferno.feature.tidefauna.TideFaunaFeature;
+import net.sonic0810.copperinferno.feature.tidemetal.TideMetalFeature;
+import net.sonic0810.copperinferno.feature.tideprogress.TideProgressFeature;
+import net.sonic0810.copperinferno.feature.tiderelics.TideRelicsFeature;
+import net.sonic0810.copperinferno.feature.tidestone.TideStoneFeature;
+import net.sonic0810.copperinferno.feature.tideworks.TideWorksFeature;
 import net.sonic0810.copperinferno.feature.tools.CopperToolsFeature;
 import net.sonic0810.copperinferno.feature.trades.TradesFeature;
 import net.sonic0810.copperinferno.feature.utilityblocks.UtilityBlocksFeature;
+import net.sonic0810.copperinferno.feature.vessels.VesselsFeature;
 import net.sonic0810.copperinferno.feature.warhorns.WarHornsFeature;
 import net.sonic0810.copperinferno.feature.wildworld.WildWorldFeature;
 import org.slf4j.Logger;
@@ -140,6 +152,21 @@ public class CopperInferno implements ModInitializer {
 		CompanionsFeature.init();
 		WarHornsFeature.init();
 		BrewsFeature.init();
+		// v5 Grünspanflut wave, pre-wired (WP1) so parallel work packages never edit this
+		// file again: empty skeletons until their work package lands. HandbookFeature
+		// stays LAST so it can reference every other feature's content.
+		TideStoneFeature.init();
+		DriftwoodFeature.init();
+		TideMetalFeature.init();
+		TideFaunaFeature.init();
+		CorsairsFeature.init();
+		TideWorksFeature.init();
+		MonsoonFeature.init();
+		VesselsFeature.init();
+		TideBossesFeature.init();
+		TideRelicsFeature.init();
+		TideCoastFeature.init();
+		TideProgressFeature.init();
 		HandbookFeature.init();
 	}
 }

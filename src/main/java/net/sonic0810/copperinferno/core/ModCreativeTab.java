@@ -87,6 +87,22 @@ public final class ModCreativeTab {
 					.icon(iconFor("copper_beetle_spawn_egg"))
 					.build());
 
+	// ------------------------------------------------------------------
+	// v5 "Grünspanflut" tab (WP1 pre-wiring). The icon item is registered later
+	// (by the v5 feature wave) or not at all yet; iconFor() resolves lazily on
+	// first render, so a missing icon item degrades to minecraft:air, never crashes.
+	// ------------------------------------------------------------------
+
+	public static final RegistryKey<ItemGroup> TIDES_KEY = RegistryKey.of(RegistryKeys.ITEM_GROUP, CopperInferno.id("tides"));
+
+	public static final ItemGroup TIDES = Registry.register(
+			Registries.ITEM_GROUP,
+			TIDES_KEY,
+			FabricItemGroup.builder()
+					.displayName(Text.translatable("itemGroup.copper_inferno.tides"))
+					.icon(iconFor("tidestone"))
+					.build());
+
 	/**
 	 * Registration-order-safe icon supplier: the tabs are registered by
 	 * {@code CopperInfernoCore.init()} BEFORE any feature item exists, so the icon item is
