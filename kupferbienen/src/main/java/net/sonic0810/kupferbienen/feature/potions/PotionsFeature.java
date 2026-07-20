@@ -111,7 +111,7 @@ public final class PotionsFeature {
 		WURFPHIOLE_ENTOXIDATION = ModItems.register("wurfphiole_entoxidation", WurfphioleItem::new,
 				wurfphioleSettings(ENTOXIDATION_COLOR));
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.ALCHEMIE_KEY).register(entries -> {
 			entries.add(KUPFERSUD);
 			entries.add(TRANK_DER_OXIDATION);
 			entries.add(TRANK_DER_ENTOXIDATION);

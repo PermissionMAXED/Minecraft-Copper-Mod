@@ -110,7 +110,7 @@ public final class BeesFeature {
 		GRUENSPANBIENE_SPAWN_EGG = ModItems.register("gruenspanbiene_spawn_egg", SpawnEggItem::new,
 				new Item.Settings().spawnEgg(GRUENSPANBIENE));
 
-		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.MAIN_KEY).register(entries -> {
+		ItemGroupEvents.modifyEntriesEvent(ModCreativeTab.BIENEN_KEY).register(entries -> {
 			entries.add(KUPFERWABE);
 			entries.add(GRUENSPANPOLLEN);
 			entries.add(KUPFERBLUETE);

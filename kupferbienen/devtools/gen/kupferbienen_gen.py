@@ -36,9 +36,17 @@ Emits (always):
 Emits (only with --write-json; the JSON in src/main/resources stays authoritative):
     assets/kupferbienen/items/<id>.json        (1.21.9 item model-definitions)
     assets/kupferbienen/models/item/<id>.json  (item/generated sprite models)
+    plus, per declarative-table row: emit_flower_block / emit_machine_block /
+    emit_crop JSON sets (blockstates, block models, item defs/models, block loot).
+
+Mega-expansion framework: painters are parametric (comb/pollen/flower/machine_face/
+crop_stage/effect_icon take palettes) and the declarative tables BEE_PALETTES,
+SIMPLE_FLOWERS, MACHINE_BLOCKS and CROPS drive emission — later workers append rows
+instead of writing new painter code.
 
 Determinism: all texture noise is seeded per texture name via rng_for("<name>")
-(== Random(f"kupferbienen:<name>")) so re-runs produce byte-identical PNGs.
+(== Random(f"kupferbienen:<name>")), and every painter consumes the rng exactly once
+per canvas pixel, so re-runs produce byte-identical PNGs.
 """
 
 import io
@@ -135,7 +143,8 @@ def save_png(img: Image.Image, path: Path) -> None:
 
 
 # ---------------------------------------------------------------------------
-# kupferwabe (copper comb) — 16x16 item sprite
+# comb (honeycomb blob) — 16x16 item sprite, parametric on a (dark, base, light)
+# palette
 # ---------------------------------------------------------------------------
 
 def _comb_centers() -> list:
@@ -149,10 +158,11 @@ def _comb_centers() -> list:
     return centers
 
 
-def kupferwabe_texture() -> Image.Image:
+def comb(rng: Random, palette) -> Image.Image:
     """Comb blob (rounded square, clipped corners) filled with a Voronoi hex-cell
-    honeycomb: dark cell walls, mid copper cell fill, light glints near cell centres."""
-    rng = rng_for("kupferwabe")
+    honeycomb: dark cell walls, mid cell fill, light glints near cell centres.
+    palette = (dark, base, light); rng consumed once per canvas pixel."""
+    dark, base, light = palette
     centers = _comb_centers()
 
     # Blob mask: rounded square with the corners cut off.
@@ -172,22 +182,26 @@ def kupferwabe_texture() -> Image.Image:
             rim = any(not (0 <= nx < 16 and 0 <= ny < 16 and mask[ny][nx])
                       for nx, ny in ((x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)))
             if rim:
-                img.putpixel((x, y), COPPER_DARK + (255,))
+                img.putpixel((x, y), dark + (255,))
                 continue
             dists = sorted(math.dist((x, y), c) for c in centers)
             d1, d2 = dists[0], dists[1]
             if d2 - d1 < 1.15:
-                color = COPPER_DARK          # cell wall
+                color = dark                 # cell wall
             elif d1 < 1.0:
-                color = COPPER_LIGHT         # honey glint at the cell centre
+                color = light                # honey glint at the cell centre
             elif mottle < 0.12:
-                color = COPPER_DARK          # sparse mottling
+                color = dark                 # sparse mottling
             elif mottle > 0.94:
-                color = COPPER_LIGHT
+                color = light
             else:
-                color = COPPER               # cell fill
+                color = base                 # cell fill
             img.putpixel((x, y), color + (255,))
     return img
+
+
+def tex_kupferwabe(rng: Random) -> Image.Image:
+    return comb(rng, (COPPER_DARK, COPPER, COPPER_LIGHT))
 
 
 # ---------------------------------------------------------------------------
@@ -299,8 +313,10 @@ def tex_gruenspanbiene_spawn_egg(rng: Random) -> Image.Image:
                      BEE_COPPER, VERDIGRIS_DARK)
 
 
-def tex_gruenspanpollen(rng: Random) -> Image.Image:
-    """Verdigris pollen puff: soft round clump with light sparkles and loose motes."""
+def pollen(rng: Random, palette) -> Image.Image:
+    """Pollen puff: soft round clump with light sparkles and loose motes.
+    palette = (dark, base, light); rng consumed once per canvas pixel."""
+    dark, base, light = palette
     img = blank()
     cx, cy = 7.5, 8.0
     for y in range(16):
@@ -311,20 +327,27 @@ def tex_gruenspanpollen(rng: Random) -> Image.Image:
                 continue
             if d > 3.8:
                 if jitter < 0.55:  # ragged rim
-                    px(img, x, y, VERDIGRIS_DARK)
+                    px(img, x, y, dark)
             elif d > 2.4:
-                px(img, x, y, VERDIGRIS_DARK if jitter < 0.25 else VERDIGRIS)
+                px(img, x, y, dark if jitter < 0.25 else base)
             else:
-                px(img, x, y, VERDIGRIS_LIGHT if jitter < 0.35 else VERDIGRIS)
+                px(img, x, y, light if jitter < 0.35 else base)
     # Loose motes drifting off the puff (seeded, kept off the clump).
     for mx, my in ((2, 3), (13, 2), (14, 12), (2, 13), (12, 14), (3, 8)):
-        px(img, mx, my, VERDIGRIS_LIGHT if (mx + my) % 2 else VERDIGRIS)
+        px(img, mx, my, light if (mx + my) % 2 else base)
     return img
 
 
-def tex_kupferbluete(rng: Random) -> Image.Image:
-    """Cross-model copper flower: green stem + leaves, 8 copper petals around a light
-    copper heart, verdigris petal tips."""
+def tex_gruenspanpollen(rng: Random) -> Image.Image:
+    return pollen(rng, (VERDIGRIS_DARK, VERDIGRIS, VERDIGRIS_LIGHT))
+
+
+def flower(rng: Random, petal, tip, heart, stem) -> Image.Image:
+    """Cross-model flower: stem + two leaves, 8 petals around a glowing heart, tinted
+    petal tips. petal = (petal_dark, petal_base); stem = (stem_green, stem_dark);
+    tip/heart are single colors. rng consumed once per canvas pixel."""
+    petal_dark, petal_base = petal
+    stem_green, stem_dark = stem
     img = blank()
     fx, fy = 7.5, 4.0  # flower-head centre
     for y in range(16):
@@ -332,22 +355,27 @@ def tex_kupferbluete(rng: Random) -> Image.Image:
             spark = rng.random()  # consumed unconditionally: fixed rng stream
             d = math.hypot(x - fx, y - fy)
             if d <= 1.2:
-                px(img, x, y, BEE_COPPER_LIGHT)     # glowing heart
+                px(img, x, y, heart)                # glowing heart
             elif d <= 2.3:
-                px(img, x, y, BEE_COPPER_DARK if spark < 0.2 else BEE_COPPER)
+                px(img, x, y, petal_dark if spark < 0.2 else petal_base)
             elif d <= 3.6:
                 # 8 petals: keep pixels near the 45-degree spoke directions.
                 ang = math.degrees(math.atan2(y - fy, x - fx)) % 45.0
                 if min(ang, 45.0 - ang) <= 11.0:
-                    px(img, x, y, VERDIGRIS if d >= 2.9 else BEE_COPPER)
+                    px(img, x, y, tip if d >= 2.9 else petal_base)
     # Stem with two leaves.
     for y in range(7, 16):
-        px(img, 7, y, STEM_DARK if y % 3 == 0 else STEM_GREEN)
+        px(img, 7, y, stem_dark if y % 3 == 0 else stem_green)
     for lx, ly in ((6, 10), (5, 10), (5, 9)):
-        px(img, lx, ly, STEM_GREEN)
+        px(img, lx, ly, stem_green)
     for lx, ly in ((8, 12), (9, 12), (9, 11)):
-        px(img, lx, ly, STEM_DARK)
+        px(img, lx, ly, stem_dark)
     return img
+
+
+def tex_kupferbluete(rng: Random) -> Image.Image:
+    return flower(rng, (BEE_COPPER_DARK, BEE_COPPER), VERDIGRIS, BEE_COPPER_LIGHT,
+                  (STEM_GREEN, STEM_DARK))
 
 
 # ---------------------------------------------------------------------------
@@ -436,46 +464,93 @@ def tex_wurfphiole_entoxidation(rng: Random) -> Image.Image:
 
 
 # ---------------------------------------------------------------------------
-# Kupferstock (copper apiary) block faces: copper planks, side with entrance
+# Machine block faces: plank base parametric on a (dark, base, light) palette,
+# plus an accent-colored motif drawn on top (entrance hole, lid border, dials, ...)
 # ---------------------------------------------------------------------------
 
-def _plank_base(rng: Random) -> Image.Image:
-    """16x16 copper planks: four 4px horizontal boards with dark seams + mottle."""
+def _plank_base(rng: Random, palette) -> Image.Image:
+    """16x16 planks: four 4px horizontal boards with dark seams + mottle.
+    palette = (dark, base, light); rng consumed once per canvas pixel."""
+    dark, base, light = palette
     img = blank()
     for y in range(16):
         for x in range(16):
             mottle = rng.random()
             if y % 4 == 3:
-                color = COPPER_DARK          # horizontal seam
+                color = dark                 # horizontal seam
             elif (y // 4 * 5 + x) % 8 == 0:
-                color = COPPER_DARK          # staggered board-end notches
+                color = dark                 # staggered board-end notches
             elif mottle < 0.08:
-                color = COPPER_DARK
+                color = dark
             elif mottle > 0.93:
-                color = COPPER_LIGHT
+                color = light
             else:
-                color = COPPER
+                color = base
             px(img, x, y, color)
     return img
 
 
-def tex_kupferstock_side(rng: Random) -> Image.Image:
-    img = _plank_base(rng)
-    # Entrance: dark notch low-centre, with a light lip above (beehive-style).
-    for y in range(10, 14):
-        for x in range(6, 10):
-            px(img, x, y, OUTLINE_DARK)
-    for x in range(6, 10):
-        px(img, x, 9, COPPER_LIGHT)
+def machine_face(rng: Random, base, accent, motif) -> Image.Image:
+    """One 16x16 machine-block face: parametric plank base + a motif drawn on top.
+    base = (dark, mid, light) plank palette; accent is the motif's accent color;
+    motif(img, base, accent) draws AFTER the plank base and must NOT consume rng
+    (the plank base already consumed exactly one rng.random() per pixel)."""
+    img = _plank_base(rng, base)
+    if motif is not None:
+        motif(img, base, accent)
     return img
 
 
-def tex_kupferstock_top(rng: Random) -> Image.Image:
-    img = _plank_base(rng)
-    # Border ring so the top face reads as a lid.
+def motif_entrance(img: Image.Image, base, accent) -> None:
+    """Beehive-style entrance: accent-dark notch low-centre with a light lip above."""
+    for y in range(10, 14):
+        for x in range(6, 10):
+            px(img, x, y, accent)
+    for x in range(6, 10):
+        px(img, x, 9, base[2])
+
+
+def motif_lid_border(img: Image.Image, base, accent) -> None:
+    """Accent border ring so the face reads as a lid."""
     for i in range(16):
         for (bx, by) in ((i, 0), (i, 15), (0, i), (15, i)):
-            px(img, bx, by, COPPER_DARK)
+            px(img, bx, by, accent)
+
+
+def tex_kupferstock_side(rng: Random) -> Image.Image:
+    return machine_face(rng, (COPPER_DARK, COPPER, COPPER_LIGHT), OUTLINE_DARK,
+                        motif_entrance)
+
+
+def tex_kupferstock_top(rng: Random) -> Image.Image:
+    return machine_face(rng, (COPPER_DARK, COPPER, COPPER_LIGHT), COPPER_DARK,
+                        motif_lid_border)
+
+
+# ---------------------------------------------------------------------------
+# Crop stage textures: 16x16 sprites for the vanilla block/crop model (stub —
+# later flora workers refine the look; the determinism contract still holds)
+# ---------------------------------------------------------------------------
+
+def crop_stage(rng: Random, stage: int, stages: int, palette) -> Image.Image:
+    """Stub crop-stage painter for {id}_stage{N}.png: four stalks that grow taller
+    with the stage, light heads on the final stage. palette = (dark, base, light);
+    rng consumed once per canvas pixel (fixed stream regardless of stage)."""
+    dark, base, light = palette
+    img = blank()
+    height = 3 + round(11 * stage / max(stages - 1, 1))
+    ripe = stage == stages - 1
+    for y in range(16):
+        for x in range(16):
+            jitter = rng.random()  # consumed unconditionally: fixed rng stream
+            if x not in (2, 6, 9, 13) or y < 16 - height:
+                continue
+            if ripe and y <= 16 - height + 1:
+                px(img, x, y, light)         # ripe head
+            elif jitter < 0.2:
+                px(img, x, y, dark)
+            else:
+                px(img, x, y, base)
     return img
 
 
@@ -545,6 +620,31 @@ def tex_blitzblank(rng: Random) -> Image.Image:
     return img
 
 
+def effect_icon(rng: Random, palette, glyph=None) -> Image.Image:
+    """Generic 18x18 effect icon for NEW palettes (patina_haut/blitzblank keep their
+    bespoke painters): tri-tone noisy disc with a dark rim; optional
+    glyph(img, palette) overlay drawn AFTER the disc, must NOT consume rng.
+    palette = (dark, base, light); rng consumed once per canvas pixel."""
+    dark, base, light = palette
+    img = blank_sized(18)
+    cx, cy = 8.5, 8.5
+    for y in range(18):
+        for x in range(18):
+            noise = rng.random()  # consumed unconditionally: fixed rng stream
+            d = math.hypot(x - cx, y - cy)
+            if d > 7.4:
+                continue
+            if d > 6.4 or noise < 0.12:
+                px_sized(img, x, y, dark)
+            elif noise > 0.90:
+                px_sized(img, x, y, light)
+            else:
+                px_sized(img, x, y, base)
+    if glyph is not None:
+        glyph(img, palette)
+    return img
+
+
 # ---------------------------------------------------------------------------
 # Entity textures: vanilla bee texture luminance-remapped (calamities_gen
 # recolor_entity_texture pattern: dark -> base -> light ramp, alpha unchanged)
@@ -571,6 +671,14 @@ def recolor_entity_texture(png_bytes: bytes, dark, base, light) -> Image.Image:
     return out
 
 
+# Bee entity textures: <entity id> -> (dark, base, light) remap palette applied to the
+# vanilla bee texture. Later bee workers append here (renderer + lang keys still needed).
+BEE_PALETTES = {
+    "kupferbiene": (BEE_COPPER_DARK, BEE_COPPER, BEE_COPPER_LIGHT),
+    "gruenspanbiene": (VERDIGRIS_DARK, VERDIGRIS, VERDIGRIS_LIGHT),
+}
+
+
 def emit_entity_textures() -> None:
     if not CLIENT_JAR.is_file():
         print(f"kupferbienen_gen: WARNING client jar not found at {CLIENT_JAR}; "
@@ -579,12 +687,101 @@ def emit_entity_textures() -> None:
     tex_dir = CLIENT_ASSETS / "textures" / "entity"
     with zipfile.ZipFile(CLIENT_JAR) as jar:
         bee_bytes = jar.read(BEE_TEXTURE_IN_JAR)
-    save_png(recolor_entity_texture(bee_bytes, BEE_COPPER_DARK, BEE_COPPER, BEE_COPPER_LIGHT),
-             tex_dir / "kupferbiene.png")
-    save_png(recolor_entity_texture(bee_bytes, VERDIGRIS_DARK, VERDIGRIS, VERDIGRIS_LIGHT),
-             tex_dir / "gruenspanbiene.png")
-    print(f"wrote {tex_dir / 'kupferbiene.png'}")
-    print(f"wrote {tex_dir / 'gruenspanbiene.png'}")
+    for name, (dark, base, light) in BEE_PALETTES.items():
+        path = tex_dir / f"{name}.png"
+        save_png(recolor_entity_texture(bee_bytes, dark, base, light), path)
+        print(f"wrote {path}")
+
+
+# ---------------------------------------------------------------------------
+# Block JSON emitters (all --write-json only; shapes mirror the committed JSON
+# under src/main/resources: blockstates/kupferbluete.json, models/block/*.json,
+# loot_table/blocks/*.json)
+# ---------------------------------------------------------------------------
+
+def emit_block_loot(block_id: str) -> None:
+    """data/loot_table/blocks/<id>.json: drop-self with survives_explosion
+    (kupferbluete/kupferstock shape)."""
+    write_json(RES / "data" / NS / "loot_table" / "blocks" / f"{block_id}.json", {
+        "pools": [
+            {
+                "bonus_rolls": 0.0,
+                "conditions": [{"condition": "minecraft:survives_explosion"}],
+                "entries": [{"name": f"{NS}:{block_id}", "type": "minecraft:item"}],
+                "rolls": 1.0,
+            }
+        ],
+        "random_sequence": f"{NS}:blocks/{block_id}",
+        "type": "minecraft:block",
+    })
+
+
+def emit_flower_block(block_id: str) -> None:
+    """Full JSON set for a cross-model flower block (kupferbluete shape): blockstate,
+    cross block model, item def + generated item model (layer0 = block texture),
+    survives-explosion loot."""
+    write_json(ASSETS / "blockstates" / f"{block_id}.json",
+               {"variants": {"": {"model": f"{NS}:block/{block_id}"}}})
+    write_json(ASSETS / "models" / "block" / f"{block_id}.json", {
+        "parent": "minecraft:block/cross",
+        "textures": {"cross": f"{NS}:block/{block_id}"},
+    })
+    emit_item_def(ASSETS, block_id)
+    emit_item_model(ASSETS, block_id, f"{NS}:block/{block_id}")
+    emit_block_loot(block_id)
+
+
+def emit_machine_block(block_id: str) -> None:
+    """Full JSON set for a cube_bottom_top machine block (kupferstock shape):
+    blockstate, block model over <id>_side/<id>_top textures, item def + block-parent
+    item model, survives-explosion loot."""
+    write_json(ASSETS / "blockstates" / f"{block_id}.json",
+               {"variants": {"": {"model": f"{NS}:block/{block_id}"}}})
+    write_json(ASSETS / "models" / "block" / f"{block_id}.json", {
+        "parent": "minecraft:block/cube_bottom_top",
+        "textures": {
+            "bottom": f"{NS}:block/{block_id}_top",
+            "side": f"{NS}:block/{block_id}_side",
+            "top": f"{NS}:block/{block_id}_top",
+        },
+    })
+    emit_item_def(ASSETS, block_id)
+    write_json(ASSETS / "models" / "item" / f"{block_id}.json",
+               {"parent": f"{NS}:block/{block_id}"})
+    emit_block_loot(block_id)
+
+
+def emit_crop(block_id: str, stages: int) -> None:
+    """age=N blockstate + one block/crop model per stage over <id>_stage<N> textures.
+    Crop loot (seed/produce splits) is block-specific — later workers add it by hand."""
+    write_json(ASSETS / "blockstates" / f"{block_id}.json", {
+        "variants": {f"age={i}": {"model": f"{NS}:block/{block_id}_stage{i}"}
+                     for i in range(stages)},
+    })
+    for i in range(stages):
+        write_json(ASSETS / "models" / "block" / f"{block_id}_stage{i}.json", {
+            "parent": "minecraft:block/crop",
+            "textures": {"crop": f"{NS}:block/{block_id}_stage{i}"},
+        })
+
+
+# ---------------------------------------------------------------------------
+# Declarative content tables — later workers APPEND rows here; main() emits the
+# matching textures (always) and JSON (--write-json only) from them.
+# ---------------------------------------------------------------------------
+
+# <flower block id> -> flower() kwargs:
+# {"petal": (dark, base), "tip": color, "heart": color, "stem": (green, dark)}
+SIMPLE_FLOWERS = {}
+
+# <machine block id> -> {"base": (dark, mid, light), "accent": color,
+#                        "side_motif": motif_fn, "top_motif": motif_fn}
+# Textures emitted: <id>_side.png / <id>_top.png (machine_face).
+MACHINE_BLOCKS = {}
+
+# <crop block id> -> {"stages": N, "palette": (dark, base, light)}
+# Textures emitted: <id>_stage0..N-1.png (crop_stage).
+CROPS = {}
 
 
 # ---------------------------------------------------------------------------
@@ -592,6 +789,7 @@ def emit_entity_textures() -> None:
 # ---------------------------------------------------------------------------
 
 ITEM_TEXTURES = {
+    "kupferwabe": tex_kupferwabe,
     "gruenspanpollen": tex_gruenspanpollen,
     "kupferbiene_spawn_egg": tex_kupferbiene_spawn_egg,
     "gruenspanbiene_spawn_egg": tex_gruenspanbiene_spawn_egg,
@@ -617,9 +815,7 @@ MOB_EFFECT_TEXTURES = {
 def main(argv: list) -> None:
     write_json_files = "--write-json" in argv
 
-    save_png(kupferwabe_texture(), ASSETS / "textures" / "item" / "kupferwabe.png")
     save_png(icon_image(), ASSETS / "icon.png")
-    print(f"wrote {ASSETS / 'textures' / 'item' / 'kupferwabe.png'}")
     print(f"wrote {ASSETS / 'icon.png'}")
 
     for name, painter in ITEM_TEXTURES.items():
@@ -635,6 +831,26 @@ def main(argv: list) -> None:
         save_png(painter(rng_for(name)), path)
         print(f"wrote {path}")
 
+    # Table-driven textures (empty tables today; later workers append rows).
+    for name, spec in SIMPLE_FLOWERS.items():
+        path = ASSETS / "textures" / "block" / f"{name}.png"
+        save_png(flower(rng_for(name), spec["petal"], spec["tip"], spec["heart"],
+                        spec["stem"]), path)
+        print(f"wrote {path}")
+    for name, spec in MACHINE_BLOCKS.items():
+        for face in ("side", "top"):
+            tex = f"{name}_{face}"
+            path = ASSETS / "textures" / "block" / f"{tex}.png"
+            save_png(machine_face(rng_for(tex), spec["base"], spec["accent"],
+                                  spec[f"{face}_motif"]), path)
+            print(f"wrote {path}")
+    for name, spec in CROPS.items():
+        for i in range(spec["stages"]):
+            tex = f"{name}_stage{i}"
+            path = ASSETS / "textures" / "block" / f"{tex}.png"
+            save_png(crop_stage(rng_for(tex), i, spec["stages"], spec["palette"]), path)
+            print(f"wrote {path}")
+
     emit_entity_textures()
 
     if write_json_files:
@@ -644,6 +860,12 @@ def main(argv: list) -> None:
                         "wurfphiole_oxidation", "wurfphiole_entoxidation"):
             emit_item_def(ASSETS, item_id)
             emit_item_model(ASSETS, item_id)
+        for flower_id in SIMPLE_FLOWERS:
+            emit_flower_block(flower_id)
+        for machine_id in MACHINE_BLOCKS:
+            emit_machine_block(machine_id)
+        for crop_id, spec in CROPS.items():
+            emit_crop(crop_id, spec["stages"])
         print("wrote item def + model JSON")
 
 

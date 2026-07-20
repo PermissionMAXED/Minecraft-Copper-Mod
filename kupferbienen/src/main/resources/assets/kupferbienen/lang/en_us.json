@@ -28,5 +28,8 @@
   "advancements.kupferbienen.trank.title": "Oxidation Alchemy",
   "advancements.kupferbienen.trank.description": "Brew Copper Mash with Verdigris Pollen or a Honeycomb into a potion",
   "advancements.kupferbienen.verwandlung.title": "A New Patina",
-  "advancements.kupferbienen.verwandlung.description": "Convert a bee with a splash vial"
+  "advancements.kupferbienen.verwandlung.description": "Convert a bee with a splash vial",
+  "itemGroup.kupferbienen.bienen": "Kupferbienen: Bees",
+  "itemGroup.kupferbienen.alchemie": "Kupferbienen: Alchemy",
+  "itemGroup.kupferbienen.maschinen": "Kupferbienen: Machinery"
 }

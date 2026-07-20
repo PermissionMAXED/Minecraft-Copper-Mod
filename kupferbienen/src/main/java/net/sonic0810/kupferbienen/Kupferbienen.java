@@ -4,6 +4,8 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import net.sonic0810.kupferbienen.core.ModCreativeTab;
 import net.sonic0810.kupferbienen.feature.bees.BeesFeature;
+import net.sonic0810.kupferbienen.feature.flora.FloraFeature;
+import net.sonic0810.kupferbienen.feature.machines.MachinesFeature;
 import net.sonic0810.kupferbienen.feature.potions.PotionsFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,11 +21,18 @@ public class Kupferbienen implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		LOGGER.info("[KUPFERBIENEN] Initializing - by Sonic0810");
-		// ModCreativeTab.init() MUST run before any feature init: features register their
-		// ItemGroupEvents callbacks against the tab keys created there.
+		// ModCreativeTab.init() MUST run first: features register their ItemGroupEvents
+		// callbacks against the tab keys created there (BIENEN/ALCHEMIE/MASCHINEN).
 		ModCreativeTab.init();
+		// FloraFeature before BeesFeature: flora will register the extra bee-attractive
+		// flowers/crops that bee-side content (worldgen, apiary checks) may reference.
+		FloraFeature.init();
 		BeesFeature.init();
-		// After BeesFeature.init(): the brewing chain references KUPFERWABE/GRUENSPANPOLLEN.
+		// MachinesFeature after BeesFeature: machinery processes bee produce
+		// (KUPFERWABE/GRUENSPANPOLLEN item fields must already be non-null).
+		MachinesFeature.init();
+		// PotionsFeature last: the brewing chain references KUPFERWABE/GRUENSPANPOLLEN and
+		// may later reference machine outputs as brewing ingredients.
 		PotionsFeature.init();
 	}
 }

@@ -28,5 +28,8 @@
   "advancements.kupferbienen.trank.title": "Oxidations-Alchemie",
   "advancements.kupferbienen.trank.description": "Braue Kupfersud mit Grünspanpollen oder einer Honigwabe zu einem Trank",
   "advancements.kupferbienen.verwandlung.title": "Neue Patina",
-  "advancements.kupferbienen.verwandlung.description": "Verwandle eine Biene mit einer Wurfphiole"
+  "advancements.kupferbienen.verwandlung.description": "Verwandle eine Biene mit einer Wurfphiole",
+  "itemGroup.kupferbienen.bienen": "Kupferbienen: Bienen",
+  "itemGroup.kupferbienen.alchemie": "Kupferbienen: Alchemie",
+  "itemGroup.kupferbienen.maschinen": "Kupferbienen: Maschinen"
 }
