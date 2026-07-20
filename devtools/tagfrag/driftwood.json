@@ -1,0 +1,179 @@
+{
+  "block/buttons": [
+    "copper_inferno:driftwood_button",
+    "copper_inferno:tidewillow_button",
+    "copper_inferno:brinepine_button"
+  ],
+  "block/fence_gates": [
+    "copper_inferno:driftwood_fence_gate",
+    "copper_inferno:tidewillow_fence_gate",
+    "copper_inferno:brinepine_fence_gate"
+  ],
+  "block/fences": [
+    "copper_inferno:driftwood_fence",
+    "copper_inferno:tidewillow_fence",
+    "copper_inferno:brinepine_fence"
+  ],
+  "block/leaves": [
+    "copper_inferno:driftwood_leaves",
+    "copper_inferno:tidewillow_leaves",
+    "copper_inferno:brinepine_leaves"
+  ],
+  "block/logs": [
+    "copper_inferno:driftwood_log",
+    "copper_inferno:stripped_driftwood_log",
+    "copper_inferno:driftwood_wood",
+    "copper_inferno:stripped_driftwood_wood",
+    "copper_inferno:tidewillow_log",
+    "copper_inferno:stripped_tidewillow_log",
+    "copper_inferno:tidewillow_wood",
+    "copper_inferno:stripped_tidewillow_wood",
+    "copper_inferno:brinepine_log",
+    "copper_inferno:stripped_brinepine_log",
+    "copper_inferno:brinepine_wood",
+    "copper_inferno:stripped_brinepine_wood"
+  ],
+  "block/logs_that_burn": [
+    "copper_inferno:driftwood_log",
+    "copper_inferno:stripped_driftwood_log",
+    "copper_inferno:driftwood_wood",
+    "copper_inferno:stripped_driftwood_wood",
+    "copper_inferno:tidewillow_log",
+    "copper_inferno:stripped_tidewillow_log",
+    "copper_inferno:tidewillow_wood",
+    "copper_inferno:stripped_tidewillow_wood",
+    "copper_inferno:brinepine_log",
+    "copper_inferno:stripped_brinepine_log",
+    "copper_inferno:brinepine_wood",
+    "copper_inferno:stripped_brinepine_wood"
+  ],
+  "block/mineable/axe": [
+    "copper_inferno:driftwood_planks",
+    "copper_inferno:driftwood_plank_slab",
+    "copper_inferno:driftwood_plank_stairs",
+    "copper_inferno:driftwood_fence",
+    "copper_inferno:driftwood_fence_gate",
+    "copper_inferno:driftwood_button",
+    "copper_inferno:driftwood_pressure_plate",
+    "copper_inferno:driftwood_log",
+    "copper_inferno:stripped_driftwood_log",
+    "copper_inferno:driftwood_wood",
+    "copper_inferno:stripped_driftwood_wood",
+    "copper_inferno:driftwood_mosaic",
+    "copper_inferno:driftwood_pillar",
+    "copper_inferno:tidewillow_planks",
+    "copper_inferno:tidewillow_plank_slab",
+    "copper_inferno:tidewillow_plank_stairs",
+    "copper_inferno:tidewillow_fence",
+    "copper_inferno:tidewillow_fence_gate",
+    "copper_inferno:tidewillow_button",
+    "copper_inferno:tidewillow_pressure_plate",
+    "copper_inferno:tidewillow_log",
+    "copper_inferno:stripped_tidewillow_log",
+    "copper_inferno:tidewillow_wood",
+    "copper_inferno:stripped_tidewillow_wood",
+    "copper_inferno:tidewillow_mosaic",
+    "copper_inferno:tidewillow_pillar",
+    "copper_inferno:brinepine_planks",
+    "copper_inferno:brinepine_plank_slab",
+    "copper_inferno:brinepine_plank_stairs",
+    "copper_inferno:brinepine_fence",
+    "copper_inferno:brinepine_fence_gate",
+    "copper_inferno:brinepine_button",
+    "copper_inferno:brinepine_pressure_plate",
+    "copper_inferno:brinepine_log",
+    "copper_inferno:stripped_brinepine_log",
+    "copper_inferno:brinepine_wood",
+    "copper_inferno:stripped_brinepine_wood",
+    "copper_inferno:brinepine_mosaic",
+    "copper_inferno:brinepine_pillar"
+  ],
+  "block/mineable/hoe": [
+    "copper_inferno:driftwood_leaves",
+    "copper_inferno:tidewillow_leaves",
+    "copper_inferno:brinepine_leaves"
+  ],
+  "block/planks": [
+    "copper_inferno:driftwood_planks",
+    "copper_inferno:tidewillow_planks",
+    "copper_inferno:brinepine_planks"
+  ],
+  "block/pressure_plates": [
+    "copper_inferno:driftwood_pressure_plate",
+    "copper_inferno:tidewillow_pressure_plate",
+    "copper_inferno:brinepine_pressure_plate"
+  ],
+  "block/slabs": [
+    "copper_inferno:driftwood_plank_slab",
+    "copper_inferno:tidewillow_plank_slab",
+    "copper_inferno:brinepine_plank_slab"
+  ],
+  "block/stairs": [
+    "copper_inferno:driftwood_plank_stairs",
+    "copper_inferno:tidewillow_plank_stairs",
+    "copper_inferno:brinepine_plank_stairs"
+  ],
+  "block/wooden_buttons": [
+    "copper_inferno:driftwood_button",
+    "copper_inferno:tidewillow_button",
+    "copper_inferno:brinepine_button"
+  ],
+  "block/wooden_fences": [
+    "copper_inferno:driftwood_fence",
+    "copper_inferno:tidewillow_fence",
+    "copper_inferno:brinepine_fence"
+  ],
+  "block/wooden_pressure_plates": [
+    "copper_inferno:driftwood_pressure_plate",
+    "copper_inferno:tidewillow_pressure_plate",
+    "copper_inferno:brinepine_pressure_plate"
+  ],
+  "block/wooden_slabs": [
+    "copper_inferno:driftwood_plank_slab",
+    "copper_inferno:tidewillow_plank_slab",
+    "copper_inferno:brinepine_plank_slab"
+  ],
+  "block/wooden_stairs": [
+    "copper_inferno:driftwood_plank_stairs",
+    "copper_inferno:tidewillow_plank_stairs",
+    "copper_inferno:brinepine_plank_stairs"
+  ],
+  "item/leaves": [
+    "copper_inferno:driftwood_leaves",
+    "copper_inferno:tidewillow_leaves",
+    "copper_inferno:brinepine_leaves"
+  ],
+  "item/logs": [
+    "copper_inferno:driftwood_log",
+    "copper_inferno:stripped_driftwood_log",
+    "copper_inferno:driftwood_wood",
+    "copper_inferno:stripped_driftwood_wood",
+    "copper_inferno:tidewillow_log",
+    "copper_inferno:stripped_tidewillow_log",
+    "copper_inferno:tidewillow_wood",
+    "copper_inferno:stripped_tidewillow_wood",
+    "copper_inferno:brinepine_log",
+    "copper_inferno:stripped_brinepine_log",
+    "copper_inferno:brinepine_wood",
+    "copper_inferno:stripped_brinepine_wood"
+  ],
+  "item/logs_that_burn": [
+    "copper_inferno:driftwood_log",
+    "copper_inferno:stripped_driftwood_log",
+    "copper_inferno:driftwood_wood",
+    "copper_inferno:stripped_driftwood_wood",
+    "copper_inferno:tidewillow_log",
+    "copper_inferno:stripped_tidewillow_log",
+    "copper_inferno:tidewillow_wood",
+    "copper_inferno:stripped_tidewillow_wood",
+    "copper_inferno:brinepine_log",
+    "copper_inferno:stripped_brinepine_log",
+    "copper_inferno:brinepine_wood",
+    "copper_inferno:stripped_brinepine_wood"
+  ],
+  "item/planks": [
+    "copper_inferno:driftwood_planks",
+    "copper_inferno:tidewillow_planks",
+    "copper_inferno:brinepine_planks"
+  ]
+}

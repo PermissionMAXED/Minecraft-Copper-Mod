@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "copper_inferno:block/pearl_cluster"
+  }
+}

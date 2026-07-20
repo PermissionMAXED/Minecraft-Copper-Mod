@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "copper_inferno:block/brinepine_log",
+    "side": "copper_inferno:block/brinepine_log"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "category": "redstone",
+  "group": "wooden_button",
+  "ingredients": [
+    "copper_inferno:tidewillow_planks"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:tidewillow_button"
+  },
+  "type": "minecraft:crafting_shapeless"
+}

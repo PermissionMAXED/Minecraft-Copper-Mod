@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button",
+  "textures": {
+    "texture": "copper_inferno:block/tidewillow_planks"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "ingredient": "copper_inferno:driftwood_planks",
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:driftwood_pillar"
+  },
+  "type": "minecraft:stonecutting"
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_inventory",
+  "textures": {
+    "texture": "copper_inferno:block/driftwood_planks"
+  }
+}

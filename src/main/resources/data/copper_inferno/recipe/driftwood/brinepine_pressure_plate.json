@@ -1,0 +1,15 @@
+{
+  "category": "redstone",
+  "group": "wooden_pressure_plate",
+  "key": {
+    "#": "copper_inferno:brinepine_planks"
+  },
+  "pattern": [
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "copper_inferno:brinepine_pressure_plate"
+  },
+  "type": "minecraft:crafting_shaped"
+}
